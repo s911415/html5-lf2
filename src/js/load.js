@@ -4,7 +4,7 @@ let _isRecordMode = false;
 (function () {
     const jsArray = [
         //Load framework
-        "js/Framework/config.js",
+        "js/Framework/Config.js",
         "js/Framework/Record.js",
         "js/Framework/Replay.js",
         "js/Framework/EqualCondition.js",
@@ -18,7 +18,7 @@ let _isRecordMode = false;
         "js/Framework/animationSprite.js",
         "js/Framework/Scene.js",
         "js/Framework/ResourceManager.js",
-        "js/Framework/level.js",
+        "js/Framework/Level.js",
         "js/Framework/Game.js",
         "js/Framework/MouseManager.js",
         "js/Framework/KeyBoardManager.js",
