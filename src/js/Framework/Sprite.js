@@ -6,6 +6,7 @@ var Framework = (function (Framework) {
      * 可以用來繪製圖片的物件
      *
      * @param  {string} filePath 圖片路徑
+     * @implements Framework.AttachableInterface
      * @example
      *     new Framework.Sprite('clock.png');
      *

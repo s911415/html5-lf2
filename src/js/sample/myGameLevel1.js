@@ -1,4 +1,9 @@
-﻿var MyGame = class extends Framework.Level{
+﻿/**
+ * @class MyGame
+ * @extends Framework.Level
+ * @type {{new()=>{keydown: ((e, list)), update: (()), click: ((e)), touchstart: ((e)), draw: ((parentCtx)), initialize: (()), load: (())}}}
+ */
+var MyGame = class extends Framework.Level{
     constructor(){
         super();
     }

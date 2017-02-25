@@ -6,9 +6,11 @@ var Framework = (function (Framework) {
     /**
      * 所有Sprite和Scene的Base Class,
      * 一般而言, 應該不會直接new它, 而是new其他的concrete class
+     *
+     * @implements Framework.AttachableInterface
      * @abstract
      */
-    Framework.GameObject = class {
+    Framework.GameObject = class GameObject{
 
         /** Default constructor. */
         constructor() {
