@@ -15,7 +15,7 @@ let _isRecordMode = false;
         "js/Framework/Point.js",
         "js/Framework/GameObject.js",
         "js/Framework/Sprite.js",
-        "js/Framework/animationSprite.js",
+        "js/Framework/AnimationSprite.js",
         "js/Framework/Scene.js",
         "js/Framework/ResourceManager.js",
         "js/Framework/Level.js",
