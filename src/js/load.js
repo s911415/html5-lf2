@@ -23,7 +23,7 @@ let _isRecordMode = false;
         "js/Framework/MouseManager.js",
         "js/Framework/KeyBoardManager.js",
         "js/Framework/TouchManager.js",
-        "js/Framework/gameMainMenu.js",
+        "js/Framework/GameMainMenu.js",
         "js/Framework/Audio.js",
         "js/Framework/Box2dWeb-2.1.a.3.js",
         "js/Framework/Box2D.js",
