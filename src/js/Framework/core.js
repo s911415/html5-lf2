@@ -1,6 +1,6 @@
 // By Raccoon , undyingmoon
 var Framework = (function (Framework) {
-    'use strict'
+    'use strict';
     Framework.exClass = function () {
         // 如果用了new keyword 就拋例外
         if (this instanceof Framework.exClass) {

@@ -17,7 +17,7 @@ var loadFrameworkEnd;
                 loadFrameworkEnd = true;
             }
         });
-    }
+    };
 
     var wait_for_script_load = function (jsConf, callback) {
         var interval = setInterval(function () {
@@ -33,7 +33,7 @@ var loadFrameworkEnd;
                 callback();
             }
         }, 50);
-    }
+    };
 
     //陣列和載入JS檔的順序相同, lookFor為在要載入的檔案中, 
     //有用到的全域變數, importJS這個function, 會在找到lookFor的變數後
@@ -68,7 +68,7 @@ var loadFrameworkEnd;
             {src: '../../src/squareComponent.js'},
             {src: '../../src/triangleComponent.js'},
             //{ src: 'game_sample/js/loadGame.js'},
-        ]
+        ];
     importJS(frameworklistScript);
 
 })();

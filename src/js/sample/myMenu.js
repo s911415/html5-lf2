@@ -123,7 +123,7 @@ var MyMenu = class extends Framework.GameMainMenu {
             this.currentTouch = {x: e.x, y: e.y};
             if (this.currentTouch.x > this.previousTouch.x && this.currentTouch.y < this.rightArrow.lowerLeft.y && this.currentTouch.y > this.rightArrow.upperLeft.y) {
                 //當arrow被Touch到時, 會跟隨著觸控的位置移動
-                this.rightArrow.position.x = this.rightArrow.position.x + this.currentTouch.x - this.previousTouch.x
+                this.rightArrow.position.x = this.rightArrow.position.x + this.currentTouch.x - this.previousTouch.x;
                 if (this.currentTouch.x > Framework.Game.getCanvasWidth() - this.rightArrow.width) {
                     //當要換關時, 可以呼叫goToNextLevel, goToPreviousLevel, goToLevel(levelName)
                     Framework.Game.goToNextLevel();

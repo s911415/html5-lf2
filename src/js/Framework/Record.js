@@ -1,5 +1,5 @@
 var Framework = (function (Framework) {
-    'use strict'
+    'use strict';
 
 
     Framework.Record = function () {
@@ -13,7 +13,7 @@ var Framework = (function (Framework) {
             this.recordWait();
             this.record.push(command);
             this.addDivString('&nbsp;&nbsp;&nbsp;&nbsp;' + this.record[this.record.length - 1] + '<br>');
-        }
+        };
         this.start = function () {
             this.waitCounter = 0;
             if (this.isRecording === false) {
@@ -26,28 +26,28 @@ var Framework = (function (Framework) {
                     this.isPause = false;
                 }
             }
-        }
+        };
         this.pause = function () {
             if (this.isRecording) {
                 this.recordWait();  // 2016.10.27 added by cbh
                 this.isPause = true;
             }
-        }
+        };
         this.stop = function () {
             if (this.isRecording) {
                 this.isRecording = false;
                 this.isPause = false;
                 this.addDivString("});<br>");
             }
-        }
+        };
 
         this.addDivString = function (addString) {
             document.getElementById("record_div").innerHTML += addString;
-        }
+        };
 
         this.update = function () {
             this.waitCounter++;
-        }
+        };
         this.click = function (e) {
             this.recordWait();
             this.record.push("Framework.Replay.mouseClick(" + e.x + "," + e.y + ");");
@@ -90,7 +90,7 @@ var Framework = (function (Framework) {
                 this.addDivString('&nbsp;&nbsp;&nbsp;&nbsp;' + this.record[this.record.length - 1] + '<br>');
                 this.waitCounter = 0;
             }
-        }
+        };
 
         this.CallFunction = function (InForm, Agrs) {
             // TestCount++;
@@ -104,7 +104,7 @@ var Framework = (function (Framework) {
             // }
             InForm.SetRecordData(Agrs);
         };
-        var m_record = this
+        var m_record = this;
         this.save = function () {
             var recordString = 'QUnit.asyncTest( "Test Script", function( assert ) {<br>';
             for (var i = 0; i < this.record.length; i++) {
@@ -117,12 +117,12 @@ var Framework = (function (Framework) {
             }, 1000);
 
             //document.getElementById('recordscript').innerHTML = recordString;
-        }
+        };
 
         this.InsertCommand = function (command) {
             this.recordWait();
             this.record.push(command);
-        }
+        };
 
         this.scrollToBottom = function () {
             document.getElementById("record_div").scrollTop = document.getElementById("record_div").scrollHeight

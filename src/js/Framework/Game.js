@@ -6,57 +6,21 @@ var Framework = (function (Framework) {
     /**
      * 整個遊戲(多個{{#crossLink "Level"}}{{/crossLink}})的主體
      * 主要功能為新增移除關卡與關卡的切換
+     *
+     * @namespace Framework
      */
-    Framework.Game = (function () {
-        var that = {};
-        that._config = new Framework.Config();
-        // gameloop fps
-        that.fps = that._config.fps;
-        that.canvasWidth = that._config.canvasWidth;
-        that.canvasHeight = that._config.canvasHeight;
-        that.isBackwardCompatiable = true;
+    Framework.Game = class Game{
+        constructor() {
+            throw "U can't create Game instance";
+        }
 
-        that._widthRatio = 1;
-        that._heightRatio = 1;
-
-        that._isRecording = false;
-        that._isRecordMode = _isRecordMode;
-        that._isTestMode = _isTestMode;
-        that._isTestReady = false;
-        that._isReplay = false;
-
-        that.isContinue = false;
-        that._isInit = false;
-        // gameloop is running ?
-        that._isRun = false;
-        // show fps's div
-        that._fpsContext = undefined;
-        // FPS analysis object
-        that._fpsAnalysis = new Framework.FpsAnalysis();
-        that._drawfpsAnalysis = new Framework.FpsAnalysis();
-        // for gameloop -
-        that._runInstance = undefined;
-        // game state
-        that._levels = [];
-        that._testScripts = [];
-        // current level
-        that._currentLevel = undefined;
-        that._context = null;
-        that._currentTestScript = undefined;
-        that._currentReplay = undefined;
-
-        that._ideaWidth = 16;
-        that._ideaHeight = 9;
-        that.timelist = [];
-        that._record = new Framework.Record();
-
-
-        that._tempUpdate = function () {
-        };
-        that._tempDraw = function (context) {
+        static _tempUpdate() {
         };
 
-        that.recordStart = function () {
+        static _tempDraw(context) {
+        };
+
+        static recordStart() {
             if (document.getElementById("start_btn").getAttribute("enable") == "true") {
 
                 if (that._isRecordMode) {
@@ -84,7 +48,8 @@ var Framework = (function (Framework) {
                 }
             }
         };
-        that.recordPause = function () {
+
+        static recordPause() {
             if (document.getElementById("pause_btn").getAttribute("enable") == "true") {
                 if (that._isRecordMode) {
                     that._isRecording = false;
@@ -100,7 +65,8 @@ var Framework = (function (Framework) {
                 }
             }
         };
-        that.recordStop = function () {
+
+        static recordStop() {
             if (document.getElementById("stop_btn").getAttribute("enable") == "true") {
                 if (that._isRecordMode) {
                     that._isRecording = false;
@@ -115,7 +81,8 @@ var Framework = (function (Framework) {
                 }
             }
         };
-        that.recordInput = function () {
+
+        static recordInput() {
             if (document.getElementById("type_btn").getAttribute("enable") == "true") {
                 var command = prompt("Please enter comment", "");
 
@@ -124,7 +91,8 @@ var Framework = (function (Framework) {
                 }
             }
         };
-        that.recordReplay = function () {
+
+        static recordReplay() {
             if (document.getElementById("replay_btn").getAttribute("enable") == "true") {
                 that._isReplay = true;
                 that._teardown();
@@ -153,7 +121,8 @@ var Framework = (function (Framework) {
                 that.btnEnable();
             }
         };
-        that.getReplayScript = function (script) {
+
+        static getReplayScript(script) {
             script = script.replace(/\n/g, "");
             var start = script.indexOf("{", 0) + 1;
             var end = script.indexOf("}", 0);
@@ -170,18 +139,21 @@ var Framework = (function (Framework) {
                 // }
             }
         };
-        // that.recordContinue = function(){
-        // that.isContinue = true;
-        // document.getElementById("start_btn").setAttribute("enable", "false");
-        // document.getElementById("pause_btn").setAttribute("enable", "true");
-        // document.getElementById("stop_btn").setAttribute("enable", "true");
-        // document.getElementById("type_btn").setAttribute("enable", "true");
-        // document.getElementById("replay_btn").setAttribute("enable", "true");
-        // document.getElementById("continue_btn").setAttribute("enable", "false");
-        // document.getElementById("variable_btn").setAttribute("enable", "false");
-        // that.btnEnable();
-        // };
-        that.showVariable = function () {
+
+        /*
+         static recordContinue() {
+         that.isContinue = true;
+         document.getElementById("start_btn").setAttribute("enable", "false");
+         document.getElementById("pause_btn").setAttribute("enable", "true");
+         document.getElementById("stop_btn").setAttribute("enable", "true");
+         document.getElementById("type_btn").setAttribute("enable", "true");
+         document.getElementById("replay_btn").setAttribute("enable", "true");
+         document.getElementById("continue_btn").setAttribute("enable", "false");
+         document.getElementById("variable_btn").setAttribute("enable", "false");
+         that.btnEnable();
+         };
+         */
+        static showVariable() {
             var maindiv = document.getElementById("main");
             if ((document.getElementById("variable_list") == null) &&
                 (document.getElementById("variable_btn").getAttribute("enable") == "true")) {
@@ -199,7 +171,7 @@ var Framework = (function (Framework) {
             listMember("Framework.Game._currentLevel", "&nbsp", "variable_list");
         };
 
-        that.btnMouseOver = function (button) {
+        static btnMouseOver(button) {
             if (button.getAttribute('enable') === "true") {
                 if (button.id == "start_btn")
                     button.src = "../../src/image/play_over.png";
@@ -215,7 +187,8 @@ var Framework = (function (Framework) {
                     button.src = "../../src/image/variable_over.png";
             }
         };
-        that.btnMouseOut = function (button) {
+
+        static btnMouseOut(button) {
             if (button.getAttribute('enable') === "true") {
                 if (button.id == "start_btn")
                     button.src = "../../src/image/play.png";
@@ -231,7 +204,8 @@ var Framework = (function (Framework) {
                     button.src = "../../src/image/variable.png";
             }
         };
-        that.btnEnable = function () {
+
+        static btnEnable() {
             if (document.getElementById("start_btn").getAttribute("enable") === "true")
                 document.getElementById("start_btn").src = "../../src/image/play.png";
             else
@@ -262,109 +236,122 @@ var Framework = (function (Framework) {
             else
                 document.getElementById("variable_btn").src = "../../src/image/variable_disable.png";
         };
+
         //Event Handler
         // mouse event
-        that.click = function (e) {
+        /**
+         * Mouse Click Event
+         * @param e Event
+         */
+        static click(e) {
             that._currentLevel.click(e);
             if (that._isRecording) {
                 that._record.click(e);
             }
         };
-        that.mousedown = function (e) {
+
+        /**
+         * Mouse Down Event
+         * @param e Event
+         */
+        static mousedown(e) {
             that._currentLevel.mousedown(e);
             if (that._isRecording) {
                 that._record.mousedown(e);
             }
         };
-        that.mouseup = function (e) {
+
+        /**
+         * Mouse Up Event
+         * @param e Event
+         */
+        static mouseup(e) {
             that._currentLevel.mouseup(e);
             if (that._isRecording) {
                 that._record.mouseup(e);
             }
         };
-        that.mousemove = function (e) {
+
+        /**
+         * Mouse Move Event
+         * @param e Event
+         */
+        static mousemove(e) {
             that._currentLevel.mousemove(e);
             if (that._isRecording) {
                 that._record.mousemove(e);
             }
         };
+
         // touch event
-        that.touchstart = function (e) {
+        static touchstart(e) {
             that._currentLevel.touchstart(e);
         };
-        that.touchend = function (e) {
+
+        static touchend(e) {
             that._currentLevel.touchend(e);
         };
-        that.touchmove = function (e) {
+
+        static touchmove(e) {
             that._currentLevel.touchmove(e);
         };
 
-        //keyboard Event
-        that.keydown = function (e) {
+        /**
+         * Key down Event
+         * @param e Event
+         */
+        static keydown(e) {
             that._currentLevel.keydown(e);
             if (that._isRecording) {
                 that._record.keydown(e);
                 //console.log("record down");
             }
         };
-        that.keyup = function (e) {
+
+        /**
+         * Key up Event
+         * @param e Event
+         */
+        static keyup(e) {
             that._currentLevel.keyup(e);
             if (that._isRecording) {
                 that._record.keyup(e);
             }
         };
-        that.keypress = function (e) {
+
+        /**
+         * Key press Event
+         * @param e Event
+         */
+        static keypress(e) {
             that._currentLevel.keypress(e);
             if (that._isRecording) {
                 that._record.keypress(e);
             }
         };
 
-        that._mainContainer = document.createElement('div');
-        if (that._isRecordMode) {
-            that._mainContainer.style.position = "relative";
-            that._mainContainer.style.float = "left";
-            that._mainContainer.style.width = '70%';
-            that._mainContainer.style.height = '100%';
-            that._mainContainer.style.display = 'table';
-        }
-        else if (that._isTestMode) {
-            that._mainContainer.style.position = "relative";
-            that._mainContainer.style.float = "left";
-            that._mainContainer.style.width = '70%';
-            that._mainContainer.style.height = '100%';
-        }
-        else {
-            that._mainContainer.style.width = '100%';
-            that._mainContainer.style.height = '100%';
-            that._mainContainer.style.display = 'table';
-        }
-
-
-        that._mainContainer.style.backgroundColor = '#000';
-        that._canvasContainer = document.createElement('div');
-        that._canvasContainer.style.display = 'table-cell';
-        that._canvasContainer.style.textAlign = 'center';
-        that._canvasContainer.style.verticalAlign = 'middle';
-        that._canvas = document.createElement('canvas');
-        that._canvas.style.backgroundColor = '#fff';
-        that._canvas.setAttribute('id', '__game_canvas__');
-        that._canvas.width = that._config.canvasWidth;
-        that._canvas.height = that._config.canvasHeight;
-        that._canvasContainer.appendChild(that._canvas);
-        that._mainContainer.appendChild(that._canvasContainer);
-        that._context = that._canvas.getContext('2d');
-
-        that.initializeProgressResource = function () {
+        /**
+         * initialize Progress Resource
+         */
+        static initializeProgressResource() {
             that._currentLevel._initializeProgressResource();
         };
-        that.load = function () {
+
+        /**
+         * Load current level
+         */
+        static load() {
             that._currentLevel._load();
             if (that.isBackwardCompatiable) {
                 that._currentLevel.initialize();
             }
         };
-        that.loadingProgress = function (context) {
+
+        /**
+         * Show loading process
+         * @param context
+         */
+        static loadingProgress(context) {
             that._currentLevel._loadingProgress(context, {
                 request: Framework.ResourceManager.getRequestCount(),
                 response: Framework.ResourceManager.getResponseCount(),
@@ -374,11 +361,16 @@ var Framework = (function (Framework) {
                 that.initializeProgressResource();
             }
         };
-        that.initialize = function () {
+
+        /**
+         * initialize currnet level
+         */
+        static initialize() {
             that._currentLevel._initialize();
             that.initializeTestScript(that._currentLevel);
         };
-        that.initializeTestScript = function (level) {
+
+        static initializeTestScript(level) {
             //that._testScripts
             var levelName = that._findLevelNameByLevel(level);
             for (var i = 0, l = that._testScripts.length; i < l; i++) {
@@ -387,15 +379,27 @@ var Framework = (function (Framework) {
                     return;
                 }
             }
-        }
-        that.update = function () {
+        };
+
+        /**
+         * Update current level
+         */
+        static update() {
             that._currentLevel._update();
         };
-        that.draw = function () {
+
+        /**
+         * Draw current level
+         */
+        static draw() {
             that._currentLevel._draw();
         };
 
-        that._teardown = function () {
+        /**
+         * Auto delete
+         * @private
+         */
+        static _teardown() {
             //if(this._currentLevel.autoDelete){
             that._currentLevel.autodelete();
             that._isInit = false;
@@ -403,20 +407,37 @@ var Framework = (function (Framework) {
             // }
         };
 
-        that.stop = function () {
+        /**
+         * Stop current level
+         */
+        static stop() {
             that.pause();
             that._teardown();
         };
 
-        that.getCanvasWidth = function () {
+        /**
+         * Get Canvas width
+         * @returns {number}
+         */
+        static getCanvasWidth() {
             return that._canvas.width;
         };
 
-        that.getCanvasHeight = function () {
+        /**
+         * Get canvas height
+         * @returns {number}
+         */
+        static getCanvasHeight() {
             return that._canvas.height;
         };
 
-        that._findLevel = function (name) {
+        /**
+         * Find level
+         * @param name
+         * @returns {*}
+         * @private
+         */
+        static _findLevel(name) {
             var result = Framework.Util.findValueByKey(that._levels, name);
 
             if (result === null) {
@@ -427,7 +448,7 @@ var Framework = (function (Framework) {
             }
         };
 
-        that._findScript = function (name) {
+        static _findScript(name) {
             var result = Framework.Util.findValueByKey(that._testScripts, name);
 
             if (result === null) {
@@ -438,13 +459,13 @@ var Framework = (function (Framework) {
             }
         };
 
-        that._findLevelNameByLevel = function (level) {
+        static _findLevelNameByLevel(level) {
             for (var i = 0, l = that._levels.length; i < l; i++) {
                 if (that._levels[i].level === level) {
                     return that._levels[i].name;
                 }
             }
-        }
+        };
 
         /**
          * 加入一個新的關卡
@@ -453,7 +474,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.addNewLevel({menu: new MyMenu()});    //MyMen繼承自Level
          */
-        that.addNewLevel = function (leveldata) {
+        static addNewLevel(leveldata) {
             //console.dir(leveldata);
             for (var i in leveldata) {
                 if (leveldata.hasOwnProperty(i)) {
@@ -467,7 +488,7 @@ var Framework = (function (Framework) {
             }
         };
 
-        that.addNewTestScript = function (levelName, scriptName, scriptInstance) {
+        static addNewTestScript(levelName, scriptName, scriptInstance) {
 
             var levelName = levelName;
             var scriptName = scriptName;
@@ -480,7 +501,7 @@ var Framework = (function (Framework) {
                 Framework.DebugInfo.Log.error('Game : Script名稱不能重複');
                 throw new Error('Game: already has same script name');
             }
-        }
+        };
 
         /**
          * 前往另一個關卡(前後皆可), 若沒有該關卡, 會throw exception
@@ -489,7 +510,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.goToLevel('menu');
          */
-        that.goToLevel = function (levelName) {
+        static goToLevel(levelName) {
             that.pause();
             that._teardown();
             that._currentLevel = that._findLevel(levelName);
@@ -510,7 +531,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.goToNextLevel();
          */
-        that.goToNextLevel = function () {
+        static goToNextLevel() {
             that.pause();
             that._teardown();
             var flag = false;
@@ -539,7 +560,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.goToPreviousLevel();
          */
-        that.goToPreviousLevel = function () {
+        static goToPreviousLevel() {
             that.pause();
             that._teardown();
             var flag = false;
@@ -571,7 +592,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.start();
          */
-        that.start = function () {
+        static start() {
             if (!that._isReplay) {
                 if (that._isTestMode && that._isTestReady === false) {
                     return;
@@ -654,7 +675,7 @@ var Framework = (function (Framework) {
 
         };
 
-        that.run = function () {
+        static run() {
             var self = that,
                 nowFunc = function () {
                     return (new Date()).getTime();
@@ -716,13 +737,13 @@ var Framework = (function (Framework) {
                     that.timelist = [];
                     //console.log("game loop time average " + average);
                 }
-            }
+            };
 
             that._isRun = true;
             that.runAnimationFrame(gameLoopFunc);
         };
 
-        that.countAverage = function (list) {
+        static countAverage(list) {
             var sum = 0;
             for (var i = 0; i < list.length; i++) {
                 sum += list[i];
@@ -730,15 +751,15 @@ var Framework = (function (Framework) {
             return sum / list.length;
         };
 
-        that.stopInterval = function () {
+        static stopInterval() {
             clearInterval(that._runInstance);
         };
 
-        that.stopAnimationFrame = function () {
+        static stopAnimationFrame() {
             cancelAnimationFrame(that._runInstance);
         };
 
-        that.runAnimationFrame = function (gameLoopFunc) {
+        static runAnimationFrame(gameLoopFunc) {
             /*if(!Framework.Util.isUndefined(that._runInstance)) {
              that.stopAnimationFrame();
              }*/
@@ -756,16 +777,17 @@ var Framework = (function (Framework) {
             _run();
             that.stopLoop = that.stopAnimationFrame;
         };
+
         /**/
 
-        that.runInterval = function (gameLoopFunc) {
+        static runInterval(gameLoopFunc) {
             /*if(!Framework.Util.isUndefined(that._runInstance)) {
              that.stopInterval();
              that._runInstance = null;
              }*/
             // dynamic product runnable function
             var drawTicks = 1000 / that.fps;
-            var _run = gameLoopFunc
+            var _run = gameLoopFunc;
             /*function () {
              gameLoopFunc.call(this);
              };*/
@@ -774,9 +796,14 @@ var Framework = (function (Framework) {
             that.stopLoop = that.stopInterval;
         };
 
-        that.stopLoop = that.stopAnimationFrame;
+        static stopLoop() {
+            return that.stopAnimationFrame.apply(Game, arguments);
+        }
 
-        that.pause = function () {
+        /**
+         * Pause loop
+         */
+        static pause() {
             if (that._isRun) {
                 that.stopLoop();
                 that._runInstance = null;
@@ -784,14 +811,20 @@ var Framework = (function (Framework) {
             }
         };
 
-        that.resume = function () {
+        /**
+         * Resume loop
+         */
+        static resume() {
             if (!that._isRun) {
                 that.run();
             }
         };
 
-        // propetity
-        that.setUpdateFPS = function (fps) {
+        /**
+         * Set update fps
+         * @param {Number} fps
+         */
+        static setUpdateFPS(fps) {
             if (fps > 60) {
                 Framework.DebugInfo.Log.warring('FPS must be smaller than 60.');
                 throw 'FPS must be smaller than 60.';
@@ -803,11 +836,19 @@ var Framework = (function (Framework) {
             that.run();
         };
 
-        that.getUpdateFPS = function () {
+        /**
+         * Get update fps
+         * @returns {Number}
+         */
+        static getUpdateFPS() {
             return that.fps;
         };
 
-        that.setDrawFPS = function (fps) {
+        /**
+         * Set draw fps
+         * @param {Number} fps
+         */
+        static setDrawFPS(fps) {
             if (fps > 60) {
                 Framework.DebugInfo.Log.warring('FPS must be smaller than 60.');
                 throw 'FPS must be smaller than 60.';
@@ -818,11 +859,19 @@ var Framework = (function (Framework) {
             that.run();
         };
 
-        that.getDrawFPS = function () {
+        /**
+         * Get draw fps
+         * @returns {Number}
+         */
+        static getDrawFPS() {
             return that.fps;
         };
 
-        that.setCanvas = function (canvas) {
+        /**
+         * Set canvas
+         * @param {HTMLCanvasElement} canvas
+         */
+        static setCanvas(canvas) {
             if (canvas) {
                 that._canvas = null;
                 that._context = null;
@@ -833,7 +882,11 @@ var Framework = (function (Framework) {
             }
         };
 
-        that.setContext = function (context) {
+        /**
+         * Set context
+         * @param {CanvasRenderingContext2D} context
+         */
+        static setContext(context) {
             if (!Framework.Util.isUndefined(context)) {
                 that.context = null;
                 that._canvas = null;
@@ -843,7 +896,11 @@ var Framework = (function (Framework) {
             }
         };
 
-        that.getContext = function () {
+        /**
+         * Get context
+         * @returns {CanvasRenderingContext2D|null}
+         */
+        static getContext() {
             return that.context;
         };
 
@@ -864,7 +921,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.fullScreen();
          */
-        that.fullScreen = function (ele) {
+        static fullScreen(ele) {
             var ele = ele || that._canvas;
             if (!ele.fullscreenElement &&    // alternative standard method
                 !ele.mozFullScreenElement && !ele.webkitFullscreenElement && !ele.msFullscreenElement) {  // current working methods
@@ -888,7 +945,7 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.exitFullScreen();
          */
-        that.exitFullScreen = function () {
+        static exitFullScreen() {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
             } else if (document.msExitFullscreen) {
@@ -900,7 +957,7 @@ var Framework = (function (Framework) {
             }
         };
 
-        that.resizeEvent = function () {
+        static resizeEvent() {
             var base = 0,
                 baseWidth = window.innerWidth / that._ideaWidth,
                 baseHeight = window.innerHeight / that._ideaHeight,
@@ -927,19 +984,97 @@ var Framework = (function (Framework) {
 
         };
 
-        that._pushGameObj = function (ele) {
+        static _pushGameObj(ele) {
             try {
                 that._currentLevel._allGameElement.push(ele);
             } catch (e) {
             }
         };
 
-        that._showAllElement = function () {
+        static _showAllElement() {
             that._currentLevel._showAllElement();
         };
 
-        return that;
-    })();
+    };
+
+    let that = Framework.Game;
+    that._config = new Framework.Config();
+    // gameloop fps
+    that.fps = that._config.fps;
+    that.canvasWidth = that._config.canvasWidth;
+    that.canvasHeight = that._config.canvasHeight;
+    that.isBackwardCompatiable = true;
+
+    that._widthRatio = 1;
+    that._heightRatio = 1;
+
+    that._isRecording = false;
+    that._isRecordMode = _isRecordMode;
+    that._isTestMode = _isTestMode;
+    that._isTestReady = false;
+    that._isReplay = false;
+
+    that.isContinue = false;
+    that._isInit = false;
+    // gameloop is running ?
+    that._isRun = false;
+    // show fps's div
+    that._fpsContext = undefined;
+    // FPS analysis object
+    that._fpsAnalysis = new Framework.FpsAnalysis();
+    that._drawfpsAnalysis = new Framework.FpsAnalysis();
+    // for gameloop -
+    that._runInstance = undefined;
+    // game state
+    that._levels = [];
+    that._testScripts = [];
+    // current level
+    that._currentLevel = undefined;
+    that._context = null;
+    that._currentTestScript = undefined;
+    that._currentReplay = undefined;
+
+    that._ideaWidth = 16;
+    that._ideaHeight = 9;
+    that.timelist = [];
+    that._record = new Framework.Record();
+
+
+    that._mainContainer = document.createElement('div');
+    if (that._isRecordMode) {
+        that._mainContainer.style.position = "relative";
+        that._mainContainer.style.float = "left";
+        that._mainContainer.style.width = '70%';
+        that._mainContainer.style.height = '100%';
+        that._mainContainer.style.display = 'table';
+    }
+    else if (that._isTestMode) {
+        that._mainContainer.style.position = "relative";
+        that._mainContainer.style.float = "left";
+        that._mainContainer.style.width = '70%';
+        that._mainContainer.style.height = '100%';
+    }
+    else {
+        that._mainContainer.style.width = '100%';
+        that._mainContainer.style.height = '100%';
+        that._mainContainer.style.display = 'table';
+    }
+
+
+    that._mainContainer.style.backgroundColor = '#000';
+    that._canvasContainer = document.createElement('div');
+    that._canvasContainer.style.display = 'table-cell';
+    that._canvasContainer.style.textAlign = 'center';
+    that._canvasContainer.style.verticalAlign = 'middle';
+    that._canvas = document.createElement('canvas');
+    that._canvas.style.backgroundColor = '#fff';
+    that._canvas.setAttribute('id', '__game_canvas__');
+    that._canvas.width = that._config.canvasWidth;
+    that._canvas.height = that._config.canvasHeight;
+    that._canvasContainer.appendChild(that._canvas);
+    that._mainContainer.appendChild(that._canvasContainer);
+    that._context = that._canvas.getContext('2d');
+
 
     return Framework;
 })(Framework || {});
@@ -989,7 +1124,7 @@ const listMember = function (main, space, divId) {
                             var btn = document.createElement("input");
                             btn.setAttribute("type", "button");
                             btn.value = "Assert";
-                            var func = 'addAssertion("' + main.toString() + '.' + key.toString() + '","' + eval(main)[key] + '")'
+                            var func = 'addAssertion("' + main.toString() + '.' + key.toString() + '","' + eval(main)[key] + '")';
                             btn.setAttribute("onclick", func);
                             varDiv.appendChild(btn);
                         }

@@ -91,7 +91,7 @@ var MyGame = class extends Framework.Level{
 		this.position = {
 			x: 100,
 			y: 100
-		}
+		};
 		this.rotation = 0;
 	}
 

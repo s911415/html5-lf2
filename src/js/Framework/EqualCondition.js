@@ -2,7 +2,7 @@
 // include namespace
 
 var Framework = (function (Framework) {
-    'use strict'
+    'use strict';
 
 
     Framework.EqualCondition = function (targetProperty, targetValue, delta) {
@@ -39,7 +39,7 @@ var Framework = (function (Framework) {
             isFitCondition: isFitCondition,
             setInfoString: setInfoString,
             getInfoString: getInfoString
-        }
+        };
 
         EqualConditionInstance = new EqualConditionClass();
         return EqualConditionInstance;

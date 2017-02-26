@@ -31,7 +31,7 @@ var Framework = (function (Framework) {
             this.world = new b2World(new b2Vec2(options.gravityX, options.gravityY), options.allowSleep);
 
             return this.world;
-        }
+        };
 
         //var squareBody= Framework.BodyFatory.createSquareBody (w, h, bodyType,options);
         this.createSquareBody = function (width, height, bodyType, options) {

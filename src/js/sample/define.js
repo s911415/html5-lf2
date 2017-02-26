@@ -21,4 +21,4 @@
 	});
 
 	window.define = define;
-})(window)
+})(window);

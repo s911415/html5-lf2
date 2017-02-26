@@ -1,5 +1,5 @@
 var Framework = (function (Framework) {
-    'use strict'
+    'use strict';
 
     Framework.polygonComponent = function (sprite, bodyType, box2D, arraySize) {
         var physicScale = 30;
@@ -142,8 +142,9 @@ var Framework = (function (Framework) {
                 this.sprite.rotation = this.body.GetAngle() / Math.PI * 180;
             }
             this.body.GetFixtureList().GetShape().SetAsArray(this.arraySize);
+            Framework.Game.update()
         }
-    }
+    };
 
     return Framework;
 })(Framework || {});

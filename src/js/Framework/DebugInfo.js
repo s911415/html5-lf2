@@ -1,5 +1,5 @@
 var Framework = (function (Framework) {
-    'use strict'
+    'use strict';
     Framework.DebugInfo = (function () {
         var _showDebugInfo = false,
             _containerAppended = false,

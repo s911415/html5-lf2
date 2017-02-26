@@ -153,7 +153,7 @@ var Framework = (function (Framework) {
          */
         _teardown() {
             for (var i in this._allGameElement) {
-                var deleteObj = this._allGameElement[i]
+                var deleteObj = this._allGameElement[i];
                 if (Framework.Util.isFunction(deleteObj.teardown)) {
                     deleteObj.teardown();
                 }

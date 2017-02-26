@@ -16,7 +16,7 @@ var _isRecordMode = true;
                 importJS(jsConf, lookFor);
             }
         });
-    }
+    };
 
     var wait_for_script_load = function (jsConf, callback) {
         var interval = setInterval(function () {
@@ -36,7 +36,7 @@ var _isRecordMode = true;
                 callback();
             }
         }, 50);
-    }
+    };
 
     importJS(listScript);
 

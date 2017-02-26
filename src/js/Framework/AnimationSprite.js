@@ -109,7 +109,7 @@ var Framework = (function (Framework) {
                     if (this.loop) {
                         this.index = this.from;
                     } else {
-                        this.index = this.to
+                        this.index = this.to;
                         this._start = false;
                         this.finishPlaying.call(this);
                     }

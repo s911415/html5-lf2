@@ -20,7 +20,7 @@ var Framework = (function (Framework) {
             }
         }
         return null;
-    }
+    };
 
     var isUndefined = function (obj) {
         return (typeof obj === 'undefined');

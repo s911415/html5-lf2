@@ -29,7 +29,7 @@ var FancyWebSocket = function (url) {
         };
         this.conn.onclose = function () {
             dispatch('close', null)
-        }
+        };
         this.conn.onopen = function () {
             dispatch('open', null)
         }

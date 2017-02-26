@@ -114,7 +114,7 @@ var Framework = (function (Framework) {
             //setTouchcancelEvent: setUserTouchcancelEvent,
             //setTouchleaveEvent: setUserTouchleaveEvent,
             setTouchmoveEvent: setUserTouchmoveEvent
-        }
+        };
 
         TouchManagerInstance = new TouchManagerClass();
         return TouchManagerInstance;

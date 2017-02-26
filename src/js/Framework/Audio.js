@@ -149,7 +149,7 @@ var Framework = (function (Framework) {
             if (audio.paused) {
                 audio.play();
             }
-        }
+        };
 
         /**
          * 恢復播放被暫停的所有音樂
@@ -160,7 +160,7 @@ var Framework = (function (Framework) {
             for (var tempName in _audioInstanceObj) {
                 resume(tempName);
             }
-        }
+        };
 
         /**
          * 停止被播放音樂

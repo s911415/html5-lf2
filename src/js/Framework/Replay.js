@@ -2,7 +2,6 @@
 // include namespace
 'use strict';
 var Framework = (function (Framework) {
-    'use strict'
 
     Framework.Replay = (function () {
         /**
@@ -56,7 +55,7 @@ var Framework = (function (Framework) {
                 startQunit();
                 ready();
             }
-        }
+        };
 
         var ready = function (scriptInfo) {
             console.log('%c ----------------------------', GREEN_LOG);
@@ -85,7 +84,7 @@ var Framework = (function (Framework) {
                 }
                 var assertMessage;
                 if (isEqual) {
-                    assertMessage = "Passed!"
+                    assertMessage = "Passed!";
                     QUnit.assert.ok(isEqual, assertMessage);
                 } else {
                     assertMessage = 'Assert Fail! targetValue: ' + evaluate(this.targetValue) + ', assertValue: ' + this.assertValue;
@@ -104,7 +103,7 @@ var Framework = (function (Framework) {
             Framework.Game.pause();
             console.error('Test Stop');
             console.log('%c ----------------------------', GREEN_LOG);
-        }
+        };
         var hasExecuteCommand = false;
         var update = function () {
             if (_isReady) {
@@ -165,7 +164,7 @@ var Framework = (function (Framework) {
             item.replayFunction = function () {
                 Framework.Game.pause();
                 //console.log("Replay pause at " + _cycleCount + "th cycle");
-            }
+            };
             _replayList.push(item);
         };
 
@@ -173,7 +172,7 @@ var Framework = (function (Framework) {
             var item = new replayItem();
             item.replayFunction = function () {
                 Framework.Game.resume();
-            }
+            };
             _replayList.push(item);
         };
 
@@ -218,7 +217,7 @@ var Framework = (function (Framework) {
                 _waitingCounter = 1;
                 _isWaiting = true;
                 _waitingCondition = condition;
-            }
+            };
             _replayList.push(item);
         };
 
@@ -419,7 +418,7 @@ var Framework = (function (Framework) {
                 _qUnitStarting = false;
                 QUnit.stop();
             }
-        }
+        };
 
         var start = function () {
             stopQunit();
@@ -473,7 +472,7 @@ var Framework = (function (Framework) {
                 Framework.Game.setDrawFPS(fps);
             };
             _replayList.push(item);
-        }
+        };
 
         var resetFPS = function () {
             var item = new replayItem();
@@ -487,7 +486,7 @@ var Framework = (function (Framework) {
                 Framework.Game.setDrawFPS(Framework.Game._config.fps);
             };
             _replayList.push(item);
-        }
+        };
 
         ReplayClass = function () {
         };

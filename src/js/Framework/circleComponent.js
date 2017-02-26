@@ -126,7 +126,7 @@ var Framework = (function (Framework) {
                 this.sprite.rotation = this.body.GetAngle() / Math.PI * 180;
             }
         }
-    }
+    };
 
     return Framework;
 })(Framework || {});

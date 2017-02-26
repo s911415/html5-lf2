@@ -85,7 +85,7 @@ var Framework = (function (Framework) {
                 new this.mBox2D.b2Vec2(2 * this.mScale, 1 * this.mScale),
             ], 3);
         }
-    }
+    };
 
     return Framework;
 })(Framework || {});
