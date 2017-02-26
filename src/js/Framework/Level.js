@@ -3,27 +3,29 @@
 'use strict';
 
 var Framework = (function (Framework) {
+    /**
+     * 遊戲關卡的Class, 一個Game中可能有無數個Level
+     * (當然Game的開始和結束頁面也可以是一個Level)
+     * 每個Level都會有
+     * {{#crossLink "Level/initializeProgressResource:method"}}{{/crossLink}},
+     * {{#crossLink "Level/loadingProgress:method"}}{{/crossLink}},
+     * {{#crossLink "Level/initialize:method"}}{{/crossLink}},
+     * {{#crossLink "Level/update:method"}}{{/crossLink}},
+     * {{#crossLink "Level/draw:method"}}{{/crossLink}},
+     * 五個基本的生命週期
+     *
+     * @implements Framework.KeyboardEventInterface
+     * @example
+     *     new Framework.Level();
+     *
+     */
     Framework.Level = class {
-        /**
-         * 遊戲關卡的Class, 一個Game中可能有無數個Level
-         * (當然Game的開始和結束頁面也可以是一個Level)
-         * 每個Level都會有
-         * {{#crossLink "Level/initializeProgressResource:method"}}{{/crossLink}},
-         * {{#crossLink "Level/loadingProgress:method"}}{{/crossLink}},
-         * {{#crossLink "Level/initialize:method"}}{{/crossLink}},
-         * {{#crossLink "Level/update:method"}}{{/crossLink}},
-         * {{#crossLink "Level/draw:method"}}{{/crossLink}},
-         * 五個基本的生命週期
-         * @example
-         *     new Framework.Level();
-         *
-         */
         constructor() {
             /**
              * 每個Level一定會有一個rootScene,
              * 建議所有的GameObject都應該要attach到rootScene上
              * @property rootScene
-             * @type Scene
+             * @type {Framework.Scene}
              */
             this.rootScene = new Framework.Scene();
             this.autoDelete = true;
@@ -391,6 +393,7 @@ var Framework = (function (Framework) {
         }
 
         /**
+         *
          * 處理鍵盤被壓下按鈕的事件
          * @event keydown
          * @param {Object} e 改寫過後的事件的參數表示按下去的最後一個鍵, 其包含有
@@ -403,35 +406,35 @@ var Framework = (function (Framework) {
          * 表示的是目前最新觸控到的位置
          * @example
          *
-         *     keydown (e, list) {
-        *         if(e.key === 'A' && e.key.lastTimeDiff > 3000) {
-        *             console.log('A');     //當A按下超過3秒, 才會印出A
-        *         } 
-        *         if(list.A && list.B) {
-        *             console.log('A+B');   //當A和B都被按下時, 才會印出A+B
-        *         }
-        *     }
-         *     //FYI: 每個真正的keyCode與相對應的string
-         *     _keyCodeToChar = {
-        *         8:'Backspace',9:'Tab',13:'Enter',
-        *         16:'shiftKey',17:'ctrlKey',18:'altKey',19:'Pause/Break',
-        *         20:'Caps Lock',27:'Esc',32:'Space',33:'Page Up',34:'Page Down',
-        *         35:'End',36:'Home',37:'Left',38:'Up',39:'Right',40:'Down',
-        *         45:'Insert',46:'Delete',48:'0',49:'1',50:'2',51:'3',52:'4',
-        *         53:'5',54:'6',55:'7',56:'8',57:'9',65:'A',66:'B',67:'C',
-        *         68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',
-        *         76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',
-        *         84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z',91:'Windows',
-        *         93:'Right Click',96:'Numpad 0',97:'Numpad 1',98:'Numpad 2',
-        *         99:'Numpad 3',100:'Numpad 4',101:'Numpad 5',102:'Numpad 6',
-        *         103:'Numpad 7',104:'Numpad 8',105:'Numpad 9',106:'Numpad *',
-        *         107:'Numpad +',109:'Numpad -',110:'Numpad .',111:'Numpad /',
-        *         112:'F1',113:'F2',114:'F3',115:'F4',116:'F5',117:'F6',118:'F7',
-        *         119:'F8',120:'F9',121:'F10',122:'F11',123:'F12',144:'Num Lock',
-        *         145:'Scroll Lock',182:'My Computer',
-        *         183:'My Calculator',186:';',187:'=',188:',',189:'-',
-        *         190:'.',191:'/',192:'`',219:'[',220:'\\',221:']',222:'\''
-        *     };
+         * keydown (e, list) {
+         *     if(e.key === 'A' && e.key.lastTimeDiff > 3000) {
+         *         console.log('A');     //當A按下超過3秒, 才會印出A
+         *     }
+         *     if(list.A && list.B) {
+         *         console.log('A+B');   //當A和B都被按下時, 才會印出A+B
+         *     }
+         * }
+         * //FYI: 每個真正的keyCode與相對應的string
+         * _keyCodeToChar = {
+         *     8:'Backspace',9:'Tab',13:'Enter',
+         *     16:'shiftKey',17:'ctrlKey',18:'altKey',19:'Pause/Break',
+         *     20:'Caps Lock',27:'Esc',32:'Space',33:'Page Up',34:'Page Down',
+         *     35:'End',36:'Home',37:'Left',38:'Up',39:'Right',40:'Down',
+         *     45:'Insert',46:'Delete',48:'0',49:'1',50:'2',51:'3',52:'4',
+         *     53:'5',54:'6',55:'7',56:'8',57:'9',65:'A',66:'B',67:'C',
+         *     68:'D',69:'E',70:'F',71:'G',72:'H',73:'I',74:'J',75:'K',
+         *     76:'L',77:'M',78:'N',79:'O',80:'P',81:'Q',82:'R',83:'S',
+         *     84:'T',85:'U',86:'V',87:'W',88:'X',89:'Y',90:'Z',91:'Windows',
+         *     93:'Right Click',96:'Numpad 0',97:'Numpad 1',98:'Numpad 2',
+         *     99:'Numpad 3',100:'Numpad 4',101:'Numpad 5',102:'Numpad 6',
+         *     103:'Numpad 7',104:'Numpad 8',105:'Numpad 9',106:'Numpad *',
+         *     107:'Numpad +',109:'Numpad -',110:'Numpad .',111:'Numpad /',
+         *     112:'F1',113:'F2',114:'F3',115:'F4',116:'F5',117:'F6',118:'F7',
+         *     119:'F8',120:'F9',121:'F10',122:'F11',123:'F12',144:'Num Lock',
+         *     145:'Scroll Lock',182:'My Computer',
+         *     183:'My Calculator',186:';',187:'=',188:',',189:'-',
+         *     190:'.',191:'/',192:'`',219:'[',220:'\\',221:']',222:'\''
+         * };
          *
          */
         keydown(e) {
@@ -441,23 +444,23 @@ var Framework = (function (Framework) {
          * 處理鍵盤被壓下按鈕的事件, 除了W3C定義的參數外,
          * Framework尚支援進階的功能history
          * @event keyup
-         * @param {Object} e 原生的事件參數
-         * @param {Object} history 儲存最近幾秒內keyup的按鍵
+         *  @param {Object} e 原生的事件參數
+         *  @param {Object} history 儲存最近幾秒內keyup的按鍵
          * (可以用來處理類似小朋友齊打交, 發動攻擊技能的Scenario)
          * history可以設定多久清除一次, 請參考
          * {{#crossLink "KeyBoardManager/setClearHistoryTime:method"}}{{/crossLink}}
          * @example
-         *     keyup (e, history) {
-        *         var right = history.length >= 3, i;
-        *         if (history.length > 2) {
-        *             for (i = 3; i > 0; i--) {
-        *                 right = right && (history[history.length - i].key === 'Right');
-        *             }
-        *         }
-        *         if (right) {
-        *             console.log(right);   //當一秒內按了右鍵超過3次, 才會印出true
-        *         }
-        *     },
+         * keyup (e, history) {
+         *     var right = history.length >= 3, i;
+         *     if (history.length > 2) {
+         *         for (i = 3; i > 0; i--) {
+         *             right = right && (history[history.length - i].key === 'Right');
+         *         }
+         *     }
+         *     if (right) {
+         *         console.log(right);   //當一秒內按了右鍵超過3次, 才會印出true
+         *     }
+         * },
          */
         keyup(e) {
         }

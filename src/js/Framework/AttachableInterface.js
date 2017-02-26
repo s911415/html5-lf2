@@ -31,5 +31,15 @@ var Framework = (function (Framework) {
         update(){
             throw new METHOD_NOT_IMPLEMENT;
         }
+
+        /**
+         * Draw object
+         *
+         * @param {CanvasRenderingContext2D} ctx
+         * @abstract
+         */
+        draw(ctx){
+            throw new METHOD_NOT_IMPLEMENT;
+        }
     }
 })(Framework || {});

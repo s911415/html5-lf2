@@ -35,6 +35,27 @@ var Framework = (function (Framework) {
         }
 
         /**
+         * Clone
+         * @returns {Point}
+         */
+        clone(){
+            return new Point(this.x, this.y);
+        }
+
+        /**
+         *
+         * @param {Number} x
+         * @param {Number} y
+         * @returns {Point}
+         */
+        offset(x, y){
+            this.x+=x;
+            this.y+=y;
+
+            return this;
+        }
+
+        /**
          * Gets the y coordinate.
          *
          * @return  {Number} y.

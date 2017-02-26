@@ -83,7 +83,7 @@ var Framework = (function (Framework) {
 
         /**
          * 將一個Object放進Scene中, 使其可以跟著連動
-         * @param {Object} target 必須是具有update和draw的物件,
+         * @param {Framework.AttachableInterface} target 必須是具有update和draw的物件,
          * 若不符合規定會throw exception
          * @example
          *     var sprite = new Framework.Sprite('clock.jpg'),
