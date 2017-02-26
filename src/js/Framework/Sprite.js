@@ -81,14 +81,25 @@ var Framework = (function (Framework) {
                             tranlateY = this.canvas.height / 2;
 
 
-                        // 將Canvas 中心點移動到左上角(0,0)
-                        this.context.translate(tranlateX, tranlateY);
                         // 旋轉Canvas
-                        this.context.rotate(this.absoluteRotation / 180 * Math.PI);
-                        // 移回來
-                        this.context.translate(-tranlateX, -tranlateY);
+                        //檢查是否有旋轉
+                        if(this.absoluteRotation%360!==0){
+                            // 將Canvas 中心點移動到左上角(0,0)
+                            this.context.translate(tranlateX, tranlateY);
+
+                            this.context.rotate(this.absoluteRotation / 180 * Math.PI);
+
+                            // 移回來
+                            this.context.translate(-tranlateX, -tranlateY);
+                        }
+
+
                         // 縮放
-                        this.context.scale(this.absoluteScale, this.absoluteScale);
+                        // 檢查是否有縮放
+                        if(this.absoluteScale!=1){
+                            this.context.scale(this.absoluteScale, this.absoluteScale);
+                        }
+
                         // 畫圖                
                         this.context.drawImage(this.texture, (this.canvas.width - realWidth) / 2 / this.absoluteScale, (this.canvas.height - realHeight) / 2 / this.absoluteScale);
 

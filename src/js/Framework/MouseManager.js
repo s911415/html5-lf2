@@ -164,59 +164,60 @@ var Framework = (function (Framework) {
                 return setUserContextmenuEvent.apply(this, arguments);
             }
 
-            /**
-             * Sets the subject.
-             *
-             * @return  .
-             */
-            static setSubject() {
-                return setSubject.apply(MouseManagerInstance, arguments);
-            }
-
-            /**
-             * Sets click event.
-             *
-             * @return  .
-             */
-            static setClickEvent() {
-                return setUserClickEvent.apply(MouseManagerInstance, arguments);
-            }
-
-            /**
-             * Sets mousedown event.
-             *
-             * @return  .
-             */
-            static setMousedownEvent() {
-                return setUserMousedownEvent.apply(MouseManagerInstance, arguments);
-            }
-
-            /**
-             * Sets mouse up event.
-             *
-             * @return  .
-             */
-            static setMouseUpEvent() {
-                return setUserMouseUpEvent.apply(MouseManagerInstance, arguments);
-            }
-
-            /**
-             * Sets mouse move event.
-             *
-             * @return  .
-             */
-            static setMouseMoveEvent() {
-                return setUserMouseMoveEvent.apply(MouseManagerInstance, arguments);
-            }
-
-            /**
-             * Sets contextmenu event.
-             *
-             * @return  .
-             */
-            static setContextmenuEvent() {
-                return setUserContextmenuEvent.apply(MouseManagerInstance, arguments);
-            }
+            //
+            // /**
+            //  * Sets the subject.
+            //  *
+            //  * @return  .
+            //  */
+            // static setSubject() {
+            //     return setSubject.apply(MouseManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets click event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setClickEvent() {
+            //     return setUserClickEvent.apply(MouseManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets mousedown event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setMousedownEvent() {
+            //     return setUserMousedownEvent.apply(MouseManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets mouse up event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setMouseUpEvent() {
+            //     return setUserMouseUpEvent.apply(MouseManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets mouse move event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setMouseMoveEvent() {
+            //     return setUserMouseMoveEvent.apply(MouseManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets contextmenu event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setContextmenuEvent() {
+            //     return setUserContextmenuEvent.apply(MouseManagerInstance, arguments);
+            // }
         };
 
         MouseManagerInstance = Framework.MouseManager = new MouseManager();

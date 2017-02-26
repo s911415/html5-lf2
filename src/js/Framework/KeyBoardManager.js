@@ -2,6 +2,7 @@
 var Framework = (function (Framework) {
     Framework.KeyBoardManager = (function () {
         var _timeountID = 0,
+            _keyStatus = new Array(255),
             _clearHistoryTime = 1000,
             _keydownList = {},
             _keypressHistory = [],
@@ -107,15 +108,18 @@ var Framework = (function (Framework) {
                 221: ']',
                 222: '\''
             },
+            _stringToKeyCode = {},
             KeyBoardManagerInstance = {},
             userKeydownEvent = function () {
             },
             userKeyupEvent = function () {
             },
             _subject;
+        for (let keyCode in _keyCodeToChar) _stringToKeyCode[_keyCodeToChar[keyCode]] = keyCode;
 
         var keydownEvent = function (e) {
             e.preventDefault();
+            _keyStatus[e.keyCode] = true;
             var keyCode = _keyCodeToChar[e.which || e.keyCode], i;
             if (!Framework.Util.isUndefined(_keydownList[keyCode])) {
                 var ele = _keydownList[keyCode];
@@ -137,6 +141,7 @@ var Framework = (function (Framework) {
 
         var keyupEvent = function (e) {
             e.preventDefault();
+            _keyStatus[e.keyCode] = false;
             var keyCode = _keyCodeToChar[e.which || e.keyCode], temp = {};
             _keypressHistory.push(_keydownList[keyCode]);
             _keydownList[keyCode] = null;
@@ -148,7 +153,7 @@ var Framework = (function (Framework) {
 
             }
 
-            userKeyupEvent.call(_subject, _keypressHistory[_keypressHistory.length - 1], _keypressHistory);
+            userKeyupEvent.call(_subject, _keypressHistory[_keypressHistory.length - 1], _keypressHistory, e);
 
         };
 
@@ -185,6 +190,20 @@ var Framework = (function (Framework) {
         };
 
         /**
+         *
+         * @param {String|Number} code
+         * @returns {boolean|undefined}
+         */
+        _keyStatus.isKeyDown = function (code) {
+            if (typeof code === "string") {
+                code = _stringToKeyCode[code];
+            }
+            if (code > 255 || code < 0) return false;
+
+            return _keyStatus[code];
+        };
+
+        /**
          * 管理KeyBoard所有的事件, 一般來說, 不會在此處處理相關邏輯
          * 而會在Level進行設定, 請參照
          * {{#crossLink "Level/keydown:event"}}{{/crossLink}},
@@ -198,6 +217,9 @@ var Framework = (function (Framework) {
             constructor() {
                 window.addEventListener('keydown', keydownEvent, false);
                 window.addEventListener('keyup', keyupEvent, false);
+
+                for (let i = 0; i < _keyStatus.length; i++) _keyStatus[i] = false;
+
                 clearHistory();
             }
 
@@ -270,60 +292,71 @@ var Framework = (function (Framework) {
             }
 
             /**
-             * Sets clear history time.
-             *
-             * @return  .
+             * @param {Number|string} code
              */
-            static setClearHistoryTime() {
-                return setClearHistoryTime.apply(KeyBoardManagerInstance, arguments);
+            isKeyDown(code){
+                return _keyStatus.isKeyDown(code);
             }
 
-            /**
-             * Sets keydown event.
-             *
-             * @return  .
-             */
-            static setKeydownEvent() {
-                return setKeydownEvent.apply(KeyBoardManagerInstance, arguments);
+            get status() {
+                return _keyStatus;
             }
 
-            /**
-             * Sets keyup event.
-             *
-             * @return  .
-             */
-            static setKeyupEvent() {
-                return setKeyupEvent.apply(KeyBoardManagerInstance, arguments);
-            }
-
-            /**
-             * Keydown list.
-             *
-             * @return  .
-             */
-            static keydownList() {
-                return _keydownList.apply(KeyBoardManagerInstance, arguments);
-            }
-
-            /* 為了要像洛克人  按壓一段時間後可以集氣 */
-
-            /**
-             * Mapping table.
-             *
-             * @return  .
-             */
-            static mappingTable() {
-                return _keyCodeToChar.apply(KeyBoardManagerInstance, arguments);
-            }
-
-            /**
-             * Keypress history.
-             *
-             * @return  .
-             */
-            static keypressHistory() {
-                return _keypressHistory.apply(KeyBoardManagerInstance, arguments);
-            }
+            // /**
+            //  * Sets clear history time.
+            //  *
+            //  * @return  .
+            //  */
+            // static setClearHistoryTime() {
+            //     return setClearHistoryTime.apply(KeyBoardManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets keydown event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setKeydownEvent() {
+            //     return setKeydownEvent.apply(KeyBoardManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets keyup event.
+            //  *
+            //  * @return  .
+            //  */
+            // static setKeyupEvent() {
+            //     return setKeyupEvent.apply(KeyBoardManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Keydown list.
+            //  *
+            //  * @return  .
+            //  */
+            // static keydownList() {
+            //     return _keydownList.apply(KeyBoardManagerInstance, arguments);
+            // }
+            //
+            // /* 為了要像洛克人  按壓一段時間後可以集氣 */
+            //
+            // /**
+            //  * Mapping table.
+            //  *
+            //  * @return  .
+            //  */
+            // static mappingTable() {
+            //     return _keyCodeToChar.apply(KeyBoardManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Keypress history.
+            //  *
+            //  * @return  .
+            //  */
+            // static keypressHistory() {
+            //     return _keypressHistory.apply(KeyBoardManagerInstance, arguments);
+            // }
         }
         ;
 

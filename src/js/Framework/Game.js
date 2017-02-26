@@ -298,24 +298,28 @@ var Framework = (function (Framework) {
 
         /**
          * Key down Event
-         * @param e Event
+         * @param e currentKey
+         * @param keyList currentLeyList
+         * @param {KeyboardEvent} oriEvent
          */
-        static keydown(e) {
-            that._currentLevel.keydown(e);
+        static keydown(e, keyList, oriEvent) {
+            that._currentLevel.keydown(e, keyList, oriEvent);
             if (that._isRecording) {
-                that._record.keydown(e);
+                that._record.keydown(e, keyList, oriEvent);
                 //console.log("record down");
             }
         };
 
         /**
          * Key up Event
-         * @param e Event
+         * @param e currentKey
+         * @param keyList currentLeyList
+         * @param {KeyboardEvent} oriEvent
          */
-        static keyup(e) {
-            that._currentLevel.keyup(e);
+        static keyup(e, keyList, oriEvent) {
+            that._currentLevel.keyup(e, keyList, oriEvent);
             if (that._isRecording) {
-                that._record.keyup(e);
+                that._record.keyup(e, keyList, oriEvent);
             }
         };
 

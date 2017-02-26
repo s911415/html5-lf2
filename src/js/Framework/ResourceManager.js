@@ -1,6 +1,6 @@
 'use strict';
 var Framework = (function (Framework) {
-
+    const DELAY_TIME = 0;
 
     Framework.ResourceManager = (function () {
         var _requestCount = 0,
@@ -12,8 +12,7 @@ var Framework = (function (Framework) {
             _responsedResource = {},
             _subjectFunction = function () {
             },
-            ResourceManagerIntance = function () {
-            };
+            ResourceManagerInstance;
 
 
         var getFinishedRequestPercent = function () {
@@ -39,18 +38,21 @@ var Framework = (function (Framework) {
             imageObj.src = requestOption['url'];
             _requestCount++;
             if (_intervalID === null) {
-                _intervalID = setInterval(detectAjax, 50);
+                _intervalID = setInterval(detectAjax, DELAY_TIME);
                 finishLoading();
             }
             imageObj.onload = function () {
                 _responseCount++;
                 _responsedResource[requestOption.id] = {url: requestOption.url, response: imageObj};
             };
+            imageObj.onerror = function (e) {
+                throw e;
+            };
         };
 
         var minAjaxJSON = function (requestOption) {
             requestOption.systemSuccess = function (responseText, textStatus, xmlHttpRequest) {
-                var responseJSON = JSON.stringify(responseText.trim());
+                var responseJSON = JSON.stringify(responseText);
                 _responsedResource[requestOption.id] = {url: requestOption.url, response: responseJSON};
                 _responseCount++;
             };
@@ -95,20 +97,17 @@ var Framework = (function (Framework) {
             userSettings = Framework.Util.overrideProperty(defaultSettings, userSettings);
 
 
-            //因IE9後才支援HTML5, 故不再做其他判斷
-            if (window.XMLHttpRequest) {
-                var xhr = new XMLHttpRequest();
-                xhr.onload = (function () {
-                    if (xhr.readyState === 4) {
-                        if (xhr.status === 200) {
-                            _responsedResource[requestOption.id] = {url: requestOption.url, response: xhr.responseText};
-                            userSettings.success(xhr.responseText, xhr.statusText, xhr);
-                        } else {
-                            userSettings.error(xhr, xhr.statusText);
-                        }
+            var xhr = new XMLHttpRequest();
+            xhr.onload = (function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        _responsedResource[requestOption.id] = {url: requestOption.url, response: xhr.responseText};
+                        userSettings.success(xhr.responseText, xhr.statusText, xhr);
+                    } else {
+                        userSettings.error(xhr, xhr.statusText);
                     }
-                });
-            }
+                }
+            });
 
             if (!userSettings.cache && Framework.Util.isUndefined(userSettings.data) && userSettings.type === 'GET') {
                 requestOption.url = requestOption.url + '?' + Math.random();
@@ -172,7 +171,7 @@ var Framework = (function (Framework) {
                 _timeountID = setTimeout(function () {
                     finishLoading();
                     clearTimeout(_timeountIDPrevious);
-                }, 500);
+                }, DELAY_TIME);
             }
         };
 
@@ -269,82 +268,83 @@ var Framework = (function (Framework) {
                 return getResponseCount.apply(this, arguments);
             }
 
-            /**
-             * Loads the image.
-             *
-             * @return  The image.
-             */
-            static loadImage() {
-                return loadImage.apply(ResourceManagerIntance, arguments);
-            }
 
-            /**
-             * Loads the JSON.
-             *
-             * @return  The JSON.
-             */
-            static loadJSON() {
-                return minAjaxJSON.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Destroys the resource.
-             *
-             * @return  .
-             */
-            static destroyResource() {
-                return destroyResource.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Gets the resource.
-             *
-             * @return  The resource.
-             */
-            static getResource() {
-                return getResource.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Sets subject function.
-             *
-             * @return  .
-             */
-            static setSubjectFunction() {
-                return setSubjectFunction.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Gets finished request percent.
-             *
-             * @return  The finished request percent.
-             */
-            static getFinishedRequestPercent() {
-                return getFinishedRequestPercent.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Gets request count.
-             *
-             * @return  The request count.
-             */
-            static getRequestCount() {
-                return getRequestCount.apply(ResourceManagerIntance, arguments);
-            }
-
-            /**
-             * Gets response count.
-             *
-             * @return  The response count.
-             */
-            static getResponseCount() {
-                return getResponseCount.apply(ResourceManagerIntance, arguments);
-            }
+            // /**
+            //  * Loads the image.
+            //  *
+            //  * @return  The image.
+            //  */
+            // static loadImage() {
+            //     return loadImage.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Loads the JSON.
+            //  *
+            //  * @return  The JSON.
+            //  */
+            // static loadJSON() {
+            //     return minAjaxJSON.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Destroys the resource.
+            //  *
+            //  * @return  .
+            //  */
+            // static destroyResource() {
+            //     return destroyResource.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Gets the resource.
+            //  *
+            //  * @return  The resource.
+            //  */
+            // static getResource() {
+            //     return getResource.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Sets subject function.
+            //  *
+            //  * @return  .
+            //  */
+            // static setSubjectFunction() {
+            //     return setSubjectFunction.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Gets finished request percent.
+            //  *
+            //  * @return  The finished request percent.
+            //  */
+            // static getFinishedRequestPercent() {
+            //     return getFinishedRequestPercent.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Gets request count.
+            //  *
+            //  * @return  The request count.
+            //  */
+            // static getRequestCount() {
+            //     return getRequestCount.apply(ResourceManagerInstance, arguments);
+            // }
+            //
+            // /**
+            //  * Gets response count.
+            //  *
+            //  * @return  The response count.
+            //  */
+            // static getResponseCount() {
+            //     return getResponseCount.apply(ResourceManagerInstance, arguments);
+            // }
         }
         ;
 
-        ResourceManagerIntance = new ResourceManager();
-        return ResourceManagerIntance;
+        ResourceManagerInstance = new ResourceManager();
+        return ResourceManagerInstance;
     })();
     return Framework;
 })(Framework || {});
