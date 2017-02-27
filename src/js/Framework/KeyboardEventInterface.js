@@ -88,5 +88,7 @@ var Framework = (function (Framework) {
          */
         keyup(e, history, oriE) {
         }
-    }
+    };
+
+    return Framework;
 })(Framework || {});

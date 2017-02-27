@@ -41,5 +41,7 @@ var Framework = (function (Framework) {
         draw(ctx){
             throw new METHOD_NOT_IMPLEMENT;
         }
-    }
+    };
+
+    return Framework;
 })(Framework || {});

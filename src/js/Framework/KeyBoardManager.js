@@ -270,7 +270,7 @@ var Framework = (function (Framework) {
 
             /* 為了要像洛克人  按壓一段時間後可以集氣 */
             mappingTable() {
-                return _keyCodeToChar.apply(this, arguments);
+                return _keyCodeToChar;
             }
 
             /**

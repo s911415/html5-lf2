@@ -215,6 +215,22 @@ var Framework = (function (Framework) {
             }
 
             /**
+             *
+             * @param {String} url
+             * @param option
+             * @returns {Promise.<TResult>|*}
+             */
+            loadResource(url, option) {
+                _requestCount++;
+                return fetch(url, option).then((data) => {
+                    finishLoading();
+                    _responseCount++;
+
+                    return data;
+                });
+            }
+
+            /**
              * Destroys the resource.
              *
              * @return  .

@@ -52,5 +52,8 @@ var Framework = (function (Framework) {
          */
         mousemove(e) {
         }
-    }
+
+    };
+
+    return Framework;
 })(Framework || {});

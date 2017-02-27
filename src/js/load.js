@@ -39,7 +39,7 @@ let _isRecordMode = false;
         "Framework/triangleComponent.js",
 
         //Game Component
-        "sample/loadSample.js",
+        "lf2/loadComponent.js",
     ];
 
     LoadScriptInSequence.call(document.currentScript, jsArray);
