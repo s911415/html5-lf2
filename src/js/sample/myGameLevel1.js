@@ -25,7 +25,7 @@ var Sample = (function (Sample) {
             this.isStop = false;
             this.isPlayed = false;
 
-            this.clock = new Sprite(define.imagePath + 'clock.png');
+            this.clock = new Sprite(define.imagePath + 'clock.webp');
             this.clock.scale = 0.3;
             this.clock.position = {
                 x: 0,
@@ -33,14 +33,14 @@ var Sample = (function (Sample) {
             };
 
             characterPosition = {x: 0, y: -1138 * this.clock.scale};
-            this.secondHand = new Sprite(define.imagePath + 'secondHand.jpg');
-            this.firen = new Character(define.imagePath + 'firen.png', {
+            this.secondHand = new Sprite(define.imagePath + 'secondHand.webp');
+            this.firen = new Character(define.imagePath + 'firen.webp', {
                 position: characterPosition,
                 run: {from: 20, to: 22},
                 beHit: {from: 30, to: 35},
                 hit: {from: 10, to: 13}
             });
-            this.freeze = new Character(define.imagePath + 'freeze.png', {
+            this.freeze = new Character(define.imagePath + 'freeze.webp', {
                 position: characterPosition,
                 scale: 1,
                 run: {from: 29, to: 27},
@@ -114,16 +114,16 @@ var Sample = (function (Sample) {
             this.rotation = 0;
 
             ////////////T1_A
-            this.pic1A = new Framework.Sprite(define.imagePath + '169.bmp');
+            this.pic1A = new Framework.Sprite(define.imagePath + '169.webp');
             this.pic1A.position = new Framework.Point(100, 100);
             this.rootScene.attach(this.pic1A);
 
             ////////////T1_B
-            this.pic1B = new Framework.Sprite(define.imagePath + '169.bmp');
+            this.pic1B = new Framework.Sprite(define.imagePath + '169.webp');
             this.pic1B.position = new Framework.Point(200, 200);
 
             ////////////T2
-            this.pic2 = new Framework.Sprite(define.imagePath + '169.bmp');
+            this.pic2 = new Framework.Sprite(define.imagePath + '169.webp');
             this.pic2.position = new Framework.Point(200, 300);
             this.pic2.rotation = 0;
             this.rootScene.attach(this.pic2);

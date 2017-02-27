@@ -22,7 +22,7 @@ var Sample = (function (Sample) {
         }
 
         load() {
-            this.pic = new Sprite(define.imagePath + '169.bmp');
+            this.pic = new Sprite(define.imagePath + '169.webp');
             this.pic.load();
             this.pic.position = new Point(Math.random() * 500, Math.random() * 500);
             this.pic.rotation = 0;

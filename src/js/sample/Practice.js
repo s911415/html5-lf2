@@ -19,7 +19,7 @@ var Sample = (function (Sample) {
         }
 
         load() {
-            this.pic = new AnimationSprite({url:define.imagePath + 'firen.png', col:10 , row:7 , loop:true , speed:2});
+            this.pic = new AnimationSprite({url:define.imagePath + 'firen.webp', col:10 , row:7 , loop:true , speed:2});
             this.pic.position = new Point(Math.random() * 500, Math.random() * 500);
             this.pic.rotation = 0;
             this.dir = 0;

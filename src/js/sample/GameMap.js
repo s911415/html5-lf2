@@ -26,8 +26,8 @@ var Sample = (function (Sample) {
         }
 
         load() {
-            this.greenPic = new Sprite(define.imagePath + 'green.png');
-            this.bluePic = new Sprite(define.imagePath + 'blue.png');
+            this.greenPic = new Sprite(define.imagePath + 'green.webp');
+            this.bluePic = new Sprite(define.imagePath + 'blue.webp');
         }
 
         initialize() {

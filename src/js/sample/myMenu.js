@@ -3,14 +3,14 @@ var Sample = (function(Sample){
     Sample.MyMenu = class extends Framework.GameMainMenu {
         //初始化loadingProgress需要用到的圖片
         initializeProgressResource() {
-            this.loading = new Framework.Sprite(define.imagePath + 'loading.jpg');
+            this.loading = new Framework.Sprite(define.imagePath + 'loading.webp');
             this.loading.position = {x: Framework.Game.getCanvasWidth() / 2, y: Framework.Game.getCanvasHeight() / 2};
 
             //為了或得到this.loading這個Sprite的絕對位置, 故需要先計算一次(在Game Loop執行時, 則會自動計算, 但因為loadingProgress只支援draw故需要自行計算)
         }
 
         function () {
-            this.loading = new Framework.Sprite(define.imagePath + 'loading.jpg');
+            this.loading = new Framework.Sprite(define.imagePath + 'loading.webp');
             this.loading.position = {x: Framework.Game.getCanvasWidth() / 2, y: Framework.Game.getCanvasHeight() / 2};
 
             //為了或得到this.loading這個Sprite的絕對位置, 故需要先計算一次(在Game Loop執行時, 則會自動計算, 但因為loadingProgress只支援draw故需要自行計算)
@@ -30,15 +30,15 @@ var Sample = (function(Sample){
             //Animation Sprite會用到的圖片資源
             var photoLink =
                 [
-                    define.imagePath + 'image1.png',
-                    define.imagePath + 'image2.png',
-                    define.imagePath + 'image3.png',
-                    define.imagePath + 'image4.png',
-                    define.imagePath + 'image5.png'
+                    define.imagePath + 'image1.webp',
+                    define.imagePath + 'image2.webp',
+                    define.imagePath + 'image3.webp',
+                    define.imagePath + 'image4.webp',
+                    define.imagePath + 'image5.webp'
                 ];
 
-            this.scrollBar = new Framework.Sprite(define.imagePath + 'scrollBar.png');
-            this.rightArrow = new Framework.Sprite(define.imagePath + 'rightArrow.png');
+            this.scrollBar = new Framework.Sprite(define.imagePath + 'scrollBar.webp');
+            this.rightArrow = new Framework.Sprite(define.imagePath + 'rightArrow.webp');
             this.photo = new Framework.AnimationSprite({url: photoLink, loop: true, speed: 0.05});
 
             this.isTouchArrow = false;
