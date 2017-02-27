@@ -10,8 +10,8 @@ var Framework = (function (Framework) {
      */
     Framework.Config = function () {
         this.fps = 60;
-        this.canvasWidth = 1350;
-        this.canvasHeight = 700;
+        this.canvasWidth = 794;
+        this.canvasHeight = 500;
 //		this.canvasWidth =  640;
 //		this.canvasHeight = 480;
         this.isBackwardCompatiable = false;

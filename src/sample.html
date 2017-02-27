@@ -19,6 +19,66 @@
     </script>
 </head>
 <body>
-<script type="text/javascript" src="js/load.js"></script>
+<script type="text/javascript">
+'use strict';
+var Framework = (function (Framework) {
+    Framework.Config = function () {
+        this.fps = 60;
+        this.canvasWidth = 1350;
+        this.canvasHeight = 700;
+//		this.canvasWidth =  640;
+//		this.canvasHeight = 480;
+        this.isBackwardCompatiable = false;
+        this.isOptimize = false;  // 2017.02.20, from V3.1.1
+        this.isMouseMoveRecorded = false;
+    };
+    return Framework;
+})(Framework || {});
+</script>
+<script type="text/javascript">
+let _isTestMode = false;
+let _isRecordMode = false;
+//立即執行函式, 並封裝所有變數避免衝突
+(function () {
+    const jsArray = [
+        //Load framework
+        "Framework/AttachableInterface.js",
+        "Framework/KeyboardEventInterface.js",
+        "Framework/MouseEventInterface.js",
+
+        "Framework/Record.js",
+        "Framework/Replay.js",
+        "Framework/EqualCondition.js",
+        "Framework/Util.js",
+        "Framework/core.js",
+        "Framework/DebugInfo.js",
+        "Framework/FpsAnalysis.js",
+        "Framework/Point.js",
+        "Framework/GameObject.js",
+        "Framework/Sprite.js",
+        "Framework/AnimationSprite.js",
+        "Framework/Scene.js",
+        "Framework/ResourceManager.js",
+        "Framework/Level.js",
+        "Framework/Game.js",
+        "Framework/MouseManager.js",
+        "Framework/KeyBoardManager.js",
+        "Framework/TouchManager.js",
+        "Framework/GameMainMenu.js",
+        "Framework/Audio.js",
+        "Framework/Box2dWeb-2.1.a.3.js",
+        "Framework/Box2D.js",
+        "Framework/circleComponent.js",
+        "Framework/polygonComponent.js",
+        "Framework/squareComponent.js",
+        "Framework/triangleComponent.js",
+
+        //Game Component
+        "sample/loadSample.js",
+    ].map(x=>'js/'+x);
+    
+    LoadScriptInSequence.call(document.currentScript, jsArray);
+})();
+</script>
 </body>
 </html>

@@ -4,6 +4,13 @@
 
 'use strict';
 var Framework = (function (Framework) {
+    /**
+     *
+     * @class {GameMainMenu}
+     * @namespace {Framework}
+     * @extends {Framework.Level}
+     * @type {{new()=>{}}}
+     */
     Framework.GameMainMenu = class extends Framework.Level {
         constructor() {
             super();
