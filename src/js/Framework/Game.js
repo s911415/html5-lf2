@@ -9,7 +9,7 @@ var Framework = (function (Framework) {
      *
      * @namespace Framework
      */
-    Framework.Game = class Game{
+    Framework.Game = class Game {
         constructor() {
             throw "U can't create Game instance";
         }
@@ -804,6 +804,14 @@ var Framework = (function (Framework) {
             return that.stopAnimationFrame.apply(Game, arguments);
         }
 
+        static showMainContainer() {
+            that._mainContainer.style.display = 'block';
+        }
+
+        static hideMainContainer() {
+            that._mainContainer.style.display = 'none';
+        }
+
         /**
          * Pause loop
          */
@@ -986,6 +994,15 @@ var Framework = (function (Framework) {
             that._canvas.style.width = scaledWidth + 'px';    // 2017.02.20, from V3.1.1
             that._canvas.style.height = scaledHeight + 'px';  // 2017.02.20, from V3.1.1
 
+            Array.prototype.toArray(
+                document.querySelectorAll(".screen")
+            ).forEach((s) => {
+                let wRate = scaledWidth / s.clientWidth;
+                let hRate = scaledHeight / s.clientHeight;
+
+                s.style.transform = 'scale(' + wRate + ', ' + hRate + ')';
+            });
+
         };
 
         static _pushGameObj(ele) {
@@ -1038,8 +1055,8 @@ var Framework = (function (Framework) {
     that._currentTestScript = undefined;
     that._currentReplay = undefined;
 
-    that._ideaWidth = 16;
-    that._ideaHeight = 9;
+    that._ideaWidth = that._config.canvasWidth;
+    that._ideaHeight = that._config.canvasHeight;
     that.timelist = [];
     that._record = new Framework.Record();
 
@@ -1059,17 +1076,13 @@ var Framework = (function (Framework) {
         that._mainContainer.style.height = '100%';
     }
     else {
-        that._mainContainer.style.width = '100%';
-        that._mainContainer.style.height = '100%';
-        that._mainContainer.style.display = 'table';
+        that._mainContainer.classList.add("container-wrap");
     }
 
 
     that._mainContainer.style.backgroundColor = '#000';
     that._canvasContainer = document.createElement('div');
-    that._canvasContainer.style.display = 'table-cell';
-    that._canvasContainer.style.textAlign = 'center';
-    that._canvasContainer.style.verticalAlign = 'middle';
+    that._canvasContainer.classList.add("container");
     that._canvas = document.createElement('canvas');
     that._canvas.style.backgroundColor = '#fff';
     that._canvas.setAttribute('id', '__game_canvas__');

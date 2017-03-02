@@ -34,6 +34,7 @@ var Framework = (function (Framework) {
             this.timelist = [];
             this.updatetimelist = [];
             this.cycleCount = 0;
+            this._forceDraw = false;
 
             this.config = new Framework.Config();  // 2017.02.20, from V3.1.1
 
@@ -217,6 +218,15 @@ var Framework = (function (Framework) {
             rect.height = rect.y2 - rect.y;
 
             return rect;
+        }
+
+        /**
+         *
+         * @returns {Level}
+         */
+        forceDraw(){
+            this._forceDraw = true;
+            return this;
         }
 
         /**
@@ -486,6 +496,11 @@ var Framework = (function (Framework) {
 
     Object.defineProperty(Framework.Level.prototype, 'canvasChanged', {
         get: function () {
+            if(this._forceDraw) {
+                this._forceDraw=false;
+                return true;
+            }
+
             var isCanvasChanged = false;
             this._traversalAllElement(function (ele) {
                 if (ele.isObjectChanged) {
