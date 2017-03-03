@@ -1,8 +1,8 @@
 <bmp_begin>
 file(0-7): sprite/sys/justin_ball.bmp  w: 81  h: 82  row: 4  col: 2
-weapon_hit_sound: 020.wav
-weapon_drop_sound: 020.wav
-weapon_broken_sound: 020.wav
+weapon_hit_sound: data\020.wav
+weapon_drop_sound: data\020.wav
+weapon_broken_sound: data\020.wav
 <bmp_end>
 
 

@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-7): sprite/sys/jan_chase.bmp  w: 81  h: 82  row: 4  col: 2
 file(8-11): sprite/sys/jan_chaseb.bmp  w: 25  h: 25  row: 4  col: 1
-weapon_hit_sound: 020.wav
-weapon_drop_sound: 020.wav
-weapon_broken_sound: 020.wav
+weapon_hit_sound: data\020.wav
+weapon_drop_sound: data\020.wav
+weapon_broken_sound: data\020.wav
 <bmp_end>
 
 
@@ -101,7 +101,7 @@ weapon_broken_sound: 020.wav
 <frame_end>
 
 <frame> 61 hiting_ground
-sound: 020.wav 
+sound: data\020.wav 
    pic: 5  state: 3001  wait: 1  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 51  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
 <frame_end>
 

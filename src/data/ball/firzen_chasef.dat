@@ -3,9 +3,9 @@ file(0-7): sprite/sys/firzen_chasef.bmp  w: 81  h: 82  row: 4  col: 2
 file(8-19): sprite/sys/firzen_up.bmp   w: 35  h: 49  row: 4  col: 3
 file(20-23): sprite/sys/firzen_up3.bmp   w: 81  h: 82  row: 4  col: 1
 
-weapon_hit_sound: 020.wav
-weapon_drop_sound: 020.wav
-weapon_broken_sound: 020.wav
+weapon_hit_sound: data\020.wav
+weapon_drop_sound: data\020.wav
+weapon_broken_sound: data\020.wav
 <bmp_end>
 
 <frame> 0 flying
@@ -148,7 +148,7 @@ weapon_broken_sound: 020.wav
 
 <frame> 58 start
    pic: 11  state: 3005  wait: 0  next: 59  dvx: 0  dvy: 0  dvz: 0  centerx: 15  centery: 25  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 020.wav
+   sound: data\020.wav
    opoint:
       kind: 1  x: 17  y: 10  action: 70  dvx: 0  dvy: 0  oid: 221  facing: 1
    opoint_end:
@@ -164,7 +164,7 @@ weapon_broken_sound: 020.wav
 
 <frame> 61 hiting_ground
    pic: 5  state: 3001  wait: 1  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 020.wav 
+  sound: data\020.wav 
 <frame_end>
 
 <frame> 62 hiting_ground
