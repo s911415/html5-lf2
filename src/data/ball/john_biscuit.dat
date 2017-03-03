@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-12): sprite\sys\john_biscuit.bmp  w: 90  h: 20  row: 4  col: 3	
+file(0-12): sprite\sys\john_biscuit.png  w: 90  h: 20  row: 4  col: 3	
 weapon_hit_sound: 020.ogg
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg

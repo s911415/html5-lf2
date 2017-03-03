@@ -1,11 +1,11 @@
 <bmp_begin>
 name: Justin
-head: sprite\sys\justin_f.bmp
-small: sprite\sys\justin_s.bmp
-file(0-69): sprite\sys\justin_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\justin_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(0-69): sprite\sys\justin_0b.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\justin_1b.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite\sys\justin_f.png
+small: sprite\sys\justin_s.png
+file(0-69): sprite\sys\justin_0.png  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\justin_1.png  w: 79  h: 79  row: 10  col: 7
+file(0-69): sprite\sys\justin_0b.png  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\justin_1b.png  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 5.000000
 walking_speedz 2.500000

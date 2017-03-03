@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-23): sprite\sys\dennis_ball.bmp  w: 81  h: 46  row: 4  col: 6
+file(0-23): sprite\sys\dennis_ball.png  w: 81  h: 46  row: 4  col: 6
 weapon_hit_sound: 020.ogg
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg

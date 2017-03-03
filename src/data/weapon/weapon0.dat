@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-99): sprite\sys\weapon0.bmp  w: 48  h: 48  row: 10  col: 10
+file(0-99): sprite\sys\weapon0.png  w: 48  h: 48  row: 10  col: 10
 weapon_hp: 200
 weapon_drop_hurt: 35
 weapon_hit_sound: 011.ogg

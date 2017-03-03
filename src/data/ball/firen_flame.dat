@@ -1,7 +1,7 @@
 <bmp_begin>
-file(0-17): sprite\sys\firen_flame.bmp  w: 59  h: 63  row: 6  col: 3
-file(18-33): sprite\sys\firen_grd.bmp  w: 35  h: 49  row: 4  col: 4
-file(34-48): sprite\sys\firen_exp.bmp  w: 159  h: 159  row: 5  col: 3
+file(0-17): sprite\sys\firen_flame.png  w: 59  h: 63  row: 6  col: 3
+file(18-33): sprite\sys\firen_grd.png  w: 35  h: 49  row: 4  col: 4
+file(34-48): sprite\sys\firen_exp.png  w: 159  h: 159  row: 5  col: 3
 weapon_hit_sound: 068.ogg
 weapon_drop_sound: 068.ogg
 weapon_broken_sound: 068.ogg

@@ -1,9 +1,9 @@
 <bmp_begin>
 name: Template
-head: sprite\template1\face.bmp
-small: sprite\template1\s.bmp
-file(0-69): sprite\template1\0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\template1\1.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite\template1\face.png
+small: sprite\template1\s.png
+file(0-69): sprite\template1\0.png  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\template1\1.png  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 4.000000
 walking_speedz 2.000000

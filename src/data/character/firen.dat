@@ -1,10 +1,10 @@
 <bmp_begin>
 name: Firen
-head: sprite\sys\firen_f.bmp
-small: sprite\sys\firen_s.bmp
-file(0-69): sprite\sys\firen_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\firen_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite\sys\firen_2.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite\sys\firen_f.png
+small: sprite\sys\firen_s.png
+file(0-69): sprite\sys\firen_0.png  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\firen_1.png  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite\sys\firen_2.png  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 5.000000
 walking_speedz 2.500000
