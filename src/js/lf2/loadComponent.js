@@ -5,6 +5,7 @@
         'GameRes.js',
         'LaunchMenu.js',
         'MySettingLevel.js',
+        'LoadingLevel.js',
 
         'MainGame.js',
     ];
