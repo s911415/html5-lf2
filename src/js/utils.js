@@ -60,3 +60,16 @@ Array.prototype.toArray = (obj) => {
     return Array.prototype.slice.call(obj);
 };
 
+
+function loadImage(src){
+    return new Promise((resolve, reject)=>{
+        let img = new Image();
+        img.onload=function(){
+            resolve(img);
+        };
+        img.onerror=function(e){
+            reject(e);
+        };
+        img.src=src;
+    });
+}

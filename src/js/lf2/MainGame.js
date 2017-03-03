@@ -4,6 +4,7 @@
 {
     Framework.Game.addNewLevel({menu: new lf2.LaunchMenu()});
     Framework.Game.addNewLevel({control: new lf2.MySettingLevel()});
+    Framework.Game.addNewLevel({loading: new lf2.LoadingLevel()});
     //Framework.Game.addNewLevel({level1: new lf2.MyGame()});
 
     //讓Game開始運行
