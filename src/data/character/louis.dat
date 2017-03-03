@@ -1,10 +1,10 @@
 <bmp_begin>
 name: Louis
-head: sprite\sys\louis_f.bmp
-small: sprite\sys\louis_s.bmp
-file(0-69): sprite\sys\louis_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\louis_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite\sys\louis_2.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite/sys/louis_f.bmp
+small: sprite/sys/louis_s.bmp
+file(0-69): sprite/sys/louis_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/louis_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite/sys/louis_2.bmp  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 5.000000
 walking_speedz 2.500000

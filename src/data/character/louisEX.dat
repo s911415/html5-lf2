@@ -1,12 +1,12 @@
 <bmp_begin>
 name: LouisEX
-head: sprite\sys\louisEX_f.bmp
-small: sprite\sys\louisEX_s.bmp
-file(0-69): sprite\sys\louisEX_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\louisEX_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite\sys\louisEX_2.bmp  w: 79  h: 79  row: 10  col: 7
-file(210-251): sprite\sys\louisEX_3.bmp  w: 118  h: 79  row: 6  col: 7
-file(252-252): sprite\sys\louisEX_4.bmp  w: 79  h: 124  row: 1  col: 1
+head: sprite/sys/louisEX_f.bmp
+small: sprite/sys/louisEX_s.bmp
+file(0-69): sprite/sys/louisEX_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/louisEX_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite/sys/louisEX_2.bmp  w: 79  h: 79  row: 10  col: 7
+file(210-251): sprite/sys/louisEX_3.bmp  w: 118  h: 79  row: 6  col: 7
+file(252-252): sprite/sys/louisEX_4.bmp  w: 79  h: 124  row: 1  col: 1
 walking_frame_rate 3
 walking_speed 6.200000
 walking_speedz 2.600000

@@ -1,10 +1,10 @@
 <bmp_begin>
 name: Firzen
-head: sprite\sys\firzen_f.bmp
-small: sprite\sys\firzen_s.bmp
-file(0-69): sprite\sys\firzen_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\firzen_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-142): sprite\sys\firzen_2.bmp  w: 159  h: 79  row: 3  col: 1
+head: sprite/sys/firzen_f.bmp
+small: sprite/sys/firzen_s.bmp
+file(0-69): sprite/sys/firzen_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/firzen_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-142): sprite/sys/firzen_2.bmp  w: 159  h: 79  row: 3  col: 1
 walking_frame_rate 3
 walking_speed 6.000000
 walking_speedz 2.570000

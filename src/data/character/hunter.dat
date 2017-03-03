@@ -1,11 +1,11 @@
 <bmp_begin>
 name: Hunter
-head: sprite\sys\hunter_f.bmp
-small: sprite\sys\hunter_s.bmp
-file(0-69): sprite\sys\hunter_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\hunter_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite\sys\hunter_0b.bmp  w: 79  h: 79  row: 10  col: 7
-file(210-279): sprite\sys\hunter_1b.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite/sys/hunter_f.bmp
+small: sprite/sys/hunter_s.bmp
+file(0-69): sprite/sys/hunter_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/hunter_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite/sys/hunter_0b.bmp  w: 79  h: 79  row: 10  col: 7
+file(210-279): sprite/sys/hunter_1b.bmp  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 4.200000
 walking_speedz 2.100000

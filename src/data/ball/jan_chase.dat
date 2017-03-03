@@ -1,6 +1,6 @@
 <bmp_begin>
-file(0-7): sprite\sys\jan_chase.bmp  w: 81  h: 82  row: 4  col: 2
-file(8-11): sprite\sys\jan_chaseb.bmp  w: 25  h: 25  row: 4  col: 1
+file(0-7): sprite/sys/jan_chase.bmp  w: 81  h: 82  row: 4  col: 2
+file(8-11): sprite/sys/jan_chaseb.bmp  w: 25  h: 25  row: 4  col: 1
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav

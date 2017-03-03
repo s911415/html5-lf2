@@ -1,11 +1,11 @@
 <bmp_begin>
 name: John
-head: sprite\sys\john_f.bmp
-small: sprite\sys\john_s.bmp
-file(0-69): sprite\sys\john_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\john_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite\sys\john_3.bmp  w: 79  h: 79  row: 10  col: 7
-file(210-213): sprite\sys\john_2.bmp  w: 109  h: 109  row: 4  col: 1
+head: sprite/sys/john_f.bmp
+small: sprite/sys/john_s.bmp
+file(0-69): sprite/sys/john_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/john_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite/sys/john_3.bmp  w: 79  h: 79  row: 10  col: 7
+file(210-213): sprite/sys/john_2.bmp  w: 109  h: 109  row: 4  col: 1
 walking_frame_rate 3
 walking_speed 5.000000
 walking_speedz 2.500000

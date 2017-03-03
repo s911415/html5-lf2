@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-11): sprite\sys\firen_ball.bmp  w: 81  h: 82  row: 4  col: 3
+file(0-11): sprite/sys/firen_ball.bmp  w: 81  h: 82  row: 4  col: 3
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav
