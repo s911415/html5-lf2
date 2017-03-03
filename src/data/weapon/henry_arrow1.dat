@@ -2,8 +2,8 @@
 file(0-99): sprite\sys\henry_arrow1.bmp  w: 48  h: 48  row: 10  col: 10
 weapon_hp: 1000
 weapon_drop_hurt: 70
-weapon_hit_sound: data\025.wav
-weapon_drop_sound: data\025.wav
+weapon_hit_sound: 025.wav
+weapon_drop_sound: 025.wav
 <bmp_end>
 
 <weapon_strength_list>
@@ -455,7 +455,7 @@ weapon_drop_sound: data\025.wav
 
 <frame> 60 on_ground
    pic: 7  state: 1003  wait: 0  next: 61  dvx: 0  dvy: 0  centerx: 24  centery: 40
-   sound: data\025.wav
+   sound: 025.wav
 <frame_end>
 
 <frame> 61 on_ground
@@ -464,7 +464,7 @@ weapon_drop_sound: data\025.wav
 
 <frame> 62 on_ground
    pic: 3  state: 1003  wait: 2  next: 63  dvx: 0  dvy: 0  centerx: 24  centery: 34
-   sound: data\025.wav
+   sound: 025.wav
 <frame_end>
 
 <frame> 63 on_ground
@@ -473,7 +473,7 @@ weapon_drop_sound: data\025.wav
 
 <frame> 70 just_on_ground
    pic: 7  state: 1003  wait: 0  next: 71  dvx: 0  dvy: 0  centerx: 24  centery: 40
-   sound: data\025.wav
+   sound: 025.wav
    itr:
       kind: 0  x: 1  y: 19  w: 46  h: 15 dvx: 2  fall: 40  bdefend: 16  arest: 16
    itr_end:

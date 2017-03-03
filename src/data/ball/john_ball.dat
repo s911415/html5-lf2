@@ -1,8 +1,8 @@
 <bmp_begin>
 file(0-23): sprite\sys\john_ball.bmp  w: 81  h: 82  row: 8  col: 6
-weapon_hit_sound: data\020.wav
-weapon_drop_sound: data\020.wav
-weapon_broken_sound: data\020.wav
+weapon_hit_sound: 020.wav
+weapon_drop_sound: 020.wav
+weapon_broken_sound: 020.wav
 <bmp_end>
 
 
@@ -120,7 +120,7 @@ weapon_broken_sound: data\020.wav
 
 <frame> 40 stars
    pic: 16  state: 3002  wait: 3  next: 41  dvx: 0  dvy: 0  centerx: 40  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: data\049.wav 
+  sound: 049.wav 
 <frame_end>
 
 <frame> 41 stars
@@ -226,7 +226,7 @@ weapon_broken_sound: data\020.wav
 
 <frame> 62 forcefield
    pic: 34  state: 3002  wait: 1  next: 63  dvx: 0  dvy: 0  centerx: 35  centery: 41  hit_a: 3  hit_d: 67  hit_j: 0
-  sound: data\051.wav 
+  sound: 051.wav 
    itr:
       kind: 9  x: 33  y: 15  w: 26  h: 55  dvx: 10  vrest: 8  injury: 40   fall: 70  
    itr_end:
@@ -254,7 +254,7 @@ weapon_broken_sound: data\020.wav
 <frame_end>
 
 <frame> 67 forcefield_dp
-  sound: data\053.wav 
+  sound: 053.wav 
    pic: 37  state: 3002  wait: 2  next: 68  dvx: 0  dvy: 0  centerx: 39  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
 <frame_end>
 
