@@ -37,14 +37,14 @@
         });
     }
 
-    function splitLine(line){
+    function splitLine(line) {
         const pairs = line.trim().split("\t");
-        let dat={};
+        let dat = {};
 
-        pairs.forEach((token)=>{
-            let pair=token.split(/:\s?/);
+        pairs.forEach((token) => {
+            let pair = token.split(/:\s?/);
 
-            dat[pair[0].trim()]=pair[1].trim();
+            dat[pair[0].trim()] = pair[1].trim();
         });
 
         return dat;
@@ -54,9 +54,9 @@
         const lines = txt.split("\n");
         let objs = [];
 
-        lines.forEach((line)=>{
+        lines.forEach((line) => {
             line = line.trim();
-            if(line.length==0) return;
+            if (line.length == 0) return;
 
             //remove comment
             line = line.split('#')[0];
@@ -64,6 +64,31 @@
             objs.push(
                 splitLine(line)
             );
+        });
+
+        objs = objs.filter((o) => {
+            const fn = o.file.substr(4);
+
+            o.id = parseInt(o.id, 10);
+            o.type = parseInt(o.type, 10);
+
+            switch (o.type) {
+                case 0:
+                    o.file = "character" + fn;
+                    break;
+                case 1:
+                case 2:
+                case 4:
+                case 6:
+                    o.file = "weapon" + fn;
+                    break;
+                case 3:
+                    o.file = "ball" + fn;
+                    break;
+                case 5:
+                    o.file = "sys" + fn;
+                    break;
+            }
         });
 
         return objs;
@@ -73,9 +98,9 @@
         const lines = txt.split("\n");
         let objs = [];
 
-        lines.forEach((line)=>{
+        lines.forEach((line) => {
             line = line.trim();
-            if(line.length==0) return;
+            if (line.length == 0) return;
 
             //remove comment
             line = line.split('#')[0];
@@ -84,6 +109,8 @@
                 splitLine(line)
             );
         });
+
+        //objs =
 
         return objs;
     }
@@ -119,6 +146,7 @@
                     'object': processObjList(objContent),
                     'background': processBgList(bgContent)
                 };
+
 
                 $("#dec_data").val(
                     JSON.stringify(data, null, 4)
