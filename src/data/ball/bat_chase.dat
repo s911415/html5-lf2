@@ -1,8 +1,8 @@
 <bmp_begin>
-file(0-23): sprite\sys\bat_chase.bmp  w: 81  h: 82  row: 4  col: 2
-weapon_hit_sound: data\088.wav
-weapon_drop_sound: data\088.wav
-weapon_broken_sound: data\088.wav
+file(0-23): sprite\sys\bat_chase.png  w: 81  h: 82  row: 4  col: 2
+weapon_hit_sound: 088.ogg
+weapon_drop_sound: 088.ogg
+weapon_broken_sound: 088.ogg
 <bmp_end>
 
 
@@ -78,7 +78,7 @@ weapon_broken_sound: data\088.wav
 <frame_end>
 
 <frame> 51 start
-   sound: data\087.wav
+   sound: 087.ogg
    pic: 3  state: 3005  wait: 1  next: 52  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 8
 <frame_end>
 

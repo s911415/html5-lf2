@@ -1,8 +1,8 @@
 <bmp_begin>
-file(0-23): sprite\sys\jan_chaseh.bmp  w: 81  h: 82  row: 4  col: 3
-weapon_hit_sound: data\020.wav
-weapon_drop_sound: data\020.wav
-weapon_broken_sound: data\020.wav
+file(0-23): sprite\sys\jan_chaseh.png  w: 81  h: 82  row: 4  col: 3
+weapon_hit_sound: 020.ogg
+weapon_drop_sound: 020.ogg
+weapon_broken_sound: 020.ogg
 <bmp_end>
 
 <frame> 0 flying
@@ -104,7 +104,7 @@ weapon_broken_sound: data\020.wav
 <frame_end>
 
 <frame> 61 star
-sound: data\049.wav 
+sound: 049.wav 
    pic: 9  state: 3005  wait: 2  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
 <frame_end>
 

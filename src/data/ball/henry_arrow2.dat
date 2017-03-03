@@ -1,8 +1,8 @@
 <bmp_begin>
-file(0-23): sprite\sys\henry_arrow2.bmp  w: 48  h: 47  row: 6  col: 2	
-weapon_hit_sound: data\020.wav
-weapon_drop_sound: data\020.wav
-weapon_broken_sound: data\020.wav
+file(0-23): sprite\sys\henry_arrow2.png  w: 48  h: 47  row: 6  col: 2	
+weapon_hit_sound: 020.ogg
+weapon_drop_sound: 020.ogg
+weapon_broken_sound: 020.ogg
 <bmp_end>
 
 <frame> 0 flying
