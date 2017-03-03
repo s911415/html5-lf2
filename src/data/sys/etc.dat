@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-69): sprite/sys/etc.bmp  w: 79  h: 79  row: 10  col: 7
+file(0-69): sprite\sys\etc.bmp  w: 79  h: 79  row: 10  col: 7
 <bmp_end>
 
 <frame> 0 come_here

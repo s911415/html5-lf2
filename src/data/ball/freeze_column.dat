@@ -1,6 +1,6 @@
 <bmp_begin>
-file(0-27): sprite/sys/freeze_col.bmp  w: 109  h: 109  row: 7  col: 4
-file(28-37): sprite/sys/freeze_ww.bmp  w: 159  h: 159  row: 5  col: 2
+file(0-27): sprite\sys\freeze_col.bmp  w: 109  h: 109  row: 7  col: 4
+file(28-37): sprite\sys\freeze_ww.bmp  w: 159  h: 159  row: 5  col: 2
 weapon_hit_sound: data\072.wav
 weapon_drop_sound: data\072.wav
 weapon_broken_sound: data\072.wav

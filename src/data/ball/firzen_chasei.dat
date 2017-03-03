@@ -1,6 +1,6 @@
 <bmp_begin>
-file(0-7): sprite/sys/firzen_chasei.bmp  w: 81  h: 82  row: 4  col: 2
-file(8-19): sprite/sys/firzen_up2.bmp   w: 35  h: 49  row: 4  col: 3
+file(0-7): sprite\sys\firzen_chasei.bmp  w: 81  h: 82  row: 4  col: 2
+file(8-19): sprite\sys\firzen_up2.bmp   w: 35  h: 49  row: 4  col: 3
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav

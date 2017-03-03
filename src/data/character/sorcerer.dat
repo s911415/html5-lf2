@@ -1,11 +1,11 @@
 <bmp_begin>
 name: Sorcerer
-head: sprite/sys/sorcerer_f.bmp
-small: sprite/sys/sorcerer_s.bmp
-file(0-69): sprite/sys/sorcerer_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite/sys/sorcerer_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite/sys/sorcerer_0b.bmp  w: 79  h: 79  row: 10  col: 7
-file(210-279): sprite/sys/sorcerer_1b.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite\sys\sorcerer_f.bmp
+small: sprite\sys\sorcerer_s.bmp
+file(0-69): sprite\sys\sorcerer_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\sorcerer_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite\sys\sorcerer_0b.bmp  w: 79  h: 79  row: 10  col: 7
+file(210-279): sprite\sys\sorcerer_1b.bmp  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 4.800000
 walking_speedz 2.400000

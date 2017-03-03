@@ -1,11 +1,11 @@
 <bmp_begin>
 name: Rudolf
-head: sprite/sys/rudolf_f.bmp
-small: sprite/sys/rudolf_s.bmp
-file(0-69): sprite/sys/rudolf_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite/sys/rudolf_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-149): sprite/sys/rudolf_2.bmp  w: 149  h: 87  row: 5  col: 2
-file(150-155): sprite/sys/rudolf_3.bmp  w: 94  h: 64  row: 6  col: 1
+head: sprite\sys\rudolf_f.bmp
+small: sprite\sys\rudolf_s.bmp
+file(0-69): sprite\sys\rudolf_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\rudolf_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-149): sprite\sys\rudolf_2.bmp  w: 149  h: 87  row: 5  col: 2
+file(150-155): sprite\sys\rudolf_3.bmp  w: 94  h: 64  row: 6  col: 1
 walking_frame_rate 3
 walking_speed 6.000000
 walking_speedz 2.500000

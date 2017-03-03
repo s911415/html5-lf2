@@ -1,10 +1,10 @@
 <bmp_begin>
 name: Julian
-head: sprite/sys/julian_f.bmp
-small: sprite/sys/julian_s.bmp
-file(0-49): sprite/sys/julian_0.bmp  w: 79  h: 99  row: 10  col: 5
-file(50-63): sprite/sys/julian_1.bmp  w: 109  h: 99  row: 7  col: 2
-file(64-113): sprite/sys/julian_2.bmp  w: 79  h: 99  row: 10  col: 5
+head: sprite\sys\julian_f.bmp
+small: sprite\sys\julian_s.bmp
+file(0-49): sprite\sys\julian_0.bmp  w: 79  h: 99  row: 10  col: 5
+file(50-63): sprite\sys\julian_1.bmp  w: 109  h: 99  row: 7  col: 2
+file(64-113): sprite\sys\julian_2.bmp  w: 79  h: 99  row: 10  col: 5
 walking_frame_rate 3
 walking_speed 5.800000
 walking_speedz 2.400000

@@ -1,6 +1,6 @@
 <bmp_begin>
-file(0-99): sprite/sys/broken.bmp  w: 27  h: 28  row: 10  col: 10
-file(100-199): sprite/sys/broken2.bmp  w: 27  h: 28  row: 10  col: 10
+file(0-99): sprite\sys\broken.bmp  w: 27  h: 28  row: 10  col: 10
+file(100-199): sprite\sys\broken2.bmp  w: 27  h: 28  row: 10  col: 10
 <bmp_end>
 
 <frame> 0 stone1

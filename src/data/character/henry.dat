@@ -1,10 +1,10 @@
 <bmp_begin>
 name: Henry
-head: sprite/sys/henry_f.bmp
-small: sprite/sys/henry_s.bmp
-file(0-69): sprite/sys/henry_0.bmp  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite/sys/henry_1.bmp  w: 79  h: 79  row: 10  col: 7
-file(140-209): sprite/sys/henry_2.bmp  w: 79  h: 79  row: 10  col: 7
+head: sprite\sys\henry_f.bmp
+small: sprite\sys\henry_s.bmp
+file(0-69): sprite\sys\henry_0.bmp  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite\sys\henry_1.bmp  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite\sys\henry_2.bmp  w: 79  h: 79  row: 10  col: 7
 walking_frame_rate 3
 walking_speed 5.000000
 walking_speedz 2.500000

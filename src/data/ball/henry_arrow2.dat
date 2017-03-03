@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-23): sprite/sys/henry_arrow2.bmp  w: 48  h: 47  row: 6  col: 2	
+file(0-23): sprite\sys\henry_arrow2.bmp  w: 48  h: 47  row: 6  col: 2	
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav

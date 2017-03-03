@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-23): sprite/sys/davis_ball.bmp  w: 81  h: 46  row: 4  col: 6
+file(0-23): sprite\sys\davis_ball.bmp  w: 81  h: 46  row: 4  col: 6
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav

@@ -1,7 +1,7 @@
 <bmp_begin>
-file(0-23): sprite/sys/henry_wind.bmp  w: 81  h: 82  row: 4  col: 6
-file(24-29): sprite/sys/henry_arrow2.bmp  w: 48  h: 48  row: 6  col: 1
-file(30-35): sprite/sys/rudolf_smoke.bmp  w: 79  h: 79  row: 6  col: 2
+file(0-23): sprite\sys\henry_wind.bmp  w: 81  h: 82  row: 4  col: 6
+file(24-29): sprite\sys\henry_arrow2.bmp  w: 48  h: 48  row: 6  col: 1
+file(30-35): sprite\sys\rudolf_smoke.bmp  w: 79  h: 79  row: 6  col: 2
 weapon_hit_sound: data\020.wav
 weapon_drop_sound: data\020.wav
 weapon_broken_sound: data\020.wav
