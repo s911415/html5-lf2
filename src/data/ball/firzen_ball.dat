@@ -1,8 +1,8 @@
 <bmp_begin>
-file(0-11): sprite\sys\firzen_ball.bmp w: 129  h: 82  row: 4  col: 2
-weapon_hit_sound: data\020.wav
-weapon_drop_sound: data\020.wav
-weapon_broken_sound: data\020.wav
+file(0-11): sprite\sys\firzen_ball.png w: 129  h: 82  row: 4  col: 2
+weapon_hit_sound: 020.ogg
+weapon_drop_sound: 020.ogg
+weapon_broken_sound: 020.ogg
 <bmp_end>
 
 
