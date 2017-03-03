@@ -1,8 +1,8 @@
 <bmp_begin>
 file(0-7): sprite\sys\julian_ball.bmp  w: 81  h: 82  row: 4  col: 4
-weapon_hit_sound: 090.wav
-weapon_drop_sound: 090.wav
-weapon_broken_sound: 090.wav
+weapon_hit_sound: 090.ogg
+weapon_drop_sound: 090.ogg
+weapon_broken_sound: 090.ogg
 <bmp_end>
 
 
@@ -187,7 +187,7 @@ weapon_broken_sound: 090.wav
 <frame_end>
 
 <frame> 60 disappearing2
-sound: 020.wav
+sound: 020.ogg
    pic: 13  state: 3004  wait: 1  next: 61  dvx: 0  dvy: 0  dvz: 0  centerx: 37  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
 <frame_end>
 

@@ -2,9 +2,9 @@
 file(0-99): sprite\sys\weapon1.bmp  w: 58  h: 58  row: 10  col: 10
 weapon_hp: 800
 weapon_drop_hurt: 200
-weapon_hit_sound: 010.wav
-weapon_drop_sound: 010.wav
-weapon_broken_sound: 021.wav
+weapon_hit_sound: 010.ogg
+weapon_drop_sound: 010.ogg
+weapon_broken_sound: 021.ogg
 <bmp_end>
 
 <frame> 0 in_the_sky

@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-27): sprite\sys\freeze_col.bmp  w: 109  h: 109  row: 7  col: 4
 file(28-37): sprite\sys\freeze_ww.bmp  w: 159  h: 159  row: 5  col: 2
-weapon_hit_sound: 072.wav
-weapon_drop_sound: 072.wav
-weapon_broken_sound: 072.wav
+weapon_hit_sound: 072.ogg
+weapon_drop_sound: 072.ogg
+weapon_broken_sound: 072.ogg
 <bmp_end>
 
 <frame> 0 column
