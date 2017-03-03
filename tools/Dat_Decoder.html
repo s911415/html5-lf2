@@ -71,7 +71,7 @@
         let fileCount = 0;
 
         Array.prototype.toArray(files).forEach((file) => {
-            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + ".txt";
+            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + ".dat";
             processFile(file, function (blob) {
                 zip.file(fileName, blob);
 
