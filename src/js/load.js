@@ -10,7 +10,6 @@ let _isRecordMode = false;
         "Framework/MouseEventInterface.js",
 
         "Framework/Config.js",
-        "Framework/Config.js",
         "Framework/Record.js",
         "Framework/Replay.js",
         "Framework/EqualCondition.js",
