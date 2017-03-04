@@ -29,8 +29,11 @@ var lf2 = (function (lf2) {
 
             this.data = Utils.parseDataLine(lines[1]);
 
-            this.itr = new Interaction(context.getStringBetween(ITR_START_TAG, ITR_END_TAG));
-            this.bdy = new Body(context.getStringBetween(BDY_START_TAG, BDY_END_TAG));
+            let itr = context.getStringBetween(ITR_START_TAG, ITR_END_TAG);
+            let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
+
+            this.itr = itr ? new Interaction(itr) : undefined;
+            this.bdy = bdy ? new Body(bdy) : undefined;
         }
     };
 

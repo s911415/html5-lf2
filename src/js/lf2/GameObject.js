@@ -29,10 +29,11 @@ var lf2 = (function (lf2) {
             this.sourceCode = context;
 
             this.bmpInfo = new BmpInfo(context);
-            this.frames = lf2.GameObject._parseBmpInfo(context);
+            this.frames = lf2.GameObject._parseFrames(context);
         }
 
         /**
+         * Promise when all image loaded
          *
          * @returns {Promise.<*>}
          */
@@ -41,27 +42,28 @@ var lf2 = (function (lf2) {
             return Promise.all(arr);
         }
 
+        /**
+         * Parse frame block
+         *
+         * @param context
+         * @returns {Array}
+         * @private
+         */
         static _parseFrames(context) {
-
-        }
-
-        static _parseBmpInfo(context) {
             const FRAME_START_TAG = '<frame>';
             const FRAME_END_TAG = '<frame_end>';
             let framesIndex = [], frameContent = [];
-            debugger;
 
             for (
                 let index = context.indexOf(FRAME_START_TAG);
                 index !== -1;
-                index = context.indexOf(FRAME_START_TAG, index+1)
+                index = context.indexOf(FRAME_START_TAG, index + 1)
             ) {
                 framesIndex.push(index);
-                console.log(index);
             }
-            framesIndex.forEach((i)=>{
+            framesIndex.forEach((i) => {
                 let str = context.getStringBetween(FRAME_START_TAG, FRAME_END_TAG, i).trim();
-                let frame =new Frame(str);
+                let frame = new Frame(str);
 
                 frameContent[frame.id] = frame;
             });
