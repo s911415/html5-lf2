@@ -28,26 +28,29 @@ var Framework = (function (Framework) {
         };
 
         var loadImage = function (requestOption) {
+            return new Promise((resolve, reject)=>{
+                if (_responsedResource[requestOption.id]) {
+                    resolve(_responsedResource[requestOption.id]);
+                }
 
-            if (_responsedResource[requestOption.id]) {
-                return _responsedResource[requestOption.id];
-            }
+                let imageObj = new Image();
+                imageObj.src = requestOption['url'];
+                _requestCount++;
+                if (_intervalID === null) {
+                    _intervalID = setInterval(detectAjax, DELAY_TIME);
+                    finishLoading();
+                }
+                imageObj.onload = function () {
+                    _responseCount++;
+                    _responsedResource[requestOption.id] = {url: requestOption.url, response: imageObj};
 
-
-            var imageObj = new Image();
-            imageObj.src = requestOption['url'];
-            _requestCount++;
-            if (_intervalID === null) {
-                _intervalID = setInterval(detectAjax, DELAY_TIME);
-                finishLoading();
-            }
-            imageObj.onload = function () {
-                _responseCount++;
-                _responsedResource[requestOption.id] = {url: requestOption.url, response: imageObj};
-            };
-            imageObj.onerror = function (e) {
-                throw e;
-            };
+                    resolve(_responsedResource[requestOption.id]);
+                };
+                imageObj.onerror = function (e) {
+                    reject(e);
+                    throw e;
+                };
+            });
         };
 
         var minAjaxJSON = function (requestOption) {
@@ -199,7 +202,7 @@ var Framework = (function (Framework) {
             /**
              * Loads the image.
              *
-             * @return  The image.
+             * @return {Promise} The image.
              */
             loadImage() {
                 return loadImage.apply(this, arguments);

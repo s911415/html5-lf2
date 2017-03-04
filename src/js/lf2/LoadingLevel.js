@@ -1,9 +1,21 @@
 "use strict";
 var lf2 = (function (lf2) {
+
+    /**
+     * @type {Framework.Game}
+     */
     const Game = Framework.Game;
+
     const ResourceManager = Framework.ResourceManager;
+    /**
+     * @type {Framework.Level}
+     */
     const Level = Framework.Level;
 
+    /**
+     * @type {GameObjectPool}
+     */
+    const GameObjectPool = lf2.GameObjectPool;
     /**
      * Loading Level
      *
@@ -21,32 +33,35 @@ var lf2 = (function (lf2) {
             this.objInfo = [];
             this.bgInfo = [];
             this.promiseList.push(
-                ResourceManager.loadResource(define.DATA_PATH + "data_list.json")
-                    .then((data) => {
+                new Promise((res, rej)=>{
+                    ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
                         return data.json();
                     }).then((data) => {
-                    const objs = data.object, bgs = data.background;
+                        const objs = data.object, bgs = data.background;
 
-                    objs.forEach((o) => {
-                        this.promiseList.push(
-                            ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
-                                return data.text();
-                            }).then((datText) => {
-                                this.objInfo.push(this.parseObj(datText));
-                            })
-                        );
-                    });
+                        objs.forEach((o) => {
+                            this.promiseList.push(
+                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                    return data.text();
+                                }).then((datText) => {
+                                    this.objInfo.push(this.parseObj(o, datText));
+                                })
+                            );
+                        });
+                        res(objs);
+                    })
                 })
             );
 
 
-            Promise.all(this.promiseList).then((a, b)=>{
-                console.log("all down");
+            Promise.all(this.promiseList).then((a, b) => {
+                console.log("all done");
+                console.log(this.objInfo);
             });
         }
 
         update() {
-            if(this.allDone){
+            if (this.allDone) {
                 Game.goToLevel('menu');
             }
         }
@@ -58,10 +73,12 @@ var lf2 = (function (lf2) {
 
         /**
          * Parse LF@ Object
+         * @param {Object} info
          * @param {String} content
          * @returns {*}
          */
-        parseObj(content) {
+        parseObj(info, content) {
+
             return content;
         }
     };
