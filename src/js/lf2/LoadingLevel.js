@@ -59,18 +59,12 @@ var lf2 = (function (lf2) {
         }
 
         loadingProgress(context, requestInfo) {
-            if (this.html !== "" && !this._loadingContainer) {
-                this._loadingContainer = $(this.html);
-                this._loadingContainer.attr("id", _CONTAINER_ID);
-                this._loadingContainer.find("#loadProcess").attr('src', define.IMG_PATH + 'loading_video.mp4');
-            }
-            if (!this._attached && this._loadingContainer) {
-                $("body").append(this._loadingContainer);
-                this._attached = true;
-            }
+            this.showLoadingVideo();
         }
 
         load() {
+            this.showLoadingVideo();
+
             this.allDone = false;
             this.promiseList = [];
             this.objInfo = [];
@@ -139,6 +133,18 @@ var lf2 = (function (lf2) {
                     break;
             }
             return null;
+        }
+
+        showLoadingVideo() {
+            if (this.html !== "" && !this._loadingContainer) {
+                this._loadingContainer = $(this.html);
+                this._loadingContainer.attr("id", _CONTAINER_ID);
+                this._loadingContainer.find("#loadProcess").attr('src', define.IMG_PATH + 'loading_video.mp4');
+            }
+            if (!this._attached && this._loadingContainer) {
+                $("body").append(this._loadingContainer);
+                this._attached = true;
+            }
         }
     };
 
