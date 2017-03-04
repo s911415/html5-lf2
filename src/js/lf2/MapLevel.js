@@ -20,13 +20,13 @@ var lf2 = (function (lf2) {
              *make camera follow character moving
              */
             var cameraPosition;
+            var position;
             this.width=3200;
             var minX=0,maxX=this.width;
-            this.backgroundmap = new Sprite(define.IMG_PATH + 'backgroundmap.dat');
-            this.Point = {
-                x:this.position.x,
-                y:this.position.y
-            }
+            this.backgroundmap = new Sprite('data/' + 'backgroundmap.dat');
+            this.position = new Point(0,0);
+
+            this.Point = new Point(this.position.x, this.position.y);
             cameraPosition={
                 x:Math.max(minX+this.width/2,Math.min(this.Point.x,maxX-this.width/2)),
                 y:this.height/2
@@ -70,7 +70,6 @@ var lf2 = (function (lf2) {
                 this.position.y-=10;
             }
         }
-
     };
 
     return lf2;
