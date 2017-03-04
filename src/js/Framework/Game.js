@@ -7,6 +7,7 @@ var Framework = (function (Framework) {
      * 整個遊戲(多個{{#crossLink "Level"}}{{/crossLink}})的主體
      * 主要功能為新增移除關卡與關卡的切換
      *
+     * @class {Framework.Game}
      * @namespace Framework
      */
     Framework.Game = class Game {

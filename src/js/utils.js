@@ -60,16 +60,48 @@ Array.prototype.toArray = (obj) => {
     return Array.prototype.slice.call(obj);
 };
 
+/**
+ * Get context between a string
+ * @param {String} startString
+ * @param {String} endString
+ * @param {Number} [fromIndex] default = 0
+ *
+ * @returns {String} context
+ */
+String.prototype.getStringBetween = function (startString, endString, fromIndex) {
+    if (fromIndex === undefined) fromIndex = 0;
 
-function loadImage(src){
-    return new Promise((resolve, reject)=>{
+    let startIndex = this.indexOf(startString, fromIndex);
+    let endIndex = this.indexOf(endString, startIndex);
+
+    if (startIndex === -1) return "";
+
+    if (endIndex === -1) return this.substr(startIndex);
+
+    //Remove Starting String
+    startIndex += startString.length;
+
+    return this.substring(startIndex, endIndex);
+};
+
+/**
+ * Split string into lines
+ * @returns {String[]} lines
+ */
+String.prototype.lines = function () {
+    return this.split(/\r?\n/);
+};
+
+
+function loadImage(src) {
+    return new Promise((resolve, reject) => {
         let img = new Image();
-        img.onload=function(){
+        img.onload = function () {
             resolve(img);
         };
-        img.onerror=function(e){
+        img.onerror = function (e) {
             reject(e);
         };
-        img.src=src;
+        img.src = src;
     });
 }
