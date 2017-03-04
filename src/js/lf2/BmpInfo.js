@@ -56,13 +56,17 @@ var lf2 = (function (lf2) {
         }
 
         _processImage(str) {
-            let indexInfo = str.getStringBetween(BMP_START_TAG, BMP_END_TAG);
-            let pairContent = Utils.parseDataLine(str);
-            let key = str.split(':')[0];
+            const pairContent = Utils.parseDataLine(str);
+            const key = str.split(':')[0];
             const
                 index = key.match(/(\d+)/g),
                 startIndex = parseInt(index[0], 10),
-                endIndex = parseInt(index[1], 10);
+                endIndex = parseInt(index[1], 10),
+                width = parseInt(pairContent.get('w'), 10),
+                height = parseInt(pairContent.get('h'), 10),
+                width2 = width * 2,
+                row = parseInt(pairContent.get('row'), 10),
+                col = parseInt(pairContent.get('col'), 10);
 
             return ResourceManager.loadImage({
                 url: define.IMG_PATH + pairContent.get(key)
@@ -73,14 +77,35 @@ var lf2 = (function (lf2) {
                 c.height = img.height;
                 let g = c.getContext('2d');
 
+                g.save();
                 g.drawImage(img, 0, 0);
 
                 //Mirror image
+                g.translate(c.width, 0);
                 g.scale(-1, 1);
+                g.restore();
 
                 g.drawImage(img, 0, 0);
 
-                debugger;
+                let i = startIndex;
+                let j = startIndex;
+                for (let r = 0; r < row; r++) {
+                    const _y = r * height;
+                    //Save Normal image
+                    for (let c = 0; c < col; c++) {
+                        const _x = c * width;
+                        this.imageNormal[i] = g.getImageData(_x, _y, width, height);
+
+                        i++;
+                    }
+
+                    //Save Mirror image
+                    for (let c = 0; c < col; c++) {
+                        const _x = width2 - c * width - width;
+                        this.imageMirror[j] = g.getImageData(_x, _y, width, height);
+                        j++;
+                    }
+                }
 
 
             });

@@ -38,42 +38,40 @@ var lf2 = (function (lf2) {
             this.promiseList = [];
             this.objInfo = [];
             this.bgInfo = [];
-            this.promiseList.push(
-                new Promise((res, rej)=>{
-                    ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
-                        return data.json();
-                    }).then((data) => {
-                        console.log('Load data list done.');
+            new Promise((res, rej) => {
+                ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
+                    return data.json();
+                }).then((data) => {
+                    console.log('Load data list done.');
 
-                        const objs = data.object, bgs = data.background;
+                    const objs = data.object, bgs = data.background;
 
-                        objs.forEach((o) => {
-                            this.promiseList.push(
-                                new Promise((res, rej)=>{
-                                    ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
-                                        return data.text();
-                                    }).then((datText) => {
-                                        let obj = this.parseObj(o, datText);
-                                        if(obj!==null){
-                                            this.objInfo.push(obj);
+                    objs.forEach((o) => {
+                        this.promiseList.push(
+                            new Promise((res, rej) => {
+                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                    return data.text();
+                                }).then((datText) => {
+                                    let obj = this.parseObj(o, datText);
+                                    if (obj !== null) {
+                                        this.objInfo.push(obj);
 
-                                            this.promiseList.push(obj.done());
-                                        }
+                                        this.promiseList.push(
+                                            obj.done().then(res)
+                                        );
+                                    } else {
                                         res(obj);
-                                    });
-                                })
-                            );
-                        });
-                        //Promise.all(this.promiseList).then(res);
+                                    }
+                                });
+                            })
+                        );
                     });
-                })
-            );
-
-
-            Promise.all(this.promiseList).then((a, b) => {
-                debugger;
-                console.log("loading data done, start reading images");
-                console.log(this.objInfo);
+                    Promise.all(this.promiseList).then(res);
+                });
+            }).then((a, b) => {
+                console.log("loading data and image done");
+                console.log(GameObjectPool.get(52).bmpInfo);
+                this.allDone = true;
             });
         }
 
@@ -95,8 +93,7 @@ var lf2 = (function (lf2) {
          * @returns {GameObject|null}
          */
         parseObj(info, content) {
-            debugger;
-            switch(info.type){
+            switch (info.type) {
                 case 0:
                     let obj = new GameObject(info, content);
                     GameObjectPool.set(info.id, obj);

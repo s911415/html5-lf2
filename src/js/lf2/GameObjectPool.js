@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
      *
      * @type {GameObjectPool}
      * @class GameObjectPool
+     * @extends {Map}
      */
     class GameObjectPool extends Map {
         constructor() {
