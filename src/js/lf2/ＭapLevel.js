@@ -17,19 +17,18 @@ var MapLevel = (function (MapLevel) {
 
         load(){
             /**
-             *
-             *
+             *make camera follow character moving
              */
-            var characterPosition,cameraPosition;
+            var cameraPosition;
             this.width=3200;
-            var minX=0,MaxX=this.width;
+            var minX=0,maxX=this.width;
             this.backgroundmap = new Sprite(define.IMG_PATH + 'backgroundmap.dat');
-            characterPosition = {
+            this.Point = {
                 x:this.position.x,
                 y:this.position.y
             }
             cameraPosition={
-                x:Math.max(minX+this.width/2,Math.min(characterPosition.x,maxX-this.width/2)),
+                x:Math.max(minX+this.width/2,Math.min(this.Point.x,maxX-this.width/2)),
                 y:this.height/2
             }
 
@@ -37,12 +36,18 @@ var MapLevel = (function (MapLevel) {
         }
 
         update(){
+            /**
+             * update the new coordinate
+             */
+            super.update();
+
 
 
         }
 
         draw(ctx){
             super.draw(ctx);
+
 
         }
 
