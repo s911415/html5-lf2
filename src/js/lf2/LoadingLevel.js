@@ -1,8 +1,37 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const _CONTAINER_ID = "__loading_container";
+
+    /**
+     * @type {Framework.Game}
+     */
     const Game = Framework.Game;
+
     const ResourceManager = Framework.ResourceManager;
+    /**
+     * @type {Framework.Level}
+     */
     const Level = Framework.Level;
+
+    /**
+     * @type {Framework.AnimationSprite}
+     */
+    const AnimationSprite = Framework.AnimationSprite;
+
+    /**
+     * @type {Framework.Point}
+     */
+    const Point = Framework.Point;
+
+    /**
+     * @type {GameObjectPool}
+     */
+    const GameObjectPool = lf2.GameObjectPool;
+
+    /**
+     * @type {GameObject}
+     */
+    const GameObject = lf2.GameObject;
 
     /**
      * Loading Level
@@ -15,39 +44,77 @@ var lf2 = (function (lf2) {
             super();
         }
 
+        initializeProgressResource() {
+            super.initializeProgressResource();
+            if(this.html) return;
+
+            this.html="";
+
+            ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
+            this.loadingImg = ResourceManager.loadResource(define.IMG_PATH + 'loading_video.mp4');
+        }
+
+        loadingProgress(context, requestInfo) {
+            if (this.html !== "" && !this._loadingContainer) {
+                this._loadingContainer = $(this.html);
+                this._loadingContainer.attr("id", _CONTAINER_ID);
+                this._loadingContainer.find("#loadProcess").attr('src', define.IMG_PATH + 'loading_video.mp4');
+            }
+            if (!this._attached && this._loadingContainer) {
+                $("body").append(this._loadingContainer);
+                this._attached = true;
+            }
+        }
+
         load() {
             this.allDone = false;
             this.promiseList = [];
             this.objInfo = [];
             this.bgInfo = [];
-            this.promiseList.push(
-                ResourceManager.loadResource(define.DATA_PATH + "data_list.json")
-                    .then((data) => {
-                        return data.json();
-                    }).then((data) => {
+            new Promise((res, rej) => {
+                ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
+                    return data.json();
+                }).then((data) => {
+                    console.log('Load data list done.');
+
                     const objs = data.object, bgs = data.background;
 
                     objs.forEach((o) => {
                         this.promiseList.push(
-                            ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
-                                return data.text();
-                            }).then((datText) => {
-                                this.objInfo.push(this.parseObj(datText));
+                            new Promise((res, rej) => {
+                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                    return data.text();
+                                }).then((datText) => {
+                                    let obj = this.parseObj(o, datText);
+                                    if (obj !== null) {
+                                        this.objInfo.push(obj);
+
+                                        this.promiseList.push(
+                                            obj.done().then(res)
+                                        );
+                                    } else {
+                                        res(obj);
+                                    }
+                                });
                             })
                         );
                     });
-                })
-            );
-
-
-            Promise.all(this.promiseList).then((a, b)=>{
-                console.log("all down");
+                    Promise.all(this.promiseList).then(res);
+                });
+            }).then((a, b) => {
+                console.log("loading data and image done");
+                console.log(GameObjectPool.get(52).bmpInfo);
+                this.allDone = true;
             });
         }
 
         update() {
-            if(this.allDone){
-                Game.goToLevel('menu');
+            if (this.allDone) {
+                //Game.goToLevel('menu');
             }
         }
 
@@ -58,11 +125,20 @@ var lf2 = (function (lf2) {
 
         /**
          * Parse LF@ Object
+         * @param {Object} info
          * @param {String} content
-         * @returns {*}
+         * @returns {GameObject|null}
          */
-        parseObj(content) {
-            return content;
+        parseObj(info, content) {
+            switch (info.type) {
+                case 0:
+                    let obj = new GameObject(info, content);
+                    GameObjectPool.set(info.id, obj);
+
+                    return obj;
+                    break;
+            }
+            return null;
         }
     };
 
