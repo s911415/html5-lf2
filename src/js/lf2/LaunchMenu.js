@@ -22,6 +22,9 @@ var lf2 = (function (lf2) {
             ctx.textAlign = 'center';
             ctx.fillStyle = 'white';
             ctx.fillText(Math.round(requestInfo.percent) + '%', ctx.canvas.width / 2, ctx.canvas.height / 2 + 300);
+
+            //Preload loading video
+            ResourceManager.loadResource(define.IMG_PATH + 'loading_video.mp4');
         }
 
         load() {
