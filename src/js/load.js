@@ -31,11 +31,11 @@ let _isRecordMode = false;
         "Framework/TouchManager.js",
         "Framework/GameMainMenu.js",
         "Framework/Audio.js",
-        "Framework/Box2dWeb-2.1.a.3.js",
-        "Framework/Box2D.js",
-        "Framework/circleComponent.js",
-        "Framework/polygonComponent.js",
-        "Framework/squareComponent.js",
+        //"Framework/Box2dWeb-2.1.a.3.js",
+        //"Framework/Box2D.js",
+        //"Framework/circleComponent.js",
+        //"Framework/polygonComponent.js",
+        //"Framework/squareComponent.js",
         "Framework/triangleComponent.js",
 
         //Game Component
