@@ -3,8 +3,12 @@
     const GAME_COMPONENT=[
         'define.js',
         'Utils.js',
+        'Rectangle.js',
 
         'BmpInfo.js',
+        'Interaction.js',
+        'Body.js',
+        'Frame.js',
         'GameObject.js',
         'GameObjectPool.js',
 

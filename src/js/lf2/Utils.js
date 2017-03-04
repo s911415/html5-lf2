@@ -23,6 +23,9 @@ var lf2 = (function (lf2) {
             };
             let data = new Map();
             let pairs = str.match(/([^ ]+):\s+?[^ ]+/g);
+            if (!pairs) {
+                throw new TypeError('Cannot parse line: ' + str);
+            }
             for (let i = 0, j = pairs.length; i < j; i++) {
                 let keyValue = splitKeyValue(pairs[i]);
 
