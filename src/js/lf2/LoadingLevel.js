@@ -46,9 +46,9 @@ var lf2 = (function (lf2) {
 
         initializeProgressResource() {
             super.initializeProgressResource();
-            if(this.html) return;
+            if (this.html) return;
 
-            this.html="";
+            this.html = "";
 
             ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
                 return data.text();
@@ -107,7 +107,7 @@ var lf2 = (function (lf2) {
                 });
             }).then((a, b) => {
                 console.log("loading data and image done");
-                console.log(GameObjectPool.get(52).bmpInfo);
+                console.log(GameObjectPool.get(52));
                 this.allDone = true;
             });
         }
