@@ -72,16 +72,16 @@ String.prototype.getStringBetween = function (startString, endString, fromIndex)
     if (fromIndex === undefined) fromIndex = 0;
 
     let startIndex = this.indexOf(startString, fromIndex);
-    let endString = this.indexOf(endString, startIndex);
+    let endIndex = this.indexOf(endString, startIndex);
 
     if (startIndex === -1) return "";
 
-    if (endString === -1) return this.substr(startIndex);
+    if (endIndex === -1) return this.substr(startIndex);
 
     //Remove Starting String
     startIndex += startString.length;
 
-    return this.substring(startIndex, endString);
+    return this.substring(startIndex, endIndex);
 };
 
 /**

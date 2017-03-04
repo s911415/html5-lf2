@@ -27,16 +27,19 @@ var lf2 = (function (lf2) {
             this._data = new Map();
             this._bmpLoad = [];
 
-            context.lines().forEach((str) => {
+            this.source.lines().forEach((str) => {
+                str = str.trim();
+                if (str.length == 0) return;
+
                 //圖片資訊
                 if (str.startsWith('file(')) {
                     this._bmpLoad.push(this._processImage(str));
-                } else if(str.indexOf(':')!==-1) {
-                    let d=Utils.parseDataLine(str);
-                    d.forEach((value, key, map)=>{
+                } else if (str.indexOf(':') !== -1) {
+                    let d = Utils.parseDataLine(str);
+                    d.forEach((value, key, map) => {
                         this._data.set(key, value);
                     });
-                }else{
+                } else {
                     let d = str.split(/\s+/);
                     this._data.set(d[0].trim(), parseFloat(d[1]));
                 }
@@ -63,7 +66,8 @@ var lf2 = (function (lf2) {
 
             return ResourceManager.loadImage({
                 url: define.IMG_PATH + pairContent.get(key)
-            }).then((img) => {
+            }).then((resp) => {
+                const img = resp.response;
                 let c = document.createElement('canvas');
                 c.width = img.width * 2;
                 c.height = img.height;
@@ -72,7 +76,6 @@ var lf2 = (function (lf2) {
                 g.drawImage(img, 0, 0);
 
                 //Mirror image
-                g.translate(img.width, c.height / 2);
                 g.scale(-1, 1);
 
                 g.drawImage(img, 0, 0);

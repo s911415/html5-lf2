@@ -14,7 +14,7 @@ var lf2 = (function (lf2) {
         /**
          * Add value to this pool
          * @param {Number} key
-         * @param {Object} value
+         * @param {lf2.GameObject} value
          *
          * @returns {GameObjectPool}
          */

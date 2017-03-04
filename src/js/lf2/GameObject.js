@@ -1,5 +1,11 @@
 "use strict";
 var lf2 = (function (lf2) {
+
+    /**
+     * @type {BmpInfo}
+     */
+    const BmpInfo = lf2.BmpInfo;
+
     /**
      * GameObject
      *
@@ -17,10 +23,18 @@ var lf2 = (function (lf2) {
             this.fileInfo = fileInfo;
             this.sourceCode = context;
 
-            this.bmpInfo;
+            this.bmpInfo = new BmpInfo(context);
             this.frames=[];
         }
 
+        /**
+         *
+         * @returns {Promise.<*>}
+         */
+        done(){
+            let arr = [].concat(this.bmpInfo._bmpLoad);
+            return Promise.all(arr);
+        }
 
         static _parseFrames(context){
 

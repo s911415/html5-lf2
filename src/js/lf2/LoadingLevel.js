@@ -16,6 +16,12 @@ var lf2 = (function (lf2) {
      * @type {GameObjectPool}
      */
     const GameObjectPool = lf2.GameObjectPool;
+
+    /**
+     * @type {GameObject}
+     */
+    const GameObject = lf2.GameObject;
+
     /**
      * Loading Level
      *
@@ -37,25 +43,36 @@ var lf2 = (function (lf2) {
                     ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
                         return data.json();
                     }).then((data) => {
+                        console.log('Load data list done.');
+
                         const objs = data.object, bgs = data.background;
 
                         objs.forEach((o) => {
                             this.promiseList.push(
-                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
-                                    return data.text();
-                                }).then((datText) => {
-                                    this.objInfo.push(this.parseObj(o, datText));
+                                new Promise((res, rej)=>{
+                                    ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                        return data.text();
+                                    }).then((datText) => {
+                                        let obj = this.parseObj(o, datText);
+                                        if(obj!==null){
+                                            this.objInfo.push(obj);
+
+                                            this.promiseList.push(obj.done());
+                                        }
+                                        res(obj);
+                                    });
                                 })
                             );
                         });
-                        res(objs);
-                    })
+                        //Promise.all(this.promiseList).then(res);
+                    });
                 })
             );
 
 
             Promise.all(this.promiseList).then((a, b) => {
-                console.log("all done");
+                debugger;
+                console.log("loading data done, start reading images");
                 console.log(this.objInfo);
             });
         }
@@ -75,11 +92,19 @@ var lf2 = (function (lf2) {
          * Parse LF@ Object
          * @param {Object} info
          * @param {String} content
-         * @returns {*}
+         * @returns {GameObject|null}
          */
         parseObj(info, content) {
+            debugger;
+            switch(info.type){
+                case 0:
+                    let obj = new GameObject(info, content);
+                    GameObjectPool.set(info.id, obj);
 
-            return content;
+                    return obj;
+                    break;
+            }
+            return null;
         }
     };
 
