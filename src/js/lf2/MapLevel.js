@@ -1,5 +1,5 @@
 "use strict";
-var MapLevel = (function (MapLevel) {
+var lf2 = (function (lf2) {
     const Game = Framework.Game;
     const Sprite = Framework.Sprite;
     const Point = Framework.Point;
@@ -73,5 +73,5 @@ var MapLevel = (function (MapLevel) {
 
     };
 
-    return Sample;
-})(Sample || {});
+    return lf2;
+})(lf2 || {});
