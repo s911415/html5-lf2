@@ -4,7 +4,7 @@
         'define.js',
         'LaunchMenu.js',
         'MySettingLevel.js',
-
+        'MapLevel.js',
         'MainGame.js',
     ];
 
