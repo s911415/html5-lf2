@@ -1,5 +1,6 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const _CONTAINER_ID = "__loading_container";
 
     /**
      * @type {Framework.Game}
@@ -11,6 +12,16 @@ var lf2 = (function (lf2) {
      * @type {Framework.Level}
      */
     const Level = Framework.Level;
+
+    /**
+     * @type {Framework.AnimationSprite}
+     */
+    const AnimationSprite = Framework.AnimationSprite;
+
+    /**
+     * @type {Framework.Point}
+     */
+    const Point = Framework.Point;
 
     /**
      * @type {GameObjectPool}
@@ -31,6 +42,32 @@ var lf2 = (function (lf2) {
     lf2.LoadingLevel = class extends Framework.Level {
         constructor() {
             super();
+        }
+
+        initializeProgressResource() {
+            super.initializeProgressResource();
+            if(this.html) return;
+
+            this.html="";
+
+            ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
+            this.loadingImg = ResourceManager.loadResource(define.IMG_PATH + 'loading_video.mp4');
+        }
+
+        loadingProgress(context, requestInfo) {
+            if (this.html !== "" && !this._loadingContainer) {
+                this._loadingContainer = $(this.html);
+                this._loadingContainer.attr("id", _CONTAINER_ID);
+                this._loadingContainer.find("#loadProcess").attr('src', define.IMG_PATH + 'loading_video.mp4');
+            }
+            if (!this._attached && this._loadingContainer) {
+                $("body").append(this._loadingContainer);
+                this._attached = true;
+            }
         }
 
         load() {
@@ -77,7 +114,7 @@ var lf2 = (function (lf2) {
 
         update() {
             if (this.allDone) {
-                Game.goToLevel('menu');
+                //Game.goToLevel('menu');
             }
         }
 

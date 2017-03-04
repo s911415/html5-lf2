@@ -48,6 +48,7 @@ body {
     margin: auto;
     position: relative;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .menu_1 {
@@ -66,12 +67,13 @@ body {
     background-repeat: no-repeat;
 }
 
-#__main_menu, #__setting_container {
+#__main_menu, #__setting_container, #__loading_container {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 2;
     background: #000;
+    pointer-events: none;
 }
 
 #logo {
@@ -196,6 +198,11 @@ body {
 #__setting_container .action_bar .btn.btn_ok:hover {
     background-position: -489px -426px;
 }
+
 #__setting_container .action_bar .btn.btn_cancel:hover {
     background-position: -643px -426px;
+}
+
+.allow-mouse{
+    pointer-events: auto;
 }
