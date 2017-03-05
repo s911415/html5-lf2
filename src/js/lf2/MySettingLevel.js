@@ -59,59 +59,20 @@ var lf2 = (function (lf2) {
                 return data.text();
             }).then((html) => {
                 this.html = html;
+                this.showSettingMenu();
             });
 
         }
 
         initialize() {
-            $("#" + _SETTING_CONTAINER_ID).remove();
         }
 
         update() {
             super.update();
-
-            if (this.html !== "" && !this._settingContainer) {
-                this._settingContainer = $(this.html);
-                this._settingContainer.attr("id", _SETTING_CONTAINER_ID);
-
-                this._settingContainer.bind('mousedown', function (e) {
-                    setCur(null);
-                });
-
-                this._settingContainer.find(".btn_ok").click((e) => {
-                    this.audio.play({name: 'ok'});
-                    this.saveConfig();
-                    Game.goToLevel('menu');
-                });
-
-                this._settingContainer.find(".btn_cancel").click((e) => {
-                    this.audio.play({name: 'cancel'});
-                    Game.goToLevel('menu');
-                });
-                this.forceDraw();
-            }
         }
 
         draw(parentCtx) {
             super.draw(parentCtx);
-
-            if (!this._attached) {
-                let playerElement = this._settingContainer.find(".player:first");
-                let playerContainer = this._settingContainer.find(".players");
-
-                for (let i = 0; i < define.PLAYER_COUNT; i++) {
-                    this.players[i] = playerElement.clone();
-                    this.players[i].attr('data-player', i);
-                    this.bindPlayerEvent(this.players[i]);
-                    playerContainer.append(this.players[i]);
-                }
-
-                playerElement.remove();
-                $("body").append(this._settingContainer);
-                this._attached = true;
-                Game.resizeEvent();
-            }
-
 
             const KEY_CLASS = ["UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "JUMP", "DEFEND"];
             //refresh key
@@ -135,7 +96,7 @@ var lf2 = (function (lf2) {
             let playerId = curElement.parent().data('player');
 
             if (curElement.length > 0) {
-                const ce=curElement[0];
+                const ce = curElement[0];
                 if (ce.classList.contains('keys')) {
                     let key = curElement.data('key');
                     this.config[playerId][key] = oriE.keyCode;
@@ -147,14 +108,55 @@ var lf2 = (function (lf2) {
 
         }
 
+        showSettingMenu() {
+            if (!this.isCurrentLevel) return;
+            if (this.html !== "" && !this._settingContainer) {
+                $("#" + _SETTING_CONTAINER_ID).remove();
+
+                this._settingContainer = $(this.html);
+                this._settingContainer.attr("id", _SETTING_CONTAINER_ID);
+
+                this._settingContainer.bind('mousedown', function (e) {
+                    setCur(null);
+                });
+
+                this._settingContainer.find(".btn_ok").click((e) => {
+                    this.audio.play({name: 'ok'});
+                    this.saveConfig();
+                    Game.goToLevel('menu');
+                });
+
+                this._settingContainer.find(".btn_cancel").click((e) => {
+                    this.audio.play({name: 'cancel'});
+                    Game.goToLevel('menu');
+                });
+                this.forceDraw();
+
+                let playerElement = this._settingContainer.find(".player:first");
+                let playerContainer = this._settingContainer.find(".players");
+
+                for (let i = 0; i < define.PLAYER_COUNT; i++) {
+                    this.players[i] = playerElement.clone();
+                    this.players[i].attr('data-player', i);
+                    this.bindPlayerEvent(this.players[i]);
+                    playerContainer.append(this.players[i]);
+                }
+
+                playerElement.remove();
+                $("body").append(this._settingContainer);
+                this._attached = true;
+                Game.resizeEvent();
+            }
+        }
+
         bindPlayerEvent(playerElement) {
-            const _this=this;
+            const _this = this;
             playerElement.find(".name").bind('keydown', function (e) {
                 e.stopImmediatePropagation();
             }).bind('mousedown', function (e) {
                 setCur(e.target);
                 e.stopImmediatePropagation();
-            }).bind('keyup', function(e){
+            }).bind('keyup', function (e) {
                 let playerId = $(this.parentNode).data('player');
                 _this.config[playerId]['NAME'] = this.value;
             });
@@ -172,13 +174,14 @@ var lf2 = (function (lf2) {
         autodelete() {
             if (this._settingContainer) {
                 this._settingContainer.remove();
+                this._settingContainer = undefined;
             }
         }
 
         /**
          * Store config into local storage
          */
-        saveConfig(){
+        saveConfig() {
             localStorage.setItem(define.KEYBOARD_CONFIG_KEY, JSON.stringify(this.config));
         }
     };
