@@ -17,6 +17,8 @@
         'Character.js',
         'Ball.js',
 
+        'Player.js',
+
         'LaunchMenu.js',
         'MySettingLevel.js',
         'LoadingLevel.js',

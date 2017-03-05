@@ -133,6 +133,16 @@ var Framework = (function (Framework) {
 
         }
 
+        /**
+         * 接收傳遞的資料
+         *
+         * @abstract
+         * @param extraData
+         */
+        receiveExtraDataWhenLevelStart(extraData){
+
+        }
+
          /**
           * Count average.
           *

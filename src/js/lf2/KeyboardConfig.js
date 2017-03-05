@@ -39,6 +39,7 @@ var lf2 = (function (lf2) {
     };
     Object.freeze(HIT_KEY);
 
+    let keyConfig = undefined;
 
     /**
      * Custom class
@@ -49,28 +50,28 @@ var lf2 = (function (lf2) {
     lf2.KeyboardConfig = class KeyboardConfig {
         /**
          *
-         * @param {lf2.Rectangle} rect
-         * @param {Image} imgObj
+         * @param {Number} playerId
          */
-        constructor(rect, imgObj) {
-            this._img = imgObj;
-            this._rect = rect;
+        constructor(playerId) {
+            if (playerId < 0 || playerId >= define.PLAYER_COUNT) throw new RangeError(`Player Id (${playerId}) Out of range`);
+
+            this.playerId = playerId;
+            this.config = lf2.KeyboardConfig.getKeyConfig()[playerId];
         }
 
         /**
-         * Get Image object
-         * @returns {Image}
+         * Get Key config
+         * @returns {Array}
          */
-        get img() {
-            return this._img;
-        }
+        static getKeyConfig() {
+            if (keyConfig === undefined) {
+                /**
+                 * @type {Array}
+                 */
+                keyConfig = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY));
+            }
 
-        /**
-         * Get Rect Object
-         * @returns {lf2.Rectangle}
-         */
-        get rect() {
-            return this._rect;
+            return keyConfig;
         }
     };
 
