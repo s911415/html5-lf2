@@ -3,6 +3,8 @@
     const BASE_PATH = "./";
 
     window.define = {
+        DEBUG: true,
+
         BASE_PATH: BASE_PATH,
         DATA_PATH:BASE_PATH + "data/",
         IMG_PATH:BASE_PATH + "image/",

@@ -18,7 +18,7 @@ var Framework = (function (Framework) {
             this.relativeRotation = 0;
             this.relativeScale = 1;
 
-            this.absolutePosition = {x: 0, y: 0};
+            this.absolutePosition = new Point(0, 0);
             this.absoluteRotation = 0;
             this.absoluteScale = 1;
             this.systemLayer = 1;

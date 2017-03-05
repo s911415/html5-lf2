@@ -19,26 +19,33 @@ var lf2 = (function (lf2) {
      *
      * @type {GameItem}
      * @class lf2.GameItem
+     * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
      */
-    lf2.GameItem = class GameItem {
+    lf2.GameItem = class GameItem extends Framework.GameObject {
         /**
          *
          * @param charId ID of character
          */
         constructor(charId) {
+            super();
             this.obj = GameObjectPool.get(charId);
 
             /**
              * 物件的中下座標
              */
             this.position = new Point3D(0, 0, 0);
+            this.absolutePosition = new Point3D(0, 0, 0);
+            this.relativePosition = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
             this._lastFrameDrawTime = -1;
             this._config = Framework.Config;
             this._frameInterval = (1e3 / this._config.fps);
             this._direction = DIRECTION.RIGHT;
+            this.isDrawBoundry = define.DEBUG;
+
+            this.pushSelfToLevel();
         }
 
         /**
@@ -46,7 +53,7 @@ var lf2 = (function (lf2) {
          * @returns {lf2.Frame}
          */
         get currentFrame() {
-            return this.frames[this._currentFrameIndex];
+            return this.obj.frames[this._currentFrameIndex];
         }
 
         /**
@@ -107,10 +114,18 @@ var lf2 = (function (lf2) {
             ctx.drawImage(
                 imgInfo.img,
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
-                imgInfo.rect.width, imgInfo.rect.position.height,
+                imgInfo.rect.width, imgInfo.rect.height,
                 leftTopPoint.x, leftTopPoint.y,
-                imgInfo.rect.width, imgInfo.rect.position.height
+                imgInfo.rect.width, imgInfo.rect.height
             );
+            if (this.isDrawBoundry) {
+                ctx.strokeStyle = "#FF00FF";
+                ctx.strokeRect(
+                    leftTopPoint.x, leftTopPoint.y,
+                    imgInfo.rect.width, imgInfo.rect.height
+                );
+            }
+
             this._lastFrameDrawTime = Date.now();
         }
 
@@ -122,16 +137,11 @@ var lf2 = (function (lf2) {
         }
 
         _getNextFrameId() {
-            let next = this.currentFrame.next;
+            let next = this.currentFrame.nextFrameId;
             if (next == 0) return this.currentFrame.id;
             if (next == 999) return 0;
 
             return next;
-        }
-
-        get isObjectChanged() {
-            //TODO: need implement
-            return true;
         }
 
 

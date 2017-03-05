@@ -273,7 +273,7 @@ var Framework = (function (Framework) {
                     rect.height = ctx.canvas.height;
                     this._firstDraw = false;
                 }
-
+                
                 ctx.rect(rect.x, rect.y, rect.width, rect.height);
                 ctx.clip();
 

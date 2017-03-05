@@ -32,16 +32,18 @@ var lf2 = (function (lf2) {
                 mapId: extraData.mapId,
             };
 
-            for(let playerId in this.config.players){
+            for (let playerId in extraData.players) {
                 this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
             }
         }
 
         load() {
             //attach player's character
-            debugger;
-            this.config.players.forEach((player)=>{
+            this.config.players.forEach((player) => {
                 this.rootScene.attach(player.character);
+
+                //TODO: debug use
+                player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight, 0);
             });
         }
 

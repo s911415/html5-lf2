@@ -93,7 +93,11 @@ var lf2 = (function (lf2) {
             return intval(this.data.get('wait') || 0);
         }
 
-        get nextFrame(){
+        /**
+         * Get Next frame id
+         * @returns {Number}
+         */
+        get nextFrameId(){
             return intval(this.data.get('next') || 0);
         }
 
