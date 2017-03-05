@@ -10,7 +10,7 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.Rectangle} rect
-         * @param {ImageData} imgObj
+         * @param {Image} imgObj
          */
         constructor(rect, imgObj) {
             this._img = imgObj;
@@ -18,8 +18,8 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Get ImageData object
-         * @returns {ImageData}
+         * Get Image object
+         * @returns {Image}
          */
         get img() {
             return this._img;

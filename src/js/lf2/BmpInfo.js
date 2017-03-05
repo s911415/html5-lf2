@@ -16,9 +16,8 @@ var lf2 = (function (lf2) {
      *
      * @type {BmpInfo}
      * @class lf2.BmpInfo
-     * @implements Framework.AttachableInterface
      */
-    lf2.BmpInfo = class {
+    lf2.BmpInfo = class BmpInfo{
         /**
          *
          * @param {String} context
@@ -95,9 +94,13 @@ var lf2 = (function (lf2) {
 
                     let i = startIndex;
                     let j = startIndex;
-                    let imgObj = renderContext.getImageData(0, 0, canvas.width, canvas.height);
+                    const imgObj = new Image();
 
-                    //切割圖片開始
+                    canvas.toBlob(function (b) {
+                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                        resolve();
+                    }, 'image/webp', 1);
+
                     for (let r = 0; r < row; r++) {
                         const _y = r * (height + 1);
                         //Save Normal image
@@ -124,15 +127,6 @@ var lf2 = (function (lf2) {
                             j++;
                         }
                     }
-                    //切割圖片結束
-                    resolve();
-
-                    //imgObj.src = canvas.toDataURL('image/webp', 1);
-                    /*
-                    canvas.toBlob(function (b) {
-                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
-                    }, 'image/webp', 1);
-                    */
                 });
             });
         }

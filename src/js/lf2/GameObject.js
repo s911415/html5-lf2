@@ -16,7 +16,7 @@ var lf2 = (function (lf2) {
      *
      * @class lf2.GameObject
      */
-    lf2.GameObject = class {
+    lf2.GameObject = class GameObject{
         /**
          *
          * @param {Object} fileInfo

@@ -76,19 +76,20 @@ var lf2 = (function (lf2) {
                 }).then((data) => {
                     console.log('Load data list done.');
 
-                    const objs = data.object, bgs = data.background;
+                    const objs = data.object, bgs = data.background, $=this;
 
-                    objs.forEach((o) => {
-                        this.promiseList.push(
+                    objs.forEach(function(o){
+                        const _o = o;
+                        $.promiseList.push(
                             new Promise((res, rej) => {
-                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
-                                    let obj = this.parseObj(o, datText);
+                                    const obj = $.parseObj(_o, datText);
                                     if (obj instanceof GameObject) {
-                                        this.objInfo.push(obj);
+                                        $.objInfo.push(obj);
 
-                                        this.promiseList.push(
+                                        $.promiseList.push(
                                             obj.done().then(res)
                                         );
                                     } else {
