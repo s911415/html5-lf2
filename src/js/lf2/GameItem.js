@@ -152,11 +152,13 @@ var lf2 = (function (lf2) {
             leftTopPoint.y -= this.position.z;
 
 
+            /*
             console.log([
                 this._currentFrameIndex,
                 imgInfo.img.src,
                 imgInfo.rect,
                 leftTopPoint]);
+            */
 
             ctx.drawImage(
                 imgInfo.img,
