@@ -54,17 +54,15 @@ var lf2 = (function (lf2) {
                 return data.text();
             }).then((html) => {
                 this.html = html;
+                this.showLoadingVideo();
             });
-            this.loadingImg = ResourceManager.loadResource(define.IMG_PATH + 'loading_video.mp4');
+            this.loadingImg = ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
         }
 
         loadingProgress(context, requestInfo) {
-            this.showLoadingVideo();
         }
 
         load() {
-            this.showLoadingVideo();
-
             this.allDone = false;
             this.promiseList = [];
             this.objInfo = [];
@@ -136,15 +134,33 @@ var lf2 = (function (lf2) {
         }
 
         showLoadingVideo() {
+            if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._loadingContainer) {
+                $("#" + _CONTAINER_ID).remove();
+
                 this._loadingContainer = $(this.html);
                 this._loadingContainer.attr("id", _CONTAINER_ID);
-                this._loadingContainer.find("#loadProcess").attr('src', define.IMG_PATH + 'loading_video.mp4');
+                this._loadingContainer.find("#loadProcess").attr('src', lf2.LoadingLevel.LOADING_RESOURCE_SRC);
             }
             if (!this._attached && this._loadingContainer) {
                 $("body").append(this._loadingContainer);
                 this._attached = true;
             }
+        }
+
+        autodelete() {
+            if (this._loadingContainer) {
+                this._loadingContainer.remove();
+                this._loadingContainer = undefined;
+            }
+        }
+
+        /**
+         *
+         * @type {string}
+         */
+        static get LOADING_RESOURCE_SRC() {
+            return define.IMG_PATH + 'loading_video.webm';
         }
     };
 

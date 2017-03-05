@@ -492,6 +492,10 @@ var Framework = (function (Framework) {
             this.rootScene.attachArray.length = 0;
             this._teardown();
         }
+
+        get isCurrentLevel(){
+            return Framework.Game._currentLevel==this;
+        }
     };
 
     Object.defineProperty(Framework.Level.prototype, 'canvasChanged', {
