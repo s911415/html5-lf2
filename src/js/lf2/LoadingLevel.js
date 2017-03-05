@@ -32,6 +32,8 @@ var lf2 = (function (lf2) {
      * @type {GameObject}
      */
     const GameObject = lf2.GameObject;
+    const Character = lf2.Character;
+    const Ball = lf2.Ball;
 
     /**
      * Loading Level
@@ -82,7 +84,7 @@ var lf2 = (function (lf2) {
                                     return data.text();
                                 }).then((datText) => {
                                     let obj = this.parseObj(o, datText);
-                                    if (obj !== null) {
+                                    if (obj instanceof GameObject) {
                                         this.objInfo.push(obj);
 
                                         this.promiseList.push(
@@ -119,18 +121,21 @@ var lf2 = (function (lf2) {
          * Parse LF@ Object
          * @param {Object} info
          * @param {String} content
-         * @returns {GameObject|null}
+         * @returns {GameObject|undefined}
          */
         parseObj(info, content) {
+            let obj = undefined;
             switch (info.type) {
                 case 0:
-                    let obj = new GameObject(info, content);
+                    obj = new Character(info, content);
                     GameObjectPool.set(info.id, obj);
-
-                    return obj;
+                    break;
+                case 3:
+                    obj = new Ball(info, content);
+                    GameObjectPool.set(info.id, obj);
                     break;
             }
-            return null;
+            return obj;
         }
 
         showLoadingVideo() {

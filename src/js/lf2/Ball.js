@@ -5,13 +5,14 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     /**
-     * Character
+     * Ball
      *
-     * @type {Character}
-     * @class lf2.Character
+     * @type {Ball}
+     * @class lf2.Ball
      * @extends lf2.GameObject
      */
-    lf2.Character = class extends GameObject{
+    lf2.Ball = class extends GameObject{
+
         /**
          *
          * @param {Object} fileInfo

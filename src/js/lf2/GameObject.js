@@ -30,6 +30,7 @@ var lf2 = (function (lf2) {
 
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
+            this._currentFrameIndex = 0;
         }
 
         /**
@@ -40,6 +41,14 @@ var lf2 = (function (lf2) {
         done() {
             let arr = [].concat(this.bmpInfo._bmpLoad);
             return Promise.all(arr);
+        }
+
+        /**
+         * Get current frame
+         * @returns {Frame}
+         */
+        get currentFrame() {
+            return this.frames[this._currentFrameIndex];
         }
 
         /**

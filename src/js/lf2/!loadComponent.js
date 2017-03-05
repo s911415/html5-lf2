@@ -12,6 +12,8 @@
         'Frame.js',
         'GameObject.js',
         'GameObjectPool.js',
+        'Character.js',
+        'Ball.js',
 
         'LaunchMenu.js',
         'MySettingLevel.js',
