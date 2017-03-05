@@ -71,29 +71,34 @@ var lf2 = (function (lf2) {
                 row = parseInt(pairContent.get('row'), 10),
                 col = parseInt(pairContent.get('col'), 10);
 
-            return new Promise((s, e) => {
+            return new Promise((resolve, reject) => {
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + pairContent.get(key)
                 }).then((resp) => {
                     const img = resp.response;
-                    let c = document.createElement('canvas');
-                    c.width = img.width * 2;
-                    c.height = img.height;
-                    let g = c.getContext('2d');
+                    let canvas = document.createElement('canvas');
+                    canvas.width = img.width * 2;
+                    canvas.height = img.height;
+                    let renderContext = canvas.getContext('2d');
 
-                    g.save();
-                    g.drawImage(img, 0, 0);
+                    renderContext.save();
+                    renderContext.drawImage(img, 0, 0);
 
                     //Mirror image
-                    g.translate(c.width, 0);
-                    g.scale(-1, 1);
-                    g.drawImage(img, 0, 0);
+                    renderContext.translate(canvas.width, 0);
+                    renderContext.scale(-1, 1);
+                    renderContext.drawImage(img, 0, 0);
 
-                    g.restore();
+                    renderContext.restore();
 
                     let i = startIndex;
                     let j = startIndex;
                     let imgObj = new Image();
+
+                    canvas.toBlob(function (b) {
+                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                        resolve();
+                    }, 'image/webp', 1);
 
                     for (let r = 0; r < row; r++) {
                         const _y = r * height;
@@ -121,11 +126,6 @@ var lf2 = (function (lf2) {
                             j++;
                         }
                     }
-
-                    c.toBlob(function (b) {
-                        imgObj.src = URL.createObjectURL(b);
-                        s();
-                    }, 'image/webp', 1);
                 });
             });
         }
