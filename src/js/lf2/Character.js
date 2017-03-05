@@ -20,9 +20,8 @@ var lf2 = (function (lf2) {
          * @param charId ID of character
          */
         constructor(charId) {
-            this.obj = GameObjectPool.get(charId);
+            super(charId);
         }
-
     };
 
 

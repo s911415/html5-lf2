@@ -11,6 +11,8 @@
         PLAYER_COUNT: 2,
         KEYBOARD_CONFIG_KEY: "keyConfig",
 
+        LOADING_MIN_TIME: 3 * 1000,
+
     };
 
     Object.freeze(window.define);

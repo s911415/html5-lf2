@@ -21,7 +21,7 @@ var lf2 = (function (lf2) {
      * @class lf2.GameItem
      * @implements Framework.AttachableInterface
      */
-    lf2.GameItem = class GameItem extends Framework.AttachableInterface {
+    lf2.GameItem = class GameItem {
         /**
          *
          * @param charId ID of character
@@ -96,6 +96,7 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
+            console.log('Draw GameItem');
             const imgInfo = this.ImgInfo;
             let leftTopPoint = new Point(
                 this.position.x - imgInfo.rect.width / 2,

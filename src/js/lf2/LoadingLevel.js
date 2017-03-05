@@ -66,6 +66,7 @@ var lf2 = (function (lf2) {
 
         load() {
             this.allDone = false;
+            this._startLoadingTime = Date.now();
             this.promiseList = [];
             this.objInfo = [];
             this.bgInfo = [];
@@ -107,8 +108,15 @@ var lf2 = (function (lf2) {
         }
 
         update() {
-            if (this.allDone) {
-                //Game.goToLevel('menu');
+            if (this.allDone && (Date.now() - this._startLoadingTime) >= define.LOADING_MIN_TIME) {
+                //TODO: NEED CHANGE
+                Game.goToLevel('fight', {
+                    players: [
+                        {charId: 51},
+                    ],
+                    mapId: 0,
+
+                });
             }
         }
 
@@ -156,6 +164,7 @@ var lf2 = (function (lf2) {
             if (!this._attached && this._loadingContainer) {
                 $("body").append(this._loadingContainer);
                 this._attached = true;
+                this._startLoadingTime = Date.now();
             }
         }
 

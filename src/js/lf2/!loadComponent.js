@@ -22,8 +22,9 @@
         'LaunchMenu.js',
         'MySettingLevel.js',
         'LoadingLevel.js',
+        'FightLevel.js',
 
-        'MainGame.js',
+        '!MainGame.js',
     ];
 
     LoadScriptInSequence.call(document.currentScript, GAME_COMPONENT);

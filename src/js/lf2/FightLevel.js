@@ -7,13 +7,15 @@ var lf2 = (function (lf2) {
     const Practice = lf2.Practice;
     const GameMap = lf2.GameMap;
     const Fighter = lf2.Fighter;
+    const KeyboardConfig = lf2.KeyboardConfig;
+    const Player = lf2.Player;
     /**
      * @class lf2.FightLevel
      * @extends {Framework.Level}
      * @implements Framework.MouseEventInterface
      * @implements Framework.KeyboardEventInterface
      */
-    lf2.FightLevel = class extends Framework.Level {
+    lf2.FightLevel = class FightLevel extends Framework.Level {
         constructor() {
             super();
         }
@@ -24,22 +26,30 @@ var lf2 = (function (lf2) {
          * @override
          * @param extraData
          */
-        receiveExtraDataWhenLevelStart(extraData){
+        receiveExtraDataWhenLevelStart(extraData) {
+            this.config = {
+                players: [],
+                mapId: extraData.mapId,
+            };
 
+            for(let playerId in this.config.players){
+                this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
+            }
         }
 
         load() {
-
+            //attach player's character
+            debugger;
+            this.config.players.forEach((player)=>{
+                this.rootScene.attach(player.character);
+            });
         }
 
         initialize() {
-
-
         }
 
         update() {
             super.update();
-
         }
 
         draw(parentCtx) {
@@ -51,6 +61,7 @@ var lf2 = (function (lf2) {
             super.keydown(e);
 
         }
+
         click(e) {
 
         }
