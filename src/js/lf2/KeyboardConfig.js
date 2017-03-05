@@ -39,6 +39,20 @@ var lf2 = (function (lf2) {
     };
     Object.freeze(HIT_KEY);
 
+    const DEFAULT_CONFIG = [
+        {
+            NAME: "Player1",
+            UP: 87, DOWN: 83, LEFT: 65, RIGHT: 68,
+            ATTACK: 78, JUMP: 66, DEFEND: 86
+        },
+        {
+            NAME: "Player2",
+            UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
+            ATTACK: 221, JUMP: 219, DEFEND: 80
+        }
+    ];
+    Object.freeze(DEFAULT_CONFIG);
+
     let keyConfig = undefined;
 
     /**
@@ -70,6 +84,7 @@ var lf2 = (function (lf2) {
                  */
                 keyConfig = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY));
             }
+            if (!keyConfig) keyConfig = DEFAULT_CONFIG;
 
             return keyConfig;
         }
@@ -82,6 +97,10 @@ var lf2 = (function (lf2) {
     lf2.KeyboardConfig.prototype.HIT_KEY
         = lf2.KeyboardConfig.HIT_KEY
         = HIT_KEY;
+
+    lf2.KeyboardConfig.prototype.DEFAULT_CONFIG
+        = lf2.KeyboardConfig.DEFAULT_CONFIG
+        = DEFAULT_CONFIG;
 
     return lf2;
 })(lf2 || {});
