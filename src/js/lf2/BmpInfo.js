@@ -67,6 +67,7 @@ var lf2 = (function (lf2) {
                 endIndex = intval(index[1]),
                 width = intval(pairContent.get('w')),
                 height = intval(pairContent.get('h')),
+                $=this,
 
                 //this row and column is difference from matrix, invert it
                 row = intval(pairContent.get('col')),
@@ -94,7 +95,7 @@ var lf2 = (function (lf2) {
 
                     let i = startIndex;
                     let j = startIndex;
-                    let imgObj = new Image();
+                    const imgObj = new Image();
 
                     canvas.toBlob(function (b) {
                         imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
@@ -107,7 +108,7 @@ var lf2 = (function (lf2) {
                         for (let c = 0; c < col; c++) {
                             const _x = c * (width + 1);
                             //this.imageNormal[i] = g.getImageData(_x, _y, width, height);
-                            this.imageNormal[i] = new ImageInformation(
+                            $.imageNormal[i] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
                                 imgObj
                             );
@@ -119,7 +120,7 @@ var lf2 = (function (lf2) {
                         for (let c = 0; c < col; c++) {
                             const _x = canvas.width - c * (width + 1) - (width + 1);
                             //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
-                            this.imageMirror[j] = new ImageInformation(
+                            $.imageMirror[j] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
                                 imgObj
                             );
