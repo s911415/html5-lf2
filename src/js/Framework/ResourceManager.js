@@ -28,7 +28,8 @@ var Framework = (function (Framework) {
         };
 
         var loadImage = function (requestOption) {
-            return new Promise((resolve, reject)=>{
+            if (typeof requestOption.id === "undefined") requestOption.id = requestOption.url;
+            return new Promise((resolve, reject) => {
                 if (_responsedResource[requestOption.id]) {
                     resolve(_responsedResource[requestOption.id]);
                 }
