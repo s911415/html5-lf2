@@ -77,27 +77,37 @@ var lf2 = (function (lf2) {
                     console.log('Load data list done.');
 
                     const objs = data.object, bgs = data.background, $=this;
+                    let loadRes = function*(){
+                        let i=0;
+                        while(i<objs.length){
+                            yield objs[i++];
+                        }
 
-                    objs.forEach(function(o){
-                        const _o = o;
-                        $.promiseList.push(
-                            new Promise((res, rej) => {
-                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
-                                    return data.text();
-                                }).then((datText) => {
-                                    const obj = $.parseObj(_o, datText);
-                                    if (obj instanceof GameObject) {
-                                        $.objInfo.push(obj);
+                        return null;
+                    };
+                    let loadGen = loadRes();
 
-                                        obj.done().then(()=>{res(obj)});
-                                    } else {
-                                        res(obj);
-                                    }
-                                });
-                            })
-                        );
-                    });
-                    Promise.all(this.promiseList).then(()=>{res()});
+                    let load = function(){
+                        let v=loadGen.next();
+                        const _o = v.value;
+                        if(_o===null) {
+                            res();
+                        }else{
+                            ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
+                                return data.text();
+                            }).then((datText) => {
+                                const obj = $.parseObj(_o, datText);
+                                if (obj instanceof GameObject) {
+                                    $.objInfo.push(obj);
+
+                                    obj.done().then(load);
+                                } else {
+                                    load();
+                                }
+                            });
+                        }
+                    };
+                    load();
                 });
             }).then((a, b) => {
                 console.log("loading data and image done");
