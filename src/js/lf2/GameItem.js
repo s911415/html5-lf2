@@ -160,13 +160,11 @@ var lf2 = (function (lf2) {
                 leftTopPoint]);
             */
 
-            ctx.putImageData(
+            ctx.drawImage(
                 imgInfo.img,
-
-                leftTopPoint.x - imgInfo.rect.position.x,
-                leftTopPoint.y - imgInfo.rect.position.y,
-
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
+                imgInfo.rect.width, imgInfo.rect.height,
+                leftTopPoint.x, leftTopPoint.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
