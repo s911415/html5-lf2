@@ -39,10 +39,11 @@ var lf2 = (function (lf2) {
             this.relativePosition = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
-            this._lastFrameDrawTime = -1;
+            this._lastFrameSetTime = -1;
             this._config = Framework.Config;
-            this._frameInterval = (1e3 / this._config.fps);
+            this._frameInterval = (1e3 / 30);
             this._direction = DIRECTION.RIGHT;
+            this._lastFrameId = -1;
             this.isDrawBoundry = define.DEBUG;
 
             this.pushSelfToLevel();
@@ -81,7 +82,7 @@ var lf2 = (function (lf2) {
          */
         update() {
             const now = Date.now();
-            if (now - this._lastFrameDrawTime >= this.currentFrame.wait * this._frameInterval) {
+            if ((now - this._lastFrameSetTime) >= this.currentFrame.wait * this._frameInterval) {
                 this.setFrameById(this._getNextFrameId());
             }
         }
@@ -92,7 +93,9 @@ var lf2 = (function (lf2) {
          */
         setFrameById(frameId) {
             if (!this.obj.frames[frameId]) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
+            this._lastFrameId = this._currentFrameIndex;
             this._currentFrameIndex = frameId;
+            this._lastFrameSetTime = Date.now();
         }
 
         /**
@@ -103,7 +106,6 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
-            console.log('Draw GameItem');
             const imgInfo = this.ImgInfo;
             let leftTopPoint = new Point(
                 this.position.x - imgInfo.rect.width / 2,
@@ -118,6 +120,7 @@ var lf2 = (function (lf2) {
                 leftTopPoint.x, leftTopPoint.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
+
             if (this.isDrawBoundry) {
                 ctx.strokeStyle = "#FF00FF";
                 ctx.strokeRect(
@@ -125,8 +128,6 @@ var lf2 = (function (lf2) {
                     imgInfo.rect.width, imgInfo.rect.height
                 );
             }
-
-            this._lastFrameDrawTime = Date.now();
         }
 
 
@@ -144,6 +145,11 @@ var lf2 = (function (lf2) {
             return next;
         }
 
+        get isObjectChanged() {
+            //TODO: need implement
+            return super.isObjectChanged||
+                this._currentFrameIndex != this._lastFrameId;
+        }
 
     };
 
