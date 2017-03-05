@@ -95,13 +95,9 @@ var lf2 = (function (lf2) {
 
                     let i = startIndex;
                     let j = startIndex;
-                    const imgObj = new Image();
+                    let imgObj = renderContext.getImageData(0, 0, canvas.width, canvas.height);
 
-                    canvas.toBlob(function (b) {
-                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
-                        resolve();
-                    }, 'image/webp', 1);
-
+                    //切割圖片開始
                     for (let r = 0; r < row; r++) {
                         const _y = r * (height + 1);
                         //Save Normal image
@@ -128,6 +124,15 @@ var lf2 = (function (lf2) {
                             j++;
                         }
                     }
+                    //切割圖片結束
+                    resolve();
+
+                    //imgObj.src = canvas.toDataURL('image/webp', 1);
+                    /*
+                    canvas.toBlob(function (b) {
+                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                    }, 'image/webp', 1);
+                    */
                 });
             });
         }
