@@ -12,6 +12,7 @@
         'Frame.js',
         'GameObject.js',
         'GameObjectPool.js',
+        'GameItem.js',
         'Character.js',
         'Ball.js',
 

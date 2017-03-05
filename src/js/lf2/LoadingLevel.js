@@ -125,16 +125,22 @@ var lf2 = (function (lf2) {
          */
         parseObj(info, content) {
             let obj = undefined;
-            switch (info.type) {
-                case 0:
-                    obj = new Character(info, content);
-                    GameObjectPool.set(info.id, obj);
-                    break;
-                case 3:
-                    obj = new Ball(info, content);
-                    GameObjectPool.set(info.id, obj);
-                    break;
-            }
+            obj = new GameObject(info, content);
+            GameObjectPool.set(info.id, obj);
+
+            /*
+             switch (info.type) {
+             case 0:
+             obj = new Character(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+             case 3:
+             obj = new Ball(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+
+             }
+             */
             return obj;
         }
 

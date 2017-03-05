@@ -16,7 +16,6 @@ var lf2 = (function (lf2) {
      *
      * @type {GameObject}
      * @class lf2.GameObject
-     * @implements Framework.AttachableInterface
      */
     lf2.GameObject = class {
         /**
@@ -30,7 +29,7 @@ var lf2 = (function (lf2) {
 
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
-            this._currentFrameIndex = 0;
+
         }
 
         /**
