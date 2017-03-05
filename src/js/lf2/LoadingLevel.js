@@ -79,12 +79,13 @@ var lf2 = (function (lf2) {
                     const objs = data.object, bgs = data.background;
 
                     objs.forEach((o) => {
+                        const _o = o;
                         this.promiseList.push(
                             new Promise((res, rej) => {
-                                ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
+                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
-                                    let obj = this.parseObj(o, datText);
+                                    const obj = this.parseObj(_o, datText);
                                     if (obj instanceof GameObject) {
                                         this.objInfo.push(obj);
 

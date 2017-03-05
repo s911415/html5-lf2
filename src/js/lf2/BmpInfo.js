@@ -16,9 +16,8 @@ var lf2 = (function (lf2) {
      *
      * @type {BmpInfo}
      * @class lf2.BmpInfo
-     * @implements Framework.AttachableInterface
      */
-    lf2.BmpInfo = class {
+    lf2.BmpInfo = class BmpInfo{
         /**
          *
          * @param {String} context
