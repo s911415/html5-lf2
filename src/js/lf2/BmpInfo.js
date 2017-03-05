@@ -7,6 +7,7 @@ var lf2 = (function (lf2) {
 
     const ResourceManager = Framework.ResourceManager;
     const Utils = lf2.Utils;
+    const Rectangle = lf2.Rectangle;
 
     /**
      * BmpInfo
@@ -83,18 +84,27 @@ var lf2 = (function (lf2) {
                 //Mirror image
                 g.translate(c.width, 0);
                 g.scale(-1, 1);
-                g.restore();
-
                 g.drawImage(img, 0, 0);
+
+                g.restore();
 
                 let i = startIndex;
                 let j = startIndex;
+                let imgObj = new Image();
+                c.toBlob(function (b) {
+                    imgObj.src = URL.createObjectURL(b);
+                });
+
                 for (let r = 0; r < row; r++) {
                     const _y = r * height;
                     //Save Normal image
                     for (let c = 0; c < col; c++) {
                         const _x = c * width;
-                        this.imageNormal[i] = g.getImageData(_x, _y, width, height);
+                        //this.imageNormal[i] = g.getImageData(_x, _y, width, height);
+                        this.imageNormal[i] = {
+                            rect: new Rectangle(width, height, _x, _y),
+                            img: imgObj
+                        };
 
                         i++;
                     }
@@ -102,7 +112,12 @@ var lf2 = (function (lf2) {
                     //Save Mirror image
                     for (let c = 0; c < col; c++) {
                         const _x = width2 - c * width - width;
-                        this.imageMirror[j] = g.getImageData(_x, _y, width, height);
+                        //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
+                        this.imageMirror[i] = {
+                            rect: new Rectangle(width, height, _x, _y),
+                            img: imgObj
+                        };
+
                         j++;
                     }
                 }
