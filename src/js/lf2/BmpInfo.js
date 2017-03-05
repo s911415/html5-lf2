@@ -118,7 +118,7 @@ var lf2 = (function (lf2) {
                         for (let c = 0; c < col; c++) {
                             const _x = width2 - c * width - width;
                             //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
-                            this.imageMirror[i] = new ImageInformation(
+                            this.imageMirror[j] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
                                 imgObj
                             );

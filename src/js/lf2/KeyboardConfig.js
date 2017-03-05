@@ -75,11 +75,11 @@ var lf2 = (function (lf2) {
     };
 
     lf2.KeyboardConfig.prototype.KEY_MAP
-        = lf2.KeyboardConfig.prototype.KEY_MAP
+        = lf2.KeyboardConfig.KEY_MAP
         = KEY_MAP;
 
     lf2.KeyboardConfig.prototype.HIT_KEY
-        = lf2.KeyboardConfig.prototype.HIT_KEY
+        = lf2.KeyboardConfig.HIT_KEY
         = HIT_KEY;
 
     return lf2;

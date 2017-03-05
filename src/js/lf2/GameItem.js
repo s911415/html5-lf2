@@ -1,14 +1,19 @@
 "use strict";
 var lf2 = (function (lf2) {
-    /**
-     * @class {Point3D}
-     */
-    const Point = Framework.Point3D;
+    const Point = Framework.Point;
+    const Point3D = Framework.Point3D;
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
+
+    const DIRECTION = {
+        RIGHT: true,
+        LEFT: false,
+    };
+    Object.freeze(DIRECTION);
+
     /**
      * GameItem
      *
@@ -23,17 +28,22 @@ var lf2 = (function (lf2) {
          */
         constructor(charId) {
             this.obj = GameObjectPool.get(charId);
+
+            /**
+             * 物件的中下座標
+             */
             this.position = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
             this._lastFrameDrawTime = -1;
             this._config = Framework.Config;
             this._frameInterval = (1e3 / this._config.fps);
+            this._direction = DIRECTION.RIGHT;
         }
 
         /**
          * Get current frame
-         * @returns {Frame}
+         * @returns {lf2.Frame}
          */
         get currentFrame() {
             return this.frames[this._currentFrameIndex];
@@ -63,7 +73,19 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            //TODO: need implement
+            const now = Date.now();
+            if (now - this._lastFrameDrawTime >= this.currentFrame.wait * this._frameInterval) {
+                this.setFrameById(this._getNextFrameId());
+            }
+        }
+
+        /**
+         *
+         * @param {Number} frameId
+         */
+        setFrameById(frameId) {
+            if (!this.obj.frames[frameId]) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
+            this._currentFrameIndex = frameId;
         }
 
         /**
@@ -74,11 +96,36 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
+            const imgInfo = this.ImgInfo;
+            let leftTopPoint = new Point(
+                this.position.x - imgInfo.rect.width / 2,
+                this.position.y - imgInfo.rect.height
+            );
+            leftTopPoint.y -= this.position.z;
 
+            ctx.drawImage(
+                imgInfo.img,
+                imgInfo.rect.position.x, imgInfo.rect.position.y,
+                imgInfo.rect.width, imgInfo.rect.position.height,
+                leftTopPoint.x, leftTopPoint.y,
+                imgInfo.rect.width, imgInfo.rect.position.height
+            );
+            this._lastFrameDrawTime = Date.now();
         }
 
-        _getNextFrameId(){
+
+        get ImgInfo() {
+            const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
+            const curFrame = this.currentFrame;
+            return imgArray[curFrame.pictureIndex];
+        }
+
+        _getNextFrameId() {
             let next = this.currentFrame.next;
+            if (next == 0) return this.currentFrame.id;
+            if (next == 999) return 0;
+
+            return next;
         }
 
         get isObjectChanged() {
@@ -86,7 +133,10 @@ var lf2 = (function (lf2) {
             return true;
         }
 
+
     };
+
+    lf2.GameItem.prototype.DIRECTION = lf2.GameItem.DIRECTION = DIRECTION;
 
     return lf2;
 })(lf2 || {});

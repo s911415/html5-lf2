@@ -10,6 +10,7 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
+    const KeyboardConfig = lf2.KeyboardConfig;
 
     /**
      * Frame
@@ -41,6 +42,7 @@ var lf2 = (function (lf2) {
 
         /**
          * Get picture index
+         * @property pictureIndex
          * @returns {Number}
          */
         get pictureIndex(){
@@ -108,7 +110,21 @@ var lf2 = (function (lf2) {
         }
 
         get hit(){
+            let ret = {};
+            KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k)=>{
+                ret[k] = intval(this.data.get('hit_' + k) || 0)
+            });
+        }
 
+        /**
+         *
+         * @returns {Framework.Point}
+         */
+        get center(){
+            return new Point(
+                intval(this.data.get('centerx')),
+                intval(this.data.get('centery'))
+            );
         }
     };
 
