@@ -7,6 +7,9 @@ var lf2 = (function (lf2) {
 
     const ResourceManager = Framework.ResourceManager;
     const Utils = lf2.Utils;
+    const Rectangle = lf2.Rectangle;
+    const ImageInformation = lf2.ImageInformation;
+
 
     /**
      * BmpInfo
@@ -68,46 +71,62 @@ var lf2 = (function (lf2) {
                 row = parseInt(pairContent.get('row'), 10),
                 col = parseInt(pairContent.get('col'), 10);
 
-            return ResourceManager.loadImage({
-                url: define.IMG_PATH + pairContent.get(key)
-            }).then((resp) => {
-                const img = resp.response;
-                let c = document.createElement('canvas');
-                c.width = img.width * 2;
-                c.height = img.height;
-                let g = c.getContext('2d');
+            return new Promise((s, e) => {
+                ResourceManager.loadImage({
+                    url: define.IMG_PATH + pairContent.get(key)
+                }).then((resp) => {
+                    const img = resp.response;
+                    let c = document.createElement('canvas');
+                    c.width = img.width * 2;
+                    c.height = img.height;
+                    let g = c.getContext('2d');
 
-                g.save();
-                g.drawImage(img, 0, 0);
+                    g.save();
+                    g.drawImage(img, 0, 0);
 
-                //Mirror image
-                g.translate(c.width, 0);
-                g.scale(-1, 1);
-                g.restore();
+                    //Mirror image
+                    g.translate(c.width, 0);
+                    g.scale(-1, 1);
+                    g.drawImage(img, 0, 0);
 
-                g.drawImage(img, 0, 0);
+                    g.restore();
 
-                let i = startIndex;
-                let j = startIndex;
-                for (let r = 0; r < row; r++) {
-                    const _y = r * height;
-                    //Save Normal image
-                    for (let c = 0; c < col; c++) {
-                        const _x = c * width;
-                        this.imageNormal[i] = g.getImageData(_x, _y, width, height);
+                    let i = startIndex;
+                    let j = startIndex;
+                    let imgObj = new Image();
 
-                        i++;
+                    for (let r = 0; r < row; r++) {
+                        const _y = r * height;
+                        //Save Normal image
+                        for (let c = 0; c < col; c++) {
+                            const _x = c * width;
+                            //this.imageNormal[i] = g.getImageData(_x, _y, width, height);
+                            this.imageNormal[i] = new ImageInformation(
+                                new Rectangle(width, height, _x, _y),
+                                imgObj
+                            );
+
+                            i++;
+                        }
+
+                        //Save Mirror image
+                        for (let c = 0; c < col; c++) {
+                            const _x = width2 - c * width - width;
+                            //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
+                            this.imageMirror[i] = new ImageInformation(
+                                new Rectangle(width, height, _x, _y),
+                                imgObj
+                            );
+
+                            j++;
+                        }
                     }
 
-                    //Save Mirror image
-                    for (let c = 0; c < col; c++) {
-                        const _x = width2 - c * width - width;
-                        this.imageMirror[j] = g.getImageData(_x, _y, width, height);
-                        j++;
-                    }
-                }
-
-
+                    c.toBlob(function (b) {
+                        imgObj.src = URL.createObjectURL(b);
+                        s();
+                    }, 'image/webp', 1);
+                });
             });
         }
     };

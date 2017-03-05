@@ -4,6 +4,7 @@
         'define.js',
         'Utils.js',
         'Rectangle.js',
+        'ImageInformation.js',
 
         'BmpInfo.js',
         'Interaction.js',

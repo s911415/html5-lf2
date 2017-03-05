@@ -24,7 +24,7 @@ var lf2 = (function (lf2) {
             ctx.fillText(Math.round(requestInfo.percent) + '%', ctx.canvas.width / 2, ctx.canvas.height / 2 + 300);
 
             //Preload loading video
-            ResourceManager.loadResource(define.IMG_PATH + 'loading_video.mp4');
+            ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
         }
 
         load() {
@@ -49,48 +49,56 @@ var lf2 = (function (lf2) {
                 return data.text();
             }).then((html) => {
                 this.html = html;
+                this.showLaunchMenu();
             });
         }
 
         initialize() {
-            $("#" + _MENU_CONTAINER_ID).remove();
         }
 
         update() {
             super.update();
-
-            if (this.html !== "" && !this._menuAttached) {
-                this._menuContainer = $(this.html);
-                this._menuContainer.attr("id", _MENU_CONTAINER_ID);
-                this._menuContainer.find("#start_game_btn").click((e)=>{
-                    this.audio.play({name: 'ok'});
-                    Game.goToLevel('loading');
-                });
-                this._menuContainer.find("#control_set_btn").click((e)=>{
-                    this.audio.play({name: 'ok'});
-                    Game.goToLevel('control');
-                });
-                this.forceDraw();
-            }
         }
 
         draw(parentCtx) {
             super.draw(parentCtx);
 
-            if(!this._menuAttached){
+            if (!this._menuAttached) {
+
+            }
+        }
+
+        click(e, list, orgE) {
+        }
+
+        showLaunchMenu() {
+            if (!this.isCurrentLevel) return;
+
+            if (this.html !== "" && !this._menuAttached) {
+                $("#" + _MENU_CONTAINER_ID).remove();
+
+                this._menuContainer = $(this.html);
+                this._menuContainer.attr("id", _MENU_CONTAINER_ID);
+                this._menuContainer.find("#start_game_btn").click((e) => {
+                    this.audio.play({name: 'ok'});
+                    Game.goToLevel('loading');
+                });
+                this._menuContainer.find("#control_set_btn").click((e) => {
+                    this.audio.play({name: 'ok'});
+                    Game.goToLevel('control');
+                });
+
                 $("body").append(this._menuContainer);
                 this._menuAttached = true;
                 Game.resizeEvent();
             }
         }
 
-        click(e, list, orgE){
-        }
 
-
-        autodelete(){
-            if(this._menuContainer){
+        autodelete() {
+            if (this._menuContainer) {
                 this._menuContainer.remove();
+                this._menuContainer = undefined;
             }
 
             //reverse autodelete called to remove menu container first
