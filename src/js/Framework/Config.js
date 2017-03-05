@@ -8,15 +8,19 @@ var Framework = (function (Framework) {
      *
      * @constructor
      */
-    Framework.Config = function () {
-        this.fps = 60;
-        this.canvasWidth = 794;
-        this.canvasHeight = 500;
-//		this.canvasWidth =  640;
-//		this.canvasHeight = 480;
-        this.isBackwardCompatiable = false;
-        this.isOptimize = false;  // 2017.02.20, from V3.1.1
-        this.isMouseMoveRecorded = false;
+    Framework.Config = {
+        fps :60,
+        canvasWidth :794,
+        canvasHeight :500,
+//		canvasWidth : 640,
+//		canvasHeight :480,
+        isBackwardCompatiable :false,
+        isOptimize :false,  // 2017.02.20, from V3.1.1
+        isMouseMoveRecorded :false,
     };
+
+    //Lock config
+    Object.freeze(Framework.Config);
+
     return Framework;
 })(Framework || {});

@@ -1020,7 +1020,7 @@ var Framework = (function (Framework) {
     };
 
     let that = Framework.Game;
-    that._config = new Framework.Config();
+    that._config = Framework.Config;
     // gameloop fps
     that.fps = that._config.fps;
     that.canvasWidth = that._config.canvasWidth;

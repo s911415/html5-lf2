@@ -36,7 +36,7 @@ var Framework = (function (Framework) {
             this.cycleCount = 0;
             this._forceDraw = false;
 
-            this.config = new Framework.Config();  // 2017.02.20, from V3.1.1
+            this.config = Framework.Config;  // 2017.02.20, from V3.1.1
 
         }
 
