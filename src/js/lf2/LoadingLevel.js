@@ -1,21 +1,6 @@
 "use strict";
 var lf2 = (function (lf2) {
     const _CONTAINER_ID = "__loading_container";
-    function co(gen) {
-        let g = gen();
-        function next(err, data) {
-            let res;
-            if(err) {
-                return g.throw(err);
-            } else {
-                res = g.next(data);
-            }
-            if(!res.done) {
-                res.value.then(next);
-            }
-        }
-        next();
-    }
 
     /**
      * @type {Framework.Game}
@@ -89,29 +74,27 @@ var lf2 = (function (lf2) {
                     console.log('Load data list done.');
 
                     const objs = data.object, bgs = data.background;
-                    const $ = this;
-                    let loadData= function*(){
-                        for(let i=0;i<objs.length;i++){
-                            const o=objs[i];
-                            yield new Promise((res, rej) => {
+
+                    objs.forEach((o) => {
+                        this.promiseList.push(
+                            new Promise((res, rej) => {
                                 ResourceManager.loadResource(define.DATA_PATH + o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
-                                    let obj = $.parseObj(o, datText);
+                                    let obj = this.parseObj(o, datText);
                                     if (obj !== null) {
-                                        $.objInfo.push(obj);
+                                        this.objInfo.push(obj);
 
-                                        $.promiseList.push(
+                                        this.promiseList.push(
                                             obj.done().then(res)
                                         );
                                     } else {
                                         res(obj);
                                     }
                                 });
-                            });
-                        }
-                    };
-                    co(loadData);
+                            })
+                        );
+                    });
                     Promise.all(this.promiseList).then(res);
                 });
             }).then((a, b) => {
