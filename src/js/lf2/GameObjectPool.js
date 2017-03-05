@@ -20,7 +20,7 @@ var lf2 = (function (lf2) {
          * @returns {GameObjectPool}
          */
         set(key, value) {
-            key = parseInt(key, 10);
+            key = intval(key);
             if (isNaN(key)) throw "Key must be an integer";
 
             super.set(key, value);

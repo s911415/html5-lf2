@@ -13,18 +13,28 @@ var lf2 = (function (lf2) {
      * @class lf2.GameItem
      * @implements Framework.AttachableInterface
      */
-    lf2.GameItem = class GameItem extends Framework.AttachableInterface{
+    lf2.GameItem = class GameItem extends Framework.AttachableInterface {
         /**
          *
          * @param charId ID of character
          */
         constructor(charId) {
             this.obj = GameObjectPool.get(charId);
-            this._currentFrameIndex = 0;
             this.position = new Point(0, 0);
+
+            this._currentFrameIndex = 0;
             this._lastFrameDrawTime = -1;
+            this._config = Framework.Config;
+            this._frameInterval = (1e3 / this._config.fps);
         }
 
+        /**
+         * Get current frame
+         * @returns {Frame}
+         */
+        get currentFrame() {
+            return this.frames[this._currentFrameIndex];
+        }
 
         /**
          * Load
@@ -62,6 +72,10 @@ var lf2 = (function (lf2) {
          */
         draw(ctx) {
 
+        }
+
+        _getNextFrameId(){
+            let next = this.currentFrame
         }
 
         get isObjectChanged() {

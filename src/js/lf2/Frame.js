@@ -24,7 +24,7 @@ var lf2 = (function (lf2) {
             let lines = context.lines();
             let infoArr = lines[0].split(/\s+/);
 
-            this.id = parseInt(infoArr[0], 10);
+            this.id = intval(infoArr[0]);
             this.name = infoArr[1];
 
             this.data = Utils.parseDataLine(lines[1]);
@@ -34,6 +34,18 @@ var lf2 = (function (lf2) {
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
+        }
+
+        /**
+         *
+         * @returns {Number}
+         */
+        get pictureIndex(){
+            return intval(this.data.get('pic'));
+        }
+
+        get state(){
+            return
         }
     };
 

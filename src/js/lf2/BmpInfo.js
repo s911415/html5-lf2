@@ -63,13 +63,13 @@ var lf2 = (function (lf2) {
             const key = str.split(':')[0];
             const
                 index = key.match(/(\d+)/g),
-                startIndex = parseInt(index[0], 10),
-                endIndex = parseInt(index[1], 10),
-                width = parseInt(pairContent.get('w'), 10),
-                height = parseInt(pairContent.get('h'), 10),
+                startIndex = intval(index[0]),
+                endIndex = intval(index[1]),
+                width = intval(pairContent.get('w')),
+                height = intval(pairContent.get('h')),
                 width2 = width * 2,
-                row = parseInt(pairContent.get('row'), 10),
-                col = parseInt(pairContent.get('col'), 10);
+                row = intval(pairContent.get('row')),
+                col = intval(pairContent.get('col'));
 
             return new Promise((resolve, reject) => {
                 ResourceManager.loadImage({
