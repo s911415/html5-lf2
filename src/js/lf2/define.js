@@ -3,7 +3,7 @@
     const BASE_PATH = "./";
 
     window.define = {
-        DEBUG: true,
+        DEBUG: false,
 
         BASE_PATH: BASE_PATH,
         DATA_PATH:BASE_PATH + "data/",

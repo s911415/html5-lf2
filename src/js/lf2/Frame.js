@@ -45,7 +45,7 @@ var lf2 = (function (lf2) {
          * @property pictureIndex
          * @returns {Number}
          */
-        get pictureIndex(){
+        get pictureIndex() {
             return intval(this.data.get('pic') || 0);
         }
 
@@ -85,19 +85,19 @@ var lf2 = (function (lf2) {
          *
          * @returns {Number}
          */
-        get state(){
+        get state() {
             return intval(this.data.get('state') || 0);
         }
 
-        get wait(){
-            return intval(this.data.get('wait') || 0);
+        get wait() {
+            return intval(this.data.get('wait') || 0) + 1;
         }
 
         /**
          * Get Next frame id
          * @returns {Number}
          */
-        get nextFrameId(){
+        get nextFrameId() {
             return intval(this.data.get('next') || 0);
         }
 
@@ -105,7 +105,7 @@ var lf2 = (function (lf2) {
          * Get offset of item
          * @returns {Point3D}
          */
-        get offset(){
+        get offset() {
             return new Point3D(
                 this.data.get('dvx') || 0,
                 this.data.get('dvy') || 0,
@@ -113,9 +113,9 @@ var lf2 = (function (lf2) {
             );
         }
 
-        get hit(){
+        get hit() {
             let ret = {};
-            KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k)=>{
+            KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k) => {
                 ret[k] = intval(this.data.get('hit_' + k) || 0)
             });
         }
@@ -124,7 +124,7 @@ var lf2 = (function (lf2) {
          *
          * @returns {Framework.Point}
          */
-        get center(){
+        get center() {
             return new Point(
                 intval(this.data.get('centerx')),
                 intval(this.data.get('centery'))

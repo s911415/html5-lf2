@@ -7,6 +7,7 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
+    const DESTROY_ID = 1000;
 
     const DIRECTION = {
         RIGHT: true,
@@ -82,9 +83,12 @@ var lf2 = (function (lf2) {
          */
         update() {
             const now = Date.now();
-            if ((now - this._lastFrameSetTime) >= this.currentFrame.wait * this._frameInterval) {
-                this.setFrameById(this._getNextFrameId());
-            }
+            if ((now - this._lastFrameSetTime) < this.currentFrame.wait * this._frameInterval) return;
+
+            this.setFrameById(this._getNextFrameId());
+
+
+            if (this.position.z < 0) this.position.z = 0;
         }
 
         /**
@@ -92,10 +96,44 @@ var lf2 = (function (lf2) {
          * @param {Number} frameId
          */
         setFrameById(frameId) {
-            if (!this.obj.frames[frameId]) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
-            this._lastFrameId = this._currentFrameIndex;
+            if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
+            console.log("Set Frame ", frameId);
+            if (frameId == DESTROY_ID) {
+                this.popSelfOutLevel();
+                return;
+            }
             this._currentFrameIndex = frameId;
             this._lastFrameSetTime = Date.now();
+        }
+
+        /**
+         *
+         * @param {String} frameName
+         */
+        getFrameIdByName(frameName) {
+            let frame = this.obj.frames.filter(o => o.name == frameName)[0];
+            if (!frame) throw new RangeError(`Object (${this.obj.id}) Frame (${frameName}) not found`);
+
+            return frame.id;
+        }
+
+        /**
+         * Frame Exist
+         * @param frameId
+         * @returns {boolean}
+         */
+        frameExist(frameId) {
+            if (frameId == DESTROY_ID) return true;
+
+            return !!this.obj.frames[frameId];
+        }
+
+        /**
+         *
+         * @param {String} frameName
+         */
+        setFrameByName(frameName) {
+            this.setFrameById(this.getFrameIdByName(frameName));
         }
 
         /**
@@ -113,6 +151,11 @@ var lf2 = (function (lf2) {
             );
             leftTopPoint.y -= this.position.z;
 
+            console.log([
+                this._currentFrameIndex,
+                imgInfo.img,
+                imgInfo.rect,
+                leftTopPoint]);
             ctx.drawImage(
                 imgInfo.img,
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
@@ -145,10 +188,22 @@ var lf2 = (function (lf2) {
             return next;
         }
 
+        /**
+         *
+         * @returns {boolean}
+         */
+        get isFrameChanged(){
+            if(this._currentFrameIndex!=this._lastFrameId){
+                this._lastFrameId=this._currentFrameIndex;
+                return true;
+            }
+            return false;
+        }
+
         get isObjectChanged() {
             //TODO: need implement
-            return super.isObjectChanged||
-                this._currentFrameIndex != this._lastFrameId;
+            return super.isObjectChanged ||
+                this.isFrameChanged;
         }
 
     };

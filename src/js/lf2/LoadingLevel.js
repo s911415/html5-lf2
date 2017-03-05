@@ -112,7 +112,8 @@ var lf2 = (function (lf2) {
                 //TODO: NEED CHANGE
                 Game.goToLevel('fight', {
                     players: [
-                        {charId: 51},
+                        {charId: 2},
+                        //{charId: 2},
                     ],
                     mapId: 0,
 

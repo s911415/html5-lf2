@@ -39,12 +39,17 @@ var lf2 = (function (lf2) {
 
         load() {
             //attach player's character
-            this.config.players.forEach((player) => {
+            this.config.players.forEach((player, i) => {
                 this.rootScene.attach(player.character);
 
                 //TODO: debug use
-                player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight, 0);
+                player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight/2, 0);
+                //Framework.Game._currentLevel.config.players[0].character.setFrameById(210);
             });
+
+            //TODO: debug use
+            Framework.Game._currentLevel.config.players[0].character.position.y=200;
+            //Framework.Game._currentLevel.config.players[1].character.position.y=400;
         }
 
         initialize() {

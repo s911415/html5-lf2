@@ -1023,6 +1023,17 @@ var Framework = (function (Framework) {
             }
         };
 
+        static _popGameObj(ele) {
+            try {
+                let i = that._currentLevel._allGameElement.indexOf(ele);
+                if(i!==-1){
+                    let obj = that._currentLevel._allGameElement.splice(i, 1);
+                    return obj;
+                }
+            } catch (e) {
+            }
+        };
+
         static _showAllElement() {
             that._currentLevel._showAllElement();
         };
