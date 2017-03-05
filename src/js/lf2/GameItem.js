@@ -97,7 +97,7 @@ var lf2 = (function (lf2) {
          */
         setFrameById(frameId) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
-            console.log("Set Frame ", frameId);
+            //console.log("Set Frame ", frameId);
             if (frameId == DESTROY_ID) {
                 this.popSelfOutLevel();
                 return;
@@ -151,11 +151,13 @@ var lf2 = (function (lf2) {
             );
             leftTopPoint.y -= this.position.z;
 
+
             console.log([
                 this._currentFrameIndex,
-                imgInfo.img,
+                imgInfo.img.src,
                 imgInfo.rect,
                 leftTopPoint]);
+
             ctx.drawImage(
                 imgInfo.img,
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
@@ -192,9 +194,9 @@ var lf2 = (function (lf2) {
          *
          * @returns {boolean}
          */
-        get isFrameChanged(){
-            if(this._currentFrameIndex!=this._lastFrameId){
-                this._lastFrameId=this._currentFrameIndex;
+        get isFrameChanged() {
+            if (this._currentFrameIndex != this._lastFrameId) {
+                this._lastFrameId = this._currentFrameIndex;
                 return true;
             }
             return false;
@@ -204,6 +206,22 @@ var lf2 = (function (lf2) {
             //TODO: need implement
             return super.isObjectChanged ||
                 this.isFrameChanged;
+        }
+
+        get width() {
+            if (this._maxWidth === undefined) {
+                this._maxWidth = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.width));
+            }
+
+            return this._maxWidth;
+        }
+
+        get height() {
+            if (this._maxHeight === undefined) {
+                this._maxHeight = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.height));
+            }
+
+            return this._maxHeight;
         }
 
     };

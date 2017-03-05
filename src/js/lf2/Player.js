@@ -20,6 +20,8 @@ var lf2 = (function (lf2) {
          * @param {Number} charId
          */
         constructor(playerId, charId) {
+            console.log('create player', playerId, charId);
+
             this.playerId = playerId;
             this.charId = charId;
 

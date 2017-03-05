@@ -33,6 +33,8 @@ var lf2 = (function (lf2) {
             };
 
             for (let playerId in extraData.players) {
+                if(!isFinite(playerId)) continue;
+
                 this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
             }
         }

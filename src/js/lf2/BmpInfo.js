@@ -67,9 +67,10 @@ var lf2 = (function (lf2) {
                 endIndex = intval(index[1]),
                 width = intval(pairContent.get('w')),
                 height = intval(pairContent.get('h')),
-                width2 = width * 2,
-                row = intval(pairContent.get('row')),
-                col = intval(pairContent.get('col'));
+
+                //this row and column is difference from matrix, invert it
+                row = intval(pairContent.get('col')),
+                col = intval(pairContent.get('row'));
 
             return new Promise((resolve, reject) => {
                 ResourceManager.loadImage({
@@ -116,7 +117,7 @@ var lf2 = (function (lf2) {
 
                         //Save Mirror image
                         for (let c = 0; c < col; c++) {
-                            const _x = width2 - c * (width + 1) - (width + 1);
+                            const _x = canvas.width - c * (width + 1) - (width + 1);
                             //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
                             this.imageMirror[j] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
