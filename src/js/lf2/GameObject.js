@@ -2,19 +2,18 @@
 var lf2 = (function (lf2) {
 
     /**
-     * @type {BmpInfo}
+     * @class {lf2.BmpInfo}
      */
     const BmpInfo = lf2.BmpInfo;
 
     /**
-     * @type {Frame}
+     * @class {lf2.Frame}
      */
     const Frame = lf2.Frame;
 
     /**
      * GameObject
      *
-     * @type {GameObject}
      * @class lf2.GameObject
      */
     lf2.GameObject = class {

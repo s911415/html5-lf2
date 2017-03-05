@@ -5,6 +5,7 @@
         'Utils.js',
         'Rectangle.js',
         'ImageInformation.js',
+        'KeyboardConfig.js',
 
         'BmpInfo.js',
         'Interaction.js',

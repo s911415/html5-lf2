@@ -8,6 +8,9 @@ var lf2 = (function (lf2) {
 
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
+    const Point = Framework.Point;
+    const Point3D = Framework.Point3D;
+
     /**
      * Frame
      *
@@ -37,15 +40,75 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         *
+         * Get picture index
          * @returns {Number}
          */
         get pictureIndex(){
-            return intval(this.data.get('pic'));
+            return intval(this.data.get('pic') || 0);
         }
 
+        /**
+         * Get current state
+         *
+         * 0=站立(stand)
+         * 1=行走(walk)
+         * 2=跑步(run)
+         * 3=普通拳腳攻擊(punch)
+         * 4=跳(jump)
+         * 5=突進(dash，即跑+跳)
+         * 7=擋(defend)
+         * 8=破擋(broken defend)
+         * 9=捉人(catching)
+         * 10=被捉(picked caught)
+         * 11=被攻擊(injured)
+         * 12=fall大於60才會被打到
+         * 13=有冰碎效果
+         * 14=倒在地上(lying，可使com不會追你)
+         * 15=被冰封(ice，可被同盟攻擊)
+         * 16=暈眩(tired)可被敵人捉住
+         * 17=喝(weapon drink)可以喝的物件被消耗
+         * 18=燃燒(fire，可攻擊我方同盟)
+         * 19=firen的烈火焚身(burn run)
+         * 301=deep的鬼哭斬(dash sword，此state具有人物上下移動的功能)
+         * 400=woody瞬間轉移(teleport，移往最近的敵人)
+         * 401=woody瞬間轉移(teleport，移往最近的隊友)
+         * 500=rudolf轉換成其他角色(transform)
+         * 501=rudolf轉換回來(transform_b)
+         * 1700=治療自己
+         * 9995=變身成LouisEX(transform，任何人都可以)
+         * 9996=爆出盔甲(transform，任何人都可以)
+         * 9997=訊息(come,move之類，能在任何地方看見)
+         * 9998=訊息刪除
+         * 9999=毀壞的武器(broken weapon)
+         *
+         * @returns {Number}
+         */
         get state(){
-            return
+            return intval(this.data.get('state') || 0);
+        }
+
+        get wait(){
+            return intval(this.data.get('wait') || 0);
+        }
+
+        get nextFrame(){
+            return intval(this.data.get('next') || 0);
+        }
+
+        /**
+         * Get offset of item
+         * @returns {Point3D}
+         */
+        get offset(){
+            return new Point3D(
+                this.data.get('dvx') || 0,
+                this.data.get('dvy') || 0,
+                this.data.get('dvz') || 0
+            );
+        }
+
+        get hit(){
+
         }
     };
 

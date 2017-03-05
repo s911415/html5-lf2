@@ -1,6 +1,9 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const Point = Framework.Point;
+    /**
+     * @class {Point3D}
+     */
+    const Point = Framework.Point3D;
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
@@ -20,7 +23,7 @@ var lf2 = (function (lf2) {
          */
         constructor(charId) {
             this.obj = GameObjectPool.get(charId);
-            this.position = new Point(0, 0);
+            this.position = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
             this._lastFrameDrawTime = -1;
@@ -75,7 +78,7 @@ var lf2 = (function (lf2) {
         }
 
         _getNextFrameId(){
-            let next = this.currentFrame
+            let next = this.currentFrame.next;
         }
 
         get isObjectChanged() {
