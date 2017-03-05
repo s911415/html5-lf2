@@ -3,6 +3,8 @@
     const BASE_PATH = "./";
 
     window.define = {
+        DEBUG: true,
+
         BASE_PATH: BASE_PATH,
         DATA_PATH:BASE_PATH + "data/",
         IMG_PATH:BASE_PATH + "image/",
@@ -10,6 +12,8 @@
 
         PLAYER_COUNT: 2,
         KEYBOARD_CONFIG_KEY: "keyConfig",
+
+        LOADING_MIN_TIME: 3 * 1000,
 
     };
 

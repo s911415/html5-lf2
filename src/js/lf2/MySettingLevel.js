@@ -74,7 +74,7 @@ var lf2 = (function (lf2) {
         draw(parentCtx) {
             super.draw(parentCtx);
 
-            const KEY_CLASS = ["UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "JUMP", "DEFEND"];
+            const KEY_CLASS = lf2.KeyboardConfig.prototype.KEY_MAP.KEY_LIST;
             //refresh key
             for (let i = 0; i < define.PLAYER_COUNT; i++) {
                 const p = this.players[i], c = this.config[i];
