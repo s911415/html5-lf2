@@ -92,6 +92,14 @@ String.prototype.lines = function () {
     return this.split(/\r?\n/);
 };
 
+/**
+ * Convert Object to number
+ * @param obj
+ * @returns {Number}
+ */
+function intval(obj){
+    return parseInt(obj, 10);
+}
 
 function loadImage(src) {
     return new Promise((resolve, reject) => {

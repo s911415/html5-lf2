@@ -18,6 +18,7 @@ let _isRecordMode = false;
         "Framework/DebugInfo.js",
         "Framework/FpsAnalysis.js",
         "Framework/Point.js",
+        "Framework/Point3D.js",
         "Framework/GameObject.js",
         "Framework/Sprite.js",
         "Framework/AnimationSprite.js",

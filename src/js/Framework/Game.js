@@ -439,7 +439,7 @@ var Framework = (function (Framework) {
         /**
          * Find level
          * @param name
-         * @returns {*}
+         * @returns {Framework.Level}
          * @private
          */
         static _findLevel(name) {
@@ -512,10 +512,12 @@ var Framework = (function (Framework) {
          * 前往另一個關卡(前後皆可), 若沒有該關卡, 會throw exception
          * @static
          * @param {Object} levelName 關卡名稱
+         * @param {Object} [extraData] 其他資料
+         * @returns {Framework.Level}
          * @example
          *    Framework.Game.goToLevel('menu');
          */
-        static goToLevel(levelName) {
+        static goToLevel(levelName, extraData) {
             that.pause();
             that._teardown();
             that._currentLevel = that._findLevel(levelName);
@@ -527,12 +529,15 @@ var Framework = (function (Framework) {
             if (that._isRecordMode) {
                 that._record.inputCommand("// Change Level :" + levelname + ";");
             }
-            that.start();
+            that.start(extraData);
+
+            return that._currentLevel;
         };
 
         /**
          * 前往下一個關卡, 若沒有下一個關卡, 會throw exception
          * @static
+         * @deprecated
          * @example
          *    Framework.Game.goToNextLevel();
          */
@@ -559,12 +564,14 @@ var Framework = (function (Framework) {
             throw new Error('Game : can\'t goto next level.');
         };
 
-        /**
+        /* *
          * 前往前一個關卡, 若沒有前一個關卡, 會throw exception
          * @static
+         * @deprecated
          * @example
          *    Framework.Game.goToPreviousLevel();
          */
+        /*
         static goToPreviousLevel() {
             that.pause();
             that._teardown();
@@ -588,16 +595,17 @@ var Framework = (function (Framework) {
             }
             Framework.DebugInfo.Log.error('Game : 無前一關');
             throw new Error('Game : can\'t goto previous level.');
-        };
+        };*/
 
 
         /**
          * 讓遊戲開始執行
+         * @param {Object} [extraData] 傳遞的資料
          * @static
          * @example
          *    Framework.Game.start();
          */
-        static start() {
+        static start(extraData) {
             if (!that._isReplay) {
                 if (that._isTestMode && that._isTestReady === false) {
                     return;
@@ -606,6 +614,8 @@ var Framework = (function (Framework) {
             if (Framework.Util.isUndefined(that._currentLevel) || Framework.Util.isNull(that._currentLevel)) {
                 that._currentLevel = that._levels[0].level;
             }
+            that._currentLevel.receiveExtraDataWhenLevelStart(extraData);
+
             var self = that;
 
             if (!that._isInit) {
@@ -1013,6 +1023,17 @@ var Framework = (function (Framework) {
             }
         };
 
+        static _popGameObj(ele) {
+            try {
+                let i = that._currentLevel._allGameElement.indexOf(ele);
+                if(i!==-1){
+                    let obj = that._currentLevel._allGameElement.splice(i, 1);
+                    return obj;
+                }
+            } catch (e) {
+            }
+        };
+
         static _showAllElement() {
             that._currentLevel._showAllElement();
         };
@@ -1020,7 +1041,7 @@ var Framework = (function (Framework) {
     };
 
     let that = Framework.Game;
-    that._config = new Framework.Config();
+    that._config = Framework.Config;
     // gameloop fps
     that.fps = that._config.fps;
     that.canvasWidth = that._config.canvasWidth;
@@ -1051,6 +1072,11 @@ var Framework = (function (Framework) {
     that._levels = [];
     that._testScripts = [];
     // current level
+    /**
+     *
+     * @type {Framework.Level}
+     * @private
+     */
     that._currentLevel = undefined;
     that._context = null;
     that._currentTestScript = undefined;

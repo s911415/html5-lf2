@@ -32,6 +32,8 @@ var lf2 = (function (lf2) {
      * @type {GameObject}
      */
     const GameObject = lf2.GameObject;
+    const Character = lf2.Character;
+    const Ball = lf2.Ball;
 
     /**
      * Loading Level
@@ -64,6 +66,7 @@ var lf2 = (function (lf2) {
 
         load() {
             this.allDone = false;
+            this._startLoadingTime = Date.now();
             this.promiseList = [];
             this.objInfo = [];
             this.bgInfo = [];
@@ -82,7 +85,7 @@ var lf2 = (function (lf2) {
                                     return data.text();
                                 }).then((datText) => {
                                     let obj = this.parseObj(o, datText);
-                                    if (obj !== null) {
+                                    if (obj instanceof GameObject) {
                                         this.objInfo.push(obj);
 
                                         this.promiseList.push(
@@ -105,8 +108,16 @@ var lf2 = (function (lf2) {
         }
 
         update() {
-            if (this.allDone) {
-                //Game.goToLevel('menu');
+            if (this.allDone && (Date.now() - this._startLoadingTime) >= define.LOADING_MIN_TIME) {
+                //TODO: NEED CHANGE
+                Game.goToLevel('fight', {
+                    players: [
+                        {charId: 2},
+                        //{charId: 2},
+                    ],
+                    mapId: 0,
+
+                });
             }
         }
 
@@ -119,18 +130,27 @@ var lf2 = (function (lf2) {
          * Parse LF@ Object
          * @param {Object} info
          * @param {String} content
-         * @returns {GameObject|null}
+         * @returns {GameObject|undefined}
          */
         parseObj(info, content) {
-            switch (info.type) {
-                case 0:
-                    let obj = new GameObject(info, content);
-                    GameObjectPool.set(info.id, obj);
+            let obj = undefined;
+            obj = new GameObject(info, content);
+            GameObjectPool.set(info.id, obj);
 
-                    return obj;
-                    break;
-            }
-            return null;
+            /*
+             switch (info.type) {
+             case 0:
+             obj = new Character(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+             case 3:
+             obj = new Ball(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+
+             }
+             */
+            return obj;
         }
 
         showLoadingVideo() {
@@ -145,6 +165,7 @@ var lf2 = (function (lf2) {
             if (!this._attached && this._loadingContainer) {
                 $("body").append(this._loadingContainer);
                 this._attached = true;
+                this._startLoadingTime = Date.now();
             }
         }
 

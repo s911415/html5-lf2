@@ -9,8 +9,8 @@ var lf2 = (function (lf2) {
      */
     lf2.Rectangle = class Rectangle{
         constructor(width, height, px, py) {
-            this.width = parseInt(width, 10);
-            this.height = parseInt(height, 10);
+            this.width = intval(width);
+            this.height = intval(height);
             this.position = new Point(px, py);
         }
     };

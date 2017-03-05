@@ -36,7 +36,7 @@ var Framework = (function (Framework) {
             this.cycleCount = 0;
             this._forceDraw = false;
 
-            this.config = new Framework.Config();  // 2017.02.20, from V3.1.1
+            this.config = Framework.Config;  // 2017.02.20, from V3.1.1
 
         }
 
@@ -130,6 +130,16 @@ var Framework = (function (Framework) {
                 //console.log("update time average " + average);
             }
 
+
+        }
+
+        /**
+         * 接收傳遞的資料
+         *
+         * @abstract
+         * @param extraData
+         */
+        receiveExtraDataWhenLevelStart(extraData){
 
         }
 
@@ -263,7 +273,7 @@ var Framework = (function (Framework) {
                     rect.height = ctx.canvas.height;
                     this._firstDraw = false;
                 }
-
+                
                 ctx.rect(rect.x, rect.y, rect.width, rect.height);
                 ctx.clip();
 

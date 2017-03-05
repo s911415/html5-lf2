@@ -2,21 +2,19 @@
 var lf2 = (function (lf2) {
 
     /**
-     * @type {BmpInfo}
+     * @class {lf2.BmpInfo}
      */
     const BmpInfo = lf2.BmpInfo;
 
     /**
-     * @type {Frame}
+     * @class {lf2.Frame}
      */
     const Frame = lf2.Frame;
 
     /**
      * GameObject
      *
-     * @type {GameObject}
      * @class lf2.GameObject
-     * @implements Framework.AttachableInterface
      */
     lf2.GameObject = class {
         /**
@@ -28,6 +26,7 @@ var lf2 = (function (lf2) {
             this.fileInfo = fileInfo;
             this.sourceCode = context;
 
+            this.id = fileInfo.id;
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
         }
