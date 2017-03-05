@@ -89,9 +89,7 @@ var lf2 = (function (lf2) {
                                     if (obj instanceof GameObject) {
                                         $.objInfo.push(obj);
 
-                                        $.promiseList.push(
-                                            obj.done().then(res)
-                                        );
+                                        obj.done().then(()=>{res(obj)});
                                     } else {
                                         res(obj);
                                     }
@@ -99,7 +97,7 @@ var lf2 = (function (lf2) {
                             })
                         );
                     });
-                    Promise.all(this.promiseList).then(res);
+                    Promise.all(this.promiseList).then(()=>{res()});
                 });
             }).then((a, b) => {
                 console.log("loading data and image done");
