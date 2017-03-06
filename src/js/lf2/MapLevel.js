@@ -27,7 +27,7 @@ var lf2 = (function (lf2) {
             this.position = new Point(0,0);
 
             this.Point = new Point(this.position.x, this.position.y);
-            cameraPosition={
+            cameraPosition ={
                 x:Math.max(minX+this.width/2,Math.min(this.Point.x,maxX-this.width/2)),
                 y:this.height/2
             }
@@ -58,19 +58,19 @@ var lf2 = (function (lf2) {
         keydown(e, list, oriE) {
             super.keydown(e);
 
-            if(e.key === 'right'){
+            if(e.key === 'Right'){
                 this.position.x+=10;
             }
 
-            if(e.key === 'left'){
+            if(e.key === 'Left'){
                 this.position.x-=10;
             }
 
-            if(e.key === 'up'){
+            if(e.key === 'Up'){
                 this.position.y+=10;
             }
 
-            if(e.key === 'down'){
+            if(e.key === 'Down'){
                 this.position.y-=10;
             }
         }
