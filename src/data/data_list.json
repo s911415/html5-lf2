@@ -324,51 +324,43 @@
     "background": [
         {
             "id": "4",
-            "file": "bg\\sys\\hkc\\bg.dat"
+            "file": "bg\\hkc.dat"
         },
         {
             "id": "2",
-            "file": "bg\\sys\\lf\\bg.dat"
+            "file": "bg\\lf.dat"
         },
         {
             "id": "3",
-            "file": "bg\\sys\\sp\\bg.dat"
+            "file": "bg\\sp.dat"
         },
         {
             "id": "5",
-            "file": "bg\\sys\\gw\\bg.dat"
+            "file": "bg\\gw.dat"
         },
         {
             "id": "6",
-            "file": "bg\\sys\\qi\\bg.dat"
+            "file": "bg\\qi.dat"
         },
         {
             "id": "7",
-            "file": "bg\\sys\\ft\\bg.dat"
+            "file": "bg\\ft.dat"
         },
         {
             "id": "8",
-            "file": "bg\\sys\\bc\\bg.dat"
+            "file": "bg\\bc.dat"
         },
         {
             "id": "1",
-            "file": "bg\\sys\\cuhk\\bg.dat"
+            "file": "bg\\cuhk.dat"
         },
         {
             "id": "0",
-            "file": "bg\\sys\\thv\\bg.dat"
+            "file": "bg\\thv.dat"
         },
         {
             "id": "10",
-            "file": "bg\\template\\1\\bg.dat"
-        },
-        {
-            "id": "11",
-            "file": "bg\\template\\2\\bg.dat"
-        },
-        {
-            "id": "12",
-            "file": "bg\\template\\3\\bg.dat"
+            "file": "bg\\template.dat"
         }
     ]
 }
