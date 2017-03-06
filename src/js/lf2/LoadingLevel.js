@@ -93,6 +93,7 @@ var lf2 = (function (lf2) {
                         if(_o===null) {
                             res();
                         }else{
+							console.log(`Loading "${_o.file}".`);
                             ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                 return data.text();
                             }).then((datText) => {
@@ -100,7 +101,10 @@ var lf2 = (function (lf2) {
                                 if (obj instanceof GameObject) {
                                     $.objInfo.push(obj);
 
-                                    obj.done().then(load);
+                                    obj.done().then(()=>{
+										console.log(`"${_o.file}" including images Loaded.`);
+										load();
+									});
                                 } else {
                                     load();
                                 }
@@ -110,7 +114,9 @@ var lf2 = (function (lf2) {
                     load();
                 });
             }).then((a, b) => {
-                console.log("loading data and image done");
+                console.log("---------------------------");
+                console.log("All object loaded.");
+                console.log("---------------------------");
                 console.log(GameObjectPool.get(52));
                 this.allDone = true;
             });
