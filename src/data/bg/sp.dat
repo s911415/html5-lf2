@@ -1,0 +1,56 @@
+name: Stanley_Prison
+width: 2400   zboundary: 292 495
+shadow: bg\sys\sp\s.bmp  shadowsize: 37 9
+layer: 
+  bg\sys\sp\wall.bmp
+  transparency: 0  width: 2400  x: 0  y: 128 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\s.bmp
+  rect: 21096 x: 0  y: 308  width: 794  height: 203
+layer_end
+layer: 
+  bg\sys\sp\wall4.bmp
+  transparency: 0  width: 2400  x: -41  y: 128 loop: 277 cc: 6 c1: 0 c2: 2
+layer_end
+layer: 
+  bg\sys\sp\wall2.bmp
+  transparency: 0  width: 2400  x: -57  y: 269 loop: 277 cc: 16 c1: 8 c2: 11
+layer_end
+layer: 
+  bg\sys\sp\wall3.bmp
+  transparency: 0  width: 2400  x: -57  y: 269 loop: 277 cc: 16 c1: 4 c2: 7
+layer_end
+layer: 
+  bg\sys\sp\wall3.bmp
+  transparency: 0  width: 2400  x: -57  y: 269 loop: 277 cc: 16 c1: 12 c2: 15
+layer_end
+
+layer: 
+  bg\sys\sp\fire1.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 0  c2: 1 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire2.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 2  c2: 3 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire3.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 4  c2: 5 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire4.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 6  c2: 7 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire5.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 8  c2: 9 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire6.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 10  c2: 11 loop: 277
+layer_end
+layer: 
+  bg\sys\sp\fire7.bmp
+  transparency: 0  width: 2400  x: 0  y: 128  cc: 14  c1: 12  c2: 13 loop: 277
+layer_end
