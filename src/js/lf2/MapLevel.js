@@ -23,7 +23,7 @@ var lf2 = (function (lf2) {
             var position;
             this.width=3200;
             var minX=0,maxX=this.width;
-            this.backgroundmap = new Sprite('data/' + 'backgroundmap.dat');
+            this.backgroundmap = new Sprite(define.IMG_PATH+'test.webp');
             this.position = new Point(0,0);
 
             this.Point = new Point(this.position.x, this.position.y);
@@ -31,6 +31,10 @@ var lf2 = (function (lf2) {
                 x:Math.max(minX+this.width/2,Math.min(this.Point.x,maxX-this.width/2)),
                 y:this.height/2
             }
+
+            this.backgroundMap = new XXX();
+            this.backgroundMap.load();
+            this.rootScene.attach(this.backgroundMap);
 
 
         }
