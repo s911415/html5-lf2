@@ -323,10 +323,6 @@
     ],
     "background": [
         {
-            "id": "4",
-            "file": "bg\\hkc.dat"
-        },
-        {
             "id": "2",
             "file": "bg\\lf.dat"
         },
@@ -337,14 +333,6 @@
         {
             "id": "1",
             "file": "bg\\cuhk.dat"
-        },
-        {
-            "id": "0",
-            "file": "bg\\thv.dat"
-        },
-        {
-            "id": "10",
-            "file": "bg\\template.dat"
         }
     ]
 }
