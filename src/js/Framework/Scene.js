@@ -126,16 +126,11 @@ var Framework = (function (Framework) {
          *     detach(spriteInstace);
          */
         detach(target) {
-            var index = -1, i;
-            for (i = 0; i < this.attachArray.length; i++) {
-                if (this.attachArray[i] === target) {
-                    index = i;
-                    break;
-                }
-            }
+            let index = this.attachArray.indexOf(target);
+
             if (index > -1) {
                 this.attachArray.splice(index, 1);
-                target.spriteParent = {};
+                target.spriteParent = undefined;
                 target.layer = 1;   //default
             }
         }
