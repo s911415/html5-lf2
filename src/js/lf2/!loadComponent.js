@@ -19,6 +19,10 @@
 
         'Player.js',
 
+        'GameMapLayer.js',
+        'GameMap.js',
+        'GameMapPool.js',
+
         'LaunchMenu.js',
         'MySettingLevel.js',
         'LoadingLevel.js',

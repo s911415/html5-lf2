@@ -21,6 +21,7 @@ var lf2 = (function (lf2) {
                     'value': value,
                 };
             };
+            str = str.replace(/\r?\n/g, ' ');
             let data = new Map();
             let pairs = str.match(/([^ ]+):\s+?[^ ]+/g);
             if (!pairs) {
