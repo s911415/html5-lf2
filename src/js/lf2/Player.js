@@ -8,6 +8,8 @@ var lf2 = (function (lf2) {
     const GameObjectPool = lf2.GameObjectPool;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Character = lf2.Character;
+    const DEFAULT_HP = 500;
+    const DEFAULT_MP = 500;
     /**
      * Player
      *
@@ -28,6 +30,9 @@ var lf2 = (function (lf2) {
             this.keyboardConfig = new KeyboardConfig(playerId);
             this.character = new Character(charId);
             this.character.belongTo = playerId;
+
+            this.hp = DEFAULT_HP;
+            this.mp = DEFAULT_MP;
         }
 
     };

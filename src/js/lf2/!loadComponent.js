@@ -14,8 +14,11 @@
         'GameObject.js',
         'GameObjectPool.js',
         'GameItem.js',
-        'Character.js',
+        'GameObjectBall.js',
+        'GameObjectCharacter.js',
+
         'Ball.js',
+        'Character.js',
 
         'Player.js',
 
