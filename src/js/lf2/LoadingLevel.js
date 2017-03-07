@@ -129,7 +129,6 @@ var lf2 = (function (lf2) {
                 }).then((data) => {
                     const bgs = data.background, $ = this;
                     console.log('Loading GameMap');
-
                     return new Promise((res, rej) => {
                         let loadMapRes = function*() {
                             let i = 0;
@@ -162,7 +161,6 @@ var lf2 = (function (lf2) {
                                     } else {
                                         loadMap();
                                     }
-                                    loadMap();
                                 });
                             }
                         };
