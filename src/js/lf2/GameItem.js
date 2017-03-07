@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const DESTROY_ID = 1000;
+    const NONE = -1;
 
     const DIRECTION = {
         RIGHT: true,
@@ -40,12 +41,13 @@ var lf2 = (function (lf2) {
             this.relativePosition = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
-            this._lastFrameSetTime = -1;
+            this._lastFrameSetTime = NONE;
             this._config = Framework.Config;
             this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
-            this._lastFrameId = -1;
+            this._lastFrameId = NONE;
             this.isDrawBoundry = define.DEBUG;
+            this.belongTo = NONE;
 
             this.pushSelfToLevel();
         }
@@ -113,7 +115,7 @@ var lf2 = (function (lf2) {
                 if(this.spriteParent) {
                     this.spriteParent.detach(this);
                 }
-                
+
                 return;
             }
             this._currentFrameIndex = frameId;

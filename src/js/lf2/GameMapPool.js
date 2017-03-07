@@ -1,25 +1,39 @@
 "use strict";
 var lf2 = (function (lf2) {
     /**
-     * Custom class
+     * GameMapPool
      *
-     * @class lf2.GameMap
-     * @implements Framework.AttachableInterface
+     * @type {GameMapPool}
+     * @class GameMapPool
+     * @extends {Map}
      */
-    lf2.GameMap = class GameMap {
-        constructor(){
-
+    class GameMapPool extends Map {
+        constructor() {
+            super();
         }
 
-    };
-    lf2.GameMap.prototype.initialize = function () {
-    };
-    lf2.GameMap.prototype.load = function () {
-    };
-    lf2.GameMap.prototype.draw = function () {
-    };
-    lf2.GameMap.prototype.update = function () {
-    };
+        /**
+         * Add value to this pool
+         * @param {Number} key
+         * @param {lf2.GameObject} value
+         *
+         * @returns {GameMapPool}
+         */
+        set(key, value) {
+            key = intval(key);
+            if (isNaN(key)) throw "Key must be an integer";
+
+            super.set(key, value);
+
+            return this;
+        }
+    }
+
+    /**
+     *
+     * @type {GameMapPool}
+     */
+    lf2.GameMapPool = new GameMapPool();
 
     return lf2;
 })(lf2 || {});

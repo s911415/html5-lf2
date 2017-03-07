@@ -1,30 +1,51 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const LAYER_START_TAG = 'layer:';
-    const LAYER_END_TAG = 'layer_end';
+    const ResourceManager = Framework.ResourceManager;
+    const Point = Framework.Point;
 
     /**
-     * GameMap
+     * GameMapLayer
      *
-     * @class lf2.GameMap
+     * @class lf2.GameMapLayer
      * @implements Framework.AttachableInterface
      */
-    lf2.GameMap = class GameMap {
+    lf2.GameMapLayer = class GameMapLayer {
         /**
          *
          * @param {Object} fileInfo
          * @param {String} context
          */
-        constructor(fileInfo, context){
-            this.fileInfo = fileInfo;
+        constructor(context){
             this.sourceCode = context;
 
-            this.id = fileInfo.id;
-            this.layers = lf2.GameMap._parseLayers(context);
+            this.imgUrl = context.trim().lines()[0].trim();
+            this.img = new Image();
 
-            let info = lf2.Utils.parseDataLine(context.getStringBetween("", LAYER_START_TAG));
-            this.name = info.get("name").replace(/_/g, ' ');
-            this.width = intval(info.get("width"));
+            this._imgLoader =ResourceManager.loadImage({
+                url:    this.imgUrl
+            }).then((img)=>{
+                this.img = img;
+
+                return img;
+            });
+
+            let info = lf2.Utils.parseDataLine(context);
+            this.transparency = info.get("transparency") != '0';
+            this.width = intval(info.get('width'));
+            this.position = new Point(
+                intval(info.get('x') || 0),
+                intval(info.get('y') || 0)
+            );
+
+            this.loop = intval(info.get('loop'));
+            this.cc = intval(info.get('cc') || 0);
+            this.c1 = intval(info.get('c1') || 0);
+            this.c2 = intval(info.get('c2') || 0);
+            this.rect = info.get('rect') || 0;
+        }
+
+        done(){
+            return this._imgLoader;
         }
 
         initialize(){
