@@ -57,6 +57,26 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * Add preload resource
+         * @param url
+         * @returns {*}
+         */
+        addPreloadResource(url) {
+            let promise = null;
+            if (url instanceof Promise) {
+                promise = url;
+            } else {
+                promise = ResourceManager.loadResource(url, {
+                    method: 'GET'
+                });
+            }
+
+            this._bmpLoad.push(promise);
+
+            return promise;
+        }
+
         _processImage(str) {
             const pairContent = Utils.parseDataLine(str);
             const key = str.split(':')[0];
