@@ -61,16 +61,6 @@ var Framework = (function (Framework) {
         }
 
         /**
-         * Pop self out of level.
-         *
-         * @return  .
-         */
-        popSelfOutLevel() {
-            debugger;
-            Framework.Game._popGameObj(this);
-        }
-
-        /**
          * Count absolute property.
          *
          * @return  The total number of absolute property.

@@ -110,7 +110,10 @@ var lf2 = (function (lf2) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
             if (frameId == DESTROY_ID) {
-                this.popSelfOutLevel();
+                if(this.spriteParent) {
+                    this.spriteParent.detach(this);
+                }
+                
                 return;
             }
             this._currentFrameIndex = frameId;
