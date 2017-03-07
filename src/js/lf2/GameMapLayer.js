@@ -20,9 +20,8 @@ var lf2 = (function (lf2) {
 
             this.imgUrl = context.trim().lines()[0].trim();
             this.img = new Image();
-
             this._imgLoader =ResourceManager.loadImage({
-                url:    this.imgUrl
+                url:    define.IMG_PATH + this.imgUrl
             }).then((img)=>{
                 this.img = img;
 
