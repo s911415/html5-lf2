@@ -9,7 +9,7 @@ var Framework = (function (Framework) {
      * @constructor
      */
     Framework.Config = {
-        fps :60,
+        fps :30,
         canvasWidth :794,
         canvasHeight :500,
 //		canvasWidth : 640,
