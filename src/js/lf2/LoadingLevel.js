@@ -77,7 +77,7 @@ var lf2 = (function (lf2) {
                     console.log('Load data list done.');
 
                     const objs = data.object, bgs = data.background, $=this;
-                    let loadObjectRes = function*(){
+                    let loadRes = function*(){
                         let i=0;
                         while(i<objs.length){
                             yield objs[i++];
@@ -85,19 +85,10 @@ var lf2 = (function (lf2) {
 
                         return null;
                     };
-                    let loadBackgroundRes = function*(){
-                        let i=0;
-                        while(i<bgs.length){
-                            yield bgs[i++];
-                        }
+                    let loadGen = loadRes();
 
-                        return null;
-                    };
-                    let loadObjGen = loadObjectRes();
-                    let loadBgGen = loadBackgroundRes();
-
-                    let loadObj = function(){
-                        let v=loadObjGen.next();
+                    let load = function(){
+                        let v=loadGen.next();
                         const _o = v.value;
                         if(_o===null) {
                             res();
@@ -112,45 +103,15 @@ var lf2 = (function (lf2) {
 
                                     obj.done().then(()=>{
 										console.log(`"${_o.file}" including images Loaded.`);
-										loadObj();
+										load();
 									});
                                 } else {
-                                    loadObj();
+                                    load();
                                 }
                             });
                         }
                     };
-
-                    let loadBg = function(){
-                        let v=loadBgGen.next();
-                        debugger;
-                        const _o = v.value;
-                        if(_o===null) {
-                            res();
-                        }else{
-							console.log(`Loading "${_o.file}".`);
-                            ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
-                                return data.text();
-                            }).then((datText) => {
-                                loadBg();
-                                /*
-                                 const obj = $.parseObj(_o, datText);
-                                 if (obj instanceof GameObject) {
-                                 $.objInfo.push(obj);
-
-                                 obj.done().then(()=>{
-                                 console.log(`"${_o.file}" including images Loaded.`);
-                                 loadObj();
-                                 });
-                                 } else {
-                                 loadObj();
-                                 }*/
-                            });
-                        }
-                    };
-
-                    loadObj();
-                    loadBg();
+                    load();
                 });
             }).then((a, b) => {
                 console.log("---------------------------");
