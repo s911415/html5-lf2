@@ -41,6 +41,10 @@ var lf2 = (function (lf2) {
             return Promise.all(arr);
         }
 
+        addPreloadResource(url){
+            return this.bmpInfo.addPreloadResource(url);
+        }
+
         /**
          * Parse frame block
          *

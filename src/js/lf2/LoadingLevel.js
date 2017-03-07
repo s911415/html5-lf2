@@ -37,9 +37,10 @@ var lf2 = (function (lf2) {
      * @type {GameObject}
      */
     const GameObject = lf2.GameObject;
+    const GameObjectCharacter = lf2.GameObjectCharacter;
+    const GameObjectBall = lf2.GameObjectBall;
+
     const GameMap = lf2.GameMap;
-    const Character = lf2.Character;
-    const Ball = lf2.Ball;
 
     /**
      * Loading Level
@@ -208,22 +209,21 @@ var lf2 = (function (lf2) {
          */
         parseObj(info, content) {
             let obj = undefined;
-            obj = new GameObject(info, content);
-            GameObjectPool.set(info.id, obj);
 
-            /*
-             switch (info.type) {
+
+            switch (info.type) {
              case 0:
-             obj = new Character(info, content);
-             GameObjectPool.set(info.id, obj);
+                 obj = new GameObjectCharacter(info, content);
              break;
              case 3:
-             obj = new Ball(info, content);
-             GameObjectPool.set(info.id, obj);
+                 obj = new GameObjectBall(info, content);
              break;
-
+                default:
+                    obj = new GameObject(info, content);
              }
-             */
+
+            GameObjectPool.set(info.id, obj);
+
             return obj;
         }
 

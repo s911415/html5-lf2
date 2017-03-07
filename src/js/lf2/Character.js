@@ -6,6 +6,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
+    const ResourceManager = Framework.ResourceManager;
     /**
      * Character
      *
@@ -14,13 +15,15 @@ var lf2 = (function (lf2) {
      * @extends lf2.GameItem
      * @implements Framework.AttachableInterface
      */
-    lf2.Character = class extends GameItem {
+    lf2.Character = class Character extends GameItem {
         /**
          *
          * @param charId ID of character
          */
         constructor(charId) {
             super(charId);
+            this.head = new Image();
+            this.small = new Image();
         }
 
 
