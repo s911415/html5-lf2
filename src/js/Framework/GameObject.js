@@ -66,6 +66,7 @@ var Framework = (function (Framework) {
          * @return  .
          */
         popSelfOutLevel() {
+            debugger;
             Framework.Game._popGameObj(this);
         }
 

@@ -42,7 +42,7 @@ var lf2 = (function (lf2) {
             this._currentFrameIndex = 0;
             this._lastFrameSetTime = -1;
             this._config = Framework.Config;
-            this._frameInterval = (1e3 / 30);
+            this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = -1;
             this.isDrawBoundry = define.DEBUG;
@@ -84,6 +84,17 @@ var lf2 = (function (lf2) {
         update() {
             const now = Date.now();
             if ((now - this._lastFrameSetTime) < this.currentFrame.wait * this._frameInterval) return;
+
+            let offset = this.currentFrame.offset;
+            //Start move object
+            this.position.z += offset.z;
+            this.position.y += offset.y;
+            if (this._direction == DIRECTION.RIGHT) {
+                this.position.x += offset.x;
+            } else {
+                this.position.x -= offset.x;
+            }
+            //End of move object
 
             this.setFrameById(this._getNextFrameId());
 
