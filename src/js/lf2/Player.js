@@ -20,13 +20,14 @@ var lf2 = (function (lf2) {
          * @param {Number} charId
          */
         constructor(playerId, charId) {
-            console.log('create player', playerId, charId);
+            console.log('Create player', playerId, charId);
 
             this.playerId = playerId;
             this.charId = charId;
 
             this.keyboardConfig = new KeyboardConfig(playerId);
             this.character = new Character(charId);
+            this.character.belongTo = playerId;
         }
 
     };

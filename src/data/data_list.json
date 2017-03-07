@@ -323,28 +323,8 @@
     ],
     "background": [
         {
-            "id": "4",
-            "file": "bg\\hkc.dat"
-        },
-        {
             "id": "2",
             "file": "bg\\lf.dat"
-        },
-        {
-            "id": "3",
-            "file": "bg\\sp.dat"
-        },
-        {
-            "id": "5",
-            "file": "bg\\gw.dat"
-        },
-        {
-            "id": "6",
-            "file": "bg\\qi.dat"
-        },
-        {
-            "id": "7",
-            "file": "bg\\ft.dat"
         },
         {
             "id": "8",
@@ -353,14 +333,6 @@
         {
             "id": "1",
             "file": "bg\\cuhk.dat"
-        },
-        {
-            "id": "0",
-            "file": "bg\\thv.dat"
-        },
-        {
-            "id": "10",
-            "file": "bg\\template.dat"
         }
     ]
 }
