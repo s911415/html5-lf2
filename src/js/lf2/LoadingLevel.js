@@ -70,49 +70,106 @@ var lf2 = (function (lf2) {
             this.promiseList = [];
             this.objInfo = [];
             this.bgInfo = [];
-            new Promise((res, rej) => {
-                ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
+            new Promise((_resolve, _reject) => {
+                return ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
+                    console.log('Load data list done.');
                     return data.json();
                 }).then((data) => {
-                    console.log('Load data list done.');
+                    const objs = data.object, $ = this;
+                    console.log('Loading GameObject');
 
-                    const objs = data.object, bgs = data.background, $=this;
-                    let loadRes = function*(){
-                        let i=0;
-                        while(i<objs.length){
-                            yield objs[i++];
-                        }
+                    return new Promise((res, rej) => {
+                        let loadObjectRes = function*() {
+                            let i = 0;
+                            while (i < objs.length) {
+                                yield objs[i++];
+                            }
 
-                        return null;
-                    };
-                    let loadGen = loadRes();
+                            return null;
+                        };
+                        let loadObjGen = loadObjectRes();
 
-                    let load = function(){
-                        let v=loadGen.next();
-                        const _o = v.value;
-                        if(_o===null) {
-                            res();
-                        }else{
-							console.log(`Loading "${_o.file}".`);
-                            ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
-                                return data.text();
-                            }).then((datText) => {
-                                const obj = $.parseObj(_o, datText);
-                                if (obj instanceof GameObject) {
-                                    $.objInfo.push(obj);
+                        let loadObj = function () {
+                            let v = loadObjGen.next();
+                            const _o = v.value;
+                            if (_o === null) {
+                                res(data);
+                            } else {
+                                console.log(`Loading "${_o.file}".`);
+                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
+                                    return data.text();
+                                }).then((datText) => {
+                                    const obj = $.parseObj(_o, datText);
+                                    if (obj instanceof GameObject) {
+                                        $.objInfo.push(obj);
 
-                                    obj.done().then(()=>{
-										console.log(`"${_o.file}" including images Loaded.`);
-										load();
-									});
-                                } else {
-                                    load();
-                                }
-                            });
-                        }
-                    };
-                    load();
-                });
+                                        obj.done().then(() => {
+                                            console.log(`"${_o.file}" including images Loaded.`);
+                                            loadObj();
+                                        });
+                                    } else {
+                                        loadObj();
+                                    }
+                                });
+                            }
+                        };
+
+                        loadObj();
+                    });
+                }).then((data)=>{
+                    console.log("GameObject all loaded");
+
+                    return data;
+                }).then((data) => {
+                    const bgs = data.background, $ = this;
+                    console.log('Loading GameMap');
+
+                    return new Promise((res, rej) => {
+                        let loadMapRes = function*() {
+                            let i = 0;
+                            while (i < bgs.length) {
+                                yield bgs[i++];
+                            }
+
+                            return null;
+                        };
+                        let loadMapGen = loadMapRes();
+
+                        let loadMap = function () {
+                            let v = loadMapGen.next();
+                            const _o = v.value;
+                            if (_o === null) {
+                                res(data);
+                            } else {
+                                console.log(`Loading "${_o.file}".`);
+                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
+                                    return data.text();
+                                }).then((datText) => {
+                                    /*
+                                    const obj = $.parseObj(_o, datText);
+                                    if (obj instanceof GameObject) {
+                                        $.objInfo.push(obj);
+
+                                        obj.done().then(() => {
+                                            console.log(`"${_o.file}" including images Loaded.`);
+                                            loadMap();
+                                        });
+                                    } else {
+                                        loadMap();
+                                    }
+                                    */
+                                    loadMap();
+                                });
+                            }
+                        };
+
+                        loadMap();
+                    });
+                }).then(_resolve);
+            }).then((data)=>{
+                console.log("GameMap all loaded");
+
+                return data;
             }).then((a, b) => {
                 console.log("---------------------------");
                 console.log("All object loaded.");
