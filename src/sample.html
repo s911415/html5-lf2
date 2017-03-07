@@ -22,15 +22,15 @@
 <script type="text/javascript">
 'use strict';
 var Framework = (function (Framework) {
-    Framework.Config = function () {
-        this.fps = 60;
-        this.canvasWidth = 1350;
-        this.canvasHeight = 700;
+    Framework.Config = {
+        fps : 60,
+        canvasWidth : 1350,
+        canvasHeight : 700,
 //		this.canvasWidth =  640;
 //		this.canvasHeight = 480;
-        this.isBackwardCompatiable = false;
-        this.isOptimize = false;  // 2017.02.20, from V3.1.1
-        this.isMouseMoveRecorded = false;
+        isBackwardCompatiable : false,
+        isOptimize : false,  // 2017.02.20, from V3.1.1
+        isMouseMoveRecorded : false,
     };
     return Framework;
 })(Framework || {});
