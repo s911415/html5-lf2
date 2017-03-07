@@ -39,6 +39,10 @@ var lf2 = (function (lf2) {
                 })
             );
             this.layers = lf2.GameMap._parseLayers(context);
+
+            this.layers.forEach((layer) => {
+                this._promiseList.push(layer.done());
+            });
         }
 
         done(){
@@ -101,7 +105,7 @@ var lf2 = (function (lf2) {
             let x=intval(m[1]);
             let y=intval(m[2]);
 
-            return Point(x, y);
+            return new Point(x, y);
         }
     };
 

@@ -29,9 +29,15 @@ var lf2 = (function (lf2) {
     const GameObjectPool = lf2.GameObjectPool;
 
     /**
+     * @type {GameMapPool}
+     */
+    const GameMapPool = lf2.GameMapPool;
+
+    /**
      * @type {GameObject}
      */
     const GameObject = lf2.GameObject;
+    const GameMap = lf2.GameMap;
     const Character = lf2.Character;
     const Ball = lf2.Ball;
 
@@ -145,19 +151,17 @@ var lf2 = (function (lf2) {
                                 ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
-                                    /*
-                                    const obj = $.parseObj(_o, datText);
-                                    if (obj instanceof GameObject) {
-                                        $.objInfo.push(obj);
+                                    const map = $.parseMap(_o, datText);
+                                    if (map instanceof GameMap) {
+                                        $.bgInfo.push(map);
 
-                                        obj.done().then(() => {
+                                        map.done().then(() => {
                                             console.log(`"${_o.file}" including images Loaded.`);
                                             loadMap();
                                         });
                                     } else {
                                         loadMap();
                                     }
-                                    */
                                     loadMap();
                                 });
                             }
@@ -199,7 +203,7 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Parse LF@ Object
+         * Parse LF2 Object
          * @param {Object} info
          * @param {String} content
          * @returns {GameObject|undefined}
@@ -223,6 +227,33 @@ var lf2 = (function (lf2) {
              }
              */
             return obj;
+        }
+
+        /**
+         * Parse LF2 Object
+         * @param {Object} info
+         * @param {String} content
+         * @returns {GameMap|undefined}
+         */
+        parseMap(info, content) {
+            let map = undefined;
+            map = new GameMap(info, content);
+            GameMapPool.set(info.id, map);
+
+            /*
+             switch (info.type) {
+             case 0:
+             obj = new Character(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+             case 3:
+             obj = new Ball(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+
+             }
+             */
+            return map;
         }
 
         showLoadingVideo() {
