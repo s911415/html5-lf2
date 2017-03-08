@@ -28,6 +28,11 @@ var lf2 = (function (lf2) {
             this.charId = charId;
 
             this.keyboardConfig = new KeyboardConfig(playerId);
+
+            /**
+             *
+             * @type {lf2.Character}
+             */
             this.character = new Character(charId);
             this.character.belongTo = playerId;
 

@@ -13,7 +13,7 @@ var lf2 = (function (lf2) {
      * @type {Character}
      * @class lf2.Character
      * @extends lf2.GameItem
-     * @implements Framework.AttachableInterface
+     * @implements {Framework.AttachableInterface}
      */
     lf2.Character = class Character extends GameItem {
         /**
