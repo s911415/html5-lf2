@@ -14,7 +14,6 @@ var lf2 = (function (lf2) {
             this.config = config;
 
             this.map = GameMapPool.get(this.config.mapId);
-            this.characters = [];
 
             this.addCharacters(this.config.players);
         }
@@ -36,10 +35,9 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
+            super.draw(ctx);
 
-            this.characters.forEach((character)=>{
-                character.draw(ctx);
-            }, this);
+
         }
     };
 
