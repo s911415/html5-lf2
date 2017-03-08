@@ -2,6 +2,7 @@
 var lf2 = (function (lf2) {
     const GameMapPool = lf2.GameMapPool;
     const Point = Framework.Point;
+    const ResourceManager = Framework.ResourceManager;
     /**
      * World Scene
      *
@@ -14,6 +15,12 @@ var lf2 = (function (lf2) {
             super();
             this.config = config;
 
+            //TODO: just for demo
+            this.mapImg = new Framework.Sprite(define.IMG_PATH + 'bg/sys/lf.png');
+            this.mapImg.position.x = 0;
+            this.mapImg.position.y = 170;
+            this.attach(this.mapImg);
+
             /**
              * position of camera, from 0 to 1
              * @type {Number}
@@ -21,8 +28,8 @@ var lf2 = (function (lf2) {
             this.cameraPosition = 0;
             this.map = GameMapPool.get(this.config.mapId);
 
-
             this.addCharacters(this.config.players);
+
         }
 
 
@@ -55,6 +62,9 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             //Reset translate
             ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+            //TODO: just for demo
+
 
             let canvasTranslate = this._getCameraPositionAsPoint();
             ctx.save();
