@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const Fighter = lf2.Fighter;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Player = lf2.Player;
+    const WorldScene = lf2.WorldScene;
     /**
      * @class lf2.FightLevel
      * @extends {Framework.Level}
@@ -33,16 +34,20 @@ var lf2 = (function (lf2) {
             };
 
             for (let playerId in extraData.players) {
-                if(!isFinite(playerId)) continue;
+                playerId = intval(playerId);
+                if(isNaN(playerId)) continue;
 
                 this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
             }
         }
 
         load() {
+            this.world = new WorldScene(this.config);
+
+
+            this.rootScene.attach(this.world);
             //attach player's character
             this.config.players.forEach((player, i) => {
-                this.rootScene.attach(player.character);
 
                 //TODO: debug use
                 player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight/2, 0);
@@ -50,8 +55,8 @@ var lf2 = (function (lf2) {
             });
 
             //TODO: debug use
-            Framework.Game._currentLevel.config.players[0].character.position.y=200;
-            //Framework.Game._currentLevel.config.players[1].character.position.y=400;
+            Framework.Game._currentLevel.config.players[0].character.position.y=300;
+            Framework.Game._currentLevel.config.players[1].character.position.y=400;
         }
 
         initialize() {
@@ -67,7 +72,7 @@ var lf2 = (function (lf2) {
         }
 
         keydown(e, list, oriE) {
-            super.keydown(e);
+            super.keydown(e, list, oriE);
 
         }
 
