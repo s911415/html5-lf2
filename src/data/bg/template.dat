@@ -1,43 +1,43 @@
 name: Template1
 width: 1600   zboundary: 370 510   
-shadow: bg\template\1\shadow.png  shadowsize: 37 9
+shadow: bg\template\1\shadow.webp  shadowsize: 37 9
 
 layer:
-  bg\template\1\pic1.png
+  bg\template\1\pic1.webp
   transparency: 0 width: 967  x: 0  y: 128
 layer_end
 
 layer:
-  bg\template\1\pic2.png
+  bg\template\1\pic2.webp
   transparency: 0 width: 967  x: 800  y: 128
 layer_end
 
 layer:
-  bg\template\1\pic3.png
+  bg\template\1\pic3.webp
   transparency: 1 width: 1000  x: 0  y: 200
 layer_end
 
 layer:
-  bg\template\1\pic4.png
+  bg\template\1\pic4.webp
   transparency: 1 width: 1000  x: 500  y: 200
 layer_end
 
 layer:
-  bg\template\1\pic5.png
+  bg\template\1\pic5.webp
   transparency: 0 width: 1500  x: 0  y: 347
 layer_end
 
 layer:
-  bg\template\1\pic6.png
+  bg\template\1\pic6.webp
   transparency: 0 width: 1500  x: 750  y: 347
 layer_end
 
 layer:
-  bg\template\1\pic7.png
+  bg\template\1\pic7.webp
   transparency: 0 width: 1600  x: 0  y: 413
 layer_end
 
 layer:
-  bg\template\1\pic8.png
+  bg\template\1\pic8.webp
   transparency: 0 width: 1600  x: 800  y: 413
 layer_end
