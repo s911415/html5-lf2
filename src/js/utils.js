@@ -1,4 +1,5 @@
 "use strict";
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
 
 /**
  * Load Script In Sequence

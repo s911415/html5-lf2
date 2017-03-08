@@ -190,7 +190,7 @@ var lf2 = (function (lf2) {
                         {charId: 2},
                         {charId: 51},
                     ],
-                    mapId: 0,
+                    mapId: 2,
 
                 });
             }
