@@ -26,6 +26,8 @@
         'GameMap.js',
         'GameMapPool.js',
 
+        'WorldScene.js',
+
         'LaunchMenu.js',
         'MySettingLevel.js',
         'LoadingLevel.js',

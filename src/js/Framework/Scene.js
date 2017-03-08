@@ -5,18 +5,20 @@ var Framework = (function (Framework) {
     /**
      * 可以用來盛裝多個GameObject的容器, 當該容器位移時, 其所屬的GameObject也會跟著改變
      *
+     * @extends {Framework.GameObject}
+     * @implements {Framework.AttachableInterface}
+     *
      * @example
      *     new Framework.Scene();
      *
      */
-    Framework.Scene = class extends Framework.GameObject {
+    Framework.Scene = class Scene extends Framework.GameObject {
 
         /**
          * Constructor.
          *
-         * @param   options Options for controlling the operation.
          */
-        constructor(options) {
+        constructor() {
             super();
             this.id = undefined;
             this.type = undefined;
@@ -63,12 +65,12 @@ var Framework = (function (Framework) {
         /**
          * Draws the given painter.
          *
-         * @param   painter The painter.
+         * @param {CanvasRenderingContext2D} painter The painter.
          *
          * @return  .
          */
         draw(painter) {
-            var painter = painter || Framework.Game._context;
+            painter = painter || Framework.Game._context;
             //this.countAbsoluteProperty1();
 
             //if(this.isObjectChanged) {
@@ -123,7 +125,7 @@ var Framework = (function (Framework) {
          * 將一個Object移開Scene中, 使其不再跟著連動
          * @param {Object} target 已經被attach的物件
          * @example
-         *     detach(spriteInstace);
+         *     detach(spriteInstance);
          */
         detach(target) {
             let index = this.attachArray.indexOf(target);

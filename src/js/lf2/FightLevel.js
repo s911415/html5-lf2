@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const Fighter = lf2.Fighter;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Player = lf2.Player;
+    const WorldScene = lf2.WorldScene;
     /**
      * @class lf2.FightLevel
      * @extends {Framework.Level}
@@ -40,6 +41,8 @@ var lf2 = (function (lf2) {
         }
 
         load() {
+            this.world = new WorldScene(this.config);
+
             //attach player's character
             this.config.players.forEach((player, i) => {
                 this.rootScene.attach(player.character);
