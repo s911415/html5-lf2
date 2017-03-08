@@ -55,8 +55,8 @@ var lf2 = (function (lf2) {
             });
 
             //TODO: debug use
-            Framework.Game._currentLevel.config.players[0].character.position.y=300;
-            Framework.Game._currentLevel.config.players[1].character.position.y=400;
+            Framework.Game._currentLevel.config.players[0].character.position=new Point(100, 300);
+            Framework.Game._currentLevel.config.players[1].character.position=new Point(800, 300);
         }
 
         initialize() {
