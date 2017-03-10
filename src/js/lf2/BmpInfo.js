@@ -114,13 +114,20 @@ var lf2 = (function (lf2) {
 
                     let i = startIndex;
                     let j = startIndex;
-                    const imgObj = new Image();
+
+                    /**
+                     *
+                     * @type {HTMLCanvasElement}
+                     */
+                    const imgObj = canvas;
+                    /*const imgObj = new Image();
 
                     canvas.toBlob(function (b) {
                         imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
                         resolve();
-                    }, 'image/webp', 1);
+                    }, 'image/webp', 1);*/
 
+                    //Start processing image
                     for (let r = 0; r < row; r++) {
                         const _y = r * (height + 1);
                         //Save Normal image
@@ -147,6 +154,9 @@ var lf2 = (function (lf2) {
                             j++;
                         }
                     }
+                    //End of image process
+                    resolve();
+
                 });
             });
         }
