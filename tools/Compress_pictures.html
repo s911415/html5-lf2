@@ -32,6 +32,12 @@
         </label>
         <input type="color" id="color"/>
     </fieldset>
+    <fieldset>
+        <select name="type" id="type">
+            <option value="image/png" data-ext=".png">PNG</option>
+            <option value="image/webp" data-ext=".webp">WEBP</option>
+        </select>
+    </fieldset>
 
     <fieldset>
         <button type="submit">Compress and download as zip</button>
@@ -39,15 +45,15 @@
 </form>
 <script type="text/javascript">
     let tColor = new Color(0, 0, 0);
-    function processFile(file, callback) {
+    function processFile(file, typeEle, callback) {
         let fr = new FileReader();
         fr.onload = function () {
-            loadCallback.call(this, callback);
+            loadCallback.call(this, typeEle,  callback);
         };
         fr.readAsDataURL(file);
     }
 
-    function loadCallback(callback) {
+    function loadCallback(typeEle, callback) {
         let img = new Image();
         img.onload = function () {
             let c = document.createElement('canvas');
@@ -75,12 +81,13 @@
 
             g.putImageData(imgData, 0, 0);
 
-            let blobData = c.toBlob(callback, 'image/webp', .7);
+            let blobData = c.toBlob(callback, typeEle.value, .7);
         };
         img.src = this.result;
     }
     $("#form").submit((e) => {
         let files = $("#files")[0].files;
+        let type = $("#type")[0];
         let zip = new JSZip();
 
         let fileCount = 0;
@@ -93,8 +100,8 @@
 
 
         Array.prototype.toArray(files).forEach((file) => {
-            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + ".webp";
-            processFile(file, function (blob) {
+            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + type[type.selectedIndex].getAttribute('data-ext');
+            processFile(file, type, function (blob) {
                 zip.file(fileName, blob);
 
                 fileCount++;
