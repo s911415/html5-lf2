@@ -246,6 +246,7 @@ var Framework = (function (Framework) {
              *
              * @return  .
              */
+
             setKeydownEvent() {
                 return setKeydownEvent.apply(this, arguments);
             }
@@ -300,6 +301,14 @@ var Framework = (function (Framework) {
 
             get status() {
                 return _keyStatus;
+            }
+
+            get currentDownKeys() {
+                let map = [];
+                _keyStatus.forEach((v, i, arr) => {
+                    if (v) map.push(i);
+                });
+                return map;
             }
 
             // /**

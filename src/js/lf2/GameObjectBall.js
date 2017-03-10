@@ -26,8 +26,8 @@ var lf2 = (function (lf2) {
             this._dropSoundUrl = headerData.get("weapon_drop_sound");
             this._brokenSoundUrl = headerData.get("weapon_broken_sound");
 
-            "hitSoundUrl dropSoundUrl brokenSoundUrl".split(' ').forEach((k)=>{
-                this.addPreloadResource(this[k]);
+            "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ').forEach((k)=>{
+                this.addPreloadResource(define.MUSIC_PATH + this[k]);
             });
 
             this._audio = new Framework.Audio({
