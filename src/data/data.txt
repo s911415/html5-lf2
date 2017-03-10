@@ -1,71 +1,71 @@
 <object>
-id: 0	type: 0	file: data\template.dat
-id: 52	type: 0	file: data\julian.dat
-id: 51	type: 0	file: data\firzen.dat
-id: 50	type: 0	file: data\louisEX.dat
-id: 38	type: 0	file: data\bat.dat
-id: 39	type: 0	file: data\justin.dat
-id: 37	type: 0	file: data\knight.dat
-id: 36	type: 0	file: data\jan.dat
-id: 35	type: 0	file: data\monk.dat
-id: 34	type: 0	file: data\sorcerer.dat
-id: 33	type: 0	file: data\jack.dat
-id: 32	type: 0	file: data\mark.dat
-id: 31	type: 0	file: data\hunter.dat
-id: 30	type: 0	file: data\bandit.dat
-id: 1	type: 0	file: data\deep.dat
-id: 2	type: 0	file: data\john.dat
-id: 4	type: 0	file: data\henry.dat
-id: 5	type: 0	file: data\rudolf.dat
-id: 6	type: 0	file: data\louis.dat
-id: 7	type: 0	file: data\firen.dat
-id: 8	type: 0	file: data\freeze.dat
-id: 9	type: 0	file: data\dennis.dat
-id: 10	type: 0	file: data\woody.dat
-id: 11	type: 0	file: data\davis.dat
+id: 0	type: 0	file: data\template.txt
+id: 52	type: 0	file: data\julian.txt
+id: 51	type: 0	file: data\firzen.txt
+id: 50	type: 0	file: data\louisEX.txt
+id: 38	type: 0	file: data\bat.txt
+id: 39	type: 0	file: data\justin.txt
+id: 37	type: 0	file: data\knight.txt
+id: 36	type: 0	file: data\jan.txt
+id: 35	type: 0	file: data\monk.txt
+id: 34	type: 0	file: data\sorcerer.txt
+id: 33	type: 0	file: data\jack.txt
+id: 32	type: 0	file: data\mark.txt
+id: 31	type: 0	file: data\hunter.txt
+id: 30	type: 0	file: data\bandit.txt
+id: 1	type: 0	file: data\deep.txt
+id: 2	type: 0	file: data\john.txt
+id: 4	type: 0	file: data\henry.txt
+id: 5	type: 0	file: data\rudolf.txt
+id: 6	type: 0	file: data\louis.txt
+id: 7	type: 0	file: data\firen.txt
+id: 8	type: 0	file: data\freeze.txt
+id: 9	type: 0	file: data\dennis.txt
+id: 10	type: 0	file: data\woody.txt
+id: 11	type: 0	file: data\davis.txt
 
-id: 100	type: 1	file: data\weapon0.dat	#stick
-id: 101	type: 1	file: data\weapon2.dat	#hoe
-id: 120	type: 1	file: data\weapon4.dat	#knife
-id: 121	type: 4	file: data\weapon5.dat	#baseball
-id: 122	type: 6	file: data\weapon6.dat	#milk
-id: 150	type: 2	file: data\weapon1.dat	#stone
-id: 151	type: 2	file: data\weapon3.dat	#wooden_box
-id: 123	type: 6	file: data\weapon8.dat	#beer
-id: 124	type: 1	file: data\weapon9.dat	#<
-id: 217	type: 2	file: data\weapon10.dat	#louis_armour
-id: 218	type: 2	file: data\weapon11.dat	#louis_armour
-id: 201	type: 1	file: data\henry_arrow1.dat
-id: 202	type: 1	file: data\rudolf_weapon.dat
-id: 213	type: 1	file: data\weapon7.dat	#ice_sword
+id: 100	type: 1	file: data\weapon0.txt	#stick
+id: 101	type: 1	file: data\weapon2.txt	#hoe
+id: 120	type: 1	file: data\weapon4.txt	#knife
+id: 121	type: 4	file: data\weapon5.txt	#baseball
+id: 122	type: 6	file: data\weapon6.txt	#milk
+id: 150	type: 2	file: data\weapon1.txt	#stone
+id: 151	type: 2	file: data\weapon3.txt	#wooden_box
+id: 123	type: 6	file: data\weapon8.txt	#beer
+id: 124	type: 1	file: data\weapon9.txt	#<
+id: 217	type: 2	file: data\weapon10.txt	#louis_armour
+id: 218	type: 2	file: data\weapon11.txt	#louis_armour
+id: 201	type: 1	file: data\henry_arrow1.txt
+id: 202	type: 1	file: data\rudolf_weapon.txt
+id: 213	type: 1	file: data\weapon7.txt	#ice_sword
 
-id: 200	type: 3	file: data\john_ball.dat
-id: 203	type: 3	file: data\deep_ball.dat
-id: 204	type: 3	file: data\henry_wind.dat
-id: 205	type: 3	file: data\dennis_ball.dat
-id: 206	type: 3	file: data\woody_ball.dat
-id: 207	type: 3	file: data\davis_ball.dat
-id: 208	type: 3	file: data\henry_arrow2.dat
-id: 209	type: 3	file: data\freeze_ball.dat
-id: 210	type: 3	file: data\firen_ball.dat
-id: 211	type: 3	file: data\firen_flame.dat
-id: 212	type: 3	file: data\freeze_column.dat
-id: 214	type: 3	file: data\john_biscuit.dat
-id: 215	type: 3	file: data\dennis_chase.dat
-id: 216	type: 3	file: data\jack_ball.dat
-id: 219	type: 3	file: data\jan_chaseh.dat
-id: 220	type: 3	file: data\jan_chase.dat
-id: 221	type: 3	file: data\firzen_chasef.dat
-id: 222	type: 3	file: data\firzen_chasei.dat
-id: 223	type: 3	file: data\firzen_ball.dat
-id: 224	type: 3	file: data\bat_ball.dat
-id: 225	type: 3	file: data\bat_chase.dat
-id: 226	type: 3	file: data\justin_ball.dat
-id: 228	type: 3	file: data\julian_ball.dat
-id: 229	type: 3	file: data\julian_ball2.dat
+id: 200	type: 3	file: data\john_ball.txt
+id: 203	type: 3	file: data\deep_ball.txt
+id: 204	type: 3	file: data\henry_wind.txt
+id: 205	type: 3	file: data\dennis_ball.txt
+id: 206	type: 3	file: data\woody_ball.txt
+id: 207	type: 3	file: data\davis_ball.txt
+id: 208	type: 3	file: data\henry_arrow2.txt
+id: 209	type: 3	file: data\freeze_ball.txt
+id: 210	type: 3	file: data\firen_ball.txt
+id: 211	type: 3	file: data\firen_flame.txt
+id: 212	type: 3	file: data\freeze_column.txt
+id: 214	type: 3	file: data\john_biscuit.txt
+id: 215	type: 3	file: data\dennis_chase.txt
+id: 216	type: 3	file: data\jack_ball.txt
+id: 219	type: 3	file: data\jan_chaseh.txt
+id: 220	type: 3	file: data\jan_chase.txt
+id: 221	type: 3	file: data\firzen_chasef.txt
+id: 222	type: 3	file: data\firzen_chasei.txt
+id: 223	type: 3	file: data\firzen_ball.txt
+id: 224	type: 3	file: data\bat_ball.txt
+id: 225	type: 3	file: data\bat_chase.txt
+id: 226	type: 3	file: data\justin_ball.txt
+id: 228	type: 3	file: data\julian_ball.txt
+id: 229	type: 3	file: data\julian_ball2.txt
 
-id: 998	type: 5	file: data\etc.dat
-id: 999	type: 5	file: data\broken_weapon.dat
+id: 998	type: 5	file: data\etc.txt
+id: 999	type: 5	file: data\broken_weapon.txt
 <object_end>
 
 <file_editing>
@@ -73,18 +73,18 @@ data\nothing.txt
 <file_editing_end>
 
 <background>
-id: 4	file: bg\sys\hkc\bg.dat
-id: 2	file: bg\sys\lf\bg.dat
-id: 3	file: bg\sys\sp\bg.dat
-id: 5	file: bg\sys\gw\bg.dat
-id: 6	file: bg\sys\qi\bg.dat
-id: 7	file: bg\sys\ft\bg.dat
-id: 8	file: bg\sys\bc\bg.dat
-id: 1	file: bg\sys\cuhk\bg.dat
-id: 0	file: bg\sys\thv\bg.dat
-id: 10	file: bg\template\1\bg.dat
-id: 11	file: bg\template\2\bg.dat
-id: 12	file: bg\template\3\bg.dat
+id: 4	file: bg\sys\hkc\bg.txt
+id: 2	file: bg\sys\lf\bg.txt
+id: 3	file: bg\sys\sp\bg.txt
+id: 5	file: bg\sys\gw\bg.txt
+id: 6	file: bg\sys\qi\bg.txt
+id: 7	file: bg\sys\ft\bg.txt
+id: 8	file: bg\sys\bc\bg.txt
+id: 1	file: bg\sys\cuhk\bg.txt
+id: 0	file: bg\sys\thv\bg.txt
+id: 10	file: bg\template\1\bg.txt
+id: 11	file: bg\template\2\bg.txt
+id: 12	file: bg\template\3\bg.txt
 <background_end>
 
 id: 100~199 drop weapon
