@@ -74,6 +74,19 @@ var lf2 = (function (lf2) {
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
 
+            this.config.players.forEach((player)=>{
+                player.keydown(e, list, oriE);
+            });
+
+        }
+
+        keyup(e, list, oriE) {
+            super.keyup(e, list, oriE);
+
+            this.config.players.forEach((player)=>{
+                player.keyup(e, list, oriE);
+            });
+
         }
 
         click(e) {

@@ -482,7 +482,7 @@ var Framework = (function (Framework) {
          *     }
          * },
          */
-        keyup(e) {
+        keyup(e, list, orgI) {
         }
 
         keypress(e) {

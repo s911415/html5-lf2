@@ -7,6 +7,7 @@ var lf2 = (function (lf2) {
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
+    const KeyBoardConfig = Framework.KeyboardConfig;
     /**
      * Character
      *
@@ -22,8 +23,11 @@ var lf2 = (function (lf2) {
          */
         constructor(charId) {
             super(charId);
+            this.charId = charId;
             this.head = new Image();
             this.small = new Image();
+            this._curFuncKey = 0;
+            this._lastFuncKey = 0;
         }
 
 
@@ -50,6 +54,27 @@ var lf2 = (function (lf2) {
             if (next == 999) return 0;
 
             return next;
+        }
+
+        get isFuncKeyChanged() {
+            return this._curFuncKey !== this._lastFuncKey;
+        }
+
+        update() {
+            super.update();
+            if(this.isFuncKeyChanged){
+                console.log(this.charId, this._curFuncKey);
+            }
+
+        }
+
+        /**
+         * Set func key
+         * @param {Number} key
+         */
+        setFuncKey(key) {
+            this._lastFuncKey = this._curFuncKey;
+            this._curFuncKey = key;
         }
     };
 
