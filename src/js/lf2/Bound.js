@@ -6,6 +6,7 @@ var lf2 = (function (lf2) {
      * @class lf2.Bound
      */
     lf2.Bound = {
+        NONE: 0,
         TOP: 1,
         RIGHT: 2,
         BOTTOM: 4,

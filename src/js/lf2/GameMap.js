@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const Point = Framework.Point;
     const ResourceManager = Framework.ResourceManager;
     const GameMapLayer = lf2.GameMapLayer;
+    const Bound = lf2.Bound;
 
     /**
      * GameMap
@@ -75,6 +76,21 @@ var lf2 = (function (lf2) {
             //Align to bottom
             const Y = Framework.Config.canvasHeight - this.simpleMap.height;
             ctx.drawImage(this.simpleMap, 0, Y);
+        }
+
+        /**
+         *
+         * @param {Framework.Point} p
+         * @returns {number}
+         */
+        getBound(p){
+            let bound =Bound.NONE;
+            if(p.x<0) bound|=Bound.LEFT;
+            if(p.x>this.width) bound|=Bound.RIGHT;
+            if(p.y<this.zBoundary.first) bound|=Bound.TOP;
+            if(p.y>this.zBoundary.second) bound|=Bound.BOTTOM;
+
+            return bound;
         }
 
         /**

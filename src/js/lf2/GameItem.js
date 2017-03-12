@@ -104,7 +104,6 @@ var lf2 = (function (lf2) {
             if (this.position.z < 0) this.position.z = 0;
 
             let bound = 0;
-            //if(this.position.z)
 
             if (lastFrameSetDiff>= this.currentFrame.wait * this._frameInterval) {
                 this.setFrameById(this._getNextFrameId());
@@ -213,8 +212,13 @@ var lf2 = (function (lf2) {
             }
         }
 
-        onOutOfBound(bound) {
-
+        /**
+         *
+         * @param {Number} bound
+         * @param {lf2.GameMap} map
+         */
+        onOutOfBound(bound, map) {
+            //TODO: Implement when arrive bound
         }
 
 

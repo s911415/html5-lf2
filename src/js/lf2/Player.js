@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const GameObjectPool = lf2.GameObjectPool;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
+    const Bound = lf2.Bound;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const DEFAULT_HP = 500;
@@ -110,10 +111,14 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-
-
+            const MAP =this.spriteParent.map;
             this.character.update();
 
+            let bound = MAP.getBound(this.character.position);
+            if(bound!==Bound.NONE){
+                debugger;
+                this.character.onOutOfBound(bound, MAP);
+            }
         }
 
         /**

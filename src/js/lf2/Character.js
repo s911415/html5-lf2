@@ -1,6 +1,7 @@
 "use strict";
 var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
+    const Bound = lf2.Bound;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
@@ -132,6 +133,8 @@ var lf2 = (function (lf2) {
                 }
             }
 
+            this.getFrme
+
             return next;
         }
 
@@ -163,6 +166,7 @@ var lf2 = (function (lf2) {
 
                     x/=this.obj.walking_frame_rate;
                     y/=this.obj.walking_frame_rate;
+                    y=Math.round(y);
 
                     return new Framework.Point3D(x, y, 0);
                     break;
@@ -185,7 +189,6 @@ var lf2 = (function (lf2) {
             )!==0;
         }
 
-
         /**
          *
          * @param {Number} key KeyboardConfig.KEY_MAP
@@ -198,6 +201,18 @@ var lf2 = (function (lf2) {
 
         get isFuncKeyChanged() {
             return this._curFuncKey !== this._lastFuncKey;
+        }
+
+        /**
+         *
+         * @param {Number} bound
+         * @param {lf2.GameMap} map
+         */
+        onOutOfBound(bound, map){
+            if(bound & Bound.LEFT) this.position.x = 0;
+            if(bound & Bound.RIGHT) this.position.x = map.width;
+            if(bound & Bound.TOP) this.position.y = map.zBoundary.first;
+            if(bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
         update() {

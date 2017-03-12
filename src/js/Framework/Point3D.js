@@ -17,7 +17,7 @@ var Framework = (function (Framework) {
          */
         constructor(x, y, z) {
             super(x, y);
-            this._z = z;
+            this._z = intval(z);
         }
 
         /**
@@ -37,7 +37,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set z(value) {
-            this._z = (value);
+            this._z =intval (value);
         }
 
         /**
@@ -48,19 +48,6 @@ var Framework = (function (Framework) {
          */
         clone() {
             return new Point3D(this.x, this.y, this.z);
-        }
-
-        /**
-         *
-         * @param {Number} x
-         * @param {Number} y
-         * @returns {Point}
-         */
-        offset(x, y) {
-            this.x += x;
-            this.y += y;
-
-            return this;
         }
     };
 
