@@ -75,8 +75,8 @@ var Framework = (function (Framework) {
                 // 計算縮放後的大小
                 if (this.isObjectChanged) {
                     if (!Framework.Util.isAbout(this.absoluteScale, 1, 0.00001) || !Framework.Util.isAbout(this.absoluteRotation, 0, 0.001)) {
-                        realWidth   *= this.scale;
-                        realHeight *=  this.scale;
+                        realWidth *= this.scale;
+                        realHeight *= this.scale;
                         // 將canvas 放大才不會被切到
                         var diagonalLength = Math.ceil(Math.sqrt(Math.pow(realHeight, 2) + Math.pow(realWidth, 2)));
                         this.canvas.width = diagonalLength;
@@ -90,7 +90,7 @@ var Framework = (function (Framework) {
 
                         // 旋轉Canvas
                         //檢查是否有旋轉
-                        if(this.absoluteRotation%360!==0){
+                        if (this.absoluteRotation % 360 !== 0) {
                             // 將Canvas 中心點移動到左上角(0,0)
                             this.context.translate(tranlateX, tranlateY);
 
@@ -103,7 +103,7 @@ var Framework = (function (Framework) {
 
                         // 縮放
                         // 檢查是否有縮放
-                        if(this.absoluteScale!=1){
+                        if (this.absoluteScale != 1) {
                             this.context.scale(this.absoluteScale, this.absoluteScale);
                         }
 
@@ -154,6 +154,9 @@ var Framework = (function (Framework) {
                 this.texture = Framework.ResourceManager.getResource(this.id);
             }
             if (this.type === 'image' || this.type === 'canvas') {
+                realWidth = this.texture.width;
+                realHeight = this.texture.height;
+
                 // 計算縮放後的大小
                 if (this.isObjectChanged) {
                     if (!Framework.Util.isAbout(this.absoluteScale, 1, 0.00001) || !Framework.Util.isAbout(this.absoluteRotation, 0, 0.001)) {
