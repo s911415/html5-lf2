@@ -207,7 +207,7 @@ var lf2 = (function (lf2) {
                         {charId: 52},
                         //{charId: 51},
                     ],
-                    mapId: 2,
+                    mapId: 8,
 
                 });
             }
