@@ -107,10 +107,6 @@ var lf2 = (function (lf2) {
             let bound = 0;
 
             if (this._frameForceChange || lastFrameSetDiff >= this.currentFrame.wait * this._frameInterval) {
-                if(this._frameForceChange) {
-                    debugger;
-                    console.log('change by force change');
-                }
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
             }

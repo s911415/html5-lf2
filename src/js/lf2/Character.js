@@ -37,7 +37,7 @@ var lf2 = (function (lf2) {
 
 
     const DEFAULT_KEY = {};
-    let acceptForceChangeStatus=[];
+    let acceptForceChangeStatus = [];
 
     DEFAULT_KEY[FrameStage.STAND] = {
         j: JUMP_FRAME_ID,
@@ -97,7 +97,7 @@ var lf2 = (function (lf2) {
             const hitList = this.currentFrame.hit;
             let next = this.currentFrame.nextFrameId;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
-            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state)!==-1;
+            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
             if (hitList[funcKeyWoArrow]) {
                 next = hitList[funcKeyWoArrow];
             }
@@ -254,7 +254,7 @@ var lf2 = (function (lf2) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
                 this._lastFuncKey = this._curFuncKey;
-                this._frameForceChange=true;
+                this._frameForceChange = true;
             }
 
         }

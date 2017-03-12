@@ -37,7 +37,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set z(value) {
-            this._z =intval (value);
+            this._z = intval(value);
         }
 
         /**

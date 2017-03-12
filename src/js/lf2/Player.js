@@ -114,11 +114,11 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            const MAP =this.spriteParent.map;
+            const MAP = this.spriteParent.map;
             this.character.update();
 
             let bound = MAP.getBound(this.character.position);
-            if(bound!==Bound.NONE){
+            if (bound !== Bound.NONE) {
                 this.character.onOutOfBound(bound, MAP);
             }
         }

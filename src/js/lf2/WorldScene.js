@@ -44,10 +44,10 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
             let sumPlayerX = 0;
-            this.config.players.forEach((p)=>{
+            this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
             });
-            this._setCameraPositionByX(sumPlayerX/this.config.players.length);
+            this._setCameraPositionByX(sumPlayerX / this.config.players.length);
         }
 
         _setCameraPositionByX(x) {
