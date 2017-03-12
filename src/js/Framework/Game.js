@@ -529,6 +529,7 @@ var Framework = (function (Framework) {
             if (that._isRecordMode) {
                 that._record.inputCommand("// Change Level :" + levelname + ";");
             }
+            console.log(`Level start: ${levelName}`);
             that.start(extraData);
 
             return that._currentLevel;

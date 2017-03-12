@@ -87,7 +87,7 @@ var lf2 = (function (lf2) {
             const now = Date.now();
             if ((now - this._lastFrameSetTime) < this.currentFrame.wait * this._frameInterval) return;
 
-            let offset = this.currentFrame.offset;
+            let offset = this._getFrameOffset();
             //Start move object
             this.position.z += offset.z;
             this.position.y += offset.y;
@@ -102,6 +102,14 @@ var lf2 = (function (lf2) {
 
 
             if (this.position.z < 0) this.position.z = 0;
+        }
+
+        _getFrameOffset(){
+            switch(this.currentFrame.state){
+
+                default:
+                    return this.currentFrame.offset;
+            }
         }
 
         /**
