@@ -33,6 +33,11 @@ var lf2 = (function (lf2) {
         _down: KEY_MAP.DOWN,
         _left: KEY_MAP.LEFT,
         _right: KEY_MAP.RIGHT,
+
+        _ul: KEY_MAP.UP | KEY_MAP.LEFT,
+        _ur: KEY_MAP.UP | KEY_MAP.RIGHT,
+        _dl: KEY_MAP.DOWN | KEY_MAP.LEFT,
+        _dr: KEY_MAP.DOWN | KEY_MAP.RIGHT,
         //_front: KEY_MAP.FRONT,
 
         HIT_LIST: [
@@ -42,6 +47,7 @@ var lf2 = (function (lf2) {
             "Uj", "Ua",
             "j", "d", "a",
 
+            "_ul", "_ur", "_dl", "_dr",
             "_up","_down","_left","_right",
         ],
     };

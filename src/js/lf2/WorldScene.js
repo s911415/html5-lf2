@@ -26,6 +26,8 @@ var lf2 = (function (lf2) {
             this.attach(this.map);
             this.addPlayers(this.players);
 
+            this._lastCameraX = -1;
+
         }
 
 
@@ -41,6 +43,27 @@ var lf2 = (function (lf2) {
 
         update() {
             super.update();
+            let sumPlayerX = 0;
+            this.config.players.forEach((p)=>{
+                sumPlayerX += p.character.position.x;
+            });
+            this._setCameraPositionByX(sumPlayerX/this.config.players.length);
+        }
+
+        _setCameraPositionByX(x) {
+            const WIDTH = this.map.width - Framework.Config.canvasWidth;
+            const HW = Framework.Config.canvasWidth / 2;
+            let pos = 0;
+            if (x <= HW) {
+                pos = 0;
+            } else if (x >= this.map.width - HW) {
+                pos = 1;
+            } else {
+                pos = (x - HW) / WIDTH;
+            }
+
+            this.cameraPosition = pos;
+
         }
 
         _getCameraPositionAsPoint() {

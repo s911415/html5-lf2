@@ -9,7 +9,7 @@ var lf2 = (function (lf2) {
      * @type {Interaction}
      * @class lf2.Interaction
      */
-    lf2.Interaction = class Interaction{
+    lf2.Interaction = class Interaction {
         /**
          *
          * @param {String} content
@@ -18,26 +18,26 @@ var lf2 = (function (lf2) {
             this.info = Utils.parseDataLine(content.replace(/\r?\n/g, ""));
             this.kind = this.info.get('kind');
             this.rect = new Rectangle(
-                this.info.get('w'),this.info.get('h'),
-                this.info.get('x'),this.info.get('y')
+                intval(this.info.get('w')), intval(this.info.get('h')),
+                intval(this.info.get('x')), intval(this.info.get('y'))
             );
 
-            this.zwidth = this.info.get('zwidth') || 0;
+            this.zwidth = intval(this.info.get('zwidth') || 0);
 
             this.dv = new Point(
-                this.info.get('dvx') || 0,
-                this.info.get('dvy') || 0
+                intval(this.info.get('dvx') || 0),
+                intval(this.info.get('dvy') || 0)
             );
 
-            this.fall = this.info.get('fall') || 100;
+            this.fall = intval(this.info.get('fall') || 100);
 
-            this.vrest = this.info.get('vrest') || 1;
-            this.arest = this.info.get('arest') || 1;
+            this.vrest = intval(this.info.get('vrest') || 1);
+            this.arest = intval(this.info.get('arest') || 1);
 
-            this.injury = this.info.get('injury') || 0;
-            this.bdefend = this.info.get('bdefend') || 0;
+            this.injury = intval(this.info.get('injury') || 0);
+            this.bdefend = intval(this.info.get('bdefend') || 0);
 
-            this.effect = this.info.get('effect') || 0;
+            this.effect = intval(this.info.get('effect') || 0);
         }
     };
 

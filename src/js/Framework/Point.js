@@ -10,8 +10,11 @@ var Framework = (function (Framework) {
          * @param {Number} y
          */
         constructor(x, y) {
-            this._x = Math.floor(x);
-            this._y = Math.floor(y);
+            if(typeof x =="string"){
+                debugger;
+            }
+            this._x = (x);
+            this._y = (y);
         }
 
         /**
@@ -31,7 +34,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set x(value) {
-            this._x = Math.floor(value);
+            this._x = (value);
         }
 
         /**
@@ -72,7 +75,7 @@ var Framework = (function (Framework) {
          * @return  {void}.
          */
         set y(value) {
-            this._y = Math.floor(value);
+            this._y = (value);
         }
 
     };

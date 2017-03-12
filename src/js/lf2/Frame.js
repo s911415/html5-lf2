@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
      * @type {Frame}
      * @class lf2.Frame
      */
-    lf2.Frame = class Frame{
+    lf2.Frame = class Frame {
         /**
          *
          * @param {String} context
@@ -107,9 +107,9 @@ var lf2 = (function (lf2) {
          */
         get offset() {
             return new Point3D(
-                this.data.get('dvx') || 0,
-                this.data.get('dvy') || 0,
-                this.data.get('dvz') || 0
+                intval(this.data.get('dvx') || 0),
+                intval(this.data.get('dvy') || 0),
+                intval(this.data.get('dvz') || 0)
             );
         }
 

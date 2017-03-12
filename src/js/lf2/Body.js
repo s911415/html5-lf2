@@ -9,7 +9,7 @@ var lf2 = (function (lf2) {
      * @type {Body}
      * @class lf2.Body
      */
-    lf2.Body = class Body{
+    lf2.Body = class Body {
         /**
          *
          * @param {String} content
@@ -18,8 +18,8 @@ var lf2 = (function (lf2) {
             this.info = Utils.parseDataLine(content.replace(/\r?\n/g, ""));
             this.kind = this.info.get('kind');
             this.rect = new Rectangle(
-                this.info.get('w'),this.info.get('h'),
-                this.info.get('x'),this.info.get('y')
+                intval(this.info.get('w')), intval(this.info.get('h')),
+                intval(this.info.get('x')), intval(this.info.get('y'))
             );
         }
     };

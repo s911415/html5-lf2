@@ -17,7 +17,7 @@ var Framework = (function (Framework) {
          */
         constructor(x, y, z) {
             super(x, y);
-            this._z = Math.floor(z);
+            this._z = z;
         }
 
         /**
@@ -37,7 +37,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set z(value) {
-            this._z = Math.floor(value);
+            this._z = (value);
         }
 
         /**
@@ -62,27 +62,6 @@ var Framework = (function (Framework) {
 
             return this;
         }
-
-        /**
-         * Gets the y coordinate.
-         *
-         * @return  {Number} y.
-         */
-        get y() {
-            return this._y;
-        }
-
-        /**
-         * Y coordinates the given value.
-         *
-         * @param  {Number} value   The value.
-         *
-         * @return  {void}.
-         */
-        set y(value) {
-            this._y = Math.floor(value);
-        }
-
     };
 
     return Framework;

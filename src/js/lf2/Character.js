@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const ResourceManager = Framework.ResourceManager;
     const KeyboardConfig = lf2.KeyboardConfig;
     const FrameStage = lf2.FrameStage;
+    const DIRECTION = GameItem.DIRECTION;
 
 
     const STAND_FRAME_RANGE = {
@@ -28,6 +29,10 @@ var lf2 = (function (lf2) {
         max: 11
     };
     Object.freeze(RUN_FRAME_RANGE);
+
+    const PUNCH1_FRAME_ID = 60;
+    const PUNCH2_FRAME_ID = 65;
+
     /**
      * Character
      *
@@ -48,6 +53,10 @@ var lf2 = (function (lf2) {
             this.small = this.obj.small;
             this._curFuncKey = 0;
             this._lastFuncKey = 0;
+
+            this._walk_dir = DIRECTION.RIGHT;
+            this._run_dir = DIRECTION.RIGHT;
+            this._punch_dir = DIRECTION.RIGHT;
         }
 
 
@@ -66,12 +75,12 @@ var lf2 = (function (lf2) {
 
             const IS_ARR_ONLY = this._isArrowKeyOnly();
 
-            if(this.currentFrame.state==FrameStage.STAND){
-                if(
+            if (this.currentFrame.state == FrameStage.STAND) {
+                if (
                     next.inRange(
                         STAND_FRAME_RANGE.min, STAND_FRAME_RANGE.max
                     ) && IS_ARR_ONLY
-                ){
+                ) {
                     next = 999;
                 }
             }
@@ -92,9 +101,22 @@ var lf2 = (function (lf2) {
                     case FrameStage.WALK:
                         //hold left or right key
                         if (IS_ARR_ONLY) {
-                            next = this.currentFrame.id + 1;
-                            //Loop walk action
-                            if (next > WALK_FRAME_RANGE.max) next = WALK_FRAME_RANGE.min;
+                            if(this._walk_dir==DIRECTION.RIGHT){
+                                next = this.currentFrame.id + 1;
+                                //Loop walk action
+                                if (next > WALK_FRAME_RANGE.max) {
+                                    next -=2;
+                                    this._walk_dir=DIRECTION.LEFT;
+                                }
+                            }else{
+                                next = this.currentFrame.id - 1;
+                                //Loop walk action
+                                if (next < WALK_FRAME_RANGE.min) {
+                                    next +=2;
+                                    this._walk_dir=DIRECTION.RIGHT;
+                                }
+                            }
+
                         }
                         break;
                     default:
@@ -104,20 +126,63 @@ var lf2 = (function (lf2) {
 
 
                 if (this._containsKey(KeyboardConfig.KEY_MAP.LEFT)) {
-                    this._direction = GameItem.DIRECTION.LEFT;
+                    this._direction = DIRECTION.LEFT;
                 } else if (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)) {
-                    this._direction = GameItem.DIRECTION.RIGHT;
+                    this._direction = DIRECTION.RIGHT;
                 }
             }
 
             return next;
         }
 
-        _isArrowKeyOnly(){
-            return this._curFuncKey == KeyboardConfig.KEY_MAP.UP ||
-            this._curFuncKey == KeyboardConfig.KEY_MAP.DOWN ||
-            this._curFuncKey == KeyboardConfig.KEY_MAP.LEFT ||
-            this._curFuncKey == KeyboardConfig.KEY_MAP.RIGHT;
+
+        /**
+         *
+         * @returns {Framework.Point3D}
+         * @override
+         * @private
+         */
+        _getFrameOffset() {
+            switch (this.currentFrame.state) {
+                case FrameStage.WALK:
+                    let x, y;
+                    x = y = 0;
+
+                    if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
+                        y = this.obj.walking_speedz;
+                    } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
+                        y = -this.obj.walking_speedz;
+                    }
+
+                    if (
+                        this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) ||
+                        this._containsKey(KeyboardConfig.KEY_MAP.LEFT)
+                    ) {
+                        x = this.obj.walking_speed;
+                    }
+
+                    x/=this.obj.walking_frame_rate;
+                    y/=this.obj.walking_frame_rate;
+
+                    return new Framework.Point3D(x, y, 0);
+                    break;
+                default:
+                    return this.currentFrame.offset;
+            }
+        }
+
+        /**
+         * Is move key pressed
+         * @returns {boolean}
+         * @private
+         */
+        _isArrowKeyOnly() {
+            return (
+                this._curFuncKey & (
+                    KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN |
+                    KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT
+                )
+            )!==0;
         }
 
 
