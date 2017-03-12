@@ -7,6 +7,7 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
+    const Bound = lf2.Bound;
     const DESTROY_ID = 1000;
     const NONE = -1;
 
@@ -41,13 +42,14 @@ var lf2 = (function (lf2) {
             this.relativePosition = new Point3D(0, 0, 0);
 
             this._currentFrameIndex = 0;
-            this._lastFrameSetTime = NONE;
+            this._lastFrameSetTime = Date.now();
             this._config = Framework.Config;
             this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
             this.isDrawBoundry = define.DEBUG;
             this.belongTo = NONE;
+            this._frameForceChange = false;
 
             this.pushSelfToLevel();
         }
@@ -85,7 +87,8 @@ var lf2 = (function (lf2) {
          */
         update() {
             const now = Date.now();
-            if ((now - this._lastFrameSetTime) < this.currentFrame.wait * this._frameInterval) return;
+            const lastFrameSetDiff = now - this._lastFrameSetTime;
+            if ((lastFrameSetDiff ) < this._frameInterval) return;
 
             let offset = this._getFrameOffset();
             //Start move object
@@ -98,14 +101,24 @@ var lf2 = (function (lf2) {
             }
             //End of move object
 
-            this.setFrameById(this._getNextFrameId());
-
 
             if (this.position.z < 0) this.position.z = 0;
+
+            let bound = 0;
+
+            if (this._frameForceChange || lastFrameSetDiff >= this.currentFrame.wait * this._frameInterval) {
+                this.setFrameById(this._getNextFrameId());
+                this._frameForceChange = false;
+            }
         }
 
-        _getFrameOffset(){
-            switch(this.currentFrame.state){
+        /**
+         *
+         * @returns {Framework.Point3D}
+         * @private
+         */
+        _getFrameOffset() {
+            switch (this.currentFrame.state) {
 
                 default:
                     return this.currentFrame.offset;
@@ -120,7 +133,7 @@ var lf2 = (function (lf2) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
             if (frameId == DESTROY_ID) {
-                if(this.spriteParent) {
+                if (this.spriteParent) {
                     this.spriteParent.detach(this);
                 }
 
@@ -177,12 +190,12 @@ var lf2 = (function (lf2) {
 
 
             /*
-            console.log([
-                this._currentFrameIndex,
-                imgInfo.img.src,
-                imgInfo.rect,
-                leftTopPoint]);
-            */
+             console.log([
+             this._currentFrameIndex,
+             imgInfo.img.src,
+             imgInfo.rect,
+             leftTopPoint]);
+             */
 
             ctx.drawImage(
                 imgInfo.img,
@@ -199,6 +212,15 @@ var lf2 = (function (lf2) {
                     imgInfo.rect.width, imgInfo.rect.height
                 );
             }
+        }
+
+        /**
+         *
+         * @param {Number} bound
+         * @param {lf2.GameMap} map
+         */
+        onOutOfBound(bound, map) {
+            //TODO: Implement when arrive bound
         }
 
 

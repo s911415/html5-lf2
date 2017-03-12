@@ -1,12 +1,12 @@
 "use strict";
 var lf2 = (function (lf2) {
     /**
-     * Game Stage
+     * Frame Stage
      *
-     * @type {GameStage}
-     * @class lf2.GameStage
+     * @type {FrameStage}
+     * @class lf2.FrameStage
      */
-    lf2.GameStage = {
+    lf2.FrameStage = {
         /**
          * Character used start
          */
@@ -55,7 +55,7 @@ var lf2 = (function (lf2) {
          */
     };
 
-    Object.freeze(lf2.GameStage);
+    Object.freeze(lf2.FrameStage);
 
     return lf2;
 })(lf2 || {});

@@ -1,5 +1,5 @@
 name: Brokeback_Clif
-width: 1500   zboundary: 300 510
+width: 1379   zboundary: 300 510
 shadow: bg\sys\bc\s.webp  shadowsize: 37 9
 layer: 
   bg\sys\bc\bc1.webp

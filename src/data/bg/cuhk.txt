@@ -1,5 +1,5 @@
 name: CUHK
-width: 1600   zboundary: 420 510   
+width: 1140   zboundary: 420 510
 shadow: bg\sys\cuhk\s.webp  shadowsize: 37 9
 
 layer:

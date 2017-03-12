@@ -64,15 +64,14 @@ var lf2 = (function (lf2) {
             this.rootScene.attach(this.world);
             //attach player's character
             this.config.players.forEach((player, i) => {
-
                 //TODO: debug use
                 player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight / 2, 0);
                 //Framework.Game._currentLevel.config.players[0].character.setFrameById(210);
             });
 
             //TODO: debug use
-            Framework.Game._currentLevel.config.players[0].character.position = new Point(100, 300);
-            Framework.Game._currentLevel.config.players[1].character.position = new Point(800, 300);
+            this.config.players[0].character.position = new Point(100, 360);
+            //this.config.players[1].character.position = new Point(800, 300);
         }
 
         initialize() {
