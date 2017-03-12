@@ -7,7 +7,21 @@ var lf2 = (function (lf2) {
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
-    const KeyBoardConfig = Framework.KeyboardConfig;
+    const KeyboardConfig = lf2.KeyboardConfig;
+    const FrameStage = lf2.FrameStage;
+
+
+    const WALK_FRAME_RANGE = {
+        min: 5,
+        max: 8
+    };
+    Object.freeze(WALK_FRAME_RANGE);
+
+    const RUN_FRAME_RANGE = {
+        min: 9,
+        max: 11
+    };
+    Object.freeze(RUN_FRAME_RANGE);
     /**
      * Character
      *
@@ -38,22 +52,58 @@ var lf2 = (function (lf2) {
          * @override
          */
         _getNextFrameId() {
+            const hitList = this.currentFrame.hit;
             let next = this.currentFrame.nextFrameId;
+            if (hitList[this._curFuncKey]) {
+                next = hitList[this._curFuncKey];
+            }
+
             if (next == 0) {
                 switch (this.currentFrame.state) {
-                    case 0:
-                        next = 0;
-                        break;
-                    case 1:
-                        break;
-
                     default:
                         next = 0;
                 }
+            } else if (next == 999) {
+                switch (this.currentFrame.state) {
+                    case FrameStage.STAND:
+                        if (this._containsKey(KeyboardConfig.KEY_MAP.FRONT)) {
+                            next = WALK_FRAME_RANGE.min;
+                        }
+                        break;
+
+                    case FrameStage.WALK:
+                        //hold left or right key
+                        if (this._containsKey(KeyboardConfig.KEY_MAP.FRONT)) {
+                            next = this.currentFrame.id + 1;
+                            //Loop walk action
+                            if(next>WALK_FRAME_RANGE.max) next=WALK_FRAME_RANGE.min;
+                        }
+                        break;
+                    default:
+                        next = 0;
+                }
+                if (next === 999) next = 0;
+
+
+                        if (this._containsKey(KeyboardConfig.KEY_MAP.LEFT)) {
+                            this._direction = GameItem.DIRECTION.LEFT;
+                        } else if (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)) {
+                            this._direction = GameItem.DIRECTION.RIGHT;
+                        }
             }
-            if (next == 999) return 0;
 
             return next;
+        }
+
+
+        /**
+         *
+         * @param {Number} key KeyboardConfig.KEY_MAP
+         * @returns {boolean}
+         * @private
+         */
+        _containsKey(key) {
+            return (this._curFuncKey & key) === key;
         }
 
         get isFuncKeyChanged() {
@@ -62,8 +112,10 @@ var lf2 = (function (lf2) {
 
         update() {
             super.update();
-            if(this.isFuncKeyChanged){
+            if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey);
+
+                this._lastFuncKey = this._curFuncKey;
             }
 
         }
@@ -73,7 +125,6 @@ var lf2 = (function (lf2) {
          * @param {Number} key
          */
         setFuncKey(key) {
-            this._lastFuncKey = this._curFuncKey;
             this._curFuncKey = key;
         }
     };

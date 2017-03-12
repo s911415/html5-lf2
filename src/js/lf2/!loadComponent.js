@@ -8,6 +8,8 @@
         'KeyboardConfig.js',
 
         'ColorBar.js',
+        'FrameStage.js',
+
         'BmpInfo.js',
         'Interaction.js',
         'Body.js',

@@ -116,8 +116,10 @@ var lf2 = (function (lf2) {
         get hit() {
             let ret = {};
             KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k) => {
-                ret[k] = intval(this.data.get('hit_' + k) || 0)
+                ret[KeyboardConfig.HIT_KEY[k]] = intval(this.data.get('hit_' + k) || 0)
             });
+
+            return ret;
         }
 
         /**

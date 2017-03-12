@@ -68,7 +68,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Parse key down code, {"ja", "Fj", "Fa", "Dj", "Da", "Uj", "Ua", "j", "d", "a"}
+         * Parse key down code, {"ja", "Fj", "Fa", "Dj", "Da", "Uj", "Ua",
+         *                      "j", "d", "a",
+         *                      "_up", "_down", "_left", "_right"}
          *
          * @param {KeyboardEvent} e
          * @returns {Number} return hit key code
