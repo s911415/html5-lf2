@@ -33,6 +33,7 @@ var lf2 = (function (lf2) {
 
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
+    const JUMP_FRAME_ID = 210;
 
     /**
      * Character
@@ -58,6 +59,7 @@ var lf2 = (function (lf2) {
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
+
         }
 
 
@@ -70,8 +72,9 @@ var lf2 = (function (lf2) {
         _getNextFrameId() {
             const hitList = this.currentFrame.hit;
             let next = this.currentFrame.nextFrameId;
-            if (hitList[this._curFuncKey]) {
-                next = hitList[this._curFuncKey];
+            const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
+            if (hitList[funcKeyWoArrow]) {
+                next = hitList[funcKeyWoArrow];
             }
 
             const IS_ARR_ONLY = this._isArrowKeyOnly();
@@ -102,19 +105,19 @@ var lf2 = (function (lf2) {
                     case FrameStage.WALK:
                         //hold left or right key
                         if (IS_ARR_ONLY) {
-                            if(this._walk_dir==DIRECTION.RIGHT){
+                            if (this._walk_dir == DIRECTION.RIGHT) {
                                 next = this.currentFrame.id + 1;
                                 //Loop walk action
                                 if (next > WALK_FRAME_RANGE.max) {
-                                    next -=2;
-                                    this._walk_dir=DIRECTION.LEFT;
+                                    next -= 2;
+                                    this._walk_dir = DIRECTION.LEFT;
                                 }
-                            }else{
+                            } else {
                                 next = this.currentFrame.id - 1;
                                 //Loop walk action
                                 if (next < WALK_FRAME_RANGE.min) {
-                                    next +=2;
-                                    this._walk_dir=DIRECTION.RIGHT;
+                                    next += 2;
+                                    this._walk_dir = DIRECTION.RIGHT;
                                 }
                             }
 
@@ -125,15 +128,15 @@ var lf2 = (function (lf2) {
                 }
                 if (next === 999) next = 0;
 
-
-                if (this._containsKey(KeyboardConfig.KEY_MAP.LEFT)) {
-                    this._direction = DIRECTION.LEFT;
-                } else if (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)) {
-                    this._direction = DIRECTION.RIGHT;
-                }
             }
 
-            this.getFrme
+            const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
+
+            if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
+                this._direction = DIRECTION.LEFT;
+            } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
+                this._direction = DIRECTION.RIGHT;
+            }
 
             return next;
         }
@@ -164,9 +167,9 @@ var lf2 = (function (lf2) {
                         x = this.obj.walking_speed;
                     }
 
-                    x/=this.obj.walking_frame_rate;
-                    y/=this.obj.walking_frame_rate;
-                    y=Math.round(y);
+                    x /= this.obj.walking_frame_rate;
+                    y /= this.obj.walking_frame_rate;
+                    y = Math.round(y);
 
                     return new Framework.Point3D(x, y, 0);
                     break;
@@ -182,11 +185,11 @@ var lf2 = (function (lf2) {
          */
         _isArrowKeyOnly() {
             return (
-                this._curFuncKey & (
-                    KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN |
-                    KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT
-                )
-            )!==0;
+                    this._curFuncKey & (
+                        KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN |
+                        KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT
+                    )
+                ) !== 0;
         }
 
         /**
@@ -208,11 +211,11 @@ var lf2 = (function (lf2) {
          * @param {Number} bound
          * @param {lf2.GameMap} map
          */
-        onOutOfBound(bound, map){
-            if(bound & Bound.LEFT) this.position.x = 0;
-            if(bound & Bound.RIGHT) this.position.x = map.width;
-            if(bound & Bound.TOP) this.position.y = map.zBoundary.first;
-            if(bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
+        onOutOfBound(bound, map) {
+            if (bound & Bound.LEFT) this.position.x = 0;
+            if (bound & Bound.RIGHT) this.position.x = map.width;
+            if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
+            if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
         update() {

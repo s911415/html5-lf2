@@ -157,6 +157,18 @@ var Framework = (function (Framework) {
 
         };
 
+        var clearAllKeyDownLog = function(){
+            for(let i=0;i<_keyStatus.length;i++) {
+                if(_keyStatus[i]){
+                    keyupEvent({
+                        type: "keyup",
+                        keyCode: i
+                    });
+                }
+            }
+
+        };
+
         var setKeydownEvent = function (userFunction) {
             userKeydownEvent = userFunction;
         };
@@ -217,6 +229,7 @@ var Framework = (function (Framework) {
             constructor() {
                 window.addEventListener('keydown', keydownEvent, false);
                 window.addEventListener('keyup', keyupEvent, false);
+                window.addEventListener('blur', clearAllKeyDownLog, false);
 
                 for (let i = 0; i < _keyStatus.length; i++) _keyStatus[i] = false;
 

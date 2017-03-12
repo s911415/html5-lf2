@@ -98,6 +98,9 @@ var lf2 = (function (lf2) {
                 }
             }
 
+            //keep arrow key
+            hitFuncCode |= currentKey & (KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT);
+
             return hitFuncCode;
         }
 
@@ -116,7 +119,6 @@ var lf2 = (function (lf2) {
 
             let bound = MAP.getBound(this.character.position);
             if(bound!==Bound.NONE){
-                debugger;
                 this.character.onOutOfBound(bound, MAP);
             }
         }
