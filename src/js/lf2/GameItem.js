@@ -49,6 +49,7 @@ var lf2 = (function (lf2) {
             this._lastFrameId = NONE;
             this.isDrawBoundry = define.DEBUG;
             this.belongTo = NONE;
+            this._frameForceChange = false;
 
             this.pushSelfToLevel();
         }
@@ -86,7 +87,7 @@ var lf2 = (function (lf2) {
          */
         update() {
             const now = Date.now();
-            const lastFrameSetDiff =now - this._lastFrameSetTime;
+            const lastFrameSetDiff = now - this._lastFrameSetTime;
             if ((lastFrameSetDiff ) < this._frameInterval) return;
 
             let offset = this._getFrameOffset();
@@ -105,8 +106,13 @@ var lf2 = (function (lf2) {
 
             let bound = 0;
 
-            if (lastFrameSetDiff>= this.currentFrame.wait * this._frameInterval) {
+            if (this._frameForceChange || lastFrameSetDiff >= this.currentFrame.wait * this._frameInterval) {
+                if(this._frameForceChange) {
+                    debugger;
+                    console.log('change by force change');
+                }
                 this.setFrameById(this._getNextFrameId());
+                this._frameForceChange = false;
             }
         }
 

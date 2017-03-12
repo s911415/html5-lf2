@@ -157,12 +157,15 @@ var Framework = (function (Framework) {
 
         };
 
-        var clearAllKeyDownLog = function(){
-            for(let i=0;i<_keyStatus.length;i++) {
-                if(_keyStatus[i]){
+        var clearAllKeyDownLog = function () {
+            for (let i = 0; i < _keyStatus.length; i++) {
+                if (_keyStatus[i]) {
                     keyupEvent({
                         type: "keyup",
-                        keyCode: i
+                        keyCode: i,
+                        preventDefault: () => {
+
+                        },
                     });
                 }
             }
@@ -308,7 +311,7 @@ var Framework = (function (Framework) {
             /**
              * @param {Number|string} code
              */
-            isKeyDown(code){
+            isKeyDown(code) {
                 return _keyStatus.isKeyDown(code);
             }
 

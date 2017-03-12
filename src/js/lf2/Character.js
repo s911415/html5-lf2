@@ -35,6 +35,30 @@ var lf2 = (function (lf2) {
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
 
+
+    const DEFAULT_KEY = {};
+    let acceptForceChangeStatus=[];
+
+    DEFAULT_KEY[FrameStage.STAND] = {
+        j: JUMP_FRAME_ID,
+        a: PUNCH1_FRAME_ID,
+    };
+    DEFAULT_KEY[FrameStage.WALK] = {
+        j: JUMP_FRAME_ID,
+        a: PUNCH1_FRAME_ID,
+    };
+    for (let k in DEFAULT_KEY) {
+        let t = DEFAULT_KEY[k];
+        KeyboardConfig.HIT_KEY.HIT_LIST.forEach(key => {
+            if (t[key]) {
+                t[KeyboardConfig.HIT_KEY[key]] = t[key];
+            }
+        });
+        acceptForceChangeStatus.push(intval(k));
+        Object.freeze(DEFAULT_KEY[k]);
+    }
+    Object.freeze(DEFAULT_KEY);
+
     /**
      * Character
      *
@@ -73,13 +97,19 @@ var lf2 = (function (lf2) {
             const hitList = this.currentFrame.hit;
             let next = this.currentFrame.nextFrameId;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
+            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state)!==-1;
             if (hitList[funcKeyWoArrow]) {
                 next = hitList[funcKeyWoArrow];
+            }
+            if ((fc || next === 0 || next === 999) && DEFAULT_KEY[this.currentFrame.state]) {
+                if (DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow]) {
+                    next = DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow];
+                }
             }
 
             const IS_ARR_ONLY = this._isArrowKeyOnly();
 
-            if (this.currentFrame.state == FrameStage.STAND) {
+            if (fc) {
                 if (
                     next.inRange(
                         STAND_FRAME_RANGE.min, STAND_FRAME_RANGE.max
@@ -221,9 +251,10 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
             if (this.isFuncKeyChanged) {
-                console.log(this.charId, this._curFuncKey);
+                console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
                 this._lastFuncKey = this._curFuncKey;
+                this._frameForceChange=true;
             }
 
         }
