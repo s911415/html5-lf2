@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const GameObjectPool = lf2.GameObjectPool;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
+    const Bound = lf2.Bound;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const DEFAULT_HP = 500;
@@ -68,7 +69,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Parse key down code, {"ja", "Fj", "Fa", "Dj", "Da", "Uj", "Ua", "j", "d", "a"}
+         * Parse key down code, {"ja", "Fj", "Fa", "Dj", "Da", "Uj", "Ua",
+         *                      "j", "d", "a",
+         *                      "_up", "_down", "_left", "_right"}
          *
          * @param {KeyboardEvent} e
          * @returns {Number} return hit key code
@@ -95,6 +98,9 @@ var lf2 = (function (lf2) {
                 }
             }
 
+            //keep arrow key
+            hitFuncCode |= currentKey & (KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT);
+
             return hitFuncCode;
         }
 
@@ -108,10 +114,13 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-
-
+            const MAP = this.spriteParent.map;
             this.character.update();
 
+            let bound = MAP.getBound(this.character.position);
+            if (bound !== Bound.NONE) {
+                this.character.onOutOfBound(bound, MAP);
+            }
         }
 
         /**

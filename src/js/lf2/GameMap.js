@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const Point = Framework.Point;
     const ResourceManager = Framework.ResourceManager;
     const GameMapLayer = lf2.GameMapLayer;
+    const Bound = lf2.Bound;
 
     /**
      * GameMap
@@ -18,7 +19,7 @@ var lf2 = (function (lf2) {
          * @param {Object} fileInfo
          * @param {String} context
          */
-        constructor(fileInfo, context){
+        constructor(fileInfo, context) {
             this._promiseList = [];
             this.fileInfo = fileInfo;
             this.sourceCode = context;
@@ -38,7 +39,7 @@ var lf2 = (function (lf2) {
             this._promiseList.push(
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + this.shadowUrl.substr(0, this.shadowUrl.replace(/\\/g, '/').lastIndexOf('/')) + '.png'
-                }).then((img)=>{
+                }).then((img) => {
                     this.simpleMap = img.response;
                 })
             );
@@ -55,23 +56,23 @@ var lf2 = (function (lf2) {
             });
         }
 
-        done(){
+        done() {
             return Promise.all(this._promiseList);
         }
 
-        initialize(){
+        initialize() {
 
         }
 
-        load(){
+        load() {
 
         }
 
-        update(){
+        update() {
 
         }
 
-        draw(ctx){
+        draw(ctx) {
             //Align to bottom
             const Y = Framework.Config.canvasHeight - this.simpleMap.height;
             ctx.drawImage(this.simpleMap, 0, Y);
@@ -79,10 +80,25 @@ var lf2 = (function (lf2) {
 
         /**
          *
+         * @param {Framework.Point} p
+         * @returns {number}
+         */
+        getBound(p) {
+            let bound = Bound.NONE;
+            if (p.x < 0) bound |= Bound.LEFT;
+            if (p.x > this.width) bound |= Bound.RIGHT;
+            if (p.y < this.zBoundary.first) bound |= Bound.TOP;
+            if (p.y > this.zBoundary.second) bound |= Bound.BOTTOM;
+
+            return bound;
+        }
+
+        /**
+         *
          * @param {String} context
          * @private
          */
-        static _parseLayers(context){
+        static _parseLayers(context) {
             let layersIndex = [], layerContent = [];
 
             for (
@@ -109,13 +125,13 @@ var lf2 = (function (lf2) {
          * @returns {*}
          * @private
          */
-        static _parseSizeByKey(key, str){
+        static _parseSizeByKey(key, str) {
             let i = str.indexOf(key);
-            if(i===-1) return null;
+            if (i === -1) return null;
             str = str.substr(i + key.length);
-            let m =str.match(/:\s+?(\d+)\s+(\d+)/);
-            let x=intval(m[1]);
-            let y=intval(m[2]);
+            let m = str.match(/:\s+?(\d+)\s+(\d+)/);
+            let x = intval(m[1]);
+            let y = intval(m[2]);
 
             return new Point(x, y);
         }

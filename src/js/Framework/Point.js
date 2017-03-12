@@ -10,8 +10,27 @@ var Framework = (function (Framework) {
          * @param {Number} y
          */
         constructor(x, y) {
-            this._x = Math.floor(x);
-            this._y = Math.floor(y);
+            if(typeof x =="string"){
+                debugger;
+            }
+            this._x = intval(x);
+            this._y = intval(y);
+        }
+
+        /**
+         *
+         * @returns {Number}
+         */
+        get first(){
+            return this._x;
+        }
+
+        /**
+         *
+         * @returns {Number}
+         */
+        get second(){
+            return this._y;
         }
 
         /**
@@ -31,7 +50,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set x(value) {
-            this._x = Math.floor(value);
+            this._x = intval(value);
         }
 
         /**
@@ -49,8 +68,8 @@ var Framework = (function (Framework) {
          * @returns {Point}
          */
         offset(x, y){
-            this.x+=x;
-            this.y+=y;
+            this.x+=intval(x);
+            this.y+=intval(y);
 
             return this;
         }
@@ -72,7 +91,7 @@ var Framework = (function (Framework) {
          * @return  {void}.
          */
         set y(value) {
-            this._y = Math.floor(value);
+            this._y = intval(value);
         }
 
     };
