@@ -36,6 +36,25 @@ var lf2 = (function (lf2) {
             return data;
         },
 
+        /**
+         * Return value in range, if value is less than minValue, minValue returned,
+         * if value is greater than maxValue return maxValue, otherwise input value returned.
+         *
+         * @param {Number} value
+         * @param {Number} minValue
+         * @param {Number} maxValue
+         * @returns {Number}
+         */
+        returnInRangeValue: function(value, minValue, maxValue){
+            if(value>maxValue){
+                return maxValue;
+            }else if(value<minValue){
+                return minValue;
+            }
+
+            return value;
+        },
+
         tryConvertType: function (obj) {
 
         },

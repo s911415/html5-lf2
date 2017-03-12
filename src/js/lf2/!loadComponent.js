@@ -7,6 +7,7 @@
         'ImageInformation.js',
         'KeyboardConfig.js',
 
+        'ColorBar.js',
         'BmpInfo.js',
         'Interaction.js',
         'Body.js',
