@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
             //TODO: just for demo
             this.mapImg = new Framework.Sprite(define.IMG_PATH + 'bg/sys/lf.png');
             this.mapImg.position.x = 0;
-            this.mapImg.position.y = 170;
+            this.mapImg.position.y = 314;
             this.attach(this.mapImg);
 
             /**
@@ -27,8 +27,9 @@ var lf2 = (function (lf2) {
              */
             this.cameraPosition = 0;
             this.map = GameMapPool.get(this.config.mapId);
+            this.players = this.config.players;
 
-            this.addCharacters(this.config.players);
+            this.addPlayers(this.players);
 
         }
 
@@ -37,9 +38,9 @@ var lf2 = (function (lf2) {
          *
          * @param {lf2.Player[]} playerArray
          */
-        addCharacters(playerArray) {
+        addPlayers(playerArray) {
             playerArray.forEach((player) => {
-                this.attach(player.character);
+                this.attach(player);
             });
         }
 
@@ -74,6 +75,11 @@ var lf2 = (function (lf2) {
             }, this);
 
             ctx.restore();
+
+            //Draw each player status
+            this.players.forEach((player) => {
+                player.status.draw(ctx);
+            });
 
         }
     };

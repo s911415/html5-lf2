@@ -6,6 +6,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
+    const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
@@ -15,8 +16,9 @@ var lf2 = (function (lf2) {
      * Player
      *
      * @class lf2.Player
+     * @implements Framework.AttachableInterface
      */
-    lf2.Player = class Player{
+    lf2.Player = class Player {
         /**
          *
          * @param {Number} playerId
@@ -27,6 +29,7 @@ var lf2 = (function (lf2) {
 
             this.playerId = playerId;
             this.charId = charId;
+            this.status = new PlayerStatusPanel(this);
 
             this.keyboardConfig = new KeyboardConfig(playerId);
             this.name = this.keyboardConfig.NAME;
@@ -93,6 +96,41 @@ var lf2 = (function (lf2) {
             }
 
             return hitFuncCode;
+        }
+
+        load() {
+
+        }
+
+        /**
+         * Update
+         *
+         * @override
+         */
+        update() {
+
+
+            this.character.update();
+
+        }
+
+        /**
+         * Draw player with camera offset
+         *
+         * @param {CanvasRenderingContext2D} ctx
+         * @override
+         */
+        draw(ctx) {
+
+            this.character.draw(ctx);
+        }
+
+        /**
+         *
+         * @returns {boolean}
+         */
+        get isObjectChanged() {
+            return true;
         }
 
     };

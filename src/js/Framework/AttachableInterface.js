@@ -16,13 +16,13 @@ var Framework = (function (Framework) {
             throw new METHOD_NOT_IMPLEMENT;
         }
 
-        /**
-         * Initial this object
-         * @abstract
-         */
-        initialize(){
-            throw new METHOD_NOT_IMPLEMENT;
-        }
+        // /**
+        //  * Initial this object
+        //  * @abstract
+        //  */
+        // initialize(){
+        //     throw new METHOD_NOT_IMPLEMENT;
+        // }
 
         /**
          * Update object

@@ -20,6 +20,7 @@
         'Ball.js',
         'Character.js',
 
+        'PlayerStatusPanel.js',
         'Player.js',
 
         'GameMapLayer.js',
