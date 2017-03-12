@@ -4,14 +4,20 @@
 var Framework = (function (Framework) {
     /**
      * 可以用來繪製圖片的物件
+     *  position 是圖片的中間
+     *  position 是圖片的中間
+     *  position 是圖片的中間
+     *
+     *  因為很雷所以要說三次
      *
      * @param  {string} filePath 圖片路徑
-     * @implements Framework.AttachableInterface
+     * @extends {Framework.GameObject}
+     * @implements {Framework.AttachableInterface}
      * @example
      *     new Framework.Sprite('clock.png');
      *
      */
-    Framework.Sprite = class extends Framework.GameObject {
+    Framework.Sprite = class Sprite extends Framework.GameObject {
         constructor(options) {
             super();
             this._tmpCanvas = document.createElement('canvas');
@@ -48,9 +54,7 @@ var Framework = (function (Framework) {
         /**
          * Draws the given painter.
          *
-         * @param   painter The painter.
-         *
-         * @return  .
+         * @param {CanvasRenderingContext2D} painter
          */
         draw(painter) {
             this.countAbsoluteProperty();
@@ -65,11 +69,14 @@ var Framework = (function (Framework) {
             //this.countAbsoluteProperty1();
             var tmp, realWidth, realHeight, tmpContext;
             if (this.type === 'image' || this.type === 'canvas') {
+                realWidth = this.texture.width;
+                realHeight = this.texture.height;
+
                 // 計算縮放後的大小
                 if (this.isObjectChanged) {
                     if (!Framework.Util.isAbout(this.absoluteScale, 1, 0.00001) || !Framework.Util.isAbout(this.absoluteRotation, 0, 0.001)) {
-                        realWidth = this.texture.width * this.scale;
-                        realHeight = this.texture.height * this.scale;
+                        realWidth   *= this.scale;
+                        realHeight *=  this.scale;
                         // 將canvas 放大才不會被切到
                         var diagonalLength = Math.ceil(Math.sqrt(Math.pow(realHeight, 2) + Math.pow(realWidth, 2)));
                         this.canvas.width = diagonalLength;
