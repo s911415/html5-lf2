@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
      * @type {Frame}
      * @class lf2.Frame
      */
-    lf2.Frame = class {
+    lf2.Frame = class Frame{
         /**
          *
          * @param {String} context

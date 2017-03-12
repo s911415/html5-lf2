@@ -173,6 +173,23 @@ var lf2 = (function (lf2) {
                 console.log("GameMap all loaded");
 
                 return data;
+            }).then((a, b)=>{
+                console.log("Preloading extra resources");
+                let arrUrl = [
+                    define.IMG_PATH + "player_status_panel.png"
+                ];
+                let arr = [];
+
+                arrUrl.forEach(u=>{
+                    console.log("Loading " + u);
+                    arr.push(ResourceManager.loadResource(u));
+                });
+
+                return Promise.all(arr);
+            }).then((a, b)=>{
+                console.log("Extra resources all loaded");
+
+                return a;
             }).then((a, b) => {
                 console.log("---------------------------");
                 console.log("All object loaded.");

@@ -529,6 +529,7 @@ var Framework = (function (Framework) {
             if (that._isRecordMode) {
                 that._record.inputCommand("// Change Level :" + levelname + ";");
             }
+            console.log(`Level start: ${levelName}`);
             that.start(extraData);
 
             return that._currentLevel;
@@ -1096,11 +1097,11 @@ var Framework = (function (Framework) {
     }
 
 
-    that._mainContainer.style.backgroundColor = '#000';
+    that._mainContainer.style.backgroundColor = '#111';
     that._canvasContainer = document.createElement('div');
     that._canvasContainer.classList.add("container");
     that._canvas = document.createElement('canvas');
-    that._canvas.style.backgroundColor = '#fff';
+    that._canvas.style.backgroundColor = '#000';
     that._canvas.setAttribute('id', '__game_canvas__');
     that._canvas.width = that._config.canvasWidth;
     that._canvas.height = that._config.canvasHeight;

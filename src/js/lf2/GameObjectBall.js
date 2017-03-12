@@ -22,17 +22,51 @@ var lf2 = (function (lf2) {
             super(fileInfo, context);
             const headerData = this.bmpInfo._data;
 
-            this.hitSoundUrl = define.MUSIC_PATH + headerData.get("weapon_hit_sound");
-            this.dropSoundUrl = define.MUSIC_PATH + headerData.get("weapon_drop_sound");
-            this.brokenSoundUrl = define.MUSIC_PATH + headerData.get("weapon_broken_sound");
+            this._hitSoundUrl = headerData.get("weapon_hit_sound");
+            this._dropSoundUrl = headerData.get("weapon_drop_sound");
+            this._brokenSoundUrl = headerData.get("weapon_broken_sound");
 
-            "hitSoundUrl dropSoundUrl brokenSoundUrl".split(' ').forEach((k)=>{
-                this.addPreloadResource(this[k]);
+            "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ').forEach((k)=>{
+                this.addPreloadResource(define.MUSIC_PATH + this[k]);
+            });
+
+            this._audio = new Framework.Audio({
+                hit: {
+                    ogg: define.MUSIC_PATH + this._hitSoundUrl,
+                },
+                drop: {
+                    ogg: define.MUSIC_PATH + this._dropSoundUrl,
+                },
+                broken: {
+                    ogg: define.MUSIC_PATH + this._brokenSoundUrl,
+                },
             });
         }
 
+        /**
+         * Play hit sound
+         */
+        playHitSound() {
+            this._hitSoundUrl && this._audio.play({name: 'hit'});
+        }
 
-    };
+        /**
+         * Play drop sound
+         */
+        playDropSound() {
+            this._dropSoundUrl && this._audio.play({name: 'drop'});
+        }
+
+        /**
+         * Play borken sound
+         */
+        playBrokenSound() {
+            this._brokenSoundUrl && this._audio.play({name: 'broken'});
+        }
+    }
+
+
+    ;
 
 
     return lf2;

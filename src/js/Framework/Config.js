@@ -5,8 +5,7 @@
 var Framework = (function (Framework) {
 
     /**
-     *
-     * @constructor
+     * @class {Framework.Config}
      */
     Framework.Config = {
         fps :30,
