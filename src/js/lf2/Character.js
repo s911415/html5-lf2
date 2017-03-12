@@ -11,6 +11,12 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
 
 
+    const STAND_FRAME_RANGE = {
+        min: 0,
+        max: 4
+    };
+    Object.freeze(STAND_FRAME_RANGE);
+
     const WALK_FRAME_RANGE = {
         min: 5,
         max: 8
@@ -58,6 +64,18 @@ var lf2 = (function (lf2) {
                 next = hitList[this._curFuncKey];
             }
 
+            const IS_ARR_ONLY = this._isArrowKeyOnly();
+
+            if(this.currentFrame.state==FrameStage.STAND){
+                if(
+                    next.inRange(
+                        STAND_FRAME_RANGE.min, STAND_FRAME_RANGE.max
+                    ) && IS_ARR_ONLY
+                ){
+                    next = 999;
+                }
+            }
+
             if (next == 0) {
                 switch (this.currentFrame.state) {
                     default:
@@ -66,17 +84,17 @@ var lf2 = (function (lf2) {
             } else if (next == 999) {
                 switch (this.currentFrame.state) {
                     case FrameStage.STAND:
-                        if (this._containsKey(KeyboardConfig.KEY_MAP.FRONT)) {
+                        if (IS_ARR_ONLY) {
                             next = WALK_FRAME_RANGE.min;
                         }
                         break;
 
                     case FrameStage.WALK:
                         //hold left or right key
-                        if (this._containsKey(KeyboardConfig.KEY_MAP.FRONT)) {
+                        if (IS_ARR_ONLY) {
                             next = this.currentFrame.id + 1;
                             //Loop walk action
-                            if(next>WALK_FRAME_RANGE.max) next=WALK_FRAME_RANGE.min;
+                            if (next > WALK_FRAME_RANGE.max) next = WALK_FRAME_RANGE.min;
                         }
                         break;
                     default:
@@ -85,14 +103,21 @@ var lf2 = (function (lf2) {
                 if (next === 999) next = 0;
 
 
-                        if (this._containsKey(KeyboardConfig.KEY_MAP.LEFT)) {
-                            this._direction = GameItem.DIRECTION.LEFT;
-                        } else if (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)) {
-                            this._direction = GameItem.DIRECTION.RIGHT;
-                        }
+                if (this._containsKey(KeyboardConfig.KEY_MAP.LEFT)) {
+                    this._direction = GameItem.DIRECTION.LEFT;
+                } else if (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)) {
+                    this._direction = GameItem.DIRECTION.RIGHT;
+                }
             }
 
             return next;
+        }
+
+        _isArrowKeyOnly(){
+            return this._curFuncKey == KeyboardConfig.KEY_MAP.UP ||
+            this._curFuncKey == KeyboardConfig.KEY_MAP.DOWN ||
+            this._curFuncKey == KeyboardConfig.KEY_MAP.LEFT ||
+            this._curFuncKey == KeyboardConfig.KEY_MAP.RIGHT;
         }
 
 

@@ -86,6 +86,17 @@ String.prototype.getStringBetween = function (startString, endString, fromIndex)
 };
 
 /**
+ * Check whatever number in range
+ *
+ * @param {Number} minValue
+ * @param {Number} maxValue
+ * @returns {boolean}
+ */
+Number.prototype.inRange = function(minValue, maxValue){
+    return this>=minValue && this<=maxValue;
+};
+
+/**
  * Split string into lines
  * @returns {String[]} lines
  */
