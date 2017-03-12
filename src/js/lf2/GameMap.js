@@ -33,6 +33,16 @@ var lf2 = (function (lf2) {
             this.shadowSize = lf2.GameMap._parseSizeByKey('shadowsize', infoText);
             this.shadowUrl = info.get("shadow");
 
+            this.simpleMap;
+
+            this._promiseList.push(
+                ResourceManager.loadImage({
+                    url: define.IMG_PATH + this.shadowUrl.substr(0, this.shadowUrl.replace(/\\/g, '/').lastIndexOf('/')) + '.png'
+                }).then((img)=>{
+                    this.simpleMap = img.response;
+                })
+            );
+
             this._promiseList.push(
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + this.shadowUrl
@@ -62,7 +72,9 @@ var lf2 = (function (lf2) {
         }
 
         draw(ctx){
-
+            //Align to bottom
+            const Y = Framework.Config.canvasHeight - this.simpleMap.height;
+            ctx.drawImage(this.simpleMap, 0, Y);
         }
 
         /**

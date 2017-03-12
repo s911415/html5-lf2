@@ -23,7 +23,8 @@ var lf2 = (function (lf2) {
             super(fileInfo, context);
             const headerData = this.bmpInfo._data;
 
-            this.head = this.small = new Image();
+            this.head;
+            this.small;
 
             this.addPreloadResource(
                 ResourceManager.loadImage({

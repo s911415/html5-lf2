@@ -7,6 +7,7 @@
         'ImageInformation.js',
         'KeyboardConfig.js',
 
+        'ColorBar.js',
         'BmpInfo.js',
         'Interaction.js',
         'Body.js',
@@ -20,6 +21,7 @@
         'Ball.js',
         'Character.js',
 
+        'PlayerStatusPanel.js',
         'Player.js',
 
         'GameMapLayer.js',

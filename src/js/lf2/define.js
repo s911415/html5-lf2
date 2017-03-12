@@ -13,7 +13,7 @@
         PLAYER_COUNT: 2,
         KEYBOARD_CONFIG_KEY: "keyConfig",
 
-        LOADING_MIN_TIME: 3 * 1000,
+        LOADING_MIN_TIME: 0 * 1000,
 
     };
 
