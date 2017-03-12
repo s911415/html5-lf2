@@ -15,12 +15,6 @@ var lf2 = (function (lf2) {
             super();
             this.config = config;
 
-            //TODO: just for demo
-            this.mapImg = new Framework.Sprite(define.IMG_PATH + 'bg/sys/lf.png');
-            this.mapImg.position.x = 0;
-            this.mapImg.position.y = 314;
-            this.attach(this.mapImg);
-
             /**
              * position of camera, from 0 to 1
              * @type {Number}
@@ -29,6 +23,7 @@ var lf2 = (function (lf2) {
             this.map = GameMapPool.get(this.config.mapId);
             this.players = this.config.players;
 
+            this.attach(this.map);
             this.addPlayers(this.players);
 
         }
@@ -75,12 +70,6 @@ var lf2 = (function (lf2) {
             }, this);
 
             ctx.restore();
-
-            //Draw each player status
-            this.players.forEach((player) => {
-                player.status.draw(ctx);
-            });
-
         }
     };
 

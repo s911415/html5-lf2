@@ -135,6 +135,9 @@ var lf2 = (function (lf2) {
 
     };
 
+    lf2.Player.prototype.DEFAULT_HP = DEFAULT_HP;
+    lf2.Player.prototype.DEFAULT_MP = DEFAULT_MP;
+
 
     return lf2;
 })(lf2 || {});

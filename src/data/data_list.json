@@ -325,14 +325,6 @@
         {
             "id": "2",
             "file": "bg\\lf.txt"
-        },
-        {
-            "id": "8",
-            "file": "bg\\bc.txt"
-        },
-        {
-            "id": "1",
-            "file": "bg\\cuhk.txt"
         }
     ]
 }

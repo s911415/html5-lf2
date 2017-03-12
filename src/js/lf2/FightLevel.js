@@ -80,11 +80,22 @@ var lf2 = (function (lf2) {
 
         update() {
             super.update();
+
+            //update each player status
+            this.config.players.forEach((player) => {
+                player.status.update();
+            });
         }
 
         draw(parentCtx) {
             super.draw(parentCtx);
 
+
+
+            //Draw each player status
+            this.config.players.forEach((player) => {
+                player.status.draw(parentCtx);
+            });
         }
 
         keydown(e, list, oriE) {

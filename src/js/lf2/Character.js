@@ -24,8 +24,8 @@ var lf2 = (function (lf2) {
         constructor(charId) {
             super(charId);
             this.charId = charId;
-            this.head = new Image();
-            this.small = new Image();
+            this.head = this.obj.head;
+            this.small = this.obj.small;
             this._curFuncKey = 0;
             this._lastFuncKey = 0;
         }
