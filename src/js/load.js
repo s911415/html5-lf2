@@ -1,6 +1,4 @@
 'use strict';
-let _isTestMode = false;
-let _isRecordMode = false;
 //立即執行函式, 並封裝所有變數避免衝突
 (function () {
     const jsArray = [

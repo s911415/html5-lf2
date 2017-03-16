@@ -31,7 +31,7 @@ var Framework = (function (Framework) {
                 this.id = options;
                 Framework.ResourceManager.loadImage({id: options, url: options});
                 this.type = 'image';
-                super.pushSelfToLevel();
+                this.pushSelfToLevel();
             } else if (Framework.Util.isCanvas(options)) {
                 this.texture = options;
                 this.type = 'canvas';
