@@ -26,12 +26,12 @@ gulp.task('default', () => {
     gulp.src('src/css/**')
         .pipe(gulp.dest(DIST_DIR + 'css/'));
 
-    console.log("Copy extra file");
-    gulp.src('src/*.*')
-        .pipe(gulp.dest(DIST_DIR + ''));
+    /*console.log("Copy extra file");
+     gulp.src('src/*.*')
+     .pipe(gulp.dest(DIST_DIR + ''));*/
 
     console.log('merging js files');
-    gulp.src([
+    return gulp.src([
         'src/js/utils.js',
         'src/js/jquery-3.1.1.min.js',
 
@@ -102,10 +102,18 @@ gulp.task('default', () => {
         'src/js/lf2/!MainGame.js',
     ])
         .pipe(sourcemaps.init())
-        /*.pipe(babel({ Something problem with extends Map
-         presets: ['es2016']
-         }))
-         //.pipe(uglify())*/
+        /*
+        .pipe(babel({ //Something problem with extends Map
+            presets: ['es2016', 'es2015']
+        }))
+        .pipe(minify({
+            ext: {
+                src: '-debug.js',
+                min: '.js'
+            },
+            exclude: ['tasks'],
+            ignoreFiles: ['.combo.js', '-min.js']
+        }))*/
         .pipe(concat('js/load.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(DIST_DIR));
