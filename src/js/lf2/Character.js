@@ -160,14 +160,6 @@ var lf2 = (function (lf2) {
 
             }
 
-            const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
-
-            if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
-                this._direction = DIRECTION.LEFT;
-            } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
-                this._direction = DIRECTION.RIGHT;
-            }
-
             return next;
         }
 
@@ -255,6 +247,29 @@ var lf2 = (function (lf2) {
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
+            }
+
+        }
+
+        /**
+         *
+         * @param {Number} frameId
+         * @override
+         */
+        setFrameById(frameId){
+            super.setFrameById(frameId);
+
+            
+            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
+
+            if(fc){
+                const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
+
+                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
+                    this._direction = DIRECTION.LEFT;
+                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
+                    this._direction = DIRECTION.RIGHT;
+                }
             }
 
         }
