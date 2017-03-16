@@ -34,16 +34,19 @@ var lf2 = (function (lf2) {
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
+    const DEFEND_FRAME_ID = 110;
 
 
     const DEFAULT_KEY = {};
     let acceptForceChangeStatus = [];
 
     DEFAULT_KEY[FrameStage.STAND] = {
+        d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
         a: PUNCH1_FRAME_ID,
     };
     DEFAULT_KEY[FrameStage.WALK] = {
+        d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
         a: PUNCH1_FRAME_ID,
     };
