@@ -39,8 +39,7 @@ var lf2 = (function (lf2) {
              *
              * @type {lf2.Character}
              */
-            this.character = new Character(charId);
-            this.character.belongTo = playerId;
+            this.character = new Character(charId, this);
 
             this.hp = DEFAULT_HP;
             this.mp = DEFAULT_MP;
@@ -132,6 +131,42 @@ var lf2 = (function (lf2) {
         draw(ctx) {
 
             this.character.draw(ctx);
+        }
+
+        /**
+         * Add hp
+         * @param num
+         */
+        addHp(num){
+            let newHP = Utils.returnInRangeValue(this.hp + num, 0, DEFAULT_HP);
+            this.hp = newHP;
+        }
+
+
+        /**
+         * Add mp
+         * @param num
+         */
+        addMp(num){
+            let newMP = Utils.returnInRangeValue(this.mp + num, 0, DEFAULT_MP);
+            this.mp = newMP;
+        }
+
+        /**
+         * Cost mp
+         *
+         * @param num
+         * @returns {boolean}
+         */
+        requestMp(num){
+            if(num==0) return true;
+
+            if(this.mp>=num){
+                this.addMp(-num);
+                return true;
+            }
+
+            return false;
         }
 
         /**

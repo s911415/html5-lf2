@@ -204,9 +204,9 @@ var lf2 = (function (lf2) {
                 Game.goToLevel('fight', {
                     players: [
                         {charId: 52},
-                        //{charId: 51},
+                        {charId: 51},
                     ],
-                    mapId: 8,
+                    mapId: 1,
 
                 });
             }

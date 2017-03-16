@@ -74,14 +74,16 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param charId ID of character
+         * @param {lf2.Player} player
          */
-        constructor(charId) {
+        constructor(charId, player) {
             super(charId);
             this.charId = charId;
             this.head = this.obj.head;
             this.small = this.obj.small;
             this._curFuncKey = 0;
             this._lastFuncKey = 0;
+            this.belongTo = player;
 
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
@@ -163,7 +165,14 @@ var lf2 = (function (lf2) {
 
             }
 
-            return next;
+            //Check mp request
+            const nextFrame = this.obj.frames[next];
+            const reqMp = intval(nextFrame.mp);
+            if (this.belongTo.requestMp(reqMp)) {
+                return next;
+            } else {
+                return 0;
+            }
         }
 
 
@@ -259,13 +268,13 @@ var lf2 = (function (lf2) {
          * @param {Number} frameId
          * @override
          */
-        setFrameById(frameId){
+        setFrameById(frameId) {
             super.setFrameById(frameId);
 
-            
+
             const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
 
-            if(fc){
+            if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
 
                 if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
