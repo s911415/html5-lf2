@@ -34,16 +34,19 @@ var lf2 = (function (lf2) {
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
+    const DEFEND_FRAME_ID = 110;
 
 
     const DEFAULT_KEY = {};
     let acceptForceChangeStatus = [];
 
     DEFAULT_KEY[FrameStage.STAND] = {
+        d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
         a: PUNCH1_FRAME_ID,
     };
     DEFAULT_KEY[FrameStage.WALK] = {
+        d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
         a: PUNCH1_FRAME_ID,
     };
@@ -160,14 +163,6 @@ var lf2 = (function (lf2) {
 
             }
 
-            const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
-
-            if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
-                this._direction = DIRECTION.LEFT;
-            } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
-                this._direction = DIRECTION.RIGHT;
-            }
-
             return next;
         }
 
@@ -255,6 +250,29 @@ var lf2 = (function (lf2) {
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
+            }
+
+        }
+
+        /**
+         *
+         * @param {Number} frameId
+         * @override
+         */
+        setFrameById(frameId){
+            super.setFrameById(frameId);
+
+            
+            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
+
+            if(fc){
+                const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
+
+                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
+                    this._direction = DIRECTION.LEFT;
+                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
+                    this._direction = DIRECTION.RIGHT;
+                }
             }
 
         }
