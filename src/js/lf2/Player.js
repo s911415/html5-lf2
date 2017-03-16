@@ -161,6 +161,7 @@ var lf2 = (function (lf2) {
         requestMp(num){
             if(num==0) return true;
 
+            num = Math.abs(num);
             if(this.mp>=num){
                 this.addMp(-num);
                 return true;
