@@ -26,9 +26,9 @@ gulp.task('default', () => {
     gulp.src('src/css/**')
         .pipe(gulp.dest(DIST_DIR + 'css/'));
 
-    console.log("Copy extra file");
+    /*console.log("Copy extra file");
     gulp.src('src/*.*')
-        .pipe(gulp.dest(DIST_DIR + ''));
+        .pipe(gulp.dest(DIST_DIR + ''));*/
 
     console.log('merging js files');
     gulp.src([
