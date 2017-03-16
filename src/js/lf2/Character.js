@@ -257,8 +257,8 @@ var lf2 = (function (lf2) {
         }
 
         update() {
-            const NOW = Date.now();
             super.update();
+            const NOW = Date.now();
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 

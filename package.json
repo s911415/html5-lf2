@@ -1,0 +1,33 @@
+{
+  "name": "ntut-oop-lab-2017-spring",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/s911415/ntut_oop_lab.git"
+  },
+  "author": "Weichun",
+  "license": "GPL-3.0",
+  "homepage": "https://bitbucket.org/s911415/ntut_oop_lab#readme",
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2016": "^6.22.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify": "0.0.15",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^2.1.0"
+  },
+  "dependencies": {
+    "babel-preset-es2016": "^6.22.0"
+  }
+}

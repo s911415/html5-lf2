@@ -24,7 +24,7 @@ var Framework = (function (Framework) {
             this.type = undefined;
             this.texture = undefined;
             this.attachArray = [];
-            super.pushSelfToLevel();
+            this.pushSelfToLevel();
         }
 
         /**
