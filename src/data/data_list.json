@@ -327,13 +327,28 @@
             "file": "bg\\lf.txt"
         },
         {
+            "id": "3",
+            "file": "bg\\sp.txt"
+        },
+        {
+            "id": "5",
+            "file": "bg\\gw.txt"
+        },
+        {
+            "id": "6",
+            "file": "bg\\qi.txt"
+        },
+        {
+            "id": "7",
+            "file": "bg\\ft.txt"
+        },
+        {
             "id": "8",
             "file": "bg\\bc.txt"
         },
         {
             "id": "1",
             "file": "bg\\cuhk.txt"
-
         }
     ]
 }
