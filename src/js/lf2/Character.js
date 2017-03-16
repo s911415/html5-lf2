@@ -62,6 +62,9 @@ var lf2 = (function (lf2) {
     }
     Object.freeze(DEFAULT_KEY);
 
+    const RECOVER_MP_INTERVAL = 1000;
+    const RECOVER_MP_VALUE = 5;
+
     /**
      * Character
      *
@@ -74,18 +77,21 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param charId ID of character
+         * @param {lf2.Player} player
          */
-        constructor(charId) {
+        constructor(charId, player) {
             super(charId);
             this.charId = charId;
             this.head = this.obj.head;
             this.small = this.obj.small;
             this._curFuncKey = 0;
             this._lastFuncKey = 0;
+            this.belongTo = player;
 
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
+            this._lastRecoverMPTime = -1;
 
         }
 
@@ -163,7 +169,14 @@ var lf2 = (function (lf2) {
 
             }
 
-            return next;
+            //Check mp request
+            const nextFrame = this.obj.frames[next];
+            const reqMp = intval(nextFrame.mp);
+            if (this.belongTo.requestMp(reqMp)) {
+                return next;
+            } else {
+                return 0;
+            }
         }
 
 
@@ -244,12 +257,18 @@ var lf2 = (function (lf2) {
         }
 
         update() {
+            const NOW = Date.now();
             super.update();
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
+            }
+
+            if((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL){
+                this.belongTo.addMp(RECOVER_MP_VALUE);
+                this._lastRecoverMPTime = NOW;
             }
 
         }
@@ -259,13 +278,13 @@ var lf2 = (function (lf2) {
          * @param {Number} frameId
          * @override
          */
-        setFrameById(frameId){
+        setFrameById(frameId) {
             super.setFrameById(frameId);
 
-            
+
             const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
 
-            if(fc){
+            if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
 
                 if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
