@@ -194,7 +194,6 @@ var lf2 = (function (lf2) {
                 console.log("---------------------------");
                 console.log("All object loaded.");
                 console.log("---------------------------");
-                console.log(GameObjectPool.get(52));
                 this.allDone = true;
             });
         }

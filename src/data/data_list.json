@@ -328,19 +328,19 @@
         },
         {
             "id": "3",
-            "file": "bg\\sp.dat"
+            "file": "bg\\sp.txt"
         },
         {
             "id": "5",
-            "file": "bg\\gw.dat"
+            "file": "bg\\gw.txt"
         },
         {
             "id": "6",
-            "file": "bg\\qi.dat"
+            "file": "bg\\qi.txt"
         },
         {
             "id": "7",
-            "file": "bg\\ft.dat"
+            "file": "bg\\ft.txt"
         },
         {
             "id": "8",
@@ -349,7 +349,6 @@
         {
             "id": "1",
             "file": "bg\\cuhk.txt"
-
         }
     ]
 }
