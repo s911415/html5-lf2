@@ -62,6 +62,9 @@ var lf2 = (function (lf2) {
     }
     Object.freeze(DEFAULT_KEY);
 
+    const RECOVER_MP_INTERVAL = 1000;
+    const RECOVER_MP_VALUE = 5;
+
     /**
      * Character
      *
@@ -88,6 +91,7 @@ var lf2 = (function (lf2) {
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
+            this._lastRecoverMPTime = -1;
 
         }
 
@@ -253,12 +257,18 @@ var lf2 = (function (lf2) {
         }
 
         update() {
+            const NOW = Date.now();
             super.update();
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
+            }
+
+            if((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL){
+                this.belongTo.addMp(RECOVER_MP_VALUE);
+                this._lastRecoverMPTime = NOW;
             }
 
         }
