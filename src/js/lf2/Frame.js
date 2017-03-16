@@ -38,6 +38,7 @@ var lf2 = (function (lf2) {
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
+            this.mp = intval(this.data.get('mp') || 0);
         }
 
         /**
