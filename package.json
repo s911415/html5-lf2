@@ -28,6 +28,7 @@
     "gulp-uglify": "^2.1.0"
   },
   "dependencies": {
-    "babel-preset-es2016": "^6.22.0"
+    "babel-preset-es2016": "^6.22.0",
+    "gulp-clean": "^0.3.2"
   }
 }
