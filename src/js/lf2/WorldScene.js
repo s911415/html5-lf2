@@ -106,9 +106,10 @@ var lf2 = (function (lf2) {
 
             //TODO: just for demo
 
-
-            let canvasTranslate = this._getCameraPositionAsPoint();
             ctx.save();
+            let canvasTranslate = this._getCameraPositionAsPoint();
+            ctx.translate(-canvasTranslate.x, -canvasTranslate.y);
+
 
             this.attachArray.sort((e1, e2) => {
                 if(!isAttachableSortObj(e1)) return -1;
