@@ -520,7 +520,7 @@ weapon_broken_sound: 079.ogg
 
 <frame> 60 on_ground
    pic: 2  state: 1003  wait: 1  next: 61  dvx: 0  dvy: 0  dvz: 0  centerx: 24  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 079.wav 
+  sound: 079.ogg 
 <frame_end>
 
 <frame> 61 on_ground
@@ -529,7 +529,7 @@ weapon_broken_sound: 079.ogg
 
 <frame> 62 on_ground
    pic: 3  state: 1003  wait: 2  next: 63  dvx: 0  dvy: 0  dvz: 0  centerx: 24  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 079.wav 
+  sound: 079.ogg 
 <frame_end>
 
 <frame> 63 on_ground
@@ -545,7 +545,7 @@ weapon_broken_sound: 079.ogg
 
 <frame> 70 just_on_ground
    pic: 2  state: 1003  wait: 1  next: 71  dvx: 0  dvy: 0  dvz: 0  centerx: 24  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 079.wav 
+  sound: 079.ogg 
    itr:
       kind: 0  x: 1  y: 19  w: 46  h: 15  dvx: 2  fall: 40  arest: 16  bdefend: 16  
    itr_end:
@@ -560,7 +560,7 @@ weapon_broken_sound: 079.ogg
 
 <frame> 72 just_on_on_ground
    pic: 3  state: 1003  wait: 2  next: 64  dvx: 0  dvy: 0  dvz: 0  centerx: 24  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 079.wav 
+  sound: 079.ogg 
    itr:
       kind: 0  x: 1  y: 19  w: 46  h: 15  dvx: 2  fall: 40  arest: 16  bdefend: 16  
    itr_end:

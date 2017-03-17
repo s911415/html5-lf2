@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const BDY_END_TAG = 'bdy_end:';
     const ITR_START_TAG = 'itr:';
     const ITR_END_TAG = 'itr_end:';
+    const SOUND_TAG = 'sound:';
 
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
@@ -22,11 +23,14 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {String} context
+         * @param {lf2.GameObject} gameObj Game Object
          */
-        constructor(context) {
+        constructor(context, gameObj) {
             this.sourceCode = context;
             let lines = context.lines();
             let infoArr = lines[0].split(/\s+/);
+
+            this._gameObj = gameObj;
 
             this.id = intval(infoArr[0]);
             this.name = infoArr[1];
@@ -39,6 +43,25 @@ var lf2 = (function (lf2) {
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
             this.mp = intval(this.data.get('mp') || 0);
+
+            this.soundPath = (function(){
+                let soundStr = undefined;
+                for(let i=0;i<lines.length;i++){
+                    const lineStr = lines[i].trim();
+                    if(lineStr.startsWith(SOUND_TAG)){
+                        soundStr = Utils.parseDataLine(lineStr).get('sound');
+                        break;
+                    }
+                }
+
+                if(soundStr!==undefined){
+                    soundStr = define.MUSIC_PATH  + soundStr;
+
+                    return soundStr;
+                }
+
+                return undefined;
+            })();
         }
 
         /**

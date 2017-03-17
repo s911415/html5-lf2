@@ -11,6 +11,8 @@ var lf2 = (function (lf2) {
      */
     const Frame = lf2.Frame;
 
+    let soundPool = {};
+
     /**
      * GameObject
      *
@@ -29,6 +31,8 @@ var lf2 = (function (lf2) {
             this.id = fileInfo.id;
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
+            this._audio = null;
+            this._preLoadSound();
         }
 
         /**
@@ -66,12 +70,25 @@ var lf2 = (function (lf2) {
             }
             framesIndex.forEach((i) => {
                 let str = context.getStringBetween(FRAME_START_TAG, FRAME_END_TAG, i).trim();
-                let frame = new Frame(str);
+                let frame = new Frame(str, this);
 
                 frameContent[frame.id] = frame;
             });
 
             return frameContent;
+        }
+
+        _preLoadSound() {
+            this.frames.forEach(frame => {
+                if (frame.soundPath !== undefined && !soundPool[frame.soundPath]) {
+                    this.addPreloadResource(frame.soundPath);
+                    soundPool[frame.soundPath] = {
+                        ogg: frame.soundPath
+                    };
+                }
+            });
+
+            this._audio = new Framework.Audio(soundPool);
         }
     };
 

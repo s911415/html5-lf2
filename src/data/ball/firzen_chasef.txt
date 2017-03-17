@@ -164,7 +164,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 61 hiting_ground
    pic: 5  state: 3001  wait: 1  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 020.wav 
+  sound: 020.ogg 
 <frame_end>
 
 <frame> 62 hiting_ground
