@@ -204,6 +204,13 @@ var lf2 = (function (lf2) {
                 leftTopPoint.x, leftTopPoint.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
+            //Play sound
+
+            if(this.currentFrame.soundPath){
+                this.obj._audio.play({
+                    name:   this.currentFrame.soundPath
+                });
+            }
 
             if (this.isDrawBoundry) {
                 ctx.strokeStyle = "#FF00FF";
