@@ -19,7 +19,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 1 column
    pic: 1  state: 15  wait: 2  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 48  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.wav 
+  sound: 072.ogg 
    itr:
       kind: 0  x: 14  y: 7  w: 66  h: 101  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 60  
       effect: 30  
@@ -104,7 +104,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 51 column
    pic: 8  state: 15  wait: 2  next: 52  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.wav 
+  sound: 072.ogg 
    itr:
       kind: 0  x: 12  y: 20  w: 57  h: 87  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 60  
       effect: 30  
@@ -173,7 +173,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 61 column
    pic: 15  state: 15  wait: 2  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.wav 
+  sound: 072.ogg 
    itr:
       kind: 0  x: 23  y: 44  w: 41  h: 64  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 60  
       effect: 30  
@@ -242,7 +242,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 71 column
    pic: 22  state: 15  wait: 2  next: 72  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.wav 
+  sound: 072.ogg 
    itr:
       kind: 0  x: 21  y: 62  w: 28  h: 48  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 40  
       effect: 30  
@@ -325,7 +325,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 150 whirlwind
    pic: 28  state: 15  wait: 2  next: 151  dvx: -2  dvy: 0  dvz: 0  centerx: 82  centery: 144  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 073.wav 
+  sound: 073.ogg 
 <frame_end>
 
 <frame> 151 whirlwind
