@@ -159,7 +159,7 @@ var lf2 = (function (lf2) {
          * @returns {boolean}
          */
         requestMp(num){
-            if(num==0) return true;
+            if(define.INF_MP || num==0) return true;
 
             num = Math.abs(num);
             if(this.mp>=num){
