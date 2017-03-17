@@ -1,8 +1,30 @@
 "use strict";
 var lf2 = (function (lf2) {
     const GameMapPool = lf2.GameMapPool;
+    const GameItem = lf2.GameItem;
     const Point = Framework.Point;
     const ResourceManager = Framework.ResourceManager;
+
+    /**
+     * Check if object is sortable
+     * @param x
+     * @returns {boolean}
+     */
+    const isAttachableSortObj = (x) => {
+        if (
+            x instanceof lf2.Player ||
+            //x instanceof lf2.Player ||
+            false
+        ) return true;
+
+        return false;
+    };
+
+    const getPositionOfObj = (x)=>{
+        if(x instanceof lf2.Player) return x.character.position;
+
+        throw "Error when get position object";
+    };
     /**
      * World Scene
      *
@@ -87,7 +109,15 @@ var lf2 = (function (lf2) {
 
             let canvasTranslate = this._getCameraPositionAsPoint();
             ctx.save();
-            ctx.translate(-canvasTranslate.x, -canvasTranslate.y);
+
+            this.attachArray.sort((e1, e2) => {
+                if(!isAttachableSortObj(e1)) return -1;
+                if(!isAttachableSortObj(e2)) return 1;
+                const p1 = getPositionOfObj(e1);
+                const p2 = getPositionOfObj(e2);
+                return p1.y - p2.y;
+            });
+
             this.attachArray.forEach(function (ele) {
                 ele.draw(ctx);
             }, this);
