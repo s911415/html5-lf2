@@ -213,7 +213,7 @@ var lf2 = (function (lf2) {
                 if (this.currentFrame.opoint) {
                     let opoint = this.currentFrame.opoint;
                     console.log('add ball', this.currentFrame.id);
-                    this.belongTo.addBall(opoint);
+                    this.belongTo.addBall(opoint, this);
                 }
             }
             this._lastFrameId = this._currentFrameIndex;
@@ -253,7 +253,7 @@ var lf2 = (function (lf2) {
             return imgArray[curFrame.pictureIndex];
         }
 
-        get leftTopPoint(){
+        get leftTopPoint() {
             const imgInfo = this.ImgInfo;
             let leftTopPoint = new Point(
                 this.position.x - imgInfo.rect.width / 2,
@@ -264,15 +264,15 @@ var lf2 = (function (lf2) {
             return leftTopPoint;
         }
 
-        get leftBottomPoint(){
+        get backBottomPoint() {
             const imgInfo = this.ImgInfo;
-            let leftBottomPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
+            let backBottomPoint = new Point(
+                this.position.x + (this._direction == DIRECTION.RIGHT ? -1 : 1) * imgInfo.rect.width / 2,
                 this.position.y
             );
-            leftBottomPoint.y -= this.position.z;
+            backBottomPoint.y -= this.position.z;
 
-            return leftBottomPoint;
+            return backBottomPoint;
         }
 
         _getNextFrameId() {
@@ -301,19 +301,11 @@ var lf2 = (function (lf2) {
         }
 
         get width() {
-            if (this._maxWidth === undefined) {
-                this._maxWidth = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.width));
-            }
-
-            return this._maxWidth;
+            return this.ImgInfo.rect.width;
         }
 
         get height() {
-            if (this._maxHeight === undefined) {
-                this._maxHeight = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.height));
-            }
-
-            return this._maxHeight;
+            return this.ImgInfo.rect.height;
         }
 
     };

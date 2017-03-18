@@ -196,8 +196,10 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.ObjectPoint} opoint
+         * @param {lf2.GameItem} caller who added the ball
          */
-        addBall(opoint) {
+        addBall(opoint, caller) {
+            if (!(caller instanceof lf2.GameItem)) throw TypeError('caller is not an instance of lf2.GameItem');
             /**
              *
              * @type {lf2.Ball[]}
@@ -213,15 +215,17 @@ var lf2 = (function (lf2) {
 
                 //Set direction
                 if (opoint.dir != DIRECTION.RIGHT) {
-                    ball._direction = !this.character._direction;
+                    ball._direction = !caller._direction;
                 } else {
-                    ball._direction = this.character._direction;
+                    ball._direction = caller._direction;
                 }
 
-                const playerLeftTopPoint = this.character.leftTopPoint;
+                const DIR_WEIGHT = caller._direction == DIRECTION.RIGHT ? 1 : -1;
+                let xOffset = -DIR_WEIGHT * caller.width / 2;
+                xOffset += DIR_WEIGHT * opoint.appearPoint.x;
                 ball.position = new Framework.Point3D(
-                    playerLeftTopPoint.x + opoint.appearPoint.x, // 前後
-                    this.character.position.y,  //Y 不變
+                    caller.position.x + xOffset, // 前後
+                    caller.position.y,  //Y 不變
                     opoint.appearPoint.y
                 );
 
