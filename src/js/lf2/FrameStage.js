@@ -3,7 +3,6 @@ var lf2 = (function (lf2) {
     /**
      * Frame Stage
      *
-     * @type {FrameStage}
      * @class lf2.FrameStage
      */
     lf2.FrameStage = {

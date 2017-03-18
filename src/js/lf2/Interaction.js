@@ -6,7 +6,6 @@ var lf2 = (function (lf2) {
     /**
      * Interaction
      *
-     * @type {Interaction}
      * @class lf2.Interaction
      */
     lf2.Interaction = class Interaction {

@@ -3,7 +3,7 @@ var lf2 = (function (lf2) {
     /**
      * Color bar
      *
-     * @class lf2.ClassName
+     * @class lf2.ColorBar
      * @extends Framework.GameObject
      * @implements Framework.AttachableInterface
      */

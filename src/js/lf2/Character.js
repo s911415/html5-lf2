@@ -68,12 +68,11 @@ var lf2 = (function (lf2) {
     /**
      * Character
      *
-     * @type {Character}
      * @class lf2.Character
      * @extends lf2.GameItem
      * @implements {Framework.AttachableInterface}
      */
-    lf2.Character = class Character extends GameItem {
+    lf2.Character = class Character extends lf2.GameItem {
         /**
          *
          * @param charId ID of character

@@ -14,7 +14,6 @@ var lf2 = (function (lf2) {
     /**
      * BmpInfo
      *
-     * @type {BmpInfo}
      * @class lf2.BmpInfo
      */
     lf2.BmpInfo = class BmpInfo{

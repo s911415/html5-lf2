@@ -3,7 +3,6 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
-    const GameObject = lf2.GameObject;
     /**
      * Ball
      *
@@ -11,7 +10,7 @@ var lf2 = (function (lf2) {
      * @class lf2.GameObjectBall
      * @extends lf2.GameObject
      */
-    lf2.GameObjectBall = class GameObjectBall extends GameObject {
+    lf2.GameObjectBall = class GameObjectBall extends lf2.GameObject {
 
         /**
          *
