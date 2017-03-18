@@ -105,12 +105,21 @@ String.prototype.lines = function () {
 };
 
 /**
- * Convert Object to number
+ * Convert Object to integer
  * @param obj
  * @returns {Number}
  */
 function intval(obj){
     return parseInt(obj, 10);
+}
+
+/**
+ * Convert Object to float
+ * @param obj
+ * @returns {Number}
+ */
+function floatval(obj){
+    return parseFloat(obj);
 }
 
 function loadImage(src) {

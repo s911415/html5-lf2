@@ -17,7 +17,7 @@ var Framework = (function (Framework) {
          */
         constructor(x, y, z) {
             super(x, y);
-            this._z = intval(z) || 0;
+            this._z = floatval(z) || 0;
         }
 
         /**
@@ -37,7 +37,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set z(value) {
-            this._z = intval(value);
+            this._z = floatval(value);
         }
 
         /**
@@ -58,9 +58,9 @@ var Framework = (function (Framework) {
          * @returns {Point3D}
          */
         offset(x, y, z){
-            this.x+=intval(x);
-            this.y+=intval(y);
-            this.z+=intval(z);
+            this.x+=floatval(x);
+            this.y+=floatval(y);
+            this.z+=floatval(z);
 
             return this;
         }
