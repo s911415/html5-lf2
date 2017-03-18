@@ -79,13 +79,12 @@ var lf2 = (function (lf2) {
          * @param {lf2.Player} player
          */
         constructor(charId, player) {
-            super(charId);
+            super(charId, player);
             this.charId = charId;
             this.head = this.obj.head;
             this.small = this.obj.small;
             this._curFuncKey = 0;
             this._lastFuncKey = 0;
-            this.belongTo = player;
 
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
@@ -237,6 +236,16 @@ var lf2 = (function (lf2) {
          */
         _containsKey(key) {
             return (this._curFuncKey & key) === key;
+        }
+
+        /**
+         * Destroy character
+         * @override
+         */
+        onDestroy(){
+            if (this.belongTo.spriteParent) {
+                this.belongTo.spriteParent.detach(this);
+            }
         }
 
         get isFuncKeyChanged() {

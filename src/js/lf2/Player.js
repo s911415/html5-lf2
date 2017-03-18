@@ -41,8 +41,16 @@ var lf2 = (function (lf2) {
              */
             this.character = new Character(charId, this);
 
+            /**
+             *
+             * @type {lf2.Ball[]}
+             */
+            this.balls = [];
+
             this.hp = DEFAULT_HP;
             this.mp = DEFAULT_MP;
+
+            this._godMode = false;
 
             this._currentDownFunctionKey = 0;
         }
@@ -115,6 +123,7 @@ var lf2 = (function (lf2) {
         update() {
             const MAP = this.spriteParent.map;
             this.character.update();
+            this.balls.forEach(ball=>ball.update());
 
             let bound = MAP.getBound(this.character.position);
             if (bound !== Bound.NONE) {
@@ -129,8 +138,8 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
-
             this.character.draw(ctx);
+            this.balls.forEach(ball=>ball.draw(ctx));
         }
 
         /**
@@ -168,6 +177,23 @@ var lf2 = (function (lf2) {
             }
 
             return false;
+        }
+
+        hurtPlayer(num){
+            if(this._godMode || num==0) return true;
+
+            num=intval(num);
+            this.addHp(-num);
+
+            return true;
+        }
+
+        /**
+         *
+         * @param {lf2.ObjectPoint} opoint
+         */
+        addBall(opoint){
+
         }
 
         /**

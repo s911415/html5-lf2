@@ -28,11 +28,13 @@ var lf2 = (function (lf2) {
     lf2.GameItem = class GameItem extends Framework.GameObject {
         /**
          *
-         * @param charId ID of character
+         * @param gameObjId ID of character
+         * @param {lf2.Player} player this object belong to which player
          */
-        constructor(charId) {
+        constructor(gameObjId, player) {
             super();
-            this.obj = GameObjectPool.get(charId);
+
+            this.obj = GameObjectPool.get(gameObjId);
 
             /**
              * 物件的中下座標
@@ -47,8 +49,9 @@ var lf2 = (function (lf2) {
             this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
-            this.isDrawBoundry = define.DEBUG;
-            this.belongTo = NONE;
+            //this.isDrawBoundry = false;
+            this.isDrawBoundry = false;
+            this.belongTo = player;
             this._frameForceChange = false;
 
             this.pushSelfToLevel();
@@ -133,10 +136,7 @@ var lf2 = (function (lf2) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
             if (frameId == DESTROY_ID) {
-                if (this.spriteParent) {
-                    this.spriteParent.detach(this);
-                }
-
+                this.onDestroy();
                 return;
             }
             this._currentFrameIndex = frameId;
@@ -235,6 +235,15 @@ var lf2 = (function (lf2) {
             //TODO: Implement when arrive bound
         }
 
+        /**
+         * destroy this item
+         *
+         * @abstract
+         */
+        onDestroy(){
+            throw 'METHOD NOT IMPLEMENT';
+        }
+
 
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
@@ -286,6 +295,7 @@ var lf2 = (function (lf2) {
     };
 
     lf2.GameItem.prototype.DIRECTION = lf2.GameItem.DIRECTION = DIRECTION;
+    lf2.GameItem.prototype.DESTROY_ID = lf2.GameItem.DESTROY_ID = DESTROY_ID;
 
     return lf2;
 })(lf2 || {});
