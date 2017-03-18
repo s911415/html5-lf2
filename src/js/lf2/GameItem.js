@@ -213,10 +213,6 @@ var lf2 = (function (lf2) {
                     });
                 }
 
-                if(this.currentFrame.opoint){
-                    let opoint = this.currentFrame.opoint;
-                    console.log('add ball', this.currentFrame.id);
-                }
             }
             this._lastFrameId = this._currentFrameIndex;
 
