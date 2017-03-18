@@ -203,10 +203,10 @@ var lf2 = (function (lf2) {
                 //TODO: NEED CHANGE
                 Game.goToLevel('fight', {
                     players: [
-                        {charId: intval(prompt("腳色1 ID:", "51"))},
-                        {charId: intval(prompt("腳色2 ID:", "7"))},
+                        {charId: intval(prompt("腳色1 ID:", "51") || 51)},
+                        {charId: intval(prompt("腳色2 ID:", "7") || 7)},
                     ],
-                    mapId: intval(prompt("地圖 ID:", "3")),
+                    mapId: intval(prompt("地圖 ID:", "3") || 3),
 
                 });
             }
