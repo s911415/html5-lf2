@@ -54,6 +54,7 @@ var lf2 = (function (lf2) {
             this.isDrawBoundry = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
+            this._createTime = Date.now();
 
             this.pushSelfToLevel();
         }
@@ -250,7 +251,12 @@ var lf2 = (function (lf2) {
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
             const curFrame = this.currentFrame;
-            return imgArray[curFrame.pictureIndex];
+            let imgInfo = imgArray[curFrame.pictureIndex];
+            if (imgInfo instanceof lf2.ImageInformation) {
+                return imgInfo;
+            } else {
+                return imgArray[-1];
+            }
         }
 
         get leftTopPoint() {
@@ -301,6 +307,7 @@ var lf2 = (function (lf2) {
         }
 
         get width() {
+            if (!this.ImgInfo) debugger;
             return this.ImgInfo.rect.width;
         }
 

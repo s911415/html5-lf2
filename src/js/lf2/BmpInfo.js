@@ -10,6 +10,8 @@ var lf2 = (function (lf2) {
     const Rectangle = lf2.Rectangle;
     const ImageInformation = lf2.ImageInformation;
 
+    const EMPTY_CANVAS = document.createElement('canvas');
+    EMPTY_CANVAS.width = EMPTY_CANVAS.height = 1;
 
     /**
      * BmpInfo
@@ -45,6 +47,12 @@ var lf2 = (function (lf2) {
                     this._data.set(d[0].trim(), parseFloat(d[1]));
                 }
             });
+
+
+            this.imageNormal[-1] = this.imageMirror[-1] = new ImageInformation(
+                new Rectangle(EMPTY_CANVAS.width, EMPTY_CANVAS.height, 0, 0),
+                EMPTY_CANVAS
+            );
         }
 
 
