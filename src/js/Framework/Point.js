@@ -13,8 +13,8 @@ var Framework = (function (Framework) {
             if(typeof x =="string"){
                 debugger;
             }
-            this._x = intval(x);
-            this._y = intval(y);
+            this._x = floatval(x);
+            this._y = floatval(y);
         }
 
         /**
@@ -50,7 +50,7 @@ var Framework = (function (Framework) {
          * @return  {void}
          */
         set x(value) {
-            this._x = intval(value);
+            this._x = floatval(value);
         }
 
         /**
@@ -68,8 +68,8 @@ var Framework = (function (Framework) {
          * @returns {Point}
          */
         offset(x, y){
-            this.x+=intval(x);
-            this.y+=intval(y);
+            this.x+=floatval(x);
+            this.y+=floatval(y);
 
             return this;
         }
@@ -91,7 +91,7 @@ var Framework = (function (Framework) {
          * @return  {void}.
          */
         set y(value) {
-            this._y = intval(value);
+            this._y = floatval(value);
         }
 
     };
