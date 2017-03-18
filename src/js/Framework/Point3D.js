@@ -26,6 +26,9 @@ var Framework = (function (Framework) {
          * @return  {Number}   z.
          */
         get z() {
+            if (isNaN(this._z)) {
+                this._z = 0;
+            }
             return this._z;
         }
 
@@ -57,10 +60,10 @@ var Framework = (function (Framework) {
          * @param {Number} z
          * @returns {Point3D}
          */
-        offset(x, y, z){
-            this.x+=floatval(x);
-            this.y+=floatval(y);
-            this.z+=floatval(z);
+        offset(x, y, z) {
+            this.x += floatval(x);
+            this.y += floatval(y);
+            this.z += floatval(z);
 
             return this;
         }

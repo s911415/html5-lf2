@@ -221,7 +221,9 @@ var Framework = (function (Framework) {
          * @return  {void}   A set.
          */
         set position(value) {
-            this.relativePosition = value;
+            this.relativePosition = new Point3D(
+                value.x,value.y,value.z
+            );
         }
 
         /**
