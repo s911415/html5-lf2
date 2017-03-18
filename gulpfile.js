@@ -74,7 +74,6 @@ gulp.task('default', () => {
 
         'src/js/lf2/BmpInfo.js',
         'src/js/lf2/Interaction.js',
-        'src/js/lf2/ObjectPoint.js',
         'src/js/lf2/Body.js',
         'src/js/lf2/Frame.js',
         'src/js/lf2/GameObject.js',

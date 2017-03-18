@@ -13,7 +13,6 @@
 
         'BmpInfo.js',
         'Interaction.js',
-        'ObjectPoint.js',
         'Body.js',
         'Frame.js',
         'GameObject.js',
