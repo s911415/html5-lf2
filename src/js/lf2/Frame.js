@@ -135,7 +135,7 @@ var lf2 = (function (lf2) {
          * Get offset of item
          * @returns {Point3D}
          */
-        get offset() {
+        get velocity() {
             return new Point3D(
                 intval(this.data.get('dvx') || 0),
                 intval(this.data.get('dvy') || 0),
