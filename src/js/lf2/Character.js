@@ -317,6 +317,7 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
             const NOW = Date.now();
+            const state =this.currentFrame.state;
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
@@ -328,6 +329,22 @@ var lf2 = (function (lf2) {
             if ((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL) {
                 this.belongTo.addMp(RECOVER_MP_VALUE);
                 this._lastRecoverMPTime = NOW;
+            }
+
+            //變身
+
+            if(((state/1000)|0)==8 || state==9995){
+                let newCharId =this.currentFrame.state%1000;
+                if(state==9995){
+                    newCharId = 50;
+                }
+
+                this.belongTo.charId = newCharId;
+                this.obj = GameObjectPool.get(newCharId);
+
+                this.head = this.obj.head;
+                this.small = this.obj.small;
+                this._currentFrameIndex = 0;
             }
 
         }
