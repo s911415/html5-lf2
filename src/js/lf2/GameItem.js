@@ -204,13 +204,22 @@ var lf2 = (function (lf2) {
                 leftTopPoint.x, leftTopPoint.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
-            //Play sound
 
-            if(this.currentFrame.soundPath){
-                this.obj._audio.play({
-                    name:   this.currentFrame.soundPath
-                });
+            if(this.isFrameChanged){
+                //Play sound
+                if(this.currentFrame.soundPath){
+                    this.obj._audio.play({
+                        name:   this.currentFrame.soundPath
+                    });
+                }
+
+                if(this.currentFrame.opoint){
+                    let opoint = this.currentFrame.opoint;
+                    console.log('add ball', this.currentFrame.id);
+                }
             }
+            this._lastFrameId = this._currentFrameIndex;
+
 
             if (this.isDrawBoundry) {
                 ctx.strokeStyle = "#FF00FF";
@@ -251,7 +260,6 @@ var lf2 = (function (lf2) {
          */
         get isFrameChanged() {
             if (this._currentFrameIndex != this._lastFrameId) {
-                this._lastFrameId = this._currentFrameIndex;
                 return true;
             }
             return false;
