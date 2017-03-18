@@ -246,8 +246,18 @@ var lf2 = (function (lf2) {
 
                 if (this.currentFrame.opoint) {
                     let opoint = this.currentFrame.opoint;
-                    console.log('add ball', this.currentFrame.id);
-                    this.belongTo.addBall(opoint, this);
+
+                    switch(opoint.kind){
+                        case 4100:  //Magic number
+                            break;
+                        case 1:
+                            console.log(opoint);
+                        default:
+                            console.log('add ball', this.currentFrame.id);
+                            this.belongTo.addBall(opoint, this);
+                            break;
+                    }
+
                 }
             }
             this._lastFrameId = this._currentFrameIndex;
