@@ -15,6 +15,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
+    const CLEAR_DUP_KEY_TIME = 500;
 
     const BALL_OFFSET_Z = 0;
 
@@ -57,12 +58,12 @@ var lf2 = (function (lf2) {
 
             this._godMode = false;
 
-            this._currentDownFunctionKey = 0;
-
             /**
              * @type {Framework.Scene}
              */
             this.spriteParent = null;
+
+            this._upKeyTimer = false;
         }
 
         /**
@@ -72,7 +73,37 @@ var lf2 = (function (lf2) {
          * @param {KeyboardEvent} oriE
          */
         keydown(e, list, oriE) {
-            this.character.setFuncKey(this._parseKeyDownCode(oriE));
+            const funcCode = this._parseKeyDownCode(oriE);
+            this.character.setFuncKey(funcCode);
+
+            if(
+                this.character._isRunning &&
+                (
+                    funcCode &
+                    (KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN)
+
+                )==0
+            ){
+                this.character.setRunning(false);
+                console.log('stop run');
+            }
+
+            //Same func key twice
+            if (
+                this.character._upKey == funcCode &&
+                funcCode !== 0
+            ) {
+                if((funcCode & KeyboardConfig.KEY_MAP.FRONT)==KeyboardConfig.KEY_MAP.FRONT){
+                    if(this.character._isRunning){
+
+                    }else{
+                        this.character.setRunning(true);
+                        console.log('start run');
+                    }
+
+                }
+            }
+
         }
 
         /**
@@ -82,7 +113,18 @@ var lf2 = (function (lf2) {
          * @param {KeyboardEvent} oriE
          */
         keyup(e, list, oriE) {
-            this.character.setFuncKey(this._parseKeyDownCode(oriE));
+            //console.log(list);
+            const funcCode = this._parseKeyDownCode(oriE);
+            const upKey = this._getFuncKeyCodeByEvent(oriE);
+            this.character.setUpKey(upKey);
+            this.character.setFuncKey(funcCode);
+
+            if (this._upKeyTimer) {
+                clearTimeout(this._upKeyTimer);
+            }
+            this._upKeyTimer = setTimeout(() => {
+                this.character._upKey = -1;
+            }, CLEAR_DUP_KEY_TIME);
         }
 
         /**
@@ -102,6 +144,18 @@ var lf2 = (function (lf2) {
                 if (KeyBoardManager.isKeyDown(KEY_CONFIG[k])) currentKey |= KeyboardConfig.KEY_MAP[k];
             });
 
+            let hitFuncCode = this._parseHitKey(currentKey);
+
+            return hitFuncCode;
+        }
+
+        /**
+         *
+         * @param {Number} currentKey
+         * @returns {number}
+         * @private
+         */
+        _parseHitKey(currentKey) {
             let hitFuncCode = 0;
             for (
                 let o = KeyboardConfig.HIT_KEY.HIT_LIST, i = 0, j = o.length;
@@ -121,6 +175,23 @@ var lf2 = (function (lf2) {
             return hitFuncCode;
         }
 
+        /**
+         *
+         *
+         * @param {KeyboardEvent} e
+         * @private
+         */
+        _getFuncKeyCodeByEvent(e) {
+            const KEY_CONFIG = this.keyboardConfig.config;
+            let currentKey = 0;
+            KeyboardConfig.KEY_MAP.KEY_LIST.forEach((k) => {
+                if (e.keyCode == KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+            });
+
+            return this._parseHitKey(currentKey);
+
+        }
+
         load() {
 
         }
@@ -134,11 +205,6 @@ var lf2 = (function (lf2) {
             const MAP = this.spriteParent.map;
             //this.character.update();
             //this.balls.forEach(ball => ball.update());
-
-            let bound = MAP.getBound(this.character.position);
-            if (bound !== Bound.NONE) {
-                this.character.onOutOfBound(bound, MAP);
-            }
         }
 
         /**

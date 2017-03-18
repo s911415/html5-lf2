@@ -171,7 +171,7 @@ var Framework = (function (Framework) {
             
             _keyStatus[e.keyCode] = false;
             var keyCode = _keyCodeToChar[e.which || e.keyCode], temp = {};
-            _keypressHistory.push(_keydownList[keyCode]);
+            _keypressHistory.push(e);
             _keydownList[keyCode] = null;
             delete _keydownList[keyCode];
             for (temp in _keydownList) {
@@ -324,7 +324,7 @@ var Framework = (function (Framework) {
              * @return  .
              */
             keypressHistory() {
-                return _keypressHistory.apply(this, arguments);
+                return _keypressHistory;
             }
 
             /**
