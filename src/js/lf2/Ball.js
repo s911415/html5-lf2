@@ -4,18 +4,16 @@ var lf2 = (function (lf2) {
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
-    const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
     /**
      * Ball
      *
-     * @type {Ball}
      * @class lf2.Ball
      * @extends lf2.GameItem
      * @implements Framework.AttachableInterface
      */
-    lf2.Ball = class Ball extends GameItem {
+    lf2.Ball = class Ball extends lf2.GameItem {
         /**
          *
          * @param ballId ID of character

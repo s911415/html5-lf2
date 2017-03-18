@@ -6,7 +6,6 @@ var lf2 = (function (lf2) {
     /**
      * Body
      *
-     * @type {Body}
      * @class lf2.Body
      */
     lf2.Body = class Body {

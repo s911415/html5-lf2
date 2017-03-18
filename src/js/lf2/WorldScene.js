@@ -28,7 +28,7 @@ var lf2 = (function (lf2) {
     /**
      * World Scene
      *
-     * @class lf2.WorldScene
+     * @class {lf2.WorldScene}
      * @extends {Framework.Scene}
      * @implements {Framework.AttachableInterface}
      */

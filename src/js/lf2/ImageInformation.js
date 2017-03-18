@@ -3,7 +3,6 @@ var lf2 = (function (lf2) {
     /**
      * Custom class
      *
-     * @type {ImageInformation}
      * @class lf2.ImageInformation
      */
     lf2.ImageInformation = class ImageInformation {

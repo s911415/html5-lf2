@@ -3,7 +3,6 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
-    const GameObject = lf2.GameObject;
     const ResourceManager = Framework.ResourceManager;
     /**
      * Ball
@@ -12,7 +11,7 @@ var lf2 = (function (lf2) {
      * @class lf2.GameObjectCharacter
      * @extends {lf2.GameObject}
      */
-    lf2.GameObjectCharacter = class GameObjectCharacter extends GameObject {
+    lf2.GameObjectCharacter = class GameObjectCharacter extends lf2.GameObject {
 
         /**
          *
