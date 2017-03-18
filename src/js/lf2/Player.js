@@ -205,11 +205,6 @@ var lf2 = (function (lf2) {
             const MAP = this.spriteParent.map;
             //this.character.update();
             //this.balls.forEach(ball => ball.update());
-
-            let bound = MAP.getBound(this.character.position);
-            if (bound !== Bound.NONE) {
-                this.character.onOutOfBound(bound, MAP);
-            }
         }
 
         /**
