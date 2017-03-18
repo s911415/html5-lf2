@@ -28,11 +28,15 @@ var lf2 = (function (lf2) {
     lf2.GameItem = class GameItem extends Framework.GameObject {
         /**
          *
-         * @param charId ID of character
+         * @param gameObjId ID of character
+         * @param {lf2.Player} player this object belong to which player
          */
-        constructor(charId) {
+        constructor(gameObjId, player) {
             super();
-            this.obj = GameObjectPool.get(charId);
+
+            if (!(player instanceof lf2.Player)) throw TypeError('player argument must be a instance of lf2.Player');
+
+            this.obj = GameObjectPool.get(gameObjId);
 
             /**
              * 物件的中下座標
@@ -48,7 +52,7 @@ var lf2 = (function (lf2) {
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
             this.isDrawBoundry = define.DEBUG;
-            this.belongTo = NONE;
+            this.belongTo = player;
             this._frameForceChange = false;
 
             this.pushSelfToLevel();
@@ -133,10 +137,7 @@ var lf2 = (function (lf2) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
             if (frameId == DESTROY_ID) {
-                if (this.spriteParent) {
-                    this.spriteParent.detach(this);
-                }
-
+                this.onDestroy();
                 return;
             }
             this._currentFrameIndex = frameId;
@@ -182,11 +183,7 @@ var lf2 = (function (lf2) {
          */
         draw(ctx) {
             const imgInfo = this.ImgInfo;
-            let leftTopPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
-                this.position.y - imgInfo.rect.height
-            );
-            leftTopPoint.y -= this.position.z;
+            const leftTopPoint = this.leftTopPoint;
 
 
             /*
@@ -205,14 +202,19 @@ var lf2 = (function (lf2) {
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
-            if(this.isFrameChanged){
+            if (this.isFrameChanged) {
                 //Play sound
-                if(this.currentFrame.soundPath){
+                if (this.currentFrame.soundPath) {
                     this.obj._audio.play({
-                        name:   this.currentFrame.soundPath
+                        name: this.currentFrame.soundPath
                     });
                 }
 
+                if (this.currentFrame.opoint) {
+                    let opoint = this.currentFrame.opoint;
+                    console.log('add ball', this.currentFrame.id);
+                    this.belongTo.addBall(opoint);
+                }
             }
             this._lastFrameId = this._currentFrameIndex;
 
@@ -235,11 +237,42 @@ var lf2 = (function (lf2) {
             //TODO: Implement when arrive bound
         }
 
+        /**
+         * destroy this item
+         *
+         * @abstract
+         */
+        onDestroy() {
+            throw 'METHOD NOT IMPLEMENT';
+        }
+
 
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
             const curFrame = this.currentFrame;
             return imgArray[curFrame.pictureIndex];
+        }
+
+        get leftTopPoint(){
+            const imgInfo = this.ImgInfo;
+            let leftTopPoint = new Point(
+                this.position.x - imgInfo.rect.width / 2,
+                this.position.y - imgInfo.rect.height
+            );
+            leftTopPoint.y -= this.position.z;
+
+            return leftTopPoint;
+        }
+
+        get leftBottomPoint(){
+            const imgInfo = this.ImgInfo;
+            let leftBottomPoint = new Point(
+                this.position.x - imgInfo.rect.width / 2,
+                this.position.y
+            );
+            leftBottomPoint.y -= this.position.z;
+
+            return leftBottomPoint;
         }
 
         _getNextFrameId() {
@@ -286,6 +319,7 @@ var lf2 = (function (lf2) {
     };
 
     lf2.GameItem.prototype.DIRECTION = lf2.GameItem.DIRECTION = DIRECTION;
+    lf2.GameItem.prototype.DESTROY_ID = lf2.GameItem.DESTROY_ID = DESTROY_ID;
 
     return lf2;
 })(lf2 || {});
