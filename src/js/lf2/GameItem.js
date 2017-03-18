@@ -10,6 +10,17 @@ var lf2 = (function (lf2) {
     const Bound = lf2.Bound;
     const DESTROY_ID = 1000;
     const NONE = -1;
+    const STOP_ALL_MOVE_DV = 550;
+
+    let dvxArray = [0];
+    const getDvxPerWait = function (i) {
+        return i;
+        if (i < 0) return -getDvxPerWait(-i);
+
+        if (dvxArray[i] !== undefined) return dvxArray[i];
+        dvxArray[i] = (i + 1) + getDvxPerWait(i - 1);
+        return dvxArray[i];
+    };
 
     const DIRECTION = {
         RIGHT: true,
@@ -123,11 +134,27 @@ var lf2 = (function (lf2) {
          * @private
          */
         _getFrameOffset() {
-            switch (this.currentFrame.state) {
+            const currentFrame = this.currentFrame;
+            const wait = currentFrame.wait;
+            const totalMove = this._getVelocity();
+            let x = totalMove.x / wait,
+                y = totalMove.y / wait ,
+                z = totalMove.z / wait;
 
-                default:
-                    return this.currentFrame.offset;
-            }
+            return new Point3D(
+                x,
+                y,
+                z
+            );
+        }
+
+        /**
+         *
+         * @returns {Point3D}
+         * @private
+         */
+        _getVelocity() {
+            return this.currentFrame.velocity;
         }
 
         /**
@@ -200,12 +227,12 @@ var lf2 = (function (lf2) {
                 leftTopPoint.y - leftTopPoint.z
             );
 
-            if (leftTopPoint.z != 0) debugger;
+            //if (leftTopPoint.z != 0) debugger;
             ctx.drawImage(
                 imgInfo.img,
-                imgInfo.rect.position.x, imgInfo.rect.position.y,
+                imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
                 imgInfo.rect.width, imgInfo.rect.height,
-                REAL_DRAW_POS.x, REAL_DRAW_POS.y,
+                REAL_DRAW_POS.x |0, REAL_DRAW_POS.y|0,
                 imgInfo.rect.width, imgInfo.rect.height
             );
 

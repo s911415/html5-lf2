@@ -184,7 +184,7 @@ var lf2 = (function (lf2) {
          * @override
          * @private
          */
-        _getFrameOffset() {
+        _getVelocity() {
             switch (this.currentFrame.state) {
                 case FrameStage.WALK:
                     let x, y;
@@ -192,6 +192,7 @@ var lf2 = (function (lf2) {
 
                     if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
                         y = this.obj.walking_speedz;
+                        debugger;
                     } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
                         y = -this.obj.walking_speedz;
                     }
@@ -203,14 +204,10 @@ var lf2 = (function (lf2) {
                         x = this.obj.walking_speed;
                     }
 
-                    x /= this.obj.walking_frame_rate;
-                    y /= this.obj.walking_frame_rate;
-                    y = Math.round(y);
-
                     return new Framework.Point3D(x, y, 0);
                     break;
                 default:
-                    return this.currentFrame.offset;
+                    return this.currentFrame.velocity;
             }
         }
 
