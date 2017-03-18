@@ -58,6 +58,11 @@ var lf2 = (function (lf2) {
             this._godMode = false;
 
             this._currentDownFunctionKey = 0;
+
+            /**
+             * @type {Framework.Scene}
+             */
+            this.spriteParent = null;
         }
 
         /**
@@ -143,8 +148,6 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
-            this.character.draw(ctx);
-            this.balls.forEach(ball => ball.draw(ctx));
         }
 
         /**
@@ -230,6 +233,7 @@ var lf2 = (function (lf2) {
                 );
 
                 this.balls.push(ball);
+                this.spriteParent.attach(ball);
             });
 
 

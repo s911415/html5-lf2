@@ -12,18 +12,12 @@ var lf2 = (function (lf2) {
      */
     const isAttachableSortObj = (x) => {
         if (
-            x instanceof lf2.Player ||
-            //x instanceof lf2.Player ||
+            x instanceof lf2.Character ||
+            x instanceof lf2.Ball ||
             false
         ) return true;
 
         return false;
-    };
-
-    const getPositionOfObj = (x)=>{
-        if(x instanceof lf2.Player) return x.character.position;
-
-        throw "Error when get position object";
     };
     /**
      * World Scene
@@ -60,6 +54,7 @@ var lf2 = (function (lf2) {
         addPlayers(playerArray) {
             playerArray.forEach((player) => {
                 this.attach(player);
+                this.attach(player.character);
             });
         }
 
@@ -112,11 +107,16 @@ var lf2 = (function (lf2) {
 
 
             this.attachArray.sort((e1, e2) => {
-                if(!isAttachableSortObj(e1)) return -1;
-                if(!isAttachableSortObj(e2)) return 1;
-                const p1 = getPositionOfObj(e1);
-                const p2 = getPositionOfObj(e2);
-                return p1.y - p2.y;
+                if (!isAttachableSortObj(e1)) return -1;
+                if (!isAttachableSortObj(e2)) return 1;
+                const p1 = (e1.position);
+                const p2 = (e2.position);
+                const yd = p1.y - p2.y;
+                if (yd === 0) {
+                    return p1._createTime - p2._createTime;
+                } else {
+                    return yd;
+                }
             });
 
             this.attachArray.forEach(function (ele) {

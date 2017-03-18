@@ -54,6 +54,7 @@ var lf2 = (function (lf2) {
             this.isDrawBoundry = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
+            this._createTime = Date.now();
 
             this.pushSelfToLevel();
         }
