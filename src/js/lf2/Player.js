@@ -295,8 +295,8 @@ var lf2 = (function (lf2) {
 
                 ball.position = new Framework.Point3D(
                     caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
-                    caller.position.y,  //Y 不變
-                    zPos
+                    caller.position.y - zPos,  //Y 不變
+                    caller.position.z
                 );
 
                 this.balls.push(ball);
