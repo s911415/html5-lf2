@@ -121,6 +121,7 @@ var lf2 = (function (lf2) {
             if ((fc || next === 0 || next === 999) && DEFAULT_KEY[this.currentFrame.state]) {
                 if (DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow]) {
                     next = DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow];
+                    this.setRunning(false);
                 }
             }
 
@@ -128,16 +129,12 @@ var lf2 = (function (lf2) {
 
             if (fc) {
                 if (
+                    next !== 0 &&
                     next.inRange(
                         STAND_FRAME_RANGE.min, STAND_FRAME_RANGE.max
                     ) && (IS_ARR_ONLY)
                 ) {
                     next = 999;
-
-                    if (this._isRunning) {
-                        next = RUN_FRAME_RANGE.min;
-                        this._run_dir = DIRECTION.RIGHT;
-                    }
                 }
             }
 
@@ -159,6 +156,10 @@ var lf2 = (function (lf2) {
                                 next += 2;
                                 this._run_dir = DIRECTION.RIGHT;
                             }
+                        }
+
+                        if (!this._isRunning) {
+                            next = STOP_RUNNING_FRAME_ID;
                         }
                         break;
                     default:
@@ -374,7 +375,7 @@ var lf2 = (function (lf2) {
          *
          * @param {boolean} flag
          */
-        setRunning(flag){
+        setRunning(flag) {
             this._isRunning = flag;
         }
     };
