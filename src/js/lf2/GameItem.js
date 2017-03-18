@@ -34,6 +34,8 @@ var lf2 = (function (lf2) {
         constructor(gameObjId, player) {
             super();
 
+            if (!(player instanceof lf2.Player)) throw TypeError('player argument must be a instance of lf2.Player');
+
             this.obj = GameObjectPool.get(gameObjId);
 
             /**
@@ -49,8 +51,7 @@ var lf2 = (function (lf2) {
             this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
-            //this.isDrawBoundry = false;
-            this.isDrawBoundry = false;
+            this.isDrawBoundry = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
 
@@ -182,11 +183,7 @@ var lf2 = (function (lf2) {
          */
         draw(ctx) {
             const imgInfo = this.ImgInfo;
-            let leftTopPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
-                this.position.y - imgInfo.rect.height
-            );
-            leftTopPoint.y -= this.position.z;
+            const leftTopPoint = this.leftTopPoint;
 
 
             /*
@@ -205,17 +202,18 @@ var lf2 = (function (lf2) {
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
-            if(this.isFrameChanged){
+            if (this.isFrameChanged) {
                 //Play sound
-                if(this.currentFrame.soundPath){
+                if (this.currentFrame.soundPath) {
                     this.obj._audio.play({
-                        name:   this.currentFrame.soundPath
+                        name: this.currentFrame.soundPath
                     });
                 }
 
-                if(this.currentFrame.opoint){
+                if (this.currentFrame.opoint) {
                     let opoint = this.currentFrame.opoint;
                     console.log('add ball', this.currentFrame.id);
+                    this.belongTo.addBall(opoint);
                 }
             }
             this._lastFrameId = this._currentFrameIndex;
@@ -244,7 +242,7 @@ var lf2 = (function (lf2) {
          *
          * @abstract
          */
-        onDestroy(){
+        onDestroy() {
             throw 'METHOD NOT IMPLEMENT';
         }
 
@@ -253,6 +251,28 @@ var lf2 = (function (lf2) {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
             const curFrame = this.currentFrame;
             return imgArray[curFrame.pictureIndex];
+        }
+
+        get leftTopPoint(){
+            const imgInfo = this.ImgInfo;
+            let leftTopPoint = new Point(
+                this.position.x - imgInfo.rect.width / 2,
+                this.position.y - imgInfo.rect.height
+            );
+            leftTopPoint.y -= this.position.z;
+
+            return leftTopPoint;
+        }
+
+        get leftBottomPoint(){
+            const imgInfo = this.ImgInfo;
+            let leftBottomPoint = new Point(
+                this.position.x - imgInfo.rect.width / 2,
+                this.position.y
+            );
+            leftBottomPoint.y -= this.position.z;
+
+            return leftBottomPoint;
         }
 
         _getNextFrameId() {

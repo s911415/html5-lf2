@@ -3,7 +3,7 @@ var Framework = (function (Framework) {
 
     /**
      *
-     * @class {Point3D}
+     * @class {Framework.Point3D}
      * @extends {Framework.Point}
      */
     Framework.Point3D = class Point3D extends Framework.Point {
@@ -47,7 +47,22 @@ var Framework = (function (Framework) {
          * @returns {Point3D}
          */
         clone() {
-            return new Point3D(this.x, this.y, this.z);
+            return new Point3D(this._x, this._y, this._z);
+        }
+
+        /**
+         *
+         * @param {Number} x
+         * @param {Number} y
+         * @param {Number} z
+         * @returns {Point3D}
+         */
+        offset(x, y, z){
+            this.x+=intval(x);
+            this.y+=intval(y);
+            this.z+=intval(z);
+
+            return this;
         }
     };
 

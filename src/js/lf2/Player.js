@@ -11,8 +11,13 @@ var lf2 = (function (lf2) {
     const Bound = lf2.Bound;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
+    const Ball = lf2.Ball;
+    const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
+
+    const BALL_OFFSET_Z = 0;
+
     /**
      * Player
      *
@@ -123,7 +128,7 @@ var lf2 = (function (lf2) {
         update() {
             const MAP = this.spriteParent.map;
             this.character.update();
-            this.balls.forEach(ball=>ball.update());
+            this.balls.forEach(ball => ball.update());
 
             let bound = MAP.getBound(this.character.position);
             if (bound !== Bound.NONE) {
@@ -139,14 +144,14 @@ var lf2 = (function (lf2) {
          */
         draw(ctx) {
             this.character.draw(ctx);
-            this.balls.forEach(ball=>ball.draw(ctx));
+            this.balls.forEach(ball => ball.draw(ctx));
         }
 
         /**
          * Add hp
          * @param num
          */
-        addHp(num){
+        addHp(num) {
             let newHP = Utils.returnInRangeValue(this.hp + num, 0, DEFAULT_HP);
             this.hp = newHP;
         }
@@ -156,7 +161,7 @@ var lf2 = (function (lf2) {
          * Add mp
          * @param num
          */
-        addMp(num){
+        addMp(num) {
             let newMP = Utils.returnInRangeValue(this.mp + num, 0, DEFAULT_MP);
             this.mp = newMP;
         }
@@ -167,11 +172,11 @@ var lf2 = (function (lf2) {
          * @param num
          * @returns {boolean}
          */
-        requestMp(num){
-            if(define.INF_MP || num==0) return true;
+        requestMp(num) {
+            if (define.INF_MP || num == 0) return true;
 
             num = Math.abs(num);
-            if(this.mp>=num){
+            if (this.mp >= num) {
                 this.addMp(-num);
                 return true;
             }
@@ -179,10 +184,10 @@ var lf2 = (function (lf2) {
             return false;
         }
 
-        hurtPlayer(num){
-            if(this._godMode || num==0) return true;
+        hurtPlayer(num) {
+            if (this._godMode || num == 0) return true;
 
-            num=intval(num);
+            num = intval(num);
             this.addHp(-num);
 
             return true;
@@ -192,7 +197,37 @@ var lf2 = (function (lf2) {
          *
          * @param {lf2.ObjectPoint} opoint
          */
-        addBall(opoint){
+        addBall(opoint) {
+            /**
+             *
+             * @type {lf2.Ball[]}
+             */
+            let ballArr = [];
+            for (let i = 0; i < opoint.count; i++) {
+                ballArr.push(new Ball(opoint.objectId, this));
+            }
+
+            ballArr.forEach(ball => {
+                //Set frame id
+                ball.setFrameById(opoint.action);
+
+                //Set direction
+                if (opoint.dir != DIRECTION.RIGHT) {
+                    ball._direction = !this.character._direction;
+                } else {
+                    ball._direction = this.character._direction;
+                }
+
+                const playerLeftTopPoint = this.character.leftTopPoint;
+                ball.position = new Framework.Point3D(
+                    playerLeftTopPoint.x + opoint.appearPoint.x, // 前後
+                    this.character.position.y,  //Y 不變
+                    opoint.appearPoint.y
+                );
+
+                this.balls.push(ball);
+            });
+
 
         }
 

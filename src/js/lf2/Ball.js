@@ -63,8 +63,8 @@ var lf2 = (function (lf2) {
             if (
                 (bound & Bound.LEFT) || (bound & Bound.RIGHT)
             ) this._isOut = true;
-            if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
-            if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
+            //if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
+            //if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
         /**
