@@ -17,7 +17,7 @@ var Framework = (function (Framework) {
          */
         constructor(x, y, z) {
             super(x, y);
-            this._z = intval(z);
+            this._z = intval(z) || 0;
         }
 
         /**

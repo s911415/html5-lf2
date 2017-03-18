@@ -132,8 +132,8 @@ var lf2 = (function (lf2) {
          */
         update() {
             const MAP = this.spriteParent.map;
-            this.character.update();
-            this.balls.forEach(ball => ball.update());
+            //this.character.update();
+            //this.balls.forEach(ball => ball.update());
 
             let bound = MAP.getBound(this.character.position);
             if (bound !== Bound.NONE) {
@@ -224,12 +224,13 @@ var lf2 = (function (lf2) {
                 }
 
                 const DIR_WEIGHT = caller._direction == DIRECTION.RIGHT ? 1 : -1;
-                let xOffset = -DIR_WEIGHT * caller.width / 2;
-                xOffset += DIR_WEIGHT * opoint.appearPoint.x;
+
+                let zPos = caller.height - opoint.appearPoint.y;
+
                 ball.position = new Framework.Point3D(
-                    caller.position.x + xOffset, // 前後
+                    caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
                     caller.position.y,  //Y 不變
-                    opoint.appearPoint.y
+                    zPos
                 );
 
                 this.balls.push(ball);

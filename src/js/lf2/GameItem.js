@@ -195,11 +195,17 @@ var lf2 = (function (lf2) {
              leftTopPoint]);
              */
 
+            const REAL_DRAW_POS = new Point(
+                leftTopPoint.x,
+                leftTopPoint.y - leftTopPoint.z
+            );
+
+            if (leftTopPoint.z != 0) debugger;
             ctx.drawImage(
                 imgInfo.img,
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
                 imgInfo.rect.width, imgInfo.rect.height,
-                leftTopPoint.x, leftTopPoint.y,
+                REAL_DRAW_POS.x, REAL_DRAW_POS.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
@@ -260,25 +266,18 @@ var lf2 = (function (lf2) {
         }
 
         get leftTopPoint() {
-            const imgInfo = this.ImgInfo;
-            let leftTopPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
-                this.position.y - imgInfo.rect.height
+            const center = this.currentFrame.center;
+            let leftTopPoint = new Point3D(
+                this.position.x - center.x,
+                this.position.y - center.y,
+                this.position.z
             );
-            leftTopPoint.y -= this.position.z;
+
+            if (this._direction == DIRECTION.LEFT) {
+                leftTopPoint.x = this.position.x - (this.width - center.x);
+            }
 
             return leftTopPoint;
-        }
-
-        get backBottomPoint() {
-            const imgInfo = this.ImgInfo;
-            let backBottomPoint = new Point(
-                this.position.x + (this._direction == DIRECTION.RIGHT ? -1 : 1) * imgInfo.rect.width / 2,
-                this.position.y
-            );
-            backBottomPoint.y -= this.position.z;
-
-            return backBottomPoint;
         }
 
         _getNextFrameId() {
@@ -307,7 +306,6 @@ var lf2 = (function (lf2) {
         }
 
         get width() {
-            if (!this.ImgInfo) debugger;
             return this.ImgInfo.rect.width;
         }
 
