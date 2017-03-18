@@ -37,6 +37,11 @@ var Framework = (function (Framework) {
             this._isMove = true;
             this._changeFrame = true;
             this._isCountAbsolute = false;
+
+            /**
+             * @type {Framework.Scene}
+             */
+            this.spriteParent = undefined;
         }
 
         /**

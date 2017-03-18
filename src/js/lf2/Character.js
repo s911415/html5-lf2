@@ -242,9 +242,12 @@ var lf2 = (function (lf2) {
          * Destroy character
          * @override
          */
-        onDestroy(){
-            if (this.belongTo.spriteParent) {
-                this.belongTo.spriteParent.detach(this);
+        onDestroy() {
+            const ERR_MSG = 'Cannot destroy character';
+            if (this.spriteParent) {
+                this.spriteParent.detach(this);
+            } else {
+                throw ERR_MSG;
             }
         }
 
@@ -274,7 +277,7 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
-            if((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL){
+            if ((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL) {
                 this.belongTo.addMp(RECOVER_MP_VALUE);
                 this._lastRecoverMPTime = NOW;
             }
