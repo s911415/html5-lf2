@@ -1,0 +1,95 @@
+[Sat Mar 18 10:28:40.303826 2017] [ssl:warn] [pid 9008:tid 564] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+[Sat Mar 18 10:28:40.381533 2017] [ssl:warn] [pid 9008:tid 564] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:28:40.382034 2017] [mpm_winnt:notice] [pid 9008:tid 564] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:28:40.382034 2017] [mpm_winnt:notice] [pid 9008:tid 564] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:28:40.382034 2017] [core:notice] [pid 9008:tid 564] AH00094: Command line: 'bin\\httpd -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:28:40.383037 2017] [mpm_winnt:notice] [pid 9008:tid 564] AH00418: Parent: Created child process 14960
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+Apache server interrupted...
+017] [ssl:warn] [pid 14960:tid 520] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+AH00112: Warning: DocumentRoot [D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs] does not exist
+[Sat Mar 18 10:28:40.743495 2017] [ssl:warn] [pid 14960:tid 520] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:28:40.746002 2017] [mpm_winnt:notice] [pid 14960:tid 520] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 10:29:43.680842 2017] [authz_core:error] [pid 14960:tid 1120] [client 127.0.0.1:51999] AH01630: client denied by server configuration: D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs
+[Sat Mar 18 10:29:43.721951 2017] [authz_core:error] [pid 14960:tid 1120] [client 127.0.0.1:51999] AH01630: client denied by server configuration: D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs, referer: https://127.0.0.1/
+[Sat Mar 18 10:29:45.715252 2017] [authz_core:error] [pid 14960:tid 1120] [client 127.0.0.1:51999] AH01630: client denied by server configuration: D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs
+[Sat Mar 18 10:29:45.743827 2017] [authz_core:error] [pid 14960:tid 1120] [client 127.0.0.1:51999] AH01630: client denied by server configuration: D:/sources_no_gd/ntut-oop-lab-2017-spring/server/htdocs, referer: https://127.0.0.1/
+[Sat Mar 18 10:31:29.657126 2017] [mpm_winnt:notice] [pid 9008:tid 564] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 10:31:31.657946 2017] [mpm_winnt:notice] [pid 14960:tid 520] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 10:31:31.671482 2017] [mpm_winnt:notice] [pid 9008:tid 564] AH00430: Parent: Child process 14960 exited successfully.
+[Sat Mar 18 10:32:24.430194 2017] [mpm_winnt:notice] [pid 6156:tid 564] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:32:24.430194 2017] [mpm_winnt:notice] [pid 6156:tid 564] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:32:24.430194 2017] [core:notice] [pid 6156:tid 564] AH00094: Command line: 'bin\\httpd -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:32:24.431197 2017] [mpm_winnt:notice] [pid 6156:tid 564] AH00418: Parent: Created child process 14916
+Apache server interrupted...
+017] [mpm_winnt:notice] [pid 14916:tid 516] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 10:33:49.494377 2017] [mpm_winnt:notice] [pid 6156:tid 564] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 10:33:51.495197 2017] [mpm_winnt:notice] [pid 14916:tid 516] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 10:33:51.508733 2017] [mpm_winnt:notice] [pid 6156:tid 564] AH00430: Parent: Child process 14916 exited successfully.
+[Sat Mar 18 10:33:54.186352 2017] [mpm_winnt:notice] [pid 14640:tid 484] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:33:54.186854 2017] [mpm_winnt:notice] [pid 14640:tid 484] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:33:54.186854 2017] [core:notice] [pid 14640:tid 484] AH00094: Command line: 'bin\\httpd -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:33:54.187355 2017] [mpm_winnt:notice] [pid 14640:tid 484] AH00418: Parent: Created child process 15852
+Apache server interrupted...
+017] [mpm_winnt:notice] [pid 15852:tid 516] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 10:35:17.109342 2017] [mpm_winnt:notice] [pid 14640:tid 484] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 10:35:19.110162 2017] [mpm_winnt:notice] [pid 15852:tid 516] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 10:35:19.124199 2017] [mpm_winnt:notice] [pid 14640:tid 484] AH00430: Parent: Child process 15852 exited successfully.
+[Sat Mar 18 10:35:22.125680 2017] [mpm_winnt:notice] [pid 14520:tid 172] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:35:22.126181 2017] [mpm_winnt:notice] [pid 14520:tid 172] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:35:22.126181 2017] [core:notice] [pid 14520:tid 172] AH00094: Command line: 'bin\\httpd -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:35:22.127184 2017] [mpm_winnt:notice] [pid 14520:tid 172] AH00418: Parent: Created child process 7096
+Apache server interrupted...
+017] [mpm_winnt:notice] [pid 7096:tid 516] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 10:36:14.800190 2017] [mpm_winnt:notice] [pid 14520:tid 172] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 10:36:16.801010 2017] [mpm_winnt:notice] [pid 7096:tid 516] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 10:36:16.815549 2017] [mpm_winnt:notice] [pid 14520:tid 172] AH00430: Parent: Child process 7096 exited successfully.
+[Sat Mar 18 10:37:55.955661 2017] [mpm_winnt:notice] [pid 12020:tid 536] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:37:55.956162 2017] [mpm_winnt:notice] [pid 12020:tid 536] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:37:55.956162 2017] [core:notice] [pid 12020:tid 536] AH00094: Command line: 'bin\\httpd.exe -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:37:55.957165 2017] [mpm_winnt:notice] [pid 12020:tid 536] AH00418: Parent: Created child process 16376
+Apache server shutdown initiated...
+pm_winnt:notice] [pid 16376:tid 576] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 10:42:03.779001 2017] [mpm_winnt:notice] [pid 12020:tid 536] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 10:42:05.779821 2017] [mpm_winnt:notice] [pid 16376:tid 576] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 10:42:05.794361 2017] [mpm_winnt:notice] [pid 12020:tid 536] AH00430: Parent: Child process 16376 exited successfully.
+Starting the 'Apache2.4' service
+The 'Apache2.4' service is running.
+Starting the 'Apache2.4' service
+AH00377: The 'Apache2.4' service is already started!
+[Sat Mar 18 10:54:07.969772 2017] [ssl:warn] [pid 20252:tid 556] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:54:08.044471 2017] [ssl:warn] [pid 20252:tid 556] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:54:08.045473 2017] [mpm_winnt:notice] [pid 20252:tid 556] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:54:08.045473 2017] [mpm_winnt:notice] [pid 20252:tid 556] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:54:08.045473 2017] [core:notice] [pid 20252:tid 556] AH00094: Command line: 'bin\\httpd.exe -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:54:08.046476 2017] [mpm_winnt:notice] [pid 20252:tid 556] AH00418: Parent: Created child process 19900
+[Sat Mar 18 10:54:08.337750 2017] [ssl:warn] [pid 19900:tid 528] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:54:08.409942 2017] [ssl:warn] [pid 19900:tid 528] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:54:08.413452 2017] [mpm_winnt:notice] [pid 19900:tid 528] AH00354: Child: Starting 64 worker threads.
+Starting the 'Apache2.4' service
+The 'Apache2.4' service is running.
+Starting the 'Apache2.4' service
+AH00377: The 'Apache2.4' service is already started!
+Starting the 'Apache2.4' service
+The 'Apache2.4' service is running.
+[Sat Mar 18 10:58:44.821024 2017] [ssl:warn] [pid 20992:tid 576] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:58:44.850603 2017] [core:warn] [pid 20992:tid 576] AH00098: pid file D:/sources_no_gd/ntut-oop-lab-2017-spring/server/logs/httpd.pid overwritten -- Unclean shutdown of previous Apache run?
+[Sat Mar 18 10:58:44.893216 2017] [ssl:warn] [pid 20992:tid 576] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:58:44.894219 2017] [mpm_winnt:notice] [pid 20992:tid 576] AH00455: Apache/2.4.25 (Win32) OpenSSL/1.0.2k configured -- resuming normal operations
+[Sat Mar 18 10:58:44.894219 2017] [mpm_winnt:notice] [pid 20992:tid 576] AH00456: Server built: Dec 16 2016 21:20:24
+[Sat Mar 18 10:58:44.894219 2017] [core:notice] [pid 20992:tid 576] AH00094: Command line: 'bin\\httpd.exe -d D:/sources_no_gd/ntut-oop-lab-2017-spring/server'
+[Sat Mar 18 10:58:44.895222 2017] [mpm_winnt:notice] [pid 20992:tid 576] AH00418: Parent: Created child process 19852
+Apache server interrupted...
+017] [ssl:warn] [pid 19852:tid 568] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:58:45.258187 2017] [ssl:warn] [pid 19852:tid 568] AH01909: localhost:9488:0 server certificate does NOT include an ID which matches the server name
+[Sat Mar 18 10:58:45.262197 2017] [mpm_winnt:notice] [pid 19852:tid 568] AH00354: Child: Starting 64 worker threads.
+[Sat Mar 18 11:00:44.698275 2017] [mpm_winnt:notice] [pid 20992:tid 576] AH00422: Parent: Received shutdown signal -- Shutting down the server.
+[Sat Mar 18 11:00:46.699095 2017] [mpm_winnt:notice] [pid 19852:tid 568] AH00364: Child: All worker threads have exited.
+[Sat Mar 18 11:00:46.713634 2017] [mpm_winnt:notice] [pid 20992:tid 576] AH00430: Parent: Child process 19852 exited successfully.
