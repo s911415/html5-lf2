@@ -143,7 +143,7 @@ var lf2 = (function (lf2) {
 
                         //Save Mirror image
                         for (let c = 0; c < col; c++) {
-                            const _x = canvas.width - c * (width + 1) - (width + 1);
+                            const _x = canvas.width+  1 - c * (width + 1) - (width + 1);
                             //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
                             $.imageMirror[j] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
