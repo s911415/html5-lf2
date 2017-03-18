@@ -7,12 +7,12 @@ var Framework = (function (Framework) {
      * @interface Framework.AttachableInterface
      * @type {AttachableInterface}
      */
-    Framework.AttachableInterface=class AttachableInterface{
+    Framework.AttachableInterface = class AttachableInterface {
         /**
          * Load
          * @abstract
          */
-        load(){
+        load() {
             throw new METHOD_NOT_IMPLEMENT;
         }
 
@@ -28,7 +28,7 @@ var Framework = (function (Framework) {
          * Update object
          * @abstract
          */
-        update(){
+        update() {
             throw new METHOD_NOT_IMPLEMENT;
         }
 
@@ -38,7 +38,7 @@ var Framework = (function (Framework) {
          * @param {CanvasRenderingContext2D} ctx
          * @abstract
          */
-        draw(ctx){
+        draw(ctx) {
             throw new METHOD_NOT_IMPLEMENT;
         }
     };

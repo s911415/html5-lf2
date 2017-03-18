@@ -6,8 +6,11 @@ var lf2 = (function (lf2) {
     const ITR_START_TAG = 'itr:';
     const ITR_END_TAG = 'itr_end:';
     const SOUND_TAG = 'sound:';
+    const OPOINT_START_TAG = 'opoint:';
+    const OPOINT_END_TAG = 'opoint_end:';
 
     const Body = lf2.Body;
+    const ObjectPoint = lf2.ObjectPoint;
     const Interaction = lf2.Interaction;
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
@@ -39,23 +42,26 @@ var lf2 = (function (lf2) {
 
             let itr = context.getStringBetween(ITR_START_TAG, ITR_END_TAG);
             let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
+            let opoint = context.getStringBetween(OPOINT_START_TAG, OPOINT_END_TAG);
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
+            this.opoint = opoint ? new ObjectPoint(opoint) : undefined;
+
             this.mp = intval(this.data.get('mp') || 0);
 
-            this.soundPath = (function(){
+            this.soundPath = (function () {
                 let soundStr = undefined;
-                for(let i=0;i<lines.length;i++){
+                for (let i = 0; i < lines.length; i++) {
                     const lineStr = lines[i].trim();
-                    if(lineStr.startsWith(SOUND_TAG)){
+                    if (lineStr.startsWith(SOUND_TAG)) {
                         soundStr = Utils.parseDataLine(lineStr).get('sound');
                         break;
                     }
                 }
 
-                if(soundStr!==undefined){
-                    soundStr = define.MUSIC_PATH  + soundStr;
+                if (soundStr !== undefined) {
+                    soundStr = define.MUSIC_PATH + soundStr;
 
                     return soundStr;
                 }
