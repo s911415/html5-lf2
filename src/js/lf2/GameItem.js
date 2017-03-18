@@ -54,6 +54,7 @@ var lf2 = (function (lf2) {
             this.isDrawBoundry = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
+            this._createTime = Date.now();
 
             this.pushSelfToLevel();
         }
@@ -194,11 +195,17 @@ var lf2 = (function (lf2) {
              leftTopPoint]);
              */
 
+            const REAL_DRAW_POS = new Point(
+                leftTopPoint.x,
+                leftTopPoint.y - leftTopPoint.z
+            );
+
+            if (leftTopPoint.z != 0) debugger;
             ctx.drawImage(
                 imgInfo.img,
                 imgInfo.rect.position.x, imgInfo.rect.position.y,
                 imgInfo.rect.width, imgInfo.rect.height,
-                leftTopPoint.x, leftTopPoint.y,
+                REAL_DRAW_POS.x, REAL_DRAW_POS.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
@@ -213,7 +220,7 @@ var lf2 = (function (lf2) {
                 if (this.currentFrame.opoint) {
                     let opoint = this.currentFrame.opoint;
                     console.log('add ball', this.currentFrame.id);
-                    this.belongTo.addBall(opoint);
+                    this.belongTo.addBall(opoint, this);
                 }
             }
             this._lastFrameId = this._currentFrameIndex;
@@ -250,29 +257,27 @@ var lf2 = (function (lf2) {
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
             const curFrame = this.currentFrame;
-            return imgArray[curFrame.pictureIndex];
+            let imgInfo = imgArray[curFrame.pictureIndex];
+            if (imgInfo instanceof lf2.ImageInformation) {
+                return imgInfo;
+            } else {
+                return imgArray[-1];
+            }
         }
 
-        get leftTopPoint(){
-            const imgInfo = this.ImgInfo;
-            let leftTopPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
-                this.position.y - imgInfo.rect.height
+        get leftTopPoint() {
+            const center = this.currentFrame.center;
+            let leftTopPoint = new Point3D(
+                this.position.x - center.x,
+                this.position.y - center.y,
+                this.position.z
             );
-            leftTopPoint.y -= this.position.z;
+
+            if (this._direction == DIRECTION.LEFT) {
+                leftTopPoint.x = this.position.x - (this.width - center.x);
+            }
 
             return leftTopPoint;
-        }
-
-        get leftBottomPoint(){
-            const imgInfo = this.ImgInfo;
-            let leftBottomPoint = new Point(
-                this.position.x - imgInfo.rect.width / 2,
-                this.position.y
-            );
-            leftBottomPoint.y -= this.position.z;
-
-            return leftBottomPoint;
         }
 
         _getNextFrameId() {
@@ -301,19 +306,11 @@ var lf2 = (function (lf2) {
         }
 
         get width() {
-            if (this._maxWidth === undefined) {
-                this._maxWidth = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.width));
-            }
-
-            return this._maxWidth;
+            return this.ImgInfo.rect.width;
         }
 
         get height() {
-            if (this._maxHeight === undefined) {
-                this._maxHeight = Math.max.apply(this, this.obj.bmpInfo.imageNormal.map(i => i.rect.height));
-            }
-
-            return this._maxHeight;
+            return this.ImgInfo.rect.height;
         }
 
     };

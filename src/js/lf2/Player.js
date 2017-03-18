@@ -58,6 +58,11 @@ var lf2 = (function (lf2) {
             this._godMode = false;
 
             this._currentDownFunctionKey = 0;
+
+            /**
+             * @type {Framework.Scene}
+             */
+            this.spriteParent = null;
         }
 
         /**
@@ -127,8 +132,8 @@ var lf2 = (function (lf2) {
          */
         update() {
             const MAP = this.spriteParent.map;
-            this.character.update();
-            this.balls.forEach(ball => ball.update());
+            //this.character.update();
+            //this.balls.forEach(ball => ball.update());
 
             let bound = MAP.getBound(this.character.position);
             if (bound !== Bound.NONE) {
@@ -143,8 +148,6 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
-            this.character.draw(ctx);
-            this.balls.forEach(ball => ball.draw(ctx));
         }
 
         /**
@@ -196,8 +199,10 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.ObjectPoint} opoint
+         * @param {lf2.GameItem} caller who added the ball
          */
-        addBall(opoint) {
+        addBall(opoint, caller) {
+            if (!(caller instanceof lf2.GameItem)) throw TypeError('caller is not an instance of lf2.GameItem');
             /**
              *
              * @type {lf2.Ball[]}
@@ -213,19 +218,23 @@ var lf2 = (function (lf2) {
 
                 //Set direction
                 if (opoint.dir != DIRECTION.RIGHT) {
-                    ball._direction = !this.character._direction;
+                    ball._direction = !caller._direction;
                 } else {
-                    ball._direction = this.character._direction;
+                    ball._direction = caller._direction;
                 }
 
-                const playerLeftTopPoint = this.character.leftTopPoint;
+                const DIR_WEIGHT = caller._direction == DIRECTION.RIGHT ? 1 : -1;
+
+                let zPos = caller.height - opoint.appearPoint.y;
+
                 ball.position = new Framework.Point3D(
-                    playerLeftTopPoint.x + opoint.appearPoint.x, // 前後
-                    this.character.position.y,  //Y 不變
-                    opoint.appearPoint.y
+                    caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
+                    caller.position.y,  //Y 不變
+                    zPos
                 );
 
                 this.balls.push(ball);
+                this.spriteParent.attach(ball);
             });
 
 

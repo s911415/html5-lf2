@@ -2,7 +2,7 @@
 'use strict';
 
 var Framework = (function (Framework) {
-    const Point = Framework.Point;
+    const Point3D = Framework.Point3D;
     /**
      * 所有Sprite和Scene的Base Class,
      * 一般而言, 應該不會直接new它, 而是new其他的concrete class
@@ -14,29 +14,34 @@ var Framework = (function (Framework) {
 
         /** Default constructor. */
         constructor() {
-            this.relativePosition = new Point(0, 0);
+            this.relativePosition = new Point3D(0, 0, 0);
             this.relativeRotation = 0;
             this.relativeScale = 1;
 
-            this.absolutePosition = new Point(0, 0);
+            this.absolutePosition = new Point3D(0, 0, 0);
             this.absoluteRotation = 0;
             this.absoluteScale = 1;
             this.systemLayer = 1;
             //this.spriteParent = {};
 
-            this.previousAbsolutePosition = new Point(0, 0);
+            this.previousAbsolutePosition = new Point3D(0, 0, 0);
             this.previousWidth = 0;
             this.previousHeight = 0;
 
             this.rotation = 0;
             this.scale = 1;
-            this.position = new Point(0, 0);
+            this.position = new Point3D(0, 0, 0);
 
             this._isRotate = true;
             this._isScale = true;
             this._isMove = true;
             this._changeFrame = true;
             this._isCountAbsolute = false;
+
+            /**
+             * @type {Framework.Scene}
+             */
+            this.spriteParent = undefined;
         }
 
         /**
@@ -216,15 +221,7 @@ var Framework = (function (Framework) {
          * @return  {void}   A set.
          */
         set position(value) {
-            if (!Framework.Util.isUndefined(value.x)) {
-                this.relativePosition.x = Math.floor(value.x);
-                //this._isMove = true;
-            }
-
-            if (!Framework.Util.isUndefined(value.y)) {
-                this.relativePosition.y = Math.floor(value.y);
-                //this._isMove = true;
-            }
+            this.relativePosition = value;
         }
 
         /**
