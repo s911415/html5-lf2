@@ -273,18 +273,11 @@ var lf2 = (function (lf2) {
                 this.position.z
             );
 
+            if (this._direction == DIRECTION.LEFT) {
+                leftTopPoint.x = this.position.x - (this.width - center.x);
+            }
+
             return leftTopPoint;
-        }
-
-        get backBottomPoint() {
-            const imgInfo = this.ImgInfo;
-            let backBottomPoint = new Point(
-                this.position.x + (this._direction == DIRECTION.RIGHT ? -1 : 1) * imgInfo.rect.width / 2,
-                this.position.y
-            );
-            backBottomPoint.y -= this.position.z;
-
-            return backBottomPoint;
         }
 
         _getNextFrameId() {
