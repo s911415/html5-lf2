@@ -35,6 +35,9 @@ var lf2 = (function (lf2) {
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
     const DEFEND_FRAME_ID = 110;
+    const STOP_RUNNING_FRAME_ID = 218;
+    const ROWING_FRAME_ID = 102;
+    const RUN_ATTACK_FRAME_ID = 85;
 
 
     const DEFAULT_KEY = {};
@@ -49,6 +52,11 @@ var lf2 = (function (lf2) {
         d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
         a: PUNCH1_FRAME_ID,
+    };
+    DEFAULT_KEY[FrameStage.RUN] = {
+        d: ROWING_FRAME_ID,
+        j: JUMP_FRAME_ID,
+        a: RUN_ATTACK_FRAME_ID,
     };
     for (let k in DEFAULT_KEY) {
         let t = DEFAULT_KEY[k];
@@ -89,8 +97,10 @@ var lf2 = (function (lf2) {
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
+            this._isRunning = false;
             this._lastRecoverMPTime = -1;
 
+            this._upKey = -1;
         }
 
 
@@ -111,6 +121,7 @@ var lf2 = (function (lf2) {
             if ((fc || next === 0 || next === 999) && DEFAULT_KEY[this.currentFrame.state]) {
                 if (DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow]) {
                     next = DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow];
+                    this.setRunning(false);
                 }
             }
 
@@ -118,9 +129,10 @@ var lf2 = (function (lf2) {
 
             if (fc) {
                 if (
+                    next !== 0 &&
                     next.inRange(
                         STAND_FRAME_RANGE.min, STAND_FRAME_RANGE.max
-                    ) && IS_ARR_ONLY
+                    ) && (IS_ARR_ONLY)
                 ) {
                     next = 999;
                 }
@@ -128,14 +140,40 @@ var lf2 = (function (lf2) {
 
             if (next == 0) {
                 switch (this.currentFrame.state) {
+                    case FrameStage.RUN:
+                    case FrameStage.BURN_RUN:
+                        if (this._run_dir == DIRECTION.RIGHT) {
+                            next = this.currentFrame.id + 1;
+                            //Loop run action
+                            if (next > RUN_FRAME_RANGE.max) {
+                                next -= 2;
+                                this._run_dir = DIRECTION.LEFT;
+                            }
+                        } else {
+                            next = this.currentFrame.id - 1;
+                            //Loop run action
+                            if (next < RUN_FRAME_RANGE.min) {
+                                next += 2;
+                                this._run_dir = DIRECTION.RIGHT;
+                            }
+                        }
+
+                        if (!this._isRunning) {
+                            next = STOP_RUNNING_FRAME_ID;
+                        }
+                        break;
                     default:
                         next = 0;
                 }
             } else if (next == 999) {
                 switch (this.currentFrame.state) {
                     case FrameStage.STAND:
-                        if (IS_ARR_ONLY) {
+                        if (this._isRunning) {
+                            next = RUN_FRAME_RANGE.min;
+                            this._run_dir = DIRECTION.RIGHT;
+                        } else if (IS_ARR_ONLY) {
                             next = WALK_FRAME_RANGE.min;
+                            this._walk_dir = DIRECTION.RIGHT;
                         }
                         break;
 
@@ -157,7 +195,6 @@ var lf2 = (function (lf2) {
                                     this._walk_dir = DIRECTION.RIGHT;
                                 }
                             }
-
                         }
                         break;
                     default:
@@ -185,14 +222,13 @@ var lf2 = (function (lf2) {
          * @private
          */
         _getVelocity() {
+            let x, y;
             switch (this.currentFrame.state) {
                 case FrameStage.WALK:
-                    let x, y;
                     x = y = 0;
 
                     if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
                         y = this.obj.walking_speedz;
-                        debugger;
                     } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
                         y = -this.obj.walking_speedz;
                     }
@@ -203,6 +239,20 @@ var lf2 = (function (lf2) {
                     ) {
                         x = this.obj.walking_speed;
                     }
+
+                    return new Framework.Point3D(x, y, 0);
+                    break;
+                case FrameStage.RUN:
+                case FrameStage.BURN_RUN:
+                    x = y = 0;
+
+                    if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
+                        y = this.obj.running_speedz;
+                    } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
+                        y = -this.obj.running_speedz;
+                    }
+
+                    x = this.obj.running_speed;
 
                     return new Framework.Point3D(x, y, 0);
                     break;
@@ -274,6 +324,7 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
+
             if ((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL) {
                 this.belongTo.addMp(RECOVER_MP_VALUE);
                 this._lastRecoverMPTime = NOW;
@@ -310,6 +361,22 @@ var lf2 = (function (lf2) {
          */
         setFuncKey(key) {
             this._curFuncKey = key;
+        }
+
+        /**
+         * Set up key
+         * @param {Number} key
+         */
+        setUpKey(key) {
+            this._upKey = key;
+        }
+
+        /**
+         *
+         * @param {boolean} flag
+         */
+        setRunning(flag) {
+            this._isRunning = flag;
         }
     };
 

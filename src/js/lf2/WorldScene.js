@@ -4,6 +4,7 @@ var lf2 = (function (lf2) {
     const GameItem = lf2.GameItem;
     const Point = Framework.Point;
     const ResourceManager = Framework.ResourceManager;
+    const Bound = lf2.Bound;
 
     /**
      * Check if object is sortable
@@ -65,6 +66,17 @@ var lf2 = (function (lf2) {
                 sumPlayerX += p.character.position.x;
             });
             this._setCameraPositionByX(sumPlayerX / this.config.players.length);
+
+            this.attachArray.forEach((item)=>{
+                if(item instanceof  lf2.GameItem){
+                    let bound = this.map.getBound(item.position);
+                    if (bound !== Bound.NONE) {
+                        item.onOutOfBound(bound, this.map);
+                    }
+                }
+            });
+
+
         }
 
         _setCameraPositionByX(x) {
