@@ -170,8 +170,11 @@ var lf2 = (function (lf2) {
             } else if (next == 999) {
                 switch (this.currentFrame.state) {
                     case FrameStage.STAND:
-                        next = WALK_FRAME_RANGE.min;
-                        this._walk_dir = DIRECTION.RIGHT;
+                        if (IS_ARR_ONLY) {
+                            next = WALK_FRAME_RANGE.min;
+                            this._walk_dir = DIRECTION.RIGHT;
+                        }
+
                         break;
 
                     case FrameStage.WALK:
@@ -313,7 +316,7 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
             const NOW = Date.now();
-            const state =this.currentFrame.state;
+            const state = this.currentFrame.state;
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
@@ -329,9 +332,9 @@ var lf2 = (function (lf2) {
 
             //變身
 
-            if(((state/1000)|0)==8 || state==9995){
-                let newCharId =this.currentFrame.state%1000;
-                if(state==9995){
+            if (((state / 1000) | 0) == 8 || state == 9995) {
+                let newCharId = this.currentFrame.state % 1000;
+                if (state == 9995) {
                     newCharId = 50;
                 }
 

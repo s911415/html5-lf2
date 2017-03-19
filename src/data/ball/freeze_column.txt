@@ -299,27 +299,27 @@ weapon_broken_sound: 072.ogg
 <frame_end>
 
 <frame> 100 column_mother
-   pic: 6  state: 3000  wait: 1  next: 101  dvx: 4  dvy: 0  dvz: 0  centerx: 1  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 6  state: 3000  wait: 1  next: 101  dvx: 4  dvy: 0  dvz: 0  centerx: 36  centery: 112  hit_a: 0  hit_d: 0  hit_j: 0
 <frame_end>
 
 <frame> 101 column_mother
-   pic: 6  state: 3005  wait: 5  next: 102  dvx: 6  dvy: 0  dvz: 0  centerx: 1  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 6  state: 3005  wait: 5  next: 102  dvx: 6  dvy: 0  dvz: 0  centerx: 36  centery: 112  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: -13  y: 5  action: 60  dvx: 0  dvy: 0  oid: 212  facing: 0
+      kind: 1  x: -13  y: 112  action: 60  dvx: 0  dvy: 0  oid: 212  facing: 0
    opoint_end:
 <frame_end>
 
 <frame> 102 column_mother
-   pic: 6  state: 3005  wait: 5  next: 103  dvx: 6  dvy: 0  dvz: 0  centerx: 1  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 6  state: 3005  wait: 5  next: 103  dvx: 6  dvy: 0  dvz: 0  centerx: 36  centery: 112  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: -5  y: 5  action: 50  dvx: 0  dvy: 0  oid: 212  facing: 0
+      kind: 1  x: -5  y: 112  action: 50  dvx: 0  dvy: 0  oid: 212  facing: 0
    opoint_end:
 <frame_end>
 
 <frame> 103 column_mother
-   pic: 6  state: 3005  wait: 1  next: 1000  dvx: 6  dvy: 0  dvz: 0  centerx: 1  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 6  state: 3005  wait: 1  next: 1000  dvx: 6  dvy: 0  dvz: 0  centerx: 36  centery: 112  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 29  y: 5  action: 0  dvx: 0  dvy: 0  oid: 212  facing: 0
+      kind: 1  x: 29  y: 112  action: 0  dvx: 0  dvy: 0  oid: 212  facing: 0
    opoint_end:
 <frame_end>
 
