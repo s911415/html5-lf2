@@ -108,8 +108,8 @@ var lf2 = (function (lf2) {
 
             let offset = this._getFrameOffset();
             //Start move object
-            this.position.z += offset.z;
-            this.position.y += offset.y;
+            this.position.z += offset.y;
+            this.position.y += offset.z;
             if (this._direction == DIRECTION.RIGHT) {
                 this.position.x += offset.x;
             } else {
