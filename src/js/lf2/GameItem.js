@@ -62,7 +62,8 @@ var lf2 = (function (lf2) {
             this._frameInterval = (1e3 / Framework.Config.fps);
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
-            this.isDrawBoundry = define.DEBUG;
+            this._isDrawBoundry = define.DEBUG;
+            this._isShowInfo = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
             this._createTime = Date.now();
@@ -212,6 +213,7 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             const imgInfo = this.ImgInfo;
             const leftTopPoint = this.leftTopPoint;
+            const curFrame = this.currentFrame;
 
 
             /*
@@ -223,8 +225,8 @@ var lf2 = (function (lf2) {
              */
 
             const REAL_DRAW_POS = new Point(
-                leftTopPoint.x,
-                leftTopPoint.y - leftTopPoint.z
+                leftTopPoint.x|0,
+                (leftTopPoint.y - leftTopPoint.z)|0
             );
 
             //if (leftTopPoint.z != 0) debugger;
@@ -232,20 +234,20 @@ var lf2 = (function (lf2) {
                 imgInfo.img,
                 imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
                 imgInfo.rect.width, imgInfo.rect.height,
-                REAL_DRAW_POS.x |0, REAL_DRAW_POS.y|0,
+                REAL_DRAW_POS.x, REAL_DRAW_POS.y,
                 imgInfo.rect.width, imgInfo.rect.height
             );
 
             if (this.isFrameChanged) {
                 //Play sound
-                if (this.currentFrame.soundPath) {
+                if (curFrame.soundPath) {
                     this.obj._audio.play({
-                        name: this.currentFrame.soundPath
+                        name: curFrame.soundPath
                     });
                 }
 
-                if (this.currentFrame.opoint) {
-                    let opoint = this.currentFrame.opoint;
+                if (curFrame.opoint) {
+                    let opoint = curFrame.opoint;
 
                     switch(opoint.kind){
                         case 4100:  //Magic number
@@ -253,7 +255,7 @@ var lf2 = (function (lf2) {
                         case 1:
                             console.log(opoint);
                         default:
-                            console.log('add ball', this.currentFrame.id);
+                            console.log('add ball', curFrame.id);
                             this.belongTo.addBall(opoint, this);
                             break;
                     }
@@ -263,25 +265,52 @@ var lf2 = (function (lf2) {
             this._lastFrameId = this._currentFrameIndex;
 
 
-            if (this.isDrawBoundry) {
-                ctx.lineWidth = 2;
-                ctx.strokeStyle = "#FF00FF";
-                ctx.strokeRect(
-                    leftTopPoint.x, leftTopPoint.y,
-                    imgInfo.rect.width, imgInfo.rect.height
-                );
-            }
-
-            if(define.DEBUG){
-                let msg = `ID: ${this.obj.id} / CurrentFrameId: ${this._currentFrameIndex }`;
-                ctx.font="3px Arial";
+            if(this._isShowInfo){
+                let msg=[];
+                msg.push(`ID: ${this.obj.id}`);
+                msg.push(`CurrentFrameId: ${this._currentFrameIndex}`);
+                msg.push(`position: (${this.position.x|0}, ${this.position.y|0}, ${this.position.z|0})`);
+                ctx.font="200 12px Arial";
                 ctx.textAlign="start";
                 ctx.textBaseline="top";
                 ctx.fillStyle="#FFF";
                 ctx.strokeStyle="#000";
                 ctx.lineWidth = 2;
-                ctx.strokeText(msg, REAL_DRAW_POS.x, REAL_DRAW_POS.y);
-                ctx.fillText(msg, REAL_DRAW_POS.x, REAL_DRAW_POS.y);
+                for(let i=0;i<msg.length;i++){
+                    const _y = REAL_DRAW_POS.y + 12 * i;
+                    ctx.strokeText(msg[i], REAL_DRAW_POS.x, _y);
+                    ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
+                }
+
+            }
+            if (this._isDrawBoundry) {
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = "#FF00FF";
+                //Draw image rect
+                ctx.strokeRect(
+                    REAL_DRAW_POS.x, REAL_DRAW_POS.y,
+                    imgInfo.rect.width, imgInfo.rect.height
+                );
+
+                //Draw bdy rect
+                if(curFrame.bdy){
+                    const rect = curFrame.bdy.rect;
+                    ctx.strokeStyle = "#FF0000";
+                    ctx.strokeRect(
+                        REAL_DRAW_POS.x + rect.position.x, REAL_DRAW_POS.y + rect.position.y,
+                        rect.width, rect.height
+                    );
+                }
+
+                //Draw itr rect
+                if(curFrame.itr){
+                    const rect = curFrame.itr.rect;
+                    ctx.strokeStyle = "#0000FF";
+                    ctx.strokeRect(
+                        REAL_DRAW_POS.x + rect.position.x, REAL_DRAW_POS.y + rect.position.y,
+                        rect.width, rect.height
+                    );
+                }
             }
         }
 
