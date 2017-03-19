@@ -97,7 +97,6 @@ var lf2 = (function (lf2) {
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
-            this._isRunning = false;
             this._lastRecoverMPTime = -1;
 
             this._upKey = -1;
@@ -121,7 +120,6 @@ var lf2 = (function (lf2) {
             if ((fc || next === 0 || next === 999) && DEFAULT_KEY[this.currentFrame.state]) {
                 if (DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow]) {
                     next = DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow];
-                    this.setRunning(false);
                 }
             }
 
@@ -158,9 +156,13 @@ var lf2 = (function (lf2) {
                             }
                         }
 
-                        if (!this._isRunning) {
+                        if (
+                            (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction == DIRECTION.RIGHT) ||
+                            (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction == DIRECTION.LEFT)
+                        ) {
                             next = STOP_RUNNING_FRAME_ID;
                         }
+
                         break;
                     default:
                         next = 0;
@@ -168,13 +170,8 @@ var lf2 = (function (lf2) {
             } else if (next == 999) {
                 switch (this.currentFrame.state) {
                     case FrameStage.STAND:
-                        if (this._isRunning) {
-                            next = RUN_FRAME_RANGE.min;
-                            this._run_dir = DIRECTION.RIGHT;
-                        } else if (IS_ARR_ONLY) {
-                            next = WALK_FRAME_RANGE.min;
-                            this._walk_dir = DIRECTION.RIGHT;
-                        }
+                        next = WALK_FRAME_RANGE.min;
+                        this._walk_dir = DIRECTION.RIGHT;
                         break;
 
                     case FrameStage.WALK:
@@ -222,15 +219,15 @@ var lf2 = (function (lf2) {
          * @private
          */
         _getVelocity() {
-            let x, y;
+            let x, y, z;
+            x = y = z = 0;
             switch (this.currentFrame.state) {
                 case FrameStage.WALK:
-                    x = y = 0;
 
                     if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
-                        y = this.obj.walking_speedz;
+                        z = this.obj.walking_speedz;
                     } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
-                        y = -this.obj.walking_speedz;
+                        z = -this.obj.walking_speedz;
                     }
 
                     if (
@@ -240,21 +237,20 @@ var lf2 = (function (lf2) {
                         x = this.obj.walking_speed;
                     }
 
-                    return new Framework.Point3D(x, y, 0);
+                    return new Framework.Point3D(x, y, z);
                     break;
                 case FrameStage.RUN:
                 case FrameStage.BURN_RUN:
-                    x = y = 0;
 
                     if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
-                        y = this.obj.running_speedz;
+                        z = this.obj.running_speedz;
                     } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
-                        y = -this.obj.running_speedz;
+                        z = -this.obj.running_speedz;
                     }
 
                     x = this.obj.running_speed;
 
-                    return new Framework.Point3D(x, y, 0);
+                    return new Framework.Point3D(x, y, z);
                     break;
                 default:
                     return this.currentFrame.velocity;
@@ -386,14 +382,6 @@ var lf2 = (function (lf2) {
          */
         setUpKey(key) {
             this._upKey = key;
-        }
-
-        /**
-         *
-         * @param {boolean} flag
-         */
-        setRunning(flag) {
-            this._isRunning = flag;
         }
     };
 

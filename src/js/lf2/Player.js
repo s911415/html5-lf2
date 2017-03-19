@@ -76,31 +76,14 @@ var lf2 = (function (lf2) {
             const funcCode = this._parseKeyDownCode(oriE);
             this.character.setFuncKey(funcCode);
 
-            if(
-                this.character._isRunning &&
-                (
-                    funcCode &
-                    (KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN)
-
-                )==0
-            ){
-                this.character.setRunning(false);
-                console.log('stop run');
-            }
-
             //Same func key twice
             if (
                 this.character._upKey == funcCode &&
                 funcCode !== 0
             ) {
                 if((funcCode & KeyboardConfig.KEY_MAP.FRONT)==KeyboardConfig.KEY_MAP.FRONT){
-                    if(this.character._isRunning){
-
-                    }else{
-                        this.character.setRunning(true);
-                        console.log('start run');
-                    }
-
+                    this.character.setFrameById(9);
+                    console.log('start run');
                 }
             }
 
