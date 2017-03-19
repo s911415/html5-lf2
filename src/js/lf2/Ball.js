@@ -6,7 +6,10 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
+    const FrameStage = lf2.FrameStage;
+    const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
+    const INIT_TIME = 500;
     /**
      * Ball
      *
@@ -22,7 +25,7 @@ var lf2 = (function (lf2) {
          */
         constructor(ballId, player) {
             super(ballId, player);
-
+            this._remainderTime = INIT_TIME;
             this._isOut = false;
 
         }
@@ -37,6 +40,12 @@ var lf2 = (function (lf2) {
         _getNextFrameId() {
             if (this._isOut) return lf2.GameItem.DESTROY_ID;
             let next = this.currentFrame.nextFrameId;
+            const hit = this.currentFrame.hit;
+
+            if (this._remainderTime <= 0 && hit.a != 0 && hit.d != 0) {
+                next = hit.d;
+            }
+
             if (next == 0) {
                 switch (this.currentFrame.state) {
                     case 0:
@@ -50,6 +59,7 @@ var lf2 = (function (lf2) {
                 }
             }
             if (next == 999) return 0;
+
 
             return next;
         }
@@ -65,6 +75,16 @@ var lf2 = (function (lf2) {
             ) this._isOut = true;
             //if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
             //if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
+        }
+
+        update() {
+            super.update();
+            if (this.isFrameChanged) {
+                const hit = this.currentFrame.hit;
+                if (hit.a > 0) {
+                    this._remainderTime -= hit.a;
+                }
+            }
         }
 
         /**
