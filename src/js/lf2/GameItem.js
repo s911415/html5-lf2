@@ -264,11 +264,24 @@ var lf2 = (function (lf2) {
 
 
             if (this.isDrawBoundry) {
+                ctx.lineWidth = 2;
                 ctx.strokeStyle = "#FF00FF";
                 ctx.strokeRect(
                     leftTopPoint.x, leftTopPoint.y,
                     imgInfo.rect.width, imgInfo.rect.height
                 );
+            }
+
+            if(define.DEBUG){
+                let msg = `ID: ${this.obj.id} / CurrentFrameId: ${this._currentFrameIndex }`;
+                ctx.font="3px Arial";
+                ctx.textAlign="start";
+                ctx.textBaseline="top";
+                ctx.fillStyle="#FFF";
+                ctx.strokeStyle="#000";
+                ctx.lineWidth = 2;
+                ctx.strokeText(msg, REAL_DRAW_POS.x, REAL_DRAW_POS.y);
+                ctx.fillText(msg, REAL_DRAW_POS.x, REAL_DRAW_POS.y);
             }
         }
 
