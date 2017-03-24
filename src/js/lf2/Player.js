@@ -28,7 +28,7 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {Number} playerId
-         * @param {Number} charId
+         * @param {Number|undefined} [charId]
          */
         constructor(playerId, charId) {
             console.log('Create player', playerId, charId);
@@ -40,29 +40,31 @@ var lf2 = (function (lf2) {
             this.keyboardConfig = new KeyboardConfig(playerId);
             this.name = this.keyboardConfig.NAME;
 
-            /**
-             *
-             * @type {lf2.Character}
-             */
-            this.character = new Character(charId, this);
+            if(this.charId!==undefined){
+                /**
+                 *
+                 * @type {lf2.Character}
+                 */
+                this.character = new Character(charId, this);
 
-            /**
-             *
-             * @type {lf2.Ball[]}
-             */
-            this.balls = [];
+                /**
+                 *
+                 * @type {lf2.Ball[]}
+                 */
+                this.balls = [];
 
-            this.hp = DEFAULT_HP;
-            this.mp = DEFAULT_MP;
+                this.hp = DEFAULT_HP;
+                this.mp = DEFAULT_MP;
 
-            this._godMode = false;
+                this._godMode = false;
 
-            /**
-             * @type {Framework.Scene}
-             */
-            this.spriteParent = null;
+                /**
+                 * @type {Framework.Scene}
+                 */
+                this.spriteParent = null;
 
-            this._upKeyTimer = false;
+                this._upKeyTimer = false;
+            }
         }
 
         /**

@@ -4,6 +4,7 @@
 
     window.define = {
         DEBUG: true,
+        SHOW_PLAYER_COUNT: 8,
 
         BASE_PATH: BASE_PATH,
         DATA_PATH:BASE_PATH + "data/",

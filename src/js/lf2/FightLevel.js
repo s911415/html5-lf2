@@ -11,7 +11,6 @@ var lf2 = (function (lf2) {
     const Player = lf2.Player;
     const WorldScene = lf2.WorldScene;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
-    const PLAYER_COUNT = 8;
     /**
      * @class lf2.FightLevel
      * @extends {Framework.Level}
@@ -44,8 +43,8 @@ var lf2 = (function (lf2) {
         }
 
         load() {
-            this._statusPanels = new Array(PLAYER_COUNT);
-            for (let i = 0; i < PLAYER_COUNT; i++) {
+            this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
+            for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
                 const PANEL_SIZE = PlayerStatusPanel.PANEL_SIZE;
                 const _ROW = (i / PlayerStatusPanel.PANEL_PER_ROW_COUNT) | 0;
                 const _COL = (i % PlayerStatusPanel.PANEL_PER_ROW_COUNT);

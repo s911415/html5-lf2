@@ -3,23 +3,14 @@ var lf2 = (function (lf2) {
     const Game = Framework.Game;
     const ResourceManager = Framework.ResourceManager;
     const KeyBoardManager = Framework.KeyBoardManager;
-    const _SETTING_CONTAINER_ID = "__setting_container";
-    const CUR = "cur";
-
-    const setCur = (ele) => {
-        $(`.${CUR}`).removeClass(CUR);
-        if (ele) {
-            ele.classList.add(CUR);
-        }
-    };
-
+    const _SELECTION_CONTAINER_ID = "__selection_container";
+    const Player = lf2.Player;
     /**
-     * @class lf2.MySettingLevel
+     * @class lf2.SelectionLevel
      * @extends Framework.Level
-     * @implements Framework.MouseEventInterface
      * @implements Framework.KeyboardEventInterface
      */
-    lf2.MySettingLevel = class extends Framework.Level {
+    lf2.SelectionLevel = class extends Framework.Level {
         constructor() {
             super();
         }
@@ -37,18 +28,21 @@ var lf2 = (function (lf2) {
                 },
             });
 
-            this.config = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY)) || lf2.KeyboardConfig.DEFAULT_CONFIG;
+            this.players = [];
+
+            for(let playerId = 0; playerId<define.PLAYER_COUNT;playerId++) {
+                this.players[playerId] = new Player(playerId);
+            }
 
             this.html = '';
-            this.players = [];
             this._attached = false;
-            this._settingContainer = undefined;
+            this._selectionContainer = undefined;
             //Load Setting view
-            ResourceManager.loadResource(define.DATA_PATH + 'SettingScreen.html', {method: "GET"}).then((data) => {
+            ResourceManager.loadResource(define.DATA_PATH + 'SelectionScreen.html', {method: "GET"}).then((data) => {
                 return data.text();
             }).then((html) => {
                 this.html = html;
-                this.showSettingMenu();
+                this.showSelectionPanel();
             });
 
         }
@@ -97,34 +91,32 @@ var lf2 = (function (lf2) {
 
         }
 
-        showSettingMenu() {
+        showSelectionPanel() {
             if (!this.isCurrentLevel) return;
-            if (this.html !== "" && !this._settingContainer) {
-                $("#" + _SETTING_CONTAINER_ID).remove();
+            if (this.html !== "" && !this._selectionContainer) {
+                $("#" + _SELECTION_CONTAINER_ID).remove();
 
-                this._settingContainer = $(this.html);
-                this._settingContainer.attr("id", _SETTING_CONTAINER_ID);
+                this._selectionContainer = $(this.html);
+                this._selectionContainer.attr("id", _SELECTION_CONTAINER_ID);
+                /*
 
-                this._settingContainer.bind('mousedown', function (e) {
-                    setCur(null);
-                });
-
-                this._settingContainer.find(".btn_ok").click((e) => {
+                this._selectionContainer.find(".btn_ok").click((e) => {
                     this.audio.play({name: 'ok'});
                     this.saveConfig();
                     Game.goToLevel('menu');
                 });
 
-                this._settingContainer.find(".btn_cancel").click((e) => {
+                this._selectionContainer.find(".btn_cancel").click((e) => {
                     this.audio.play({name: 'cancel'});
                     Game.goToLevel('menu');
                 });
+                */
                 this.forceDraw();
 
-                let playerElement = this._settingContainer.find(".player:first");
-                let playerContainer = this._settingContainer.find(".players");
+                let playerElement = this._selectionContainer.find(".player:first");
+                let playerContainer = this._selectionContainer.find(".players");
 
-                for (let i = 0; i < define.PLAYER_COUNT; i++) {
+                for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
                     this.players[i] = playerElement.clone();
                     this.players[i].attr('data-player', i);
                     this.bindPlayerEvent(this.players[i]);
@@ -132,7 +124,7 @@ var lf2 = (function (lf2) {
                 }
 
                 playerElement.remove();
-                $("body").append(this._settingContainer);
+                $("body").append(this._selectionContainer);
                 this._attached = true;
                 Game.resizeEvent();
             }
@@ -161,9 +153,9 @@ var lf2 = (function (lf2) {
         }
 
         autodelete() {
-            if (this._settingContainer) {
-                this._settingContainer.remove();
-                this._settingContainer = undefined;
+            if (this._selectionContainer) {
+                this._selectionContainer.remove();
+                this._selectionContainer = undefined;
             }
         }
 
