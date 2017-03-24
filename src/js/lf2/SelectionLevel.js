@@ -3,8 +3,14 @@ var lf2 = (function (lf2) {
     const Game = Framework.Game;
     const ResourceManager = Framework.ResourceManager;
     const KeyBoardManager = Framework.KeyBoardManager;
+    const KeyboardConfig = lf2.KeyboardConfig;
     const _SELECTION_CONTAINER_ID = "__selection_container";
     const Player = lf2.Player;
+    const SELECTION_STAGE = {
+        WAIT_JOIN: 0,
+        SELECT_CHARACTER: 1,
+    };
+
     /**
      * @class lf2.SelectionLevel
      * @extends Framework.Level
@@ -29,9 +35,11 @@ var lf2 = (function (lf2) {
             });
 
             this.players = [];
+            this.playersEle = [];
 
             for(let playerId = 0; playerId<define.PLAYER_COUNT;playerId++) {
                 this.players[playerId] = new Player(playerId);
+                this.players[playerId]._selectStage = SELECTION_STAGE.WAIT_JOIN;
             }
 
             this.html = '';
@@ -56,39 +64,32 @@ var lf2 = (function (lf2) {
 
         draw(parentCtx) {
             super.draw(parentCtx);
+            console.log('selection draw');
 
-            const KEY_CLASS = lf2.KeyboardConfig.prototype.KEY_MAP.KEY_LIST;
-            //refresh key
-            for (let i = 0; i < define.PLAYER_COUNT; i++) {
-                const p = this.players[i], c = this.config[i];
-                if (c === undefined) continue;
-
-                KEY_CLASS.forEach((k) => {
-                    //Convert Keycode to readable text
-                    p.find(".keys." + k).text(KeyBoardManager.mappingTable()[c[k]]);
-                });
-
-                p.find('.name').val(c['NAME']);
-            }
         }
 
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
-            console.log(oriE.keyCode);
-            let curElement = $(".cur");
-            let playerId = curElement.parent().data('player');
 
-            if (curElement.length > 0) {
-                const ce = curElement[0];
-                if (ce.classList.contains('keys')) {
-                    let key = curElement.data('key');
-                    this.config[playerId][key] = oriE.keyCode;
-                    setCur(null);
+            this.players.forEach((player) => {
+                player.keydown(e, list, oriE);
+
+                if(player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)){
+                    console.log(`Player: ${player.playerId}, Attack pressed`);
                 }
-            }
+            });
 
             this.forceDraw();
+        }
 
+        keyup(e, list, oriE) {
+            super.keyup(e, list, oriE);
+
+            this.players.forEach((player) => {
+                player.keyup(e, list, oriE);
+            });
+
+            //this.forceDraw();
         }
 
         showSelectionPanel() {
@@ -117,10 +118,9 @@ var lf2 = (function (lf2) {
                 let playerContainer = this._selectionContainer.find(".players");
 
                 for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
-                    this.players[i] = playerElement.clone();
-                    this.players[i].attr('data-player', i);
-                    this.bindPlayerEvent(this.players[i]);
-                    playerContainer.append(this.players[i]);
+                    this.playersEle[i] = playerElement.clone();
+                    this.playersEle[i].attr('data-player', i);
+                    playerContainer.append(this.playersEle[i]);
                 }
 
                 playerElement.remove();
