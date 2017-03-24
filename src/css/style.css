@@ -63,11 +63,11 @@ body {
     background-image: url(../image/menu_3.png);
 }
 
-.menu_1, .menu_2, .menu_3 {
+.menu {
     background-repeat: no-repeat;
 }
 
-#__main_menu, #__setting_container, #__loading_container {
+.container-wrap {
     position: absolute;
     left: 0;
     top: 0;
@@ -118,33 +118,33 @@ body {
     position: relative;
 }
 
-.players {
+#setting-screen .players {
     width: 556px;
     position: absolute;
     left: 148px;
     top: 35px;
 }
 
-.player {
+#setting-screen .player {
     width: 106px;
     margin-right: 33px;
     float: left;
 }
 
-.player > * {
+#setting-screen .player > * {
     display: block;
     width: 100%;
     box-sizing: border-box;
 }
 
-.player > :nth-child(1) {
+#setting-screen .player > :nth-child(1) {
     margin-bottom: 7px;
 }
 
-.player > :nth-child(1) {
+#setting-screen .player > :nth-child(1) {
 }
 
-.player > .name {
+#setting-screen .player > .name {
     outline: none;
     color: #5a77d8;
     border: none;
@@ -155,7 +155,7 @@ body {
     margin-bottom: 6px;
 }
 
-.player > .devices {
+#setting-screen .player > .devices {
     height: 92px;
     margin-bottom: 7px;
     background: no-repeat center;
@@ -166,7 +166,7 @@ body {
     background-image: url(../image/keyboard.png);
 }
 
-.player > .keys {
+#setting-screen .player > .keys {
     height: 19px;
     margin-bottom: 3px;
     color: #5a77d8;
@@ -175,7 +175,7 @@ body {
     cursor: pointer;
 }
 
-.player > .cur {
+#setting-screen .player > .cur {
     color: #FFF;
 }
 
@@ -201,6 +201,14 @@ body {
 
 #__setting_container .action_bar .btn.btn_cancel:hover {
     background-position: -643px -426px;
+}
+
+#selection_panel {
+    background-image: url(../image/selection_panel.png);
+    width: 705px;
+    height: 487px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .allow-mouse{
