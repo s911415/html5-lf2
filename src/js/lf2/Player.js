@@ -219,25 +219,37 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Cost mp
+         * Cost mp if possible, if impossible return false
          *
-         * @param num
-         * @returns {boolean}
+         * @param {Number} num
+         * @returns {boolean} return true if mp is enough
          */
         requestMp(num) {
-            if (define.INF_MP || num == 0) return true;
+            const MP_COST_MAGIC_NUMBER = 1000;
+            if (define.INF_MP || num === 0) return true;
 
             num = Math.abs(num);
-            if (this.mp >= num) {
-                this.addMp(-num);
+
+            let mpCost = num % MP_COST_MAGIC_NUMBER;
+            let hpCost = (num / MP_COST_MAGIC_NUMBER * 10) | 0;
+
+            if (this.mp >= mpCost && this.hp >= hpCost) {
+                this.addMp(-mpCost);
+                this.addHp(-hpCost);
                 return true;
             }
 
             return false;
         }
 
+        /**
+         * Hurt player and decrease hp
+         *
+         * @param {Number} num
+         * @returns {boolean}
+         */
         hurtPlayer(num) {
-            if (this._godMode || num == 0) return true;
+            if (this._godMode || num === 0) return true;
 
             num = intval(num);
             this.addHp(-num);
