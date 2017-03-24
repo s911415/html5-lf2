@@ -4,6 +4,7 @@ var lf2 = (function (lf2) {
     const ResourceManager = Framework.ResourceManager;
     const KeyBoardManager = Framework.KeyBoardManager;
     const KeyboardConfig = lf2.KeyboardConfig;
+    const GameObjectPool = lf2.GameObjectPool;
     const _SELECTION_CONTAINER_ID = "__selection_container";
     const Player = lf2.Player;
     const SELECTION_STAGE = {
@@ -122,6 +123,16 @@ var lf2 = (function (lf2) {
                     this.playersEle[i].attr('data-player', i);
                     playerContainer.append(this.playersEle[i]);
                 }
+
+                let coverStyle = "";
+                GameObjectPool.forEach(obj => {
+                    if (obj instanceof lf2.GameObjectCharacter) {
+                        coverStyle += `.player-cover[data-char="${obj.id}"]{background-image(${obj.head.src})};\n`;
+                    }
+                });
+
+                coverStyle = '<style type="text/css">' + coverStyle + '</style>';
+                this._selectionContainer.append(coverStyle);
 
                 playerElement.remove();
                 $("body").append(this._selectionContainer);

@@ -185,6 +185,7 @@ var lf2 = (function (lf2) {
                     define.IMG_PATH + "join_char_1.png",
                     define.IMG_PATH + "join_char_2.png",
                     define.IMG_PATH + "selection_panel.png",
+                    define.IMG_PATH + "random_char.png",
                 ];
                 let arr = [];
 
