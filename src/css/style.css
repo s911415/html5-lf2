@@ -48,7 +48,7 @@ body {
     margin: auto;
     position: relative;
     overflow: hidden;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 .menu_1 {
@@ -63,17 +63,17 @@ body {
     background-image: url(../image/menu_3.png);
 }
 
-.menu_1, .menu_2, .menu_3 {
+.menu {
     background-repeat: no-repeat;
 }
 
-#__main_menu, #__setting_container, #__loading_container {
+.container-wrap {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 2;
     background: #000;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 
 #logo {
@@ -118,33 +118,33 @@ body {
     position: relative;
 }
 
-.players {
+#setting-screen .players {
     width: 556px;
     position: absolute;
     left: 148px;
     top: 35px;
 }
 
-.player {
+#setting-screen .player {
     width: 106px;
     margin-right: 33px;
     float: left;
 }
 
-.player > * {
+#setting-screen .player > * {
     display: block;
     width: 100%;
     box-sizing: border-box;
 }
 
-.player > :nth-child(1) {
+#setting-screen .player > :nth-child(1) {
     margin-bottom: 7px;
 }
 
-.player > :nth-child(1) {
+#setting-screen .player > :nth-child(1) {
 }
 
-.player > .name {
+#setting-screen .player > .name {
     outline: none;
     color: #5a77d8;
     border: none;
@@ -155,7 +155,7 @@ body {
     margin-bottom: 6px;
 }
 
-.player > .devices {
+#setting-screen .player > .devices {
     height: 92px;
     margin-bottom: 7px;
     background: no-repeat center;
@@ -166,7 +166,7 @@ body {
     background-image: url(../image/keyboard.png);
 }
 
-.player > .keys {
+#setting-screen .player > .keys {
     height: 19px;
     margin-bottom: 3px;
     color: #5a77d8;
@@ -175,7 +175,7 @@ body {
     cursor: pointer;
 }
 
-.player > .cur {
+#setting-screen .player > .cur {
     color: #FFF;
 }
 
@@ -190,6 +190,7 @@ body {
     left: 362px;
     top: 320px;
 }
+
 #__setting_container .action_bar .btn.btn_cancel {
     left: 534px;
     top: 320px;
@@ -203,6 +204,69 @@ body {
     background-position: -643px -426px;
 }
 
-.allow-mouse{
+#selection_panel {
+    background-image: url(../image/selection_panel.png);
+    width: 705px;
+    height: 487px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#selection_panel .players {
+    width: calc(580px + 33px);
+    height: calc(398px + 25px);
+    position: absolute;
+    left: 107px;
+    top: 62px;
+
+    margin-left: -33px;
+    margin-top: -25px;
+}
+
+#selection_panel .player {
+    width: 120px;
+    height: 186px;
+    margin-top: 25px;
+    margin-left: 33px;
+
+    float: left;
+
+    position: relative;
+}
+
+#selection_panel .player > * {
+    position: absolute;
+}
+
+#selection_panel .player-cover {
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/*
+ * 未選擇
+ */
+#selection_panel .player[data-select-stage="0"] .player-cover {
+    animation-name: join_game_bg;
+    animation-duration: .1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes join_game_bg {
+    from {
+        background-image: url(../image/join_char_1.png);
+    }
+    to {
+        background-image: url(../image/join_char_2.png);
+    }
+}
+
+.allow-mouse {
     pointer-events: auto;
 }

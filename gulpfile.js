@@ -98,6 +98,7 @@ gulp.task('default', () => {
         'src/js/lf2/LaunchMenu.js',
         'src/js/lf2/MySettingLevel.js',
         'src/js/lf2/LoadingLevel.js',
+        'src/js/lf2/SelectionLevel.js',
         'src/js/lf2/FightLevel.js',
 
         'src/js/lf2/!MainGame.js',

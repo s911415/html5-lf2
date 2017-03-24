@@ -7,7 +7,7 @@ var lf2 = (function (lf2) {
     const CUR = "cur";
 
     const setCur = (ele) => {
-        $("." + CUR).removeClass(CUR);
+        $(`.${CUR}`).removeClass(CUR);
         if (ele) {
             ele.classList.add(CUR);
         }

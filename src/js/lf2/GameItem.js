@@ -240,7 +240,7 @@ var lf2 = (function (lf2) {
 
             if (this.isFrameChanged) {
                 //Play sound
-                if (curFrame.soundPath) {
+                if (false && curFrame.soundPath) {
                     this.obj._audio.play({
                         name: curFrame.soundPath
                     });
