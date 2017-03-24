@@ -260,6 +260,18 @@ var lf2 = (function (lf2) {
             }
         }
 
+
+        /**
+         * Draw object
+         *
+         * @param {CanvasRenderingContext2D} ctx
+         *
+         * @override
+         */
+        draw(ctx) {
+            super.draw(ctx);
+        }
+
         /**
          * Is move key pressed
          * @returns {boolean}

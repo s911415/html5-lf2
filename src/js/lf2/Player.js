@@ -16,8 +16,7 @@ var lf2 = (function (lf2) {
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
     const CLEAR_DUP_KEY_TIME = 500;
-
-    const BALL_OFFSET_Z = 0;
+    const NAME_OFFSET = 0;
 
     /**
      * Player
@@ -197,6 +196,24 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
+            //Backup shadow variables
+            let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#000";
+            ctx.font = "8px Arial";
+            ctx.fillStyle = "#FFF";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            ctx.fillText(
+                this.keyboardConfig.config.NAME,
+                this.character.position.x,
+                this.character.position.y + NAME_OFFSET
+            );
+
+            //Restore shadow variable
+            ctx.shadowBlur = oldShadowBlur;
+            ctx.shadowColor = oldShadowColor;
         }
 
         /**
