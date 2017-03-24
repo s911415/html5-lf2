@@ -55,15 +55,6 @@ var lf2 = (function (lf2) {
             );
         }
 
-
-        static _parseFrames(context) {
-
-        }
-
-        static _parseBmpInfo(context) {
-
-        }
-
         /**
          * Add preload resource
          * @param url

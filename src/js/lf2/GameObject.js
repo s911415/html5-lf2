@@ -53,7 +53,7 @@ var lf2 = (function (lf2) {
          * Parse frame block
          *
          * @param context
-         * @returns {Array}
+         * @returns {lf2.Frame[]}
          * @private
          */
         static _parseFrames(context) {
@@ -78,6 +78,10 @@ var lf2 = (function (lf2) {
             return frameContent;
         }
 
+        /**
+         *
+         * @private
+         */
         _preLoadSound() {
             this.frames.forEach(frame => {
                 if (frame.soundPath !== undefined && !soundPool[frame.soundPath]) {
