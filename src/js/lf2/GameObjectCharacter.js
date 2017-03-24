@@ -41,6 +41,7 @@ var lf2 = (function (lf2) {
                 })
             );
 
+            this.name = headerData.get("name") || 0;
             this.walking_frame_rate = headerData.get("walking_frame_rate") || 0;
             this.walking_speed = headerData.get("walking_speed") || 0;
             this.walking_speedz = headerData.get("walking_speedz") || 0;

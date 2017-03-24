@@ -127,7 +127,8 @@ var lf2 = (function (lf2) {
                 let coverStyle = "";
                 GameObjectPool.forEach(obj => {
                     if (obj instanceof lf2.GameObjectCharacter) {
-                        coverStyle += `.player-cover[data-char="${obj.id}"]{background-image(${obj.head.src})};\n`;
+                        coverStyle += `.player[data-char="${obj.id}"] .player-cover{background-image: url(${obj.head.src});}\n`;
+                        coverStyle += `.player[data-char="${obj.id}"] .fighter-name:before{content: "${obj.name}";}\n`;
                     }
                 });
 

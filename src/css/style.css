@@ -190,6 +190,7 @@ body {
     left: 362px;
     top: 320px;
 }
+
 #__setting_container .action_bar .btn.btn_cancel {
     left: 534px;
     top: 320px;
@@ -233,28 +234,30 @@ body {
     position: relative;
 }
 
-#selection_panel .player > *{
+#selection_panel .player > * {
     position: absolute;
 }
 
-#selection_panel .player-cover{
+#selection_panel .player-cover {
     top: 0;
     left: 0;
     width: 120px;
-    height:120px;
-    background: no-repeat center;
+    height: 120px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 /*
  * 未選擇
  */
-#selection_panel .player[data-select-stage="0"] .player-cover{
+#selection_panel .player[data-select-stage="0"] .player-cover {
     animation-name: join_game_bg;
     animation-duration: .1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
+
 @keyframes join_game_bg {
     from {
         background-image: url(../image/join_char_1.png);
@@ -264,6 +267,6 @@ body {
     }
 }
 
-.allow-mouse{
+.allow-mouse {
     pointer-events: auto;
 }
