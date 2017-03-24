@@ -322,8 +322,8 @@ var Framework = (function (Framework) {
          * requestInfo.percent為已完成的百分比
          */
         loadingProgress(context, requestInfo) {
-            context.font = '90px Arial';
-            context.fillText(Math.floor(Framework.ResourceManager.getFinishedRequestPercent()) + '%', context.canvas.width / 2 - 50, context.canvas.height / 2);
+            //context.font = '90px Arial';
+            //context.fillText(Math.floor(Framework.ResourceManager.getFinishedRequestPercent()) + '%', context.canvas.width / 2 - 50, context.canvas.height / 2);
         }
 
         /**
