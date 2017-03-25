@@ -17,6 +17,8 @@
   "license": "GPL-3.0",
   "homepage": "https://bitbucket.org/s911415/ntut_oop_lab#readme",
   "devDependencies": {
+    "gulp": "^3.9.1",
+    "merge-stream": "^1.0.1"
   },
   "dependencies": {
     "babel-core": "^6.24.0",
