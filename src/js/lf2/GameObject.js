@@ -28,7 +28,7 @@ var lf2 = (function (lf2) {
             this.fileInfo = fileInfo;
             this.sourceCode = context;
 
-            this.id = fileInfo.id;
+            this.id = intval(fileInfo.id);
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
             this._audio = null;

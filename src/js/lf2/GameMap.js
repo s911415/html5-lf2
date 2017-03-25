@@ -24,7 +24,7 @@ var lf2 = (function (lf2) {
             this.fileInfo = fileInfo;
             this.sourceCode = context;
 
-            this.id = fileInfo.id;
+            this.id = intval(fileInfo.id);
 
             const infoText = context.getStringBetween("", LAYER_START_TAG);
             let info = lf2.Utils.parseDataLine(infoText);

@@ -19,8 +19,24 @@ var lf2 = (function (lf2) {
         SELECT_CHARACTER: 1,
         SELECT_TEAM: 2,
         SELECT_DONE: 3,
+        ENTERING: 4,
     };
     const RANDOM_ID = -1;
+    const RAND_CHAR_ID_MIN = 1;
+    const RAND_CHAR_ID_MAX = 24;
+
+    /**
+     *
+     * @param {Number} currentIndex
+     * @param {Number} maxLen
+     * @param {Number} offset
+     * @returns {Number}
+     */
+    const setOffsetIndex = (currentIndex, maxLen, offset) => {
+        if (offset === 0) return currentIndex;
+
+        return (currentIndex + maxLen + offset) % maxLen;
+    };
 
     /**
      * @class lf2.SelectionLevel
@@ -74,6 +90,7 @@ var lf2 = (function (lf2) {
 
             this._charIdArray = [RANDOM_ID];
             this._mapIdArray = [RANDOM_ID];
+            this._mapIndex = 0;
 
             GameObjectPool.forEach(obj => {
                 if (obj instanceof lf2.GameObjectCharacter) {
@@ -130,11 +147,25 @@ var lf2 = (function (lf2) {
                         teamName.addClass('flashing');
                         break;
                     case SELECTION_STAGE.SELECT_DONE:
-                        if(this._countDownTimer!==undefined){
+                        if (this._countDownTimer !== undefined) {
                             this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
                         }
                         break;
                 }
+            }
+
+            if (this._isEnteringPanelShowed) {
+                this._enteringPanelItems.removeClass('current');
+                this._enteringPanelItems[this._enteringIndex].classList.add('current');
+
+                let mapId = this._mapIdArray[this._mapIndex];
+                let mapName = "";
+                if (mapId === RANDOM_ID) {
+                    mapName = "Random";
+                } else {
+                    mapName = GameMapPool.get(mapId).name;
+                }
+                $(this._enteringPanelItems[3]).find('.input').text(mapName);
             }
 
         }
@@ -177,7 +208,7 @@ var lf2 = (function (lf2) {
             let stage = intval(player._selectStage || 0);
             const prevStage = stage;
 
-            if(this._countDownTimer===undefined && !this._isEnteringPanelShowed){
+            if (this._countDownTimer === undefined && !this._isEnteringPanelShowed) {
                 if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
                     console.log(`Player: ${player.playerId}, Attack pressed`);
                     stage++;
@@ -201,13 +232,73 @@ var lf2 = (function (lf2) {
                     } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.UP)) {
                         charIdxOffset = -player._charIndex;
                     }
-                    player._charIndex = (player._charIndex + this._charIdArray.length + charIdxOffset) % this._charIdArray.length;
+                    if (charIdxOffset !== 0) {
+                        player._charIndex = setOffsetIndex(player._charIndex, this._charIdArray.length, charIdxOffset);
+                    }
+
+                    if (this._charIdArray[player._charIndex] === RANDOM_ID) {
+                        player._isRandomChar = true;
+                    } else {
+                        player._isRandomChar = false;
+                    }
 
 
                     elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
                     break;
                 case SELECTION_STAGE.SELECT_DONE:
-                    if(this._remainingTime!==undefined) this._remainingTime--;
+                    if (this._remainingTime !== undefined) this._remainingTime--;
+                    break;
+                case SELECTION_STAGE.ENTERING:
+                    let itemOffset = 0;
+                    if (player.isKeyPressed(KeyboardConfig.KEY_MAP.UP)) {
+                        itemOffset = -1;
+                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.DOWN)) {
+                        itemOffset = 1;
+                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
+                        switch (this._enteringIndex) {
+                            case 0: //START GAME
+                                let _passData = {
+                                    players: [],
+                                    mapId: RANDOM_ID,
+                                };
+
+                                this.players.forEach(p => {
+                                    _passData.players[p.playerId] = {
+                                        charId: this._charIdArray[p._charIndex],
+                                    };
+                                });
+                                _passData.mapId = this._mapIdArray[this._mapIndex];
+                                if (_passData.mapId === RANDOM_ID) {
+                                    let tmpArr = this._mapIdArray.filter(x => x !== RANDOM_ID);
+                                    _passData.mapId = (Math.random() * tmpArr.length) | 0;
+                                }
+
+                                console.log('start fight', _passData);
+                                Game.goToLevel('fight', _passData);
+                                break;
+                            case 1: //RESET SELECTION
+                                Framework.Game.goToLevel('selection');
+                                break;
+                            case 2: //RESET RANDOM
+                                this._randomAllSelectChar();
+                                break;
+                            case 3://SELECT MAP
+                                this._mapIndex = setOffsetIndex(this._mapIndex, this._mapIdArray.length, 1);
+
+                                break;
+                            case 4:
+                                window.open(atob('aHR0cHM6Ly93ZWItcHJvZ3JhbW1pbmctczE3dS5zOTExNDE1LnRrLyNzaWduLWJvYXJk'));
+                                break;
+                        }
+
+                        this.audio.play({name: 'ok'});
+                    }
+
+                    if (itemOffset !== 0) {
+                        this._enteringIndex = setOffsetIndex(this._enteringIndex, this._enteringIndexMax, itemOffset);
+                    }
+
+
                     break;
 
             }
@@ -222,6 +313,28 @@ var lf2 = (function (lf2) {
             }
             player._selectStage = stage;
             elem.attr(STAGE_TAG, stage);
+        }
+
+        _randomSelectChar(player) {
+            let charId = this._charIdArray[player._charIndex];
+            if (player._isRandomChar) {
+                let tmpArr = this._charIdArray.filter(x => x.inRange(RAND_CHAR_ID_MIN, RAND_CHAR_ID_MAX));
+                let idx = (Math.random() * tmpArr.length) | 0;
+                charId = tmpArr[idx];
+
+                player._charIndex = this._charIdArray.indexOf(charId);
+            }
+
+            player.elem.attr(CHAR_TAG, charId);
+        }
+
+        _randomAllSelectChar() {
+            this.players.forEach(p => {
+                this._randomSelectChar(p);
+                if (p._selectStage === SELECTION_STAGE.SELECT_DONE) {
+                    p._selectStage = SELECTION_STAGE.ENTERING;
+                }
+            });
         }
 
         showSelectionPanel() {
@@ -274,7 +387,12 @@ var lf2 = (function (lf2) {
                 playerElement.remove();
                 $("body").append(this._selectionContainer);
                 this._selectionPanel = this._selectionContainer.find("#selection_panel");
+                this._enteringPanel = this._selectionContainer.find("#selection_entering_panel");
+                this._enteringPanelItems = this._enteringPanel.find("li.item");
                 this._attached = true;
+
+                this._enteringIndexMax = this._enteringPanelItems.length;
+
                 Game.resizeEvent();
             }
         }
@@ -288,18 +406,21 @@ var lf2 = (function (lf2) {
                 return previousValue + (ss !== SELECTION_STAGE.SELECT_DONE && ss !== SELECTION_STAGE.WAIT_JOIN ? 1 : 0);
             };
             return this.players.reduce(countDonePlayer, 0) >= START_GAME_MIN_PLAYER_COUNT &&
-                    this.players.reduce(countNonDonePlayer, 0) === 0;
+                this.players.reduce(countNonDonePlayer, 0) === 0;
         }
 
         _startCountDown() {
-            if(this._countDownTimer!==undefined) return;
+            if (this._countDownTimer !== undefined) return;
 
             this._remainingTime = 5;
-            const timerFunc = ()=>{
-                if(this._remainingTime<=0){
+            const timerFunc = () => {
+                if (this._remainingTime <= 1) {
                     this._stopCountDown();
                     this._showEnteringPanel();
+                    this.forceDraw();
+                    return;
                 }
+
                 this.forceDraw();
 
                 this._remainingTime--;
@@ -315,8 +436,13 @@ var lf2 = (function (lf2) {
             this._countDownTimer = undefined;
         }
 
-        _showEnteringPanel(){
+        _showEnteringPanel() {
             this._isEnteringPanelShowed = true;
+            this._selectionPanel.addClass('entering-shown');
+            this._enteringPanel.addClass('show');
+            this._randomAllSelectChar();
+
+            this._enteringIndex = 0;
         }
 
         autodelete() {
