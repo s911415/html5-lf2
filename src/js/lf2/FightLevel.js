@@ -43,6 +43,9 @@ var lf2 = (function (lf2) {
         }
 
         load() {
+            this.world = new WorldScene(this.config);
+            this.rootScene.attach(this.world);
+
             this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
             for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
                 const PANEL_SIZE = PlayerStatusPanel.PANEL_SIZE;
@@ -57,10 +60,6 @@ var lf2 = (function (lf2) {
                 this.rootScene.attach(panel);
             }
 
-            this.world = new WorldScene(this.config);
-
-
-            this.rootScene.attach(this.world);
             //attach player's character
             this.config.players.forEach((player, i) => {
                 //TODO: debug use
