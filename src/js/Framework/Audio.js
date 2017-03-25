@@ -10,11 +10,7 @@ var Framework = (function (Framework) {
 
 
         var setPlaylist = function (playlist) {
-            for(let k in playlist){
-                if(_mainPlaylist[k]===undefined){
-                    _mainPlaylist[k]=playlist[k];
-                }
-            }
+            addSongs(playlist);
         };
 
         /**
@@ -31,6 +27,10 @@ var Framework = (function (Framework) {
 
         var addSongs = function (playlist) {
             _mainPlaylist = $.Util.overrideProperty(playlist, _mainPlaylist);
+
+            for(let k in _mainPlaylist){
+                getAudioInstance(k);
+            }
         };
 
         var removeSong = function (song) {
@@ -52,7 +52,6 @@ var Framework = (function (Framework) {
 
         var getAudioInstance = function (songName) {
             if (!$.Util.isUndefined(_audioInstanceObj[songName])) {
-                _audioInstanceObj[songName].currentTime = 0;
                 return _audioInstanceObj[songName];
             }
 
@@ -60,6 +59,7 @@ var Framework = (function (Framework) {
             //document.body.appendChild(audioInstance);
             //audioInstance.controls='controls';
             audioInstance.preload = 'auto';
+            audioInstance.autoplay = false;
             _audioInstanceObj[songName] = audioInstance;
             return audioInstance;
         };
@@ -115,7 +115,7 @@ var Framework = (function (Framework) {
                 audio.appendChild(tempSource);
             }
 
-
+            audio.currentTime = 0;
             //audio.addEventListener('canplaythrough', this.playMusic, true);
             //audio.load();
             audio.play();
