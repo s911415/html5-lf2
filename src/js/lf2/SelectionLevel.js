@@ -113,7 +113,7 @@ var lf2 = (function (lf2) {
         }
 
         initialize() {
-            false && this.audio.play({
+            this.audio.play({
                 name: 'bgm',
                 loop: true,
                 volume: .4,
