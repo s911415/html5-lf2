@@ -377,15 +377,15 @@ var lf2 = (function (lf2) {
                     playerContainer.append(this.playersEle[i]);
 
                     const playerName = this.players[i] ? this.players[i].keyboardConfig.config.NAME : "";
-                    appendStyleText += `.player[${PLAYER_TAG}="${i}"] .player-name:before{content: "${playerName}";}\n`;
+                    appendStyleText += `.player[${PLAYER_TAG}="${i}"]\x20.player-name:before{content: "${playerName}";}\n`;
                 }
 
                 this._charIdArray.forEach(objId => {
                     if (objId === RANDOM_ID) return;
 
                     const obj = GameObjectPool.get(objId);
-                    appendStyleText += `.player[${CHAR_TAG}="${obj.id}"] .player-cover{background-image: url(${obj.head.src});}\n`;
-                    appendStyleText += `.player[${CHAR_TAG}="${obj.id}"] .fighter-name:before{content: "${obj.name}";}\n`;
+                    appendStyleText += `.player[${CHAR_TAG}="${obj.id}"]\x20.player-cover{background-image: url(${obj.head.src});}\n`;
+                    appendStyleText += `.player[${CHAR_TAG}="${obj.id}"]\x20.fighter-name:before{content: "${obj.name}";}\n`;
                 });
 
                 appendStyleText = '<style type="text/css">' + appendStyleText + '</style>';
