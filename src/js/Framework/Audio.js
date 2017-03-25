@@ -10,7 +10,11 @@ var Framework = (function (Framework) {
 
 
         var setPlaylist = function (playlist) {
-            _mainPlaylist = playlist;
+            for(let k in playlist){
+                if(_mainPlaylist[k]===undefined){
+                    _mainPlaylist[k]=playlist[k];
+                }
+            }
         };
 
         /**

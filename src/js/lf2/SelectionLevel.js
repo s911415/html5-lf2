@@ -246,7 +246,10 @@ var lf2 = (function (lf2) {
                     elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
                     break;
                 case SELECTION_STAGE.SELECT_DONE:
-                    if (this._remainingTime !== undefined) this._remainingTime--;
+                    if (this._remainingTime !== undefined){
+                        this._remainingTime--;
+                        this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
+                    }
                     break;
                 case SELECTION_STAGE.ENTERING:
                     let itemOffset = 0;
