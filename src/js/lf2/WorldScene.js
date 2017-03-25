@@ -99,7 +99,7 @@ var lf2 = (function (lf2) {
             let x = this.map.width - Framework.Config.canvasWidth;
             x *= this.cameraPosition;
 
-            return new Point(x, 0);
+            return new Point(x | 0, 0);
         }
 
         /**
