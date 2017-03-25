@@ -18,6 +18,7 @@
   "homepage": "https://bitbucket.org/s911415/ntut_oop_lab#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-babili": "0.0.2",
     "merge-stream": "^1.0.1"
   },
   "dependencies": {

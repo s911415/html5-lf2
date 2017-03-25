@@ -5,11 +5,11 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify'),
+    babili = require("gulp-babili"),
     merge = require('merge-stream');
 
 gulp.task('build', () => {
-    
+
     return gulp.src([
         'src/js/utils.js',
         'src/js/jquery-3.1.1.min.js',
@@ -84,17 +84,19 @@ gulp.task('build', () => {
     ])
         .pipe(sourcemaps.init())
         /*
-        .pipe(babel({ //Something problem with extends Map
-            presets: ['es2016', 'es2015']
-        }))
-        .pipe(minify({
-            ext: {
-                src: '-debug.js',
-                min: '.js'
+         .pipe(babel({ //Something problem with extends Map
+         presets: ['es2016', 'es2015']
+         }))*/
+        .pipe(babili({
+            mangle: {
+                keepClassNames: true,
+                keepFnName: true
             },
-            exclude: ['tasks'],
-            ignoreFiles: ['.combo.js', '-min.js']
-        }))*/
+            simplify: {
+
+            },
+            removeConsole: true,
+        }))
         .pipe(concat('js/load.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(DIST_DIR));
@@ -126,7 +128,7 @@ gulp.task('resources', () => {
         gulp.src('src/css/**')
             .pipe(gulp.dest(DIST_DIR + 'css/'))
     );
-    
+
     return merge(taskArr);
 });
 
