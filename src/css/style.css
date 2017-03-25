@@ -20,12 +20,17 @@
     U+2215;
 }
 
+[hidden] {
+    display: none;
+}
+
 body {
     margin: 0;
     overflow: hidden;
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
     user-select: none !important;
+    font-family: "Microsoft JhengHei UI", Arial, sans-serif;
 }
 
 .container-wrap {
@@ -210,6 +215,7 @@ body {
     height: 487px;
     margin: 0 auto;
     position: relative;
+    z-index: 20;
 }
 
 #selection_panel .players {
@@ -241,16 +247,39 @@ body {
 #selection_panel .player-cover {
     top: 0;
     left: 0;
-    width: 120px;
+    width: 100%;
     height: 120px;
     background-repeat: no-repeat;
     background-position: center;
 }
 
+#selection_panel .player-info {
+    left: 0;
+    top: 123px;
+    width: 100%;
+    height: 63px;
+}
+
+#selection_panel .player-info > div {
+    margin-top: 3px;
+    height: 19px;
+    overflow: hidden;
+    width: 100%;
+    font-size: 12px;
+    line-height: 19px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    color: #FFF;
+}
+
+#selection_panel .player-info > div:first-child {
+    margin-top: 0;
+}
+
 /*
  * 未選擇
  */
-#selection_panel .player[data-select-stage="0"] .player-cover {
+#selection_panel:not(.entering-shown) .player[data-select-stage="0"] .player-cover {
     animation-name: join_game_bg;
     animation-duration: .1s;
     animation-timing-function: linear;
@@ -265,6 +294,124 @@ body {
     to {
         background-image: url(../image/join_char_2.png);
     }
+}
+
+.player[data-char="-1"] .player-cover {
+    background-image: url(../image/random_char.png);
+}
+
+.player[data-char="-1"] .fighter-name:before {
+    content: "Random";
+}
+
+#selection_panel:not(.entering-shown) .player .flashing {
+    animation-name: flashing_text;
+    animation-duration: .1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes flashing_text {
+    from {
+        color: #91beff;
+    }
+    to {
+        color: #3764ff;
+    }
+}
+
+#selection_panel .player[data-select-stage="0"] .player-name:before {
+    content: "Join?";
+}
+
+#selection_panel .player[data-select-stage="2"] .team-name:before,
+#selection_panel .player[data-select-stage="3"] .team-name:before,
+#selection_panel .player[data-select-stage="4"] .team-name:before {
+    content: "Independent";
+}
+
+#selection_panel.counting-down .player[data-select-stage="0"] .player-cover {
+    animation: none;
+}
+
+#selection_panel.counting-down[data-rt="5"] .player[data-select-stage="0"] .player-cover {
+    background-image: url(../image/countdown_5.png);
+}
+
+#selection_panel.counting-down[data-rt="4"] .player[data-select-stage="0"] .player-cover {
+    background-image: url(../image/countdown_4.png);
+}
+
+#selection_panel.counting-down[data-rt="3"] .player[data-select-stage="0"] .player-cover {
+    background-image: url(../image/countdown_3.png);
+}
+
+#selection_panel.counting-down[data-rt="2"] .player[data-select-stage="0"] .player-cover {
+    background-image: url(../image/countdown_2.png);
+}
+
+#selection_panel.counting-down[data-rt="1"] .player[data-select-stage="0"] .player-cover {
+    background-image: url(../image/countdown_1.png);
+}
+
+#selection_panel.entering-shown .player[data-select-stage="0"] .player-name:before {
+    content: "N/A";
+}
+
+#selection_entering_panel {
+    display: none;
+    width: 320px;
+    text-align: center;
+    border: 3px solid #334da4;
+    padding: 7px;
+    background: #20316f;
+    border-radius: 10px;
+    z-index: 21;
+    position: absolute;
+    left: 8px;
+    top: 8px;
+}
+
+#selection_entering_panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+}
+
+#selection_entering_panel li {
+    height: 28px;
+    line-height: 28px;
+    color: #95bdff;
+}
+
+#selection_entering_panel li.current {
+    color: #fff;
+    background: #5670c7;
+    display: block;
+}
+
+#selection_entering_panel.show {
+    display: block;
+}
+
+#selection_entering_panel .input {
+    display: inline-block;
+    height: 1em;
+    background: #000;
+    color: #FFF;
+    text-align: left;
+    vertical-align: middle;
+    padding: 3px;
+    line-height: 1;
+    font-size: smaller;
+
+}
+
+#selection_entering_panel > ul > li:nth-child(4) > .input {
+    width: 150px;
 }
 
 .allow-mouse {
