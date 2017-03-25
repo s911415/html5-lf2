@@ -241,10 +241,34 @@ body {
 #selection_panel .player-cover {
     top: 0;
     left: 0;
-    width: 120px;
+    width: 100%;
     height: 120px;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#selection_panel .player-info {
+    left: 0;
+    top: 123px;
+    width: 100%;
+    height: 63px;
+}
+
+#selection_panel .player-info > div {
+    margin-top: 3px;
+    height: 19px;
+    overflow: hidden;
+    width: 100%;
+    font-size: 10px;
+    font-family: Arial, sans-serif;
+    line-height: 19px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    color: #FFF;
+}
+
+#selection_panel .player-info > div:first-child {
+    margin-top: 0;
 }
 
 /*
@@ -265,6 +289,36 @@ body {
     to {
         background-image: url(../image/join_char_2.png);
     }
+}
+.player[data-char="-1"] .player-cover{background-image: url(../image/random_char.png);}
+.player[data-char="-1"] .fighter-name:before{content: "Random";}
+
+
+#selection_panel .player .flashing {
+    animation-name: flashing_text;
+    animation-duration: .1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes flashing_text {
+    from {
+        color: #91beff;
+    }
+    to {
+        color: #3764ff;
+    }
+}
+
+#selection_panel .player[data-select-stage="0"] .player-name:before {
+    content: "Join?";
+}
+
+#selection_panel .player[data-select-stage="2"] .team-name:before,
+#selection_panel .player[data-select-stage="3"] .team-name:before,
+#selection_panel .player[data-select-stage="4"] .team-name:before {
+    content: "Independent";
 }
 
 .allow-mouse {

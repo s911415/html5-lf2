@@ -10,6 +10,7 @@
         DATA_PATH:BASE_PATH + "data/",
         IMG_PATH:BASE_PATH + "image/",
         MUSIC_PATH:BASE_PATH + "music/",
+        BGM_PATH:BASE_PATH + "music/bgm/",
 
         PLAYER_COUNT: 2,
         KEYBOARD_CONFIG_KEY: "keyConfig",
