@@ -210,6 +210,16 @@ body {
     background-position: -643px -426px;
 }
 
+#loading-screen #loadDatPath{
+    position: absolute;
+    left:0;
+    top: 75%;
+    color:#FFF;
+    width: 100%;
+    z-index: 5;
+    text-align: center;
+}
+
 #selection_panel {
     background-image: url(../image/selection_panel.png);
     width: 705px;
