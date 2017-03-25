@@ -17,7 +17,7 @@
 
         LOADING_MIN_TIME: 0 * 1000,
 
-        INF_MP: true, //Infinity MP
+        INF_MP: false, //Infinity MP
 
     };
 
