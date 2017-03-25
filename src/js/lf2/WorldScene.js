@@ -125,7 +125,7 @@ var lf2 = (function (lf2) {
                 const p2 = (e2.position);
                 const yd = p1.y - p2.y;
                 if (yd === 0) {
-                    return p1._createTime - p2._createTime;
+                    return e1._createTime - e2._createTime;
                 } else {
                     return yd;
                 }
