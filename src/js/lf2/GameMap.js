@@ -44,6 +44,7 @@ var lf2 = (function (lf2) {
                 })
             );
 
+            /*
             this._promiseList.push(
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + this.shadowUrl
@@ -53,7 +54,7 @@ var lf2 = (function (lf2) {
 
             this.layers.forEach((layer) => {
                 this._promiseList.push(layer.done());
-            });
+            });*/
         }
 
         done() {

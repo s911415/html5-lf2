@@ -10,7 +10,10 @@ var lf2 = (function (lf2) {
     const PLAYER_TAG = 'data-player';
     const STAGE_TAG = 'data-select-stage';
     const CHAR_TAG = 'data-char';
+    const COUNTING_DOWN_CLASS = 'counting-down';
+    const REMINING_TIME_TAG = 'data-rt';
     const Player = lf2.Player;
+    const START_GAME_MIN_PLAYER_COUNT = 2;
     const SELECTION_STAGE = {
         WAIT_JOIN: 0,
         SELECT_CHARACTER: 1,
@@ -84,10 +87,11 @@ var lf2 = (function (lf2) {
                 }
             });
 
+            this._isEnteringPanelShowed = false;
         }
 
         initialize() {
-            this.audio.play({
+            false && this.audio.play({
                 name: 'bgm',
                 loop: true,
                 volume: .4,
@@ -96,7 +100,6 @@ var lf2 = (function (lf2) {
 
         update() {
             super.update();
-
         }
 
         draw(parentCtx) {
@@ -126,6 +129,11 @@ var lf2 = (function (lf2) {
                     case SELECTION_STAGE.SELECT_TEAM:
                         teamName.addClass('flashing');
                         break;
+                    case SELECTION_STAGE.SELECT_DONE:
+                        if(this._countDownTimer!==undefined){
+                            this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
+                        }
+                        break;
                 }
             }
 
@@ -137,48 +145,13 @@ var lf2 = (function (lf2) {
             this.players.forEach((player) => {
                 player.keydown(e, list, oriE);
 
-                let elem = player.elem;
-                let stage = intval(player._selectStage || 0);
-                const prevStage = stage;
-                if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
-                    console.log(`Player: ${player.playerId}, Attack pressed`);
-                    stage++;
-                } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
-                    console.log(`Player: ${player.playerId}, Jump pressed`);
-                    stage--;
-                }
-
-                if (stage < SELECTION_STAGE.WAIT_JOIN) stage = SELECTION_STAGE.WAIT_JOIN;
-                if (stage > SELECTION_STAGE.SELECT_DONE) stage = SELECTION_STAGE.SELECT_DONE;
-
-                switch (stage) {
-                    case SELECTION_STAGE.SELECT_CHARACTER:
-                        let charIdxOffset = 0;
-                        if (player.isKeyPressed(KeyboardConfig.KEY_MAP.LEFT)) {
-                            charIdxOffset = -1;
-                        } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.RIGHT)) {
-                            charIdxOffset = 1;
-                        } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.UP)) {
-                            charIdxOffset = -player._charIndex;
-                        }
-                        player._charIndex = (player._charIndex + this._charIdArray.length + charIdxOffset) % this._charIdArray.length;
-
-
-                        elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
-                        break;
-                }
-
-
-                if (prevStage !== stage) {
-                    if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
-                        this.audio.play({name: 'join'});
-                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
-                        this.audio.play({name: 'cancel'});
-                    }
-                }
-                player._selectStage = stage;
-                elem.attr(STAGE_TAG, stage);
+                this._handlePlayerKeydown(player);
             });
+
+            if (!this._isEnteringPanelShowed && this._isMinPlayerEntered()) {
+                console.log('All player entered');
+                this._startCountDown();
+            }
 
             this.forceDraw();
         }
@@ -191,6 +164,64 @@ var lf2 = (function (lf2) {
             });
 
             //this.forceDraw();
+        }
+
+        /**
+         * Handle player key down
+         *
+         * @param player
+         * @private
+         */
+        _handlePlayerKeydown(player) {
+            let elem = player.elem;
+            let stage = intval(player._selectStage || 0);
+            const prevStage = stage;
+
+            if(this._countDownTimer===undefined && !this._isEnteringPanelShowed){
+                if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
+                    console.log(`Player: ${player.playerId}, Attack pressed`);
+                    stage++;
+                } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
+                    console.log(`Player: ${player.playerId}, Jump pressed`);
+                    stage--;
+                }
+
+                if (stage < SELECTION_STAGE.WAIT_JOIN) stage = SELECTION_STAGE.WAIT_JOIN;
+                if (stage > SELECTION_STAGE.SELECT_DONE) stage = SELECTION_STAGE.SELECT_DONE;
+            }
+
+
+            switch (stage) {
+                case SELECTION_STAGE.SELECT_CHARACTER:
+                    let charIdxOffset = 0;
+                    if (player.isKeyPressed(KeyboardConfig.KEY_MAP.LEFT)) {
+                        charIdxOffset = -1;
+                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.RIGHT)) {
+                        charIdxOffset = 1;
+                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.UP)) {
+                        charIdxOffset = -player._charIndex;
+                    }
+                    player._charIndex = (player._charIndex + this._charIdArray.length + charIdxOffset) % this._charIdArray.length;
+
+
+                    elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
+                    break;
+                case SELECTION_STAGE.SELECT_DONE:
+                    if(this._remainingTime!==undefined) this._remainingTime--;
+                    break;
+
+            }
+
+
+            if (prevStage !== stage) {
+                if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
+                    this.audio.play({name: 'join'});
+                } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
+                    this.audio.play({name: 'cancel'});
+                }
+            }
+            player._selectStage = stage;
+            elem.attr(STAGE_TAG, stage);
         }
 
         showSelectionPanel() {
@@ -242,45 +273,58 @@ var lf2 = (function (lf2) {
 
                 playerElement.remove();
                 $("body").append(this._selectionContainer);
+                this._selectionPanel = this._selectionContainer.find("#selection_panel");
                 this._attached = true;
                 Game.resizeEvent();
             }
         }
 
-        bindPlayerEvent(playerElement) {
-            const _this = this;
-            playerElement.find(".name").bind('keydown', function (e) {
-                e.stopImmediatePropagation();
-            }).bind('mousedown', function (e) {
-                setCur(e.target);
-                e.stopImmediatePropagation();
-            }).bind('keyup', function (e) {
-                let playerId = $(this.parentNode).data('player');
-                _this.config[playerId]['NAME'] = this.value;
-            });
-
-            playerElement.find(".keys").bind('mousedown', function (e) {
-                setCur(e.target);
-                e.stopImmediatePropagation();
-            });
+        _isMinPlayerEntered() {
+            const countDonePlayer = (previousValue, curPlayer) => {
+                return previousValue + (curPlayer._selectStage === SELECTION_STAGE.SELECT_DONE ? 1 : 0);
+            };
+            const countNonDonePlayer = (previousValue, curPlayer) => {
+                const ss = curPlayer._selectStage;
+                return previousValue + (ss !== SELECTION_STAGE.SELECT_DONE && ss !== SELECTION_STAGE.WAIT_JOIN ? 1 : 0);
+            };
+            return this.players.reduce(countDonePlayer, 0) >= START_GAME_MIN_PLAYER_COUNT &&
+                    this.players.reduce(countNonDonePlayer, 0) === 0;
         }
 
-        click(e) {
+        _startCountDown() {
+            if(this._countDownTimer!==undefined) return;
 
+            this._remainingTime = 5;
+            const timerFunc = ()=>{
+                if(this._remainingTime<=0){
+                    this._stopCountDown();
+                    this._showEnteringPanel();
+                }
+                this.forceDraw();
+
+                this._remainingTime--;
+            };
+            this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
+            this._selectionPanel.addClass(COUNTING_DOWN_CLASS);
+            this._countDownTimer = setInterval(timerFunc, 1000);
+        }
+
+        _stopCountDown() {
+            this._selectionPanel.removeClass(COUNTING_DOWN_CLASS);
+            clearInterval(this._countDownTimer);
+            this._countDownTimer = undefined;
+        }
+
+        _showEnteringPanel(){
+            this._isEnteringPanelShowed = true;
         }
 
         autodelete() {
             if (this._selectionContainer) {
+                this._stopCountDown();
                 this._selectionContainer.remove();
                 this._selectionContainer = undefined;
             }
-        }
-
-        /**
-         * Store config into local storage
-         */
-        saveConfig() {
-            localStorage.setItem(define.KEYBOARD_CONFIG_KEY, JSON.stringify(this.config));
         }
     };
 

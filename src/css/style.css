@@ -259,7 +259,7 @@ body {
     height: 19px;
     overflow: hidden;
     width: 100%;
-    font-size: 10px;
+    font-size: 12px;
     font-family: Arial, sans-serif;
     line-height: 19px;
     padding: 0 5px;
@@ -319,6 +319,28 @@ body {
 #selection_panel .player[data-select-stage="3"] .team-name:before,
 #selection_panel .player[data-select-stage="4"] .team-name:before {
     content: "Independent";
+}
+#selection_panel.counting-down .player[data-select-stage="0"] .player-cover{
+    animation: none;
+}
+#selection_panel.counting-down[data-rt="5"] .player[data-select-stage="0"] .player-cover{
+    background-image: url(../image/countdown_5.png);
+}
+
+#selection_panel.counting-down[data-rt="4"] .player[data-select-stage="0"] .player-cover{
+    background-image: url(../image/countdown_4.png);
+}
+
+#selection_panel.counting-down[data-rt="3"] .player[data-select-stage="0"] .player-cover{
+    background-image: url(../image/countdown_3.png);
+}
+
+#selection_panel.counting-down[data-rt="2"] .player[data-select-stage="0"] .player-cover{
+    background-image: url(../image/countdown_2.png);
+}
+
+#selection_panel.counting-down[data-rt="1"] .player[data-select-stage="0"] .player-cover{
+    background-image: url(../image/countdown_1.png);
 }
 
 .allow-mouse {
