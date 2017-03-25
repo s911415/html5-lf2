@@ -89,7 +89,6 @@ var lf2 = (function (lf2) {
             super.draw(parentCtx);
 
 
-
             //Draw each player status
             this.config.players.forEach((player) => {
                 player.status.draw(parentCtx);
@@ -103,6 +102,19 @@ var lf2 = (function (lf2) {
                 player.keydown(e, list, oriE);
             });
 
+            //Handle func key
+            switch (e.key) {
+                case 'F4'://Restart Game
+                    Framework.Game.goToLevel('selection');
+                    break;
+                case 'F7'://Recover players
+                    this.config.players.forEach((player) => {
+                        player.addHp(500);
+                        player.addMp(500);
+                    });
+                    break;
+
+            }
         }
 
         keyup(e, list, oriE) {
