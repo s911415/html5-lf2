@@ -102,7 +102,8 @@ var lf2 = (function (lf2) {
                             if (_o === null) {
                                 res(data);
                             } else {
-                                console.log(`Loading "${_o.file}".`);
+                                $._showLoadFile(_o.file);
+
                                 ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
@@ -147,7 +148,8 @@ var lf2 = (function (lf2) {
                             if (_o === null) {
                                 res(data);
                             } else {
-                                console.log(`Loading "${_o.file}".`);
+                                $._showLoadFile(_o.file);
+
                                 ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
                                     return data.text();
                                 }).then((datText) => {
@@ -308,6 +310,7 @@ var lf2 = (function (lf2) {
                 this._loadingContainer = $(this.html);
                 this._loadingContainer.attr("id", _CONTAINER_ID);
                 this._loadingContainer.find("#loadProcess").attr('src', lf2.LoadingLevel.LOADING_RESOURCE_SRC);
+                this._loadPath = this._loadingContainer.find("#loadDatPath");
             }
             if (!this._attached && this._loadingContainer) {
                 $("body").append(this._loadingContainer);
@@ -321,6 +324,12 @@ var lf2 = (function (lf2) {
                 this._loadingContainer.remove();
                 this._loadingContainer = undefined;
             }
+        }
+
+        _showLoadFile(url){
+            const showUrl = url.replace(/\\/g, '/');
+            console.log(`Loading "${showUrl}".`);
+            this._loadPath.text("正在讀取: " + showUrl);
         }
 
         /**
