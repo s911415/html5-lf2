@@ -72,7 +72,12 @@ var lf2 = (function (lf2) {
 
             for (let playerId = 0; playerId < define.PLAYER_COUNT; playerId++) {
                 const p = new Player(playerId);
-                p._selectStage = SELECTION_STAGE.WAIT_JOIN;
+                p.setSelectStage = function (val) {
+                    val |= 0;
+                    this._selectStage = val;
+                    if(this.elem) this.elem.attr(STAGE_TAG, this._selectStage);
+                };
+                p.setSelectStage(SELECTION_STAGE.WAIT_JOIN);
                 p._charIndex = 0;
                 this.players[playerId] = p;
             }
@@ -246,8 +251,8 @@ var lf2 = (function (lf2) {
                     elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
                     break;
                 case SELECTION_STAGE.SELECT_DONE:
-                    if (this._remainingTime !== undefined){
-                        this._remainingTime--;
+                    if (this._remainingTime !== undefined) {
+                        this._timerTick();
                         this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
                     }
                     break;
@@ -273,7 +278,7 @@ var lf2 = (function (lf2) {
                                 _passData.mapId = this._mapIdArray[this._mapIndex];
                                 if (_passData.mapId === RANDOM_ID) {
                                     let tmpArr = this._mapIdArray.filter(x => x !== RANDOM_ID);
-                                    _passData.mapId = (Math.random() * tmpArr.length) | 0;
+                                    _passData.mapId = tmpArr[(Math.random() * tmpArr.length) | 0];
                                 }
 
                                 console.log('start fight', _passData);
@@ -314,8 +319,10 @@ var lf2 = (function (lf2) {
                     this.audio.play({name: 'cancel'});
                 }
             }
-            player._selectStage = stage;
-            elem.attr(STAGE_TAG, stage);
+
+            if(!this._isEnteringPanelShowed){
+                player.setSelectStage(stage);
+            }
         }
 
         _randomSelectChar(player) {
@@ -334,9 +341,6 @@ var lf2 = (function (lf2) {
         _randomAllSelectChar() {
             this.players.forEach(p => {
                 this._randomSelectChar(p);
-                if (p._selectStage === SELECTION_STAGE.SELECT_DONE) {
-                    p._selectStage = SELECTION_STAGE.ENTERING;
-                }
             });
         }
 
@@ -416,21 +420,11 @@ var lf2 = (function (lf2) {
             if (this._countDownTimer !== undefined) return;
 
             this._remainingTime = 5;
-            const timerFunc = () => {
-                if (this._remainingTime <= 1) {
-                    this._stopCountDown();
-                    this._showEnteringPanel();
-                    this.forceDraw();
-                    return;
-                }
-
-                this.forceDraw();
-
-                this._remainingTime--;
-            };
             this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
             this._selectionPanel.addClass(COUNTING_DOWN_CLASS);
-            this._countDownTimer = setInterval(timerFunc, 1000);
+            this._countDownTimer = setInterval(() => {
+                this._timerTick();
+            }, 1000);
         }
 
         _stopCountDown() {
@@ -439,11 +433,34 @@ var lf2 = (function (lf2) {
             this._countDownTimer = undefined;
         }
 
+        _timerTick() {
+            if(this._countDownTimer===undefined) return;
+
+            if (this._remainingTime <= 1) {
+                this._stopCountDown();
+                this._showEnteringPanel();
+                this.forceDraw();
+                return;
+            }
+
+            this.forceDraw();
+
+            this._remainingTime--;
+        }
+
         _showEnteringPanel() {
             this._isEnteringPanelShowed = true;
             this._selectionPanel.addClass('entering-shown');
             this._enteringPanel.addClass('show');
             this._randomAllSelectChar();
+            this.players.forEach((p) => {
+                if (p._selectStage === SELECTION_STAGE.SELECT_DONE) {
+                    p.setSelectStage(SELECTION_STAGE.ENTERING);
+
+                }else{
+                    console.error("asdf", p._selectStage);
+                }
+            });
 
             this._enteringIndex = 0;
         }

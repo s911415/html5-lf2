@@ -163,7 +163,8 @@ body {
 #setting-screen .player > .devices {
     height: 92px;
     margin-bottom: 7px;
-    background: no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
 }
 
