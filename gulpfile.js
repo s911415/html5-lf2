@@ -8,7 +8,7 @@ const gulp = require('gulp'),
     minify = require('gulp-minify'),
     merge = require('merge-stream');
 
-gulp.task('default', () => {
+gulp.task('build', () => {
     
     return gulp.src([
         'src/js/utils.js',
@@ -129,3 +129,5 @@ gulp.task('resources', () => {
     
     return merge(taskArr);
 });
+
+gulp.task('default', ['resources', 'build']);
