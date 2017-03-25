@@ -37,6 +37,7 @@
         'LaunchMenu.js',
         'MySettingLevel.js',
         'LoadingLevel.js',
+        'SelectionLevel.js',
         'FightLevel.js',
 
         '!MainGame.js',

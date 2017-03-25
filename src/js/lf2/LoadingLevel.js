@@ -174,19 +174,47 @@ var lf2 = (function (lf2) {
 
                 return data;
             }).then((a, b)=>{
-                console.log("Preloading extra resources");
+                console.log("Preloading extra image resources");
                 let arrUrl = [
-                    define.IMG_PATH + "player_status_panel.png"
+                    define.IMG_PATH + "player_status_panel.png",
+                    define.IMG_PATH + "countdown_1.png",
+                    define.IMG_PATH + "countdown_2.png",
+                    define.IMG_PATH + "countdown_3.png",
+                    define.IMG_PATH + "countdown_4.png",
+                    define.IMG_PATH + "countdown_5.png",
+                    define.IMG_PATH + "join_char_1.png",
+                    define.IMG_PATH + "join_char_2.png",
+                    define.IMG_PATH + "selection_panel.png",
+                    define.IMG_PATH + "random_char.png",
                 ];
                 let arr = [];
 
                 arrUrl.forEach(u=>{
                     console.log("Loading " + u);
-                    arr.push(ResourceManager.loadResource(u));
+                    arr.push(
+                        ResourceManager.loadImage({
+                            url: u
+                        })
+                    );
                 });
 
                 return Promise.all(arr);
             }).then((a, b)=>{
+                console.log("Extra image resources all loaded");
+
+                return a;
+            }).then((a, b) => {
+                console.log("Preloading extra resources");
+                let arrUrl = [];
+                let arr = [];
+
+                arrUrl.forEach(u => {
+                    console.log("Loading " + u);
+                    arr.push(ResourceManager.loadResource(u));
+                });
+
+                return Promise.all(arr);
+            }).then((a, b) => {
                 console.log("Extra resources all loaded");
 
                 return a;
@@ -201,14 +229,16 @@ var lf2 = (function (lf2) {
         update() {
             if (this.allDone && (Date.now() - this._startLoadingTime) >= define.LOADING_MIN_TIME) {
                 //TODO: NEED CHANGE
-                Game.goToLevel('fight', {
+                Game.goToLevel('selection');
+
+                /*Game.goToLevel('fight', {
                     players: [
                         {charId: intval(prompt("腳色1 ID:", "51") || 51)},
                         {charId: intval(prompt("腳色2 ID:", "7") || 7)},
                     ],
                     mapId: intval(prompt("地圖 ID:", "3") || 3),
 
-                });
+                });*/
             }
         }
 

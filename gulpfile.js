@@ -5,32 +5,11 @@ const gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     babel = require('gulp-babel'),
     concat = require('gulp-concat'),
-    minify = require('gulp-minify');
+    minify = require('gulp-minify'),
+    merge = require('merge-stream');
 
 gulp.task('default', () => {
-    //Copy resources
-
-    console.log("Copy data folder");
-    gulp.src('src/data/**')
-        .pipe(gulp.dest(DIST_DIR + 'data/'));
-
-    console.log("Copy image folder");
-    gulp.src('src/image/**')
-        .pipe(gulp.dest(DIST_DIR + 'image/'));
-
-    console.log("Copy music folder");
-    gulp.src('src/music/**')
-        .pipe(gulp.dest(DIST_DIR + 'music/'));
-
-    console.log("Copy css folder");
-    gulp.src('src/css/**')
-        .pipe(gulp.dest(DIST_DIR + 'css/'));
-
-    /*console.log("Copy extra file");
-     gulp.src('src/*.*')
-     .pipe(gulp.dest(DIST_DIR + ''));*/
-
-    console.log('merging js files');
+    
     return gulp.src([
         'src/js/utils.js',
         'src/js/jquery-3.1.1.min.js',
@@ -98,6 +77,7 @@ gulp.task('default', () => {
         'src/js/lf2/LaunchMenu.js',
         'src/js/lf2/MySettingLevel.js',
         'src/js/lf2/LoadingLevel.js',
+        'src/js/lf2/SelectionLevel.js',
         'src/js/lf2/FightLevel.js',
 
         'src/js/lf2/!MainGame.js',
@@ -118,4 +98,34 @@ gulp.task('default', () => {
         .pipe(concat('js/load.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(DIST_DIR));
+});
+
+gulp.task('resources', () => {
+    //Copy resources
+    let taskArr = [];
+    console.log("Copy data folder");
+    taskArr.push(
+        gulp.src('src/data/**')
+            .pipe(gulp.dest(DIST_DIR + 'data/'))
+    );
+
+    console.log("Copy image folder");
+    taskArr.push(
+        gulp.src('src/image/**')
+            .pipe(gulp.dest(DIST_DIR + 'image/'))
+    );
+
+    console.log("Copy music folder");
+    taskArr.push(
+        gulp.src('src/music/**')
+            .pipe(gulp.dest(DIST_DIR + 'music/'))
+    );
+
+    console.log("Copy css folder");
+    taskArr.push(
+        gulp.src('src/css/**')
+            .pipe(gulp.dest(DIST_DIR + 'css/'))
+    );
+    
+    return merge(taskArr);
 });

@@ -16,8 +16,7 @@ var lf2 = (function (lf2) {
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
     const CLEAR_DUP_KEY_TIME = 500;
-
-    const BALL_OFFSET_Z = 0;
+    const NAME_OFFSET = 0;
 
     /**
      * Player
@@ -29,7 +28,7 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {Number} playerId
-         * @param {Number} charId
+         * @param {Number|undefined} [charId]
          */
         constructor(playerId, charId) {
             console.log('Create player', playerId, charId);
@@ -40,30 +39,33 @@ var lf2 = (function (lf2) {
 
             this.keyboardConfig = new KeyboardConfig(playerId);
             this.name = this.keyboardConfig.NAME;
+            this._currentKey = 0;
 
-            /**
-             *
-             * @type {lf2.Character}
-             */
-            this.character = new Character(charId, this);
+            if(this.charId!==undefined){
+                /**
+                 *
+                 * @type {lf2.Character}
+                 */
+                this.character = new Character(charId, this);
 
-            /**
-             *
-             * @type {lf2.Ball[]}
-             */
-            this.balls = [];
+                /**
+                 *
+                 * @type {lf2.Ball[]}
+                 */
+                this.balls = [];
 
-            this.hp = DEFAULT_HP;
-            this.mp = DEFAULT_MP;
+                this.hp = DEFAULT_HP;
+                this.mp = DEFAULT_MP;
 
-            this._godMode = false;
+                this._godMode = false;
 
-            /**
-             * @type {Framework.Scene}
-             */
-            this.spriteParent = null;
+                /**
+                 * @type {Framework.Scene}
+                 */
+                this.spriteParent = null;
 
-            this._upKeyTimer = false;
+                this._upKeyTimer = false;
+            }
         }
 
         /**
@@ -74,19 +76,22 @@ var lf2 = (function (lf2) {
          */
         keydown(e, list, oriE) {
             const funcCode = this._parseKeyDownCode(oriE);
-            this.character.setFuncKey(funcCode);
+            this._currentKey = funcCode;
 
-            //Same func key twice
-            if (
-                this.character._upKey == funcCode &&
-                funcCode !== 0
-            ) {
-                if((funcCode & KeyboardConfig.KEY_MAP.FRONT)==KeyboardConfig.KEY_MAP.FRONT){
-                    this.character.setFrameById(9);
-                    console.log('start run');
+            if (this.character) {
+                this.character.setFuncKey(funcCode);
+
+                //Same func key twice
+                if (
+                    this.character._upKey === funcCode &&
+                    funcCode !== 0
+                ) {
+                    if ((funcCode & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
+                        this.character.setFrameById(9);
+                        console.log('start run');
+                    }
                 }
             }
-
         }
 
         /**
@@ -99,15 +104,20 @@ var lf2 = (function (lf2) {
             //console.log(list);
             const funcCode = this._parseKeyDownCode(oriE);
             const upKey = this._getFuncKeyCodeByEvent(oriE);
-            this.character.setUpKey(upKey);
-            this.character.setFuncKey(funcCode);
 
-            if (this._upKeyTimer) {
-                clearTimeout(this._upKeyTimer);
+            this._currentKey = funcCode;
+
+            if (this.character) {
+                this.character.setUpKey(upKey);
+                this.character.setFuncKey(funcCode);
+
+                if (this._upKeyTimer) {
+                    clearTimeout(this._upKeyTimer);
+                }
+                this._upKeyTimer = setTimeout(() => {
+                    this.character._upKey = -1;
+                }, CLEAR_DUP_KEY_TIME);
             }
-            this._upKeyTimer = setTimeout(() => {
-                this.character._upKey = -1;
-            }, CLEAR_DUP_KEY_TIME);
         }
 
         /**
@@ -168,7 +178,7 @@ var lf2 = (function (lf2) {
             const KEY_CONFIG = this.keyboardConfig.config;
             let currentKey = 0;
             KeyboardConfig.KEY_MAP.KEY_LIST.forEach((k) => {
-                if (e.keyCode == KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+                if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
             });
 
             return this._parseHitKey(currentKey);
@@ -197,6 +207,26 @@ var lf2 = (function (lf2) {
          * @override
          */
         draw(ctx) {
+            if (!this.character) return;
+
+            //Backup shadow variables
+            let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = "#000";
+            ctx.font = "8px Arial";
+            ctx.fillStyle = "#FFF";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            ctx.fillText(
+                this.keyboardConfig.config.NAME,
+                this.character.position.x,
+                this.character.position.y + NAME_OFFSET
+            );
+
+            //Restore shadow variable
+            ctx.shadowBlur = oldShadowBlur;
+            ctx.shadowColor = oldShadowColor;
         }
 
         /**
@@ -240,6 +270,16 @@ var lf2 = (function (lf2) {
             }
 
             return false;
+        }
+
+        /**
+         * check is key pressed
+         *
+         * @param {Number} keyCode
+         * @returns {boolean}
+         */
+        isKeyPressed(keyCode){
+            return (this._currentKey & keyCode)=== keyCode;
         }
 
         /**

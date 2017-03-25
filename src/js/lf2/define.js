@@ -3,12 +3,14 @@
     const BASE_PATH = "./";
 
     window.define = {
-        DEBUG: true,
+        DEBUG: false,
+        SHOW_PLAYER_COUNT: 8,
 
         BASE_PATH: BASE_PATH,
         DATA_PATH:BASE_PATH + "data/",
         IMG_PATH:BASE_PATH + "image/",
         MUSIC_PATH:BASE_PATH + "music/",
+        BGM_PATH:BASE_PATH + "music/bgm/",
 
         PLAYER_COUNT: 2,
         KEYBOARD_CONFIG_KEY: "keyConfig",
