@@ -17,14 +17,6 @@ var lf2 = (function (lf2) {
         //在initialize時會觸發的事件
         loadingProgress(ctx, requestInfo) {
             super.loadingProgress(ctx, requestInfo);
-
-            ctx.font = '90px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillStyle = 'white';
-            ctx.fillText(Math.round(requestInfo.percent) + '%', ctx.canvas.width / 2, ctx.canvas.height / 2 + 300);
-
-            //Preload loading video
-            ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
         }
 
         load() {
@@ -38,6 +30,9 @@ var lf2 = (function (lf2) {
                 },
                 cancel: {
                     ogg: define.MUSIC_PATH + 'm_cancel.ogg',
+                },
+                bgm: {
+                    ogg: define.BGM_PATH + 'main.ogg',
                 },
             });
 
@@ -54,6 +49,11 @@ var lf2 = (function (lf2) {
         }
 
         initialize() {
+            this.audio.play({
+                name: 'bgm',
+                loop: true,
+                volume: .3,
+            });
         }
 
         update() {

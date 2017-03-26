@@ -119,16 +119,7 @@ var Framework = (function (Framework) {
 
         const KEY_WHITE_LIST = [
             _stringToKeyCode['F1'],
-            _stringToKeyCode['F2'],
-            _stringToKeyCode['F3'],
-            _stringToKeyCode['F4'],
             _stringToKeyCode['F5'],
-            _stringToKeyCode['F6'],
-            _stringToKeyCode['F7'],
-            _stringToKeyCode['F8'],
-            _stringToKeyCode['F9'],
-            _stringToKeyCode['F10'],
-            _stringToKeyCode['F11'],
             _stringToKeyCode['F12'],
         ];
 
@@ -140,7 +131,7 @@ var Framework = (function (Framework) {
         };
 
         var keydownEvent = function (e) {
-            if (IN_WHITE_LIST(e)) {
+            if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
 

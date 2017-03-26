@@ -58,6 +58,7 @@ var lf2 = (function (lf2) {
                 this.mp = DEFAULT_MP;
 
                 this._godMode = false;
+                this._infMp = false;
 
                 /**
                  * @type {Framework.Scene}
@@ -256,7 +257,7 @@ var lf2 = (function (lf2) {
          */
         requestMp(num) {
             const MP_COST_MAGIC_NUMBER = 1000;
-            if (define.INF_MP || num === 0) return true;
+            if (define.INF_MP || this._infMp || num === 0) return true;
 
             num = Math.abs(num);
 
@@ -295,6 +296,14 @@ var lf2 = (function (lf2) {
             this.addHp(-num);
 
             return true;
+        }
+
+        /**
+         *
+         * @param {boolean} flag
+         */
+        setInfMp(flag){
+            this._infMp = flag;
         }
 
         /**
