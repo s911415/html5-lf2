@@ -62,9 +62,6 @@ var lf2 = (function (lf2) {
                 cancel: {
                     ogg: define.MUSIC_PATH + 'm_cancel.ogg',
                 },
-                bgm: {
-                    ogg: define.BGM_PATH + 'main.ogg',
-                },
             });
 
             this.players = [];
@@ -113,11 +110,6 @@ var lf2 = (function (lf2) {
         }
 
         initialize() {
-            this.audio.play({
-                name: 'bgm',
-                loop: true,
-                volume: .4,
-            });
         }
 
         update() {

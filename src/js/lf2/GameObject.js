@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
      *
      * @class lf2.GameObject
      */
-    lf2.GameObject = class GameObject{
+    lf2.GameObject = class GameObject {
         /**
          *
          * @param {Object} fileInfo
@@ -45,7 +45,7 @@ var lf2 = (function (lf2) {
             return Promise.all(arr);
         }
 
-        addPreloadResource(url){
+        addPreloadResource(url) {
             return this.bmpInfo.addPreloadResource(url);
         }
 
@@ -86,11 +86,24 @@ var lf2 = (function (lf2) {
             this._audio = new Framework.Audio();
             this.frames.forEach(frame => {
                 if (frame.soundPath !== undefined && !soundPool[frame.soundPath]) {
-                    this.addPreloadResource(frame.soundPath).then(rep=>{
-                        return rep.arrayBuffer();
-                    }).then((buf)=>{
+                    /*
+                     this.addPreloadResource(frame.soundPath).then(rep=>{
+                     return rep.arrayBuffer();
+                     }).then((buf)=>{
+                     let obj = {};
+                     obj[frame.soundPath] = buf;
+                     this._audio.addSongs(obj);
+                     });
+                     */
+                    this.addPreloadResource(frame.soundPath).then(rep => {
+                        return rep.blob();
+                    }).then((blob) => {
                         let obj = {};
-                        obj[frame.soundPath] = buf;
+                        soundPool[frame.soundPath] = obj[frame.soundPath] =
+                            {
+                                ogg: URL.createObjectURL(blob)
+                            };
+
                         this._audio.addSongs(obj);
                     });
                     soundPool[frame.soundPath] = true;

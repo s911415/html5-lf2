@@ -15,7 +15,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_DUP_KEY_TIME = 500;
+    const CLEAR_DUP_KEY_TIME = 250;
     const NAME_OFFSET = 0;
 
     /**
@@ -58,6 +58,7 @@ var lf2 = (function (lf2) {
                 this.mp = DEFAULT_MP;
 
                 this._godMode = false;
+                this._infMp = false;
 
                 /**
                  * @type {Framework.Scene}
@@ -87,7 +88,7 @@ var lf2 = (function (lf2) {
                     funcCode !== 0
                 ) {
                     if ((funcCode & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
-                        this.character.setFrameById(9);
+                        this.character.startRun();
                         console.log('start run');
                     }
                 }
@@ -256,7 +257,7 @@ var lf2 = (function (lf2) {
          */
         requestMp(num) {
             const MP_COST_MAGIC_NUMBER = 1000;
-            if (define.INF_MP || num === 0) return true;
+            if (define.INF_MP || this._infMp || num === 0) return true;
 
             num = Math.abs(num);
 
@@ -295,6 +296,14 @@ var lf2 = (function (lf2) {
             this.addHp(-num);
 
             return true;
+        }
+
+        /**
+         *
+         * @param {boolean} flag
+         */
+        setInfMp(flag){
+            this._infMp = flag;
         }
 
         /**

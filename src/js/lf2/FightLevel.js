@@ -67,6 +67,13 @@ var lf2 = (function (lf2) {
                 //Framework.Game._currentLevel.config.players[0].character.setFrameById(210);
             });
 
+            this._funcStatus = {
+                'F6': 0,
+                'F7': 0,
+            };
+
+            this._anyFuncPressed = false;
+
             //TODO: debug use
             this.config.players[0].character.position = new Point(100, 360);
             //this.config.players[1].character.position = new Point(800, 300);
@@ -84,14 +91,27 @@ var lf2 = (function (lf2) {
             });
         }
 
-        draw(parentCtx) {
-            super.draw(parentCtx);
+        draw(ctx) {
+            super.draw(ctx);
 
 
             //Draw each player status
             this.config.players.forEach((player) => {
-                player.status.draw(parentCtx);
+                player.status.draw(ctx);
             });
+
+            if (this._anyFuncPressed) {
+                let funcStr = 'Function Keys Used: ';
+                for (let k in this._funcStatus) {
+                    funcStr += `  ${k}: ${this._funcStatus[k]} time(s)`;
+                }
+
+                ctx.textAlign = "start";
+                ctx.font = "12px Arial";
+                ctx.textBaseline = "middle";
+                ctx.fillStyle = "#FFF";
+                ctx.fillText(funcStr, 3, 120);
+            }
         }
 
         keydown(e, list, oriE) {
@@ -101,10 +121,17 @@ var lf2 = (function (lf2) {
                 player.keydown(e, list, oriE);
             });
 
+            let curCount = (this._funcStatus[e.key] !== undefined) ? ++this._funcStatus[e.key] : 0;
             //Handle func key
             switch (e.key) {
                 case 'F4'://Restart Game
                     Framework.Game.goToLevel('selection');
+                    break;
+                case 'F6'://INF MP
+                    let infMpStatus = curCount % 2 === 1;
+                    this.config.players.forEach((player) => {
+                        player.setInfMp(infMpStatus);
+                    });
                     break;
                 case 'F7'://Recover players
                     this.config.players.forEach((player) => {
@@ -112,8 +139,10 @@ var lf2 = (function (lf2) {
                         player.addMp(500);
                     });
                     break;
-
+                default:
             }
+
+            if (curCount !== 0) this._anyFuncPressed = true;
         }
 
         keyup(e, list, oriE) {
