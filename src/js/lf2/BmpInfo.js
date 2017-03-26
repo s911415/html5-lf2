@@ -13,6 +13,9 @@ var lf2 = (function (lf2) {
     const EMPTY_CANVAS = document.createElement('canvas');
     EMPTY_CANVAS.width = EMPTY_CANVAS.height = 1;
 
+
+    let _preloadedResources = new WeakMap();
+
     /**
      * BmpInfo
      *
@@ -65,9 +68,14 @@ var lf2 = (function (lf2) {
             if (url instanceof Promise) {
                 promise = url;
             } else {
-                promise = ResourceManager.loadResource(url, {
-                    method: 'GET'
-                });
+                let promise = _preloadedResources.get(url);
+                if(promise===null){
+                    promise = ResourceManager.loadResource(url, {
+                        method: 'GET'
+                    });
+
+                    _preloadedResources.set(url, promise);
+                }
             }
 
             this._bmpLoad.push(promise);
