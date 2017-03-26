@@ -1,5 +1,6 @@
 "use strict";
 window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+window.AudioContext  = window.AudioContext || window.webkitAudioContext;
 
 /**
  * Load Script In Sequence

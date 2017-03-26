@@ -83,16 +83,20 @@ var lf2 = (function (lf2) {
          * @private
          */
         _preLoadSound() {
+            this._audio = new Framework.Audio();
             this.frames.forEach(frame => {
                 if (frame.soundPath !== undefined && !soundPool[frame.soundPath]) {
-                    this.addPreloadResource(frame.soundPath);
-                    soundPool[frame.soundPath] = {
-                        ogg: frame.soundPath
-                    };
+                    this.addPreloadResource(frame.soundPath).then(rep=>{
+                        return rep.arrayBuffer();
+                    }).then((buf)=>{
+                        let obj = {};
+                        obj[frame.soundPath] = buf;
+                        this._audio.addSongs(obj);
+                    });
+                    soundPool[frame.soundPath] = true;
                 }
             });
 
-            this._audio = new Framework.Audio(soundPool);
         }
     };
 

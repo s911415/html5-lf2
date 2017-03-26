@@ -13,12 +13,15 @@ var lf2 = (function (lf2) {
     const EMPTY_CANVAS = document.createElement('canvas');
     EMPTY_CANVAS.width = EMPTY_CANVAS.height = 1;
 
+
+    let _preloadResources = new Map();
+
     /**
      * BmpInfo
      *
      * @class lf2.BmpInfo
      */
-    lf2.BmpInfo = class BmpInfo{
+    lf2.BmpInfo = class BmpInfo {
         /**
          *
          * @param {String} context
@@ -65,9 +68,14 @@ var lf2 = (function (lf2) {
             if (url instanceof Promise) {
                 promise = url;
             } else {
-                promise = ResourceManager.loadResource(url, {
-                    method: 'GET'
-                });
+                promise = _preloadResources.get(url);
+                if (promise === undefined) {
+                    promise = ResourceManager.loadResource(url, {
+                        method: 'GET'
+                    });
+
+                    _preloadResources.set(url, promise);
+                }
             }
 
             this._bmpLoad.push(promise);
@@ -84,7 +92,7 @@ var lf2 = (function (lf2) {
                 endIndex = intval(index[1]),
                 width = intval(pairContent.get('w')),
                 height = intval(pairContent.get('h')),
-                $=this,
+                $ = this,
 
                 //this row and column is difference from matrix, invert it
                 row = intval(pairContent.get('col')),
@@ -120,10 +128,10 @@ var lf2 = (function (lf2) {
                     const imgObj = canvas;
                     /*const imgObj = new Image();
 
-                    canvas.toBlob(function (b) {
-                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
-                        resolve();
-                    }, 'image/webp', 1);*/
+                     canvas.toBlob(function (b) {
+                     imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                     resolve();
+                     }, 'image/webp', 1);*/
 
                     //Start processing image
                     for (let r = 0; r < row; r++) {
@@ -142,7 +150,7 @@ var lf2 = (function (lf2) {
 
                         //Save Mirror image
                         for (let c = 0; c < col; c++) {
-                            const _x = canvas.width+  1 - c * (width + 1) - (width + 1);
+                            const _x = canvas.width + 1 - c * (width + 1) - (width + 1);
                             //this.imageMirror[j] = g.getImageData(_x, _y, width, height);
                             $.imageMirror[j] = new ImageInformation(
                                 new Rectangle(width, height, _x, _y),
