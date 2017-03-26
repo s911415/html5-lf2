@@ -4,9 +4,11 @@ var Framework = (function (Framework) {
         var $ = Framework,
             _audioClass = {},
             _audioInstanceObj = {},
-            _mainPlaylist = {},
+            _mainPlaylist = new Map(),
             _errorEvent = function () {
             };
+
+        let audioCtx = new window.AudioContext();
 
 
         var setPlaylist = function (playlist) {
@@ -26,16 +28,14 @@ var Framework = (function (Framework) {
         };
 
         var addSongs = function (playlist) {
-            _mainPlaylist = $.Util.overrideProperty(playlist, _mainPlaylist);
-
-            for(let k in _mainPlaylist){
-                getAudioInstance(k);
+            for(let k in playlist){
+                _mainPlaylist.set(k, playlist[k]);
+                getAudioInstance(k, playlist[k]);
             }
         };
 
         var removeSong = function (song) {
-            _mainPlaylist[_mainPlaylist] = null;
-            delete _mainPlaylist[_mainPlaylist];
+            _mainPlaylist.delete(song);
         };
 
         //只接受String或Array
@@ -50,17 +50,36 @@ var Framework = (function (Framework) {
             }
         };
 
-        var getAudioInstance = function (songName) {
-            if (!$.Util.isUndefined(_audioInstanceObj[songName])) {
-                return _audioInstanceObj[songName];
-            }
+        var getAudioInstance = function (songName, song) {
+            var audioInstance;
+            if(song instanceof ArrayBuffer){
+                audioInstance = audioCtx.createBufferSource();
+            }else{
+                if (!$.Util.isUndefined(_audioInstanceObj[songName])) {
+                    return _audioInstanceObj[songName];
+                }
 
-            var audioInstance = new Audio();
-            //document.body.appendChild(audioInstance);
-            //audioInstance.controls='controls';
-            audioInstance.preload = 'auto';
-            audioInstance.autoplay = false;
+                audioInstance = new Audio();
+                //document.body.appendChild(audioInstance);
+                //audioInstance.controls='controls';
+                audioInstance.preload = 'auto';
+                audioInstance.autoplay = false;
+
+                const sourceTagStr = 'source',
+                    audioSourceType = {
+                        mp3: 'audio/mpeg',
+                        ogg: 'audio/ogg',
+                        wav: 'audio/wav'
+                    };
+                for (let tempName in song) {
+                    let tempSource = document.createElement(sourceTagStr);
+                    tempSource.type = audioSourceType[tempName];
+                    tempSource.src = song[tempName];
+                    audioInstance.appendChild(tempSource);
+                }
+            }
             _audioInstanceObj[songName] = audioInstance;
+
             return audioInstance;
         };
 
@@ -81,44 +100,36 @@ var Framework = (function (Framework) {
          *     play({name: 'horse', loop: true});
          */
         var play = function (audioArgs) {
-            var sourceTagStr = 'source',
-                tempSource,
-                audioSourceType = {
-                    mp3: 'audio/mpeg',
-                    ogg: 'audio/ogg',
-                    wav: 'audio/wav'
-                },
+            var
                 tempName,
                 songName = audioArgs['name'],
-                song = _mainPlaylist[songName],
-                oggSource = document.createElement(sourceTagStr),
-                mp3Source = document.createElement(sourceTagStr),
+                song = _mainPlaylist.get(songName),
                 audio = {};
 
             if (Framework.Util.isUndefined(song)) {
                 throw ('the playlist is not set or do not contain the song: ' + songName);
             }
 
-            audio = getAudioInstance(songName);
-
-            audio.addEventListener('error', _errorEvent, false);
-            for (tempName in audioArgs) {
-                if (audioArgs.hasOwnProperty(tempName)) {
-                    audio[tempName] = audioArgs[tempName];
+            audio = getAudioInstance(songName, song);
+            if(audio instanceof AudioBufferSourceNode){
+                audioCtx.decodeAudioData(song).then((decodedData)=>{
+                    audio.buffer = decodedData;
+                    audio.connect(audioCtx.destination);
+                    audio.start(0);
+                });
+            }else if(audio instanceof Audio){
+                audio.addEventListener('error', _errorEvent, false);
+                for (tempName in audioArgs) {
+                    if (audioArgs.hasOwnProperty(tempName)) {
+                        audio[tempName] = audioArgs[tempName];
+                    }
                 }
-            }
 
-            for (tempName in song) {
-                tempSource = document.createElement(sourceTagStr);
-                tempSource.type = audioSourceType[tempName];
-                tempSource.src = song[tempName];
-                audio.appendChild(tempSource);
+                audio.currentTime = 0;
+                //audio.addEventListener('canplaythrough', this.playMusic, true);
+                //audio.load();
+                audio.play();
             }
-
-            audio.currentTime = 0;
-            //audio.addEventListener('canplaythrough', this.playMusic, true);
-            //audio.load();
-            audio.play();
         };
 
         /**
@@ -309,6 +320,10 @@ var Framework = (function (Framework) {
                 if (!Framework.Util.isUndefined(playlist)) {
                     setPlaylist(playlist);
                 }
+            }
+
+            addSongs(){
+                return addSongs.apply(this, arguments);
             }
 
             /**
