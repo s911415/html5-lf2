@@ -115,7 +115,7 @@ var Framework = (function (Framework) {
             userKeyupEvent = function () {
             },
             _subject;
-        for (let keyCode in _keyCodeToChar) _stringToKeyCode[_keyCodeToChar[keyCode]] = keyCode;
+        for (let keyCode in _keyCodeToChar) _stringToKeyCode[_keyCodeToChar[keyCode]] = intval(keyCode);
 
         const KEY_WHITE_LIST = [
             _stringToKeyCode['F1'],
@@ -156,7 +156,7 @@ var Framework = (function (Framework) {
         };
 
         var keyupEvent = function (e) {
-            if (IN_WHITE_LIST(e)) {
+            if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
             
