@@ -15,7 +15,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_DUP_KEY_TIME = 500;
+    const CLEAR_DUP_KEY_TIME = 250;
     const NAME_OFFSET = 0;
 
     /**
@@ -87,7 +87,7 @@ var lf2 = (function (lf2) {
                     funcCode !== 0
                 ) {
                     if ((funcCode & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
-                        this.character.setFrameById(9);
+                        this.character.startRun();
                         console.log('start run');
                     }
                 }

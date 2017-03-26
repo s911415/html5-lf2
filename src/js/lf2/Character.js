@@ -272,6 +272,13 @@ var lf2 = (function (lf2) {
             super.draw(ctx);
         }
 
+        startRun(){
+            //Is running
+            if(this._currentFrameIndex.inRange(RUN_FRAME_RANGE.min, RUN_FRAME_RANGE.max)) return;
+            
+            this.setFrameById(RUN_FRAME_RANGE.min);
+        }
+
         /**
          * Is move key pressed
          * @returns {boolean}
