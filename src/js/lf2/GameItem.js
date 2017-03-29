@@ -242,7 +242,7 @@ var lf2 = (function (lf2) {
                 //Play sound
                 if (curFrame.soundPath) {
                     this.obj._audio.play({
-                        name: curFrame.soundPath
+                        name: curFrame.soundPath,
                     });
                 }
 
