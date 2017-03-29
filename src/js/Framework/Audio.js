@@ -50,12 +50,13 @@ var Framework = (function (Framework) {
             }
         };
 
-        var getAudioInstance = function (songName, song) {
+        var getAudioInstance = function (songName, song, newInstance) {
+            newInstance = newInstance === undefined ? (false) : !!newInstance;
             var audioInstance;
             if(song instanceof ArrayBuffer){
                 audioInstance = audioCtx.createBufferSource();
             }else{
-                if (!$.Util.isUndefined(_audioInstanceObj[songName])) {
+                if (!newInstance && !$.Util.isUndefined(_audioInstanceObj[songName])) {
                     return _audioInstanceObj[songName];
                 }
 
@@ -78,7 +79,9 @@ var Framework = (function (Framework) {
                     audioInstance.appendChild(tempSource);
                 }
             }
-            _audioInstanceObj[songName] = audioInstance;
+            if (!newInstance) {
+                _audioInstanceObj[songName] = audioInstance;
+            }
 
             return audioInstance;
         };
@@ -110,7 +113,7 @@ var Framework = (function (Framework) {
                 throw ('the playlist is not set or do not contain the song: ' + songName);
             }
 
-            audio = getAudioInstance(songName, song);
+            audio = getAudioInstance(songName, song, !!audioArgs['newInstance']);
             if(audio instanceof AudioBufferSourceNode){
                 audioCtx.decodeAudioData(song).then((decodedData)=>{
                     audio.buffer = decodedData;

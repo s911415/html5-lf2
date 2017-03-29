@@ -78,14 +78,25 @@ var lf2 = (function (lf2) {
             return frameContent;
         }
 
+        getSoundList() {
+            let soundSet = new Set();
+            this.frames.forEach(frame => {
+                if (frame.soundPath !== undefined) {
+                    soundSet.add(frame.soundPath);
+                }
+            });
+
+            return soundSet;
+        }
+
         /**
          *
          * @private
          */
         _preLoadSound() {
             this._audio = new Framework.Audio();
-            this.frames.forEach(frame => {
-                if (frame.soundPath !== undefined && !soundPool[frame.soundPath]) {
+            this.getSoundList().forEach(soundPath => {
+                if (!soundPool[soundPath]) {
                     /*
                      this.addPreloadResource(frame.soundPath).then(rep=>{
                      return rep.arrayBuffer();
@@ -95,18 +106,18 @@ var lf2 = (function (lf2) {
                      this._audio.addSongs(obj);
                      });
                      */
-                    this.addPreloadResource(frame.soundPath).then(rep => {
+                    this.addPreloadResource(soundPath).then(rep => {
                         return rep.blob();
                     }).then((blob) => {
                         let obj = {};
-                        soundPool[frame.soundPath] = obj[frame.soundPath] =
+                        soundPool[soundPath] = obj[soundPath] =
                             {
                                 ogg: URL.createObjectURL(blob)
                             };
 
                         this._audio.addSongs(obj);
                     });
-                    soundPool[frame.soundPath] = true;
+                    soundPool[soundPath] = true;
                 }
             });
 
