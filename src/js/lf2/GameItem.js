@@ -243,7 +243,6 @@ var lf2 = (function (lf2) {
                 if (curFrame.soundPath) {
                     this.obj._audio.play({
                         name: curFrame.soundPath,
-                        newInstance: true
                     });
                 }
 
