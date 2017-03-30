@@ -57,6 +57,20 @@ var lf2 = (function (lf2) {
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
 
+            this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
+            for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
+                const PANEL_SIZE = PlayerStatusPanel.PANEL_SIZE;
+                const _ROW = (i / PlayerStatusPanel.PANEL_PER_ROW_COUNT) | 0;
+                const _COL = (i % PlayerStatusPanel.PANEL_PER_ROW_COUNT);
+                let panel = new Sprite(define.IMG_PATH + "player_status_panel.png");
+                panel.position = new Point(
+                    _COL * PANEL_SIZE.x + PANEL_SIZE.x / 2,
+                    _ROW * PANEL_SIZE.y + PANEL_SIZE.y / 2
+                );
+                this._statusPanels[i] = panel;
+                this.rootScene.attach(panel);
+            }
+
             //attach player's character
             this.config.players.forEach((player, i) => {
                 //TODO: debug use
@@ -177,6 +191,7 @@ var lf2 = (function (lf2) {
                 this._container = $(this.html);
                 this._container.attr("id", _FIGHT_CONTAINER_ID);
 
+                /*
                 const _statusPanelsTarget = this._container.find("#statusPanels");
 
                 let statusPanelTemplate = _statusPanelsTarget.find(".status");
@@ -191,6 +206,7 @@ var lf2 = (function (lf2) {
                     _statusPanelsTarget.append(this._statusPanels[i]);
                 }
                 statusPanelTemplate.remove();
+                */
 
                 $("body").append(this._container);
                 Game.resizeEvent();
