@@ -428,3 +428,61 @@ body {
 .allow-mouse {
     pointer-events: auto;
 }
+
+#__fight_container{
+    background: transparent;
+}
+
+#statusPanels{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+}
+
+#statusPanels .status{
+    width: 198px;
+    height: 53px;
+    position: relative;
+    background: url(../image/player_status_panel.png) no-repeat center;
+    float: left;
+}
+
+#statusPanels .status>*{
+    position: absolute;
+}
+
+#statusPanels .status .small{
+    left: 7px;
+    top: 4px;
+    width: 40px;
+    height: 45px;
+}
+
+#statusPanels .status .bar{
+    width: 124px;
+    height: 10px;
+}
+
+#statusPanels .status .hp{
+    left: 57px;
+    top: 15px;
+    background: #6f081f;
+}
+
+#statusPanels .status .hp .value{
+    background: #ff0000;
+}
+
+#statusPanels .status .mp{
+    left: 57px;
+    top: 35px;
+    background: #1f086f;
+}
+
+#statusPanels .status .mp .value{
+    background: #0000ff;
+    left: 57px;
+    top: 35px;
+}

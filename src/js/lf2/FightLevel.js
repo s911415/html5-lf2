@@ -1,5 +1,7 @@
 ﻿"use strict";
 var lf2 = (function (lf2) {
+    const _FIGHT_CONTAINER_ID = "__fight_container";
+    const PLAYER_TAG = 'data-player';
     const Point = Framework.Point;
     const Game = Framework.Game;
     const Sprite = Framework.Sprite;
@@ -10,6 +12,7 @@ var lf2 = (function (lf2) {
     const KeyboardConfig = lf2.KeyboardConfig;
     const Player = lf2.Player;
     const WorldScene = lf2.WorldScene;
+    const ResourceManager = Framework.ResourceManager;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     /**
      * @class lf2.FightLevel
@@ -20,6 +23,14 @@ var lf2 = (function (lf2) {
     lf2.FightLevel = class FightLevel extends Framework.Level {
         constructor() {
             super();
+
+            this.html = '';
+            //Load Setting view
+            this._htmlLoader = ResourceManager.loadResource(define.DATA_PATH + 'FightScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
         }
 
         /**
@@ -46,20 +57,6 @@ var lf2 = (function (lf2) {
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
 
-            this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
-            for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
-                const PANEL_SIZE = PlayerStatusPanel.PANEL_SIZE;
-                const _ROW = (i / PlayerStatusPanel.PANEL_PER_ROW_COUNT) | 0;
-                const _COL = (i % PlayerStatusPanel.PANEL_PER_ROW_COUNT);
-                let panel = new Sprite(define.IMG_PATH + "player_status_panel.png");
-                panel.position = new Point(
-                    _COL * PANEL_SIZE.x + PANEL_SIZE.x / 2,
-                    _ROW * PANEL_SIZE.y + PANEL_SIZE.y / 2
-                );
-                this._statusPanels[i] = panel;
-                this.rootScene.attach(panel);
-            }
-
             //attach player's character
             this.config.players.forEach((player, i) => {
                 //TODO: debug use
@@ -73,6 +70,11 @@ var lf2 = (function (lf2) {
             };
 
             this._anyFuncPressed = false;
+
+            this._container = undefined;
+            this._htmlLoader.then(()=>{
+                this.showPanel();
+            });
 
             //TODO: debug use
             this.config.players[0].character.position = new Point(100, 360);
@@ -156,6 +158,43 @@ var lf2 = (function (lf2) {
 
         click(e) {
 
+        }
+
+        autodelete(){
+            super.autodelete();
+
+            if (this._container) {
+                this._container.remove();
+                this._container = undefined;
+            }
+        }
+
+        showPanel(){
+            if (!this.isCurrentLevel) return;
+            if (this.html !== "" && !this._container) {
+                $("#" + _FIGHT_CONTAINER_ID).remove();
+
+                this._container = $(this.html);
+                this._container.attr("id", _FIGHT_CONTAINER_ID);
+
+                const _statusPanelsTarget = this._container.find("#statusPanels");
+
+                let statusPanelTemplate = _statusPanelsTarget.find(".status");
+                this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
+                for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
+                    this._statusPanels[i] = statusPanelTemplate.clone();
+                    this._statusPanels[i].attr(PLAYER_TAG, i);
+                    this._statusPanels[i].hp = this._statusPanels[i].find('.hp');
+                    this._statusPanels[i].mp = this._statusPanels[i].find('.mp');
+                    this._statusPanels[i].small = this._statusPanels[i].find('.small');
+
+                    _statusPanelsTarget.append(this._statusPanels[i]);
+                }
+                statusPanelTemplate.remove();
+
+                $("body").append(this._container);
+                Game.resizeEvent();
+            }
         }
     };
 
