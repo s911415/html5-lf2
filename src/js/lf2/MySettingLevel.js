@@ -25,9 +25,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  load()
+         * load()
          *
-         * @brief   Loads this object.
+         * Loads this object.
          *
          * @return  .
          */
@@ -61,9 +61,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  initialize()
+         * initialize()
          *
-         * @brief   Initializes this object.
+         * Initializes this object.
          *
          * @return  .
          */
@@ -71,9 +71,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -82,9 +82,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  draw(parentCtx)
+         * draw(parentCtx)
          *
-         * @brief   Draws the given parent context.
+         * Draws the given parent context.
          *
          * @param   parentCtx   Context for the parent.
          *
@@ -109,9 +109,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  keydown(e, list, oriE)
+         * keydown(e, list, oriE)
          *
-         * @brief   Keydowns.
+         * Keydowns.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -139,9 +139,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  showSettingMenu()
+         * showSettingMenu()
          *
-         * @brief   Shows the setting menu.
+         * Shows the setting menu.
          *
          * @return  .
          */
@@ -187,9 +187,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  bindPlayerEvent(playerElement)
+         * bindPlayerEvent(playerElement)
          *
-         * @brief   Bind player event.
+         * Bind player event.
          *
          * @param   playerElement   The player element.
          *
@@ -214,9 +214,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  click(e)
+         * click(e)
          *
-         * @brief   Clicks the given e.
+         * Clicks the given e.
          *
          * @param   e   The unknown to process.
          *
@@ -227,9 +227,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  autodelete()
+         * autodelete()
          *
-         * @brief   Autodeletes this object.
+         * Autodeletes this object.
          *
          * @return  .
          */

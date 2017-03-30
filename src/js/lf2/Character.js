@@ -273,9 +273,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  startRun()
+         * startRun()
          *
-         * @brief   Starts a run.
+         * Starts a run.
          *
          * @return  .
          */
@@ -324,9 +324,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get isFuncKeyChanged()
+         * get isFuncKeyChanged()
          *
-         * @brief   Is function key changed.
+         * Is function key changed.
          *
          * @return  {get}   A get.
          */
@@ -347,9 +347,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */

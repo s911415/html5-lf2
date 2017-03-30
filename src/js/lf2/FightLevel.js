@@ -43,9 +43,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  load()
+         * load()
          *
-         * @brief   Loads this object.
+         * Loads this object.
          *
          * @return  .
          */
@@ -87,9 +87,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  initialize()
+         * initialize()
          *
-         * @brief   Initializes this object.
+         * Initializes this object.
          *
          * @return  .
          */
@@ -97,9 +97,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -113,9 +113,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  draw(ctx)
+         * draw(ctx)
          *
-         * @brief   Draws the given context.
+         * Draws the given context.
          *
          * @param   ctx The context.
          *
@@ -145,9 +145,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  keydown(e, list, oriE)
+         * keydown(e, list, oriE)
          *
-         * @brief   Keydowns.
+         * Keydowns.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -187,9 +187,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  keyup(e, list, oriE)
+         * keyup(e, list, oriE)
          *
-         * @brief   Keyups.
+         * Keyups.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -207,9 +207,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  click(e)
+         * click(e)
          *
-         * @brief   Clicks the given e.
+         * Clicks the given e.
          *
          * @param   e   The unknown to process.
          *

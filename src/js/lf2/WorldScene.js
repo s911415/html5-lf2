@@ -60,9 +60,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -87,9 +87,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _setCameraPositionByX(x)
+         * _setCameraPositionByX(x)
          *
-         * @brief   Sets camera position by x coordinate.
+         * Sets camera position by x coordinate.
          *
          * @param   x   The unknown to process.
          *
@@ -112,9 +112,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _getCameraPositionAsPoint()
+         * _getCameraPositionAsPoint()
          *
-         * @brief   Gets camera position as point.
+         * Gets camera position as point.
          *
          * @return  The camera position as point.
          */

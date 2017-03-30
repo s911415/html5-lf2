@@ -333,9 +333,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get ImgInfo()
+         * get ImgInfo()
          *
-         * @brief   Image information.
+         * Image information.
          *
          * @return  {get}   A get.
          */
@@ -351,9 +351,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get leftTopPoint()
+         * get leftTopPoint()
          *
-         * @brief   Left top point.
+         * Left top point.
          *
          * @return  {get}   A get.
          */
@@ -373,9 +373,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _getNextFrameId()
+         * _getNextFrameId()
          *
-         * @brief   Gets the next frame identifier.
+         * Gets the next frame identifier.
          *
          * @return  The next frame identifier.
          */
@@ -399,9 +399,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get isObjectChanged()
+         * get isObjectChanged()
          *
-         * @brief   Is object changed.
+         * Is object changed.
          *
          * @return  {get}   A get.
          */
@@ -412,9 +412,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get width()
+         * get width()
          *
-         * @brief   Gets the width.
+         * Gets the width.
          *
          * @return  {get}   A get.
          */
@@ -423,9 +423,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get height()
+         * get height()
          *
-         * @brief   Gets the height.
+         * Gets the height.
          *
          * @return  {get}   A get.
          */

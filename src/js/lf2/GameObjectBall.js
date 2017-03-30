@@ -66,9 +66,9 @@ var lf2 = (function (lf2) {
         }*/
 
         /**
-         * @fn  getSoundList()
+         * getSoundList()
          *
-         * @brief   Gets sound list.
+         * Gets sound list.
          *
          * @return  The sound list.
          */

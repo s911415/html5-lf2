@@ -54,9 +54,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  initializeProgressResource()
+         * initializeProgressResource()
          *
-         * @brief   Initializes the progress resource.
+         * Initializes the progress resource.
          *
          * @return  .
          */
@@ -76,9 +76,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  loadingProgress(context, requestInfo)
+         * loadingProgress(context, requestInfo)
          *
-         * @brief   Loading progress.
+         * Loading progress.
          *
          * @param   context     The context.
          * @param   requestInfo Information describing the request.
@@ -89,9 +89,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  load()
+         * load()
          *
-         * @brief   Loads this object.
+         * Loads this object.
          *
          * @return  .
          */
@@ -253,9 +253,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -335,9 +335,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  showLoadingVideo()
+         * showLoadingVideo()
          *
-         * @brief   Shows the loading video.
+         * Shows the loading video.
          *
          * @return  .
          */
@@ -359,9 +359,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  autodelete()
+         * autodelete()
          *
-         * @brief   Autodeletes this object.
+         * Autodeletes this object.
          *
          * @return  .
          */
@@ -373,9 +373,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _showLoadFile(url)
+         * _showLoadFile(url)
          *
-         * @brief   Shows the load file.
+         * Shows the load file.
          *
          * @param   url URL of the document.
          *

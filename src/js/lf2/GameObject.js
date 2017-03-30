@@ -46,9 +46,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  addPreloadResource(url)
+         * addPreloadResource(url)
          *
-         * @brief   Adds a preload resource.
+         * Adds a preload resource.
          *
          * @param   url URL of the document.
          *
@@ -88,9 +88,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  getSoundList()
+         * getSoundList()
          *
-         * @brief   Gets sound list.
+         * Gets sound list.
          *
          * @return  The sound list.
          */

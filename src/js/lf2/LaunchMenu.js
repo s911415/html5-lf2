@@ -20,9 +20,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  load()
+         * load()
          *
-         * @brief   Loads this object.
+         * Loads this object.
          *
          * @return  .
          */
@@ -56,9 +56,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  initialize()
+         * initialize()
          *
-         * @brief   Initializes this object.
+         * Initializes this object.
          *
          * @return  .
          */
@@ -71,9 +71,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -82,9 +82,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  draw(parentCtx)
+         * draw(parentCtx)
          *
-         * @brief   Draws the given parent context.
+         * Draws the given parent context.
          *
          * @param   parentCtx   Context for the parent.
          *
@@ -99,9 +99,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  click(e, list, orgE)
+         * click(e, list, orgE)
          *
-         * @brief   Clicks.
+         * Clicks.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -113,9 +113,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  showLaunchMenu()
+         * showLaunchMenu()
          *
-         * @brief   Shows the launch menu.
+         * Shows the launch menu.
          *
          * @return  .
          */
@@ -143,9 +143,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  autodelete()
+         * autodelete()
          *
-         * @brief   Autodeletes this object.
+         * Autodeletes this object.
          *
          * @return  .
          */

@@ -110,9 +110,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  initialize()
+         * initialize()
          *
-         * @brief   Initializes this object.
+         * Initializes this object.
          *
          * @return  .
          */
@@ -120,9 +120,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -131,9 +131,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  draw(parentCtx)
+         * draw(parentCtx)
          *
-         * @brief   Draws the given parent context.
+         * Draws the given parent context.
          *
          * @param   parentCtx   Context for the parent.
          *
@@ -191,9 +191,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  keydown(e, list, oriE)
+         * keydown(e, list, oriE)
          *
-         * @brief   Keydowns.
+         * Keydowns.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -219,9 +219,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  keyup(e, list, oriE)
+         * keyup(e, list, oriE)
          *
-         * @brief   Keyups.
+         * Keyups.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -363,9 +363,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _randomSelectChar(player)
+         * _randomSelectChar(player)
          *
-         * @brief   Random select character.
+         * Random select character.
          *
          * @param   player  The player.
          *
@@ -385,9 +385,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _randomAllSelectChar()
+         * _randomAllSelectChar()
          *
-         * @brief   Random all select character.
+         * Random all select character.
          *
          * @return  .
          */
@@ -398,9 +398,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  showSelectionPanel()
+         * showSelectionPanel()
          *
-         * @brief   Shows the selection panel.
+         * Shows the selection panel.
          *
          * @return  .
          */
@@ -452,9 +452,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _isMinPlayerEntered()
+         * _isMinPlayerEntered()
          *
-         * @brief   Is minimum player entered.
+         * Is minimum player entered.
          *
          * @return  .
          */
@@ -471,9 +471,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _startCountDown()
+         * _startCountDown()
          *
-         * @brief   Starts count down.
+         * Starts count down.
          *
          * @return  .
          */
@@ -489,9 +489,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _stopCountDown()
+         * _stopCountDown()
          *
-         * @brief   Stops count down.
+         * Stops count down.
          *
          * @return  .
          */
@@ -502,9 +502,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _timerTick()
+         * _timerTick()
          *
-         * @brief   Timer tick.
+         * Timer tick.
          *
          * @return  .
          */
@@ -524,9 +524,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _showEnteringPanel()
+         * _showEnteringPanel()
          *
-         * @brief   Shows the entering panel.
+         * Shows the entering panel.
          *
          * @return  .
          */
@@ -548,9 +548,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  autodelete()
+         * autodelete()
          *
-         * @brief   Autodeletes this object.
+         * Autodeletes this object.
          *
          * @return  .
          */

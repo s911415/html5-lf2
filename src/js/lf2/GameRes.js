@@ -14,9 +14,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  loadRes(path)
+         * loadRes(path)
          *
-         * @brief   Loads a resource.
+         * Loads a resource.
          *
          * @param   path    Full pathname of the file.
          *

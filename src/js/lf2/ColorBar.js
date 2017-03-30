@@ -22,9 +22,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  load()
+         * load()
          *
-         * @brief   Loads this object.
+         * Loads this object.
          *
          * @return  .
          */
@@ -33,9 +33,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  update()
+         * update()
          *
-         * @brief   Updates this object.
+         * Updates this object.
          *
          * @return  .
          */
@@ -44,9 +44,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  draw(ctx)
+         * draw(ctx)
          *
-         * @brief   Draws the given context.
+         * Draws the given context.
          *
          * @param   ctx The context.
          *

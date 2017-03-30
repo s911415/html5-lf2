@@ -84,9 +84,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  _processImage(str)
+         * _processImage(str)
          *
-         * @brief   Process the image described by str.
+         * Process the image described by str.
          *
          * @param   str The string.
          *

@@ -120,9 +120,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get wait()
+         * get wait()
          *
-         * @brief   Gets the wait.
+         * Gets the wait.
          *
          * @return  {get}   A get.
          */
@@ -151,9 +151,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * @fn  get hit()
+         * get hit()
          *
-         * @brief   Gets the hit.
+         * Gets the hit.
          *
          * @return  {get}   A get.
          */
