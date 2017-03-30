@@ -109,13 +109,36 @@ var lf2 = (function (lf2) {
             this._isEnteringPanelShowed = false;
         }
 
+        /**
+         * @fn  initialize()
+         *
+         * @brief   Initializes this object.
+         *
+         * @return  .
+         */
         initialize() {
         }
 
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
         }
 
+        /**
+         * @fn  draw(parentCtx)
+         *
+         * @brief   Draws the given parent context.
+         *
+         * @param   parentCtx   Context for the parent.
+         *
+         * @return  .
+         */
         draw(parentCtx) {
             super.draw(parentCtx);
             console.log('selection draw');
@@ -167,6 +190,17 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * @fn  keydown(e, list, oriE)
+         *
+         * @brief   Keydowns.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
 
@@ -184,6 +218,17 @@ var lf2 = (function (lf2) {
             this.forceDraw();
         }
 
+        /**
+         * @fn  keyup(e, list, oriE)
+         *
+         * @brief   Keyups.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
         keyup(e, list, oriE) {
             super.keyup(e, list, oriE);
 
@@ -317,6 +362,15 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  _randomSelectChar(player)
+         *
+         * @brief   Random select character.
+         *
+         * @param   player  The player.
+         *
+         * @return  .
+         */
         _randomSelectChar(player) {
             let charId = this._charIdArray[player._charIndex];
             if (player._isRandomChar) {
@@ -330,12 +384,26 @@ var lf2 = (function (lf2) {
             player.elem.attr(CHAR_TAG, charId);
         }
 
+        /**
+         * @fn  _randomAllSelectChar()
+         *
+         * @brief   Random all select character.
+         *
+         * @return  .
+         */
         _randomAllSelectChar() {
             this.players.forEach(p => {
                 this._randomSelectChar(p);
             });
         }
 
+        /**
+         * @fn  showSelectionPanel()
+         *
+         * @brief   Shows the selection panel.
+         *
+         * @return  .
+         */
         showSelectionPanel() {
             if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._selectionContainer) {
@@ -343,19 +411,6 @@ var lf2 = (function (lf2) {
 
                 this._selectionContainer = $(this.html);
                 this._selectionContainer.attr("id", _SELECTION_CONTAINER_ID);
-                /*
-
-                 this._selectionContainer.find(".btn_ok").click((e) => {
-                 this.audio.play({name: 'ok'});
-                 this.saveConfig();
-                 Game.goToLevel('menu');
-                 });
-
-                 this._selectionContainer.find(".btn_cancel").click((e) => {
-                 this.audio.play({name: 'cancel'});
-                 Game.goToLevel('menu');
-                 });
-                 */
                 this.forceDraw();
 
                 let playerElement = this._selectionContainer.find(".player:first");
@@ -396,6 +451,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  _isMinPlayerEntered()
+         *
+         * @brief   Is minimum player entered.
+         *
+         * @return  .
+         */
         _isMinPlayerEntered() {
             const countDonePlayer = (previousValue, curPlayer) => {
                 return previousValue + (curPlayer._selectStage === SELECTION_STAGE.SELECT_DONE ? 1 : 0);
@@ -408,6 +470,13 @@ var lf2 = (function (lf2) {
                 this.players.reduce(countNonDonePlayer, 0) === 0;
         }
 
+        /**
+         * @fn  _startCountDown()
+         *
+         * @brief   Starts count down.
+         *
+         * @return  .
+         */
         _startCountDown() {
             if (this._countDownTimer !== undefined) return;
 
@@ -419,12 +488,26 @@ var lf2 = (function (lf2) {
             }, 1000);
         }
 
+        /**
+         * @fn  _stopCountDown()
+         *
+         * @brief   Stops count down.
+         *
+         * @return  .
+         */
         _stopCountDown() {
             this._selectionPanel.removeClass(COUNTING_DOWN_CLASS);
             clearInterval(this._countDownTimer);
             this._countDownTimer = undefined;
         }
 
+        /**
+         * @fn  _timerTick()
+         *
+         * @brief   Timer tick.
+         *
+         * @return  .
+         */
         _timerTick() {
             if(this._countDownTimer===undefined) return;
 
@@ -440,6 +523,13 @@ var lf2 = (function (lf2) {
             this._remainingTime--;
         }
 
+        /**
+         * @fn  _showEnteringPanel()
+         *
+         * @brief   Shows the entering panel.
+         *
+         * @return  .
+         */
         _showEnteringPanel() {
             this._isEnteringPanelShowed = true;
             this._selectionPanel.addClass('entering-shown');
@@ -457,6 +547,13 @@ var lf2 = (function (lf2) {
             this._enteringIndex = 0;
         }
 
+        /**
+         * @fn  autodelete()
+         *
+         * @brief   Autodeletes this object.
+         *
+         * @return  .
+         */
         autodelete() {
             if (this._selectionContainer) {
                 this._stopCountDown();

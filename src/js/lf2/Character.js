@@ -272,6 +272,13 @@ var lf2 = (function (lf2) {
             super.draw(ctx);
         }
 
+        /**
+         * @fn  startRun()
+         *
+         * @brief   Starts a run.
+         *
+         * @return  .
+         */
         startRun(){
             //Is running
             if(this._currentFrameIndex.inRange(RUN_FRAME_RANGE.min, RUN_FRAME_RANGE.max)) return;
@@ -316,6 +323,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  get isFuncKeyChanged()
+         *
+         * @brief   Is function key changed.
+         *
+         * @return  {get}   A get.
+         */
         get isFuncKeyChanged() {
             return this._curFuncKey !== this._lastFuncKey;
         }
@@ -332,6 +346,13 @@ var lf2 = (function (lf2) {
             if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
             const NOW = Date.now();

@@ -42,6 +42,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  load()
+         *
+         * @brief   Loads this object.
+         *
+         * @return  .
+         */
         load() {
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
@@ -79,9 +86,23 @@ var lf2 = (function (lf2) {
             //this.config.players[1].character.position = new Point(800, 300);
         }
 
+        /**
+         * @fn  initialize()
+         *
+         * @brief   Initializes this object.
+         *
+         * @return  .
+         */
         initialize() {
         }
 
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
 
@@ -91,6 +112,15 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * @fn  draw(ctx)
+         *
+         * @brief   Draws the given context.
+         *
+         * @param   ctx The context.
+         *
+         * @return  .
+         */
         draw(ctx) {
             super.draw(ctx);
 
@@ -114,6 +144,17 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  keydown(e, list, oriE)
+         *
+         * @brief   Keydowns.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
 
@@ -145,6 +186,17 @@ var lf2 = (function (lf2) {
             if (curCount !== 0) this._anyFuncPressed = true;
         }
 
+        /**
+         * @fn  keyup(e, list, oriE)
+         *
+         * @brief   Keyups.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
         keyup(e, list, oriE) {
             super.keyup(e, list, oriE);
 
@@ -154,6 +206,15 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * @fn  click(e)
+         *
+         * @brief   Clicks the given e.
+         *
+         * @param   e   The unknown to process.
+         *
+         * @return  .
+         */
         click(e) {
 
         }

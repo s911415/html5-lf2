@@ -45,6 +45,15 @@ var lf2 = (function (lf2) {
             return Promise.all(arr);
         }
 
+        /**
+         * @fn  addPreloadResource(url)
+         *
+         * @brief   Adds a preload resource.
+         *
+         * @param   url URL of the document.
+         *
+         * @return  .
+         */
         addPreloadResource(url) {
             return this.bmpInfo.addPreloadResource(url);
         }
@@ -78,6 +87,13 @@ var lf2 = (function (lf2) {
             return frameContent;
         }
 
+        /**
+         * @fn  getSoundList()
+         *
+         * @brief   Gets sound list.
+         *
+         * @return  The sound list.
+         */
         getSoundList() {
             let soundSet = new Set();
             this.frames.forEach(frame => {

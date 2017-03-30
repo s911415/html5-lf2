@@ -60,10 +60,23 @@ var lf2 = (function (lf2) {
             this._mpRatio = 1;
         }
 
+        /**
+         * @fn  load()
+         *
+         * @brief   Loads this object.
+         *
+         * @return  .
+         */
         load() {
         }
 
-
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             this._hpRatio = this._player.hp / lf2.Player.prototype.DEFAULT_HP;
             this._mpRatio = this._player.mp / lf2.Player.prototype.DEFAULT_HP;

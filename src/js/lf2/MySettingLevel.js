@@ -24,6 +24,13 @@ var lf2 = (function (lf2) {
             super();
         }
 
+        /**
+         * @fn  load()
+         *
+         * @brief   Loads this object.
+         *
+         * @return  .
+         */
         load() {
             //載入要被播放的音樂清單
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
@@ -53,13 +60,36 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * @fn  initialize()
+         *
+         * @brief   Initializes this object.
+         *
+         * @return  .
+         */
         initialize() {
         }
 
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
         }
 
+        /**
+         * @fn  draw(parentCtx)
+         *
+         * @brief   Draws the given parent context.
+         *
+         * @param   parentCtx   Context for the parent.
+         *
+         * @return  .
+         */
         draw(parentCtx) {
             super.draw(parentCtx);
 
@@ -78,6 +108,17 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  keydown(e, list, oriE)
+         *
+         * @brief   Keydowns.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
             console.log(oriE.keyCode);
@@ -97,6 +138,13 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * @fn  showSettingMenu()
+         *
+         * @brief   Shows the setting menu.
+         *
+         * @return  .
+         */
         showSettingMenu() {
             if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._settingContainer) {
@@ -138,6 +186,15 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  bindPlayerEvent(playerElement)
+         *
+         * @brief   Bind player event.
+         *
+         * @param   playerElement   The player element.
+         *
+         * @return  .
+         */
         bindPlayerEvent(playerElement) {
             const _this = this;
             playerElement.find(".name").bind('keydown', function (e) {
@@ -156,10 +213,26 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * @fn  click(e)
+         *
+         * @brief   Clicks the given e.
+         *
+         * @param   e   The unknown to process.
+         *
+         * @return  .
+         */
         click(e) {
 
         }
 
+        /**
+         * @fn  autodelete()
+         *
+         * @brief   Autodeletes this object.
+         *
+         * @return  .
+         */
         autodelete() {
             if (this._settingContainer) {
                 this._settingContainer.remove();

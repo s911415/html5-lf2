@@ -19,6 +19,13 @@ var lf2 = (function (lf2) {
             super.loadingProgress(ctx, requestInfo);
         }
 
+        /**
+         * @fn  load()
+         *
+         * @brief   Loads this object.
+         *
+         * @return  .
+         */
         load() {
             super.load();
 
@@ -48,6 +55,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * @fn  initialize()
+         *
+         * @brief   Initializes this object.
+         *
+         * @return  .
+         */
         initialize() {
             this.audio.play({
                 name: 'bgm',
@@ -56,10 +70,26 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * @fn  update()
+         *
+         * @brief   Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
         }
 
+        /**
+         * @fn  draw(parentCtx)
+         *
+         * @brief   Draws the given parent context.
+         *
+         * @param   parentCtx   Context for the parent.
+         *
+         * @return  .
+         */
         draw(parentCtx) {
             super.draw(parentCtx);
 
@@ -68,9 +98,27 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * @fn  click(e, list, orgE)
+         *
+         * @brief   Clicks.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   orgE    The organisation e.
+         *
+         * @return  .
+         */
         click(e, list, orgE) {
         }
 
+        /**
+         * @fn  showLaunchMenu()
+         *
+         * @brief   Shows the launch menu.
+         *
+         * @return  .
+         */
         showLaunchMenu() {
             if (!this.isCurrentLevel) return;
 
@@ -94,7 +142,13 @@ var lf2 = (function (lf2) {
             }
         }
 
-
+        /**
+         * @fn  autodelete()
+         *
+         * @brief   Autodeletes this object.
+         *
+         * @return  .
+         */
         autodelete() {
             if (this._menuContainer) {
                 this._menuContainer.remove();

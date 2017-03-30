@@ -119,6 +119,13 @@ var lf2 = (function (lf2) {
             return intval(this.data.get('state') || 0);
         }
 
+        /**
+         * @fn  get wait()
+         *
+         * @brief   Gets the wait.
+         *
+         * @return  {get}   A get.
+         */
         get wait() {
             return intval(this.data.get('wait') || 0) + 1;
         }
@@ -143,6 +150,13 @@ var lf2 = (function (lf2) {
             );
         }
 
+        /**
+         * @fn  get hit()
+         *
+         * @brief   Gets the hit.
+         *
+         * @return  {get}   A get.
+         */
         get hit() {
             let ret = {};
             KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k) => {

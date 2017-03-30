@@ -65,6 +65,13 @@ var lf2 = (function (lf2) {
             this._brokenSoundUrl && this._audio.play({name: 'broken'});
         }*/
 
+        /**
+         * @fn  getSoundList()
+         *
+         * @brief   Gets sound list.
+         *
+         * @return  The sound list.
+         */
         getSoundList(){
             let soundSet = super.getSoundList();
             "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ').forEach((k)=>{
