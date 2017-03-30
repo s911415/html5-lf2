@@ -232,7 +232,10 @@ var lf2 = (function (lf2) {
             //if (leftTopPoint.z != 0) debugger;
             ctx.drawImage(
                 imgInfo.img,
+                imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
+                imgInfo.rect.width, imgInfo.rect.height,
                 REAL_DRAW_POS.x, REAL_DRAW_POS.y,
+                imgInfo.rect.width, imgInfo.rect.height
             );
 
             if (this.isFrameChanged) {
