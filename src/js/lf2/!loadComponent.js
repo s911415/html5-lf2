@@ -6,6 +6,7 @@
         'Rectangle.js',
         'ImageInformation.js',
         'KeyboardConfig.js',
+        'KeyEventPool.js',
 
         'ColorBar.js',
         'Bound.js',

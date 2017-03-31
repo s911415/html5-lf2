@@ -114,6 +114,8 @@ var Framework = (function (Framework) {
             },
             userKeyupEvent = function () {
             },
+            userKeypressEvent = function () {
+            },
             _subject;
         for (let keyCode in _keyCodeToChar) _stringToKeyCode[_keyCodeToChar[keyCode]] = intval(keyCode);
 
@@ -153,6 +155,16 @@ var Framework = (function (Framework) {
             }
 
 
+        };
+
+        var keyPressEvent = function (e) {
+            if (!IN_WHITE_LIST(e)) {
+                e.preventDefault();
+            }
+
+            _keyStatus[e.keyCode] = true;
+            var keyCode = _keyCodeToChar[e.which || e.keyCode], i;
+            userKeypressEvent.call(_subject, e);
         };
 
         var keyupEvent = function (e) {
@@ -197,6 +209,10 @@ var Framework = (function (Framework) {
 
         var setKeyupEvent = function (userFunction) {
             userKeyupEvent = userFunction;
+        };
+
+        var setKeypressEvent = function (userFunction) {
+            userKeypressEvent = userFunction;
         };
 
         /**
@@ -249,6 +265,7 @@ var Framework = (function (Framework) {
 
             /** Default constructor. */
             constructor() {
+                window.addEventListener('keypress', keyPressEvent, false);
                 window.addEventListener('keydown', keydownEvent, false);
                 window.addEventListener('keyup', keyupEvent, false);
                 window.addEventListener('blur', clearAllKeyDownLog, false);
@@ -293,6 +310,15 @@ var Framework = (function (Framework) {
              */
             setKeyupEvent() {
                 return setKeyupEvent.apply(this, arguments);
+            }
+
+            /**
+             * Sets keypress event.
+             *
+             * @return  .
+             */
+            setKeypressEvent() {
+                return setKeypressEvent.apply(this, arguments);
             }
 
             /**
