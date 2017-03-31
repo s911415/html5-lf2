@@ -46,6 +46,14 @@ var lf2 = (function (lf2) {
     lf2.SelectionLevel = class extends Framework.Level {
         constructor() {
             super();
+
+            this.html = '';
+            //Load Selection view
+            this._htmlLoader = ResourceManager.loadResource(define.DATA_PATH + 'SelectionScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
         }
 
         load() {
@@ -79,17 +87,11 @@ var lf2 = (function (lf2) {
                 this.players[playerId] = p;
             }
 
-            this.html = '';
             this._attached = false;
             this._selectionContainer = undefined;
-            //Load Setting view
-            ResourceManager.loadResource(define.DATA_PATH + 'SelectionScreen.html', {method: "GET"}).then((data) => {
-                return data.text();
-            }).then((html) => {
-                this.html = html;
+            this._htmlLoader.then(()=>{
                 this.showSelectionPanel();
             });
-
             this._charIdArray = [RANDOM_ID];
             this._mapIdArray = [RANDOM_ID];
             this._mapIndex = 0;

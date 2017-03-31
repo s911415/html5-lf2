@@ -51,20 +51,22 @@ var lf2 = (function (lf2) {
     lf2.LoadingLevel = class extends Framework.Level {
         constructor() {
             super();
+            this.html = "";
+            this._htmlLoader = ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
         }
 
         initializeProgressResource() {
             super.initializeProgressResource();
-            if (this.html) return;
 
-            this.html = "";
-
-            ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
-                return data.text();
-            }).then((html) => {
-                this.html = html;
+            this._htmlLoader.then(()=>{
                 this.showLoadingVideo();
             });
+
+
             this.loadingImg = ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
         }
 
@@ -207,7 +209,10 @@ var lf2 = (function (lf2) {
                 return a;
             }).then((a, b) => {
                 console.log("Preloading extra resources");
-                let arrUrl = [];
+                let arrUrl = [
+                    define.DATA_PATH + 'SelectionScreen.html',
+                    define.DATA_PATH + 'FightScreen.html',
+                ];
                 let arr = [];
 
                 arrUrl.forEach(u => {
