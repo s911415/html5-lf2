@@ -45,7 +45,13 @@ body {
     margin: auto;
     position: relative;
     overflow: hidden;
+    z-index: 1010;
     /*pointer-events: none;*/
+}
+
+#__game_canvas__ {
+    position: relative;
+    z-index: 1000;
 }
 
 .menu_1 {
@@ -71,7 +77,7 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 100;
+    /*z-index: 100;*/
     background: #000;
     /*pointer-events: none;*/
 }
@@ -205,11 +211,11 @@ body {
     background-position: -643px -426px;
 }
 
-#loading-screen #loadDatPath{
+#loading-screen #loadDatPath {
     position: absolute;
-    left:0;
+    left: 0;
     top: 75%;
-    color:#FFF;
+    color: #FFF;
     width: 100%;
     z-index: 5;
     text-align: center;
@@ -424,11 +430,11 @@ body {
     pointer-events: auto;
 }
 
-#__fight_container{
+#__fight_container {
     background: transparent;
 }
 
-#statusPanels{
+#statusPanels {
     position: absolute;
     left: 0;
     top: 0;
@@ -436,7 +442,7 @@ body {
 
 }
 
-#statusPanels .status{
+#statusPanels .status {
     width: 198px;
     height: 53px;
     position: relative;
@@ -444,39 +450,39 @@ body {
     float: left;
 }
 
-#statusPanels .status>*{
+#statusPanels .status > * {
     position: absolute;
 }
 
-#statusPanels .status .small{
+#statusPanels .status .small {
     left: 7px;
     top: 4px;
     width: 40px;
     height: 45px;
 }
 
-#statusPanels .status .bar{
+#statusPanels .status .bar {
     width: 124px;
     height: 10px;
 }
 
-#statusPanels .status .hp{
+#statusPanels .status .hp {
     left: 57px;
     top: 15px;
     background: #6f081f;
 }
 
-#statusPanels .status .hp .value{
+#statusPanels .status .hp .value {
     background: #ff0000;
 }
 
-#statusPanels .status .mp{
+#statusPanels .status .mp {
     left: 57px;
     top: 35px;
     background: #1f086f;
 }
 
-#statusPanels .status .mp .value{
+#statusPanels .status .mp .value {
     background: #0000ff;
     left: 57px;
     top: 35px;
