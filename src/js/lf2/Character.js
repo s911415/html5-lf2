@@ -135,11 +135,11 @@ var lf2 = (function (lf2) {
                 }
             }
 
-            if (next == 0) {
+            if (next === 0) {
                 switch (this.currentFrame.state) {
                     case FrameStage.RUN:
                     case FrameStage.BURN_RUN:
-                        if (this._run_dir == DIRECTION.RIGHT) {
+                        if (this._run_dir === DIRECTION.RIGHT) {
                             next = this.currentFrame.id + 1;
                             //Loop run action
                             if (next > RUN_FRAME_RANGE.max) {
@@ -156,8 +156,8 @@ var lf2 = (function (lf2) {
                         }
 
                         if (
-                            (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction == DIRECTION.RIGHT) ||
-                            (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction == DIRECTION.LEFT)
+                            (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction === DIRECTION.RIGHT) ||
+                            (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
                         ) {
                             next = STOP_RUNNING_FRAME_ID;
                         }
@@ -166,7 +166,7 @@ var lf2 = (function (lf2) {
                     default:
                         next = 0;
                 }
-            } else if (next == 999) {
+            } else if (next === 999) {
                 switch (this.currentFrame.state) {
                     case FrameStage.STAND:
                         if (IS_ARR_ONLY) {
@@ -178,8 +178,8 @@ var lf2 = (function (lf2) {
 
                     case FrameStage.WALK:
                         //hold left or right key
-                        if (IS_ARR_ONLY) {
-                            if (this._walk_dir == DIRECTION.RIGHT) {
+                        if (IS_ARR_ONLY || this.belongTo._isHoldingLastKey()) {
+                            if (this._walk_dir === DIRECTION.RIGHT) {
                                 next = this.currentFrame.id + 1;
                                 //Loop walk action
                                 if (next > WALK_FRAME_RANGE.max) {
@@ -292,11 +292,11 @@ var lf2 = (function (lf2) {
          */
         _isArrowKeyOnly() {
             return (
-                    this._curFuncKey & (
-                        KeyboardConfig.KEY_MAP.UP | KeyboardConfig.KEY_MAP.DOWN |
-                        KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT
-                    )
-                ) !== 0;
+                this._containsKey(KeyboardConfig.KEY_MAP.UP) ||
+                this._containsKey(KeyboardConfig.KEY_MAP.DOWN) ||
+                this._containsKey(KeyboardConfig.KEY_MAP.LEFT) ||
+                this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)
+            );
         }
 
         /**
@@ -306,7 +306,7 @@ var lf2 = (function (lf2) {
          * @private
          */
         _containsKey(key) {
-            return (this._curFuncKey & key) === key;
+            return this.belongTo._containsKey(key);
         }
 
         /**

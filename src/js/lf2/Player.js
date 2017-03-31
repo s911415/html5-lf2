@@ -100,16 +100,18 @@ var lf2 = (function (lf2) {
 
             if (this.character) {
                 //Same func key twice
-                /*if (
-                    this.character._upKey === funcCode &&
-                    funcCode !== 0
+                let first = this.keyEventPool[0] !== undefined ? this.keyEventPool[0].lf2Key : undefined;
+                let second = this.keyEventPool[1] !== undefined ? this.keyEventPool[1].lf2Key : undefined;
+
+                if (
+                    this.allowCombineKey &&
+                    second !== undefined && first === second
                 ) {
-                    if ((funcCode & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
+                    if ((first & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
                         this.character.startRun();
                         console.log('start run');
                     }
                 }
-                 */
             }
 
             return true;
@@ -221,7 +223,14 @@ var lf2 = (function (lf2) {
                 let num = 0;
                 for (let j = 0; j < i; j++) {
                     if (this.keyEventPool[j] === undefined) break;
-                    if (NOW - this.keyEventPool[j].time > CLEAR_KEY_TIME) break;
+
+                    //Clean up key list
+                    if (NOW - this.keyEventPool[j].time > CLEAR_KEY_TIME) {
+                        //keep last key
+                        if (j !== 0) this.keyEventPool[j] = undefined;
+
+                        continue;
+                    }
 
                     num |= this.keyEventPool[j].lf2Key;
                 }
@@ -248,15 +257,6 @@ var lf2 = (function (lf2) {
             const NOW = Date.now();
             this.status.update();
 
-            //Clean up key
-            for (let i = KeyEventPool.KEY_KEEP_COUNT - 1; i >= 0; i--) {
-                if (this.keyEventPool[i] === undefined) continue;
-                if (NOW - this.keyEventPool[i].time > CLEAR_KEY_TIME) {
-                    this.keyEventPool[i] = undefined;
-                } else {
-                    break;
-                }
-            }
             this._updateCurrentKey(NOW);
 
             //this.character.update();
@@ -389,13 +389,13 @@ var lf2 = (function (lf2) {
                 ball.setFrameById(opoint.action);
 
                 //Set direction
-                if (opoint.dir != DIRECTION.RIGHT) {
+                if (opoint.dir !== DIRECTION.RIGHT) {
                     ball._direction = !caller._direction;
                 } else {
                     ball._direction = caller._direction;
                 }
 
-                const DIR_WEIGHT = caller._direction == DIRECTION.RIGHT ? 1 : -1;
+                const DIR_WEIGHT = caller._direction === DIRECTION.RIGHT ? 1 : -1;
 
                 let zPos = caller.height - opoint.appearPoint.y;
 
@@ -410,6 +410,24 @@ var lf2 = (function (lf2) {
             });
 
 
+        }
+
+        /**
+         *
+         * @param {Number} key lf2 key code
+         * @returns {boolean}
+         * @private
+         */
+        _containsKey(key) {
+            const keyName = this.keyboardConfig.KEY_MAP.REVERT_MAP[key];
+            const keyCode =  this.keyboardConfig.config[keyName];
+
+            return KeyBoardManager.isKeyDown(keyCode);
+        }
+
+        _isHoldingLastKey() {
+            if (this.keyEventPool[0] === undefined) return false;
+            return KeyBoardManager.isKeyDown(this.keyEventPool[0].event.keyCode);
         }
 
         /**
