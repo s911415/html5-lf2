@@ -692,67 +692,72 @@ var Framework = (function (Framework) {
         };
 
         static run() {
-            var self = that,
+            that.skipTicks = (1000 / that.fps) | 0;
+            const TICKS = that.skipTicks;
+            let self = that,
                 nowFunc = function () {
-                    return (new Date()).getTime();
+                    return Date.now();
                 },
-                updateTicks = 1000 / that.fps,
-                drawTicks = 1000 / that.fps,
-                previousUpdateTime = nowFunc(),
-                previousDrawTime = previousUpdateTime,
-                now = previousDrawTime;
+                updateTicks = TICKS,
+                drawTicks = TICKS,
+                now = nowFunc(),
+                previousGameLoopTime = now,
+                previousUpdateTime = now,
+                previousDrawTime = now;
 
-            var nextGameTick = now,
+            let nextGameLoopTick = now,
+                nextGameTick = now,
                 nextGameDrawTick = now;
-            that.skipTicks = Math.round(1000 / that.fps);
 
-            var updateFunc = function () {
-                now = nowFunc();
-                if (now > nextGameTick) {
+            let updateFunc = function () {
+                // run Game's update
+                that.update();
+                // if (now > nextGameTick) {
                     //console.log('now: ' + now + ', nextGameTick: ' + nextGameTick + ', diff:' + (now-nextGameTick));
-                    that._fpsAnalysis.update();
+                // that._fpsAnalysis.update();
                     // show FPS information
-                    if (that.fpsContext) {
-                        that.fpsContext.innerHTML = 'update FPS:' + that._fpsAnalysis.getUpdateFPS() + '<br />draw FPS:' + that._drawfpsAnalysis.getUpdateFPS();
-                    }
-                    // run Game's update
-                    that.update();
+                // if (that.fpsContext) {
+                //     that.fpsContext.innerHTML = 'update FPS:' + that._fpsAnalysis.getUpdateFPS() + '<br />draw FPS:' + that._drawfpsAnalysis.getUpdateFPS();
+                // }
 
-                    if (that._isRecording) {
-                        that._record.update();
-                        //console.log("record update")
-                    }
-                    Framework.Replay.update();
-                    nextGameTick += that.skipTicks;
-                }
+                // if (that._isRecording) {
+                //     that._record.update();
+                //     //console.log("record update")
+                // }
+                // Framework.Replay.update();
+                // nextGameTick = now + that.skipTicks;
+                // }
             };
 
-            var drawFunc = function () {
-                if (now >= nextGameDrawTick) {
-                    that.draw(that._context);
-                    that._drawfpsAnalysis.update();
-                    if (that.fpsContext) {
-                        that.fpsContext.innerHTML = 'update FPS:' + that._fpsAnalysis.getUpdateFPS() + '<br />draw FPS:' + that._drawfpsAnalysis.getUpdateFPS();
-                    }
-                    nextGameDrawTick += that.skipTicks;
-                }
+            let drawFunc = function () {
+                that.draw(that._context);
+                // if (now >= nextGameDrawTick) {
+                // that._drawfpsAnalysis.update();
+                // if (that.fpsContext) {
+                //     that.fpsContext.innerHTML = 'update FPS:' + that._fpsAnalysis.getUpdateFPS() + '<br />draw FPS:' + that._drawfpsAnalysis.getUpdateFPS();
+                // }
+                // nextGameDrawTick = now + that.skipTicks;
+                // }
             };
 
-            var gameLoopFunc = function () {
+            let gameLoopFunc = function () {
+                now = nowFunc();
 
-                var preDraw = Date.now();
-                updateFunc();
-                drawFunc();
+                if (now >= nextGameTick) {
+                    updateFunc();
+                    drawFunc();
+                    nextGameTick = now + that.skipTicks;
+                }
 
-                var drawTime = Date.now() - preDraw;
-                if (drawTime > 5) {
-                    that.timelist.push(drawTime);
-                }
-                if (that.timelist.length >= 30) {
-                    var average = that.countAverage(that.timelist);
-                    that.timelist = [];
-                    //console.log("game loop time average " + average);
-                }
+                // var drawTime = Date.now() - preDraw;
+                // if (drawTime > 5) {
+                //     that.timelist.push(drawTime);
+                // }
+                // if (that.timelist.length >= 30) {
+                //     var average = that.countAverage(that.timelist);
+                //     that.timelist = [];
+                //     //console.log("game loop time average " + average);
+                // }
             };
 
             that._isRun = true;
@@ -784,7 +789,7 @@ var Framework = (function (Framework) {
                 window.mozRequestAnimationFrame ||
                 window.webkitRequestAnimationFrame ||
                 window.msRequestAnimationFrame;
-            var _run = function () {
+            let _run = function () {
                 gameLoopFunc();
                 if (that._isRun) {
                     that._runInstance = requestAnimationFrame(_run);
@@ -1054,8 +1059,8 @@ var Framework = (function (Framework) {
     // show fps's div
     that._fpsContext = undefined;
     // FPS analysis object
-    that._fpsAnalysis = new Framework.FpsAnalysis();
-    that._drawfpsAnalysis = new Framework.FpsAnalysis();
+    // that._fpsAnalysis = new Framework.FpsAnalysis();
+    // that._drawfpsAnalysis = new Framework.FpsAnalysis();
     // for gameloop -
     that._runInstance = undefined;
     // game state
