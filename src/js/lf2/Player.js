@@ -16,7 +16,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_DUP_KEY_TIME = 100;
+    const CLEAR_KEY_TIME = 200;
     const NAME_OFFSET = 0;
 
     /**
@@ -74,16 +74,33 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {KeyboardEvent} oriE
+         * @returns {boolean} return true if key fired
          */
-        keypress(oriE) {
+        keydown(oriE) {
             const funcCode = this._parseKeyDownCode(oriE);
-            this._currentKey = funcCode;
+            const NOW = Date.now();
+            if (funcCode !== 0) {
+                let addObj = {
+                    lf2Key: funcCode,
+                    event: oriE,
+                    time: NOW,
+                };
+
+                if(this.allowCombineKey){
+                    this.keyEventPool.push(addObj);
+                }else{
+                    this.keyEventPool[0]=addObj;
+                }
+
+            } else {
+                return false;
+            }
+
+            this._updateCurrentKey(NOW);
 
             if (this.character) {
-                this.character.setFuncKey(funcCode);
-
                 //Same func key twice
-                if (
+                /*if (
                     this.character._upKey === funcCode &&
                     funcCode !== 0
                 ) {
@@ -92,7 +109,10 @@ var lf2 = (function (lf2) {
                         console.log('start run');
                     }
                 }
+                 */
             }
+
+            return true;
         }
 
         /**
@@ -103,6 +123,7 @@ var lf2 = (function (lf2) {
          */
         keyup(e, list, oriE) {
             //console.log(list);
+            return;
             const funcCode = this._parseKeyDownCode(oriE);
             const upKey = this._getFuncKeyCodeByEvent(oriE);
 
@@ -117,7 +138,7 @@ var lf2 = (function (lf2) {
                 }
                 this._upKeyTimer = setTimeout(() => {
                     this.character._upKey = -1;
-                }, CLEAR_DUP_KEY_TIME);
+                }, CLEAR_KEY_TIME);
             }
         }
 
@@ -131,10 +152,9 @@ var lf2 = (function (lf2) {
          * @private
          */
         _parseKeyDownCode(e) {
-            const KEY_CONFIG = this.keyboardConfig.config;
-            let currentKey = 0;
+            return this.keyboardConfig.keyMap.get(e.keyCode) || 0;
 
-            for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /*&& currentKey=== 0*/; i++) {
+            /*for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /!*&& currentKey=== 0*!/; i++) {
                 const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
                 if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
 
@@ -142,7 +162,7 @@ var lf2 = (function (lf2) {
 
             let hitFuncCode = this._parseHitKey(currentKey);
 
-            return hitFuncCode;
+             return hitFuncCode;*/
         }
 
         /**
@@ -188,6 +208,32 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         *
+         * @param {Number} NOW current time
+         * @returns {number}
+         * @private
+         */
+        _updateCurrentKey(NOW){
+            let cmd = 0;
+
+            for (let i = KeyEventPool.KEY_KEEP_COUNT; i >= 1 && cmd === 0; i--) {
+                let num = 0;
+                for (let j = 0; j < i; j++) {
+                    if (this.keyEventPool[j] === undefined) break;
+                    if (NOW - this.keyEventPool[j].time > CLEAR_KEY_TIME) break;
+
+                    num |= this.keyEventPool[j].lf2Key;
+                }
+
+                cmd = this._parseHitKey(num);
+            }
+
+            this._currentKey = cmd;
+
+            return cmd;
+        }
+
         
         load() {
 
@@ -199,7 +245,20 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            const MAP = this.spriteParent.map;
+            const NOW = Date.now();
+            this.status.update();
+
+            //Clean up key
+            for (let i = KeyEventPool.KEY_KEEP_COUNT - 1; i >= 0; i--) {
+                if (this.keyEventPool[i] === undefined) continue;
+                if (NOW - this.keyEventPool[i].time > CLEAR_KEY_TIME) {
+                    this.keyEventPool[i] = undefined;
+                } else {
+                    break;
+                }
+            }
+            this._updateCurrentKey(NOW);
+
             //this.character.update();
             //this.balls.forEach(ball => ball.update());
         }
@@ -359,6 +418,10 @@ var lf2 = (function (lf2) {
          */
         get isObjectChanged() {
             return true;
+        }
+
+        get allowCombineKey(){
+            return !!this.character;
         }
 
     };

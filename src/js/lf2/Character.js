@@ -91,7 +91,6 @@ var lf2 = (function (lf2) {
             this.charId = charId;
             this.head = this.obj.head;
             this.small = this.obj.small;
-            this._curFuncKey = 0;
             this._lastFuncKey = 0;
 
             this._walk_dir = DIRECTION.RIGHT;
@@ -411,12 +410,8 @@ var lf2 = (function (lf2) {
 
         }
 
-        /**
-         * Set func key
-         * @param {Number} key
-         */
-        setFuncKey(key) {
-            this._curFuncKey = key;
+        get _curFuncKey(){
+            return this.belongTo._currentKey;
         }
 
         /**

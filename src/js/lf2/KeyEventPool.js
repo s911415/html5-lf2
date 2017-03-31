@@ -28,5 +28,7 @@ var lf2 = (function (lf2) {
 
     };
 
+    lf2.KeyEventPool.KEY_KEEP_COUNT = KEY_KEEP_COUNT;
+
     return lf2;
 })(lf2 || {});

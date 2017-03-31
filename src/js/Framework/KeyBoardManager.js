@@ -134,7 +134,7 @@ var Framework = (function (Framework) {
 
         var keydownEvent = function (e) {
             if (!IN_WHITE_LIST(e)) {
-                //e.preventDefault();
+                e.preventDefault();
             }
 
             _keyStatus[e.keyCode] = true;

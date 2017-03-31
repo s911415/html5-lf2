@@ -85,6 +85,11 @@ var lf2 = (function (lf2) {
 
             this.playerId = playerId;
             this.config = lf2.KeyboardConfig.getKeyConfig()[playerId];
+            this.keyMap = new Map();
+            //{"NAME":"Player1","UP":38,"DOWN":40,"LEFT":37,"RIGHT":39,"ATTACK":68,"JUMP":83,"DEFEND":65}
+            KEY_MAP.KEY_LIST.forEach((keyName)=>{
+                this.keyMap.set(this.config[keyName], KEY_MAP[keyName]);
+            });
         }
 
         /**

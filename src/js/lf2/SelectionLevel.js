@@ -208,13 +208,13 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        keypress(e, list, oriE) {
-            super.keypress(e, list, oriE);
+        keydown(e, list, oriE) {
+            super.keydown(e, list, oriE);
 
             this.players.forEach((player) => {
-                player.keypress(e, list, oriE);
-
-                this._handlePlayerKeypress(player);
+                if(player.keydown(oriE)){
+                    this._handlePlayerKeypress(player);
+                }
             });
 
             if (!this._isEnteringPanelShowed && this._isMinPlayerEntered()) {
