@@ -59,6 +59,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
             let sumPlayerX = 0;
@@ -79,6 +86,15 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * _setCameraPositionByX(x)
+         *
+         * Sets camera position by x coordinate.
+         *
+         * @param   x   The unknown to process.
+         *
+         * @return  .
+         */
         _setCameraPositionByX(x) {
             const WIDTH = this.map.width - Framework.Config.canvasWidth;
             const HW = Framework.Config.canvasWidth / 2;
@@ -95,6 +111,13 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * _getCameraPositionAsPoint()
+         *
+         * Gets camera position as point.
+         *
+         * @return  The camera position as point.
+         */
         _getCameraPositionAsPoint() {
             let x = this.map.width - Framework.Config.canvasWidth;
             x *= this.cameraPosition;

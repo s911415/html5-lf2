@@ -43,22 +43,59 @@ var lf2 = (function (lf2) {
             this.rect = info.get('rect') || 0;
         }
 
+        /**
+         * done()
+         *
+         * Dones this object.
+         *
+         * @return  .
+         */
         done(){
             return this._imgLoader;
         }
 
+        /**
+         * initialize()
+         *
+         * Initializes this object.
+         *
+         * @return  .
+         */
         initialize(){
 
         }
 
+        /**
+         * load()
+         *
+         * Loads this object.
+         *
+         * @return  .
+         */
         load(){
 
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update(){
 
         }
 
+        /**
+         * draw(ctx)
+         *
+         * Draws the given context.
+         *
+         * @param   ctx The context.
+         *
+         * @return  .
+         */
         draw(ctx){
 
         }

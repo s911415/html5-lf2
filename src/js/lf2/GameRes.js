@@ -13,6 +13,15 @@ var lf2 = (function (lf2) {
             super();
         }
 
+        /**
+         * loadRes(path)
+         *
+         * Loads a resource.
+         *
+         * @param   path    Full pathname of the file.
+         *
+         * @return  The resource.
+         */
         loadRes(path){
             return ResourceManager.loadResource(path);
         }

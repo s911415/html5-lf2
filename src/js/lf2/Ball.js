@@ -77,6 +77,13 @@ var lf2 = (function (lf2) {
             //if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
             if (this.isFrameChanged) {

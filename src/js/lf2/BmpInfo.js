@@ -61,7 +61,7 @@ var lf2 = (function (lf2) {
         /**
          * Add preload resource
          * @param url
-         * @returns {*}
+         * @returns {Promise}
          */
         addPreloadResource(url) {
             let promise = null;
@@ -83,6 +83,15 @@ var lf2 = (function (lf2) {
             return promise;
         }
 
+        /**
+         * _processImage(str)
+         *
+         * Process the image described by str.
+         *
+         * @param   str The string.
+         *
+         * @return  .
+         */
         _processImage(str) {
             const pairContent = Utils.parseDataLine(str);
             const key = str.split(':')[0];

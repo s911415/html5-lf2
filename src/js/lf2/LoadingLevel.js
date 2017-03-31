@@ -59,6 +59,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * initializeProgressResource()
+         *
+         * Initializes the progress resource.
+         *
+         * @return  .
+         */
         initializeProgressResource() {
             super.initializeProgressResource();
 
@@ -70,9 +77,26 @@ var lf2 = (function (lf2) {
             this.loadingImg = ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
         }
 
+        /**
+         * loadingProgress(context, requestInfo)
+         *
+         * Loading progress.
+         *
+         * @param   context     The context.
+         * @param   requestInfo Information describing the request.
+         *
+         * @return  .
+         */
         loadingProgress(context, requestInfo) {
         }
 
+        /**
+         * load()
+         *
+         * Loads this object.
+         *
+         * @return  .
+         */
         load() {
             this.allDone = false;
             this._startLoadingTime = Date.now();
@@ -233,6 +257,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             if (this.allDone && (Date.now() - this._startLoadingTime) >= define.LOADING_MIN_TIME) {
                 //TODO: NEED CHANGE
@@ -249,6 +280,7 @@ var lf2 = (function (lf2) {
             }
         }
 
+        
         draw(ctx) {
             super.draw(ctx);
 
@@ -307,6 +339,13 @@ var lf2 = (function (lf2) {
             return map;
         }
 
+        /**
+         * showLoadingVideo()
+         *
+         * Shows the loading video.
+         *
+         * @return  .
+         */
         showLoadingVideo() {
             if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._loadingContainer) {
@@ -324,6 +363,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * autodelete()
+         *
+         * Autodeletes this object.
+         *
+         * @return  .
+         */
         autodelete() {
             if (this._loadingContainer) {
                 this._loadingContainer.remove();
@@ -331,6 +377,15 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * _showLoadFile(url)
+         *
+         * Shows the load file.
+         *
+         * @param   url URL of the document.
+         *
+         * @return  .
+         */
         _showLoadFile(url){
             const showUrl = url.replace(/\\/g, '/');
             console.log(`Loading "${showUrl}".`);

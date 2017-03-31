@@ -1,0 +1,562 @@
+===============================================================================
+                         Little Fighter 2 version 2.0a
+                                  11 Jul 2009
+
+                             Copyright 1999-2009,
+                         Marti Wong and Starsky Wong, 
+                             All rights reserved
+    
+                   Official Site: http://littlefighter.com/
+                                  http://lf2.net  
+===============================================================================
+
+
+-------
+UPDATES
+-------
+<11 Jul 2009>
+1. Include the fix of the NumLock bug (In v2.0, NumLock keeps ON all the time,
+   after the fix, user can turn off the NumLock)
+
+2. Fix a critical bug in Geforce 9800 graphics card - Showing wrong sprite 
+   pictures when character facing left.
+
+   If you are typical players, this fix has no impact on you.
+
+   But if you are LF2 data modifiers, you may be interested to the following
+   details:
+   
+   Cause of the bug:
+   The "left-right" mirror function of DirectDrew is no longer supported by
+   some new graphics cards (Such as Geforce 9800).
+
+   How did I fix it?
+   I pre-rendered the mirrored pictures and put them along with the original 
+   pictures.
+   For example, for Davis, it's animation consisted of 
+      davis_0.bmp,        davis_1.bmp,        davis_2.bmp
+   In LF2 v2.0a, there are 
+      davis_0_mirror.bmp, davis_1_mirror.bmp, davis_2_mirror.bmp, they are 
+      the "mirrored" version of the 3 bmp above
+
+   Impact to modifiers:
+   It is recommended that you should create those *_mirror.bmp with your
+   character    files.
+   In case the mirrored pictures are not provided, LF2 will try to do the 
+   mirroring programmatically.  It means even you don't provide *_mirror.bmp,
+   LF2 may still work.  However, if you are using Geforce 9800, the "wrong
+   sprite picture" bug will happen when those mirror pictures are missing.
+
+   If you have any questions, you may go to http://lf2.net/forum for help.
+
+
+<28 Jul 2008>
+1. Add a Survival Stage (in stage mode)
+
+2. Add Gameplay Recording feature 
+   (for details, go to http://littlefighter.com/record/)
+
+3. Hold a competition to celebrate 10th year anniversary of LF2
+   (for details, go to http://littlefighter.com/challenge/)
+
+4. Add background musics
+
+5. Fix bugs:
+   a. Ask Yes/No after pressing ESC to quit
+   b. Fix the busy waiting issue in framerate controller (save CPU resources)
+   c. Remove the "dirty" pixels from some character's action bmps
+   d. Disable the menu key - F10 and ALT key
+
+6. Other improvements:
+   a. User can adjust volume by pressing F11/F12
+   b. Compress all the bmps
+   c. Allow user to set Full Screen by pressing the maximize button on 
+      upper left corner of window
+   d. Add update news feature (inform players for any update.)
+
+
+-------------------
+SYSTEM REQUIREMENTS
+-------------------
+CPU: Celeron 300 / K6-2 300 or above
+Memory: >32 MB Ram
+Display Card: Supports Direct X acceleration
+Platform: Win 2000/Vista with Direct X 9.0 or above
+Resolution: 800 x 600 or above, _MUST BE_ 32 bit colors
+
+
+-------------
+Function Keys
+-------------
+F1: Pause
+F2: Pause/Step
+F3: Function Keys Locked (F6,F7,F8,F9)
+F4: Restart
+F5: Turn off the frame control timer (Speed up)
+F6: Unlimited MP
+F7: Recover
+F8: Drop weapons from the sky
+F9: Destroy all weapons
+F11: Audio volume +
+F12: Audio Volume -
+ESC: Quit
+
+(F5 ~ F9 are disabled in stage mode.)
+
+-------------
+SPECIAL MOVES
+-------------
+
+Template, Bandit and Hunter do not have special moves.
+
+('D' means Defend button, 'A' means Attack button, 'J' means Jump button)
+('>', '^', 'v' means the arrow buttons)
+You can setup the Key Configuration by choosing "Control Settings" in the
+main menu.
+
+
+==John==
+1.Energy Blast (15mp) 
+  Input method: D + > + A
+2.Heal (others) (70mp)
+  Input method: D + ^ + J
+3.Energy Shield: (20mp)
+  Input method: D + > + J  
+4.Energy Disk: (50mp)
+  Input method: D + ^ + A
+5.Heal (myself): (70mp)
+  Input method: D + v + J  
+
+
+==Deep==
+1.Energy Blast (15mp) 
+  Input method: D + > + A  ( + A + A...)
+2.Strike (15mp)
+  Input method: D + v + A
+3.Leap Attack: (15mp)
+  Input method: D + ^ + J + A
+4.Leap Attack2: (15mp)
+  Input method: Strike + J + A  
+5.Dashing Strafe: (30mp)
+  Input method: D + > + J  
+
+
+==Henry==
+1.Dragon Palm (30mp) 
+  Input method: D + > + A
+2.Multiple Shot (30mp)
+  Input method: D + J + A  ( + A + A...)
+2.Critical Shot (40mp)
+  Input method: D + > + J
+2.Sonata of the Death (70mp)
+  Input method: D + ^ + J
+
+
+==Rudolf==
+1.Leap Attack: (0mp)
+  Input method: D + > + J
+2.Multiple Ninja Star: (20mp)
+  Input method: D + > + A  ( + A + A...)
+2.Transform (30mp) 
+  Input method: Gripping Other + D + J + A
+3.Hide (70mp)
+  Input method: D + ^ + J
+4.Double (70mp)
+  Input method: D + v + J
+
+
+==Louis==
+1.Thunder Punch (10mp) 
+  Input method: Run + A
+2.Thunder Punch (15mp) 
+  Input method: Run + J +  A
+3.Thunder Kick (10mp) 
+  Input method: D + > + J
+4.Whirlwind Throw (15mp) 
+  Input method: D + ^ + J
+5.Phoenix Palm (30mp) 
+  Input method: D + > + A
+
+
+==LouisEX==
+1.Phoenix Dance (0mp)
+  Input method: D + v + A
+2.Thunder Punch (6mp) 
+  Input method: Run + A
+3.Thunder Punch (8mp) 
+  Input method: Run + J +  A
+4.Phoenix Palm (20mp) 
+  Input method: D + > + A ( + A + A...)
+
+
+==Firen==
+1.Fire Ball (15mp) 
+  Input method: D + > + A  ( + A + A...) 
+2.Blaze (15mp +...)
+  Input method: D + > + J
+3.Inferno (30mp +...)
+  Input method: D + v + J
+4.Explosion (60mp + 8hp)
+  Input method: D + ^ + J
+
+
+==Freeze==
+1.Ice Blast (20mp) 
+  Input method: D + > + A
+2.Summon Sword (30mp)
+  Input method: D + v + J
+3.Icicle (30mp)
+  Input method: D + > + J
+4.Whirlwind (60mp)
+  Input method: D + ^ + J
+
+
+==Firzen==
+1.Firzen Cannon (5mp +...) 
+  Input method: D + > + J
+2.Overwhelming Disaster (20mp)
+  Input method: D + ^ + A ( + A + A...)
+3.Arctic Volcano (50mp)
+  Input method: D + ^ + J
+  
+
+==Dennis==
+1.Energy Blast (8mp) 
+  Input method: D + > + A  ( + A + A...) 
+2.Shrafe (15mp) 
+  Input method: D + v + A
+3.Whirlwind Kick (15mp + ...) 
+  Input method: D + > + J
+4.Chasing Blast (20mp) 
+  Input method: D + ^ + A
+
+
+==Woody==
+1.Flip Kick (0mp) 
+  Input method: D + ^ + A
+2.Turning Kick (10mp) 
+  Input method: D + v + A
+3.Teleport (10mp) 
+  Input method: D + ^ + J (to enemy)   /   D + v + J (to friend)
+4.Energy Blast (25mp) 
+  Input method: D + > + A
+5.Tiger Dash (40mp) 
+  Input method: D + > + J
+
+
+==Davis==
+1.Leap Attack (5mp) 
+  Input method: D + ^ + J + A 
+2.Energy Blast (8mp) 
+  Input method: D + > + A  ( + A + A...) 
+3.Shrafe (15mp) 
+  Input method: D + v + A
+4.Dragon Punch (45mp) 
+  Input method: D + ^ + A 
+
+
+==Bandit==
+No special moves.
+
+
+==Hunter==
+No special moves.
+
+
+==Mark==
+1.Crash Punch (0mp) 
+  Input method: D + > + A (+ A)
+2.Body Attack (0mp + ...) 
+  Input method: D + > + J
+
+
+==Jack==
+1.Energy Blast (10mp) 
+  Input method: D + > + A
+2.Flash Kick (25mp)
+  Input method: D + ^ + A
+
+
+==Sorcerer==
+1.Ice Blast (25mp) 
+  Input method: D + > + J
+2.Fire Ball (15mp) 
+  Input method: D + > + A  ( + A + A...) 
+3.Heal (others) (70mp)
+  Input method: D + ^ + J
+4.Heal (myself): (70mp)
+  Input method: D + v + J  
+
+
+==Monk==
+1.ShaoLin Palm (20mp) 
+  Input method: D + > + A
+
+
+==Jan==
+1.Devil's Judgement (30mp) 
+  Input method: D + ^ + A
+2.Angel's Blessing (40mp)
+  Input method: D + ^ + J
+
+
+==Knight==
+No special moves.
+
+
+==Justin==
+1.Wolf Punch (15mp) 
+  Input method: D + v + A ( + A...)
+2.Energy Blast (15mp)
+  Input method: D + > + A
+
+
+==Bat==
+1.Speed Punch (10mp) 
+  Input method: D + > + J
+2.Eye Laser (25mp) 
+  Input method: D + > + A
+3.Summon Bats (40mp) 
+  Input method: D + ^ + J
+
+
+==Julian==
+1.Soul Punch (0mp) 
+  Input method: Run + A
+2.Uppercut (0mp) 
+  Input method: D + ^ + A ( + A)
+3.Skull Blast (2mp + ...)
+  Input method: D + > + A ( + A...)
+4.Mirror Image (5mp) 
+  Input method: D + J + A ( + J...)
+5.Big Bang (20mp)
+  Input method: D + ^ + J
+6.Soul Bomb (25mp)
+  Input method: D + > + J
+
+
+-----------------------------
+Command Computer Teammate(s):
+-----------------------------
+Come:  D + J + D + J
+Stay:  D + D + D + D
+Move:  D + A + D + A
+
+
+----------------------
+How to record gameplay
+----------------------
+To record your gameplay in LF2(v2.0), you have to turn on recording feature 
+by the following steps:
+
+1. Start LF2
+2. Choose "Recording info" at the main menu
+3. Type "Your name" and "More info" (these info will be shown when others 
+   replaying your recording)
+4. Check the "Turn on recording" box
+5. Click "ok"
+
+Then LF2 will automatically record and save each of your gameplay to the 
+folder "recording\" under LF2 game directory.
+
+For details, please visit http://lf2.net/record/
+
+
+------
+Donate
+------
+If you like our game, you may show your support by paypal donating (say US $8)
+Here is the link:
+https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=donate%40lf2%2enet&lc=US&item_name=Little%20Fighter&amount=8%2e00&currency_code=USD&no_note=0&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHostedGuest
+
+
+----------
+DISCLAIMER
+----------
+Authors of this program will not be held liable for any damages to either the 
+user or the system it is run on, that may occur as a direct or indirect result 
+of the use of this program.
+
+
+==============================================================================
+You may goto "http://littlefighter.com/" or "http://lf2.net" to check the news 
+of LF2 and other games developed by us.
+==============================================================================
+
+================================================ =============================
+                         小戰鬥機2版本2.0a
+                                  2009年7月11日
+
+                             版權所有1999-2009，
+                         王Wong and和黃星星，
+                             版權所有
+    
+                   官方網站：http://littlefighter.com/
+                                  http://lf2.net
+================================================ =============================
+
+
+-------
+更新
+-------
+<11七月2009>
+1.包括NumLock錯誤的修復（在v2.0中，NumLock始終保持ON，
+   修復後，用戶可以關閉NumLock）
+
+2.修復Geforce 9800顯卡的嚴重錯誤 - 顯示錯誤的精靈
+   當人物面向左邊時的照片。
+
+   如果你是典型的球員，這個修正對你沒有影響。
+
+   但是，如果您是LF2數據修飾符，則可能對以下內容感興趣
+   細節：
+   
+   原因的bug：
+   DirectDrew的“左右”鏡像功能不再受支持
+   一些新的顯卡（如Geforce 9800）。
+
+   我如何解決？
+   我預先渲染了鏡像，並將它們與原版一起放在一起
+   圖片。
+   例如，對於戴維斯來說，它的動畫是由
+      davis_0.bmp，davis_1.bmp，davis_2.bmp
+   在LF2 v2.0a中有
+      davis_0_mirror.bmp，davis_1_mirror.bmp，davis_2_mirror.bmp，他們是
+      “鏡像”版本的3 bmp以上
+
+   對修飾符的影響：
+   建議你應該用你的* _mirror.bmp創建
+   字符文件。
+   如果沒有提供鏡像圖片，LF2會嘗試做
+   以編程方式進行鏡像。這意味著即使你不提供* _mirror.bmp，
+   LF2仍然可以工作。但是，如果您使用的是Geforce 9800，則“錯誤”
+   精靈圖片“錯誤會發生在那些鏡像丟失。
+
+   如果您有任何問題，可以訪問http://lf2.net/forum尋求幫助。
+
+
+<2008年7月28日>
+1.添加生存階段（舞台模式）
+
+2.添加遊戲錄製功能
+   （詳情請參閱http://littlefighter.com/record/）
+
+舉行比賽，慶祝LF2十週年
+   （有關詳情，請訪問http://littlefighter.com/challenge/）
+
+4.添加背景音樂
+
+修正錯誤：
+   一個。按ESC退出後詢問是/否
+   b。修復幀率控制器中的待機等待問題（節省CPU資源）
+   C。從某個角色的動作bmps中移除“臟”像素
+   d。禁用菜單鍵 - F10和ALT鍵
+
+6.其他改進：
+   一個。用戶可以按F11 / F12調節音量
+   b。壓縮所有的bmps
+   C。允許用戶通過按最大化按鈕設置全屏
+      窗口左上角
+   d。添加更新新聞功能（通知玩家任何更新。）
+
+
+-------------------
+系統要求
+-------------------
+CPU：Celeron 300 / K6-2 300或以上
+內存：> 32 MB Ram
+顯示卡：支持直接X加速
+平台：使用Direct X 9.0或更高版本的Win 2000 / Vista
+分辨率：800 x 600或以上，_必須BE_ 32位顏色
+
+
+-------------
+功能鍵
+-------------
+F1：暫停
+F2：暫停/步
+F3：功能鍵鎖定（F6，F7，F8，F9）
+F4：重新啟動
+F5：關閉幀控制定時器（加速）
+F6：無限MP
+F7：恢復
+F8：從天上掉下武器
+F9：毀滅所有武器
+F11：音頻音量+
+F12：音量 - 
+ESC：退出
+
+（F5〜F9在舞台模式下禁用）
+
+-------------
+特殊運動
+-------------
+
+模板，強盜和獵人沒有特別的動作。
+
+（'D'表示防禦按鈕，'A'表示攻擊按鈕，'J'表示跳轉按鈕）
+（'>'，'^'，'v'表示箭頭按鈕）
+您可以通過選擇“控制設置”來設置密鑰配置
+主菜單。
+
+
+==約翰==
+能量爆破（15mp）
+  輸入法：D +> + A
+（其他人）（70mp）
+  輸入法：D + ^ + J
+能量盾：（20mp）
+  輸入法：D +> + J
+能量盤（50mp）
+  輸入法：D + ^ + A
+（自己）：（70mp）
+  輸入法：D + v + J
+
+
+==深==
+能量爆破（15mp）
+  輸入法：D +> + A（+ A + A ...）
+2.打擊（15mp）
+  輸入法：D + v + A
+攻擊力：（15mp）
+  輸入法：D + ^ + J + A
+攻擊攻擊2：（15mp）
+  輸入法：罷工+ J + A
+（30mp）
+  輸入法：D +> + J
+
+
+==亨利==
+棕櫚掌（30mp）
+  輸入法：D +> + A
+多拍（30mp）
+  輸入法：D + J + A（+ A + A ...）
+2.關鍵射擊（40mp）
+  輸入法：D +> + J
+死亡紀錄（70mp）
+  輸入法：D + ^ + J
+
+
+==魯道夫==
+攻擊力：（0mp）
+  輸入法：D +> + J
+2.多忍者之星：（20mp）
+  輸入法：D +> + A（+ A + A ...）
+轉換（30mp）
+  輸入法：夾住其他+ D + J + A
+隱藏（70mp）
+  輸入法：D + ^ + J
+雙（70mp）
+  輸入法：D + v + J
+
+
+== Louis ==
+捶打（10mp）
+  輸入法：運行+ A
+捶打（15mp）
+  輸入法：運行+ J + A
+踢踢（10mp）
+  輸入法：D +> + J
+旋風投擲（15mp）
+  輸入法：D + ^ + J
+鳳凰棕櫚

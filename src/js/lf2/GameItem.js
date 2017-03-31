@@ -332,7 +332,13 @@ var lf2 = (function (lf2) {
             throw 'METHOD NOT IMPLEMENT';
         }
 
-
+        /**
+         * get ImgInfo()
+         *
+         * Image information.
+         *
+         * @return  {get}   A get.
+         */
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
             const curFrame = this.currentFrame;
@@ -344,6 +350,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * get leftTopPoint()
+         *
+         * Left top point.
+         *
+         * @return  {get}   A get.
+         */
         get leftTopPoint() {
             const center = this.currentFrame.center;
             let leftTopPoint = new Point3D(
@@ -359,6 +372,13 @@ var lf2 = (function (lf2) {
             return leftTopPoint;
         }
 
+        /**
+         * _getNextFrameId()
+         *
+         * Gets the next frame identifier.
+         *
+         * @return  The next frame identifier.
+         */
         _getNextFrameId() {
             let next = this.currentFrame.nextFrameId;
             if (next == 0) return this.currentFrame.id;
@@ -378,16 +398,37 @@ var lf2 = (function (lf2) {
             return false;
         }
 
+        /**
+         * get isObjectChanged()
+         *
+         * Is object changed.
+         *
+         * @return  {get}   A get.
+         */
         get isObjectChanged() {
             //TODO: need implement
             return super.isObjectChanged ||
                 this.isFrameChanged;
         }
 
+        /**
+         * get width()
+         *
+         * Gets the width.
+         *
+         * @return  {get}   A get.
+         */
         get width() {
             return this.ImgInfo.rect.width;
         }
 
+        /**
+         * get height()
+         *
+         * Gets the height.
+         *
+         * @return  {get}   A get.
+         */
         get height() {
             return this.ImgInfo.rect.height;
         }

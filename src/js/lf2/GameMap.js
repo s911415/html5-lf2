@@ -57,22 +57,59 @@ var lf2 = (function (lf2) {
             });*/
         }
 
+        /**
+         * done()
+         *
+         * Dones this object.
+         *
+         * @return  .
+         */
         done() {
             return Promise.all(this._promiseList);
         }
 
+        /**
+         * initialize()
+         *
+         * Initializes this object.
+         *
+         * @return  .
+         */
         initialize() {
 
         }
 
+        /**
+         * load()
+         *
+         * Loads this object.
+         *
+         * @return  .
+         */
         load() {
 
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
 
         }
 
+        /**
+         * draw(ctx)
+         *
+         * Draws the given context.
+         *
+         * @param   ctx The context.
+         *
+         * @return  .
+         */
         draw(ctx) {
             //Align to bottom
             const Y = Framework.Config.canvasHeight - this.simpleMap.height;

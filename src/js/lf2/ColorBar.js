@@ -21,14 +21,37 @@ var lf2 = (function (lf2) {
             this._height = height;
         }
 
+        /**
+         * load()
+         *
+         * Loads this object.
+         *
+         * @return  .
+         */
         load() {
 
         }
 
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
 
         }
 
+        /**
+         * draw(ctx)
+         *
+         * Draws the given context.
+         *
+         * @param   ctx The context.
+         *
+         * @return  .
+         */
         draw(ctx) {
             ctx.fillStyle = this.color;
             ctx.fillRect(
