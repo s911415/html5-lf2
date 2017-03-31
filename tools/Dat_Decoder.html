@@ -45,15 +45,27 @@
     }
 
     function loadCallback(callback) {
-        let dataEnc = new Uint8Array(this.result);
+        let dataEnc = new Uint8Array(this.result, KEEP_BYTE);
         for (let i = 0, j = dataEnc.length; i < j; i++) {
             let ch = dataEnc[i];
-            dataEnc[i] = ch - KEY_BYTES[i % KEY_BYTES.length];
-        }
-        let text = String.fromCharCode.apply(null, dataEnc).substr(KEEP_BYTE);
-        let blob = new Blob([text], {type: 'text/plain'});
+            let decodedData = ch - KEY_BYTES[(i + KEEP_BYTE) % KEY_BYTES.length];
 
-        callback(blob, text);
+            if (i >= j - 5 && decodedData < 0) {
+                decodedData = 10;
+            }
+
+            dataEnc[i] = decodedData;
+        }
+
+        let blob = new Blob([dataEnc], {type: 'text/plain'});
+        let fr = new FileReader();
+        fr.onload = function () {
+            let text = this.result;
+            callback(blob, text);
+        };
+        fr.readAsText(blob, 'BIG5');
+
+
     }
 
     $("#files").bind('change', function(e){
@@ -71,12 +83,12 @@
         let fileCount = 0;
 
         Array.prototype.toArray(files).forEach((file) => {
-            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + ".dat";
+            const fileName = file.name.substr(0, file.name.lastIndexOf(".")) + ".txt";
             processFile(file, function (blob) {
                 zip.file(fileName, blob);
 
                 fileCount++;
-                if (fileCount == files.length) compressDone(zip);
+                if (fileCount === files.length) compressDone(zip);
             });
         });
 
