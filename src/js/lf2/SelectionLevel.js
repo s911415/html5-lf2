@@ -142,6 +142,11 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         draw(parentCtx) {
+            if (!this._selectionContainer) {
+                console.warn('html not loaded');
+                return;
+            }
+
             super.draw(parentCtx);
             console.log('selection draw');
 
@@ -408,6 +413,7 @@ var lf2 = (function (lf2) {
          */
         showSelectionPanel() {
             if (!this.isCurrentLevel) return;
+            
             if (this.html !== "" && !this._selectionContainer) {
                 $("#" + _SELECTION_CONTAINER_ID).remove();
 
