@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
+    const KeyEventPool = lf2.KeyEventPool;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const Ball = lf2.Ball;
@@ -38,6 +39,7 @@ var lf2 = (function (lf2) {
             this.status = new PlayerStatusPanel(this);
 
             this.keyboardConfig = new KeyboardConfig(playerId);
+            this.keyEventPool = new KeyEventPool();
             this.name = this.keyboardConfig.NAME;
             this._currentKey = 0;
 
@@ -71,11 +73,9 @@ var lf2 = (function (lf2) {
 
         /**
          *
-         * @param e
-         * @param list
          * @param {KeyboardEvent} oriE
          */
-        keydown(e, list, oriE) {
+        keypress(oriE) {
             const funcCode = this._parseKeyDownCode(oriE);
             this._currentKey = funcCode;
 
@@ -134,9 +134,11 @@ var lf2 = (function (lf2) {
             const KEY_CONFIG = this.keyboardConfig.config;
             let currentKey = 0;
 
-            KeyboardConfig.KEY_MAP.KEY_LIST.forEach((k) => {
-                if (KeyBoardManager.isKeyDown(KEY_CONFIG[k])) currentKey |= KeyboardConfig.KEY_MAP[k];
-            });
+            for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /*&& currentKey=== 0*/; i++) {
+                const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
+                if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+
+            }
 
             let hitFuncCode = this._parseHitKey(currentKey);
 

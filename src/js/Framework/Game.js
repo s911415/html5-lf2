@@ -688,6 +688,7 @@ var Framework = (function (Framework) {
             Framework.KeyBoardManager.setSubject(self._currentLevel);
             Framework.KeyBoardManager.setKeyupEvent(self.keyup);
             Framework.KeyBoardManager.setKeydownEvent(self.keydown);
+            Framework.KeyBoardManager.setKeypressEvent(self.keypress);
 
         };
 
