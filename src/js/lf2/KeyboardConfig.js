@@ -12,6 +12,11 @@ var lf2 = (function (lf2) {
         DEFEND: 1024,
         KEY_LIST: ["UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "JUMP", "DEFEND"],
     };
+    KEY_MAP.REVERT_MAP = {};
+    for(let k in KEY_MAP){
+        if(isFinite(KEY_MAP[k])) KEY_MAP.REVERT_MAP[KEY_MAP[k]] = k;
+    }
+    Object.freeze(KEY_MAP.REVERT_MAP);
     Object.freeze(KEY_MAP);
     const HIT_KEY = {
         ja: KEY_MAP.DEFEND | KEY_MAP.JUMP | KEY_MAP.ATTACK,     // 防跳攻
@@ -85,6 +90,11 @@ var lf2 = (function (lf2) {
 
             this.playerId = playerId;
             this.config = lf2.KeyboardConfig.getKeyConfig()[playerId];
+            this.keyMap = new Map();
+            //{"NAME":"Player1","UP":38,"DOWN":40,"LEFT":37,"RIGHT":39,"ATTACK":68,"JUMP":83,"DEFEND":65}
+            KEY_MAP.KEY_LIST.forEach((keyName)=>{
+                this.keyMap.set(this.config[keyName], KEY_MAP[keyName]);
+            });
         }
 
         /**

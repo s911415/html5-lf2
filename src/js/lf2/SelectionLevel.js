@@ -198,9 +198,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * keydown(e, list, oriE)
+         * keypress(e, list, oriE)
          *
-         * Keydowns.
+         * Keypress.
          *
          * @param   e       The unknown to process.
          * @param   list    The list.
@@ -212,9 +212,9 @@ var lf2 = (function (lf2) {
             super.keydown(e, list, oriE);
 
             this.players.forEach((player) => {
-                player.keydown(e, list, oriE);
-
-                this._handlePlayerKeydown(player);
+                if(player.keydown(oriE)){
+                    this._handlePlayerKeypress(player);
+                }
             });
 
             if (!this._isEnteringPanelShowed && this._isMinPlayerEntered()) {
@@ -247,12 +247,12 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * Handle player key down
+         * Handle player key press
          *
          * @param player
          * @private
          */
-        _handlePlayerKeydown(player) {
+        _handlePlayerKeypress(player) {
             let elem = player.elem;
             let stage = intval(player._selectStage || 0);
             const prevStage = stage;

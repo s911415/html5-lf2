@@ -41,11 +41,13 @@ gulp.task('build', () => {
         "src/js/Framework/GameMainMenu.js",
         "src/js/Framework/Audio.js",
         "src/js/Framework/triangleComponent.js",
+
         'src/js/lf2/define.js',
         'src/js/lf2/Utils.js',
         'src/js/lf2/Rectangle.js',
         'src/js/lf2/ImageInformation.js',
         'src/js/lf2/KeyboardConfig.js',
+        'src/js/lf2/KeyEventPool.js',
 
         'src/js/lf2/ColorBar.js',
         'src/js/lf2/Bound.js',

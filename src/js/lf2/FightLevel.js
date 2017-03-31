@@ -124,7 +124,7 @@ var lf2 = (function (lf2) {
 
             //update each player status
             this.config.players.forEach((player) => {
-                player.status.update();
+                player.update();
             });
         }
 
@@ -173,9 +173,8 @@ var lf2 = (function (lf2) {
          */
         keydown(e, list, oriE) {
             super.keydown(e, list, oriE);
-
             this.config.players.forEach((player) => {
-                player.keydown(e, list, oriE);
+                player.keydown(oriE);
             });
 
             let curCount = (this._funcStatus[e.key] !== undefined) ? ++this._funcStatus[e.key] : 0;
@@ -215,11 +214,9 @@ var lf2 = (function (lf2) {
          */
         keyup(e, list, oriE) {
             super.keyup(e, list, oriE);
+        }
 
-            this.config.players.forEach((player) => {
-                player.keyup(e, list, oriE);
-            });
-
+        keypress(e, list, oriE){
         }
 
         /**

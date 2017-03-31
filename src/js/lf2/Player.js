@@ -9,13 +9,14 @@ var lf2 = (function (lf2) {
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
+    const KeyEventPool = lf2.KeyEventPool;
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const Ball = lf2.Ball;
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_DUP_KEY_TIME = 250;
+    const CLEAR_KEY_TIME = 200;
     const NAME_OFFSET = 0;
 
     /**
@@ -38,6 +39,7 @@ var lf2 = (function (lf2) {
             this.status = new PlayerStatusPanel(this);
 
             this.keyboardConfig = new KeyboardConfig(playerId);
+            this.keyEventPool = new KeyEventPool();
             this.name = this.keyboardConfig.NAME;
             this._currentKey = 0;
 
@@ -71,28 +73,48 @@ var lf2 = (function (lf2) {
 
         /**
          *
-         * @param e
-         * @param list
          * @param {KeyboardEvent} oriE
+         * @returns {boolean} return true if key fired
          */
-        keydown(e, list, oriE) {
+        keydown(oriE) {
             const funcCode = this._parseKeyDownCode(oriE);
-            this._currentKey = funcCode;
+            const NOW = Date.now();
+            if (funcCode !== 0) {
+                let addObj = {
+                    lf2Key: funcCode,
+                    event: oriE,
+                    time: NOW,
+                };
+
+                if(this.allowCombineKey){
+                    this.keyEventPool.push(addObj);
+                }else{
+                    this.keyEventPool[0]=addObj;
+                }
+
+            } else {
+                return false;
+            }
+
+            this._updateCurrentKey(NOW);
 
             if (this.character) {
-                this.character.setFuncKey(funcCode);
-
                 //Same func key twice
+                let first = this.keyEventPool[0] !== undefined ? this.keyEventPool[0].lf2Key : undefined;
+                let second = this.keyEventPool[1] !== undefined ? this.keyEventPool[1].lf2Key : undefined;
+
                 if (
-                    this.character._upKey === funcCode &&
-                    funcCode !== 0
+                    this.allowCombineKey &&
+                    second !== undefined && first === second
                 ) {
-                    if ((funcCode & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
+                    if ((first & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
                         this.character.startRun();
                         console.log('start run');
                     }
                 }
             }
+
+            return true;
         }
 
         /**
@@ -103,6 +125,7 @@ var lf2 = (function (lf2) {
          */
         keyup(e, list, oriE) {
             //console.log(list);
+            return;
             const funcCode = this._parseKeyDownCode(oriE);
             const upKey = this._getFuncKeyCodeByEvent(oriE);
 
@@ -117,7 +140,7 @@ var lf2 = (function (lf2) {
                 }
                 this._upKeyTimer = setTimeout(() => {
                     this.character._upKey = -1;
-                }, CLEAR_DUP_KEY_TIME);
+                }, CLEAR_KEY_TIME);
             }
         }
 
@@ -131,16 +154,17 @@ var lf2 = (function (lf2) {
          * @private
          */
         _parseKeyDownCode(e) {
-            const KEY_CONFIG = this.keyboardConfig.config;
-            let currentKey = 0;
+            return this.keyboardConfig.keyMap.get(e.keyCode) || 0;
 
-            KeyboardConfig.KEY_MAP.KEY_LIST.forEach((k) => {
-                if (KeyBoardManager.isKeyDown(KEY_CONFIG[k])) currentKey |= KeyboardConfig.KEY_MAP[k];
-            });
+            /*for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /!*&& currentKey=== 0*!/; i++) {
+                const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
+                if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+
+            }
 
             let hitFuncCode = this._parseHitKey(currentKey);
 
-            return hitFuncCode;
+             return hitFuncCode;*/
         }
 
         /**
@@ -186,6 +210,39 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         *
+         * @param {Number} NOW current time
+         * @returns {number}
+         * @private
+         */
+        _updateCurrentKey(NOW){
+            let cmd = 0;
+
+            for (let i = KeyEventPool.KEY_KEEP_COUNT; i >= 1 && cmd === 0; i--) {
+                let num = 0;
+                for (let j = 0; j < i; j++) {
+                    if (this.keyEventPool[j] === undefined) break;
+
+                    //Clean up key list
+                    if (NOW - this.keyEventPool[j].time > CLEAR_KEY_TIME) {
+                        //keep last key
+                        if (j !== 0) this.keyEventPool[j] = undefined;
+
+                        continue;
+                    }
+
+                    num |= this.keyEventPool[j].lf2Key;
+                }
+
+                cmd = this._parseHitKey(num);
+            }
+
+            this._currentKey = cmd;
+
+            return cmd;
+        }
+
         
         load() {
 
@@ -197,7 +254,11 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            const MAP = this.spriteParent.map;
+            const NOW = Date.now();
+            this.status.update();
+
+            this._updateCurrentKey(NOW);
+
             //this.character.update();
             //this.balls.forEach(ball => ball.update());
         }
@@ -328,13 +389,13 @@ var lf2 = (function (lf2) {
                 ball.setFrameById(opoint.action);
 
                 //Set direction
-                if (opoint.dir != DIRECTION.RIGHT) {
+                if (opoint.dir !== DIRECTION.RIGHT) {
                     ball._direction = !caller._direction;
                 } else {
                     ball._direction = caller._direction;
                 }
 
-                const DIR_WEIGHT = caller._direction == DIRECTION.RIGHT ? 1 : -1;
+                const DIR_WEIGHT = caller._direction === DIRECTION.RIGHT ? 1 : -1;
 
                 let zPos = caller.height - opoint.appearPoint.y;
 
@@ -353,10 +414,32 @@ var lf2 = (function (lf2) {
 
         /**
          *
+         * @param {Number} key lf2 key code
+         * @returns {boolean}
+         * @private
+         */
+        _containsKey(key) {
+            const keyName = this.keyboardConfig.KEY_MAP.REVERT_MAP[key];
+            const keyCode =  this.keyboardConfig.config[keyName];
+
+            return KeyBoardManager.isKeyDown(keyCode);
+        }
+
+        _isHoldingLastKey() {
+            if (this.keyEventPool[0] === undefined) return false;
+            return KeyBoardManager.isKeyDown(this.keyEventPool[0].event.keyCode);
+        }
+
+        /**
+         *
          * @returns {boolean}
          */
         get isObjectChanged() {
             return true;
+        }
+
+        get allowCombineKey(){
+            return !!this.character;
         }
 
     };
