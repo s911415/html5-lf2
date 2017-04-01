@@ -46,6 +46,7 @@ var lf2 = (function (lf2) {
     const STOP_RUNNING_FRAME_ID = 218;
     const ROWING_FRAME_ID = 102;
     const RUN_ATTACK_FRAME_ID = 85;
+    const JUMP_ATTACK_FRAME_ID = 80;
 
 
     const DEFAULT_KEY = {};
@@ -66,6 +67,10 @@ var lf2 = (function (lf2) {
         j: JUMP_FRAME_ID,
         a: RUN_ATTACK_FRAME_ID,
     };
+    DEFAULT_KEY[FrameStage.JUMP] = {
+        a: JUMP_ATTACK_FRAME_ID,
+    };
+
     for (let k in DEFAULT_KEY) {
         let t = DEFAULT_KEY[k];
         KeyboardConfig.HIT_KEY.HIT_LIST.forEach(key => {
@@ -217,6 +222,9 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
+                        if (this.position.z > 0) {
+                            next = FALLING_ID;
+                        }
                 }
                 if (next === 999) next = 0;
 
@@ -276,7 +284,7 @@ var lf2 = (function (lf2) {
                     break;
                 case FrameStage.JUMP:
                     if (this._currentFrameIndex !== FALLING_ID) {
-                        y = -(this.obj.jump_height * G) | 0;
+                        y = -Math.round(this.obj.jump_height - G);
                     } else {
 
                     }
@@ -296,16 +304,7 @@ var lf2 = (function (lf2) {
         _getFrameOffset() {
             let pRet = super._getFrameOffset();
 
-            if (this.position.z > 0) {
-                if (pRet.y > 0) {
-                    pRet.y -= G;
-                } else {
-                    if (pRet.y === 0) pRet.y = -G;
-                    pRet.y -= G;
-                }
 
-                this._velocity.y = pRet.y;
-            }
 
 
             return pRet;
@@ -379,7 +378,7 @@ var lf2 = (function (lf2) {
          *
          * Is function key changed.
          *
-         * @return  {get}   A get.
+         * @return  {Boolean}   A get.
          */
         get isFuncKeyChanged() {
             return this._curFuncKey !== this._lastFuncKey;
@@ -410,6 +409,17 @@ var lf2 = (function (lf2) {
             const NOW = Date.now();
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;
+
+            if (this.position.z > 0) {
+                if (this._velocity.y > 0) {
+                    this._velocity.y -= G;
+                } else {
+                    if (this._velocity.y === 0) this._velocity.y = -G;
+                    this._velocity.y -= G;
+                }
+            }
+
+
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
@@ -462,9 +472,9 @@ var lf2 = (function (lf2) {
             if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
 
-                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
+                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) !== 0) {
                     this._direction = DIRECTION.LEFT;
-                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
+                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) !== 0) {
                     this._direction = DIRECTION.RIGHT;
                 }
             }

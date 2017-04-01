@@ -128,6 +128,14 @@ var lf2 = (function (lf2) {
             if ((lastFrameSetDiff ) < this._frameInterval) return;
 
             let offset = this._getFrameOffset();
+
+            // Only apply on ground
+            if (this.position.z === 0) {
+                this._velocity.x -= applyFriction(this._velocity.x);
+                this._velocity.z -= applyFriction(this._velocity.z);
+            }
+
+
             //Start move object
             this.position.z += offset.y;
             this.position.y += offset.z;
@@ -139,7 +147,10 @@ var lf2 = (function (lf2) {
             //End of move object
 
 
-            if (this.position.z < 0) this.position.z = 0;
+            if (this.position.z < 0) {
+                this.position.z = 0;
+                this._velocity.y = 0;
+            }
 
             let bound = 0;
 
@@ -191,12 +202,6 @@ var lf2 = (function (lf2) {
                 this._velocity.y / wait,
                 this._velocity.z / wait
             );
-
-            // Only apply on ground
-            if (this.position.z === 0) {
-                this._velocity.x -= applyFriction(this._velocity.x);
-                this._velocity.z -= applyFriction(this._velocity.z);
-            }
 
             //if(this._velocity.x!==0) debugger;
             //console.log(this, this._velocity);
