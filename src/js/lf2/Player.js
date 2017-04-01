@@ -13,6 +13,7 @@ var lf2 = (function (lf2) {
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const Ball = lf2.Ball;
+    const Weapon = lf2.Weapon;
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
@@ -381,7 +382,16 @@ var lf2 = (function (lf2) {
              */
             let ballArr = [];
             for (let i = 0; i < opoint.count; i++) {
-                ballArr.push(new Ball(opoint.objectId, this));
+                const obj = GameObjectPool.get(opoint.objectId);
+                let addBall;
+                switch(obj.fileInfo.type){
+                    case 1:
+                        addBall = new Weapon(opoint.objectId, this);
+                        break;
+                    default:
+                        addBall = new Ball(opoint.objectId, this);
+                }
+                ballArr.push(addBall);
             }
 
             ballArr.forEach(ball => {

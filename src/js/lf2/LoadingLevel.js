@@ -39,6 +39,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectCharacter = lf2.GameObjectCharacter;
     const GameObjectBall = lf2.GameObjectBall;
+    const GameObjectWeapon = lf2.GameObjectWeapon;
 
     const GameMap = lf2.GameMap;
 
@@ -299,6 +300,9 @@ var lf2 = (function (lf2) {
             switch (info.type) {
              case 0:
                  obj = new GameObjectCharacter(info, content);
+             break;
+             case 1:
+                 obj = new GameObjectWeapon(info, content);
              break;
              case 3:
                  obj = new GameObjectBall(info, content);

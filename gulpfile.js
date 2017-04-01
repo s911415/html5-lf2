@@ -62,9 +62,11 @@ gulp.task('build', () => {
         'src/js/lf2/GameObjectPool.js',
         'src/js/lf2/GameItem.js',
         'src/js/lf2/GameObjectBall.js',
+        'src/js/lf2/GameObjectWeapon.js',
         'src/js/lf2/GameObjectCharacter.js',
 
         'src/js/lf2/Ball.js',
+        'src/js/lf2/Weapon.js',
         'src/js/lf2/Character.js',
 
         'src/js/lf2/PlayerStatusPanel.js',
