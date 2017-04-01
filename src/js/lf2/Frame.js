@@ -140,7 +140,7 @@ var lf2 = (function (lf2) {
 
         /**
          * Get offset of item
-         * @returns {Point3D}
+         * @returns {Framework.Point3D}
          */
         get velocity() {
             return new Point3D(
