@@ -71,8 +71,8 @@ var lf2 = (function (lf2) {
                 const _COL = (i % PlayerStatusPanel.PANEL_PER_ROW_COUNT);
                 let panel = new Sprite(define.IMG_PATH + "player_status_panel.png");
                 panel.position = new Point(
-                    _COL * PANEL_SIZE.x + PANEL_SIZE.x / 2,
-                    _ROW * PANEL_SIZE.y + PANEL_SIZE.y / 2
+                    _COL * PANEL_SIZE.x,
+                    _ROW * PANEL_SIZE.y
                 );
                 this._statusPanels[i] = panel;
                 this.rootScene.attach(panel);

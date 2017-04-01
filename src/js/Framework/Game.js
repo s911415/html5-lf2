@@ -573,30 +573,30 @@ var Framework = (function (Framework) {
          *    Framework.Game.goToPreviousLevel();
          */
         /*
-        static goToPreviousLevel() {
-            that.pause();
-            that._teardown();
-            var flag = false;
-            var prev = undefined;
-            Framework.Replay.resetCycleCount();
-            for (var i in that._levels) {
-                if (that._levels[i].level === that._currentLevel) {
-                    if (!Framework.Util.isUndefined(prev)) {
-                        that._currentLevel = prev;
-                        if (that._isRecordMode) {
-                            var levelname = that._findLevelNameByLevel(that._currentLevel);
-                            that._record.inputCommand("// Change Level To : " + levelname + ";");
-                        }
-                        that.start();
-                        return;
-                    }
-                    break;
-                }
-                prev = that._levels[i].level;
-            }
-            Framework.DebugInfo.Log.error('Game : 無前一關');
-            throw new Error('Game : can\'t goto previous level.');
-        };*/
+         static goToPreviousLevel() {
+         that.pause();
+         that._teardown();
+         var flag = false;
+         var prev = undefined;
+         Framework.Replay.resetCycleCount();
+         for (var i in that._levels) {
+         if (that._levels[i].level === that._currentLevel) {
+         if (!Framework.Util.isUndefined(prev)) {
+         that._currentLevel = prev;
+         if (that._isRecordMode) {
+         var levelname = that._findLevelNameByLevel(that._currentLevel);
+         that._record.inputCommand("// Change Level To : " + levelname + ";");
+         }
+         that.start();
+         return;
+         }
+         break;
+         }
+         prev = that._levels[i].level;
+         }
+         Framework.DebugInfo.Log.error('Game : 無前一關');
+         throw new Error('Game : can\'t goto previous level.');
+         };*/
 
 
         /**
@@ -714,9 +714,9 @@ var Framework = (function (Framework) {
                 // run Game's update
                 that.update();
                 // if (now > nextGameTick) {
-                    //console.log('now: ' + now + ', nextGameTick: ' + nextGameTick + ', diff:' + (now-nextGameTick));
+                //console.log('now: ' + now + ', nextGameTick: ' + nextGameTick + ', diff:' + (now-nextGameTick));
                 // that._fpsAnalysis.update();
-                    // show FPS information
+                // show FPS information
                 // if (that.fpsContext) {
                 //     that.fpsContext.innerHTML = 'update FPS:' + that._fpsAnalysis.getUpdateFPS() + '<br />draw FPS:' + that._drawfpsAnalysis.getUpdateFPS();
                 // }
@@ -745,8 +745,14 @@ var Framework = (function (Framework) {
                 now = nowFunc();
 
                 if (now >= nextGameTick) {
+
                     updateFunc();
                     drawFunc();
+
+                    if (nowFunc() - now >= that.skipTicks) {
+                        console.warn('Draw too slow');
+                    }
+
                     nextGameTick = now + that.skipTicks;
                 }
 

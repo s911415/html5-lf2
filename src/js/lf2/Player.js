@@ -275,10 +275,10 @@ var lf2 = (function (lf2) {
 
             if(this.character._allowDraw){
                 //Backup shadow variables
-                let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+                //let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = "#000";
+                //ctx.shadowBlur = 10;
+                //ctx.shadowColor = "#000";
                 ctx.font = "8px Arial";
                 ctx.fillStyle = "#FFF";
                 ctx.textAlign = "center";
@@ -290,8 +290,8 @@ var lf2 = (function (lf2) {
                 );
 
                 //Restore shadow variable
-                ctx.shadowBlur = oldShadowBlur;
-                ctx.shadowColor = oldShadowColor;
+                //ctx.shadowBlur = oldShadowBlur;
+                //ctx.shadowColor = oldShadowColor;
             }
         }
 
