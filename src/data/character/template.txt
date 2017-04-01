@@ -14,7 +14,7 @@ heavy_walking_speed 3.000000
 heavy_walking_speedz 1.500000
 heavy_running_speed 5.000000
 heavy_running_speedz 0.800000
-jump_height -16.299999
+jump_height -20
 jump_distance 8.000000
 jump_distancez 3.000000
 dash_height -11.000000
@@ -1414,7 +1414,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 212 jump
-   pic: 62  state: 4  wait: 1  next: 0  dvx: 0  dvy: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 62  state: 4  wait: 3  next: 0  dvx: 0  dvy: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 210
    wpoint:
       kind: 1  x: 21  y: 34  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:

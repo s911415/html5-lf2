@@ -66,7 +66,7 @@ var lf2 = (function (lf2) {
             this.audio.play({
                 name: 'bgm',
                 loop: true,
-                volume: .3,
+                volume: 0,
             });
         }
 
