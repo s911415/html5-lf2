@@ -19,11 +19,8 @@ var lf2 = (function (lf2) {
         }
 
         push(value) {
-            console.log(this);
             this._shiftOne();
             this[0] = value;
-
-            console.log(this);
         }
 
     };

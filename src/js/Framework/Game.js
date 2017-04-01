@@ -3,6 +3,10 @@
 
 'use strict';
 var Framework = (function (Framework) {
+    const nowFunc = function () {
+        return Date.now();
+    };
+
     /**
      * 整個遊戲(多個{{#crossLink "Level"}}{{/crossLink}})的主體
      * 主要功能為新增移除關卡與關卡的切換
@@ -696,9 +700,6 @@ var Framework = (function (Framework) {
             that.skipTicks = (1000 / that.fps) | 0;
             const TICKS = that.skipTicks;
             let self = that,
-                nowFunc = function () {
-                    return Date.now();
-                },
                 updateTicks = TICKS,
                 drawTicks = TICKS,
                 now = nowFunc(),
@@ -749,7 +750,8 @@ var Framework = (function (Framework) {
                     updateFunc();
                     drawFunc();
 
-                    if (nowFunc() - now >= that.skipTicks) {
+                    const doneTime = nowFunc();
+                    if (doneTime - now >= that.skipTicks) {
                         console.warn('Draw too slow');
                     }
 
