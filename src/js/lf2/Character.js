@@ -12,6 +12,7 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
 
+    const G = 1.7;
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -40,6 +41,7 @@ var lf2 = (function (lf2) {
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
+    const FALLING_ID = 212;
     const DEFEND_FRAME_ID = 110;
     const STOP_RUNNING_FRAME_ID = 218;
     const ROWING_FRAME_ID = 102;
@@ -179,6 +181,9 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
+                        if (this.position.z > 0) {
+                            next = FALLING_ID;
+                        }
                 }
             } else if (next === 999) {
                 switch (this.currentFrame.state) {
@@ -235,7 +240,7 @@ var lf2 = (function (lf2) {
          *
          * @returns {Framework.Point3D}
          * @override
-         * @private
+         * @protected
          */
         _getVelocity() {
             let x, y, z;
@@ -256,7 +261,6 @@ var lf2 = (function (lf2) {
                         x = this.obj.walking_speed;
                     }
 
-                    return new Framework.Point3D(x, y, z);
                     break;
                 case FrameStage.RUN:
                 case FrameStage.BURN_RUN:
@@ -269,11 +273,42 @@ var lf2 = (function (lf2) {
 
                     x = this.obj.running_speed;
 
-                    return new Framework.Point3D(x, y, z);
+                    break;
+                case FrameStage.JUMP:
+                    if (this._currentFrameIndex !== FALLING_ID) {
+                        y = -(this.obj.jump_height * G) | 0;
+                    } else {
+
+                    }
                     break;
                 default:
                     return this.currentFrame.velocity;
             }
+
+            return new Framework.Point3D(x, y, z);
+        }
+
+        /**
+         *
+         * @returns {Framework.Point3D}
+         * @protected
+         */
+        _getFrameOffset() {
+            let pRet = super._getFrameOffset();
+
+            if (this.position.z > 0) {
+                if (pRet.y > 0) {
+                    pRet.y -= G;
+                } else {
+                    if (pRet.y === 0) pRet.y = -G;
+                    pRet.y -= G;
+                }
+
+                this._velocity.y = pRet.y;
+            }
+
+
+            return pRet;
         }
 
 
@@ -371,6 +406,7 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
+
             const NOW = Date.now();
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;

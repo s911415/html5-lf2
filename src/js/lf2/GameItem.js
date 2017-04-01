@@ -13,24 +13,37 @@ var lf2 = (function (lf2) {
     const STOP_ALL_MOVE_DV = 550;
 
     const FRICTION = 0.10;
-    const G = 1.7;
     const MIN_SPEED = 1;
 
-    // let dvxArray = [0];
-    // const getDvxPerWait = function (i) {
-    //     return i;
-    //     if (i < 0) return -getDvxPerWait(-i);
-    //
-    //     if (dvxArray[i] !== undefined) return dvxArray[i];
-    //     dvxArray[i] = (i + 1) + getDvxPerWait(i - 1);
-    //     return dvxArray[i];
-    // };
+    let dvxArray = [0];
+    const getDvxPerWait = function (i) {
+        return i;
+        // if (i < 0) return -getDvxPerWait(-i);
+        //
+        // if (dvxArray[i] !== undefined) return dvxArray[i];
+        // dvxArray[i] = (i + 1) + getDvxPerWait(i - 1);
+        // return dvxArray[i];
+    };
 
     const DIRECTION = {
         RIGHT: true,
         LEFT: false,
     };
     Object.freeze(DIRECTION);
+
+    /**
+     *
+     * @param {Number} x
+     */
+    const applyFriction = (x) => {
+        if (x === 0) return 0;
+        const y = x * FRICTION;
+        if (x > 0) {
+            return y;
+        } else {
+            return y;
+        }
+    };
 
     /**
      * GameItem
@@ -136,13 +149,20 @@ var lf2 = (function (lf2) {
 
                 const getVelocityVal = (cur, next) => {
                     let s1 = Math.sign(cur), s2 = Math.sign(next);
+                    let ret;
 
-                    if (s1 === s2 || s2===0) {
-                        if (s1 > 0) return Math.max(cur, next);
-                        if (s1 < 0) return Math.min(cur, next);
-                        return 0;
+                    if (s1 === s2 || s2 === 0) {
+                        if (s1 > 0) ret=Math.max(cur, next);
+                        else if (s1 < 0) ret = Math.min(cur, next);
+                        else ret = 0;
                     } else {
-                        return next;
+                        ret = next;
+                    }
+
+                    if(Math.abs(ret)<MIN_SPEED){
+                        return 0;
+                    }else{
+                        return ret;
                     }
                 };
 
@@ -157,7 +177,7 @@ var lf2 = (function (lf2) {
         /**
          *
          * @returns {Framework.Point3D}
-         * @private
+         * @protected
          */
         _getFrameOffset() {
             //const currentFrame = this.currentFrame;
@@ -173,10 +193,9 @@ var lf2 = (function (lf2) {
             );
 
             // Only apply on ground
-            if(this.position.z===0){
-                this._velocity.x -= this._velocity.x * FRICTION;
-                this._velocity.y -= this._velocity.y * FRICTION;
-                this._velocity.z -= this._velocity.z * FRICTION;
+            if (this.position.z === 0) {
+                this._velocity.x -= applyFriction(this._velocity.x);
+                this._velocity.z -= applyFriction(this._velocity.z);
             }
 
             //if(this._velocity.x!==0) debugger;
@@ -187,10 +206,12 @@ var lf2 = (function (lf2) {
         /**
          *
          * @returns {Framework.Point3D}
-         * @private
+         * @protected
          */
         _getVelocity() {
-            return this.currentFrame.velocity;
+            let v =  this.currentFrame.velocity.clone();
+            v.x = getDvxPerWait(v.x);
+            return v;
         }
 
         /**
@@ -265,7 +286,7 @@ var lf2 = (function (lf2) {
             );
 
             //if (leftTopPoint.z != 0) debugger;
-            if(this._allowDraw){
+            if (this._allowDraw) {
                 ctx.drawImage(
                     imgInfo.img,
                     imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
@@ -290,7 +311,6 @@ var lf2 = (function (lf2) {
                         case 4100:  //Magic number
                             break;
                         case 1:
-                            console.log(opoint);
                         default:
                             //console.log('add ball', curFrame.id);
                             this.belongTo.addBall(opoint, this);
