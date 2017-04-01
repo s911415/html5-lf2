@@ -284,7 +284,7 @@ var lf2 = (function (lf2) {
                     break;
                 case FrameStage.JUMP:
                     if (this._currentFrameIndex !== FALLING_ID) {
-                        y = -Math.round(this.obj.jump_height - G);
+                        y = -this.obj.jump_height;
                     } else {
 
                     }
@@ -411,11 +411,10 @@ var lf2 = (function (lf2) {
             const frameKind = (state / 100) | 0;
 
             if (this.position.z > 0) {
-                if (this._velocity.y > 0) {
+                if (this._velocity.y < 0) {
                     this._velocity.y -= G;
-                } else {
-                    if (this._velocity.y === 0) this._velocity.y = -G;
-                    this._velocity.y -= G;
+                }else if (this._velocity.y === 0) {
+                    this._velocity.y = -G;
                 }
             }
 
