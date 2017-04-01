@@ -1,6 +1,11 @@
 "use strict";
-window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
-window.AudioContext  = window.AudioContext || window.webkitAudioContext;
+
+window.requestAnimationFrame = window.requestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.msRequestAnimationFrame;
+window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
 /**
  * Load Script In Sequence
@@ -93,8 +98,8 @@ String.prototype.getStringBetween = function (startString, endString, fromIndex)
  * @param {Number} maxValue
  * @returns {boolean}
  */
-Number.prototype.inRange = function(minValue, maxValue){
-    return this>=minValue && this<=maxValue;
+Number.prototype.inRange = function (minValue, maxValue) {
+    return this >= minValue && this <= maxValue;
 };
 
 /**
@@ -110,7 +115,7 @@ String.prototype.lines = function () {
  * @param obj
  * @returns {Number}
  */
-function intval(obj){
+function intval(obj) {
     return parseInt(obj, 10);
 }
 
@@ -119,7 +124,7 @@ function intval(obj){
  * @param obj
  * @returns {Number}
  */
-function floatval(obj){
+function floatval(obj) {
     return parseFloat(obj);
 }
 
