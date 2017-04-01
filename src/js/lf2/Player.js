@@ -323,11 +323,11 @@ var lf2 = (function (lf2) {
             const MP_COST_MAGIC_NUMBER = 1000;
             if (define.INF_MP || this._infMp || num === 0) return true;
 
-            let sign = Math.sign(num);
+            //let sign = Math.sign(num);
             num = Math.abs(num);
 
-            let mpCost = sign * (num % MP_COST_MAGIC_NUMBER);
-            let hpCost = sign * ((num / MP_COST_MAGIC_NUMBER * 10) | 0);
+            let mpCost = (num % MP_COST_MAGIC_NUMBER);
+            let hpCost = ((num / MP_COST_MAGIC_NUMBER * 10) | 0);
 
             if (this.mp >= mpCost && this.hp >= hpCost) {
                 this.addMp(-mpCost);
