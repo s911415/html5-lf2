@@ -416,8 +416,12 @@ var lf2 = (function (lf2) {
                     caller.position.y,  //Y 不變
                     zPos
                 );
-                ball._velocity.x = opoint.dv.x;
-                ball._velocity.y = opoint.dv.y;
+
+
+                if(ball._getVelocity().isZero && !opoint.dv.isZero){
+                    ball._velocity.x = opoint.dv.x;
+                    ball._velocity.y = opoint.dv.y;
+                }
 
                 this.balls.push(ball);
                 this.spriteParent.attach(ball);

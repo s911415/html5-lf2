@@ -42,6 +42,10 @@ var Framework = (function (Framework) {
             return this._x;
         }
 
+        get isZero(){
+            return this._x===0 && this._x===this._y;
+        }
+
         /**
          * X coordinates the given value.
          *
