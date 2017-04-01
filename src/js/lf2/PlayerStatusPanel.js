@@ -19,6 +19,10 @@ var lf2 = (function (lf2) {
 
     const HP_POSITION = new Point(57, 15);
     const MP_POSITION = new Point(57, 35);
+
+    const getEleTransformX = (val) => {
+        return "translateX(" + (val - 100) + "%)";
+    };
     /**
      * Player HP Panel
      *
@@ -42,22 +46,33 @@ var lf2 = (function (lf2) {
                 _ROW * PANEL_SIZE.y
             );
 
-            this._realHPPosition = this.getRealPosition(HP_POSITION);
-            this._realMPPosition = this.getRealPosition(MP_POSITION);
+            //this._realHPPosition = this.getRealPosition(HP_POSITION);
+            //this._realMPPosition = this.getRealPosition(MP_POSITION);
 
-            this._darkHPBar = new ColorBar(HP_DARK_COLOR, BAR_SIZE.x, BAR_SIZE.y);
-            this._darkHPBar.position = this._realHPPosition;
+            //this._darkHPBar = new ColorBar(HP_DARK_COLOR, BAR_SIZE.x, BAR_SIZE.y);
+            //this._darkHPBar.position = this._realHPPosition;
 
-            this._darkMPBar = new ColorBar(MP_DARK_COLOR, BAR_SIZE.x, BAR_SIZE.y);
-            this._darkMPBar.position = this._realMPPosition;
+            //this._darkMPBar = new ColorBar(MP_DARK_COLOR, BAR_SIZE.x, BAR_SIZE.y);
+            //this._darkMPBar.position = this._realMPPosition;
 
-            this._hpBar = new ColorBar(HP_COLOR, BAR_SIZE.x, BAR_SIZE.y);
-            this._hpBar.position = this._realHPPosition;
+            //this._hpBar = new ColorBar(HP_COLOR, BAR_SIZE.x, BAR_SIZE.y);
+            //this._hpBar.position = this._realHPPosition;
             this._hpRatio = 1;
 
-            this._mpBar = new ColorBar(MP_COLOR, BAR_SIZE.x, BAR_SIZE.y);
-            this._mpBar.position = this._realMPPosition;
+            //this._mpBar = new ColorBar(MP_COLOR, BAR_SIZE.x, BAR_SIZE.y);
+            //this._mpBar.position = this._realMPPosition;
             this._mpRatio = 1;
+
+            this._elem = undefined;
+        }
+
+        setElem(elem) {
+            if (elem && elem.hp && elem.mp && elem.small) {
+                this._elem = elem;
+                elem.setAttribute('attached', '1');
+                this._hpValueBar = elem.hp.querySelector('.value');
+                this._mpValueBar = elem.mp.querySelector('.value');
+            }
         }
 
         /**
@@ -81,11 +96,11 @@ var lf2 = (function (lf2) {
             this._hpRatio = this._player.hp / lf2.Player.prototype.DEFAULT_HP;
             this._mpRatio = this._player.mp / lf2.Player.prototype.DEFAULT_HP;
 
-            this._hpRatio = Utils.returnInRangeValue(this._hpRatio, 0, 1);
-            this._mpRatio = Utils.returnInRangeValue(this._mpRatio, 0, 1);
+            this._hpRatio = (Utils.returnInRangeValue(this._hpRatio, 0, 1) * 100) | 0;
+            this._mpRatio = (Utils.returnInRangeValue(this._mpRatio, 0, 1) * 100) | 0;
 
-            this._hpBar.width = BAR_SIZE.x * this._hpRatio;
-            this._mpBar.width = BAR_SIZE.x * this._mpRatio;
+            //this._hpBar.width = BAR_SIZE.x * this._hpRatio;
+            //this._mpBar.width = BAR_SIZE.x * this._mpRatio;
         }
 
 
@@ -94,29 +109,38 @@ var lf2 = (function (lf2) {
          * @param {CanvasRenderingContext2D} ctx
          */
         draw(ctx) {
-            //Draw small people
-            ctx.drawImage(
-                this._player.character.small,
-                SMALL_POSITION.x + this.panelPosition.x,
-                SMALL_POSITION.y + this.panelPosition.y
-            );
+            if (this._elem) {
+                const elem = this._elem;
+                if (elem.small.src !== this._player.character.small.src) {
+                    elem.small.src = this._player.character.small.src;
+                }
 
-            //Draw dark hp and mp bar
-            this._darkHPBar.draw(ctx);
-            this._darkMPBar.draw(ctx);
-
-            //Draw hp and mp bar
-            this._hpBar.draw(ctx);
-            this._mpBar.draw(ctx);
+                this._hpValueBar.style.transform = getEleTransformX(this._hpRatio);
+                this._mpValueBar.style.transform = getEleTransformX(this._mpRatio);
+            }
+            // //Draw small people
+            // ctx.drawImage(
+            //     this._player.character.small,
+            //     SMALL_POSITION.x + this.panelPosition.x,
+            //     SMALL_POSITION.y + this.panelPosition.y
+            // );
+            //
+            // //Draw dark hp and mp bar
+            // this._darkHPBar.draw(ctx);
+            // this._darkMPBar.draw(ctx);
+            //
+            // //Draw hp and mp bar
+            // this._hpBar.draw(ctx);
+            // this._mpBar.draw(ctx);
         }
 
         /**
          *
          * @param {Framework.Point} point
          */
-        getRealPosition(point){
-            let x= point.x + this.panelPosition.x;
-            let y= point.y + this.panelPosition.y;
+        getRealPosition(point) {
+            let x = point.x + this.panelPosition.x;
+            let y = point.y + this.panelPosition.y;
 
             return new Point(x, y);
         }

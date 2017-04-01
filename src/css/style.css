@@ -461,9 +461,19 @@ body {
     height: 45px;
 }
 
+#statusPanels .status:not([attached]) > * {
+    display: none;
+}
+
 #statusPanels .status .bar {
     width: 124px;
     height: 10px;
+    overflow: hidden;
+}
+
+#statusPanels .status .bar .value {
+    height: 100%;
+    width: 100%;
 }
 
 #statusPanels .status .hp {
@@ -486,4 +496,17 @@ body {
     background: #0000ff;
     left: 57px;
     top: 35px;
+}
+
+#funcKeyStatus {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    top: 108px;
+    left: 0;
+    color: #FFF;
+    font-size: smaller;
+    padding: 0 5px;
+    text-align: left;
 }
