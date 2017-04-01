@@ -43,7 +43,7 @@ var lf2 = (function (lf2) {
             this.name = this.keyboardConfig.NAME;
             this._currentKey = 0;
 
-            if(this.charId!==undefined){
+            if (this.charId !== undefined) {
                 /**
                  *
                  * @type {lf2.Character}
@@ -86,10 +86,10 @@ var lf2 = (function (lf2) {
                     time: NOW,
                 };
 
-                if(this.allowCombineKey){
+                if (this.allowCombineKey) {
                     this.keyEventPool.push(addObj);
-                }else{
-                    this.keyEventPool[0]=addObj;
+                } else {
+                    this.keyEventPool[0] = addObj;
                 }
 
             } else {
@@ -157,12 +157,12 @@ var lf2 = (function (lf2) {
             return this.keyboardConfig.keyMap.get(e.keyCode) || 0;
 
             /*for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /!*&& currentKey=== 0*!/; i++) {
-                const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
-                if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+             const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
+             if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
 
-            }
+             }
 
-            let hitFuncCode = this._parseHitKey(currentKey);
+             let hitFuncCode = this._parseHitKey(currentKey);
 
              return hitFuncCode;*/
         }
@@ -216,7 +216,7 @@ var lf2 = (function (lf2) {
          * @returns {number}
          * @private
          */
-        _updateCurrentKey(NOW){
+        _updateCurrentKey(NOW) {
             let cmd = 0;
 
             for (let i = KeyEventPool.KEY_KEEP_COUNT; i >= 1 && cmd === 0; i--) {
@@ -243,7 +243,7 @@ var lf2 = (function (lf2) {
             return cmd;
         }
 
-        
+
         load() {
 
         }
@@ -341,8 +341,8 @@ var lf2 = (function (lf2) {
          * @param {Number} keyCode
          * @returns {boolean}
          */
-        isKeyPressed(keyCode){
-            return (this._currentKey & keyCode)=== keyCode;
+        isKeyPressed(keyCode) {
+            return (this._currentKey & keyCode) === keyCode;
         }
 
         /**
@@ -364,7 +364,7 @@ var lf2 = (function (lf2) {
          *
          * @param {boolean} flag
          */
-        setInfMp(flag){
+        setInfMp(flag) {
             this._infMp = flag;
         }
 
@@ -404,6 +404,8 @@ var lf2 = (function (lf2) {
                     caller.position.y,  //Y 不變
                     zPos
                 );
+                ball._velocity.x = opoint.dv.x;
+                ball._velocity.y = opoint.dv.y;
 
                 this.balls.push(ball);
                 this.spriteParent.attach(ball);
@@ -420,7 +422,7 @@ var lf2 = (function (lf2) {
          */
         _containsKey(key) {
             const keyName = this.keyboardConfig.KEY_MAP.REVERT_MAP[key];
-            const keyCode =  this.keyboardConfig.config[keyName];
+            const keyCode = this.keyboardConfig.config[keyName];
 
             return KeyBoardManager.isKeyDown(keyCode);
         }
@@ -438,7 +440,7 @@ var lf2 = (function (lf2) {
             return true;
         }
 
-        get allowCombineKey(){
+        get allowCombineKey() {
             return !!this.character;
         }
 
