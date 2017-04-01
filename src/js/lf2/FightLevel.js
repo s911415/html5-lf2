@@ -65,23 +65,12 @@ var lf2 = (function (lf2) {
             this.rootScene.attach(this.world);
 
             this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
-            for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
-                const PANEL_SIZE = PlayerStatusPanel.PANEL_SIZE;
-                const _ROW = (i / PlayerStatusPanel.PANEL_PER_ROW_COUNT) | 0;
-                const _COL = (i % PlayerStatusPanel.PANEL_PER_ROW_COUNT);
-                let panel = new Sprite(define.IMG_PATH + "player_status_panel.png");
-                panel.position = new Point(
-                    _COL * PANEL_SIZE.x,
-                    _ROW * PANEL_SIZE.y
-                );
-                this._statusPanels[i] = panel;
-                this.rootScene.attach(panel);
-            }
 
             //attach player's character
             this.config.players.forEach((player, i) => {
                 //TODO: debug use
                 player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight / 2, 0);
+                player.status.setElem(this._statusPanels[i]);
                 //Framework.Game._currentLevel.config.players[0].character.setFrameById(210);
             });
 
@@ -125,6 +114,7 @@ var lf2 = (function (lf2) {
             //update each player status
             this.config.players.forEach((player) => {
                 player.update();
+                player.status.update();
             });
         }
 
@@ -149,14 +139,16 @@ var lf2 = (function (lf2) {
             if (this._anyFuncPressed) {
                 let funcStr = 'Function Keys Used: ';
                 for (let k in this._funcStatus) {
-                    funcStr += `  ${k}: ${this._funcStatus[k]} time(s)`;
+                    funcStr += `　${k}: ${this._funcStatus[k]} time(s)`;
                 }
 
-                ctx.textAlign = "start";
-                ctx.font = "12px Arial";
-                ctx.textBaseline = "middle";
-                ctx.fillStyle = "#FFF";
-                ctx.fillText(funcStr, 3, 120);
+                this._funcBar.textContent = funcStr;
+
+                // ctx.textAlign = "start";
+                // ctx.font = "12px Arial";
+                // ctx.textBaseline = "middle";
+                // ctx.fillStyle = "#FFF";
+                // ctx.fillText(funcStr, 3, 120);
             }
         }
 
@@ -248,23 +240,26 @@ var lf2 = (function (lf2) {
 
                 this._container = $(this.html);
                 this._container.attr("id", _FIGHT_CONTAINER_ID);
+                this._funcBar = this._container.find("#funcKeyStatus")[0];
 
-                /*
+
                 const _statusPanelsTarget = this._container.find("#statusPanels");
 
                 let statusPanelTemplate = _statusPanelsTarget.find(".status");
-                this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
                 for (let i = 0; i < define.SHOW_PLAYER_COUNT; i++) {
-                    this._statusPanels[i] = statusPanelTemplate.clone();
-                    this._statusPanels[i].attr(PLAYER_TAG, i);
-                    this._statusPanels[i].hp = this._statusPanels[i].find('.hp');
-                    this._statusPanels[i].mp = this._statusPanels[i].find('.mp');
-                    this._statusPanels[i].small = this._statusPanels[i].find('.small');
+                    this._statusPanels[i] = statusPanelTemplate.clone()[0];
+                    this._statusPanels[i].setAttribute(PLAYER_TAG, i.toString());
+                    this._statusPanels[i].hp = this._statusPanels[i].querySelector('.hp');
+                    this._statusPanels[i].mp = this._statusPanels[i].querySelector('.mp');
+                    this._statusPanels[i].small = this._statusPanels[i].querySelector('.small');
 
                     _statusPanelsTarget.append(this._statusPanels[i]);
+                    if(this.config.players[i]){
+                        this.config.players[i].status.setElem(this._statusPanels[i]);
+                    }
                 }
                 statusPanelTemplate.remove();
-                */
+
 
                 $("body").append(this._container);
                 Game.resizeEvent();

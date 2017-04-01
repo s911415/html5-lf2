@@ -256,7 +256,6 @@ var lf2 = (function (lf2) {
          */
         update() {
             const NOW = Date.now();
-            this.status.update();
 
             this._updateCurrentKey(NOW);
 
