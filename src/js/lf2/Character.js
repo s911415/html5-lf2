@@ -12,7 +12,7 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
 
-    const G = 1.7;
+    const G = 1.25; // 1.7
 
     const STAND_FRAME_RANGE = {
         min: 0,
