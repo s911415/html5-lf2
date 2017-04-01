@@ -273,24 +273,26 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             if (!this.character) return;
 
-            //Backup shadow variables
-            let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+            if(this.character._allowDraw){
+                //Backup shadow variables
+                let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = "#000";
-            ctx.font = "8px Arial";
-            ctx.fillStyle = "#FFF";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "top";
-            ctx.fillText(
-                this.keyboardConfig.config.NAME,
-                this.character.position.x,
-                this.character.position.y + NAME_OFFSET
-            );
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "#000";
+                ctx.font = "8px Arial";
+                ctx.fillStyle = "#FFF";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "top";
+                ctx.fillText(
+                    this.keyboardConfig.config.NAME,
+                    this.character.position.x,
+                    this.character.position.y + NAME_OFFSET
+                );
 
-            //Restore shadow variable
-            ctx.shadowBlur = oldShadowBlur;
-            ctx.shadowColor = oldShadowColor;
+                //Restore shadow variable
+                ctx.shadowBlur = oldShadowBlur;
+                ctx.shadowColor = oldShadowColor;
+            }
         }
 
         /**
@@ -322,10 +324,11 @@ var lf2 = (function (lf2) {
             const MP_COST_MAGIC_NUMBER = 1000;
             if (define.INF_MP || this._infMp || num === 0) return true;
 
+            let sign = Math.sign(num);
             num = Math.abs(num);
 
-            let mpCost = num % MP_COST_MAGIC_NUMBER;
-            let hpCost = (num / MP_COST_MAGIC_NUMBER * 10) | 0;
+            let mpCost = sign * (num % MP_COST_MAGIC_NUMBER);
+            let hpCost = sign * ((num / MP_COST_MAGIC_NUMBER * 10) | 0);
 
             if (this.mp >= mpCost && this.hp >= hpCost) {
                 this.addMp(-mpCost);
@@ -384,7 +387,7 @@ var lf2 = (function (lf2) {
             for (let i = 0; i < opoint.count; i++) {
                 const obj = GameObjectPool.get(opoint.objectId);
                 let addBall;
-                switch(obj.fileInfo.type){
+                switch (obj.fileInfo.type) {
                     case 1:
                         addBall = new Weapon(opoint.objectId, this);
                         break;

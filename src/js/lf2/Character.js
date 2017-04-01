@@ -31,6 +31,12 @@ var lf2 = (function (lf2) {
     };
     Object.freeze(RUN_FRAME_RANGE);
 
+    const HIDE_FRAME_RANGE = {
+        min: 1100,
+        max: 1299
+    };
+    Object.freeze(HIDE_FRAME_RANGE);
+
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
@@ -97,6 +103,7 @@ var lf2 = (function (lf2) {
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
             this._lastRecoverMPTime = -1;
+            this._hideRemainderTime = 0;
 
             this._upKey = -1;
         }
@@ -111,6 +118,7 @@ var lf2 = (function (lf2) {
         _getNextFrameId() {
             const hitList = this.currentFrame.hit;
             let next = this.currentFrame.nextFrameId;
+            const nextKind = (next / 100) | 0;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
             const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
             if (hitList[funcKeyWoArrow]) {
@@ -133,6 +141,12 @@ var lf2 = (function (lf2) {
                 ) {
                     next = 999;
                 }
+            }
+
+            if (next.inRange(HIDE_FRAME_RANGE.min, HIDE_FRAME_RANGE.max)) {
+                this._hideRemainderTime = next;
+                this._allowDraw = false;
+                next = 0;
             }
 
             if (next === 0) {
@@ -205,6 +219,9 @@ var lf2 = (function (lf2) {
 
             //Check mp request
             const nextFrame = this.obj.frames[next];
+            if (!this.frameExist(next)) {
+                throw new RangeError(`Character (${this.obj.id}) Frame (${next}) not found`);
+            }
             const reqMp = intval(nextFrame.mp);
             if (this.belongTo.requestMp(reqMp)) {
                 return next;
@@ -278,10 +295,10 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        startRun(){
+        startRun() {
             //Is running
-            if(this._currentFrameIndex.inRange(RUN_FRAME_RANGE.min, RUN_FRAME_RANGE.max)) return;
-            
+            if (this._currentFrameIndex.inRange(RUN_FRAME_RANGE.min, RUN_FRAME_RANGE.max)) return;
+
             this.setFrameById(RUN_FRAME_RANGE.min);
         }
 
@@ -356,6 +373,7 @@ var lf2 = (function (lf2) {
             super.update();
             const NOW = Date.now();
             const state = this.currentFrame.state;
+            const frameKind = (state / 100) | 0;
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
@@ -371,9 +389,9 @@ var lf2 = (function (lf2) {
 
             //變身
 
-            if (((state / 1000) | 0) == 8 || state == 9995) {
+            if (frameKind === 80 || state === 9995) {
                 let newCharId = this.currentFrame.state % 1000;
-                if (state == 9995) {
+                if (state === 9995) {
                     newCharId = 50;
                 }
 
@@ -385,6 +403,13 @@ var lf2 = (function (lf2) {
                 this._currentFrameIndex = 0;
             }
 
+            if (!this._allowDraw) {
+                this._hideRemainderTime--;
+                if (this._hideRemainderTime <= 0) {
+                    this._hideRemainderTime = 0;
+                    this._allowDraw = true;
+                }
+            }
         }
 
         /**
@@ -410,7 +435,7 @@ var lf2 = (function (lf2) {
 
         }
 
-        get _curFuncKey(){
+        get _curFuncKey() {
             return this.belongTo._currentKey;
         }
 
