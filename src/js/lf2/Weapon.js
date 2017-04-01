@@ -10,7 +10,7 @@ var lf2 = (function (lf2) {
     const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
 
-    const ON_GROUND_ID = 60;
+    const ON_GROUND_ID = 70;
     /**
      * Weapon
      *
@@ -65,6 +65,7 @@ var lf2 = (function (lf2) {
             if (next === 999) return 0;
 
 
+
             return next;
         }
 
@@ -78,7 +79,10 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
-
+            const curF = this.currentFrame;
+            if(curF.state === FrameStage.DELETE_MESSAGE){
+                this._allowDraw = false;
+            }
         }
 
         /**
