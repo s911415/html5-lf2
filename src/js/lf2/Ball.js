@@ -87,6 +87,7 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
+
             if (this.isFrameChanged) {
                 const hit = this.currentFrame.hit;
                 if (hit.a > 0) {

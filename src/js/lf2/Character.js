@@ -12,6 +12,7 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
 
+    const G = 1.7;
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -40,10 +41,12 @@ var lf2 = (function (lf2) {
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
+    const FALLING_ID = 212;
     const DEFEND_FRAME_ID = 110;
     const STOP_RUNNING_FRAME_ID = 218;
     const ROWING_FRAME_ID = 102;
     const RUN_ATTACK_FRAME_ID = 85;
+    const JUMP_ATTACK_FRAME_ID = 80;
 
 
     const DEFAULT_KEY = {};
@@ -64,6 +67,10 @@ var lf2 = (function (lf2) {
         j: JUMP_FRAME_ID,
         a: RUN_ATTACK_FRAME_ID,
     };
+    DEFAULT_KEY[FrameStage.JUMP] = {
+        a: JUMP_ATTACK_FRAME_ID,
+    };
+
     for (let k in DEFAULT_KEY) {
         let t = DEFAULT_KEY[k];
         KeyboardConfig.HIT_KEY.HIT_LIST.forEach(key => {
@@ -179,6 +186,9 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
+                        if (this.position.z > 0) {
+                            next = FALLING_ID;
+                        }
                 }
             } else if (next === 999) {
                 switch (this.currentFrame.state) {
@@ -212,6 +222,9 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
+                        if (this.position.z > 0) {
+                            next = FALLING_ID;
+                        }
                 }
                 if (next === 999) next = 0;
 
@@ -235,7 +248,7 @@ var lf2 = (function (lf2) {
          *
          * @returns {Framework.Point3D}
          * @override
-         * @private
+         * @protected
          */
         _getVelocity() {
             let x, y, z;
@@ -256,7 +269,6 @@ var lf2 = (function (lf2) {
                         x = this.obj.walking_speed;
                     }
 
-                    return new Framework.Point3D(x, y, z);
                     break;
                 case FrameStage.RUN:
                 case FrameStage.BURN_RUN:
@@ -269,11 +281,33 @@ var lf2 = (function (lf2) {
 
                     x = this.obj.running_speed;
 
-                    return new Framework.Point3D(x, y, z);
+                    break;
+                case FrameStage.JUMP:
+                    if (this._currentFrameIndex !== FALLING_ID) {
+                        y = -Math.round(this.obj.jump_height - G);
+                    } else {
+
+                    }
                     break;
                 default:
                     return this.currentFrame.velocity;
             }
+
+            return new Framework.Point3D(x, y, z);
+        }
+
+        /**
+         *
+         * @returns {Framework.Point3D}
+         * @protected
+         */
+        _getFrameOffset() {
+            let pRet = super._getFrameOffset();
+
+
+
+
+            return pRet;
         }
 
 
@@ -344,7 +378,7 @@ var lf2 = (function (lf2) {
          *
          * Is function key changed.
          *
-         * @return  {get}   A get.
+         * @return  {Boolean}   A get.
          */
         get isFuncKeyChanged() {
             return this._curFuncKey !== this._lastFuncKey;
@@ -371,9 +405,21 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
+
             const NOW = Date.now();
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;
+
+            if (this.position.z > 0) {
+                if (this._velocity.y > 0) {
+                    this._velocity.y -= G;
+                } else {
+                    if (this._velocity.y === 0) this._velocity.y = -G;
+                    this._velocity.y -= G;
+                }
+            }
+
+
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
@@ -426,9 +472,9 @@ var lf2 = (function (lf2) {
             if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
 
-                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) != 0) {
+                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) !== 0) {
                     this._direction = DIRECTION.LEFT;
-                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) != 0) {
+                } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) !== 0) {
                     this._direction = DIRECTION.RIGHT;
                 }
             }

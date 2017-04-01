@@ -750,7 +750,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 102 rowing
-   pic: 78  state: 6  wait: 1  next: 103  dvx: 0  dvy: 0  dvz: 3  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 78  state: 6  wait: 1  next: 103  dvx: 15  dvy: 0  dvz: 3  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
   sound: 030.ogg 
    wpoint:
       kind: 1  x: 28  y: 60  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -761,7 +761,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 103 rowing
-   pic: 49  state: 6  wait: 10  next: 104  dvx: 10  dvy: 0  dvz: 3  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 49  state: 6  wait: 10  next: 104  dvx: 15  dvy: 0  dvz: 3  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
       kind: 1  x: 39  y: 99  action: 240  dvx: 0  dvy: 0  oid: 52  facing: 0
    opoint_end:
@@ -771,7 +771,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 104 rowing
-   pic: 77  state: 6  wait: 3  next: 105  dvx: 0  dvy: 0  dvz: 1  centerx: 42  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 77  state: 6  wait: 3  next: 105  dvx: 20  dvy: 0  dvz: 1  centerx: 42  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 28  y: 60  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -781,7 +781,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 105 rowing
-   pic: 78  state: 6  wait: 4  next: 999  dvx: 0  dvy: 0  dvz: 1  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 106 hit_Fa: 260
+   pic: 78  state: 6  wait: 4  next: 999  dvx: 20  dvy: 0  dvz: 1  centerx: 34  centery: 99  hit_a: 0  hit_d: 0  hit_j: 106 hit_Fa: 260
    wpoint:
       kind: 1  x: 28  y: 60  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
