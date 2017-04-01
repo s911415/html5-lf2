@@ -793,11 +793,6 @@ var Framework = (function (Framework) {
             /*if(!Framework.Util.isUndefined(that._runInstance)) {
              that.stopAnimationFrame();
              }*/
-            // dynamic product runnable function
-            window.requestAnimationFrame = window.requestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.msRequestAnimationFrame;
             let _run = function () {
                 gameLoopFunc();
                 if (that._isRun) {
