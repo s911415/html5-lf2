@@ -262,37 +262,29 @@ var Framework = (function (Framework) {
         _draw(ctx) {
             this.rootScene.countAbsoluteProperty();
             if (this.canvasChanged) {
-                var rect = this._getChangedRect(ctx.canvas.width, ctx.canvas.height);
-                ctx.save();
-                ctx.beginPath();
-
-                if (!this.config.isOptimize || this._firstDraw) {  // 2017.02.20, from V3.1.1
-                    rect.x = 0;
-                    rect.y = 0;
-                    rect.width = ctx.canvas.width;
-                    rect.height = ctx.canvas.height;
-                    this._firstDraw = false;
-                }
+                //var rect = this._getChangedRect(ctx.canvas.width, ctx.canvas.height);
+                //ctx.save();
+                //ctx.beginPath();
                 
-                ctx.rect(rect.x, rect.y, rect.width, rect.height);
-                ctx.clip();
+                //ctx.rect(0, 0, ctx.canvas.width, ctx.canvas.height);
+                //ctx.clip();
 
-                ctx.clearRect(rect.x, rect.y, rect.width, rect.height);
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-                var preDraw = Date.now();
+                // var preDraw = Date.now();
 
                 this.rootScene.draw(ctx);
                 this.draw(ctx);
+                //
+                // var drawTime = Date.now() - preDraw;
+                // this.timelist.push(drawTime);
+                // if (this.timelist.length >= 30) {
+                //     var average = this.countAverage(this.timelist);
+                //     this.timelist = [];
+                //     //console.log("draw time average " + average);
+                // }
 
-                var drawTime = Date.now() - preDraw;
-                this.timelist.push(drawTime);
-                if (this.timelist.length >= 30) {
-                    var average = this.countAverage(this.timelist);
-                    this.timelist = [];
-                    //console.log("draw time average " + average);
-                }
-
-                ctx.restore();
+                //ctx.restore();
             }
         }
 

@@ -373,38 +373,6 @@ var Framework = (function (Framework) {
                 Math.floor(this.absolutePosition.y + positionDif.y)
             );
         }
-
-        /**
-         * Gets the canvas.
-         *
-         * @return  {HTMLCanvasElement}   A get.
-         */
-        get canvas() {
-            if (!Framework.Util.isUndefined(this._selfCanvas)) {
-                return this._selfCanvas;
-            }
-
-            this._selfCanvas = document.createElement('canvas');
-            var diagonalLength = Math.ceil(Math.sqrt(Math.pow(this.height, 2) + Math.pow(this.width, 2)));
-            this._selfCanvas.width = diagonalLength;
-            this._selfCanvas.height = diagonalLength;
-            if (this.width === 0 && this.height === 0) {
-                /*this._selfCanvas = Framework.Game._canvas;
-                 return this._selfCanvas;*/
-                this._selfCanvas.width = Framework.Game._canvas.width;
-                this._selfCanvas.height = Framework.Game._canvas.height;
-            }
-            return this._selfCanvas;
-        }
-
-        /**
-         * Gets the context.
-         *
-         @return {(CanvasRenderingContext2D)}
-         */
-        get context() {
-            return this.canvas.getContext('2d');
-        }
     };
 
     /**
