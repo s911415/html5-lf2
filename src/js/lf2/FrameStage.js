@@ -52,6 +52,19 @@ var lf2 = (function (lf2) {
         /**
          * Ball used end
          */
+
+        /**
+         * Weapon used start
+         */
+        WEAPON_IN_THE_SKY: 1000,
+        WEAPON_ON_HAND: 1001,
+        WEAPON_THROWING: 1002,
+        WEAPON_REBOUNDING: 1003,
+        WEAPON_ON_GROUND: 1004,
+        DELETE_MESSAGE: 9998,
+        /**
+         * Weapon used end
+         */
     };
 
     Object.freeze(lf2.FrameStage);
