@@ -12,15 +12,19 @@ var lf2 = (function (lf2) {
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
 
-    let dvxArray = [0];
-    const getDvxPerWait = function (i) {
-        return i;
-        if (i < 0) return -getDvxPerWait(-i);
+    const FRICTION = 0.10;
+    const G = 1.7;
+    const MIN_SPEED = 1;
 
-        if (dvxArray[i] !== undefined) return dvxArray[i];
-        dvxArray[i] = (i + 1) + getDvxPerWait(i - 1);
-        return dvxArray[i];
-    };
+    // let dvxArray = [0];
+    // const getDvxPerWait = function (i) {
+    //     return i;
+    //     if (i < 0) return -getDvxPerWait(-i);
+    //
+    //     if (dvxArray[i] !== undefined) return dvxArray[i];
+    //     dvxArray[i] = (i + 1) + getDvxPerWait(i - 1);
+    //     return dvxArray[i];
+    // };
 
     const DIRECTION = {
         RIGHT: true,
@@ -56,6 +60,8 @@ var lf2 = (function (lf2) {
             this.absolutePosition = new Point3D(0, 0, 0);
             this.relativePosition = new Point3D(0, 0, 0);
 
+            this._velocity = new Point3D(0, 0, 0);
+
             this._currentFrameIndex = 0;
             this._lastFrameSetTime = Date.now();
             this._config = Framework.Config;
@@ -67,6 +73,7 @@ var lf2 = (function (lf2) {
             this.belongTo = player;
             this._frameForceChange = false;
             this._createTime = Date.now();
+            this._allowDraw = true;
 
             this.pushSelfToLevel();
         }
@@ -111,7 +118,7 @@ var lf2 = (function (lf2) {
             //Start move object
             this.position.z += offset.y;
             this.position.y += offset.z;
-            if (this._direction == DIRECTION.RIGHT) {
+            if (this._direction === DIRECTION.RIGHT) {
                 this.position.x += offset.x;
             } else {
                 this.position.x -= offset.x;
@@ -126,6 +133,24 @@ var lf2 = (function (lf2) {
             if (this._frameForceChange || lastFrameSetDiff >= this.currentFrame.wait * this._frameInterval) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
+
+                const getVelocityVal = (cur, next) => {
+                    let s1 = Math.sign(cur), s2 = Math.sign(next);
+
+                    if (s1 === s2 || s2===0) {
+                        if (s1 > 0) return Math.max(cur, next);
+                        if (s1 < 0) return Math.min(cur, next);
+                        return 0;
+                    } else {
+                        return next;
+                    }
+                };
+
+                const v = this._getVelocity();
+
+                this._velocity.x = getVelocityVal(this._velocity.x, v.x);
+                this._velocity.y = getVelocityVal(this._velocity.y, v.y);
+                this._velocity.z = getVelocityVal(this._velocity.z, v.z);
             }
         }
 
@@ -135,23 +160,33 @@ var lf2 = (function (lf2) {
          * @private
          */
         _getFrameOffset() {
-            const currentFrame = this.currentFrame;
-            const wait = currentFrame.wait;
-            const totalMove = this._getVelocity();
-            let x = totalMove.x / wait,
-                y = totalMove.y / wait ,
-                z = totalMove.z / wait;
-
-            return new Point3D(
-                x,
-                y,
-                z
+            //const currentFrame = this.currentFrame;
+            const wait = this.currentFrame.wait;
+            //const totalMove = this._getVelocity();
+            //let x = totalMove.x / wait,
+            //    y = totalMove.y / wait,
+            //    z = totalMove.z / wait;
+            let ret = new Point3D(
+                this._velocity.x / wait,
+                this._velocity.y / wait,
+                this._velocity.z / wait
             );
+
+            // Only apply on ground
+            if(this.position.z===0){
+                this._velocity.x -= this._velocity.x * FRICTION;
+                this._velocity.y -= this._velocity.y * FRICTION;
+                this._velocity.z -= this._velocity.z * FRICTION;
+            }
+
+            //if(this._velocity.x!==0) debugger;
+            //console.log(this, this._velocity);
+            return ret;
         }
 
         /**
          *
-         * @returns {Point3D}
+         * @returns {Framework.Point3D}
          * @private
          */
         _getVelocity() {
@@ -165,7 +200,7 @@ var lf2 = (function (lf2) {
         setFrameById(frameId) {
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
-            if (frameId == DESTROY_ID) {
+            if (frameId === DESTROY_ID) {
                 this.onDestroy();
                 return;
             }
@@ -225,18 +260,20 @@ var lf2 = (function (lf2) {
              */
 
             const REAL_DRAW_POS = new Point(
-                leftTopPoint.x|0,
-                (leftTopPoint.y - leftTopPoint.z)|0
+                leftTopPoint.x | 0,
+                (leftTopPoint.y - leftTopPoint.z) | 0
             );
 
             //if (leftTopPoint.z != 0) debugger;
-            ctx.drawImage(
-                imgInfo.img,
-                imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
-                imgInfo.rect.width, imgInfo.rect.height,
-                REAL_DRAW_POS.x, REAL_DRAW_POS.y,
-                imgInfo.rect.width, imgInfo.rect.height
-            );
+            if(this._allowDraw){
+                ctx.drawImage(
+                    imgInfo.img,
+                    imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
+                    imgInfo.rect.width, imgInfo.rect.height,
+                    REAL_DRAW_POS.x, REAL_DRAW_POS.y,
+                    imgInfo.rect.width, imgInfo.rect.height
+                );
+            }
 
             if (this.isFrameChanged) {
                 //Play sound
@@ -249,13 +286,13 @@ var lf2 = (function (lf2) {
                 if (curFrame.opoint) {
                     let opoint = curFrame.opoint;
 
-                    switch(opoint.kind){
+                    switch (opoint.kind) {
                         case 4100:  //Magic number
                             break;
                         case 1:
                             console.log(opoint);
                         default:
-                            console.log('add ball', curFrame.id);
+                            //console.log('add ball', curFrame.id);
                             this.belongTo.addBall(opoint, this);
                             break;
                     }
@@ -265,18 +302,18 @@ var lf2 = (function (lf2) {
             this._lastFrameId = this._currentFrameIndex;
 
 
-            if(this._isShowInfo){
-                let msg=[];
+            if (this._isShowInfo) {
+                let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
                 msg.push(`CurrentFrameId: ${this._currentFrameIndex}`);
-                msg.push(`position: (${this.position.x|0}, ${this.position.y|0}, ${this.position.z|0})`);
-                ctx.font="200 12px Arial";
-                ctx.textAlign="start";
-                ctx.textBaseline="top";
-                ctx.fillStyle="#FFF";
-                ctx.strokeStyle="#000";
+                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0})`);
+                ctx.font = "200 12px Arial";
+                ctx.textAlign = "start";
+                ctx.textBaseline = "top";
+                ctx.fillStyle = "#FFF";
+                ctx.strokeStyle = "#000";
                 ctx.lineWidth = 2;
-                for(let i=0;i<msg.length;i++){
+                for (let i = 0; i < msg.length; i++) {
                     const _y = REAL_DRAW_POS.y + 12 * i;
                     ctx.strokeText(msg[i], REAL_DRAW_POS.x, _y);
                     ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
@@ -293,7 +330,7 @@ var lf2 = (function (lf2) {
                 );
 
                 //Draw bdy rect
-                if(curFrame.bdy){
+                if (curFrame.bdy) {
                     const rect = curFrame.bdy.rect;
                     ctx.strokeStyle = "#FF0000";
                     ctx.strokeRect(
@@ -303,7 +340,7 @@ var lf2 = (function (lf2) {
                 }
 
                 //Draw itr rect
-                if(curFrame.itr){
+                if (curFrame.itr) {
                     const rect = curFrame.itr.rect;
                     ctx.strokeStyle = "#0000FF";
                     ctx.strokeRect(

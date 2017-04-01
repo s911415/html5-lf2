@@ -21,9 +21,11 @@
         'GameObjectPool.js',
         'GameItem.js',
         'GameObjectBall.js',
+        'GameObjectWeapon.js',
         'GameObjectCharacter.js',
 
         'Ball.js',
+        'Weapon.js',
         'Character.js',
 
         'PlayerStatusPanel.js',

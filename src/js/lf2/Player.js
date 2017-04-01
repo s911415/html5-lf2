@@ -13,6 +13,7 @@ var lf2 = (function (lf2) {
     const KeyBoardManager = Framework.KeyBoardManager;
     const Character = lf2.Character;
     const Ball = lf2.Ball;
+    const Weapon = lf2.Weapon;
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
@@ -43,7 +44,7 @@ var lf2 = (function (lf2) {
             this.name = this.keyboardConfig.NAME;
             this._currentKey = 0;
 
-            if(this.charId!==undefined){
+            if (this.charId !== undefined) {
                 /**
                  *
                  * @type {lf2.Character}
@@ -86,10 +87,10 @@ var lf2 = (function (lf2) {
                     time: NOW,
                 };
 
-                if(this.allowCombineKey){
+                if (this.allowCombineKey) {
                     this.keyEventPool.push(addObj);
-                }else{
-                    this.keyEventPool[0]=addObj;
+                } else {
+                    this.keyEventPool[0] = addObj;
                 }
 
             } else {
@@ -157,12 +158,12 @@ var lf2 = (function (lf2) {
             return this.keyboardConfig.keyMap.get(e.keyCode) || 0;
 
             /*for (let i = 0, j = KeyboardConfig.KEY_MAP.KEY_LIST.length; i < j /!*&& currentKey=== 0*!/; i++) {
-                const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
-                if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
+             const k = KeyboardConfig.KEY_MAP.KEY_LIST[i];
+             if (e.keyCode === KEY_CONFIG[k]) currentKey |= KeyboardConfig.KEY_MAP[k];
 
-            }
+             }
 
-            let hitFuncCode = this._parseHitKey(currentKey);
+             let hitFuncCode = this._parseHitKey(currentKey);
 
              return hitFuncCode;*/
         }
@@ -216,7 +217,7 @@ var lf2 = (function (lf2) {
          * @returns {number}
          * @private
          */
-        _updateCurrentKey(NOW){
+        _updateCurrentKey(NOW) {
             let cmd = 0;
 
             for (let i = KeyEventPool.KEY_KEEP_COUNT; i >= 1 && cmd === 0; i--) {
@@ -243,7 +244,7 @@ var lf2 = (function (lf2) {
             return cmd;
         }
 
-        
+
         load() {
 
         }
@@ -272,24 +273,26 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             if (!this.character) return;
 
-            //Backup shadow variables
-            let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+            if(this.character._allowDraw){
+                //Backup shadow variables
+                let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = "#000";
-            ctx.font = "8px Arial";
-            ctx.fillStyle = "#FFF";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "top";
-            ctx.fillText(
-                this.keyboardConfig.config.NAME,
-                this.character.position.x,
-                this.character.position.y + NAME_OFFSET
-            );
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "#000";
+                ctx.font = "8px Arial";
+                ctx.fillStyle = "#FFF";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "top";
+                ctx.fillText(
+                    this.keyboardConfig.config.NAME,
+                    this.character.position.x,
+                    this.character.position.y + NAME_OFFSET
+                );
 
-            //Restore shadow variable
-            ctx.shadowBlur = oldShadowBlur;
-            ctx.shadowColor = oldShadowColor;
+                //Restore shadow variable
+                ctx.shadowBlur = oldShadowBlur;
+                ctx.shadowColor = oldShadowColor;
+            }
         }
 
         /**
@@ -321,10 +324,11 @@ var lf2 = (function (lf2) {
             const MP_COST_MAGIC_NUMBER = 1000;
             if (define.INF_MP || this._infMp || num === 0) return true;
 
+            let sign = Math.sign(num);
             num = Math.abs(num);
 
-            let mpCost = num % MP_COST_MAGIC_NUMBER;
-            let hpCost = (num / MP_COST_MAGIC_NUMBER * 10) | 0;
+            let mpCost = sign * (num % MP_COST_MAGIC_NUMBER);
+            let hpCost = sign * ((num / MP_COST_MAGIC_NUMBER * 10) | 0);
 
             if (this.mp >= mpCost && this.hp >= hpCost) {
                 this.addMp(-mpCost);
@@ -341,8 +345,8 @@ var lf2 = (function (lf2) {
          * @param {Number} keyCode
          * @returns {boolean}
          */
-        isKeyPressed(keyCode){
-            return (this._currentKey & keyCode)=== keyCode;
+        isKeyPressed(keyCode) {
+            return (this._currentKey & keyCode) === keyCode;
         }
 
         /**
@@ -364,7 +368,7 @@ var lf2 = (function (lf2) {
          *
          * @param {boolean} flag
          */
-        setInfMp(flag){
+        setInfMp(flag) {
             this._infMp = flag;
         }
 
@@ -381,7 +385,16 @@ var lf2 = (function (lf2) {
              */
             let ballArr = [];
             for (let i = 0; i < opoint.count; i++) {
-                ballArr.push(new Ball(opoint.objectId, this));
+                const obj = GameObjectPool.get(opoint.objectId);
+                let addBall;
+                switch (obj.fileInfo.type) {
+                    case 1:
+                        addBall = new Weapon(opoint.objectId, this);
+                        break;
+                    default:
+                        addBall = new Ball(opoint.objectId, this);
+                }
+                ballArr.push(addBall);
             }
 
             ballArr.forEach(ball => {
@@ -404,6 +417,8 @@ var lf2 = (function (lf2) {
                     caller.position.y,  //Y 不變
                     zPos
                 );
+                ball._velocity.x = opoint.dv.x;
+                ball._velocity.y = opoint.dv.y;
 
                 this.balls.push(ball);
                 this.spriteParent.attach(ball);
@@ -420,7 +435,7 @@ var lf2 = (function (lf2) {
          */
         _containsKey(key) {
             const keyName = this.keyboardConfig.KEY_MAP.REVERT_MAP[key];
-            const keyCode =  this.keyboardConfig.config[keyName];
+            const keyCode = this.keyboardConfig.config[keyName];
 
             return KeyBoardManager.isKeyDown(keyCode);
         }
@@ -438,7 +453,7 @@ var lf2 = (function (lf2) {
             return true;
         }
 
-        get allowCombineKey(){
+        get allowCombineKey() {
             return !!this.character;
         }
 
