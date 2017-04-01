@@ -413,7 +413,7 @@ var lf2 = (function (lf2) {
             if (this.position.z > 0) {
                 if (this._velocity.y < 0) {
                     this._velocity.y -= G;
-                }else if (this._velocity.y === 0) {
+                }else if (this._velocity.y < 0.1) {
                     this._velocity.y = -G;
                 }
             }

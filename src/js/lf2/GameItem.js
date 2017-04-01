@@ -127,7 +127,7 @@ var lf2 = (function (lf2) {
 
             let offset = this._getFrameOffset();
 
-            // Only apply on ground
+            // Only apply on ground for character
             if (this.position.z === 0) {
                 this._velocity.x -= applyFriction(this._velocity.x);
                 this._velocity.z -= applyFriction(this._velocity.z);
@@ -159,22 +159,8 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = false;
 
                 const getVelocityVal = (cur, next) => {
-                    let s1 = Math.sign(cur), s2 = Math.sign(next);
-                    let ret;
-
-                    if (s1 === s2 || s2 === 0) {
-                        if (s1 > 0) ret=Math.max(cur, next);
-                        else if (s1 < 0) ret = Math.min(cur, next);
-                        else ret = 0;
-                    } else {
-                        ret = next;
-                    }
-
-                    if(Math.abs(ret)<MIN_SPEED){
-                        return 0;
-                    }else{
-                        return ret;
-                    }
+                    if(next===0) return cur;
+                    return next;
                 };
 
                 const v = this._getVelocity();
