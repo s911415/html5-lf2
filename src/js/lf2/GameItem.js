@@ -12,7 +12,7 @@ var lf2 = (function (lf2) {
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
 
-    const FRICTION = 0.10;
+    const FRICTION = 0.1;
     const MIN_SPEED = 1;
 
     let dvxArray = [0];
@@ -34,15 +34,13 @@ var lf2 = (function (lf2) {
     /**
      *
      * @param {Number} x
+     * @param {Number} [f] friction
      */
-    const applyFriction = (x) => {
+    const applyFriction = (x, f) => {
+        if(f===undefined) f = FRICTION;
         if (x === 0) return 0;
-        const y = x * FRICTION;
-        if (x > 0) {
-            return y;
-        } else {
-            return y;
-        }
+
+        return x * f;
     };
 
     /**
@@ -133,6 +131,8 @@ var lf2 = (function (lf2) {
             if (this.position.z === 0) {
                 this._velocity.x -= applyFriction(this._velocity.x);
                 this._velocity.z -= applyFriction(this._velocity.z);
+            }else if (this._velocity.y>0){
+                this._velocity.y -= applyFriction(this._velocity.y, 0.25);
             }
 
 
