@@ -14,6 +14,7 @@ var lf2 = (function (lf2) {
 
     const FRICTION = 0.25;
     const MIN_SPEED = 1;
+    const MIN_V = 0.2;
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
@@ -143,6 +144,11 @@ var lf2 = (function (lf2) {
                 this.position.z = 0;
                 this._velocity.y = 0;
             }
+
+            // Avoid too small velocity
+            if(Math.abs(this._velocity.x)<MIN_V) this._velocity.x = 0;
+            if(Math.abs(this._velocity.y)<MIN_V) this._velocity.y = 0;
+            if(Math.abs(this._velocity.z)<MIN_V) this._velocity.z = 0;
             // End of friction
 
             let bound = 0;
@@ -178,8 +184,8 @@ var lf2 = (function (lf2) {
             //    y = totalMove.y / wait,
             //    z = totalMove.z / wait;
             let ret = new Point3D(
-                this._velocity.x ,
-                this._velocity.y ,
+                this._velocity.x,
+                this._velocity.y,
                 this._velocity.z
             );
 
