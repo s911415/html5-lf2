@@ -420,7 +420,7 @@ var lf2 = (function (lf2) {
 
                 if (ball._getVelocity().isZero && !opoint.dv.isZero) {
                     ball._velocity.x = opoint.dv.x;
-                    ball._velocity.y = opoint.dv.y;
+                    ball._velocity.y = -opoint.dv.y;
                 }
 
                 this.balls.push(ball);
