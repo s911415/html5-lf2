@@ -222,7 +222,7 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
-                        if (this.position.z > 0) {
+                        if (this.position.z < 0) {
                             next = FALLING_ID;
                         }
                 }
