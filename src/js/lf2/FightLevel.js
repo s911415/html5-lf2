@@ -82,7 +82,7 @@ var lf2 = (function (lf2) {
             this._anyFuncPressed = false;
 
             this._container = undefined;
-            this._htmlLoader.then(()=>{
+            this._htmlLoader.then(() => {
                 this.showPanel();
             });
 
@@ -208,7 +208,7 @@ var lf2 = (function (lf2) {
             super.keyup(e, list, oriE);
         }
 
-        keypress(e, list, oriE){
+        keypress(e, list, oriE) {
         }
 
         /**
@@ -224,7 +224,7 @@ var lf2 = (function (lf2) {
 
         }
 
-        autodelete(){
+        autodelete() {
             super.autodelete();
 
             if (this._container) {
@@ -233,7 +233,7 @@ var lf2 = (function (lf2) {
             }
         }
 
-        showPanel(){
+        showPanel() {
             if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._container) {
                 $("#" + _FIGHT_CONTAINER_ID).remove();
@@ -254,7 +254,7 @@ var lf2 = (function (lf2) {
                     this._statusPanels[i].small = this._statusPanels[i].querySelector('.small');
 
                     _statusPanelsTarget.append(this._statusPanels[i]);
-                    if(this.config.players[i]){
+                    if (this.config.players[i]) {
                         this.config.players[i].status.setElem(this._statusPanels[i]);
                     }
                 }

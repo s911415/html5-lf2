@@ -746,15 +746,16 @@ var Framework = (function (Framework) {
                 now = nowFunc();
 
                 if (now >= nextGameTick) {
-
                     updateFunc();
                     drawFunc();
 
-                    const doneTime = nowFunc();
-                    if (doneTime - now >= that.skipTicks) {
-                        console.warn('Draw too slow');
+
+                    const doneTime = nowFunc(), diff = doneTime - now;
+                    if (diff > that.skipTicks) {
+                        console.warn('Draw too slow', diff);
                     }
 
+                    previousGameLoopTime = now;
                     nextGameTick = now + that.skipTicks;
                 }
 
@@ -790,14 +791,14 @@ var Framework = (function (Framework) {
         };
 
         static runAnimationFrame(gameLoopFunc) {
-            /*if(!Framework.Util.isUndefined(that._runInstance)) {
-             that.stopAnimationFrame();
-             }*/
+            if (!Framework.Util.isUndefined(that._runInstance)) {
+                that.stopAnimationFrame();
+            }
             let _run = function () {
-                gameLoopFunc();
                 if (that._isRun) {
                     that._runInstance = requestAnimationFrame(_run);
                 }
+                gameLoopFunc();
             };
             _run();
             that.stopLoop = that.stopAnimationFrame;

@@ -3,7 +3,7 @@
     const BASE_PATH = "./";
 
     window.define = {
-        DEBUG: false,
+        DEBUG: true,
         SHOW_PLAYER_COUNT: 8,
 
         BASE_PATH: BASE_PATH,
@@ -21,5 +21,5 @@
 
     };
 
-    Object.freeze(window.define);
+    // Object.freeze(window.define);
 })(window);
