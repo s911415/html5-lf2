@@ -12,7 +12,7 @@ var lf2 = (function (lf2) {
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
 
-    const FRICTION = 0.1;
+    const FRICTION = 0.25;
     const MIN_SPEED = 1;
 
     let dvxArray = [0];
@@ -119,15 +119,8 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            this._updateCounter++;
+            this._updateCounter++
             let offset = this._getFrameOffset();
-
-            // Only apply on ground for character
-            if (this.position.z === 0) {
-                this._velocity.x -= applyFriction(this._velocity.x);
-                this._velocity.z -= applyFriction(this._velocity.z);
-            }
-
 
             //Start move object
             this.position.z += offset.y;
@@ -140,10 +133,17 @@ var lf2 = (function (lf2) {
             //End of move object
 
 
+            // Only apply friction on ground for character
+            if (this.position.z === 0) {
+                this._velocity.x -= applyFriction(this._velocity.x);
+                this._velocity.z -= applyFriction(this._velocity.z);
+            }
+
             if (this.position.z > 0) {
                 this.position.z = 0;
                 this._velocity.y = 0;
             }
+            // End of friction
 
             let bound = 0;
 
@@ -178,9 +178,9 @@ var lf2 = (function (lf2) {
             //    y = totalMove.y / wait,
             //    z = totalMove.z / wait;
             let ret = new Point3D(
-                this._velocity.x / wait,
-                this._velocity.y / wait,
-                this._velocity.z / wait
+                this._velocity.x ,
+                this._velocity.y ,
+                this._velocity.z
             );
 
             //if(this._velocity.x!==0) debugger;
