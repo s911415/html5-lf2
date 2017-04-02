@@ -76,7 +76,6 @@ var lf2 = (function (lf2) {
             this._currentFrameIndex = 0;
             this._lastFrameSetTime = Date.now();
             this._config = Framework.Config;
-            this._frameInterval = (1e3 / Framework.Config.fps) | 0;
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
             this.belongTo = player;
@@ -220,7 +219,7 @@ var lf2 = (function (lf2) {
          * @param {String} frameName
          */
         getFrameIdByName(frameName) {
-            let frame = this.obj.frames.filter(o => o.name == frameName)[0];
+            let frame = this.obj.frames.filter(o => o.name === frameName)[0];
             if (!frame) throw new RangeError(`Object (${this.obj.id}) Frame (${frameName}) not found`);
 
             return frame.id;
@@ -232,7 +231,7 @@ var lf2 = (function (lf2) {
          * @returns {boolean}
          */
         frameExist(frameId) {
-            if (frameId == DESTROY_ID) return true;
+            if (frameId === DESTROY_ID) return true;
 
             return !!this.obj.frames[frameId];
         }
@@ -420,7 +419,7 @@ var lf2 = (function (lf2) {
          *
          * Gets the next frame identifier.
          *
-         * @return  The next frame identifier.
+         * @return {Number} The next frame identifier.
          */
         _getNextFrameId() {
             let next = this.currentFrame.nextFrameId;
