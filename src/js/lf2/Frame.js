@@ -124,7 +124,7 @@ var lf2 = (function (lf2) {
          *
          * Gets the wait.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get wait() {
             return intval(this.data.get('wait') || 0) + 1;
