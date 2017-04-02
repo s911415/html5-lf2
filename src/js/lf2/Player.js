@@ -385,15 +385,21 @@ var lf2 = (function (lf2) {
             let ballArr = [];
             for (let i = 0; i < opoint.count; i++) {
                 const obj = GameObjectPool.get(opoint.objectId);
-                let addBall;
+                let addBall = null;
                 switch (obj.fileInfo.type) {
+                    case 0:
+                        addBall = new Ball(opoint.objectId, this);
+                        break;
                     case 1:
                         addBall = new Weapon(opoint.objectId, this);
                         break;
                     default:
                         addBall = new Ball(opoint.objectId, this);
                 }
-                ballArr.push(addBall);
+                
+                if(addBall!==null){
+                    ballArr.push(addBall);
+                }
             }
 
             ballArr.forEach(ball => {
@@ -420,7 +426,7 @@ var lf2 = (function (lf2) {
 
                 if (ball._getVelocity().isZero && !opoint.dv.isZero) {
                     ball._velocity.x = opoint.dv.x;
-                    ball._velocity.y = -opoint.dv.y;
+                    ball._velocity.y = opoint.dv.y;
                 }
 
                 this.balls.push(ball);
