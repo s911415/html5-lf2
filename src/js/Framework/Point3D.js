@@ -53,8 +53,8 @@ var Framework = (function (Framework) {
             return new Point3D(this._x, this._y, this._z);
         }
 
-        get isZero(){
-            return this._x===0 && this._x===this._y && this._x===this._z;
+        get isZero() {
+            return this._x === 0 && this._x === this._y && this._x === this._z;
         }
 
         /**

@@ -37,7 +37,7 @@ var lf2 = (function (lf2) {
      * @param {Number} [f] friction
      */
     const applyFriction = (x, f) => {
-        if(f===undefined) f = FRICTION;
+        if (f === undefined) f = FRICTION;
         if (x === 0) return 0;
 
         return x * f;
@@ -79,8 +79,6 @@ var lf2 = (function (lf2) {
             this._frameInterval = (1e3 / Framework.Config.fps) | 0;
             this._direction = DIRECTION.RIGHT;
             this._lastFrameId = NONE;
-            this._isDrawBoundry = define.DEBUG;
-            this._isShowInfo = define.DEBUG;
             this.belongTo = player;
             this._frameForceChange = false;
             this._createTime = Date.now();
@@ -129,8 +127,6 @@ var lf2 = (function (lf2) {
             if (this.position.z === 0) {
                 this._velocity.x -= applyFriction(this._velocity.x);
                 this._velocity.z -= applyFriction(this._velocity.z);
-            }else if (this._velocity.y>0){
-                this._velocity.y -= applyFriction(this._velocity.y, 0.25);
             }
 
 
@@ -145,7 +141,7 @@ var lf2 = (function (lf2) {
             //End of move object
 
 
-            if (this.position.z < 0) {
+            if (this.position.z > 0) {
                 this.position.z = 0;
                 this._velocity.y = 0;
             }
@@ -158,7 +154,7 @@ var lf2 = (function (lf2) {
                 this._updateCounter = 0;
 
                 const getVelocityVal = (cur, next) => {
-                    if(next===0) return cur;
+                    if (next === 0) return cur;
                     return next;
                 };
 
@@ -199,7 +195,7 @@ var lf2 = (function (lf2) {
          * @protected
          */
         _getVelocity() {
-            let v =  this.currentFrame.velocity.clone();
+            let v = this.currentFrame.velocity.clone();
             v.x = getDvxPerWait(v.x);
             return v;
         }
@@ -272,7 +268,7 @@ var lf2 = (function (lf2) {
 
             const REAL_DRAW_POS = new Point(
                 leftTopPoint.x | 0,
-                (leftTopPoint.y - leftTopPoint.z) | 0
+                (leftTopPoint.y + leftTopPoint.z) | 0
             );
 
             //if (leftTopPoint.z != 0) debugger;
@@ -312,7 +308,7 @@ var lf2 = (function (lf2) {
             this._lastFrameId = this._currentFrameIndex;
 
 
-            if (this._isShowInfo) {
+            if (define.DEBUG) {
                 let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
                 msg.push(`CurrentFrameId: ${this._currentFrameIndex}`);
@@ -330,7 +326,7 @@ var lf2 = (function (lf2) {
                 }
 
             }
-            if (this._isDrawBoundry) {
+            if (define.DEBUG) {
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = "#FF00FF";
                 //Draw image rect
