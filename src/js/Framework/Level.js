@@ -116,19 +116,19 @@ var Framework = (function (Framework) {
                 ele.clearDirtyFlag();
             });
 
-            var preDraw = Date.now();
-
-            this.rootScene.update();
-            this.cycleCount++;
+            // var preDraw = Date.now();
+            //
+            // this.rootScene.update();
+            // this.cycleCount++;
             this.update();
 
-            var drawTime = Date.now() - preDraw;
-            this.updatetimelist.push(drawTime);
-            if (this.updatetimelist.length >= 30) {
-                var average = this.countAverage(this.updatetimelist);
-                this.updatetimelist = [];
-                //console.log("update time average " + average);
-            }
+            // var drawTime = Date.now() - preDraw;
+            // this.updatetimelist.push(drawTime);
+            // if (this.updatetimelist.length >= 30) {
+            //     var average = this.countAverage(this.updatetimelist);
+            //     this.updatetimelist = [];
+            //     //console.log("update time average " + average);
+            // }
 
 
         }

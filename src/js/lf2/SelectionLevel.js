@@ -315,6 +315,8 @@ var lf2 = (function (lf2) {
                                 };
 
                                 this.players.forEach(p => {
+                                    if(p._selectStage !== SELECTION_STAGE.ENTERING) return;
+
                                     _passData.players[p.playerId] = {
                                         charId: this._charIdArray[p._charIndex],
                                     };
@@ -544,6 +546,8 @@ var lf2 = (function (lf2) {
             this._enteringPanel.addClass('show');
             this._randomAllSelectChar();
             this.players.forEach((p) => {
+                if (p._selectStage === SELECTION_STAGE.WAIT_JOIN) return;
+
                 if (p._selectStage === SELECTION_STAGE.SELECT_DONE) {
                     p.setSelectStage(SELECTION_STAGE.ENTERING);
 
