@@ -45,7 +45,13 @@ var lf2 = (function (lf2) {
     const ROWING_FRAME_ID = 102;
     const RUN_ATTACK_FRAME_ID = 85;
     const JUMP_ATTACK_FRAME_ID = 80;
-
+    const LYING1_FRAME_ID = 230;
+    const LYING2_FRAME_ID = 231;
+    
+    const getRand = (arr) => {
+        let idx = (arr.length * Math.random()) | 0;
+        return arr[idx];
+    };
 
     const DEFAULT_KEY = {};
     let acceptForceChangeStatus = [];
@@ -53,12 +59,12 @@ var lf2 = (function (lf2) {
     DEFAULT_KEY[FrameStage.STAND] = {
         d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
-        a: PUNCH1_FRAME_ID,
+        a: ()=>getRand([PUNCH1_FRAME_ID, PUNCH2_FRAME_ID]),
     };
     DEFAULT_KEY[FrameStage.WALK] = {
         d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
-        a: PUNCH1_FRAME_ID,
+        a: DEFAULT_KEY[FrameStage.STAND].a,
     };
     DEFAULT_KEY[FrameStage.RUN] = {
         d: ROWING_FRAME_ID,
@@ -122,16 +128,22 @@ var lf2 = (function (lf2) {
          */
         _getNextFrameId() {
             const hitList = this.currentFrame.hit;
+            const curState = this.currentFrame.state;
             let next = this.currentFrame.nextFrameId;
             const nextKind = (next / 100) | 0;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
-            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
+            const fc = acceptForceChangeStatus.indexOf(curState) !== -1;
             if (hitList[funcKeyWoArrow]) {
                 next = hitList[funcKeyWoArrow];
             }
-            if ((fc || next === 0 || next === 999) && DEFAULT_KEY[this.currentFrame.state]) {
-                if (DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow]) {
-                    next = DEFAULT_KEY[this.currentFrame.state][funcKeyWoArrow];
+            if ((fc || next === 0 || next === 999) && DEFAULT_KEY[curState]) {
+                const _next = DEFAULT_KEY[curState][funcKeyWoArrow];
+                if(_next){
+                    if(typeof _next === 'function'){
+                        next = _next();
+                    }else{
+                        next = _next;
+                    }
                 }
             }
 
@@ -153,9 +165,20 @@ var lf2 = (function (lf2) {
                 this._allowDraw = false;
                 next = 0;
             }
-
-            if (next === 0) {
-                switch (this.currentFrame.state) {
+            
+            
+            if(this.belongTo.hp<=0){
+                this._allowDraw = true;
+                this._hideRemainderTime = 0;
+                switch(curState){
+                    case FrameStage.LYING:
+                        next = this.currentFrame.id;
+                        break;
+                    default:
+                        next = getRand([LYING1_FRAME_ID, LYING2_FRAME_ID]);
+                }
+            }else if (next === 0) {
+                switch (curState) {
                     case FrameStage.RUN:
                     case FrameStage.BURN_RUN:
                         if (this._run_dir === DIRECTION.RIGHT) {
@@ -189,7 +212,7 @@ var lf2 = (function (lf2) {
                         }
                 }
             } else if (next === 999) {
-                switch (this.currentFrame.state) {
+                switch (curState) {
                     case FrameStage.STAND:
                         if (IS_ARR_ONLY) {
                             next = WALK_FRAME_RANGE.min;
@@ -233,6 +256,7 @@ var lf2 = (function (lf2) {
             if (!this.frameExist(next)) {
                 throw new RangeError(`Character (${this.obj.id}) Frame (${next}) not found`);
             }
+
             const reqMp = intval(nextFrame.mp);
             if (this.belongTo.requestMp(reqMp)) {
                 return next;
