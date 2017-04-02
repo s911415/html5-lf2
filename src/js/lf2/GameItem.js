@@ -85,6 +85,7 @@ var lf2 = (function (lf2) {
             this._frameForceChange = false;
             this._createTime = Date.now();
             this._allowDraw = true;
+            this._updateCounter = 0;
 
             this.pushSelfToLevel();
         }
@@ -121,10 +122,7 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            const now = Date.now();
-            const lastFrameSetDiff = now - this._lastFrameSetTime;
-            if ((lastFrameSetDiff ) < this._frameInterval) return;
-
+            this._updateCounter++;
             let offset = this._getFrameOffset();
 
             // Only apply on ground for character
@@ -154,9 +152,10 @@ var lf2 = (function (lf2) {
 
             let bound = 0;
 
-            if (this._frameForceChange || lastFrameSetDiff >= this.currentFrame.wait * this._frameInterval) {
+            if (this._frameForceChange || this._updateCounter > this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
+                this._updateCounter = 0;
 
                 const getVelocityVal = (cur, next) => {
                     if(next===0) return cur;
