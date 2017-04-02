@@ -6,10 +6,12 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
+    const Point3D = Framework.Point3D;
     const FrameStage = lf2.FrameStage;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
     const INIT_TIME = 500;
+    const DIRECTION = lf2.GameItem.DIRECTION;
     /**
      * Ball
      *
@@ -27,7 +29,7 @@ var lf2 = (function (lf2) {
             super(ballId, player);
             this._remainderTime = INIT_TIME;
             this._isOut = false;
-
+            this._affectByFriction = false;
         }
 
 
@@ -118,6 +120,28 @@ var lf2 = (function (lf2) {
             } else {
                 throw ERR_MSG;
             }
+        }
+
+        /**
+         * get leftTopPoint()
+         *
+         * Left top point.
+         *
+         * @return  {get}   A get.
+         */
+        get __leftTopPoint__lol() {
+            const center = this.currentFrame.center;
+            let leftTopPoint = new Point3D(
+                this.position.x - center.x,
+                this.position.y - this.height + center.y,
+                this.position.z
+            );
+            
+            if (this._direction == DIRECTION.LEFT) {
+                leftTopPoint.x = this.position.x - (this.width - center.x);
+            }
+
+            return leftTopPoint;
         }
     };
 

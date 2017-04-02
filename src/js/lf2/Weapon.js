@@ -26,7 +26,7 @@ var lf2 = (function (lf2) {
          */
         constructor(weaponId, player) {
             super(weaponId, player);
-
+            this._affectByFriction = true;
         }
 
 

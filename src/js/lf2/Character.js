@@ -12,8 +12,6 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
 
-    const G = 1.7; // 1.7
-
     const STAND_FRAME_RANGE = {
         min: 0,
         max: 4
@@ -407,11 +405,6 @@ var lf2 = (function (lf2) {
             const NOW = Date.now();
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;
-
-            if (this.position.z < 0) {
-                this._velocity.y += G;
-            }
-
 
             if (this.isFuncKeyChanged) {
                 console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
