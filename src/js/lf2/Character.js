@@ -12,7 +12,7 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
 
-    const G = 1.25; // 1.7
+    const G = 1.7; // 1.7
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -186,7 +186,7 @@ var lf2 = (function (lf2) {
                         break;
                     default:
                         next = 0;
-                        if (this.position.z > 0) {
+                        if (this.position.z < 0) {
                             next = FALLING_ID;
                         }
                 }
@@ -284,7 +284,7 @@ var lf2 = (function (lf2) {
                     break;
                 case FrameStage.JUMP:
                     if (this._currentFrameIndex !== FALLING_ID) {
-                        y = -this.obj.jump_height;
+                        y = this.obj.jump_height;
                     } else {
 
                     }
@@ -303,8 +303,6 @@ var lf2 = (function (lf2) {
          */
         _getFrameOffset() {
             let pRet = super._getFrameOffset();
-
-
 
 
             return pRet;
@@ -410,12 +408,8 @@ var lf2 = (function (lf2) {
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;
 
-            if (this.position.z > 0) {
-                if (this._velocity.y < 0) {
-                    this._velocity.y -= G;
-                }else if (this._velocity.y < 0.1) {
-                    this._velocity.y = -G;
-                }
+            if (this.position.z < 0) {
+                this._velocity.y += G;
             }
 
 

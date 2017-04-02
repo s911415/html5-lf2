@@ -272,12 +272,12 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             if (!this.character) return;
 
-            if(this.character._allowDraw){
+            if (this.character._allowDraw) {
                 //Backup shadow variables
-                //let oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
+                const oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-                //ctx.shadowBlur = 10;
-                //ctx.shadowColor = "#000";
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "#000";
                 ctx.font = "8px Arial";
                 ctx.fillStyle = "#FFF";
                 ctx.textAlign = "center";
@@ -289,8 +289,8 @@ var lf2 = (function (lf2) {
                 );
 
                 //Restore shadow variable
-                //ctx.shadowBlur = oldShadowBlur;
-                //ctx.shadowColor = oldShadowColor;
+                ctx.shadowBlur = oldShadowBlur;
+                ctx.shadowColor = oldShadowColor;
             }
         }
 
@@ -414,11 +414,11 @@ var lf2 = (function (lf2) {
                 ball.position = new Framework.Point3D(
                     caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
                     caller.position.y,  //Y 不變
-                    zPos
+                    -zPos
                 );
 
 
-                if(ball._getVelocity().isZero && !opoint.dv.isZero){
+                if (ball._getVelocity().isZero && !opoint.dv.isZero) {
                     ball._velocity.x = opoint.dv.x;
                     ball._velocity.y = opoint.dv.y;
                 }
