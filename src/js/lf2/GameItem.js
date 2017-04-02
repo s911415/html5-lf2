@@ -147,7 +147,7 @@ var lf2 = (function (lf2) {
 
             let bound = 0;
 
-            if (this._frameForceChange || this._updateCounter > this.currentFrame.wait) {
+            if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
                 this._updateCounter = 0;
