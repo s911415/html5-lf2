@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const Bound = lf2.Bound;
+    const Rectangle = lf2.Rectangle;
     const DESTROY_ID = 1000;
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
@@ -341,25 +342,64 @@ var lf2 = (function (lf2) {
                 );
 
                 //Draw bdy rect
-                if (curFrame.bdy) {
-                    const rect = curFrame.bdy.rect;
+                const bdy = this.getBdyRect();
+                if (bdy) {
                     ctx.strokeStyle = "#FF0000";
                     ctx.strokeRect(
-                        REAL_DRAW_POS.x + rect.position.x, REAL_DRAW_POS.y + rect.position.y,
-                        rect.width, rect.height
+                        bdy.position.x, bdy.position.y + leftTopPoint.z,
+                        bdy.width, bdy.height
                     );
                 }
 
                 //Draw itr rect
-                if (curFrame.itr) {
-                    const rect = curFrame.itr.rect;
+                const itr = this.getItrRect();
+                if (itr) {
                     ctx.strokeStyle = "#0000FF";
                     ctx.strokeRect(
-                        REAL_DRAW_POS.x + rect.position.x, REAL_DRAW_POS.y + rect.position.y,
-                        rect.width, rect.height
+                        itr.position.x, itr.position.y + leftTopPoint.z,
+                        itr.width, itr.height
                     );
                 }
             }
+        }
+
+        getItrRect() {
+            if (!this.currentFrame.itr) return null;
+            return this._transferRect(this.currentFrame.itr.rect);
+        }
+
+        getBdyRect() {
+            if (!this.currentFrame.bdy) return null;
+            return this._transferRect(this.currentFrame.bdy.rect);
+        }
+
+        /**
+         *
+         * @param {lf2.Rectangle} rect
+         * @returns {lf2.Rectangle}
+         * @private
+         */
+        _transferRect(rect) {
+            if (!rect) return null;
+
+            const leftTopPoint = this.leftTopPoint;
+
+            if (this._direction === DIRECTION.RIGHT) {
+                return new Rectangle(
+                    rect.width, rect.height,
+
+                    leftTopPoint.x + rect.position.x,
+                    leftTopPoint.y + rect.position.y
+                );
+            }else if(this._direction===DIRECTION.LEFT){
+                return new Rectangle(
+                    rect.width, rect.height,
+
+                    leftTopPoint.x + this.width - rect.position.x - rect.width,
+                    leftTopPoint.y + rect.position.y
+                );
+            }
+
         }
 
         /**
