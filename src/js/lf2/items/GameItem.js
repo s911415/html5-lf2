@@ -167,7 +167,6 @@ var lf2 = (function (lf2) {
             if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
-                this._updateCounter = 0;
 
                 const getVelocityVal = (cur, next) => {
                     if (next === 0) return cur;
@@ -180,6 +179,11 @@ var lf2 = (function (lf2) {
                 this._velocity.y = getVelocityVal(this._velocity.y, v.y);
                 this._velocity.z = getVelocityVal(this._velocity.z, v.z);
             }
+
+            let attackedItems = this._getAttackItems();
+            attackedItems.forEach(item => {
+                console.log(this, 'attack', item);
+            });
         }
 
         /**
@@ -237,6 +241,7 @@ var lf2 = (function (lf2) {
             }
             this._currentFrameIndex = frameId;
             this._lastFrameSetTime = Date.now();
+            this._updateCounter = 0;
         }
 
         /**
@@ -401,18 +406,45 @@ var lf2 = (function (lf2) {
             return this._transferRect(this.currentFrame.bdy.rect);
         }
 
-        /*
-         _getAttackItems(){
-         const ITR = this.getItrRect();
-         if(!this.currentFrame.itr) return [];
-         let res = [];
 
-         this._bdyItems.forEach(item=>{
+        _getAttackItems() {
+            const ITR = this.getItrBox();
+            if (!this.currentFrame.itr) return [];
+            let res = [];
+            /**
+             *
+             * @param {lf2.GameItem} bdyItem
+             * @param {lf2.Rectangle} bdyRect
+             * @returns {boolean}
+             */
+            const checkCollision = (bdyItem, bdyRect) => {
+                const
+                    a_minX = ITR.position.x, a_maxX = a_minX + ITR.width,
+                    a_minZ = ITR.position.y, a_maxZ = a_minZ + ITR.height,
+                    a_minY = this.position.y - ITR._depthHalf, a_maxY = this.position.y + ITR._depthHalf;
 
-         });
+                const b_minX = bdyRect.position.x, b_maxX = b_minX + bdyRect.width,
+                    b_minZ = bdyRect.position.y, b_maxZ = b_minZ + bdyRect.height,
+                    b_minY = bdyItem.position.y, b_maxY = b_minY + 1;
 
-         }
-         */
+
+                return (a_minX <= b_maxX && a_maxX >= b_minX) &&
+                    (a_minY <= b_maxY && a_maxY >= b_minY) &&
+                    (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
+            };
+
+            this._bdyItems.forEach(item => {
+                if (item instanceof lf2.Character) {
+                    debugger;
+                }
+                if (this.belongTo !== item.belongTo && checkCollision(item, item.getBdyRect())) {
+                    res.push(item);
+                }
+            });
+
+            return res;
+        }
+
         /**
          *
          * @param {lf2.Rectangle} rect
