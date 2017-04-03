@@ -111,6 +111,33 @@ String.prototype.lines = function () {
 };
 
 /**
+ * The padStart() method pads the current string with another string (repeated, if needed)
+ * so that the resulting string reaches the given length.
+ *
+ * The padding is applied from the start (left) of the current string.
+ *
+ * @param {Number} targetLength The length of the resulting string once the current string has been padded.
+ *                  If the value is lower than the current string's length,
+ *                  the current string will be returned as is.
+ *
+ * @param {String} [padString] The string to pad the current string with.
+ *                              If this string is too long to stay within the target length,
+ *                              it will be truncated and the left-most part will be applied.
+ *                              The default value for this parameter is " " (U+0020).
+ *
+ * @returns {String} A String of the specified length with the pad string applied from the start.
+ */
+String.prototype.padStart = String.prototype.padStart || function (targetLength, padString) {
+        if (padString === undefined) padString = ' ';
+        let str = this.toString();
+        while (str.length < targetLength) {
+            str = padString + str;
+        }
+
+        return str;
+    };
+
+/**
  * Convert Object to integer
  * @param obj
  * @returns {Number}

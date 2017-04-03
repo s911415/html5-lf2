@@ -1,6 +1,7 @@
 ﻿"use strict";
 var lf2 = (function (lf2) {
     const _FIGHT_CONTAINER_ID = "__fight_container";
+    const SEC_PER_MIN = 60;
     const PLAYER_TAG = 'data-player';
     const Point = Framework.Point;
     const Game = Framework.Game;
@@ -61,8 +62,18 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         load() {
+            super.load();
+
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
+
+            //載入要被播放的音樂清單
+            //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
+            this.audio = new Framework.Audio({
+                end: {
+                    ogg: define.MUSIC_PATH + 'm_end.ogg',
+                },
+            });
 
             this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
 
@@ -89,6 +100,10 @@ var lf2 = (function (lf2) {
             //TODO: debug use
             this.config.players[0].character.position = new Point(100, 360);
             //this.config.players[1].character.position = new Point(800, 300);
+
+            this._startTime = Date.now();
+            this._gameOver = false;
+            this._gameOverPanelShown = false;
         }
 
         /**
@@ -116,6 +131,12 @@ var lf2 = (function (lf2) {
                 player.update();
                 player.status.update();
             });
+
+            if (this.checkGameOver()) {
+                this._gameOver = true;
+                this._gameOverTime = Date.now();
+                this.showGameOverPanel();
+            }
         }
 
         /**
@@ -260,10 +281,64 @@ var lf2 = (function (lf2) {
                 }
                 statusPanelTemplate.remove();
 
+                this._gameOverPanel = this._container.find('#gameOverPanel');
+                this._gameOverTimeVal = this._container.find('.time-value');
+                this._gameOverPanelPlayerRows = [];
+                const _gameOverPanelPlayerRow = this._gameOverPanel.find('.player-row');
+                const _gameOverPanelTarget = _gameOverPanelPlayerRow.parent();
+                this.config.players.forEach((player, i) => {
+                    let panel = _gameOverPanelPlayerRow.clone();
+
+                    panel.attr(PLAYER_TAG, i);
+                    panel.find('img.small').attr('src', player.character.obj.small.src);
+                    panel.find('.player-text').text('P' + (i + 1));
+                    panel[0]._attackVal = panel.find('.cell-attack>.value');
+                    panel[0]._hpVal = panel.find('.cell-hp>.value');
+                    panel[0]._mpVal = panel.find('.cell-mp>.value');
+                    panel[0]._status = panel.find('.cell-status');
+
+                    this._gameOverPanelPlayerRows[i] = panel[0];
+                    _gameOverPanelTarget.append(panel);
+                });
+                _gameOverPanelPlayerRow.remove();
 
                 $("body").append(this._container);
                 Game.resizeEvent();
             }
+        }
+
+        checkGameOver() {
+            if (this._gameOver) return true;
+
+            let aliveCount = 0;
+            this.config.players.forEach((player) => {
+                if (player.hp > 0) aliveCount++;
+            });
+
+            return aliveCount < 2;
+        }
+
+        showGameOverPanel() {
+            if (this._gameOverPanelShown) return;
+
+            this._gameOverPanel.removeAttr('hidden');
+
+            this.config.players.forEach((player, i) => {
+                const panel = this._gameOverPanelPlayerRows[i];
+                panel._attackVal.text(player.attackSum);
+                panel._hpVal.text(player.hpLost);
+                panel._mpVal.text(player.mpCost);
+                panel._status.attr('data-status', player.hp > 0 ? 'alive' : 'dead');
+            });
+
+            const costTime = ((this._gameOverTime - this._startTime) / 1000) | 0;
+            const ss = costTime % SEC_PER_MIN;
+            const mm = (costTime - ss) / SEC_PER_MIN;
+
+            this._gameOverTimeVal.text(`${mm.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`);
+
+            this.audio.play({name: 'end'});
+            this._gameOverPanelShown = true;
         }
     };
 

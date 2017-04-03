@@ -85,29 +85,6 @@ var lf2 = (function (lf2) {
             }
         }
 
-        /**
-         *
-         * @override
-         */
-        onDestroy() {
-            const ERR_MSG = 'Cannot destroy weapon';
-
-            let indexOfWeapon = this.belongTo.balls.indexOf(this);
-
-            //Remove ball from balls list
-            if (indexOfWeapon !== -1) {
-                this.belongTo.balls.splice(indexOfWeapon, 1);
-            } else {
-                throw ERR_MSG;
-            }
-
-
-            if (this.spriteParent) {
-                this.spriteParent.detach(this);
-            } else {
-                throw ERR_MSG;
-            }
-        }
     };
 
 
