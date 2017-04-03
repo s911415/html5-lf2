@@ -71,6 +71,10 @@ var Framework = (function (Framework) {
 
             return this;
         }
+
+        toString() {
+            return `(${this._x}, ${this._y}, ${this._z})`;
+        }
     };
 
     return Framework;

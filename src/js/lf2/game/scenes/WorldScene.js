@@ -67,15 +67,22 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
-            super.update();
             let sumPlayerX = 0;
             this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
             });
             this._setCameraPositionByX(sumPlayerX / this.config.players.length);
 
-            this.attachArray.forEach((item)=>{
-                if(item instanceof  lf2.GameItem){
+            let bdyItems = this._getAllBdyItem();
+
+            this.attachArray.forEach((item) => {
+                if (item instanceof lf2.GameItem) {
+                    item.setBdyItems(bdyItems);
+                }
+            });
+
+            this.attachArray.forEach((item) => {
+                if (item instanceof lf2.GameItem) {
                     let bound = this.map.getBound(item.position);
                     if (bound !== Bound.NONE) {
                         item.onOutOfBound(bound, this.map);
@@ -83,7 +90,29 @@ var lf2 = (function (lf2) {
                 }
             });
 
+            this.attachArray.forEach((ele) => {
+                ele.update();
+            });
+        }
 
+        /**
+         *
+         * @returns {lf2.GameItem[]}
+         * @private
+         */
+        _getAllBdyItem() {
+            let bdyItems = [];
+            this.attachArray.forEach((item) => {
+                if (item instanceof lf2.GameItem) {
+                    if (item.getBdyRect()) {
+                        bdyItems.push(item);
+                    }
+                }
+            });
+
+            bdyItems.sort((x, y) => x.position.x - y.position.x);
+
+            return bdyItems;
         }
 
         /**

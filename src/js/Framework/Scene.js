@@ -5,6 +5,7 @@ var Framework = (function (Framework) {
     /**
      * 可以用來盛裝多個GameObject的容器, 當該容器位移時, 其所屬的GameObject也會跟著改變
      *
+     * @class {Framework.Scene}
      * @extends {Framework.GameObject}
      * @implements {Framework.AttachableInterface}
      *
