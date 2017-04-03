@@ -44,6 +44,10 @@ var lf2 = (function (lf2) {
             this.name = this.keyboardConfig.NAME;
             this._currentKey = 0;
 
+            this.mpCost = 0;
+            this.hpLost = 0;
+            this.attackSum = 0;
+
             if (this.charId !== undefined) {
                 /**
                  *
@@ -299,7 +303,12 @@ var lf2 = (function (lf2) {
          * @param num
          */
         addHp(num) {
-            let newHP = Utils.returnInRangeValue(this.hp + num, 0, DEFAULT_HP);
+            const newHP = Utils.returnInRangeValue(this.hp + num, 0, DEFAULT_HP);
+
+            if (num < 0) {
+                this.hpLost += -num;
+            }
+
             this.hp = newHP;
         }
 
@@ -309,7 +318,12 @@ var lf2 = (function (lf2) {
          * @param num
          */
         addMp(num) {
-            let newMP = Utils.returnInRangeValue(this.mp + num, 0, DEFAULT_MP);
+            const newMP = Utils.returnInRangeValue(this.mp + num, 0, DEFAULT_MP);
+
+            if (num < 0) {
+                this.mpCost += -num;
+            }
+
             this.mp = newMP;
         }
 
@@ -396,8 +410,8 @@ var lf2 = (function (lf2) {
                     default:
                         addBall = new Ball(opoint.objectId, this);
                 }
-                
-                if(addBall!==null){
+
+                if (addBall !== null) {
                     ballArr.push(addBall);
                 }
             }

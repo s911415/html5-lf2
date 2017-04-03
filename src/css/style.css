@@ -24,6 +24,10 @@
     display: none;
 }
 
+.clear {
+    clear: both;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -46,12 +50,13 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 1010;
-    /*pointer-events: none;*/
+    pointer-events: none;
 }
 
 #__game_canvas__ {
     position: relative;
     z-index: 1000;
+    pointer-events: auto;
 }
 
 .menu_1 {
@@ -79,7 +84,7 @@ body {
     top: 0;
     /*z-index: 100;*/
     background: #000;
-    /*pointer-events: none;*/
+    pointer-events: none;
 }
 
 #logo {
@@ -509,4 +514,130 @@ body {
     font-size: smaller;
     padding: 0 5px;
     text-align: left;
+}
+
+#gameOverPanel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 480px;
+    background: #244790;
+    box-sizing: content-box;
+    border: 5px solid #000;
+    font-size: 10px;
+    color: #FFF;
+}
+
+#gameOverPanel > table {
+    width: 100%;
+    padding: 5px;
+    table-layout: fixed;
+}
+
+#gameOverPanel > table caption {
+    background: #11286c;
+    text-align: center;
+    height: 24px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+#gameOverPanel thead .eng {
+    display: block;
+}
+
+#gameOverPanel .cht:before {
+    content: "(";
+}
+
+#gameOverPanel .cht:after {
+    content: ")";
+}
+
+#gameOverPanel tfoot {
+    font-size: smaller;
+}
+
+#gameOverPanel .time {
+    text-align: right;
+}
+
+#gameOverPanel .player-row img {
+    vertical-align: middle;
+}
+
+#gameOverPanel .hint-continue {
+    font-size: 16px;
+    transform: scale(.75);
+    transform-origin: bottom left;
+    text-align: left;
+}
+
+#gameOverPanel .time-value {
+    padding: 0 5px;
+    background: #000;
+}
+
+#gameOverPanel tbody .cell {
+    vertical-align: middle;
+}
+
+#gameOverPanel tbody .cell .value {
+    background: #000;
+    border-right: 3px #2c2f3d solid;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 8px;
+    text-align: left;
+}
+
+#gameOverPanel .time{
+    float: right;
+}
+
+#gameOverPanel .time{
+    float: right;
+}
+
+#gameOverPanel .hint-continue{
+    float: left;
+}
+
+#gameOverPanel tbody .cell:last-of-type .value {
+    border-right: none;
+}
+
+#gameOverPanel .player-row .cell{
+    padding-top: 10px;
+}
+
+#gameOverPanel .cell-player{
+    width: 80px;
+}
+
+#gameOverPanel .cell-attack{
+    width: 80px;
+}
+
+#gameOverPanel .cell-hp, #gameOverPanel .cell-mp{
+    width: 70px;
+}
+
+#gameOverPanel .cell-status{
+    width: 80px;
+}
+
+#gameOverPanel tbody .cell-status .value{
+    text-align: center;
+}
+
+#gameOverPanel .cell-status[data-status="alive"] .value:before {
+    content: "Win (Alive)";
+    color: #85ff85;
+}
+
+#gameOverPanel .cell-status[data-status="dead"] .value:before {
+    content: "Lose (Dead)";
+    color: #ff9898;
 }
