@@ -6,6 +6,7 @@
         'game/KeyboardConfig.js',
         'game/KeyEventPool.js',
         'game/Rectangle.js',
+        'game/Cube.js',
 
         'enums/Bound.js',
         'enums/FrameStage.js',
