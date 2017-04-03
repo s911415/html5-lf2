@@ -8,10 +8,35 @@ var lf2 = (function (lf2) {
      * @class lf2.Rectangle
      */
     lf2.Rectangle = class Rectangle {
-        constructor(width, height, px, py) {
-            this.width = intval(width);
-            this.height = intval(height);
-            this.position = new Point(px, py);
+        /**
+         *
+         * @param {Number|lf2.Rectangle} widthOrRect
+         * @param {Number} [height]
+         * @param {Number} [px]
+         * @param {Number} [py]
+         */
+        constructor(widthOrRect, height, px, py) {
+            //Copy constructor
+            if (widthOrRect instanceof lf2.Rectangle) {
+                this.width = widthOrRect.width;
+                this.height = widthOrRect.height;
+                this.position = new Point(widthOrRect.position.x, widthOrRect.position.y);
+            } else {
+                if (py === undefined) throw SyntaxError('Arguments missing');
+
+                this.width = intval(widthOrRect);
+                this.height = intval(height);
+                this.position = new Point(px, py);
+            }
+        }
+
+        /**
+         * get area
+         *
+         * @returns {number}
+         */
+        get area() {
+            return this.width * this.height;
         }
 
         /**
@@ -47,6 +72,20 @@ var lf2 = (function (lf2) {
          * @returns {lf2.Rectangle}
          */
         static merge(rect1, rect2) {
+
+            if (rect1 === null && rect2 === null) {
+                return null;
+            }
+
+            if (rect1 === null) {
+                return lf2.Rectangle.merge(rect2, rect1);
+            }
+
+            if (rect2 === null) {
+                return new lf2.Rectangle(rect1);
+            }
+
+
             const
                 x1 = Math.min(rect1.position.x, rect2.position.x),
                 y1 = Math.min(rect1.position.y, rect2.position.y),
