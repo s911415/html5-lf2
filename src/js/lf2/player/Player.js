@@ -55,12 +55,6 @@ var lf2 = (function (lf2) {
                  */
                 this.character = new Character(charId, this);
 
-                /**
-                 *
-                 * @type {lf2.Ball[]}
-                 */
-                this.balls = [];
-
                 this.hp = DEFAULT_HP;
                 this.mp = DEFAULT_MP;
 
@@ -264,7 +258,6 @@ var lf2 = (function (lf2) {
             this._updateCurrentKey(NOW);
 
             //this.character.update();
-            //this.balls.forEach(ball => ball.update());
         }
 
         /**
@@ -442,8 +435,6 @@ var lf2 = (function (lf2) {
                     ball._velocity.x = opoint.dv.x;
                     ball._velocity.y = opoint.dv.y;
                 }
-
-                this.balls.push(ball);
                 this.spriteParent.attach(ball);
             });
 
