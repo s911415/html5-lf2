@@ -49,6 +49,12 @@ var lf2 = (function (lf2) {
     };
     Object.freeze(HIDE_FRAME_RANGE);
 
+    const CHANGE_TO_FALLING_INDEX = [
+        FrameStage.STAND, FrameStage.WALK, FrameStage.RUN
+    ];
+    CHANGE_TO_FALLING_INDEX.sort();
+    Object.freeze(CHANGE_TO_FALLING_INDEX);
+
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
@@ -60,6 +66,7 @@ var lf2 = (function (lf2) {
     const JUMP_ATTACK_FRAME_ID = 80;
     const LYING1_FRAME_ID = 230;
     const LYING2_FRAME_ID = 231;
+
 
     const getRand = (arr) => {
         let idx = (arr.length * Math.random()) | 0;
@@ -184,7 +191,6 @@ var lf2 = (function (lf2) {
                 next = 0;
             }
 
-
             if (this.belongTo.hp <= 0) {
                 this._allowDraw = true;
                 this._hideRemainderTime = 0;
@@ -195,105 +201,112 @@ var lf2 = (function (lf2) {
                     default:
                         next = getLyingId();
                 }
-            } else if (next === 0) {
-                switch (curState) {
-                    case FrameStage.RUN:
-                    case FrameStage.BURN_RUN:
-                        if (this._run_dir === DIRECTION.RIGHT) {
-                            next = this.currentFrame.id + 1;
-                            //Loop run action
-                            if (next > RUN_FRAME_RANGE.max) {
-                                next -= 2;
-                                this._run_dir = DIRECTION.LEFT;
-                            }
-                        } else {
-                            next = this.currentFrame.id - 1;
-                            //Loop run action
-                            if (next < RUN_FRAME_RANGE.min) {
-                                next += 2;
-                                this._run_dir = DIRECTION.RIGHT;
-                            }
-                        }
-
-                        if (
-                            (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction === DIRECTION.RIGHT) ||
-                            (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
-                        ) {
-                            next = STOP_RUNNING_FRAME_ID;
-                        }
-
-                        break;
-                    case FrameStage.FALL: {
-                        let face = -1;
-                        if (this._currentFrameIndex.inRange(FALLING1_FRAME_RANGE.min, FALLING1_FRAME_RANGE.max)) {
-                            face = true; //前
-                            next = (this._currentFrameIndex + 1);
-
-                            if (next > FALLING1_FRAME_RANGE.max) next = FALLING1_FRAME_RANGE.max;
-                            else if (next < FALLING1_FRAME_RANGE.min) next = FALLING1_FRAME_RANGE.min;
-
-
-                        } else if (this._currentFrameIndex.inRange(FALLING2_FRAME_RANGE.min, FALLING2_FRAME_RANGE.max)) {
-                            face = false; //後
-                            next = (this._currentFrameIndex + 1);
-
-                            if (next > FALLING2_FRAME_RANGE.max) next = FALLING2_FRAME_RANGE.max;
-                            else if (next < FALLING2_FRAME_RANGE.min) next = FALLING2_FRAME_RANGE.min;
-                        }
-
-                        if (this.isStopping) {
-                            if (face) {
-                                next = LYING1_FRAME_ID;
-                            } else {
-                                next = LYING2_FRAME_ID;
-                            }
-                        }
-                    }
-                        break;
-                    default:
-                        next = 0;
-                        if (this.position.z < 0) {
-                            next = FALLING_ID;
-                        }
+            } else {
+                // 強制換成掉落動畫
+                if (this.position.z < 0 && CHANGE_TO_FALLING_INDEX.binarySearch(curState) !== -1) {
+                    next = FALLING_ID;
                 }
-            } else if (next === 999) {
-                switch (curState) {
-                    case FrameStage.STAND:
-                        if (IS_ARR_ONLY) {
-                            next = WALK_FRAME_RANGE.min;
-                            this._walk_dir = DIRECTION.RIGHT;
-                        }
 
-                        break;
-
-                    case FrameStage.WALK:
-                        //hold left or right key
-                        if (IS_ARR_ONLY || this.belongTo._isHoldingLastKey()) {
-                            if (this._walk_dir === DIRECTION.RIGHT) {
+                if (next === 0) {
+                    switch (curState) {
+                        case FrameStage.RUN:
+                        case FrameStage.BURN_RUN:
+                            if (this._run_dir === DIRECTION.RIGHT) {
                                 next = this.currentFrame.id + 1;
-                                //Loop walk action
-                                if (next > WALK_FRAME_RANGE.max) {
+                                //Loop run action
+                                if (next > RUN_FRAME_RANGE.max) {
                                     next -= 2;
-                                    this._walk_dir = DIRECTION.LEFT;
+                                    this._run_dir = DIRECTION.LEFT;
                                 }
                             } else {
                                 next = this.currentFrame.id - 1;
-                                //Loop walk action
-                                if (next < WALK_FRAME_RANGE.min) {
+                                //Loop run action
+                                if (next < RUN_FRAME_RANGE.min) {
                                     next += 2;
-                                    this._walk_dir = DIRECTION.RIGHT;
+                                    this._run_dir = DIRECTION.RIGHT;
+                                }
+                            }
+
+                            if (
+                                (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction === DIRECTION.RIGHT) ||
+                                (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
+                            ) {
+                                next = STOP_RUNNING_FRAME_ID;
+                            }
+
+                            break;
+                        case FrameStage.FALL: {
+                            let face = -1;
+                            if (this._currentFrameIndex.inRange(FALLING1_FRAME_RANGE.min, FALLING1_FRAME_RANGE.max)) {
+                                face = true; //前
+                                next = (this._currentFrameIndex + 1);
+
+                                if (next > FALLING1_FRAME_RANGE.max) next = FALLING1_FRAME_RANGE.max;
+                                else if (next < FALLING1_FRAME_RANGE.min) next = FALLING1_FRAME_RANGE.min;
+
+
+                            } else if (this._currentFrameIndex.inRange(FALLING2_FRAME_RANGE.min, FALLING2_FRAME_RANGE.max)) {
+                                face = false; //後
+                                next = (this._currentFrameIndex + 1);
+
+                                if (next > FALLING2_FRAME_RANGE.max) next = FALLING2_FRAME_RANGE.max;
+                                else if (next < FALLING2_FRAME_RANGE.min) next = FALLING2_FRAME_RANGE.min;
+                            }
+
+                            if (this.isStopping) {
+                                if (face) {
+                                    next = LYING1_FRAME_ID;
+                                } else {
+                                    next = LYING2_FRAME_ID;
                                 }
                             }
                         }
-                        break;
-                    default:
-                        next = 0;
-                        if (this.position.z < 0) {
-                            next = FALLING_ID;
-                        }
-                }
-                if (next === 999) next = 0;
+                            break;
+                        default:
+                            next = 0;
+                            if (this.position.z < 0) {
+                                next = FALLING_ID;
+                            }
+                    }
+                } else if (next === 999) {
+                    switch (curState) {
+                        case FrameStage.STAND:
+                            if (IS_ARR_ONLY) {
+                                next = WALK_FRAME_RANGE.min;
+                                this._walk_dir = DIRECTION.RIGHT;
+                            }
 
+                            break;
+
+                        case FrameStage.WALK:
+                            //hold left or right key
+                            if (IS_ARR_ONLY || this.belongTo._isHoldingLastKey()) {
+                                if (this._walk_dir === DIRECTION.RIGHT) {
+                                    next = this.currentFrame.id + 1;
+                                    //Loop walk action
+                                    if (next > WALK_FRAME_RANGE.max) {
+                                        next -= 2;
+                                        this._walk_dir = DIRECTION.LEFT;
+                                    }
+                                } else {
+                                    next = this.currentFrame.id - 1;
+                                    //Loop walk action
+                                    if (next < WALK_FRAME_RANGE.min) {
+                                        next += 2;
+                                        this._walk_dir = DIRECTION.RIGHT;
+                                    }
+                                }
+                            }
+                            break;
+                        default:
+                            next = 0;
+                            if (this.position.z < 0) {
+                                next = FALLING_ID;
+                            }
+                    }
+                    if (next === 999) next = 0;
+
+                }
             }
 
             //Check mp request
