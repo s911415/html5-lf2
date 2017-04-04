@@ -11,6 +11,7 @@ var lf2 = (function (lf2) {
     const KeyboardConfig = lf2.KeyboardConfig;
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
+    const NONE = GameItem.NONE;
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -53,13 +54,16 @@ var lf2 = (function (lf2) {
         return arr[idx];
     };
 
+    const getPunchId=()=>getRand([PUNCH1_FRAME_ID, PUNCH2_FRAME_ID]);
+    const getLyingId=()=>getRand([LYING1_FRAME_ID, LYING2_FRAME_ID]);
+
     const DEFAULT_KEY = {};
     let acceptForceChangeStatus = [];
 
     DEFAULT_KEY[FrameStage.STAND] = {
         d: DEFEND_FRAME_ID,
         j: JUMP_FRAME_ID,
-        a: ()=>getRand([PUNCH1_FRAME_ID, PUNCH2_FRAME_ID]),
+        a: getPunchId,
     };
     DEFAULT_KEY[FrameStage.WALK] = {
         d: DEFEND_FRAME_ID,
@@ -127,6 +131,8 @@ var lf2 = (function (lf2) {
          * @override
          */
         _getNextFrameId() {
+            if(this._frameForceChangeId!==NONE) return this._frameForceChangeId;
+
             const hitList = this.currentFrame.hit;
             const curState = this.currentFrame.state;
             let next = this.currentFrame.nextFrameId;
@@ -175,7 +181,7 @@ var lf2 = (function (lf2) {
                         next = this.currentFrame.id;
                         break;
                     default:
-                        next = getRand([LYING1_FRAME_ID, LYING2_FRAME_ID]);
+                        next = getLyingId();
                 }
             }else if (next === 0) {
                 switch (curState) {
@@ -488,7 +494,23 @@ var lf2 = (function (lf2) {
                     this._direction = DIRECTION.RIGHT;
                 }
             }
+        }
 
+        /**
+         *
+         * @param {lf2.GameItem} item
+         */
+        notifyDamageBy(item){
+            super.notifyDamageBy(item);
+            const ITR=item.currentFrame.itr;
+
+            switch(ITR.kind){
+
+            }
+
+            this.belongTo.hurtPlayer(ITR.injury);
+
+            this.setNextFrame(getLyingId());
         }
 
         get _curFuncKey() {

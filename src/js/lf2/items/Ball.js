@@ -12,6 +12,7 @@ var lf2 = (function (lf2) {
     const Bound = lf2.Bound;
     const INIT_TIME = 500;
     const DIRECTION = lf2.GameItem.DIRECTION;
+    const NONE = lf2.GameItem.NONE;
     /**
      * Ball
      *
@@ -40,6 +41,8 @@ var lf2 = (function (lf2) {
          * @override
          */
         _getNextFrameId() {
+            if(this._frameForceChangeId!==NONE) return this._frameForceChangeId;
+
             if (this._isOut) return lf2.GameItem.DESTROY_ID;
             const curF = this.currentFrame;
             let next = curF.nextFrameId;

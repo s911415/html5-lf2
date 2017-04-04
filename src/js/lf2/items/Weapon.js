@@ -3,6 +3,7 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
+    const NONE = lf2.GameItem.NONE;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
@@ -38,6 +39,8 @@ var lf2 = (function (lf2) {
          */
         _getNextFrameId() {
             if (this._isOut) return lf2.GameItem.DESTROY_ID;
+            if(this._frameForceChangeId!==NONE) return this._frameForceChangeId;
+
             const curF = this.currentFrame;
             let next = curF.nextFrameId;
             switch (curF.state) {
