@@ -137,27 +137,29 @@ String.prototype.padStart = String.prototype.padStart || function (targetLength,
         return str;
     };
 
-Array.prototype.binarySearch = function(target, compareFunction){
-    if(compareFunction===undefined) compareFunction = (x, y) => x-y;
+Array.prototype.binarySearch = function (target, compareFunction) {
+    if (compareFunction === undefined) compareFunction = (x, y) => x - y;
 
     let low = 0;
     let high = this.length;
     let mid;
     let element;
-    while(low <= high) {
+    while (low <= high) {
         mid = ((low + high) / 2) | 0;
         element = this[mid];
-        let compareResult = compareFunction(elem, target);
+        let compareResult = compareFunction(element, target);
 
-        if(compareResult<0) {
+        if (compareResult === 0) {
+            return mid;
+        } else if (compareResult < 0) {
             low = mid + 1;
-        } else if (compareResult>0) {
+        } else if (compareResult > 0) {
             high = mid - 1;
         } else {
-            return mid;
+            return -1;
         }
     }
-    return null;
+    return -1;
 };
 
 /**
