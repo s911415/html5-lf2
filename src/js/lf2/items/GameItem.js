@@ -84,11 +84,13 @@ var lf2 = (function (lf2) {
             this._lastFrameId = NONE;
             this.belongTo = player;
             this._frameForceChange = false;
+            this._frameForceChangeId = NONE;
             this._createTime = Date.now();
             this._allowDraw = true;
             this._updateCounter = 0;
             this._affectByFriction = true;
             this._bdyItems = [];
+            this._itrItem = null;
 
             this.pushSelfToLevel();
         }
@@ -167,6 +169,7 @@ var lf2 = (function (lf2) {
             if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
+                this._frameForceChangeId = NONE;
 
                 const getVelocityVal = (cur, next) => {
                     if (next === 0) return cur;
@@ -180,10 +183,7 @@ var lf2 = (function (lf2) {
                 this._velocity.z = getVelocityVal(this._velocity.z, v.z);
             }
 
-            let attackedItems = this._getAttackItems();
-            attackedItems.forEach(item => {
-                console.log(this, 'attack', item);
-            });
+            this._itrItem = null;
         }
 
         /**
@@ -435,7 +435,7 @@ var lf2 = (function (lf2) {
 
         }
 
-        _getAttackItems() {
+        getAttackItems() {
             const ITR = this.currentFrame.itr;
             if (!this.currentFrame.itr) return [];
             let res = [];
@@ -466,12 +466,34 @@ var lf2 = (function (lf2) {
             };
 
             this._bdyItems.forEach(item => {
-                if (this.belongTo !== item.belongTo && checkCollision(item)) {
-                    res.push(item);
+                if (checkCollision(item)) {
+                    if(ITR.kind===18 || this.belongTo !== item.belongTo){ //kind 18 allow attack itself.
+                        res.push(item);
+                    }
                 }
             });
 
             return res;
+        }
+
+        /**
+         *
+         * @param {lf2.GameItem} item
+         */
+        notifyDamageBy(item) {
+
+            this._itrItem = item;
+            console.log(item, 'attack', this);
+        }
+
+        /**
+         * Force set next frame id
+         *
+         * @param {Number} id
+         */
+        setNextFrame(id) {
+            this._frameForceChangeId = id;
+            this._frameForceChange = true;
         }
 
         /**
@@ -540,6 +562,7 @@ var lf2 = (function (lf2) {
          * @return {Number} The next frame identifier.
          */
         _getNextFrameId() {
+            if (this._frameForceChangeId !== NONE) return this._frameForceChangeId;
             let next = this.currentFrame.nextFrameId;
             if (next == 0) return this.currentFrame.id;
             if (next == 999) return 0;
@@ -597,6 +620,7 @@ var lf2 = (function (lf2) {
 
     lf2.GameItem.prototype.DIRECTION = lf2.GameItem.DIRECTION = DIRECTION;
     lf2.GameItem.prototype.DESTROY_ID = lf2.GameItem.DESTROY_ID = DESTROY_ID;
+    lf2.GameItem.prototype.NONE = lf2.GameItem.NONE = NONE;
 
     return lf2;
 })(lf2 || {});
