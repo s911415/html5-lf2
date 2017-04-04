@@ -31,6 +31,18 @@ var lf2 = (function (lf2) {
     };
     Object.freeze(RUN_FRAME_RANGE);
 
+    const FALLING1_FRAME_RANGE = {
+        min: 180,
+        max: 185
+    };
+    Object.freeze(FALLING1_FRAME_RANGE);
+
+    const FALLING2_FRAME_RANGE = {
+        min: 186,
+        max: 191
+    };
+    Object.freeze(FALLING2_FRAME_RANGE);
+
     const HIDE_FRAME_RANGE = {
         min: 1100,
         max: 1299
@@ -48,14 +60,14 @@ var lf2 = (function (lf2) {
     const JUMP_ATTACK_FRAME_ID = 80;
     const LYING1_FRAME_ID = 230;
     const LYING2_FRAME_ID = 231;
-    
+
     const getRand = (arr) => {
         let idx = (arr.length * Math.random()) | 0;
         return arr[idx];
     };
 
-    const getPunchId=()=>getRand([PUNCH1_FRAME_ID, PUNCH2_FRAME_ID]);
-    const getLyingId=()=>getRand([LYING1_FRAME_ID, LYING2_FRAME_ID]);
+    const getPunchId = () => getRand([PUNCH1_FRAME_ID, PUNCH2_FRAME_ID]);
+    const getLyingId = () => getRand([LYING1_FRAME_ID, LYING2_FRAME_ID]);
 
     const DEFAULT_KEY = {};
     let acceptForceChangeStatus = [];
@@ -131,7 +143,7 @@ var lf2 = (function (lf2) {
          * @override
          */
         _getNextFrameId() {
-            if(this._frameForceChangeId!==NONE) return this._frameForceChangeId;
+            if (this._frameForceChangeId !== NONE) return this._frameForceChangeId;
 
             const hitList = this.currentFrame.hit;
             const curState = this.currentFrame.state;
@@ -144,10 +156,10 @@ var lf2 = (function (lf2) {
             }
             if ((fc || next === 0 || next === 999) && DEFAULT_KEY[curState]) {
                 const _next = DEFAULT_KEY[curState][funcKeyWoArrow];
-                if(_next){
-                    if(typeof _next === 'function'){
+                if (_next) {
+                    if (typeof _next === 'function') {
                         next = _next();
-                    }else{
+                    } else {
                         next = _next;
                     }
                 }
@@ -171,19 +183,19 @@ var lf2 = (function (lf2) {
                 this._allowDraw = false;
                 next = 0;
             }
-            
-            
-            if(this.belongTo.hp<=0){
+
+
+            if (this.belongTo.hp <= 0) {
                 this._allowDraw = true;
                 this._hideRemainderTime = 0;
-                switch(curState){
+                switch (curState) {
                     case FrameStage.LYING:
                         next = this.currentFrame.id;
                         break;
                     default:
                         next = getLyingId();
                 }
-            }else if (next === 0) {
+            } else if (next === 0) {
                 switch (curState) {
                     case FrameStage.RUN:
                     case FrameStage.BURN_RUN:
@@ -210,6 +222,33 @@ var lf2 = (function (lf2) {
                             next = STOP_RUNNING_FRAME_ID;
                         }
 
+                        break;
+                    case FrameStage.FALL: {
+                        let face = -1;
+                        if (this._currentFrameIndex.inRange(FALLING1_FRAME_RANGE.min, FALLING1_FRAME_RANGE.max)) {
+                            face = true; //前
+                            next = (this._currentFrameIndex + 1);
+
+                            if (next > FALLING1_FRAME_RANGE.max) next = FALLING1_FRAME_RANGE.max;
+                            else if (next < FALLING1_FRAME_RANGE.min) next = FALLING1_FRAME_RANGE.min;
+
+
+                        } else if (this._currentFrameIndex.inRange(FALLING2_FRAME_RANGE.min, FALLING2_FRAME_RANGE.max)) {
+                            face = false; //後
+                            next = (this._currentFrameIndex + 1);
+
+                            if (next > FALLING2_FRAME_RANGE.max) next = FALLING2_FRAME_RANGE.max;
+                            else if (next < FALLING2_FRAME_RANGE.min) next = FALLING2_FRAME_RANGE.min;
+                        }
+
+                        if (this.isStopping) {
+                            if (face) {
+                                next = LYING1_FRAME_ID;
+                            } else {
+                                next = LYING2_FRAME_ID;
+                            }
+                        }
+                    }
                         break;
                     default:
                         next = 0;
@@ -500,17 +539,29 @@ var lf2 = (function (lf2) {
          *
          * @param {lf2.GameItem} item
          */
-        notifyDamageBy(item){
+        notifyDamageBy(item) {
             super.notifyDamageBy(item);
-            const ITR=item.currentFrame.itr;
+            const ITR = item.currentFrame.itr;
+            const DV = ITR.dv;
 
-            switch(ITR.kind){
+            switch (ITR.kind) {
 
             }
 
             this.belongTo.hurtPlayer(ITR.injury);
+            this._velocity.x = DV.x;
+            this._velocity.y = DV.y;
 
-            this.setNextFrame(getLyingId());
+            let face = this._direction !== item._direction;
+
+            if (face) {
+                this._velocity.x *= -1;
+                this.setNextFrame(FALLING1_FRAME_RANGE.min);
+            } else {
+                this.setNextFrame(FALLING2_FRAME_RANGE.min);
+            }
+
+
         }
 
         get _curFuncKey() {
