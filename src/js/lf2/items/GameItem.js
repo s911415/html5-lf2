@@ -406,45 +406,6 @@ var lf2 = (function (lf2) {
             return this._transferRect(this.currentFrame.bdy.rect);
         }
 
-
-        _getAttackItems() {
-            const ITR = this.getItrBox();
-            if (!this.currentFrame.itr) return [];
-            let res = [];
-            /**
-             *
-             * @param {lf2.GameItem} bdyItem
-             * @param {lf2.Rectangle} bdyRect
-             * @returns {boolean}
-             */
-            const checkCollision = (bdyItem, bdyRect) => {
-                const
-                    a_minX = ITR.position.x, a_maxX = a_minX + ITR.width,
-                    a_minZ = ITR.position.y, a_maxZ = a_minZ + ITR.height,
-                    a_minY = this.position.y - ITR._depthHalf, a_maxY = this.position.y + ITR._depthHalf;
-
-                const b_minX = bdyRect.position.x, b_maxX = b_minX + bdyRect.width,
-                    b_minZ = bdyRect.position.y, b_maxZ = b_minZ + bdyRect.height,
-                    b_minY = bdyItem.position.y, b_maxY = b_minY + 1;
-
-
-                return (a_minX <= b_maxX && a_maxX >= b_minX) &&
-                    (a_minY <= b_maxY && a_maxY >= b_minY) &&
-                    (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
-            };
-
-            this._bdyItems.forEach(item => {
-                if (item instanceof lf2.Character) {
-                    debugger;
-                }
-                if (this.belongTo !== item.belongTo && checkCollision(item, item.getBdyRect())) {
-                    res.push(item);
-                }
-            });
-
-            return res;
-        }
-
         /**
          *
          * @param {lf2.Rectangle} rect
@@ -472,6 +433,45 @@ var lf2 = (function (lf2) {
                 );
             }
 
+        }
+
+        _getAttackItems() {
+            const ITR = this.currentFrame.itr;
+            if (!this.currentFrame.itr) return [];
+            let res = [];
+            /**
+             *
+             * @param {lf2.GameItem} bdyItem
+             * @param {lf2.Rectangle} bdyRect
+             * @returns {boolean}
+             */
+            const
+                a_minX = this.position.x - this.width / 2 + ITR.rect.position.x, a_maxX = a_minX + ITR.rect.width,
+                a_minY = this.position.y - ITR.zwidth / 2, a_maxY = a_minY + ITR.zwidth,
+                a_minZ = this.position.z - this.height + ITR.rect.position.y, a_maxZ = a_minZ + ITR.rect.height;
+
+            const checkCollision = (bdyItem) => {
+                const bdy = bdyItem.currentFrame.bdy;
+                if (!bdy) return false;
+                const
+                    b_minX = bdyItem.position.x - bdyItem.width / 2 + bdy.rect.position.x,
+                    b_maxX = b_minX + bdy.rect.width,
+                    b_minY = bdyItem.position.y - 1, b_maxY = b_minY + 1,
+                    b_minZ = bdyItem.position.z - bdyItem.height + bdy.rect.position.y,
+                    b_maxZ = b_minZ + bdy.rect.height;
+
+                return (a_minX <= b_maxX && a_maxX >= b_minX) &&
+                    (a_minY <= b_maxY && a_maxY >= b_minY) &&
+                    (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
+            };
+
+            this._bdyItems.forEach(item => {
+                if (this.belongTo !== item.belongTo && checkCollision(item)) {
+                    res.push(item);
+                }
+            });
+
+            return res;
         }
 
         /**

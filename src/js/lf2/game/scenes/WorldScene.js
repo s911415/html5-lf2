@@ -104,13 +104,13 @@ var lf2 = (function (lf2) {
             let bdyItems = [];
             this.attachArray.forEach((item) => {
                 if (item instanceof lf2.GameItem) {
-                    if (item.getBdyRect()) {
+                    if (item.currentFrame.bdy && item._allowDraw) {
                         bdyItems.push(item);
                     }
                 }
             });
 
-            bdyItems.sort((x, y) => x.position.x - y.position.x);
+            // bdyItems.sort((x, y) => x.position.x - y.position.x);
 
             return bdyItems;
         }
