@@ -1,7 +1,7 @@
 'use strict';
 var Framework = (function (Framework) {
 
-    Framework.Point = class Point{
+    Framework.Point = class Point {
 
         /**
          * Set Point
@@ -10,7 +10,7 @@ var Framework = (function (Framework) {
          * @param {Number} y
          */
         constructor(x, y) {
-            if(typeof x =="string"){
+            if (typeof x == "string") {
                 debugger;
             }
             this._x = floatval(x);
@@ -21,7 +21,7 @@ var Framework = (function (Framework) {
          *
          * @returns {Number}
          */
-        get first(){
+        get first() {
             return this._x;
         }
 
@@ -29,7 +29,7 @@ var Framework = (function (Framework) {
          *
          * @returns {Number}
          */
-        get second(){
+        get second() {
             return this._y;
         }
 
@@ -42,8 +42,8 @@ var Framework = (function (Framework) {
             return this._x;
         }
 
-        get isZero(){
-            return this._x===0 && this._x===this._y;
+        get isZero() {
+            return this._x === 0 && this._x === this._y;
         }
 
         /**
@@ -61,7 +61,7 @@ var Framework = (function (Framework) {
          * Clone
          * @returns {Point}
          */
-        clone(){
+        clone() {
             return new Point(this.x, this.y);
         }
 
@@ -71,9 +71,9 @@ var Framework = (function (Framework) {
          * @param {Number} y
          * @returns {Point}
          */
-        offset(x, y){
-            this.x+=floatval(x);
-            this.y+=floatval(y);
+        offset(x, y) {
+            this.x += floatval(x);
+            this.y += floatval(y);
 
             return this;
         }
@@ -96,6 +96,10 @@ var Framework = (function (Framework) {
          */
         set y(value) {
             this._y = floatval(value);
+        }
+
+        toString() {
+            return `(${this._x}, ${this._y})`;
         }
 
     };

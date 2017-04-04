@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const GameObjectPool = lf2.GameObjectPool;
     const Bound = lf2.Bound;
     const Rectangle = lf2.Rectangle;
+    const Cube = lf2.Cube;
     const DESTROY_ID = 1000;
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
@@ -87,6 +88,7 @@ var lf2 = (function (lf2) {
             this._allowDraw = true;
             this._updateCounter = 0;
             this._affectByFriction = true;
+            this._bdyItems = [];
 
             this.pushSelfToLevel();
         }
@@ -123,7 +125,8 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            this._updateCounter++
+            const curFrame = this.currentFrame;
+            this._updateCounter++;
             let offset = this._getFrameOffset();
 
             //Start move object
@@ -136,13 +139,13 @@ var lf2 = (function (lf2) {
             }
             //End of move object
 
-            if(this._affectByFriction){
+            if (this._affectByFriction) {
                 // Only apply friction on ground
                 if (this.position.z === 0) {
                     this._velocity.x -= applyFriction(this._velocity.x);
                     this._velocity.z -= applyFriction(this._velocity.z);
                 }
-                
+
                 if (this.position.z < 0) {
                     this._velocity.y += GRAVITY;
                 }
@@ -153,9 +156,9 @@ var lf2 = (function (lf2) {
                 }
 
                 // Avoid too small velocity
-                if(Math.abs(this._velocity.x)<MIN_V) this._velocity.x = 0;
-                if(Math.abs(this._velocity.y)<MIN_V) this._velocity.y = 0;
-                if(Math.abs(this._velocity.z)<MIN_V) this._velocity.z = 0;
+                if (Math.abs(this._velocity.x) < MIN_V) this._velocity.x = 0;
+                if (Math.abs(this._velocity.y) < MIN_V) this._velocity.y = 0;
+                if (Math.abs(this._velocity.z) < MIN_V) this._velocity.z = 0;
                 // End of friction    
             }
 
@@ -164,7 +167,6 @@ var lf2 = (function (lf2) {
             if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
-                this._updateCounter = 0;
 
                 const getVelocityVal = (cur, next) => {
                     if (next === 0) return cur;
@@ -177,6 +179,19 @@ var lf2 = (function (lf2) {
                 this._velocity.y = getVelocityVal(this._velocity.y, v.y);
                 this._velocity.z = getVelocityVal(this._velocity.z, v.z);
             }
+
+            let attackedItems = this._getAttackItems();
+            attackedItems.forEach(item => {
+                console.log(this, 'attack', item);
+            });
+        }
+
+        /**
+         *
+         * @param {lf2.GameItem[]} items
+         */
+        setBdyItems(items) {
+            this._bdyItems = items;
         }
 
         /**
@@ -226,6 +241,7 @@ var lf2 = (function (lf2) {
             }
             this._currentFrameIndex = frameId;
             this._lastFrameSetTime = Date.now();
+            this._updateCounter = 0;
         }
 
         /**
@@ -303,6 +319,7 @@ var lf2 = (function (lf2) {
                     });
                 }
 
+                //add ball
                 if (curFrame.opoint) {
                     let opoint = curFrame.opoint;
 
@@ -318,8 +335,8 @@ var lf2 = (function (lf2) {
 
                 }
             }
-            this._lastFrameId = this._currentFrameIndex;
 
+            this._lastFrameId = this._currentFrameIndex;
 
             if (define.DEBUG) {
                 let msg = [];
@@ -338,8 +355,6 @@ var lf2 = (function (lf2) {
                     ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
                 }
 
-            }
-            if (define.DEBUG) {
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = "#FF00FF";
                 //Draw image rect
@@ -352,32 +367,82 @@ var lf2 = (function (lf2) {
                 const bdy = this.getBdyRect();
                 if (bdy) {
                     ctx.strokeStyle = "#FF0000";
-                    ctx.strokeRect(
-                        bdy.position.x, bdy.position.y + leftTopPoint.z,
-                        bdy.width, bdy.height
-                    );
+                    bdy.draw(ctx, leftTopPoint.z);
                 }
 
                 //Draw itr rect
-                const itr = this.getItrRect();
+                const itr = this.getItrBox();
                 if (itr) {
                     ctx.strokeStyle = "#0000FF";
-                    ctx.strokeRect(
-                        itr.position.x, itr.position.y + leftTopPoint.z,
-                        itr.width, itr.height
-                    );
+
+                    itr.draw(ctx, leftTopPoint.z);
                 }
             }
         }
 
-        getItrRect() {
-            if (!this.currentFrame.itr) return null;
-            return this._transferRect(this.currentFrame.itr.rect);
+        /**
+         *
+         * @returns {lf2.Cube}
+         */
+        getItrBox() {
+            const _itr = this.currentFrame.itr;
+            if (!_itr) return null;
+
+            const rect = this._transferRect(this.currentFrame.itr.rect);
+
+            return new Cube(
+                rect.width, rect.height, _itr.zwidth,
+                rect.position.x, rect.position.y
+            );
         }
 
+
+        /**
+         *
+         * @returns {lf2.Rectangle}
+         */
         getBdyRect() {
-            if (!this.currentFrame.bdy) return null;
+            if (!this.currentFrame.bdy || !this._allowDraw) return null;
             return this._transferRect(this.currentFrame.bdy.rect);
+        }
+
+
+        _getAttackItems() {
+            const ITR = this.getItrBox();
+            if (!this.currentFrame.itr) return [];
+            let res = [];
+            /**
+             *
+             * @param {lf2.GameItem} bdyItem
+             * @param {lf2.Rectangle} bdyRect
+             * @returns {boolean}
+             */
+            const checkCollision = (bdyItem, bdyRect) => {
+                const
+                    a_minX = ITR.position.x, a_maxX = a_minX + ITR.width,
+                    a_minZ = ITR.position.y, a_maxZ = a_minZ + ITR.height,
+                    a_minY = this.position.y - ITR._depthHalf, a_maxY = this.position.y + ITR._depthHalf;
+
+                const b_minX = bdyRect.position.x, b_maxX = b_minX + bdyRect.width,
+                    b_minZ = bdyRect.position.y, b_maxZ = b_minZ + bdyRect.height,
+                    b_minY = bdyItem.position.y, b_maxY = b_minY + 1;
+
+
+                return (a_minX <= b_maxX && a_maxX >= b_minX) &&
+                    (a_minY <= b_maxY && a_maxY >= b_minY) &&
+                    (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
+            };
+
+            this._bdyItems.forEach(item => {
+                if (item instanceof lf2.Character) {
+                    debugger;
+                }
+                if (this.belongTo !== item.belongTo && checkCollision(item, item.getBdyRect())) {
+                    res.push(item);
+                }
+            });
+
+            return res;
         }
 
         /**
@@ -398,7 +463,7 @@ var lf2 = (function (lf2) {
                     leftTopPoint.x + rect.position.x,
                     leftTopPoint.y + rect.position.y
                 );
-            }else if(this._direction===DIRECTION.LEFT){
+            } else if (this._direction === DIRECTION.LEFT) {
                 return new Rectangle(
                     rect.width, rect.height,
 
