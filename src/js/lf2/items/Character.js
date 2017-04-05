@@ -560,11 +560,23 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
+            //Accept injury
             switch (ITR.kind) {
+                case ItrKind.NORMAL_HIT:
+                case ItrKind.SUPER_PUNCH:
+                case ItrKind.HEAL_BALL:
+                case ItrKind.REFLECTIVE_SHIELD:
+                case ItrKind.SONATA_OF_DEATH_1:
+                case ItrKind.SONATA_OF_DEATH_2:
+                case ItrKind.WHIRLWIND_WIND:
+                case ItrKind.WHIRLWIND_ICE:
 
+                    this.belongTo.hurtPlayer(ITR.injury);
+                    break;
+                default:
+                    break;
             }
 
-            this.belongTo.hurtPlayer(ITR.injury);
             this._velocity.x = DV.x;
             this._velocity.y = DV.y;
             let face = this._direction !== item._direction;
