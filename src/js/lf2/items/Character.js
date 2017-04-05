@@ -371,7 +371,9 @@ var lf2 = (function (lf2) {
                     }
                     break;
                 default:
-                    return this.currentFrame.velocity;
+                    x = this.currentFrame.velocity.x;
+                    y = this.currentFrame.velocity.y;
+                    z = this.currentFrame.velocity.z;
             }
 
             return new Framework.Point3D(x, y, z);
