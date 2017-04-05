@@ -467,12 +467,12 @@ var lf2 = (function (lf2) {
                 const bdy = bdyItem.currentFrame.bdy;
                 if (!bdy) return false;
                 const
-                    b_minX = bdyItem.position.x - this.currentFrame.center.x + bdy.rect.position.x,
+                    b_minX = bdyItem.position.x - bdyItem.currentFrame.center.x + bdy.rect.position.x,
                     b_maxX = b_minX + bdy.rect.width,
 
                     b_minY = bdyItem.position.y - 4, b_maxY = b_minY + 8,
 
-                    b_minZ = bdyItem.position.z - this.currentFrame.center.y + bdy.rect.position.y,
+                    b_minZ = bdyItem.position.z - bdyItem.currentFrame.center.y + bdy.rect.position.y,
                     b_maxZ = b_minZ + bdy.rect.height;
 
                 return (a_minX <= b_maxX && a_maxX >= b_minX) &&
@@ -490,14 +490,14 @@ var lf2 = (function (lf2) {
                         res.push(item);
 
                         if (ITR.arest !== NONE) {
-                            this._arestCounter = ITR.arest + 1;
+                            this._arestCounter = ITR.arest;
                         }
                     }
                 }
             }
 
             if (ITR.arest === NONE && res.length > 0) {
-                this._vrestCounter = ITR.vrest + 1;
+                this._vrestCounter = ITR.vrest;
             }
 
             return res;
