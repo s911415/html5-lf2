@@ -3,7 +3,7 @@
     const BASE_PATH = "./";
 
     window.define = {
-        DEBUG: true,
+        DEBUG: false,
         SHOW_PLAYER_COUNT: 8,
 
         BASE_PATH: BASE_PATH,
