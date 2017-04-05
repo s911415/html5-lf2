@@ -490,14 +490,14 @@ var lf2 = (function (lf2) {
                         res.push(item);
 
                         if (ITR.arest !== NONE) {
-                            this._arestCounter = ITR.arest + 1;
+                            this._arestCounter = ITR.arest;
                         }
                     }
                 }
             }
 
             if (ITR.arest === NONE && res.length > 0) {
-                this._vrestCounter = ITR.vrest + 1;
+                this._vrestCounter = ITR.vrest;
             }
 
             return res;
