@@ -1,6 +1,10 @@
 'use strict';
 (function () {
     const GAME_COMPONENT=[
+        'enums/Bound.js',
+        'enums/FrameStage.js',
+        'enums/ItrKind.js',
+
         'game/define.js',
         'game/Utils.js',
         'game/KeyboardConfig.js',
@@ -8,9 +12,6 @@
         'game/Rectangle.js',
         'game/Cube.js',
         'game/CollisionSearchTree.js',
-
-        'enums/Bound.js',
-        'enums/FrameStage.js',
 
         'frame/ImageInformation.js',
         'frame/BmpInfo.js',
