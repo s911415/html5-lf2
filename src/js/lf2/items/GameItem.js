@@ -91,6 +91,8 @@ var lf2 = (function (lf2) {
             this._affectByFriction = true;
             this._bdyItems = [];
             this._itrItem = null;
+            this._arestCounter = 0;
+            this._vrestCounter = 0;
 
             this.pushSelfToLevel();
         }
@@ -184,6 +186,18 @@ var lf2 = (function (lf2) {
             }
 
             this._itrItem = null;
+
+            if (this._arestCounter > 0) {
+                this._arestCounter--;
+            } else {
+                this._arestCounter = 0;
+            }
+
+            if (this._vrestCounter > 0) {
+                this._vrestCounter--;
+            } else {
+                this._vrestCounter = 0;
+            }
         }
 
         /**
@@ -467,13 +481,25 @@ var lf2 = (function (lf2) {
                     (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
             };
 
-            this._bdyItems.forEach(item => {
-                if (checkCollision(item)) {
+            for (let i = 0; i < this._bdyItems.length && this._vrestCounter === 0; i++) {
+                const item = this._bdyItems[i];
+
+                if (this._arestCounter > 0) break;
+
+                if (checkCollision(item) && item._itrItem === null) {
                     if (ITR.kind === 18 || this.belongTo !== item.belongTo) { //kind 18 allow attack itself.
                         res.push(item);
+
+                        if (ITR.arest !== NONE) {
+                            this._arestCounter = ITR.arest;
+                        }
                     }
                 }
-            });
+            }
+
+            if (ITR.arest === NONE && res.length > 0) {
+                this._vrestCounter = ITR.vrest;
+            }
 
             return res;
         }
@@ -483,7 +509,6 @@ var lf2 = (function (lf2) {
          * @param {lf2.GameItem} item
          */
         notifyDamageBy(item) {
-
             this._itrItem = item;
             console.log(item, 'attack', this);
         }

@@ -141,7 +141,7 @@ Array.prototype.binarySearch = function (target, compareFunction) {
     if (compareFunction === undefined) compareFunction = (x, y) => x - y;
 
     let low = 0;
-    let high = this.length;
+    let high = this.length - 1;
     let mid;
     let element;
     while (low <= high) {
@@ -155,8 +155,6 @@ Array.prototype.binarySearch = function (target, compareFunction) {
             low = mid + 1;
         } else if (compareResult > 0) {
             high = mid - 1;
-        } else {
-            return -1;
         }
     }
     return -1;

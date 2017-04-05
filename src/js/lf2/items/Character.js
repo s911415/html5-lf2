@@ -2,6 +2,7 @@
 var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Bound = lf2.Bound;
+    const ItrKind = lf2.ItrKind;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
@@ -564,17 +565,24 @@ var lf2 = (function (lf2) {
             this.belongTo.hurtPlayer(ITR.injury);
             this._velocity.x = DV.x;
             this._velocity.y = DV.y;
-
             let face = this._direction !== item._direction;
 
             if (face) {
-                this._velocity.x *= -1;
-                this.setNextFrame(FALLING1_FRAME_RANGE.min);
-            } else {
-                this.setNextFrame(FALLING2_FRAME_RANGE.min);
+                this._velocity.x = -1 * this._velocity.x;
             }
 
+            const fallDown = () => {
+                if (face) {
 
+                    this.setNextFrame(FALLING1_FRAME_RANGE.min);
+                } else {
+                    this.setNextFrame(FALLING2_FRAME_RANGE.min);
+                }
+            };
+
+            if (Utils.triggerInProbability(ITR.fall) && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+                fallDown();
+            }
         }
 
         get _curFuncKey() {
