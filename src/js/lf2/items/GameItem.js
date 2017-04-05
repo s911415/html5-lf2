@@ -237,9 +237,8 @@ var lf2 = (function (lf2) {
          * @protected
          */
         _getVelocity() {
-            let v = this.currentFrame.velocity.clone();
-            v.x = getDvxPerWait(v.x);
-            return v;
+            // v.x = getDvxPerWait(v.x);
+            return this.currentFrame.velocity.clone();
         }
 
         /**
@@ -460,20 +459,20 @@ var lf2 = (function (lf2) {
              * @returns {boolean}
              */
             const
-                a_minX = this.position.x - this.width / 2 + ITR.rect.position.x, a_maxX = a_minX + ITR.rect.width,
+                a_minX = this.position.x - this.currentFrame.center.x + ITR.rect.position.x, a_maxX = a_minX + ITR.rect.width,
                 a_minY = this.position.y - ITR.zwidth / 2, a_maxY = a_minY + ITR.zwidth,
-                a_minZ = this.position.z - ITR.rect.position.y, a_maxZ = a_minZ + ITR.rect.height;
+                a_minZ = this.position.z - this.currentFrame.center.y + ITR.rect.position.y, a_maxZ = a_minZ + ITR.rect.height;
 
             const checkCollision = (bdyItem) => {
                 const bdy = bdyItem.currentFrame.bdy;
                 if (!bdy) return false;
                 const
-                    b_minX = bdyItem.position.x - bdyItem.width / 2 + bdy.rect.position.x,
+                    b_minX = bdyItem.position.x - this.currentFrame.center.x + bdy.rect.position.x,
                     b_maxX = b_minX + bdy.rect.width,
 
-                    b_minY = bdyItem.position.y - 1, b_maxY = b_minY + 2,
+                    b_minY = bdyItem.position.y - 4, b_maxY = b_minY + 8,
 
-                    b_minZ = bdyItem.position.z - bdyItem.height + bdy.rect.position.y,
+                    b_minZ = bdyItem.position.z - this.currentFrame.center.y + bdy.rect.position.y,
                     b_maxZ = b_minZ + bdy.rect.height;
 
                 return (a_minX <= b_maxX && a_maxX >= b_minX) &&
@@ -491,14 +490,14 @@ var lf2 = (function (lf2) {
                         res.push(item);
 
                         if (ITR.arest !== NONE) {
-                            this._arestCounter = ITR.arest;
+                            this._arestCounter = ITR.arest + 1;
                         }
                     }
                 }
             }
 
             if (ITR.arest === NONE && res.length > 0) {
-                this._vrestCounter = ITR.vrest;
+                this._vrestCounter = ITR.vrest + 1;
             }
 
             return res;
