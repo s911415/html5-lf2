@@ -5,7 +5,8 @@ var lf2 = (function (lf2) {
      *
      * @class lf2.ItrKind
      */
-    lf2.ItrKind = {
+    let ItrKind;
+    lf2.ItrKind = ItrKind = {
         NORMAL_HIT: 0,
         CATCH: 1,
         PICK_WEAPON: 2,
@@ -22,7 +23,12 @@ var lf2 = (function (lf2) {
         WHIRLWIND_WIND: 15,
         WHIRLWIND_ICE: 16,
     };
+    ItrKind.ITR_ALLOW_FALL = [
+        ItrKind.NORMAL_HIT, ItrKind.SUPER_PUNCH,
+    ];
+    ItrKind.ITR_ALLOW_FALL.sort();
 
+    Object.freeze(ItrKind.ITR_ALLOW_FALL);
     Object.freeze(lf2.ItrKind);
 
     return lf2;

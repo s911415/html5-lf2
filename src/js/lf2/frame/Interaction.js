@@ -28,7 +28,7 @@ var lf2 = (function (lf2) {
                 intval(this.info.get('dvy') || 0)
             );
 
-            this.fall = intval(this.info.get('fall') || 100);
+            this.fall = intval(this.info.get('fall') || 0);
 
             this.vrest = intval(this.info.get('vrest') || 1);
             this.arest = intval(this.info.get('arest') || -1);
@@ -37,6 +37,25 @@ var lf2 = (function (lf2) {
             this.bdefend = intval(this.info.get('bdefend') || 0);
 
             this.effect = intval(this.info.get('effect') || 0);
+
+            this._filterFall();
+        }
+
+        _filterFall() {
+            switch (this.fall) {
+                case 70:
+                    this.fall = 100;
+                    break;
+                case 60:
+                    this.fall = 70;
+                    break;
+                case 40:
+                    this.fall = 50;
+                    break;
+                case 30:
+                    this.fall = 30;
+                    break;
+            }
         }
     };
 

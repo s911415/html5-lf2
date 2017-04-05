@@ -58,6 +58,16 @@ var lf2 = (function (lf2) {
         tryConvertType: function (obj) {
 
         },
+
+        /**
+         *
+         * @param {Number} p probability in percentage
+         * @returns {boolean}
+         */
+        triggerInProbability: function(p){
+            const rand = (Math.random() * 100) | 0;
+            return rand < p;
+        }
     };
 
     return lf2;
