@@ -561,7 +561,7 @@ var lf2 = (function (lf2) {
          *
          * Image information.
          *
-         * @return  {get}   A get.
+         * @return  {lf2.ImageInformation}   A get.
          */
         get ImgInfo() {
             const imgArray = this._direction ? this.obj.bmpInfo.imageNormal : this.obj.bmpInfo.imageMirror;
@@ -589,7 +589,7 @@ var lf2 = (function (lf2) {
                 this.position.z
             );
 
-            if (this._direction == DIRECTION.LEFT) {
+            if (this._direction === DIRECTION.LEFT) {
                 leftTopPoint.x = this.position.x - (this.width - center.x);
             }
 
@@ -606,10 +606,17 @@ var lf2 = (function (lf2) {
         _getNextFrameId() {
             if (this._frameForceChangeId !== NONE) return this._frameForceChangeId;
             let next = this.currentFrame.nextFrameId;
-            if (next == 0) return this.currentFrame.id;
-            if (next == 999) return 0;
+            if (next === 0) return this.currentFrame.id;
+            if (next === 999) return 0;
 
             return next;
+        }
+
+        freeze() {
+            this._velocity.x
+                = this._velocity.y
+                = this._velocity.z
+                = 0;
         }
 
         /**
@@ -617,7 +624,7 @@ var lf2 = (function (lf2) {
          * @returns {boolean}
          */
         get isFrameChanged() {
-            if (this._currentFrameIndex != this._lastFrameId) {
+            if (this._currentFrameIndex !== this._lastFrameId) {
                 return true;
             }
             return false;
