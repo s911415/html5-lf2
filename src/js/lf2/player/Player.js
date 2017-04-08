@@ -445,9 +445,8 @@ var lf2 = (function (lf2) {
          *
          * @param {Number} key lf2 key code
          * @returns {boolean}
-         * @private
          */
-        _containsKey(key) {
+        containsKey(key) {
             const keyName = this.keyboardConfig.KEY_MAP.REVERT_MAP[key];
             const keyCode = this.keyboardConfig.config[keyName];
 

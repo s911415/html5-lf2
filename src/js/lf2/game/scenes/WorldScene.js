@@ -84,9 +84,19 @@ var lf2 = (function (lf2) {
             this.attachArray.forEach((item) => {
                 if (item instanceof lf2.GameItem) {
                     let attackedItems = item.getAttackItems();
+                    /**
+                     * @type {lf2.GameItem[]}
+                     */
+                    let actualAttackedItems = [];
                     attackedItems.forEach(bdyItem => {
-                        bdyItem.notifyDamageBy(item);
+                        const r = bdyItem.notifyDamageBy(item);
+                        if (r) {
+                            actualAttackedItems.push(bdyItem);
+                        }
                     });
+
+
+                    item.postDamageItems(actualAttackedItems);
 
                     let bound = this.map.getBound(item.position);
                     if (bound !== Bound.NONE) {
