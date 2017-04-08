@@ -48,11 +48,11 @@ var lf2 = (function (lf2) {
             let next = curF.nextFrameId;
             const hit = curF.hit;
 
-            if (this._remainderTime <= 0 && hit.a != 0 && hit.d != 0) {
+            if (this._remainderTime <= 0 && hit.a !== 0 && hit.d !== 0) {
                 next = hit.d;
             }
 
-            if (next == 0) {
+            if (next === 0) {
                 switch (curF.state) {
                     case 0:
                         next = 0;
@@ -64,7 +64,7 @@ var lf2 = (function (lf2) {
                         next = 0;
                 }
             }
-            if (next == 999) return 0;
+            if (next === 999) return 0;
 
 
             return next;
@@ -115,6 +115,55 @@ var lf2 = (function (lf2) {
             }
         }
 
+
+        /**
+         *
+         * @param {lf2.GameItem} item
+         */
+        notifyDamageBy(item) {
+            super.notifyDamageBy(item);
+            const ITR = item.currentFrame.itr;
+            const DV = ITR.dv;
+
+            return true;
+        }
+
+        /**
+         *
+         * @param {lf2.GameItem[]} gotDamageItems
+         */
+        postDamageItems(gotDamageItems) {
+            super.postDamageItems(gotDamageItems);
+            const state = this.currentFrame.state;
+
+            //打中敵軍
+            const HIT_ENEMY = gotDamageItems.some((damagedItem) => damagedItem.belongTo !== this.belongTo);
+
+            //打自己人
+            const HIT_SAME_GROUP = gotDamageItems.some((damagedItem) => damagedItem.belongTo === this.belongTo);
+
+            switch (state) {
+                case FrameStage.BALL_FLYING:
+                    if (HIT_ENEMY) {
+                        this.setNextFrame(20);
+                    } else if (HIT_SAME_GROUP) {
+                        this.setNextFrame(10);
+                    }
+                    break;
+                case FrameStage.BALL_HITTING:
+                    if (HIT_ENEMY) {
+                        this.setNextFrame(20);
+                    }
+                case FrameStage.BALL_CANCELED:
+                    if (HIT_ENEMY) {
+                        this.setNextFrame(20);
+                    }
+                    break;
+            }
+
+
+        }
+
         /**
          * get leftTopPoint()
          *
@@ -129,8 +178,8 @@ var lf2 = (function (lf2) {
                 this.position.y - this.height + center.y,
                 this.position.z
             );
-            
-            if (this._direction == DIRECTION.LEFT) {
+
+            if (this._direction === DIRECTION.LEFT) {
                 leftTopPoint.x = this.position.x - (this.width - center.x);
             }
 

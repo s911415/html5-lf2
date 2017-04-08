@@ -229,8 +229,8 @@ var lf2 = (function (lf2) {
                             }
 
                             if (
-                                (this._containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction === DIRECTION.RIGHT) ||
-                                (this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
+                                (this.containsKey(KeyboardConfig.KEY_MAP.LEFT) && this._direction === DIRECTION.RIGHT) ||
+                                (this.containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
                             ) {
                                 next = STOP_RUNNING_FRAME_ID;
                             }
@@ -337,15 +337,15 @@ var lf2 = (function (lf2) {
             switch (this.currentFrame.state) {
                 case FrameStage.WALK:
 
-                    if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
+                    if (this.containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
                         z = this.obj.walking_speedz;
-                    } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
+                    } else if (this.containsKey(KeyboardConfig.KEY_MAP.UP)) {
                         z = -this.obj.walking_speedz;
                     }
 
                     if (
-                        this._containsKey(KeyboardConfig.KEY_MAP.RIGHT) ||
-                        this._containsKey(KeyboardConfig.KEY_MAP.LEFT)
+                        this.containsKey(KeyboardConfig.KEY_MAP.RIGHT) ||
+                        this.containsKey(KeyboardConfig.KEY_MAP.LEFT)
                     ) {
                         x = this.obj.walking_speed;
                     }
@@ -354,9 +354,9 @@ var lf2 = (function (lf2) {
                 case FrameStage.RUN:
                 case FrameStage.BURN_RUN:
 
-                    if (this._containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
+                    if (this.containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
                         z = this.obj.running_speedz;
-                    } else if (this._containsKey(KeyboardConfig.KEY_MAP.UP)) {
+                    } else if (this.containsKey(KeyboardConfig.KEY_MAP.UP)) {
                         z = -this.obj.running_speedz;
                     }
 
@@ -424,10 +424,10 @@ var lf2 = (function (lf2) {
          */
         _isArrowKeyOnly() {
             return (
-                this._containsKey(KeyboardConfig.KEY_MAP.UP) ||
-                this._containsKey(KeyboardConfig.KEY_MAP.DOWN) ||
-                this._containsKey(KeyboardConfig.KEY_MAP.LEFT) ||
-                this._containsKey(KeyboardConfig.KEY_MAP.RIGHT)
+                this.containsKey(KeyboardConfig.KEY_MAP.UP) ||
+                this.containsKey(KeyboardConfig.KEY_MAP.DOWN) ||
+                this.containsKey(KeyboardConfig.KEY_MAP.LEFT) ||
+                this.containsKey(KeyboardConfig.KEY_MAP.RIGHT)
             );
         }
 
@@ -437,8 +437,8 @@ var lf2 = (function (lf2) {
          * @returns {boolean}
          * @private
          */
-        _containsKey(key) {
-            return this.belongTo._containsKey(key);
+        containsKey(key) {
+            return this.belongTo.containsKey(key);
         }
 
         /**
@@ -471,10 +471,10 @@ var lf2 = (function (lf2) {
          * @param {lf2.GameMap} map
          */
         onOutOfBound(bound, map) {
-            if (bound & Bound.LEFT) this.position.x = 0;
-            if (bound & Bound.RIGHT) this.position.x = map.width;
-            if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
-            if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
+            if ((bound & Bound.LEFT) > 0) this.position.x = 0;
+            if ((bound & Bound.RIGHT) > 0) this.position.x = map.width;
+            if ((bound & Bound.TOP) > 0) this.position.y = map.zBoundary.first;
+            if ((bound & Bound.BOTTOM) > 0) this.position.y = map.zBoundary.second;
         }
 
         /**
@@ -482,7 +482,6 @@ var lf2 = (function (lf2) {
          *
          * Updates this object.
          *
-         * @return  .
          */
         update() {
             super.update();
@@ -574,6 +573,7 @@ var lf2 = (function (lf2) {
                     this.belongTo.hurtPlayer(ITR.injury);
                     break;
                 default:
+                    return false;
                     break;
             }
 
@@ -597,6 +597,17 @@ var lf2 = (function (lf2) {
             if (Utils.triggerInProbability(ITR.fall) && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
                 fallDown();
             }
+
+            return true;
+        }
+
+        /**
+         *
+         * @param {lf2.GameItem[]} gotDamageItems
+         */
+        postDamageItems(gotDamageItems) {
+            super.postDamageItems(gotDamageItems);
+
         }
 
         get _curFuncKey() {

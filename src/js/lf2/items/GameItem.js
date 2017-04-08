@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
+    const FrameStage = lf2.FrameStage;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const Bound = lf2.Bound;
@@ -485,8 +486,12 @@ var lf2 = (function (lf2) {
 
                 if (this._arestCounter > 0) break;
 
+                if (this === item) continue; //cannot attack itself.
+
                 if (checkCollision(item) && item._itrItem === null) {
-                    if (ITR.kind === 18 || this.belongTo !== item.belongTo) { //kind 18 allow attack itself.
+                    if (
+                        (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
+                    ) { //kind 18 allow attack itself.
                         res.push(item);
 
                         if (ITR.arest !== NONE) {
@@ -506,10 +511,21 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.GameItem} item
+         * @returns {boolean} return true if accept, otherwise false
          */
         notifyDamageBy(item) {
             this._itrItem = item;
             console.log(item, 'attack', this);
+
+            return true;
+        }
+
+        /**
+         *
+         * @param {lf2.GameItem[]} gotDamageItems
+         */
+        postDamageItems(gotDamageItems) {
+
         }
 
         /**

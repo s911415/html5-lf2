@@ -155,7 +155,7 @@ var lf2 = (function (lf2) {
          *
          * Gets the hit.
          *
-         * @return  {get}   A get.
+         * @return  {Object}   A get.
          */
         get hit() {
             let ret = {};
