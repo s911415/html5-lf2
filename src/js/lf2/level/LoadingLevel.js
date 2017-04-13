@@ -6,6 +6,7 @@ var lf2 = (function (lf2) {
      * @type {Framework.Game}
      */
     const Game = Framework.Game;
+    const Effect = lf2.Effect;
 
     const ResourceManager = Framework.ResourceManager;
     /**
@@ -111,6 +112,8 @@ var lf2 = (function (lf2) {
                 }).then((data) => {
                     const objs = data.object, $ = this;
                     console.log('Loading GameObject');
+
+                    lf2.Effect.sound.createAudio();
 
                     return new Promise((res, rej) => {
                         let loadObjectRes = function*() {
