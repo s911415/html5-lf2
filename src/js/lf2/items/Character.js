@@ -117,7 +117,8 @@ var lf2 = (function (lf2) {
             value: (player) => 1
         },
         MP: {
-            value: (player) => 1 + ((player.hp / 100) | 0)
+            value: (player) => 1 + ((player.hp / 100) | 0),
+            interval: 500,
         },
         FALL: {value: -0.45},
         BDEFEND: {value: -0.5},
@@ -153,6 +154,9 @@ var lf2 = (function (lf2) {
             this._godModeTime = 0;
 
             this._upKey = -1;
+
+            this._lastRecoverMPTime = -1;
+
         }
 
 
@@ -525,7 +529,10 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
-            this.belongTo.addMp(RECOVERY.MP.value(this.belongTo));
+            if ((NOW - this._lastRecoverMPTime) >= RECOVERY.MP.interval) {
+                this.belongTo.addMp(RECOVERY.MP.value(this.belongTo));
+                this._lastRecoverMPTime = NOW;
+            }
             this.addFall(RECOVERY.FALL.value);
 
             //變身
