@@ -610,7 +610,7 @@ var lf2 = (function (lf2) {
             if (face) {
                 this._velocity.x = -1 * this._velocity.x;
             }
-            console.log(this._velocity.x);
+            // console.log(this._velocity.x);
 
             const fallDown = () => {
                 if (face) {
