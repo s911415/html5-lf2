@@ -127,13 +127,36 @@ var lf2 = (function (lf2) {
             const DV = ITR.dv;
 
             if (ITR.kind === ItrKind.REFLECTIVE_SHIELD || (item instanceof lf2.Character && item.currentFrame.state === FrameStage.PUNCH)) {
-                this._velocity.x = -10;
+                this._velocity.x = 0;
                 this.setNextFrame(30); //Rebounding
                 this.obj.playHitSound();
                 this.belongTo = item.belongTo; //Change owner
             }
 
             if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
+
+            switch (item.currentFrame.state) {
+                case FrameStage.BALL_WIND_FLYING:
+                    this.obj.playHitSound();
+                    if (
+                        item.currentFrame.state === FrameStage.BALL_WIND_FLYING
+                    ) {
+                        this.setNextFrame(20);
+                        this.freeze();
+                    }
+                    break;
+                case FrameStage.BALL_HIT_HEART:
+                    this.obj.playHitSound();
+
+                    if (
+                        item.currentFrame.state === FrameStage.BALL_WIND_FLYING ||
+                        item.currentFrame.state === FrameStage.BALL_HIT_HEART
+                    ) {
+                        this.setNextFrame(20);
+                        this.freeze();
+                    }
+                    break;
+            }
 
             return true;
         }
@@ -180,6 +203,31 @@ var lf2 = (function (lf2) {
                         if (ITR.kind === ItrKind.REFLECTIVE_SHIELD) {
                             if (gotDamageItems[0] instanceof lf2.Character) this.setNextFrame(20);
                         } else {
+                            this.setNextFrame(20);
+                            this.freeze();
+                        }
+                    }
+                    break;
+                case FrameStage.BALL_WIND_FLYING:
+                    if (HIT_ENEMY) {
+                        this.obj.playHitSound();
+
+                        if (
+                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING
+                        ) {
+                            this.setNextFrame(20);
+                            this.freeze();
+                        }
+                    }
+                    break;
+                case FrameStage.BALL_HIT_HEART:
+                    if (HIT_ENEMY) {
+                        this.obj.playHitSound();
+
+                        if (
+                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING ||
+                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_HIT_HEART
+                        ) {
                             this.setNextFrame(20);
                             this.freeze();
                         }

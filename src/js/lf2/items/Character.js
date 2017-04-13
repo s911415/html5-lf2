@@ -57,7 +57,7 @@ var lf2 = (function (lf2) {
     CHANGE_TO_FALLING_INDEX.sort();
     Object.freeze(CHANGE_TO_FALLING_INDEX);
 
-    const GOD_MODE_TIME = 30;
+    const GOD_MODE_TIME = 60;
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
@@ -419,19 +419,6 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         *
-         * @returns {Framework.Point3D}
-         * @protected
-         */
-        _getFrameOffset() {
-            let pRet = super._getFrameOffset();
-
-
-            return pRet;
-        }
-
-
-        /**
          * Draw object
          *
          * @param {CanvasRenderingContext2D} ctx
@@ -691,7 +678,7 @@ var lf2 = (function (lf2) {
                             break;
                     }
                     //Play effect sound
-                    Effect.sound.play(ITR.effect);
+                    if (item instanceof Character) Effect.sound.play(ITR.effect);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
                     this.setNextFrame(200);

@@ -38,7 +38,10 @@ var lf2 = (function (lf2) {
             this.id = intval(infoArr[0]);
             this.name = infoArr[1];
 
-            this.data = Utils.parseDataLine(lines[1]);
+            let picIndex = 1;
+            while (picIndex < lines.length && lines[picIndex].indexOf('pic') === -1) picIndex++;
+
+            this.data = Utils.parseDataLine(lines[picIndex]);
 
             let itr = context.getStringBetween(ITR_START_TAG, ITR_END_TAG);
             let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
