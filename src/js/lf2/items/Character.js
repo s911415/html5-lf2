@@ -114,7 +114,8 @@ var lf2 = (function (lf2) {
 
     const RECOVERY = {
         HP: {
-            value: (player) => 1
+            value: 10,
+            interval: 5000,
         },
         MP: {
             value: (player) => 1 + ((player.hp / 100) | 0),
@@ -155,6 +156,7 @@ var lf2 = (function (lf2) {
 
             this._upKey = -1;
 
+            this._lastRecoverHPTime = -1;
             this._lastRecoverMPTime = -1;
 
         }
@@ -527,6 +529,11 @@ var lf2 = (function (lf2) {
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
+            }
+
+            if ((NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
+                this.belongTo.addHp(RECOVERY.HP.value);
+                this._lastRecoverHPTime = NOW;
             }
 
             if ((NOW - this._lastRecoverMPTime) >= RECOVERY.MP.interval) {
