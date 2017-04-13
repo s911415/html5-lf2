@@ -146,9 +146,11 @@ var lf2 = (function (lf2) {
                 case FrameStage.BALL_FLYING:
                     if (HIT_ENEMY) {
                         this.setNextFrame(20);
+                        this.obj.playHitSound();
                         this.freeze();
                     } else if (HIT_SAME_GROUP) {
                         this.setNextFrame(10);
+                        this.obj.playHitSound();
                         this.freeze();
                     }
                     break;
@@ -156,6 +158,7 @@ var lf2 = (function (lf2) {
                 case FrameStage.BALL_HITTING:
                     if (HIT_ENEMY) {
                         this.setNextFrame(20);
+                        this.obj.playHitSound();
                         this.freeze();
                     }
                     break;
@@ -163,6 +166,7 @@ var lf2 = (function (lf2) {
                 case FrameStage.BALL_CANCELED:
                     if (HIT_ENEMY) {
                         this.setNextFrame(20);
+                        this.obj.playHitSound();
                         this.freeze();
                     }
                     break;
