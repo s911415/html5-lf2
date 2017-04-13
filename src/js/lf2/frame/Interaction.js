@@ -28,10 +28,10 @@ var lf2 = (function (lf2) {
                 intval(this.info.get('dvy') || 0)
             );
 
-            this.fall = intval(this.info.get('fall') || 0);
+            this.fall = intval(this.info.get('fall') || 20);
 
             this.vrest = intval(this.info.get('vrest') || -1);
-            this.arest = intval(this.info.get('arest') || 15);
+            this.arest = intval(this.info.get('arest') || 7);
 
             this.injury = intval(this.info.get('injury') || 0);
             this.bdefend = intval(this.info.get('bdefend') || 0);
