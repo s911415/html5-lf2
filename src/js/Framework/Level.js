@@ -273,7 +273,7 @@ var Framework = (function (Framework) {
 
                 // var preDraw = Date.now();
 
-                this.rootScene.draw(ctx);
+                // this.rootScene.draw(ctx);
                 this.draw(ctx);
                 //
                 // var drawTime = Date.now() - preDraw;
