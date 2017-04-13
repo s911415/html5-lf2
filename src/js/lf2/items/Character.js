@@ -114,10 +114,12 @@ var lf2 = (function (lf2) {
 
     const RECOVERY = {
         HP: {
-            value: (player) => 1
+            value: 10,
+            interval: 5000,
         },
         MP: {
-            value: (player) => 1 + ((player.hp / 100) | 0)
+            value: (player) => 1 + ((player.hp / 100) | 0),
+            interval: 500,
         },
         FALL: {value: -0.45},
         BDEFEND: {value: -0.5},
@@ -153,6 +155,10 @@ var lf2 = (function (lf2) {
             this._godModeTime = 0;
 
             this._upKey = -1;
+
+            this._lastRecoverHPTime = -1;
+            this._lastRecoverMPTime = -1;
+
         }
 
 
@@ -393,6 +399,17 @@ var lf2 = (function (lf2) {
                     z = this.currentFrame.velocity.z;
             }
 
+            if (this._itrItem) {
+                const ITR = this._itrItemFrame.itr;
+                if (!ITR) throw "Some wrong";
+
+                switch (ITR.kind) {
+                    case ItrKind.THREE_D_OBJECTS:
+                        x = z = 0;
+                        break;
+                }
+            }
+
             return new Framework.Point3D(x, y, z);
         }
 
@@ -514,7 +531,15 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
-            this.belongTo.addMp(RECOVERY.MP.value(this.belongTo));
+            if ((NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
+                this.belongTo.addHp(RECOVERY.HP.value);
+                this._lastRecoverHPTime = NOW;
+            }
+
+            if ((NOW - this._lastRecoverMPTime) >= RECOVERY.MP.interval) {
+                this.belongTo.addMp(RECOVERY.MP.value(this.belongTo));
+                this._lastRecoverMPTime = NOW;
+            }
             this.addFall(RECOVERY.FALL.value);
 
             //變身
@@ -596,6 +621,11 @@ var lf2 = (function (lf2) {
 
                     this.belongTo.hurtPlayer(ITR.injury);
                     break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this._velocity.x = this._velocity.y = 0;
+
+                    return false;
+                    break;
                 default:
                     this._arestCounter = this._vrestCounter = 0;
                     return false;
@@ -636,6 +666,18 @@ var lf2 = (function (lf2) {
                 this.setNextFrame(226);
             } else if (this._fall >= 60) {
                 fallDown();
+            }
+
+            switch (ITR.kind) {
+                case ItrKind.NORMAL_HIT:
+                    break;
+                case ItrKind.WHIRLWIND_ICE:
+                    this.setNextFrame(200);
+                    break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this.freeze();
+                    debugger;
+                    break;
             }
 
             return true;

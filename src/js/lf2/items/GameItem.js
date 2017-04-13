@@ -93,6 +93,7 @@ var lf2 = (function (lf2) {
             this._affectByFriction = true;
             this._bdyItems = [];
             this._itrItem = null;
+            this._itrItemFrame = null;
             this._arestCounter = 0;
             this._vrestCounter = 0;
             this._flashing = false;
@@ -188,8 +189,6 @@ var lf2 = (function (lf2) {
                 this._velocity.y = getVelocityVal(this._velocity.y, v.y);
                 this._velocity.z = getVelocityVal(this._velocity.z, v.z);
             }
-
-            this._itrItem = null;
 
             if (this._arestCounter > 0) {
                 this._arestCounter--;
@@ -526,6 +525,11 @@ var lf2 = (function (lf2) {
             return res;
         }
 
+        cleanUpItr() {
+            this._itrItem = null;
+            this._itrItemFrame = null;
+        }
+
         /**
          *
          * @param {lf2.GameItem} item
@@ -533,6 +537,7 @@ var lf2 = (function (lf2) {
          */
         notifyDamageBy(item) {
             this._itrItem = item;
+            this._itrItemFrame = item.currentFrame;
             console.log(item, 'attack', this);
 
             return true;
