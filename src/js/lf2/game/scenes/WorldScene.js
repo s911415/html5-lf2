@@ -108,6 +108,12 @@ var lf2 = (function (lf2) {
             this.attachArray.forEach((ele) => {
                 ele.update();
             });
+
+            this.attachArray.forEach((ele) => {
+                if (ele instanceof lf2.GameItem) {
+                    ele.cleanUpItr();
+                }
+            });
         }
 
         /**

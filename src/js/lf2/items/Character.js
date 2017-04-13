@@ -56,6 +56,7 @@ var lf2 = (function (lf2) {
     CHANGE_TO_FALLING_INDEX.sort();
     Object.freeze(CHANGE_TO_FALLING_INDEX);
 
+    const GOD_MODE_TIME = 30;
     const PUNCH1_FRAME_ID = 60;
     const PUNCH2_FRAME_ID = 65;
     const JUMP_FRAME_ID = 210;
@@ -111,8 +112,20 @@ var lf2 = (function (lf2) {
     }
     Object.freeze(DEFAULT_KEY);
 
-    const RECOVER_MP_INTERVAL = 1000;
-    const RECOVER_MP_VALUE = 5;
+    const RECOVERY = {
+        HP: {
+            value: 10,
+            interval: 5000,
+        },
+        MP: {
+            value: (player) => 1 + ((player.hp / 100) | 0),
+            interval: 500,
+        },
+        FALL: {value: -0.45},
+        BDEFEND: {value: -0.5},
+    };
+    for (let k in RECOVERY) Object.freeze(RECOVERY[k]);
+    Object.freeze(RECOVERY);
 
     /**
      * Character
@@ -137,10 +150,15 @@ var lf2 = (function (lf2) {
             this._walk_dir = DIRECTION.RIGHT;
             this._run_dir = DIRECTION.RIGHT;
             this._punch_dir = DIRECTION.RIGHT;
-            this._lastRecoverMPTime = -1;
             this._hideRemainderTime = 0;
+            this._fall = 0;
+            this._godModeTime = 0;
 
             this._upKey = -1;
+
+            this._lastRecoverHPTime = -1;
+            this._lastRecoverMPTime = -1;
+
         }
 
 
@@ -190,6 +208,11 @@ var lf2 = (function (lf2) {
                 this._hideRemainderTime = next;
                 this._allowDraw = false;
                 next = 0;
+            }
+
+            if (curState === FrameStage.LYING) {
+                this._fall = 0;
+                this._godModeTime = GOD_MODE_TIME;
             }
 
             if (this.belongTo.hp <= 0) {
@@ -376,6 +399,17 @@ var lf2 = (function (lf2) {
                     z = this.currentFrame.velocity.z;
             }
 
+            if (this._itrItem) {
+                const ITR = this._itrItemFrame.itr;
+                if (!ITR) throw "Some wrong";
+
+                switch (ITR.kind) {
+                    case ItrKind.THREE_D_OBJECTS:
+                        x = z = 0;
+                        break;
+                }
+            }
+
             return new Framework.Point3D(x, y, z);
         }
 
@@ -491,17 +525,22 @@ var lf2 = (function (lf2) {
             const frameKind = (state / 100) | 0;
 
             if (this.isFuncKeyChanged) {
-                console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
+                //console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
 
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
             }
 
+            if ((NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
+                this.belongTo.addHp(RECOVERY.HP.value);
+                this._lastRecoverHPTime = NOW;
+            }
 
-            if ((NOW - this._lastRecoverMPTime) >= RECOVER_MP_INTERVAL) {
-                this.belongTo.addMp(RECOVER_MP_VALUE);
+            if ((NOW - this._lastRecoverMPTime) >= RECOVERY.MP.interval) {
+                this.belongTo.addMp(RECOVERY.MP.value(this.belongTo));
                 this._lastRecoverMPTime = NOW;
             }
+            this.addFall(RECOVERY.FALL.value);
 
             //變身
 
@@ -524,6 +563,16 @@ var lf2 = (function (lf2) {
                 if (this._hideRemainderTime <= 0) {
                     this._hideRemainderTime = 0;
                     this._allowDraw = true;
+                }
+            }
+
+            if (this._godModeTime > 0) {
+                this._flashing = true;
+                this._godModeTime--;
+
+                if (this._godModeTime === 0) {
+                    this._flashing = false;
+                    this._flashCounter = false;
                 }
             }
         }
@@ -572,30 +621,63 @@ var lf2 = (function (lf2) {
 
                     this.belongTo.hurtPlayer(ITR.injury);
                     break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this._velocity.x = this._velocity.y = 0;
+
+                    return false;
+                    break;
                 default:
+                    this._arestCounter = this._vrestCounter = 0;
                     return false;
                     break;
             }
 
-            this._velocity.x = DV.x;
-            this._velocity.y = DV.y;
+
+            if (ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+                this._velocity.x = DV.x;
+                this._velocity.y = DV.y;
+
+                this.addFall(ITR.fall);
+            }
+
+
             let face = this._direction !== item._direction;
 
             if (face) {
                 this._velocity.x = -1 * this._velocity.x;
             }
+            // console.log(this._velocity.x);
 
             const fallDown = () => {
                 if (face) {
-
                     this.setNextFrame(FALLING1_FRAME_RANGE.min);
                 } else {
                     this.setNextFrame(FALLING2_FRAME_RANGE.min);
                 }
             };
 
-            if (Utils.triggerInProbability(ITR.fall) && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+            if (this._fall.inRange(1, 20)) {
+                this.setNextFrame(220);
+            } else if (this._fall.inRange(21, 30)) {
+                this.setNextFrame(222);
+            } else if (this._fall.inRange(31, 40)) {
+                this.setNextFrame(224);
+            } else if (this._fall.inRange(41, 60)) {
+                this.setNextFrame(226);
+            } else if (this._fall >= 60) {
                 fallDown();
+            }
+
+            switch (ITR.kind) {
+                case ItrKind.NORMAL_HIT:
+                    break;
+                case ItrKind.WHIRLWIND_ICE:
+                    this.setNextFrame(200);
+                    break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this.freeze();
+                    debugger;
+                    break;
             }
 
             return true;
@@ -608,6 +690,20 @@ var lf2 = (function (lf2) {
         postDamageItems(gotDamageItems) {
             super.postDamageItems(gotDamageItems);
 
+        }
+
+        /**
+         *
+         * @param {Number} num
+         */
+        addFall(num) {
+            this._fall += num;
+
+            if (this._fall < 0) {
+                this._fall = 0;
+            } else if (this._fall > 100) {
+                this._fall = 100;
+            }
         }
 
         get _curFuncKey() {
