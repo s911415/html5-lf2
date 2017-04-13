@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const Bound = lf2.Bound;
+    const ItrKind = lf2.ItrKind;
     const Rectangle = lf2.Rectangle;
     const Cube = lf2.Cube;
     const DESTROY_ID = 1000;
@@ -483,7 +484,7 @@ var lf2 = (function (lf2) {
             const checkCollision = (bdyItem) => {
                 const bdy = bdyItem.currentFrame.bdy;
                 if (!bdy || bdyItem._flashing) return false;
-                
+
                 const
                     b_minX = bdyItem.position.x - bdyItem.currentFrame.center.x + bdy.rect.position.x,
                     b_maxX = b_minX + bdy.rect.width,
@@ -511,7 +512,7 @@ var lf2 = (function (lf2) {
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
-                        if (ITR.arest !== NONE) {
+                        if (ITR.arest !== NONE && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
                             this._arestCounter = ITR.arest;
                         }
                     }

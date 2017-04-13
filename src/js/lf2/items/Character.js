@@ -597,13 +597,19 @@ var lf2 = (function (lf2) {
                     this.belongTo.hurtPlayer(ITR.injury);
                     break;
                 default:
+                    this._arestCounter = this._vrestCounter = 0;
                     return false;
                     break;
             }
 
-            this._velocity.x = DV.x;
-            this._velocity.y = DV.y;
-            this.addFall(ITR.fall);
+
+            if (ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+                this._velocity.x = DV.x;
+                this._velocity.y = DV.y;
+
+                this.addFall(ITR.fall);
+            }
+
 
             let face = this._direction !== item._direction;
 
