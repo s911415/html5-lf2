@@ -507,7 +507,8 @@ var lf2 = (function (lf2) {
 
                 if (checkCollision(item) && item._itrItem === null) {
                     if (
-                        (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
+                        // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
+                        item !== this
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
