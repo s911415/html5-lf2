@@ -3,6 +3,7 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
+    const ItrKind = lf2.ItrKind;
     const GameObject = lf2.GameObject;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
@@ -41,7 +42,7 @@ var lf2 = (function (lf2) {
          * @override
          */
         _getNextFrameId() {
-            if(this._frameForceChangeId!==NONE) return this._frameForceChangeId;
+            if (this._frameForceChangeId !== NONE) return this._frameForceChangeId;
 
             if (this._isOut) return lf2.GameItem.DESTROY_ID;
             const curF = this.currentFrame;
@@ -125,6 +126,15 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
+            if (ITR.kind === ItrKind.REFLECTIVE_SHIELD || (item instanceof lf2.Character && item.currentFrame.state === FrameStage.PUNCH)) {
+                this._velocity.x = -10;
+                this.setNextFrame(30); //Rebounding
+                this.obj.playHitSound();
+                this.belongTo = item.belongTo; //Change owner
+            }
+
+            if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
+
             return true;
         }
 
@@ -135,6 +145,7 @@ var lf2 = (function (lf2) {
         postDamageItems(gotDamageItems) {
             super.postDamageItems(gotDamageItems);
             const state = this.currentFrame.state;
+            const ITR = this.currentFrame.itr;
 
             //打中敵軍
             const HIT_ENEMY = gotDamageItems.some((damagedItem) => damagedItem.belongTo !== this.belongTo);
@@ -146,15 +157,18 @@ var lf2 = (function (lf2) {
                 case FrameStage.BALL_FLYING:
                     if (HIT_ENEMY) {
                         this.setNextFrame(20);
+                        this.obj.playHitSound();
                         this.freeze();
                     } else if (HIT_SAME_GROUP) {
                         this.setNextFrame(10);
+                        this.obj.playHitSound();
                         this.freeze();
                     }
                     break;
 
                 case FrameStage.BALL_HITTING:
                     if (HIT_ENEMY) {
+                        this.obj.playHitSound();
                         this.setNextFrame(20);
                         this.freeze();
                     }
@@ -162,11 +176,16 @@ var lf2 = (function (lf2) {
 
                 case FrameStage.BALL_CANCELED:
                     if (HIT_ENEMY) {
-                        this.setNextFrame(20);
-                        this.freeze();
+                        this.obj.playHitSound();
+                        if (ITR.kind === ItrKind.REFLECTIVE_SHIELD) {
+                            if (gotDamageItems[0] instanceof lf2.Character) this.setNextFrame(20);
+                        } else {
+                            this.setNextFrame(20);
+                            this.freeze();
+                        }
                     }
                     break;
-                    
+
                 default:
             }
 

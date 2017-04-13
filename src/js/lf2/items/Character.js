@@ -212,7 +212,7 @@ var lf2 = (function (lf2) {
 
             if (curState === FrameStage.LYING) {
                 this._fall = 0;
-                this._godModeTime = GOD_MODE_TIME;
+                if (this.belongTo.isAlive) this._godModeTime = GOD_MODE_TIME;
             }
 
             if (this.belongTo.hp <= 0) {
@@ -531,7 +531,7 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
-            if ((NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
+            if (this.belongTo.isAlive && (NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
                 this.belongTo.addHp(RECOVERY.HP.value);
                 this._lastRecoverHPTime = NOW;
             }
@@ -607,6 +607,8 @@ var lf2 = (function (lf2) {
             super.notifyDamageBy(item);
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
+
+            if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
 
             //Accept injury
             switch (ITR.kind) {
