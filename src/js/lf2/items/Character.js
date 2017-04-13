@@ -212,7 +212,7 @@ var lf2 = (function (lf2) {
 
             if (curState === FrameStage.LYING) {
                 this._fall = 0;
-                this._godModeTime = GOD_MODE_TIME;
+                if (this.belongTo.isAlive) this._godModeTime = GOD_MODE_TIME;
             }
 
             if (this.belongTo.hp <= 0) {
@@ -531,7 +531,7 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = true;
             }
 
-            if ((NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
+            if (this.belongTo.isAlive && (NOW - this._lastRecoverHPTime) >= RECOVERY.HP.interval) {
                 this.belongTo.addHp(RECOVERY.HP.value);
                 this._lastRecoverHPTime = NOW;
             }

@@ -3,6 +3,7 @@ var lf2 = (function (lf2) {
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
+    const SOUND_KEY = "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ');
     /**
      * Ball
      *
@@ -25,45 +26,39 @@ var lf2 = (function (lf2) {
             this._dropSoundUrl = headerData.get("weapon_drop_sound");
             this._brokenSoundUrl = headerData.get("weapon_broken_sound");
 
-            /*
-            "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ').forEach((k)=>{
-                this.addPreloadResource(define.MUSIC_PATH + this[k]);
+            this._audioArgs = {};
+
+            SOUND_KEY.forEach((k) => {
+                const URL = this[k];
+                if (URL) this._audioArgs[URL] = {ogg: define.MUSIC_PATH + URL};
             });
 
-            this._audio = new Framework.Audio({
-                hit: {
-                    ogg: define.MUSIC_PATH + this._hitSoundUrl,
-                },
-                drop: {
-                    ogg: define.MUSIC_PATH + this._dropSoundUrl,
-                },
-                broken: {
-                    ogg: define.MUSIC_PATH + this._brokenSoundUrl,
-                },
-            });
-            */
+            Object.freeze(this._audioArgs);
+
+            this._audio = new Framework.Audio(this._audioArgs);
+
         }
 
         /**
          * Play hit sound
          */
-        /*playHitSound() {
-            this._hitSoundUrl && this._audio.play({name: 'hit'});
-        }*/
+        playHitSound() {
+            this._hitSoundUrl && this._audio.play({name: this._hitSoundUrl});
+        }
 
         /**
          * Play drop sound
          */
-        /*playDropSound() {
-            this._dropSoundUrl && this._audio.play({name: 'drop'});
-        }*/
+        playDropSound() {
+            this._dropSoundUrl && this._audio.play({name: this._dropSoundUrl});
+        }
 
         /**
          * Play borken sound
          */
-        /*playBrokenSound() {
-            this._brokenSoundUrl && this._audio.play({name: 'broken'});
-        }*/
+        playBrokenSound() {
+            this._brokenSoundUrl && this._audio.play({name: this._brokenSoundUrl});
+        }
 
         /**
          * getSoundList()
@@ -72,10 +67,10 @@ var lf2 = (function (lf2) {
          *
          * @return  The sound list.
          */
-        getSoundList(){
+        getSoundList() {
             let soundSet = super.getSoundList();
-            "_hitSoundUrl _dropSoundUrl _brokenSoundUrl".split(' ').forEach((k)=>{
-                if(this[k]) soundSet.add(this._hitSoundUrl);
+            SOUND_KEY.forEach((k) => {
+                if (this[k]) soundSet.add(this._hitSoundUrl);
             });
 
             return soundSet;

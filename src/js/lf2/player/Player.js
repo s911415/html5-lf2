@@ -470,6 +470,14 @@ var lf2 = (function (lf2) {
             return !!this.character;
         }
 
+        /**
+         *
+         * @returns {boolean}
+         */
+        get isAlive() {
+            return this.hp > 0;
+        }
+
     };
 
     lf2.Player.prototype.DEFAULT_HP = DEFAULT_HP;
