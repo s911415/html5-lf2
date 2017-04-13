@@ -84,6 +84,7 @@ var lf2 = (function (lf2) {
             this.attachArray.forEach((item) => {
                 if (item instanceof lf2.GameItem) {
                     let attackedItems = item.getAttackItems();
+
                     attackedItems.forEach(bdyItem => {
                         bdyItem.notifyDamageBy(item);
                     });
