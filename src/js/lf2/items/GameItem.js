@@ -467,14 +467,18 @@ var lf2 = (function (lf2) {
             if (ITR.kind === 4) return [];
 
             let res = [];
-            /**
-             *
-             * @param {lf2.GameItem} bdyItem
-             * @param {lf2.Rectangle} bdyRect
-             * @returns {boolean}
-             */
+
+            const getMinX = (gameItem, rect) => {
+                return gameItem.position.x +
+                    (
+                        gameItem._direction === DIRECTION.RIGHT ?
+                            (-gameItem.currentFrame.center.x + rect.position.x) :
+                            (gameItem.currentFrame.center.x - rect.position.x - rect.width)
+                    );
+            };
+
             const
-                a_minX = this.position.x - this.currentFrame.center.x + ITR.rect.position.x,
+                a_minX = getMinX(this, ITR.rect),
                 a_maxX = a_minX + ITR.rect.width,
                 a_minY = this.position.y - ITR.zwidth / 2, a_maxY = a_minY + ITR.zwidth,
                 a_minZ = this.position.z - this.currentFrame.center.y + ITR.rect.position.y,
@@ -485,7 +489,7 @@ var lf2 = (function (lf2) {
                 if (!bdy || bdyItem._flashing) return false;
 
                 const
-                    b_minX = bdyItem.position.x - bdyItem.currentFrame.center.x + bdy.rect.position.x,
+                    b_minX = getMinX(bdyItem, bdy.rect),
                     b_maxX = b_minX + bdy.rect.width,
 
                     b_minY = bdyItem.position.y - 6, b_maxY = b_minY + 12,
@@ -508,7 +512,7 @@ var lf2 = (function (lf2) {
                 if (checkCollision(item) && item._itrItem === null) {
                     if (
                         // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
-                        item !== this
+                    item !== this
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
@@ -539,7 +543,7 @@ var lf2 = (function (lf2) {
         notifyDamageBy(item) {
             this._itrItem = item;
             this._itrItemFrame = item.currentFrame;
-            console.log(item, 'attack', this);
+            // console.log(item, 'attack', this);
 
             return true;
         }
