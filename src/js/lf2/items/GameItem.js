@@ -516,14 +516,14 @@ var lf2 = (function (lf2) {
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
-                        if (ITR.arest !== NONE && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+                        if ((ITR.hasArest || !ITR.hasVrest) && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
                             this._arestCounter = ITR.arest;
                         }
                     }
                 }
             }
 
-            if (ITR.arest === NONE && res.length > 0) {
+            if (!ITR.hasArest && ITR.hasVrest && res.length > 0) {
                 this._vrestCounter = ITR.vrest;
             }
 
@@ -562,6 +562,7 @@ var lf2 = (function (lf2) {
          * @param {Number} id
          */
         setNextFrame(id) {
+            console.log(this, id);
             this._frameForceChangeId = id;
             this._frameForceChange = true;
         }
