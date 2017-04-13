@@ -126,7 +126,10 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
-            if (ITR.kind === ItrKind.REFLECTIVE_SHIELD || (item instanceof lf2.Character && item.currentFrame.state === FrameStage.PUNCH)) {
+            if (
+                ITR.kind === ItrKind.REFLECTIVE_SHIELD ||
+                (item instanceof lf2.Character && item.currentFrame.state === FrameStage.PUNCH)
+            ) {
                 this._velocity.x = 0;
                 this.setNextFrame(30); //Rebounding
                 this.obj.playHitSound();
