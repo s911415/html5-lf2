@@ -393,6 +393,17 @@ var lf2 = (function (lf2) {
                     z = this.currentFrame.velocity.z;
             }
 
+            if (this._itrItem) {
+                const ITR = this._itrItemFrame.itr;
+                if (!ITR) throw "Some wrong";
+
+                switch (ITR.kind) {
+                    case ItrKind.THREE_D_OBJECTS:
+                        x = z = 0;
+                        break;
+                }
+            }
+
             return new Framework.Point3D(x, y, z);
         }
 
@@ -596,6 +607,11 @@ var lf2 = (function (lf2) {
 
                     this.belongTo.hurtPlayer(ITR.injury);
                     break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this._velocity.x = this._velocity.y = 0;
+
+                    return false;
+                    break;
                 default:
                     this._arestCounter = this._vrestCounter = 0;
                     return false;
@@ -636,6 +652,18 @@ var lf2 = (function (lf2) {
                 this.setNextFrame(226);
             } else if (this._fall >= 60) {
                 fallDown();
+            }
+
+            switch (ITR.kind) {
+                case ItrKind.NORMAL_HIT:
+                    break;
+                case ItrKind.WHIRLWIND_ICE:
+                    this.setNextFrame(200);
+                    break;
+                case ItrKind.THREE_D_OBJECTS:
+                    this.freeze();
+                    debugger;
+                    break;
             }
 
             return true;
