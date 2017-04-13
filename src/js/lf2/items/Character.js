@@ -6,6 +6,7 @@ var lf2 = (function (lf2) {
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
+    const Effect = lf2.Effect;
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
     const ResourceManager = Framework.ResourceManager;
@@ -180,6 +181,10 @@ var lf2 = (function (lf2) {
             if (hitList[funcKeyWoArrow]) {
                 next = hitList[funcKeyWoArrow];
             }
+
+            if (next === 205 && this._currentFrameIndex === next + 1) next = LYING1_FRAME_ID;
+            if (next === 203 && this._currentFrameIndex === next + 1) next = next + 2;
+
             if ((fc || next === 0 || next === 999) && DEFAULT_KEY[curState]) {
                 const _next = DEFAULT_KEY[curState][funcKeyWoArrow];
                 if (_next) {
@@ -672,15 +677,30 @@ var lf2 = (function (lf2) {
 
             switch (ITR.kind) {
                 case ItrKind.NORMAL_HIT:
+                    switch (ITR.effect) {
+                        case Effect.FIRE:
+                        case Effect.FIXED_FIRE_0:
+                        case Effect.FIXED_FIRE_1:
+                        case Effect.FIXED_FIRE_2:
+                        case Effect.FIXED_FIRE_3:
+                            this.setNextFrame(203);
+                            break;
+                        case Effect.ICE:
+                        case Effect.FIXED_ICE:
+                            this.setNextFrame(200);
+                            break;
+                    }
+                    //Play effect sound
+                    Effect.sound.play(ITR.effect);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
                     this.setNextFrame(200);
                     break;
                 case ItrKind.THREE_D_OBJECTS:
                     this.freeze();
-                    debugger;
                     break;
             }
+
 
             return true;
         }

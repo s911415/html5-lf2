@@ -1,11 +1,13 @@
 'use strict';
 (function () {
     const GAME_COMPONENT=[
+        'game/define.js',
+
         'enums/Bound.js',
+        'enums/Effect.js',
         'enums/FrameStage.js',
         'enums/ItrKind.js',
 
-        'game/define.js',
         'game/Utils.js',
         'game/KeyboardConfig.js',
         'game/KeyEventPool.js',
