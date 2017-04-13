@@ -44,6 +44,7 @@ var lf2 = (function (lf2) {
             const curF = this.currentFrame;
             let next = curF.nextFrameId;
             switch (curF.state) {
+                case FrameStage.WEAPON_IN_THE_SKY:
                 case FrameStage.WEAPON_THROWING:
                     if (this.position.z === 0) {
                         next = ON_GROUND_ID; //just on ground
