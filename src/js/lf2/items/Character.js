@@ -608,6 +608,8 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
+            if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
+
             //Accept injury
             switch (ITR.kind) {
                 case ItrKind.NORMAL_HIT:

@@ -422,12 +422,12 @@ var lf2 = (function (lf2) {
 
                 const DIR_WEIGHT = caller._direction === DIRECTION.RIGHT ? 1 : -1;
 
-                let zPos = caller.height - opoint.appearPoint.y;
+                let zPos = caller.position.z - caller.currentFrame.center.y + opoint.appearPoint.y;
 
                 ball.position = new Framework.Point3D(
                     caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
                     caller.position.y,  //Y 不變
-                    -zPos
+                    zPos
                 );
 
 
