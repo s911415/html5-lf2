@@ -117,11 +117,12 @@
 
     class Sound {
         constructor(sound) {
-            this.src = `data:audio/mpeg;base64,${sound.getAttribute('basedata')}`;
+            // this.src = `data:audio/mpeg;base64,${sound.getAttribute('basedata')}`;
+            this.data = sound.getAttribute('basedata');
             this.fileName = sound.parentNode.getAttribute('name') + '_' + sound.getAttribute('name') + '.mp3';
-            fetch(this.src)
+            /*fetch(this.src)
                 .then(res => res.blob())
-                .then(blob => this.blob = blob);
+             .then(blob => this.blob = blob);*/
         }
     }
 
@@ -159,11 +160,15 @@
                     ctx.fillRect(MAX_WIDTH, 0, 1, MAX_HEIGHT);
                 });
 
-                const BASE_PATH = `${imgdir.parentNode.getAttribute('name')}_${imgdir.getAttribute("name")}`;
+                const SKILL_ID = imgdir.parentNode.getAttribute('name');
+                const SKILL_NAME = imgdir.getAttribute('name');
+                const BASE_PATH = `${SKILL_ID}_${SKILL_NAME}`;
+                let sound = hitSkillSound.get(SKILL_ID) ? hitSkillSound.get(SKILL_ID) : null;
+
                 let source = `
 <bmp_begin>
 file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${MAX_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
-weapon_hit_sound: $({BASE_PATH + '.mp3') || '020.ogg'}
+weapon_hit_sound: ${sound ? BASE_PATH + '_Hit.mp3' : '020.ogg'}
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg
 <bmp_end>
@@ -182,8 +187,12 @@ weapon_broken_sound: 020.ogg
                 });
 
                 _done_lol({
+                    skillId: SKILL_ID,
+                    fileName: BASE_PATH,
                     src: source.trim(),
                     canvasArr: canvasArray,
+                    canvas: canvas,
+                    audio: sound,
                     size: {
                         height: MAX_HEIGHT,
                         width: MAX_WIDTH,
@@ -272,7 +281,7 @@ weapon_broken_sound: 020.ogg
         const QUERY = [
             `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect']`,
             `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect0']`,
-            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='hit']>imgdir`,
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='hit']`,
         ];
 
         let arr = [];
@@ -283,9 +292,44 @@ weapon_broken_sound: 020.ogg
             }
         });
 
+        let dataFolder = zip.folder("data");
+        let spriteFolder = zip.folder("sprite");
+        let audioFolder = zip.folder("audio");
         Promise.all(arr).then((data) => {
+//            {
+//                skillId: SKILL_ID,
+//                fileName: BASE_PATH,
+//                src: source.trim(),
+//                canvasArr: canvasArray,
+//                canvas: canvas,
+//                size: {
+//                    height: MAX_HEIGHT,
+//                        width: MAX_WIDTH,
+//                },
+//            }
 
+            let skillArr = [];
+            data.forEach(d => {
+                const imgData = d.canvas.toDataURL();
 
+                dataFolder.file(d.fileName + '.txt', d.src);
+                spriteFolder.file(d.fileName + '.png', imgData.substr(imgData.indexOf(',') + 1), {base64: true});
+                skillArr.push(d.skillId);
+            });
+
+            skillArr.forEach(s => {
+                const sound = hitSkillSound.get(s);
+                if (sound) {
+                    for (let eff in sound) {
+                        audioFolder.file(s + '_' + eff + '.mp3', sound[eff].data, {base64: true});
+                    }
+                }
+            });
+        }).then(x => {
+            zip.generateAsync({type: "blob"})
+                .then(function (content) {
+                    saveAs(content, "example.zip");
+                });
         });
     }
 
