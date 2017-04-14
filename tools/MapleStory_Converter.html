@@ -34,47 +34,32 @@
     <fieldset>
         <button type="button" id="readXml">Read Xml</button>
     </fieldset>
+
+
+    <fieldset>
+        <label for="skillId">Select skill id</label>
+        <select id="skillId"></select>
+    </fieldset>
 </form>
 <script type="text/javascript">
-    //    function processFile(file, callback) {
-    //        let fr = new FileReader();
-    //        fr.onload = function () {
-    //            loadCallback.call(this, callback);
-    //        };
-    //        fr.readAsArrayBuffer(file);
-    //    }
-    //
-    //    function loadCallback(callback) {
-    //        let dataEnc = new Uint8Array(this.result, KEEP_BYTE);
-    //        for (let i = 0, j = dataEnc.length; i < j; i++) {
-    //            let ch = dataEnc[i];
-    //            let decodedData = ch - KEY_BYTES[(i + KEEP_BYTE) % KEY_BYTES.length];
-    //
-    //            if (i >= j - 5 && decodedData < 0) {
-    //                decodedData = 10;
-    //            }
-    //
-    //            dataEnc[i] = decodedData;
-    //        }
-    //
-    //        let blob = new Blob([dataEnc], {type: 'text/plain'});
-    //        let fr = new FileReader();
-    //        fr.onload = function () {
-    //            let text = this.result;
-    //            callback(blob, text);
-    //        };
-    //        fr.readAsText(blob, 'BIG5');
-    //
-    //
-    //    }
-    //
-    //    $("#files").bind('change', function(e){
-    //        if(this.files.length==1){
-    //            processFile(this.files[0], (blob, text)=>{
-    //                $("#dec_data").val(text);
-    //            });
-    //        }
-    //    });
+    let skillName = new Map();
+    fetch('files/MS_String_Skill.img.xml', {
+        method: 'GET',
+    }).then(response => {
+        return response.text();
+    }).then(xmlText => {
+        return $.parseXML(xmlText);
+    }).then(xmlDom => {
+        window.skillStrDom = xmlDom;
+        const imgdir = xmlDom.querySelectorAll("imgdir[name='Skill.img']>imgdir");
+        imgdir.forEach(skillNode => {
+            let skillId = skillNode.getAttribute('name');
+            let nameDom = skillNode.querySelector("string[name='name']") || skillNode.querySelector("string[name='bookName']");
+            let nameStr = nameDom.getAttribute('value');
+
+            skillName.set(skillId, nameStr);
+        });
+    });
 
     function readFileAsText(file, encoding) {
         if (!encoding) encoding = 'UTF-8';
@@ -101,7 +86,18 @@
         window.skillDom = skillDom;
         window.soundDom = soundDom;
 
-        
+        const allSkill = skillDom.querySelectorAll("wzimg>imgdir[name='skill']>imgdir");
+        let skillIdSelect = $("#skillId");
+
+        skillIdSelect.empty();
+        allSkill.forEach(skillNode => {
+            const SKILL_ID = skillNode.getAttribute('name');
+            let optionNode = document.createElement('option');
+            optionNode.value=SKILL_ID;
+            optionNode.textContent = `${SKILL_ID}_${skillName.get(SKILL_ID)}`;
+
+            skillIdSelect.append(optionNode);
+        });
     }
 
     function readXml(e) {
