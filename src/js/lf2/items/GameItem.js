@@ -139,7 +139,8 @@ var lf2 = (function (lf2) {
             this.applyFriction();
 
             let bound = 0;
-
+//console.log('xxx', this._updateCounter >= this.currentFrame.wait, this.currentFrame.wait);
+//if(this.currentFrame.wait>1000) debugger;
             if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
@@ -358,7 +359,7 @@ var lf2 = (function (lf2) {
             if (define.DEBUG) {
                 let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
-                msg.push(`CurrentFrameId: ${this._currentFrameIndex}`);
+                msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
                 msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0})`);
 
                 if (this instanceof lf2.Character) {
