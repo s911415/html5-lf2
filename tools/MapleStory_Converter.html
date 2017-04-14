@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            height: 100px;
+            border: 1px solid #CCC;
+        }
+    </style>
+    <title>Convert MapleStory Files</title>
+
+    <script src="js/helper.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jszip.js" type="text/javascript"></script>
+    <script src="js/FileSaver.js" type="text/javascript"></script>
+</head>
+<body>
+<form id="form">
+    <fieldset>
+        <label for="skill">Select Skill xml file</label>
+        <input type="file" id="skill" accept="text/xml"/>
+    </fieldset>
+    <fieldset>
+        <label for="sound">Select Sound xml file</label>
+        <input type="file" id="sound" accept="text/xml"/>
+    </fieldset>
+
+    <fieldset>
+        <button type="button" id="readXml">Read Xml</button>
+    </fieldset>
+</form>
+<script type="text/javascript">
+    //    function processFile(file, callback) {
+    //        let fr = new FileReader();
+    //        fr.onload = function () {
+    //            loadCallback.call(this, callback);
+    //        };
+    //        fr.readAsArrayBuffer(file);
+    //    }
+    //
+    //    function loadCallback(callback) {
+    //        let dataEnc = new Uint8Array(this.result, KEEP_BYTE);
+    //        for (let i = 0, j = dataEnc.length; i < j; i++) {
+    //            let ch = dataEnc[i];
+    //            let decodedData = ch - KEY_BYTES[(i + KEEP_BYTE) % KEY_BYTES.length];
+    //
+    //            if (i >= j - 5 && decodedData < 0) {
+    //                decodedData = 10;
+    //            }
+    //
+    //            dataEnc[i] = decodedData;
+    //        }
+    //
+    //        let blob = new Blob([dataEnc], {type: 'text/plain'});
+    //        let fr = new FileReader();
+    //        fr.onload = function () {
+    //            let text = this.result;
+    //            callback(blob, text);
+    //        };
+    //        fr.readAsText(blob, 'BIG5');
+    //
+    //
+    //    }
+    //
+    //    $("#files").bind('change', function(e){
+    //        if(this.files.length==1){
+    //            processFile(this.files[0], (blob, text)=>{
+    //                $("#dec_data").val(text);
+    //            });
+    //        }
+    //    });
+
+    function readFileAsText(file, encoding) {
+        if (!encoding) encoding = 'UTF-8';
+        return new Promise((done, fail) => {
+            let fileReader = new FileReader();
+
+            fileReader.onload = function () {
+                done(this.result);
+            };
+
+            fileReader.onerror = function () {
+                fail(this);
+            };
+
+            if (!file) {
+                done("");
+            } else {
+                fileReader.readAsText(file, encoding);
+            }
+        });
+    }
+
+    function processSkill(skillDom, soundDom) {
+        window.skillDom = skillDom;
+        window.soundDom = soundDom;
+
+        
+    }
+
+    function readXml(e) {
+        const skillXml = $("#skill")[0].files[0];
+        const soundXml = $("#sound")[0].files[0];
+        let skillXmlText, soundXmlText;
+
+        let processPromise = [];
+
+        processPromise.push(readFileAsText(skillXml).then(txt => skillXmlText = txt));
+        processPromise.push(readFileAsText(soundXml).then(txt => soundXmlText = txt));
+
+        Promise.all(processPromise).then((done, fail) => {
+            const skillDom = $.parseXML(skillXmlText);
+            const soundDom = $.parseXML(soundXmlText);
+
+            processSkill(skillDom, soundDom);
+        });
+
+        e.preventDefault();
+    }
+
+    function compressDone(zip) {
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "data.zip");
+            });
+    }
+
+    $("#readXml").click(readXml);
+</script>
+</body>
+</html>
