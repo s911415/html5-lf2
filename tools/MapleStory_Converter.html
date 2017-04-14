@@ -49,6 +49,7 @@
 </form>
 <script type="text/javascript">
     let skillName = new Map();
+    let hitSkillSound = new Map();
     fetch('files/MS_String_Skill.img.xml', {
         method: 'GET',
     }).then(response => {
@@ -86,9 +87,11 @@
         constructor(canvasData) {
             this.img = new Image();
             this.img.src = "data:image/png;base64," + canvasData.getAttribute('basedata');
-            this.delay = canvasData.querySelector('int[name="delay"]') / 30;
+            this.delay = ((canvasData.querySelector('int[name="delay"]') / 30) | 0) - 1;
             this.origin = new Vector(canvasData.querySelector('vector[name="origin"]'));
             this.index = canvasData.getAttribute('name') * 1;
+
+            if (this.delay < 0) this.delay = 0;
         }
 
         done() {
@@ -112,6 +115,16 @@
         }
     }
 
+    class Sound {
+        constructor(sound) {
+            this.src = `data:audio/mpeg;base64,${sound.getAttribute('basedata')}`;
+            this.fileName = sound.parentNode.getAttribute('name') + '_' + sound.getAttribute('name') + '.mp3';
+            fetch(this.src)
+                .then(res => res.blob())
+                .then(blob => this.blob = blob);
+        }
+    }
+
     function combineImage(imgdir) {
         let canvasArray = [];
         imgdir.querySelectorAll('canvas').forEach((c) => {
@@ -119,7 +132,6 @@
         });
 
         canvasArray.sort((a, b) => a.index - b.index);
-        let zip = new JSZip();
 
         return new Promise((_done_lol) => {
             Promise.all(canvasArray.map(x => x.done())).then(a => {
@@ -129,6 +141,8 @@
                 canvas.width = canvasArray.length * (MAX_WIDTH + 1);
                 canvas.height = MAX_HEIGHT + 1;
                 let ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = "#F0F";
 
                 canvasArray.forEach((canvasInfo, i) => {
                     const X = i * (MAX_WIDTH + 1), Y = 0;
@@ -142,11 +156,41 @@
                     };
 
                     ctx.drawImage(canvasInfo.img, leftTopPosition.x, leftTopPosition.y);
+                    ctx.fillRect(MAX_WIDTH, 0, 1, MAX_HEIGHT);
                 });
 
-                window.open(canvas.toDataURL());
+                const BASE_PATH = `${imgdir.parentNode.getAttribute('name')}_${imgdir.getAttribute("name")}`;
+                let source = `
+<bmp_begin>
+file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${MAX_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
+weapon_hit_sound: $({BASE_PATH + '.mp3') || '020.ogg'}
+weapon_drop_sound: 020.ogg
+weapon_broken_sound: 020.ogg
+<bmp_end>
+`;
 
-                _done_lol();
+                const CX = (MAX_WIDTH / 2) | 1;
+                const CY = MAX_HEIGHT;
+                canvasArray.forEach((canvasInfo, i) => {
+                    let next = i === canvasArray.length - 1 ? 1000 : i + 1;
+                    let frame = `
+<frame> 1${i.toString().padStart(2, '0')} skill_${BASE_PATH}
+   pic: ${i}  state: 15  wait: ${canvasInfo.delay}  next: ${next}  dvx: 0  dvy: 0  dvz: 0  centerx: ${CX}  centery: ${CY}  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+`;
+                    source += frame;
+                });
+
+                _done_lol({
+                    src: source.trim(),
+                    canvasArr: canvasArray,
+                    size: {
+                        height: MAX_HEIGHT,
+                        width: MAX_WIDTH,
+                    }
+                });
+                //window.open(canvas.toDataURL());
+
             });
         });
     }
@@ -188,6 +232,18 @@
 
             skillIdSelect.append(optionNode);
         });
+
+        hitSkillSound.clear();
+        soundDom.querySelectorAll('wzimg>imgdir[name]').forEach((id) => {
+            let o = {};
+            id.querySelectorAll('sound').forEach(s => {
+                o[s.getAttribute('name')] = new Sound(s);
+            });
+
+            hitSkillSound.set(id.getAttribute('name'), o);
+        });
+
+
     }
 
     function readXml(e) {
@@ -212,9 +268,25 @@
 
     function processImage(e) {
         const CurSkillId = $("#skillId").val();
+        let zip = new JSZip();
+        const QUERY = [
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect']`,
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect0']`,
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='hit']>imgdir`,
+        ];
 
-        combineImage(skillDom.querySelector(`wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect']`));
-        combineImage(skillDom.querySelector(`wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect0']`));
+        let arr = [];
+        QUERY.forEach(q=>{
+            const X = skillDom.querySelector(q);
+            if(X){
+                arr.push(combineImage(X));
+            }
+        });
+
+        Promise.all(arr).then((data) => {
+
+
+        });
     }
 
     function compressDone(zip) {
