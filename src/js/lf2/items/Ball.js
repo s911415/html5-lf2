@@ -188,6 +188,15 @@ var lf2 = (function (lf2) {
                         this.freeze();
                     }
                     break;
+                default:
+                    if (
+                        item.currentFrame.state !== FrameStage.BALL_WIND_FLYING &&
+                        item.currentFrame.state !== FrameStage.BALL_HIT_HEART
+                    ) {
+                        this.setNextFrame(20);
+                        this.freeze();
+                    }
+
             }
 
             return true;
