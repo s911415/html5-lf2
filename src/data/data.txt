@@ -63,6 +63,7 @@ id: 225	type: 3	file: data\bat_chase.txt
 id: 226	type: 3	file: data\justin_ball.txt
 id: 228	type: 3	file: data\julian_ball.txt
 id: 229	type: 3	file: data\julian_ball2.txt
+id: 250	type: 3	file: data\2321008_effect0.txt
 
 id: 998	type: 5	file: data\etc.txt
 id: 999	type: 5	file: data\broken_weapon.txt
