@@ -48,6 +48,7 @@
 
 </form>
 <script type="text/javascript">
+    const FPS = 30;
     let skillName = new Map();
     let hitSkillSound = new Map();
     fetch('files/MS_String_Skill.img.xml', {
@@ -87,7 +88,8 @@
         constructor(canvasData) {
             this.img = new Image();
             this.img.src = "data:image/png;base64," + canvasData.getAttribute('basedata');
-            this.delay = ((canvasData.querySelector('int[name="delay"]') / 30) | 0) - 1;
+            this.rawDelay = canvasData.querySelector('int[name="delay"]').getAttribute('value') * 1;
+            this.delay = (( this.rawDelay / FPS) | 0) - 1;
             this.origin = new Vector(canvasData.querySelector('vector[name="origin"]'));
             this.index = canvasData.getAttribute('name') * 1;
 
@@ -174,13 +176,28 @@ weapon_broken_sound: 020.ogg
 <bmp_end>
 `;
 
+                const ID_PADDING = (i) => '1' + i.toString().padStart(2, '0');
                 const CX = (MAX_WIDTH / 2) | 1;
                 const CY = MAX_HEIGHT;
+                let totalTime = 0;
+                canvasArray.forEach(function (c) {
+                    totalTime += c.rawDelay;
+                });
+
+                totalTime /= FPS;
+                totalTime |= 0;
+
+                source += `
+<frame> 99 skill_total_time
+   pic: 0  state: 15  wait: ${totalTime - 1}  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+`;
                 canvasArray.forEach((canvasInfo, i) => {
                     let next = i === canvasArray.length - 1 ? 1000 : i + 1;
                     let frame = `
-<frame> 1${i.toString().padStart(2, '0')} skill_${BASE_PATH}
-   pic: ${i}  state: 15  wait: ${canvasInfo.delay}  next: ${next}  dvx: 0  dvy: 0  dvz: 0  centerx: ${CX}  centery: ${CY}  hit_a: 0  hit_d: 0  hit_j: 0
+<frame> ${ID_PADDING(i)} skill_${BASE_PATH}
+   pic: ${i}  state: 15  wait: ${canvasInfo.delay}  next: ${next > 400 ? next : ID_PADDING(next)}  dvx: 0  dvy: 0  dvz: 0  centerx: ${CX}  centery: ${CY}  hit_a: 0  hit_d: 0  hit_j: 0
+   ${i === 0 && sound && sound.Use ? "sound: " + SKILL_ID + "_Use.mp3" : ""}
 <frame_end>
 `;
                     source += frame;
