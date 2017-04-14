@@ -112,6 +112,7 @@ var lf2 = (function (lf2) {
         Object.freeze(DEFAULT_KEY[k]);
     }
     Object.freeze(DEFAULT_KEY);
+    acceptForceChangeStatus.sort();
 
     const RECOVERY = {
         HP: {
@@ -177,7 +178,7 @@ var lf2 = (function (lf2) {
             let next = this.currentFrame.nextFrameId;
             const nextKind = (next / 100) | 0;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
-            const fc = acceptForceChangeStatus.indexOf(curState) !== -1;
+            const fc = acceptForceChangeStatus.binarySearch(curState) !== -1;
             if (hitList[funcKeyWoArrow]) {
                 next = hitList[funcKeyWoArrow];
             }
@@ -516,9 +517,7 @@ var lf2 = (function (lf2) {
             const state = this.currentFrame.state;
             const frameKind = (state / 100) | 0;
 
-            if (this.isFuncKeyChanged) {
-                //console.log(this.charId, this._curFuncKey, this._currentFrameIndex);
-
+            if (this.isFuncKeyChanged && acceptForceChangeStatus.binarySearch(state) !== -1) {
                 this._lastFuncKey = this._curFuncKey;
                 this._frameForceChange = true;
             }
@@ -578,7 +577,7 @@ var lf2 = (function (lf2) {
             super.setFrameById(frameId);
 
 
-            const fc = acceptForceChangeStatus.indexOf(this.currentFrame.state) !== -1;
+            const fc = acceptForceChangeStatus.binarySearch(this.currentFrame.state) !== -1;
 
             if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
