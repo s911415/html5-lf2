@@ -80,8 +80,8 @@ var lf2 = (function (lf2) {
             if (
                 (bound & Bound.LEFT) || (bound & Bound.RIGHT)
             ) this._isOut = true;
-            //if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
-            //if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
+            if (bound & Bound.TOP) this.position.y = map.zBoundary.first;
+            if (bound & Bound.BOTTOM) this.position.y = map.zBoundary.second;
         }
 
         /**
@@ -114,6 +114,35 @@ var lf2 = (function (lf2) {
             } else {
                 throw ERR_MSG;
             }
+        }
+
+        _getVelocity() {
+            let v = super._getVelocity();
+            const hit = this.currentFrame.hit;
+
+            if (hit.j) {
+                v.z = hit.j - 50;
+            }
+
+            return v;
+        }
+
+        updateVelocity() {
+            const getVelocityVal = (cur, next) => {
+                if (next === 0) return cur;
+                return next;
+            };
+
+            const v = this._getVelocity();
+
+            this._velocity.x = getVelocityVal(this._velocity.x, v.x);
+            this._velocity.y = getVelocityVal(this._velocity.y, v.y);
+            this._velocity.z = getVelocityVal(this._velocity.z, v.z);
+        }
+
+        applyFriction() {
+            super.applyFriction();
+            this._velocity.z -= lf2.GameItem.ApplyFriction(this._velocity.z);
         }
 
 

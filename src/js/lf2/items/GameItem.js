@@ -38,18 +38,6 @@ var lf2 = (function (lf2) {
     Object.freeze(DIRECTION);
 
     /**
-     *
-     * @param {Number} x
-     * @param {Number} [f] friction
-     */
-    const applyFriction = (x, f) => {
-        if (f === undefined) f = FRICTION;
-        if (x === 0) return 0;
-
-        return x * f;
-    };
-
-    /**
      * GameItem
      *
      * @type {GameItem}
@@ -148,28 +136,7 @@ var lf2 = (function (lf2) {
             }
             //End of move object
 
-            if (this._affectByFriction) {
-                // Only apply friction on ground
-                if (this.position.z === 0) {
-                    this._velocity.x -= applyFriction(this._velocity.x);
-                    this._velocity.z -= applyFriction(this._velocity.z);
-                }
-
-                if (this.position.z < 0) {
-                    this._velocity.y += GRAVITY;
-                }
-
-                if (this.position.z > 0) {
-                    this.position.z = 0;
-                    this._velocity.y = 0;
-                }
-
-                // Avoid too small velocity
-                if (Math.abs(this._velocity.x) < MIN_V) this._velocity.x = 0;
-                if (Math.abs(this._velocity.y) < MIN_V) this._velocity.y = 0;
-                if (Math.abs(this._velocity.z) < MIN_V) this._velocity.z = 0;
-                // End of friction    
-            }
+            this.applyFriction();
 
             let bound = 0;
 
@@ -178,16 +145,7 @@ var lf2 = (function (lf2) {
                 this._frameForceChange = false;
                 this._frameForceChangeId = NONE;
 
-                const getVelocityVal = (cur, next) => {
-                    if (next === 0) return cur;
-                    return next;
-                };
-
-                const v = this._getVelocity();
-
-                this._velocity.x = getVelocityVal(this._velocity.x, v.x);
-                this._velocity.y = getVelocityVal(this._velocity.y, v.y);
-                this._velocity.z = getVelocityVal(this._velocity.z, v.z);
+                this.updateVelocity();
             }
 
             if (this._arestCounter > 0) {
@@ -246,6 +204,44 @@ var lf2 = (function (lf2) {
         _getVelocity() {
             // v.x = getDvxPerWait(v.x);
             return this.currentFrame.velocity.clone();
+        }
+
+        updateVelocity(){
+            const getVelocityVal = (cur, next) => {
+                if (next === 0) return cur;
+                return next;
+            };
+
+            const v = this._getVelocity();
+
+            this._velocity.x = getVelocityVal(this._velocity.x, v.x);
+            this._velocity.y = getVelocityVal(this._velocity.y, v.y);
+            this._velocity.z = getVelocityVal(this._velocity.z, v.z);
+        }
+
+        applyFriction(){
+            if (this._affectByFriction) {
+                // Only apply friction on ground
+                if (this.position.z === 0) {
+                    this._velocity.x -= GameItem.ApplyFriction(this._velocity.x);
+                    this._velocity.z -= GameItem.ApplyFriction(this._velocity.z);
+                }
+
+                if (this.position.z < 0) {
+                    this._velocity.y += GRAVITY;
+                }
+
+                if (this.position.z > 0) {
+                    this.position.z = 0;
+                    this._velocity.y = 0;
+                }
+
+                // Avoid too small velocity
+                if (Math.abs(this._velocity.x) < MIN_V) this._velocity.x = 0;
+                if (Math.abs(this._velocity.y) < MIN_V) this._velocity.y = 0;
+                if (Math.abs(this._velocity.z) < MIN_V) this._velocity.z = 0;
+                // End of friction
+            }
         }
 
         /**
@@ -698,6 +694,20 @@ var lf2 = (function (lf2) {
             return this._velocity.x === this._velocity.y && this._velocity.y === this._velocity.z
                 && this._velocity.x === 0;
         }
+
+
+        /**
+         *
+         * @param {Number} x
+         * @param {Number} [f] friction
+         * @return {number}
+         */
+        static ApplyFriction (x, f) {
+            if (f === undefined) f = FRICTION;
+            if (x === 0) return 0;
+
+            return x * f;
+        };
 
     };
 
