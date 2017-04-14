@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            height: 100px;
+            border: 1px solid #CCC;
+        }
+    </style>
+    <title>Convert MapleStory Files</title>
+
+    <script src="js/helper.js" type="text/javascript"></script>
+    <script src="../src/js/utils.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jszip.js" type="text/javascript"></script>
+    <script src="js/FileSaver.js" type="text/javascript"></script>
+</head>
+<body>
+<form id="form">
+    <fieldset>
+        <label for="skill">Select Skill xml file</label>
+        <input type="file" id="skill" accept="text/xml"/>
+    </fieldset>
+    <fieldset>
+        <label for="sound">Select Sound xml file</label>
+        <input type="file" id="sound" accept="text/xml"/>
+    </fieldset>
+
+    <fieldset>
+        <button type="button" id="readXml">Read Xml</button>
+    </fieldset>
+
+
+    <fieldset>
+        <label for="skillId">Select skill id</label>
+        <select id="skillId"></select>
+    </fieldset>
+
+    <fieldset>
+        <button type="button" id="processImage">Process Image</button>
+    </fieldset>
+
+</form>
+<script type="text/javascript">
+    let skillName = new Map();
+    let hitSkillSound = new Map();
+    fetch('files/MS_String_Skill.img.xml', {
+        method: 'GET',
+    }).then(response => {
+        return response.text();
+    }).then(xmlText => {
+        return $.parseXML(xmlText);
+    }).then(xmlDom => {
+        window.skillStrDom = xmlDom;
+        const imgdir = xmlDom.querySelectorAll("imgdir[name='Skill.img']>imgdir");
+        imgdir.forEach(skillNode => {
+            let skillId = skillNode.getAttribute('name');
+            let nameDom = skillNode.querySelector("string[name='name']") || skillNode.querySelector("string[name='bookName']");
+            let nameStr = nameDom.getAttribute('value');
+
+            skillName.set(skillId, nameStr);
+        });
+    });
+
+    class Vector {
+        constructor(vectorDom) {
+            this._x = vectorDom.getAttribute('x') * 1;
+            this._y = vectorDom.getAttribute('y') * 1;
+        }
+
+        get x() {
+            return this._x;
+        }
+
+        get y() {
+            return this._y;
+        }
+    }
+
+    class CanvasInfo {
+        constructor(canvasData) {
+            this.img = new Image();
+            this.img.src = "data:image/png;base64," + canvasData.getAttribute('basedata');
+            this.delay = ((canvasData.querySelector('int[name="delay"]') / 30) | 0) - 1;
+            this.origin = new Vector(canvasData.querySelector('vector[name="origin"]'));
+            this.index = canvasData.getAttribute('name') * 1;
+
+            if (this.delay < 0) this.delay = 0;
+        }
+
+        done() {
+            if (this.img.complete) {
+                return new Promise((done, fail) => {
+                    done();
+                });
+            } else {
+
+
+            }
+            return new Promise((done, fail) => {
+                if (this.img.complete) {
+                    done();
+                } else {
+                    this.img.onload = function () {
+                        done();
+                    };
+                }
+            });
+        }
+    }
+
+    class Sound {
+        constructor(sound) {
+            this.src = `data:audio/mpeg;base64,${sound.getAttribute('basedata')}`;
+            this.fileName = sound.parentNode.getAttribute('name') + '_' + sound.getAttribute('name') + '.mp3';
+            fetch(this.src)
+                .then(res => res.blob())
+                .then(blob => this.blob = blob);
+        }
+    }
+
+    function combineImage(imgdir) {
+        let canvasArray = [];
+        imgdir.querySelectorAll('canvas').forEach((c) => {
+            canvasArray.push(new CanvasInfo(c));
+        });
+
+        canvasArray.sort((a, b) => a.index - b.index);
+
+        return new Promise((_done_lol) => {
+            Promise.all(canvasArray.map(x => x.done())).then(a => {
+                const MAX_WIDTH = canvasArray.map(x => x.img.width).max();
+                const MAX_HEIGHT = canvasArray.map(x => x.img.height).max();
+                let canvas = document.createElement('canvas');
+                canvas.width = canvasArray.length * (MAX_WIDTH + 1);
+                canvas.height = MAX_HEIGHT + 1;
+                let ctx = canvas.getContext('2d');
+
+                ctx.fillStyle = "#F0F";
+
+                canvasArray.forEach((canvasInfo, i) => {
+                    const X = i * (MAX_WIDTH + 1), Y = 0;
+                    //Reset translate
+                    ctx.setTransform(1, 0, 0, 1, 0, 0);
+                    ctx.translate(X, Y);
+
+                    let leftTopPosition = {
+                        x: (MAX_WIDTH / 2) - canvasInfo.origin.x,
+                        y: MAX_HEIGHT - canvasInfo.origin.y,
+                    };
+
+                    ctx.drawImage(canvasInfo.img, leftTopPosition.x, leftTopPosition.y);
+                    ctx.fillRect(MAX_WIDTH, 0, 1, MAX_HEIGHT);
+                });
+
+                const BASE_PATH = `${imgdir.parentNode.getAttribute('name')}_${imgdir.getAttribute("name")}`;
+                let source = `
+<bmp_begin>
+file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${MAX_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
+weapon_hit_sound: $({BASE_PATH + '.mp3') || '020.ogg'}
+weapon_drop_sound: 020.ogg
+weapon_broken_sound: 020.ogg
+<bmp_end>
+`;
+
+                const CX = (MAX_WIDTH / 2) | 1;
+                const CY = MAX_HEIGHT;
+                canvasArray.forEach((canvasInfo, i) => {
+                    let next = i === canvasArray.length - 1 ? 1000 : i + 1;
+                    let frame = `
+<frame> 1${i.toString().padStart(2, '0')} skill_${BASE_PATH}
+   pic: ${i}  state: 15  wait: ${canvasInfo.delay}  next: ${next}  dvx: 0  dvy: 0  dvz: 0  centerx: ${CX}  centery: ${CY}  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+`;
+                    source += frame;
+                });
+
+                _done_lol({
+                    src: source.trim(),
+                    canvasArr: canvasArray,
+                    size: {
+                        height: MAX_HEIGHT,
+                        width: MAX_WIDTH,
+                    }
+                });
+                //window.open(canvas.toDataURL());
+
+            });
+        });
+    }
+
+    function readFileAsText(file, encoding) {
+        if (!encoding) encoding = 'UTF-8';
+        return new Promise((done, fail) => {
+            let fileReader = new FileReader();
+
+            fileReader.onload = function () {
+                done(this.result);
+            };
+
+            fileReader.onerror = function () {
+                fail(this);
+            };
+
+            if (!file) {
+                done("");
+            } else {
+                fileReader.readAsText(file, encoding);
+            }
+        });
+    }
+
+    function processSkill(skillDom, soundDom) {
+        window.skillDom = skillDom;
+        window.soundDom = soundDom;
+
+        const allSkill = skillDom.querySelectorAll("wzimg>imgdir[name='skill']>imgdir");
+        let skillIdSelect = $("#skillId");
+
+        skillIdSelect.empty();
+        allSkill.forEach(skillNode => {
+            const SKILL_ID = skillNode.getAttribute('name');
+            let optionNode = document.createElement('option');
+            optionNode.value=SKILL_ID;
+            optionNode.textContent = `${SKILL_ID}_${skillName.get(SKILL_ID)}`;
+
+            skillIdSelect.append(optionNode);
+        });
+
+        hitSkillSound.clear();
+        soundDom.querySelectorAll('wzimg>imgdir[name]').forEach((id) => {
+            let o = {};
+            id.querySelectorAll('sound').forEach(s => {
+                o[s.getAttribute('name')] = new Sound(s);
+            });
+
+            hitSkillSound.set(id.getAttribute('name'), o);
+        });
+
+
+    }
+
+    function readXml(e) {
+        const skillXml = $("#skill")[0].files[0];
+        const soundXml = $("#sound")[0].files[0];
+        let skillXmlText, soundXmlText;
+
+        let processPromise = [];
+
+        processPromise.push(readFileAsText(skillXml).then(txt => skillXmlText = txt));
+        processPromise.push(readFileAsText(soundXml).then(txt => soundXmlText = txt));
+
+        Promise.all(processPromise).then((done, fail) => {
+            const skillDom = $.parseXML(skillXmlText);
+            const soundDom = $.parseXML(soundXmlText);
+
+            processSkill(skillDom, soundDom);
+        });
+
+        e.preventDefault();
+    }
+
+    function processImage(e) {
+        const CurSkillId = $("#skillId").val();
+        let zip = new JSZip();
+        const QUERY = [
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect']`,
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='effect0']`,
+            `wzimg>imgdir[name='skill']>imgdir[name='${CurSkillId}']>imgdir[name='hit']>imgdir`,
+        ];
+
+        let arr = [];
+        QUERY.forEach(q=>{
+            const X = skillDom.querySelector(q);
+            if(X){
+                arr.push(combineImage(X));
+            }
+        });
+
+        Promise.all(arr).then((data) => {
+
+
+        });
+    }
+
+    function compressDone(zip) {
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "data.zip");
+            });
+    }
+
+    $("#readXml").click(readXml);
+    $("#processImage").click(processImage);
+</script>
+</body>
+</html>
