@@ -222,10 +222,15 @@ var lf2 = (function (lf2) {
          */
         _getVelocity() {
             // v.x = getDvxPerWait(v.x);
-            return this.currentFrame.velocity.clone();
+            let v = this.currentFrame.velocity.clone();
+            if (v.x === STOP_ALL_MOVE_DV) v.x = 0;
+            if (v.y === STOP_ALL_MOVE_DV) v.y = 0;
+            if (v.z === STOP_ALL_MOVE_DV) v.z = 0;
+
+            return v;
         }
 
-        updateVelocity(){
+        updateVelocity() {
             const getVelocityVal = (cur, next) => {
                 if (next === 0) return cur;
                 return next;
@@ -238,7 +243,7 @@ var lf2 = (function (lf2) {
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 
-        applyFriction(){
+        applyFriction() {
             if (this._affectByFriction) {
                 // Only apply friction on ground
                 if (this.position.z === 0) {
@@ -518,7 +523,7 @@ var lf2 = (function (lf2) {
                 if (checkCollision(item) && item._itrItem === null) {
                     if (
                         // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
-                        item !== this
+                    item !== this
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
@@ -711,7 +716,7 @@ var lf2 = (function (lf2) {
          * @param {Number} [f] friction
          * @return {number}
          */
-        static ApplyFriction (x, f) {
+        static ApplyFriction(x, f) {
             if (f === undefined) f = FRICTION;
             if (x === 0) return 0;
 

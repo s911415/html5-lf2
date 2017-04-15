@@ -198,3 +198,11 @@ Array.prototype.max = function() {
 Array.prototype.min = function() {
     return Math.min.apply(null, this);
 };
+
+/**
+ *
+ * @param {Number} deg degree
+ */
+Math.toRad = function(deg){
+    return deg / 180 * Math.PI;
+};
