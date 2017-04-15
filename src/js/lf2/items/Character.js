@@ -173,15 +173,11 @@ var lf2 = (function (lf2) {
         _getNextFrameId() {
             if (this._frameForceChangeId !== NONE) return this._frameForceChangeId;
 
-            const hitList = this.currentFrame.hit;
             const curState = this.currentFrame.state;
             let next = this.currentFrame.nextFrameId;
             const nextKind = (next / 100) | 0;
             const funcKeyWoArrow = this._curFuncKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
             const fc = acceptForceChangeStatus.binarySearch(curState) !== -1;
-            if (hitList[funcKeyWoArrow]) {
-                next = hitList[funcKeyWoArrow];
-            }
 
             if (next === 205 && this._currentFrameIndex === next + 1) next = LYING1_FRAME_ID;
             if (next === 203 && this._currentFrameIndex === next + 1) next = next + 2;
