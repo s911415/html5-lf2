@@ -31,6 +31,19 @@ var lf2 = (function (lf2) {
         // return dvxArray[i];
     };
 
+    const getMinX = (gameItem, rect) => {
+        const W = (gameItem.currentFrame.center.x);
+        return (gameItem.position.x | 0) + (
+                gameItem._direction === DIRECTION.RIGHT ?
+                    (-W + rect.position.x) :
+                    (W - rect.position.x - rect.width)
+            );
+    };
+
+    const getMinZ = (gameItem, rect) => {
+        return gameItem.position.z - gameItem.currentFrame.center.y + rect.position.y;
+    };
+
     const DIRECTION = {
         RIGHT: true,
         LEFT: false,
@@ -465,20 +478,11 @@ var lf2 = (function (lf2) {
 
             let res = [];
 
-            const getMinX = (gameItem, rect) => {
-                return gameItem.position.x +
-                    (
-                        gameItem._direction === DIRECTION.RIGHT ?
-                            (-gameItem.currentFrame.center.x + rect.position.x) :
-                            (gameItem.currentFrame.center.x - rect.position.x - rect.width)
-                    );
-            };
-
             const
                 a_minX = getMinX(this, ITR.rect),
                 a_maxX = a_minX + ITR.rect.width,
-                a_minY = this.position.y - ITR.zwidth / 2, a_maxY = a_minY + ITR.zwidth,
-                a_minZ = this.position.z - this.currentFrame.center.y + ITR.rect.position.y,
+                a_minY = this.position.y - (ITR.zwidth >> 1), a_maxY = a_minY + ITR.zwidth,
+                a_minZ = getMinZ(this, ITR.rect),
                 a_maxZ = a_minZ + ITR.rect.height;
 
             const checkCollision = (bdyItem) => {
@@ -491,7 +495,7 @@ var lf2 = (function (lf2) {
 
                     b_minY = bdyItem.position.y - 6, b_maxY = b_minY + 12,
 
-                    b_minZ = bdyItem.position.z - bdyItem.currentFrame.center.y + bdy.rect.position.y,
+                    b_minZ = getMinZ(bdyItem, bdy.rect),
                     b_maxZ = b_minZ + bdy.rect.height;
 
                 return (a_minX <= b_maxX && a_maxX >= b_minX) &&
@@ -509,7 +513,7 @@ var lf2 = (function (lf2) {
                 if (checkCollision(item) && item._itrItem === null) {
                     if (
                         // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
-                    item !== this
+                        item !== this
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
@@ -518,10 +522,6 @@ var lf2 = (function (lf2) {
                         }
                     }
                 }
-            }
-
-            if (!ITR.hasArest && ITR.hasVrest && res.length > 0) {
-                this._vrestCounter = ITR.vrest;
             }
 
             return res;
@@ -550,7 +550,10 @@ var lf2 = (function (lf2) {
          * @param {lf2.GameItem[]} gotDamageItems
          */
         postDamageItems(gotDamageItems) {
-
+            const ITR = this.currentFrame.itr;
+            if (ITR && !ITR.hasArest && ITR.hasVrest && gotDamageItems.length > 0) {
+                this._vrestCounter = ITR.vrest;
+            }
         }
 
         /**
