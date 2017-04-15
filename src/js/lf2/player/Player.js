@@ -115,8 +115,9 @@ var lf2 = (function (lf2) {
                     }
                 }
 
-                if (hitList[funcKeyWoArrow]) {
-                    this.character.setNextFrame(hitList[funcKeyWoArrow]);
+                const hitFid = hitList[funcKeyWoArrow], cFrame = this.character.obj.frames[hitFid];
+                if (hitFid && cFrame && this.requestMp(cFrame.mp)) {
+                    this.character.setNextFrame(hitFid);
                 }
             }
 
@@ -336,7 +337,6 @@ var lf2 = (function (lf2) {
         requestMp(num) {
             const MP_COST_MAGIC_NUMBER = 1000;
             if (define.INF_MP || this._infMp || num === 0) return true;
-
             //let sign = Math.sign(num);
             num = Math.abs(num);
 
@@ -379,6 +379,14 @@ var lf2 = (function (lf2) {
 
         /**
          *
+         * @param {Number} amount
+         */
+        addAttackCount(amount) {
+            this.attackSum += amount;
+        }
+
+        /**
+         *
          * @param {boolean} flag
          */
         setInfMp(flag) {
@@ -416,7 +424,22 @@ var lf2 = (function (lf2) {
                 }
             }
 
-            ballArr.forEach(ball => {
+            const R = opoint.appearPoint.x;
+            const DEG = 45;
+            const RAD = Math.toRad(DEG);
+            const DIFF = RAD / ballArr.length;
+            const START_RAD = -(RAD / 2);
+            const getOp = (i) => {
+                if (ballArr.length === 1) {
+                    return {x: opoint.appearPoint.x, y: caller.position.y};
+                }
+                const RAD = START_RAD + i * DIFF;
+                return {
+                    x: R * Math.cos(RAD),
+                    y: R * Math.sin(RAD) + caller.position.y
+                }
+            };
+            ballArr.forEach((ball, i) => {
                 //Set frame id
                 ball.setFrameById(opoint.action);
 
@@ -430,10 +453,10 @@ var lf2 = (function (lf2) {
                 const DIR_WEIGHT = caller._direction === DIRECTION.RIGHT ? 1 : -1;
 
                 let zPos = caller.position.z - caller.currentFrame.center.y + opoint.appearPoint.y;
-
+                let op = getOp(i);
                 ball.position = new Framework.Point3D(
-                    caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - opoint.appearPoint.x), // 前後
-                    caller.position.y,  //Y 不變
+                    caller.position.x - DIR_WEIGHT * (caller.currentFrame.center.x - op.x), // 前後
+                    op.y,  //Y 不變
                     zPos
                 );
 

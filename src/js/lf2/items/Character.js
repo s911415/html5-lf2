@@ -335,18 +335,8 @@ var lf2 = (function (lf2) {
                 }
             }
 
-            //Check mp request
-            const nextFrame = this.obj.frames[next];
-            if (!this.frameExist(next)) {
-                throw new RangeError(`Character (${this.obj.id}) Frame (${next}) not found`);
-            }
 
-            const reqMp = intval(nextFrame.mp);
-            if (this.belongTo.requestMp(reqMp)) {
-                return next;
-            } else {
-                return 0;
-            }
+            return next;
         }
 
 
@@ -609,6 +599,8 @@ var lf2 = (function (lf2) {
                 case ItrKind.WHIRLWIND_ICE:
 
                     this.belongTo.hurtPlayer(ITR.injury);
+                    item.belongTo.addAttackCount(ITR.injury);
+
                     break;
                 case ItrKind.THREE_D_OBJECTS:
                     this._velocity.x = this._velocity.y = 0;
@@ -664,7 +656,7 @@ var lf2 = (function (lf2) {
                         case Effect.FIXED_FIRE_0:
                         case Effect.FIXED_FIRE_1:
                         case Effect.FIXED_FIRE_2:
-                        // case Effect.FIXED_FIRE_3:
+                            // case Effect.FIXED_FIRE_3:
                             this.setNextFrame(203);
                             break;
                         case Effect.ICE:
