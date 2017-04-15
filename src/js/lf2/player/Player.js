@@ -98,6 +98,9 @@ var lf2 = (function (lf2) {
             this._updateCurrentKey(NOW);
 
             if (this.character) {
+                const funcKeyWoArrow = this._currentKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
+                const hitList = this.character.currentFrame.hit;
+
                 //Same func key twice
                 let first = this.keyEventPool[0] !== undefined ? this.keyEventPool[0].lf2Key : undefined;
                 let second = this.keyEventPool[1] !== undefined ? this.keyEventPool[1].lf2Key : undefined;
@@ -110,6 +113,10 @@ var lf2 = (function (lf2) {
                         this.character.startRun();
                         console.log('start run');
                     }
+                }
+
+                if (hitList[funcKeyWoArrow]) {
+                    this.character.setNextFrame(hitList[funcKeyWoArrow]);
                 }
             }
 
