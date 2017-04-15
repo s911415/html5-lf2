@@ -28,7 +28,7 @@ var lf2 = (function (lf2) {
     SOUND[Effect.FIXED_FIRE_0] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_1] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_2] = SOUND[Effect.FIRE];
-    SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
+    // SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_ICE] = ['065.ogg'];
 
     for (let k in SOUND) {
