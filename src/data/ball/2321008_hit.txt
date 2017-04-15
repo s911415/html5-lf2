@@ -1,6 +1,6 @@
 <bmp_begin>
 file(0-22): sprite\sys\2321008_hit.png  w: 226  h: 237  row: 23  col: 1
-weapon_hit_sound: 2321008_hit_Hit.mp3
+weapon_hit_sound: 2321008_Hit.mp3
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg
 <bmp_end>
