@@ -1698,7 +1698,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 235 god_attack
-   pic: 135  state: 15  wait: 1200  next: 999  dvx: 0  dvy: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 135  state: 3  wait: 86  next: 999  dvx: 0  dvy: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    sound: 2321008_Use.mp3
    opoint:
       kind: 1  x: 36  y: 79  action: 100  dvx: 0  dvy: 0  oid: 250  facing: 0
