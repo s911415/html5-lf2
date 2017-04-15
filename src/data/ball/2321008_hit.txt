@@ -11,7 +11,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 100 skill_2321008_hit
    pic: 0  state: 15  wait: 3  next: 101  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 2321008_Use.mp3
+
 <frame_end>
 
 <frame> 101 skill_2321008_hit
@@ -56,22 +56,23 @@ weapon_broken_sound: 020.ogg
 
 <frame> 109 skill_2321008_hit
    pic: 9  state: 15  wait: 3  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   
+
 <frame_end>
 
 <frame> 110 skill_2321008_hit
    pic: 10  state: 15  wait: 3  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   
+
 <frame_end>
 
 <frame> 111 skill_2321008_hit
    pic: 11  state: 15  wait: 3  next: 112  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   
+   sound: 2321008_Hit.mp3
+
 <frame_end>
 
 <frame> 112 skill_2321008_hit
    pic: 12  state: 15  wait: 3  next: 113  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   
+
 <frame_end>
 
 <frame> 113 skill_2321008_hit

@@ -316,6 +316,11 @@
             "file": "ball\\2321008_effect0.txt"
         },
         {
+            "id": 251,
+            "type": 3,
+            "file": "ball\\2321008_hit.txt"
+        },
+        {
             "id": 998,
             "type": 5,
             "file": "sys\\etc.txt"
