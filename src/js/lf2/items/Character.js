@@ -595,7 +595,7 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
-            if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
+            if (this.belongTo === item.belongTo /*&& item.currentFrame.state !== FrameStage.FIRE*/) return false;
 
             //Accept injury
             switch (ITR.kind) {
@@ -664,7 +664,7 @@ var lf2 = (function (lf2) {
                         case Effect.FIXED_FIRE_0:
                         case Effect.FIXED_FIRE_1:
                         case Effect.FIXED_FIRE_2:
-                        case Effect.FIXED_FIRE_3:
+                        // case Effect.FIXED_FIRE_3:
                             this.setNextFrame(203);
                             break;
                         case Effect.ICE:
@@ -673,7 +673,7 @@ var lf2 = (function (lf2) {
                             break;
                     }
                     //Play effect sound
-                    if (item instanceof Character) Effect.sound.play(ITR.effect);
+                    Effect.sound.play(ITR.effect);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
                     this.setNextFrame(200);
