@@ -99,6 +99,7 @@ var lf2 = (function (lf2) {
             this._vrestCounter = 0;
             this._flashing = false;
             this._flashCounter = false;
+            this._isNew = true;
 
             this.pushSelfToLevel();
         }
@@ -135,6 +136,10 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
+            if (this._isNew) {
+                this._isNew = false;
+                return;
+            }
             const curFrame = this.currentFrame;
             this._updateCounter++;
             let offset = this._getFrameOffset();
