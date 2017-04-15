@@ -180,6 +180,18 @@ var lf2 = (function (lf2) {
                 intval(this.data.get('centery'))
             );
         }
+
+        get size() {
+            /**
+             * @type {lf2.ImageInformation}
+             */
+            const img = this._gameObj.bmpInfo.imageNormal[this.pic];
+
+
+            return new Point(
+                img.rect.width, img.rect.height
+            );
+        }
     };
 
 
