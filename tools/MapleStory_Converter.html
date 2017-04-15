@@ -170,7 +170,7 @@
                 let source = `
 <bmp_begin>
 file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${MAX_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
-weapon_hit_sound: ${sound ? BASE_PATH + '_Hit.mp3' : '020.ogg'}
+weapon_hit_sound: ${sound ? SKILL_ID + '_Hit.mp3' : '020.ogg'}
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg
 <bmp_end>
