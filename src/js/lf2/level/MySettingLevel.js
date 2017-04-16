@@ -12,6 +12,11 @@ var lf2 = (function (lf2) {
             ele.classList.add(CUR);
         }
     };
+    const DISALLOW_KEY = [
+        'Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
+    ];
+    for (let i = 0; i < DISALLOW_KEY.length; i++) DISALLOW_KEY[i] = KeyBoardManager.getKeyCodeByString(DISALLOW_KEY[i]);
+    DISALLOW_KEY.sort((a, b) => a - b);
 
     /**
      * @class lf2.MySettingLevel
@@ -137,7 +142,11 @@ var lf2 = (function (lf2) {
                 const ce = curElement[0];
                 if (ce.classList.contains('keys')) {
                     let key = curElement.data('key');
-                    this.getConfigByPlayerId(playerId)[key] = oriE.keyCode;
+                    if (DISALLOW_KEY.binarySearch(oriE.keyCode) !== -1) {
+                        this.getConfigByPlayerId(playerId)[key] = undefined;
+                    } else {
+                        this.getConfigByPlayerId(playerId)[key] = oriE.keyCode;
+                    }
                     setCur(null);
                 }
             }

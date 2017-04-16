@@ -346,10 +346,15 @@ var Framework = (function (Framework) {
                 return _keydownList.apply(this, arguments);
             }
 
-            /* 為了要像洛克人  按壓一段時間後可以集氣 */
             mappingTable() {
                 return _keyCodeToChar;
             }
+
+            getKeyCodeByString(keyCode){
+                return _stringToKeyCode[keyCode];
+            }
+
+
 
             /**
              * Keypress history.
