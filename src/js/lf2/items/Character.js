@@ -54,7 +54,7 @@ var lf2 = (function (lf2) {
     const CHANGE_TO_FALLING_INDEX = [
         FrameStage.STAND, FrameStage.WALK, FrameStage.RUN
     ];
-    CHANGE_TO_FALLING_INDEX.sort();
+    CHANGE_TO_FALLING_INDEX.sort((a, b) => a - b);
     Object.freeze(CHANGE_TO_FALLING_INDEX);
 
     const GOD_MODE_TIME = 40;

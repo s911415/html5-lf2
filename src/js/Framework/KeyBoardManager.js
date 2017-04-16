@@ -7,6 +7,7 @@ var Framework = (function (Framework) {
             _keydownList = {},
             _keypressHistory = [],
             _keyCodeToChar = {
+                undefined: '-',
                 8: 'Backspace',
                 9: 'Tab',
                 13: 'Enter',
@@ -133,7 +134,17 @@ var Framework = (function (Framework) {
             return KEY_WHITE_LIST.indexOf(e.keyCode)!==-1;
         };
 
+        /**
+         * @return {boolean}
+         */
+        const FROM_INPUTABLE_ELEMENT = (e)=>{
+            if(!e.target) return false;
+            return ["INPUT", "TEXTAREA"].indexOf(e.target.tagName)!==-1;
+        };
+
         var keydownEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
@@ -159,6 +170,8 @@ var Framework = (function (Framework) {
         };
 
         var keyPressEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
@@ -169,6 +182,8 @@ var Framework = (function (Framework) {
         };
 
         var keyupEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
@@ -331,10 +346,15 @@ var Framework = (function (Framework) {
                 return _keydownList.apply(this, arguments);
             }
 
-            /* 為了要像洛克人  按壓一段時間後可以集氣 */
             mappingTable() {
                 return _keyCodeToChar;
             }
+
+            getKeyCodeByString(keyCode){
+                return _stringToKeyCode[keyCode];
+            }
+
+
 
             /**
              * Keypress history.

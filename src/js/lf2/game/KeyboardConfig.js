@@ -68,7 +68,17 @@ var lf2 = (function (lf2) {
             NAME: "Player2",
             UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
             ATTACK: 221, JUMP: 219, DEFEND: 80
-        }
+        },
+        // {
+        //     NAME: "Player3",
+        //     UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
+        //     ATTACK: 221, JUMP: 219, DEFEND: 80
+        // },
+        // {
+        //     NAME: "Player4",
+        //     UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
+        //     ATTACK: 221, JUMP: 219, DEFEND: 80
+        // }
     ];
     Object.freeze(DEFAULT_CONFIG);
 
@@ -89,7 +99,7 @@ var lf2 = (function (lf2) {
             if (playerId < 0 || playerId >= define.PLAYER_COUNT) throw new RangeError(`Player Id (${playerId}) Out of range`);
 
             this.playerId = playerId;
-            this.config = lf2.KeyboardConfig.getKeyConfig()[playerId];
+            this.config = lf2.KeyboardConfig.getKeyConfig()[playerId] || {};
             this.keyMap = new Map();
             //{"NAME":"Player1","UP":38,"DOWN":40,"LEFT":37,"RIGHT":39,"ATTACK":68,"JUMP":83,"DEFEND":65}
             KEY_MAP.KEY_LIST.forEach((keyName)=>{
