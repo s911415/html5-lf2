@@ -38,6 +38,14 @@ var lf2 = (function (lf2) {
         return (currentIndex + maxLen + offset) % maxLen;
     };
 
+    const countDonePlayer = (previousValue, curPlayer) => {
+        return previousValue + (curPlayer._selectStage === SELECTION_STAGE.SELECT_DONE ? 1 : 0);
+    };
+    const countNonDonePlayer = (previousValue, curPlayer) => {
+        const ss = curPlayer._selectStage;
+        return previousValue + (ss !== SELECTION_STAGE.SELECT_DONE && ss !== SELECTION_STAGE.WAIT_JOIN ? 1 : 0);
+    };
+
     /**
      * @class lf2.SelectionLevel
      * @extends Framework.Level
@@ -80,7 +88,7 @@ var lf2 = (function (lf2) {
                 p.setSelectStage = function (val) {
                     val |= 0;
                     this._selectStage = val;
-                    if(this.elem) this.elem.attr(STAGE_TAG, this._selectStage);
+                    if (this.elem) this.elem.attr(STAGE_TAG, this._selectStage);
                 };
                 p.setSelectStage(SELECTION_STAGE.WAIT_JOIN);
                 p._charIndex = 0;
@@ -89,7 +97,7 @@ var lf2 = (function (lf2) {
 
             this._attached = false;
             this._selectionContainer = undefined;
-            this._htmlLoader.then(()=>{
+            this._htmlLoader.then(() => {
                 this.showSelectionPanel();
             });
             this._charIdArray = [RANDOM_ID];
@@ -212,7 +220,7 @@ var lf2 = (function (lf2) {
             super.keydown(e, list, oriE);
 
             this.players.forEach((player) => {
-                if(player.keydown(oriE)){
+                if (player.keydown(oriE)) {
                     this._handlePlayerKeypress(player);
                 }
             });
@@ -265,9 +273,18 @@ var lf2 = (function (lf2) {
                     console.log(`Player: ${player.playerId}, Jump pressed`);
                     stage--;
                 }
+            } else if (this._countDownTimer !== undefined) {
+                if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK) && stage === SELECTION_STAGE.WAIT_JOIN) {
+                    this._stopCountDown();
+                    stage++;
+                }
+            }
 
-                if (stage < SELECTION_STAGE.WAIT_JOIN) stage = SELECTION_STAGE.WAIT_JOIN;
-                if (stage > SELECTION_STAGE.SELECT_DONE) stage = SELECTION_STAGE.SELECT_DONE;
+            if (stage < SELECTION_STAGE.WAIT_JOIN) stage = SELECTION_STAGE.WAIT_JOIN;
+            if (stage > SELECTION_STAGE.SELECT_DONE) stage = SELECTION_STAGE.SELECT_DONE;
+
+            if (this._isEnteringPanelShowed) {
+                stage = SELECTION_STAGE.ENTERING;
             }
 
 
@@ -315,7 +332,7 @@ var lf2 = (function (lf2) {
                                 };
 
                                 this.players.forEach(p => {
-                                    if(p._selectStage !== SELECTION_STAGE.ENTERING) return;
+                                    if (p._selectStage !== SELECTION_STAGE.ENTERING) return;
 
                                     _passData.players[p.playerId] = {
                                         charId: this._charIdArray[p._charIndex],
@@ -358,7 +375,7 @@ var lf2 = (function (lf2) {
             }
 
 
-            if (prevStage !== stage) {
+            if (prevStage !== stage && !this._isEnteringPanelShowed) {
                 if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
                     this.audio.play({name: 'join'});
                 } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
@@ -366,7 +383,7 @@ var lf2 = (function (lf2) {
                 }
             }
 
-            if(!this._isEnteringPanelShowed){
+            if (!this._isEnteringPanelShowed) {
                 player.setSelectStage(stage);
             }
         }
@@ -415,7 +432,7 @@ var lf2 = (function (lf2) {
          */
         showSelectionPanel() {
             if (!this.isCurrentLevel) return;
-            
+
             if (this.html !== "" && !this._selectionContainer) {
                 $("#" + _SELECTION_CONTAINER_ID).remove();
 
@@ -469,15 +486,19 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         _isMinPlayerEntered() {
-            const countDonePlayer = (previousValue, curPlayer) => {
-                return previousValue + (curPlayer._selectStage === SELECTION_STAGE.SELECT_DONE ? 1 : 0);
-            };
-            const countNonDonePlayer = (previousValue, curPlayer) => {
-                const ss = curPlayer._selectStage;
-                return previousValue + (ss !== SELECTION_STAGE.SELECT_DONE && ss !== SELECTION_STAGE.WAIT_JOIN ? 1 : 0);
-            };
             return this.players.reduce(countDonePlayer, 0) >= START_GAME_MIN_PLAYER_COUNT &&
                 this.players.reduce(countNonDonePlayer, 0) === 0;
+        }
+
+        /**
+         * _isAllPlayerEntered()
+         *
+         * Is all player entered.
+         *
+         * @return  .
+         */
+        _isAllPlayerEntered() {
+            return this.players.reduce(countNonDonePlayer, 0) === 0;
         }
 
         /**
@@ -519,7 +540,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         _timerTick() {
-            if(this._countDownTimer===undefined) return;
+            if (this._countDownTimer === undefined) return;
 
             if (this._remainingTime <= 1) {
                 this._stopCountDown();
@@ -551,7 +572,7 @@ var lf2 = (function (lf2) {
                 if (p._selectStage === SELECTION_STAGE.SELECT_DONE) {
                     p.setSelectStage(SELECTION_STAGE.ENTERING);
 
-                }else{
+                } else {
                     console.error("asdf", p._selectStage);
                 }
             });

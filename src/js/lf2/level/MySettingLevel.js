@@ -12,6 +12,11 @@ var lf2 = (function (lf2) {
             ele.classList.add(CUR);
         }
     };
+    const DISALLOW_KEY = [
+        'Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
+    ];
+    for (let i = 0; i < DISALLOW_KEY.length; i++) DISALLOW_KEY[i] = KeyBoardManager.getKeyCodeByString(DISALLOW_KEY[i]);
+    DISALLOW_KEY.sort((a, b) => a - b);
 
     /**
      * @class lf2.MySettingLevel
@@ -44,7 +49,8 @@ var lf2 = (function (lf2) {
                 },
             });
 
-            this.config = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY)) || lf2.KeyboardConfig.DEFAULT_CONFIG;
+            this.config = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY))
+                || JSON.parse(JSON.stringify(lf2.KeyboardConfig.DEFAULT_CONFIG)); //Avoid lock
 
             this.html = '';
             this.players = [];
@@ -57,7 +63,14 @@ var lf2 = (function (lf2) {
                 this.html = html;
                 this.showSettingMenu();
             });
+        }
 
+        getConfigByPlayerId(playerId) {
+            let conf = this.config[playerId];
+            if (!conf) {
+                conf = this.config[playerId] = {};
+            }
+            return conf;
         }
 
         /**
@@ -96,7 +109,7 @@ var lf2 = (function (lf2) {
             const KEY_CLASS = lf2.KeyboardConfig.prototype.KEY_MAP.KEY_LIST;
             //refresh key
             for (let i = 0; i < define.PLAYER_COUNT; i++) {
-                const p = this.players[i], c = this.config[i];
+                const p = this.players[i], c = this.getConfigByPlayerId(i);
                 if (c === undefined) continue;
 
                 KEY_CLASS.forEach((k) => {
@@ -129,7 +142,11 @@ var lf2 = (function (lf2) {
                 const ce = curElement[0];
                 if (ce.classList.contains('keys')) {
                     let key = curElement.data('key');
-                    this.config[playerId][key] = oriE.keyCode;
+                    if (DISALLOW_KEY.binarySearch(oriE.keyCode) !== -1) {
+                        this.getConfigByPlayerId(playerId)[key] = undefined;
+                    } else {
+                        this.getConfigByPlayerId(playerId)[key] = oriE.keyCode;
+                    }
                     setCur(null);
                 }
             }
@@ -204,7 +221,7 @@ var lf2 = (function (lf2) {
                 e.stopImmediatePropagation();
             }).bind('keyup', function (e) {
                 let playerId = $(this.parentNode).data('player');
-                _this.config[playerId]['NAME'] = this.value;
+                _this.getConfigByPlayerId(playerId)['NAME'] = this.value;
             });
 
             playerElement.find(".keys").bind('mousedown', function (e) {

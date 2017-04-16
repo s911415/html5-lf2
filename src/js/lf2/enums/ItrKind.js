@@ -24,10 +24,10 @@ var lf2 = (function (lf2) {
         WHIRLWIND_ICE: 16,
     };
     ItrKind.ITR_ALLOW_FALL = [
-        ItrKind.NORMAL_HIT, ItrKind.SUPER_PUNCH, ItrKind.HEAL_BALL, ItrKind.REFLECTIVE_SHIELD, ItrKind.SONATA_OF_DEATH_1,
-        ItrKind.SONATA_OF_DEATH_2, ItrKind.WHIRLWIND_WIND, ItrKind.WHIRLWIND_ICE,
+        ItrKind.NORMAL_HIT, ItrKind.HEAL_BALL, ItrKind.REFLECTIVE_SHIELD, ItrKind.SONATA_OF_DEATH_1,
+        ItrKind.SONATA_OF_DEATH_2,
     ];
-    ItrKind.ITR_ALLOW_FALL.sort();
+    ItrKind.ITR_ALLOW_FALL.sort((a, b) => a - b);
 
     Object.freeze(ItrKind.ITR_ALLOW_FALL);
     Object.freeze(lf2.ItrKind);

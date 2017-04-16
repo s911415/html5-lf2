@@ -12,7 +12,7 @@
         MUSIC_PATH:BASE_PATH + "music/",
         BGM_PATH:BASE_PATH + "music/bgm/",
 
-        PLAYER_COUNT: 2,
+        PLAYER_COUNT: 4,
         KEYBOARD_CONFIG_KEY: "keyConfig",
 
         LOADING_MIN_TIME: 0 * 1000,
