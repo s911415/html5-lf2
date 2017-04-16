@@ -621,6 +621,21 @@ var lf2 = (function (lf2) {
                 this.addFall(ITR.fall);
             }
 
+            if (ITR.kind === ItrKind.WHIRLWIND_WIND) {
+                this._velocity.y = DV.y;
+                const MASS = 1;
+                //lift
+                this._velocity.y -= 2 / MASS;
+
+                const sign = (x) => x > 0 ? 1 : -1;
+                const cx = ITR.rect.position.x + DV.x + (ITR.rect.width >> 1);
+                const cz = DV.y;
+
+                this._velocity.x -= sign(this.position.x - cx) * 2 / MASS;
+                console.log(sign(this.position.y - cz) * 0.5 / MASS);
+                this._velocity.y += sign(this.position.y - cz) * 0.5 / MASS;
+            }
+
 
             let face = this._direction !== item._direction;
 
@@ -668,7 +683,9 @@ var lf2 = (function (lf2) {
                     Effect.sound.play(ITR.effect);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
+                case ItrKind.WHIRLWIND_WIND:
                     this.setNextFrame(200);
+                    Effect.sound.play(Effect.ICE);
                     break;
                 case ItrKind.THREE_D_OBJECTS:
                     this.freeze();

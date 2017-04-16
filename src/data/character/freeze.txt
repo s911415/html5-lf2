@@ -2089,7 +2089,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 270 Sword
-   pic: 160  state: 3  wait: 1  next: 271  dvx: 0  dvy: 0  dvz: 0  centerx: 52  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 150
+   pic: 160  state: 3  wait: 1  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 52  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 150
   sound: 074.ogg 
    wpoint:
       kind: 3  x: 40  y: 43  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
