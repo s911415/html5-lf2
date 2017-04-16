@@ -226,6 +226,15 @@ body {
     text-align: center;
 }
 
+#selection_note{
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    color: #aec7ff;
+    font-size: 10px;
+    font-style: italic;
+}
+
 #selection_panel {
     background-image: url(../image/selection_panel.png);
     width: 705px;
