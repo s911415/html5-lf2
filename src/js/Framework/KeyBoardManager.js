@@ -7,6 +7,7 @@ var Framework = (function (Framework) {
             _keydownList = {},
             _keypressHistory = [],
             _keyCodeToChar = {
+                undefined: '-',
                 8: 'Backspace',
                 9: 'Tab',
                 13: 'Enter',
@@ -137,6 +138,7 @@ var Framework = (function (Framework) {
          * @return {boolean}
          */
         const FROM_INPUTABLE_ELEMENT = (e)=>{
+            if(!e.target) return false;
             return ["INPUT", "TEXTAREA"].indexOf(e.target.tagName)!==-1;
         };
 
