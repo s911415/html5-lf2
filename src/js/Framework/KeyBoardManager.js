@@ -133,7 +133,16 @@ var Framework = (function (Framework) {
             return KEY_WHITE_LIST.indexOf(e.keyCode)!==-1;
         };
 
+        /**
+         * @return {boolean}
+         */
+        const FROM_INPUTABLE_ELEMENT = (e)=>{
+            return ["INPUT", "TEXTAREA"].indexOf(e.target.tagName)!==-1;
+        };
+
         var keydownEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
@@ -159,6 +168,8 @@ var Framework = (function (Framework) {
         };
 
         var keyPressEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
@@ -169,6 +180,8 @@ var Framework = (function (Framework) {
         };
 
         var keyupEvent = function (e) {
+            if(FROM_INPUTABLE_ELEMENT(e)) return;
+
             if (!IN_WHITE_LIST(e)) {
                 e.preventDefault();
             }
