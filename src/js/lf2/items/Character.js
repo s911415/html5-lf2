@@ -590,7 +590,6 @@ var lf2 = (function (lf2) {
             //Accept injury
             switch (ITR.kind) {
                 case ItrKind.NORMAL_HIT:
-                case ItrKind.SUPER_PUNCH:
                 case ItrKind.HEAL_BALL:
                 case ItrKind.REFLECTIVE_SHIELD:
                 case ItrKind.SONATA_OF_DEATH_1:
