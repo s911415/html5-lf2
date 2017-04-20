@@ -65,23 +65,18 @@ var lf2 = (function (lf2) {
          */
         GetRadBasedOnPoints:function (p1,p2) {
             var rad;
-            var degree;
-            this.position=new Point(0,0);
-
             if((this.p2.x-this.p1.x)>0 &&(this.p2.y-this.p1.y)>0){
-                degree=Math.atan((this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
+                rad=Math.atan((this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
             }else if((this.p2.x-this.p1.x)<0 &&(this.p2.y-this.p1.y)>0){
-                degree=Math.atan((this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
-                degree=180-degree;
+                rad=Math.atan((this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
+                rad=180*180/3.14-rad;
             }else if((this.p2.x-this.p1.x)<0 &&(this.p2.y-this.p1.y)<0){
-                degree=Math.atan(Math.abs(this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
-                degree+=180;
+                rad=Math.atan(Math.abs(this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
+                rad+=180*180/3.14;
             }else {
-                degree=Math.atan(Math.abs(this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
-                degree=-degree;
+                rad=Math.atan(Math.abs(this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
+                rad=-rad;
             }
-
-            rad=degree*180/3.14;
 
             return rad;
         },
