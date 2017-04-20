@@ -65,19 +65,18 @@ var lf2 = (function (lf2) {
          */
         GetRadBasedOnPoints:function (p1,p2) {
             var rad;
-            if((this.p2.x-this.p1.x)>0 &&(this.p2.y-this.p1.y)>0){
+            if((p2.x-p1.x)>0 &&(p2.y-p1.y)>0){
                 rad=Math.atan((this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
-            }else if((this.p2.x-this.p1.x)<0 &&(this.p2.y-this.p1.y)>0){
-                rad=Math.atan((this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
-                rad=180*180/3.14-rad;
-            }else if((this.p2.x-this.p1.x)<0 &&(this.p2.y-this.p1.y)<0){
-                rad=Math.atan(Math.abs(this.p2.y-this.p1.y)/Math.abs(this.p2.x-this.p1.x));
-                rad+=180*180/3.14;
+            }else if((p2.x-p1.x)<0 &&(p2.y-p1.y)>0){
+                rad=Math.atan((p2.y-p1.y)/Math.abs(p2.x-p1.x));
+                rad=180*180/Math.PI-rad;
+            }else if((p2.x-p1.x)<0 &&(p2.y-p1.y)<0){
+                rad=Math.atan(Math.abs(p2.y-p1.y)/Math.abs(p2.x-p1.x));
+                rad+=180*180/Math.PI;
             }else {
-                rad=Math.atan(Math.abs(this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
+                rad=Math.atan(Math.abs(p2.y-p1.y)/(p2.x-p1.x));
                 rad=-rad;
             }
-
             return rad;
         },
 
