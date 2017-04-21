@@ -39,12 +39,7 @@ var lf2 = (function (lf2) {
 
             this._maxVelocity = new Framework.Point3D(12, 0, 5);
 
-            /**
-             *
-             * @type {lf2.GameItem}
-             * @private
-             */
-            this._target = null;
+            this._targetCatched = false;
 
             this._radius = 0;
         }
@@ -88,7 +83,7 @@ var lf2 = (function (lf2) {
                     vx = this._radius;
                 }
 
-                const dz = this._ball.position.z - (TARGET.position.z - 0*TARGET.currentFrame.center.y * .5 ); //dz > 0 ? UPPER : LOWER
+                const dz = this._ball.position.z - (TARGET.position.z - 0 * TARGET.currentFrame.center.y * .5 ); //dz > 0 ? UPPER : LOWER
                 if (Math.abs(dz) < MIN_V) {
                     vy = 0;
                 } else {
@@ -108,18 +103,18 @@ var lf2 = (function (lf2) {
          * @returns {lf2.GameItem}
          */
         getTarget() {
-            if (this._target && !this._target.alive) this._target = null;
-            if (this._target !== null) return this._target;
+            let target = this._world.getEnemy(this._ball.belongTo);
 
-            this._target = this._world.getEnemy(this._ball.belongTo);
+            if (!this._targetCatched) {
+                this._maxVelocity = this._ball._prevVelocity.clone();
+                this._maxVelocity.x = Math.abs(this._maxVelocity.x);
+                this._maxVelocity.y = Math.abs(this._maxVelocity.y);
+                this._maxVelocity.z = Math.abs(this._maxVelocity.z);
+                this._radius = this._maxVelocity.x;
+            }
+            this._targetCatched = true;
 
-            this._maxVelocity = this._ball._prevVelocity.clone();
-            this._maxVelocity.x = Math.abs(this._maxVelocity.x);
-            this._maxVelocity.y = Math.abs(this._maxVelocity.y);
-            this._maxVelocity.z = Math.abs(this._maxVelocity.z);
-            this._radius = this._maxVelocity.x;
-
-            return this._target;
+            return target;
         }
 
         get FA() {

@@ -142,6 +142,10 @@ var lf2 = (function (lf2) {
                     case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
                         this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
                         break;
+                    case 2: //水平追敵
+                    case 3: //加速法追敵(追縱力較差)
+                        this._behavior = new lf2.HorizontalTrackerBehavior(this, this.spriteParent);
+                        break;
 
                     case 10:
                         this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
@@ -170,7 +174,7 @@ var lf2 = (function (lf2) {
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
-            this._velocity.y = v.y;
+            this._velocity.y = getVelocityVal(this._velocity.y, v.y);
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 
