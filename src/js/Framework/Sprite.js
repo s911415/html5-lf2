@@ -136,7 +136,6 @@ var Framework = (function (Framework) {
          * @return  .
          */
         testDraw(painter) {
-            debugger;
             var painter = painter || Framework.Game._context;
             this.countAbsoluteProperty();
             var texture, tmp, realWidth, realHeight, tmpContext;
