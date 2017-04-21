@@ -126,15 +126,24 @@ var lf2 = (function (lf2) {
             }
 
             if(hit.Fa!==0){
+                if (this._behavior && this._behavior.FA === hit.Fa) {
+                    return this._behavior.getVelocity();
+                }
+
+                switch (hit.Fa) {
+                    case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
+                        this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
+
+                        break;
+
+                    default:
+                        return Framework.Point3D(0, 0, 0);
+                }
+
+                return this._behavior.getVelocity();
 
             }else{
                 this._behavior = null;
-            }
-
-            switch(hit.Fa){
-                case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
-
-                    break;
             }
 
             return v;

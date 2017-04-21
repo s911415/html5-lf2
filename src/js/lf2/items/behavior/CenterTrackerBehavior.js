@@ -15,6 +15,7 @@ var lf2 = (function (lf2) {
          * @param {lf2.WorldScene} world
          */
         constructor(ball, world) {
+
             /**
              *
              * @type {lf2.Ball}
@@ -78,6 +79,10 @@ var lf2 = (function (lf2) {
             }
 
             return this._target;
+        }
+
+        get FA() {
+            return 1;
         }
     };
 
