@@ -140,26 +140,28 @@
             Promise.all(canvasArray.map(x => x.done())).then(a => {
                 const MAX_WIDTH = canvasArray.map(x => x.img.width).max();
                 const MAX_HEIGHT = canvasArray.map(x => x.img.height).max();
+                const OFFSET = Math.max(0, -canvasArray.map(x => x.origin.x).min());
+                const R_WIDTH = OFFSET + MAX_WIDTH;
                 let canvas = document.createElement('canvas');
-                canvas.width = canvasArray.length * (MAX_WIDTH + 1);
+                canvas.width = canvasArray.length * (R_WIDTH + 1);
                 canvas.height = MAX_HEIGHT + 1;
                 let ctx = canvas.getContext('2d');
 
                 ctx.fillStyle = "#F0F";
 
                 canvasArray.forEach((canvasInfo, i) => {
-                    const X = i * (MAX_WIDTH + 1), Y = 0;
+                    const X = i * (R_WIDTH + 1) , Y = 0;
                     //Reset translate
                     ctx.setTransform(1, 0, 0, 1, 0, 0);
                     ctx.translate(X, Y);
 
                     let leftTopPosition = {
-                        x: (MAX_WIDTH / 2) - canvasInfo.origin.x,
+                        x: (R_WIDTH / 2) - canvasInfo.origin.x ,
                         y: MAX_HEIGHT - canvasInfo.origin.y,
                     };
 
                     ctx.drawImage(canvasInfo.img, leftTopPosition.x, leftTopPosition.y);
-                    ctx.fillRect(MAX_WIDTH, 0, 1, MAX_HEIGHT);
+                    ctx.fillRect(R_WIDTH, 0, 1, MAX_HEIGHT);
                 });
 
                 const SKILL_ID = imgdir.parentNode.getAttribute('name');
@@ -169,7 +171,7 @@
 
                 let source = `
 <bmp_begin>
-file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${MAX_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
+file(0-${canvasArray.length - 1}): sprite\\sys\\${BASE_PATH}.png  w: ${R_WIDTH}  h: ${MAX_HEIGHT}  row: ${canvasArray.length}  col: 1
 weapon_hit_sound: ${sound ? SKILL_ID + '_Hit.mp3' : '020.ogg'}
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg
@@ -177,7 +179,7 @@ weapon_broken_sound: 020.ogg
 `;
 
                 const ID_PADDING = (i) => '1' + i.toString().padStart(2, '0');
-                const CX = (MAX_WIDTH / 2) | 1;
+                const CX = (R_WIDTH / 2) | 1;
                 const CY = MAX_HEIGHT;
                 let totalTime = 0;
                 canvasArray.forEach(function (c) {

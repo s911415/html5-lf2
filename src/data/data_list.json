@@ -326,6 +326,26 @@
             "file": "ball\\2321008_hit.txt"
         },
         {
+            "id": 252,
+            "type": 3,
+            "file": "ball\\2121007_effect0.txt"
+        },
+        {
+            "id": 253,
+            "type": 3,
+            "file": "ball\\2121007_hit.txt"
+        },
+        {
+            "id": 254,
+            "type": 3,
+            "file": "ball\\2221007_effect.txt"
+        },
+        {
+            "id": 255,
+            "type": 3,
+            "file": "ball\\2221007_hit.txt"
+        },
+        {
             "id": 500,
             "type": 3,
             "file": "ball\\mahoro_ball.txt"
