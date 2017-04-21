@@ -214,10 +214,11 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.Player} player
+         * @returns {lf2.Character}
          */
         getEnemy(player) {
             for (let i = 0, j = this.players.length; i < j; i++) {
-                if (player !== this.players[i]) return this.players[i];
+                if (player !== this.players[i]) return this.players[i].character;
             }
 
             return null;
@@ -226,9 +227,10 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.Player} player
+         * @returns {lf2.Character}
          */
         getFriend(player) {
-            return player;
+            return player.character;
         }
 
 

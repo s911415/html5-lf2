@@ -128,16 +128,23 @@ var lf2 = (function (lf2) {
             if(hit.Fa!==0){
                 if (this._behavior && this._behavior.FA === hit.Fa) {
                     return this._behavior.getVelocity();
+                // }else{
+                //     if(this._behavior){
+                //         this._velocity = this._behavior._maxVelocity.clone();
+                //     }
                 }
 
                 switch (hit.Fa) {
                     case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
                         this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
+                        break;
 
+                    case 10:
+                        this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
                         break;
 
                     default:
-                        return Framework.Point3D(0, 0, 0);
+                        return new Framework.Point3D(0, 0, 0);
                 }
 
                 return this._behavior.getVelocity();
