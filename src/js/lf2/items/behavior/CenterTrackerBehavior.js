@@ -92,6 +92,8 @@ var lf2 = (function (lf2) {
          * @returns {lf2.GameItem}
          */
         getTarget() {
+            if(!this._world) return null;
+
             let target = this._world.getEnemy(this._ball.belongTo);
 
             if (!this._targetCatched) {

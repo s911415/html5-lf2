@@ -41,6 +41,7 @@
         'items/behavior/CenterTrackerBehavior.js',
         'items/behavior/FasterTrackerBehavior.js',
         'items/behavior/HorizontalTrackerBehavior.js',
+        'items/behavior/JulianBallBeginBehavior.js',
 
         'player/PlayerStatusPanel.js',
         'player/Player.js',

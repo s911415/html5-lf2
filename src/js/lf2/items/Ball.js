@@ -152,6 +152,12 @@ var lf2 = (function (lf2) {
                         this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
                         break;
 
+                    case 13:
+                        this._behavior = new lf2.JulianBallBeginBehavior(this, this.spriteParent);
+                        break;
+
+
+
                     default:
                         return new Framework.Point3D(0, 0, 0);
                 }

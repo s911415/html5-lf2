@@ -1,39 +1,22 @@
 "use strict";
 var lf2 = (function (lf2) {
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
+    const Point3D = Framework.Point3D;
     /**
      * JulianBallBeginBehavior
      *
      * @class lf2.JulianBallBeginBehavior
-     * @implements lf2.Behavior
+     * @extends lf2.AbstractBehavior
      */
-    lf2.JulianBallBeginBehavior = class JulianBallBeginBehavior {
+    lf2.JulianBallBeginBehavior = class JulianBallBeginBehavior extends lf2.AbstractBehavior {
         /**
          *
          * @param {lf2.Ball} ball
          * @param {lf2.WorldScene} world
          */
         constructor(ball, world) {
-
-            /**
-             *
-             * @type {lf2.Ball}
-             * @private
-             */
-            this._ball = ball;
-
-            /**
-             *
-             * @type {lf2.WorldScene}
-             * @private
-             */
-            this._world = world;
-
-            this._maxVelocity = new Framework.Point3D(12, 0, 5);
-
-            this._targetCatched = false;
-
-            this._radius = 0;
+            super(ball, world);
+            this._attached = false
         }
 
         /**
@@ -41,14 +24,19 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point3D}
          */
         getVelocity() {
-            throw METHOD_NOT_IMPLEMENT;
+            return new Point3D(0, 0, 0);
         }
-        /**
-         *
-         * @abstract
-         */
-        update() {
 
+
+        update() {
+            super.update();
+            if(this._attached) return;
+
+            debugger;
+            let opoint = new lf2.ObjectPoint(`kind: 1  x: 0  y: 5  action: 0  dvx: 20  dvy: 0  oid: 228  facing: 0`);
+
+            this._ball.belongTo.addBall(opoint, this._ball);
+            this._attached = true;
         }
 
         /**
