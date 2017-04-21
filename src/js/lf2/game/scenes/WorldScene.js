@@ -230,7 +230,6 @@ var lf2 = (function (lf2) {
                 if (player !== this.players[i]) target = this.players[i].character;
             }
 
-            debugger;
             if (!target._allowDraw || target._flashing) target = null;
 
             return target;
