@@ -26,7 +26,7 @@ rowing_distance 6.000000
 <bmp_end>
 
 <frame> 0 standing
-   pic: 0  state: 0  wait: 10  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 0  state: 0  wait: 10  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -39,7 +39,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 1 standing
-   pic: 1  state: 0  wait: 4  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 1  state: 0  wait: 4  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -52,7 +52,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 2 standing
-   pic: 2  state: 0  wait: 3  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 2  state: 0  wait: 3  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -65,7 +65,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 3 standing
-   pic: 3  state: 0  wait: 10  next: 4  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 3  state: 0  wait: 10  next: 4  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -78,7 +78,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 4 standing
-   pic: 1  state: 0  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 1  state: 0  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -91,7 +91,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 5 walking
-   pic: 4  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 4  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -108,7 +108,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 6 walking
-   pic: 5  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 5  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -125,7 +125,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 7 walking
-   pic: 6  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 6  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -142,7 +142,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 8 walking
-   pic: 7  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 7  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    bpoint:
       x: 40  y: 34
    bpoint_end:
@@ -867,7 +867,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 110 defend
-   pic: 56  state: 7  wait: 12  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 56  state: 7  wait: 12  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    wpoint:
       kind: 1  x: 34  y: 42  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -881,7 +881,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 111 defend
-   pic: 57  state: 7  wait: 0  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249
+   pic: 57  state: 7  wait: 0  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 240 hit_Fj: 265 hit_Uj: 249 hit_Dj: 291
    wpoint:
       kind: 1  x: 33  y: 42  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1949,7 +1949,6 @@ rowing_distance 6.000000
 
 <frame> 257 volcano
    pic: 77  state: 7  wait: 2  next: 258  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 071.ogg 
    wpoint:
       kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1959,8 +1958,7 @@ rowing_distance 6.000000
 <frame_end>
 
 <frame> 258 volcano
-   pic: 78  state: 3  wait: 59  next: 259  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 020.ogg 
+   pic: 78  state: 3  wait: 99  next: 259  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
       kind: 1  x: 40  y: 80  action: 90  dvx: 0  dvy: 0  oid: 254  facing: 1
    opoint_end:
@@ -2114,6 +2112,110 @@ rowing_distance 6.000000
       kind: 0  x: 21  y: 18  w: 43  h: 62
    bdy_end:
 <frame_end>
+
+<frame> 291 volcano
+   pic: 83  state: 3  wait: 0  next: 292  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 250
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 292 volcano
+   pic: 73  state: 7  wait: 0  next: 293  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 293 volcano
+   pic: 74  state: 7  wait: 1  next: 294  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 294 volcano
+   pic: 75  state: 7  wait: 2  next: 295  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 295 volcano
+   pic: 76  state: 7  wait: 1  next: 296  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 296 volcano
+   pic: 77  state: 7  wait: 0  next: 297  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 297 volcano
+   pic: 75  state: 7  wait: 1  next: 298  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 298 volcano
+   pic: 76  state: 7  wait: 1  next: 299  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 299 volcano
+   pic: 77  state: 7  wait: 2  next: 300  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 300 volcano
+   pic: 78  state: 3  wait: 59  next: 259  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 80  action: 90  dvx: 0  dvy: 0  oid: 252  facing: 1
+   opoint_end:
+   wpoint:
+      kind: 1  x: 44  y: 49  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
 
 <frame> 399 dummy
    pic: 0  state: 0  wait: 0  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
