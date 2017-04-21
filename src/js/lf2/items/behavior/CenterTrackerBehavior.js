@@ -66,11 +66,12 @@ var lf2 = (function (lf2) {
                     const p1 = new Point(this._ball.position.x, this._ball.position.y);
                     const p2 = new Point(TARGET.position.x, TARGET.position.y);
                     const RAD = Utils.GetRadBasedOnPoints(p1, p2);
-                    let dz = this._ball.position.z - TARGET.position.z;//-3 - 0
+                    let dz = this._ball.position.z - TARGET.position.z;//32 - 0
                     if (Math.abs(dz) < MIN_V) dz = 0;
 
                     vx = RADIUS * Math.cos(RAD);
                     vz = RADIUS * Math.sin(RAD);
+                    console.log('dz', dz);
                     vy = dz === 0 ? 0 : (dz > 0 ? -1 : 1);
                 } else {
                     //減速轉向
@@ -91,6 +92,7 @@ var lf2 = (function (lf2) {
                 if (Math.abs(vy) < MIN_V) vy = 0;
                 if (Math.abs(vz) < MIN_V) vz = 0;
             }
+            console.log('vy', vy);
 
             return new Point3D(vx, vy, vz);
         }
