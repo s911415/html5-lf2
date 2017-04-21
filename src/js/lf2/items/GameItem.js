@@ -100,6 +100,13 @@ var lf2 = (function (lf2) {
             this._flashing = false;
             this._flashCounter = false;
             this._isNew = true;
+            this.alive = true;
+
+            /**
+             *
+             * @type {Framework.Point3D}
+             */
+            this._prevVelocity = null;
 
             this.pushSelfToLevel();
         }
@@ -236,6 +243,7 @@ var lf2 = (function (lf2) {
                 return next;
             };
 
+            this._prevVelocity = this._velocity.clone();
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
@@ -380,27 +388,6 @@ var lf2 = (function (lf2) {
             this._lastFrameId = this._currentFrameIndex;
 
             if (define.DEBUG) {
-                let msg = [];
-                msg.push(`ID: ${this.obj.id}`);
-                msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
-                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0})`);
-
-                if (this instanceof lf2.Character) {
-                    msg.push(`Fall: ${this._fall | 0}`);
-                }
-
-                ctx.font = "200 12px Arial";
-                ctx.textAlign = "start";
-                ctx.textBaseline = "top";
-                ctx.fillStyle = "#FFF";
-                ctx.strokeStyle = "#000";
-                ctx.lineWidth = 2;
-                for (let i = 0; i < msg.length; i++) {
-                    const _y = REAL_DRAW_POS.y + 12 * i;
-                    ctx.strokeText(msg[i], REAL_DRAW_POS.x, _y);
-                    ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
-                }
-
                 ctx.lineWidth = 2;
                 ctx.strokeStyle = "#FF00FF";
                 //Draw image rect
@@ -422,6 +409,35 @@ var lf2 = (function (lf2) {
                     ctx.strokeStyle = "#0000FF";
 
                     itr.draw(ctx, leftTopPoint.z);
+                }
+
+
+                let msg = [];
+                msg.push(`ID: ${this.obj.id}`);
+                msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
+                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0}) / ${this._direction?'RIGHT':'LEFT'}`);
+                msg.push(`velocity: (${this._velocity.x | 0}, ${this._velocity.y | 0}, ${this._velocity.z | 0})`);
+
+                if (this instanceof lf2.Character) {
+                    msg.push(`Fall: ${this._fall | 0}`);
+                }
+
+                if (this instanceof lf2.Ball) {
+                    if (this._behavior) {
+                        msg.push(`Behavior: ${this._behavior.toString()}`);
+                    }
+                }
+
+                ctx.font = "200 12px Arial";
+                ctx.textAlign = "start";
+                ctx.textBaseline = "top";
+                ctx.fillStyle = "#FFF";
+                ctx.strokeStyle = "#000";
+                ctx.lineWidth = 2;
+                for (let i = 0; i < msg.length; i++) {
+                    const _y = REAL_DRAW_POS.y + 12 * i;
+                    ctx.strokeText(msg[i], REAL_DRAW_POS.x, _y);
+                    ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
                 }
             }
         }
@@ -709,18 +725,34 @@ var lf2 = (function (lf2) {
                 && this._velocity.x === 0;
         }
 
+        /**
+         *
+         * @param {lf2.GameItem} item
+         */
+        isFront(item) {
+            let ret = true;
+            if (this._direction === DIRECTION.RIGHT) {
+                ret = this.position.x < item.position.x;
+            } else {
+                ret = this.position.x > item.position.x;
+            }
+
+            if (this._velocity.x < 0) ret = !ret;
+
+            return ret;
+        }
 
         /**
          *
-         * @param {Number} x
+         * @param {Number} val
          * @param {Number} [f] friction
          * @return {number}
          */
-        static ApplyFriction(x, f) {
+        static ApplyFriction(val, f) {
             if (f === undefined) f = FRICTION;
-            if (x === 0) return 0;
+            if (val === 0) return 0;
 
-            return x * f;
+            return val * f;
         };
 
     };

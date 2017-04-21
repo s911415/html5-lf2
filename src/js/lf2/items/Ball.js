@@ -32,6 +32,8 @@ var lf2 = (function (lf2) {
             this._remainderTime = INIT_TIME;
             this._isOut = false;
             this._affectByFriction = false;
+
+            this._behavior = null;
         }
 
 
@@ -66,7 +68,6 @@ var lf2 = (function (lf2) {
                 }
             }
             if (next === 999) return 0;
-
 
             return next;
         }
@@ -124,6 +125,34 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
+            if(hit.Fa!==0){
+                if (this._behavior && this._behavior.FA === hit.Fa) {
+                    return this._behavior.getVelocity();
+                // }else{
+                //     if(this._behavior){
+                //         this._velocity = this._behavior._maxVelocity.clone();
+                //     }
+                }
+
+                switch (hit.Fa) {
+                    case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
+                        this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
+                        break;
+
+                    case 10:
+                        this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
+                        break;
+
+                    default:
+                        return new Framework.Point3D(0, 0, 0);
+                }
+
+                return this._behavior.getVelocity();
+
+            }else{
+                this._behavior = null;
+            }
+
             return v;
         }
 
@@ -133,10 +162,11 @@ var lf2 = (function (lf2) {
                 return next;
             };
 
+            this._prevVelocity = this._velocity.clone();
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
-            this._velocity.y = getVelocityVal(this._velocity.y, v.y);
+            this._velocity.y = v.y;
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 

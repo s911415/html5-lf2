@@ -121,7 +121,6 @@ var Framework = (function (Framework) {
         for (let keyCode in _keyCodeToChar) _stringToKeyCode[_keyCodeToChar[keyCode]] = intval(keyCode);
 
         const KEY_WHITE_LIST = [
-            _stringToKeyCode['F1'],
             _stringToKeyCode['F5'],
             _stringToKeyCode['F11'],
             _stringToKeyCode['F12'],

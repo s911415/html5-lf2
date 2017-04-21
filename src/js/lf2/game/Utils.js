@@ -60,6 +60,47 @@ var lf2 = (function (lf2) {
         },
 
         /**
+         * Set p1 as center calculate rad based on point
+         *
+         * @param {Framework.Point} p1
+         * @param {Framework.Point} p2
+         *
+         */
+        GetRadBasedOnPoints:function (p1,p2) {
+            let rad = 0;
+            const dx = p2.x - p1.x, dy = p2.y - p1.y;
+            const arctan = Math.atan(dy / dx);
+
+            /**
+             * first quadrant
+             */
+            if (dx > 0 && dy > 0) {
+                rad = arctan;
+            }
+            /**
+             * second quadrant
+             */
+            else if (dx < 0 && dy > 0) {
+                rad = arctan;
+                rad += Math.PI;
+            }
+            /**
+             * Third quadrant
+             */
+            else if (dx < 0 && dy < 0) {
+                rad = arctan;
+                rad += Math.PI;
+            }
+            /**
+             * fourth quadrant
+             */
+            else {
+                rad = arctan;
+            }
+            return rad;
+        },
+
+        /**
          *
          * @param {Number} p probability in percentage
          * @returns {boolean}
