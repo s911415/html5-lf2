@@ -4,7 +4,7 @@ var lf2 = (function (lf2) {
     /**
      * Behavior
      *
-     * @interface {lf2.Behavior}
+     * @interface lf2.Behavior
      */
     lf2.Behavior = class Behavior {
 
@@ -14,6 +14,13 @@ var lf2 = (function (lf2) {
          * @abstract
          */
         getVelocity() {
+            throw METHOD_NOT_IMPLEMENT;
+        }
+        /**
+         *
+         * @abstract
+         */
+        update() {
             throw METHOD_NOT_IMPLEMENT;
         }
 

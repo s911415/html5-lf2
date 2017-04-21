@@ -95,6 +95,10 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
 
+            if (this._behavior) {
+                this._behavior.update();
+            }
+
             if (this.isFrameChanged) {
                 const hit = this.currentFrame.hit;
                 if (hit.a > 0) {
@@ -125,13 +129,13 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
-            if(hit.Fa!==0){
+            if (hit.Fa !== 0) {
                 if (this._behavior && this._behavior.FA === hit.Fa) {
                     return this._behavior.getVelocity();
-                // }else{
-                //     if(this._behavior){
-                //         this._velocity = this._behavior._maxVelocity.clone();
-                //     }
+                    // }else{
+                    //     if(this._behavior){
+                    //         this._velocity = this._behavior._maxVelocity.clone();
+                    //     }
                 }
 
                 switch (hit.Fa) {
@@ -149,7 +153,7 @@ var lf2 = (function (lf2) {
 
                 return this._behavior.getVelocity();
 
-            }else{
+            } else {
                 this._behavior = null;
             }
 
