@@ -64,35 +64,35 @@ var lf2 = (function (lf2) {
          *set p1 as center calculate rad based on point
          */
         GetRadBasedOnPoints:function (p1,p2) {
-            var rad;
-            const dx=p2.x-p1.x,dy=p2.y-p1.y;
-            const arctan=Math.atan(dy/dx);
+            let rad = 0;
+            const dx = p2.x - p1.x, dy = p2.y - p1.y;
+            const arctan = Math.atan(dy / dx);
 
             /**
              * first quadrant
              */
-            if(dx>0 && dy>0){
-                rad= arctan;
+            if (dx > 0 && dy > 0) {
+                rad = arctan;
             }
             /**
              * second quadrant
              */
-            else if(dx<0 && dy>0){
-                rad=arctan;
-                rad+= Math.PI;
+            else if (dx < 0 && dy > 0) {
+                rad = arctan;
+                rad += Math.PI;
             }
             /**
              * Third quadrant
              */
-            else if(dx<0 && dy<0){
-                rad=arctan;
-                rad+= Math.PI;
+            else if (dx < 0 && dy < 0) {
+                rad = arctan;
+                rad += Math.PI;
             }
             /**
              * fourth quadrant
              */
             else {
-                rad=arctan;
+                rad = arctan;
             }
             return rad;
         },
