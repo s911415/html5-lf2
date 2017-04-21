@@ -210,6 +210,36 @@ var lf2 = (function (lf2) {
 
             ctx.restore();
         }
+
+        /**
+         *
+         * @param {lf2.Player} player
+         */
+        getEnemy(player) {
+            for (let i = 0, j = this.players.length; i < j; i++) {
+                if (player !== this.players[i]) return this.players[i];
+            }
+
+            return null;
+        }
+
+        /**
+         *
+         * @param {lf2.Player} player
+         */
+        getFriend(player) {
+            return player;
+        }
+
+
+        /**
+         *
+         * @param {lf2.GameItem} gameItem
+         */
+        detach(gameItem) {
+            super.detach(gameItem);
+            gameItem.alive = false;
+        }
     };
 
     return lf2;

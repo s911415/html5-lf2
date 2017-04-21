@@ -37,6 +37,8 @@
         'items/Ball.js',
         'items/Weapon.js',
 
+        'items/behavior/CenterTrackerBehavior.js',
+
         'player/PlayerStatusPanel.js',
         'player/Player.js',
 
