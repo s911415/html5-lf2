@@ -12,29 +12,16 @@ var lf2 = (function (lf2) {
      * FasterTrackerBehavior
      *
      * @class {lf2.FasterTrackerBehavior}
-     * @implements {lf2.Behavior}
+     * @extends {lf2.AbstractBehavior}
      */
-    lf2.FasterTrackerBehavior = class FasterTrackerBehavior {
+    lf2.FasterTrackerBehavior = class FasterTrackerBehavior extends lf2.AbstractBehavior{
         /**
          *
          * @param {lf2.Ball} ball
          * @param {lf2.WorldScene} world
          */
         constructor(ball, world) {
-
-            /**
-             *
-             * @type {lf2.Ball}
-             * @private
-             */
-            this._ball = ball;
-
-            /**
-             *
-             * @type {lf2.WorldScene}
-             * @private
-             */
-            this._world = world;
+            super(ball, world);
 
             this._maxVelocity = new Framework.Point3D(12, 0, 0);
 
@@ -47,7 +34,7 @@ var lf2 = (function (lf2) {
         }
 
         update() {
-
+            super.update();
         }
 
         /**

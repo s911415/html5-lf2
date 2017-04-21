@@ -13,29 +13,17 @@ var lf2 = (function (lf2) {
      * CenterTrackerBehavior
      *
      * @class {lf2.CenterTrackerBehavior}
-     * @implements {lf2.Behavior}
+     * @extends lf2.AbstractBehavior
      */
-    lf2.CenterTrackerBehavior = class CenterTrackerBehavior {
+    lf2.CenterTrackerBehavior = class CenterTrackerBehavior extends lf2.AbstractBehavior{
         /**
          *
          * @param {lf2.Ball} ball
          * @param {lf2.WorldScene} world
          */
         constructor(ball, world) {
+            super(ball, world);
 
-            /**
-             *
-             * @type {lf2.Ball}
-             * @private
-             */
-            this._ball = ball;
-
-            /**
-             *
-             * @type {lf2.WorldScene}
-             * @private
-             */
-            this._world = world;
 
             this._maxVelocity = new Framework.Point3D(12, 0, 5);
 
@@ -45,6 +33,8 @@ var lf2 = (function (lf2) {
         }
 
         update() {
+            super.update();
+
             this._radius += GRAVITY;
             if (this._radius > this._maxVelocity.x) this._radius = this._maxVelocity.x;
         }
@@ -73,7 +63,6 @@ var lf2 = (function (lf2) {
 
                     vx = this._radius * Math.cos(RAD);
                     vz = this._radius * Math.sin(RAD);
-                    console.log('vx', vx, 'vz', vz);
 
                     if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
                 } else {
@@ -83,7 +72,7 @@ var lf2 = (function (lf2) {
                     vx = this._radius;
                 }
 
-                const dz = this._ball.position.z - (TARGET.position.z - 0 * TARGET.currentFrame.center.y * .5 ); //dz > 0 ? UPPER : LOWER
+                const dz = this._ball.position.z - (TARGET.position.z); //dz > 0 ? UPPER : LOWER
                 if (Math.abs(dz) < MIN_V) {
                     vy = 0;
                 } else {

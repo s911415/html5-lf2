@@ -140,6 +140,7 @@ var lf2 = (function (lf2) {
 
                 switch (hit.Fa) {
                     case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
+                    case 14: //追敵人的center(因為敵人站在地面，所以會下飄)
                         this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
                         break;
                     case 2: //水平追敵

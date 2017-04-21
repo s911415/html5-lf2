@@ -207,7 +207,7 @@ var lf2 = (function (lf2) {
             }
 
             if (next.inRange(HIDE_FRAME_RANGE.min, HIDE_FRAME_RANGE.max)) {
-                this._hideRemainderTime = next;
+                this._hideRemainderTime = next - 100;
                 this._allowDraw = false;
                 next = 0;
             }

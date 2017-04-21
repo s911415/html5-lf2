@@ -37,6 +37,7 @@
         'items/Ball.js',
         'items/Weapon.js',
 
+        'items/behavior/AbstractBehavior.js',
         'items/behavior/CenterTrackerBehavior.js',
         'items/behavior/FasterTrackerBehavior.js',
         'items/behavior/HorizontalTrackerBehavior.js',
