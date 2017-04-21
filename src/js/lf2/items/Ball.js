@@ -32,6 +32,8 @@ var lf2 = (function (lf2) {
             this._remainderTime = INIT_TIME;
             this._isOut = false;
             this._affectByFriction = false;
+
+            this._behavior = null;
         }
 
 
@@ -66,7 +68,6 @@ var lf2 = (function (lf2) {
                 }
             }
             if (next === 999) return 0;
-
 
             return next;
         }
@@ -124,6 +125,18 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
+            if(hit.Fa!==0){
+
+            }else{
+                this._behavior = null;
+            }
+
+            switch(hit.Fa){
+                case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
+
+                    break;
+            }
+
             return v;
         }
 
@@ -133,6 +146,7 @@ var lf2 = (function (lf2) {
                 return next;
             };
 
+            this._prevVelocity = this._velocity.clone();
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
