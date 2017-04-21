@@ -415,10 +415,17 @@ var lf2 = (function (lf2) {
                 let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
                 msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
-                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0})`);
+                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0}) / ${this._direction?'RIGHT':'LEFT'}`);
+                msg.push(`velocity: (${this._velocity.x | 0}, ${this._velocity.y | 0}, ${this._velocity.z | 0})`);
 
                 if (this instanceof lf2.Character) {
                     msg.push(`Fall: ${this._fall | 0}`);
+                }
+
+                if (this instanceof lf2.Ball) {
+                    if (this._behavior) {
+                        msg.push(`Behavior: ${this._behavior.toString()}`);
+                    }
                 }
 
                 ctx.font = "200 12px Arial";
@@ -718,18 +725,34 @@ var lf2 = (function (lf2) {
                 && this._velocity.x === 0;
         }
 
+        /**
+         *
+         * @param {lf2.GameItem} item
+         */
+        isFront(item) {
+            let ret = true;
+            if (this._direction === DIRECTION.RIGHT) {
+                ret = this.position.x < item.position.x;
+            } else {
+                ret = this.position.x > item.position.x;
+            }
+
+            if (this._velocity.x < 0) ret = !ret;
+
+            return ret;
+        }
 
         /**
          *
-         * @param {Number} x
+         * @param {Number} val
          * @param {Number} [f] friction
          * @return {number}
          */
-        static ApplyFriction(x, f) {
+        static ApplyFriction(val, f) {
             if (f === undefined) f = FRICTION;
-            if (x === 0) return 0;
+            if (val === 0) return 0;
 
-            return x * f;
+            return val * f;
         };
 
     };

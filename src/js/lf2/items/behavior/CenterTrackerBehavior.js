@@ -1,7 +1,11 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const Point = Framework.Point;
     const Point3D = Framework.Point3D;
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
+    const MIN_V = 1;
+    const GameItem = lf2.GameItem;
+    const Utils = lf2.Utils;
     /**
      * CenterTrackerBehavior
      *
@@ -15,6 +19,7 @@ var lf2 = (function (lf2) {
          * @param {lf2.WorldScene} world
          */
         constructor(ball, world) {
+
             /**
              *
              * @type {lf2.Ball}
@@ -48,16 +53,51 @@ var lf2 = (function (lf2) {
              *
              * @type {lf2.GameItem}
              */
-            const item = this.getTarget();
+            const TARGET = this.getTarget();
+
             let vx, vy, vz;
             vx = vy = vz = 0;
 
-            if (item !== null) {
-                
+            if (TARGET !== null) {
+                const IS_FRONT = this._ball.isFront(TARGET);
+                const RADIUS = this._maxVelocity.x;
+                console.log('is front', IS_FRONT);
+                if (IS_FRONT) {
+                    const p1 = new Point(this._ball.position.x, this._ball.position.y);
+                    const p2 = new Point(TARGET.position.x, TARGET.position.y);
+                    const RAD = Utils.GetRadBasedOnPoints(p1, p2);
+
+                    vx = RADIUS * Math.cos(RAD);
+                    vz = RADIUS * Math.sin(RAD);
+
+                    if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
+                } else {
+                    //減速轉向
+                    vx = GameItem.ApplyFriction(this._ball._velocity.x);
+
+                    if (Math.abs(vx) < MIN_V) {
+                        //轉向
+                        this._ball._direction = !this._ball._direction;
+                        vx = this._maxVelocity.x;
+                    }
+                }
+
+                const dz = this._ball.position.z - TARGET.position.z; //dz > 0 ? UPPER : LOWER
+                const ZZ = 12;
+                if (Math.abs(dz) < ZZ) {
+                    vy = 0;
+                } else {
+                    vy = dz === 0 ? 0 : (dz > 0 ? -1 : 1);
+                    vy *= ZZ;
+                }
+
 
                 if (vx > this._maxVelocity.x) vx = this._maxVelocity.x;
-                if (vy > this._maxVelocity.y) vx = this._maxVelocity.y;
-                if (vz > this._maxVelocity.z) vx = this._maxVelocity.z;
+                if (Math.abs(vy) > this._maxVelocity.y && this._maxVelocity.y !== 0) vy = Math.sign(vy) * this._maxVelocity.y;
+                if (vz > this._maxVelocity.z) vz = this._maxVelocity.z;
+                if (Math.abs(vx) < MIN_V) vx = 0;
+                if (Math.abs(vy) < MIN_V) vy = 0;
+                if (Math.abs(vz) < MIN_V) vz = 0;
             }
 
             return new Point3D(vx, vy, vz);
@@ -68,16 +108,25 @@ var lf2 = (function (lf2) {
          * @returns {lf2.GameItem}
          */
         getTarget() {
-            if (!this._target.alive) this._target = null;
+            if (this._target && !this._target.alive) this._target = null;
             if (this._target !== null) return this._target;
 
             this._target = this._world.getEnemy(this._ball.belongTo);
 
-            if (this._target !== null) {
-                this._maxVelocity = this._target._prevVelocity.clone();
-            }
+            this._maxVelocity = this._ball._prevVelocity.clone();
+            this._maxVelocity.x = Math.abs(this._maxVelocity.x);
+            this._maxVelocity.y = Math.abs(this._maxVelocity.y);
+            this._maxVelocity.z = Math.abs(this._maxVelocity.z);
 
             return this._target;
+        }
+
+        get FA() {
+            return 1;
+        }
+
+        toString() {
+            return 'lf2.CenterTrackerBehavior';
         }
     };
 

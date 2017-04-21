@@ -78,6 +78,7 @@ gulp.task('build', () => {
         'src/js/lf2/items/Weapon.js',
 
         'src/js/lf2/items/behavior/CenterTrackerBehavior.js',
+        'src/js/lf2/items/behavior/FasterTrackerBehavior.js',
 
         'src/js/lf2/player/PlayerStatusPanel.js',
         'src/js/lf2/player/Player.js',

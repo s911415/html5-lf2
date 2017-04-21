@@ -39,6 +39,8 @@ var lf2 = (function (lf2) {
             this.cameraPosition = 0;
             this.map = GameMapPool.get(this.config.mapId);
             this.players = this.config.players;
+            this._stepByStep = false;
+            this._allowUpdate = true;
 
             this.attach(this.map);
             this.addPlayers(this.players);
@@ -67,6 +69,8 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+            if(!this._allowUpdate) return;
+
             let sumPlayerX = 0;
             this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
@@ -114,6 +118,10 @@ var lf2 = (function (lf2) {
                     ele.cleanUpItr();
                 }
             });
+
+            if(this._stepByStep){
+                this._allowUpdate = false;
+            }
         }
 
         /**
@@ -214,10 +222,11 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.Player} player
+         * @returns {lf2.Character}
          */
         getEnemy(player) {
             for (let i = 0, j = this.players.length; i < j; i++) {
-                if (player !== this.players[i]) return this.players[i];
+                if (player !== this.players[i]) return this.players[i].character;
             }
 
             return null;
@@ -226,9 +235,10 @@ var lf2 = (function (lf2) {
         /**
          *
          * @param {lf2.Player} player
+         * @returns {lf2.Character}
          */
         getFriend(player) {
-            return player;
+            return player.character;
         }
 
 
@@ -239,6 +249,26 @@ var lf2 = (function (lf2) {
         detach(gameItem) {
             super.detach(gameItem);
             gameItem.alive = false;
+        }
+
+        /**
+         *
+         * Keydowns.
+         *
+         * @param   e       The unknown to process.
+         * @param   list    The list.
+         * @param   oriE    The ori e.
+         *
+         * @return  .
+         */
+        keydown(oriE) {
+            if(oriE.keyCode===Framework.KeyBoardManager.getKeyCodeByString('F2')){
+                this._stepByStep = true;
+                this._allowUpdate = true;
+            }else if (oriE.keyCode===Framework.KeyBoardManager.getKeyCodeByString('F1')){
+                this._stepByStep = false;
+                this._allowUpdate = !this._allowUpdate;
+            }
         }
     };
 

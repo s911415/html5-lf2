@@ -38,6 +38,7 @@
         'items/Weapon.js',
 
         'items/behavior/CenterTrackerBehavior.js',
+        'items/behavior/FasterTrackerBehavior.js',
 
         'player/PlayerStatusPanel.js',
         'player/Player.js',

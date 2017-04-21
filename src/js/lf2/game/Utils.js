@@ -60,8 +60,11 @@ var lf2 = (function (lf2) {
         },
 
         /**
+         * Set p1 as center calculate rad based on point
          *
-         *set p1 as center calculate rad based on point
+         * @param {Framework.Point} p1
+         * @param {Framework.Point} p2
+         *
          */
         GetRadBasedOnPoints:function (p1,p2) {
             let rad = 0;
