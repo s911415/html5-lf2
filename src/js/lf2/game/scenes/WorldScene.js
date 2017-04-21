@@ -69,7 +69,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
-            if(!this._allowUpdate) return;
+            if (!this._allowUpdate) return;
 
             let sumPlayerX = 0;
             this.config.players.forEach((p) => {
@@ -119,7 +119,7 @@ var lf2 = (function (lf2) {
                 }
             });
 
-            if(this._stepByStep){
+            if (this._stepByStep) {
                 this._allowUpdate = false;
             }
         }
@@ -225,11 +225,15 @@ var lf2 = (function (lf2) {
          * @returns {lf2.Character}
          */
         getEnemy(player) {
-            for (let i = 0, j = this.players.length; i < j; i++) {
-                if (player !== this.players[i]) return this.players[i].character;
+            let target = null;
+            for (let i = 0, j = this.players.length; target === null && i < j; i++) {
+                if (player !== this.players[i]) target = this.players[i].character;
             }
 
-            return null;
+            debugger;
+            if (!target._allowDraw || target._flashing) target = null;
+
+            return target;
         }
 
         /**
@@ -262,10 +266,10 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         keydown(oriE) {
-            if(oriE.keyCode===Framework.KeyBoardManager.getKeyCodeByString('F2')){
+            if (oriE.keyCode === Framework.KeyBoardManager.getKeyCodeByString('F2')) {
                 this._stepByStep = true;
                 this._allowUpdate = true;
-            }else if (oriE.keyCode===Framework.KeyBoardManager.getKeyCodeByString('F1')){
+            } else if (oriE.keyCode === Framework.KeyBoardManager.getKeyCodeByString('F1')) {
                 this._stepByStep = false;
                 this._allowUpdate = !this._allowUpdate;
             }

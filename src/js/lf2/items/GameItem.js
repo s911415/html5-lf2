@@ -737,7 +737,7 @@ var lf2 = (function (lf2) {
                 ret = this.position.x > item.position.x;
             }
 
-            if (this._velocity.x < 0) ret = !ret;
+            // if (this._velocity.x < 0) ret = !ret;
 
             return ret;
         }
@@ -760,6 +760,9 @@ var lf2 = (function (lf2) {
     lf2.GameItem.prototype.DIRECTION = lf2.GameItem.DIRECTION = DIRECTION;
     lf2.GameItem.prototype.DESTROY_ID = lf2.GameItem.DESTROY_ID = DESTROY_ID;
     lf2.GameItem.prototype.NONE = lf2.GameItem.NONE = NONE;
+    lf2.GameItem.prototype.MIN_V = lf2.GameItem.MIN_V = MIN_V;
+    lf2.GameItem.prototype.FRICTION = lf2.GameItem.FRICTION = FRICTION;
+    lf2.GameItem.prototype.GRAVITY = lf2.GameItem.GRAVITY = GRAVITY;
 
     return lf2;
 })(lf2 || {});
