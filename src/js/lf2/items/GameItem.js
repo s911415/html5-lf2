@@ -217,6 +217,11 @@ var lf2 = (function (lf2) {
                 this._velocity.z
             );
 
+
+            if (ret.x === STOP_ALL_MOVE_DV) ret.x = 0;
+            if (ret.y === STOP_ALL_MOVE_DV) ret.y = 0;
+            if (ret.z === STOP_ALL_MOVE_DV) ret.z = 0;
+
             //if(this._velocity.x!==0) debugger;
             //console.log(this, this._velocity);
             return ret;
@@ -229,12 +234,7 @@ var lf2 = (function (lf2) {
          */
         _getVelocity() {
             // v.x = getDvxPerWait(v.x);
-            let v = this.currentFrame.velocity.clone();
-            if (v.x === STOP_ALL_MOVE_DV) v.x = 0;
-            if (v.y === STOP_ALL_MOVE_DV) v.y = 0;
-            if (v.z === STOP_ALL_MOVE_DV) v.z = 0;
-
-            return v;
+            return this.currentFrame.velocity.clone();
         }
 
         updateVelocity() {
@@ -260,6 +260,7 @@ var lf2 = (function (lf2) {
                 }
 
                 if (this.position.z < 0) {
+                    console.log(this._velocity.y);
                     this._velocity.y += GRAVITY;
                 }
 
@@ -415,7 +416,7 @@ var lf2 = (function (lf2) {
                 let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
                 msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
-                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0}) / ${this._direction?'RIGHT':'LEFT'}`);
+                msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0}) / ${this._direction ? 'RIGHT' : 'LEFT'}`);
                 msg.push(`velocity: (${this._velocity.x | 0}, ${this._velocity.y | 0}, ${this._velocity.z | 0})`);
 
                 if (this instanceof lf2.Character) {
@@ -751,6 +752,7 @@ var lf2 = (function (lf2) {
         static ApplyFriction(val, f) {
             if (f === undefined) f = FRICTION;
             if (val === 0) return 0;
+            if (val === STOP_ALL_MOVE_DV) return 0;
 
             return val * f;
         };
