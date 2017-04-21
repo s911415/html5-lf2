@@ -166,7 +166,7 @@ var lf2 = (function (lf2) {
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
-            this._velocity.y = getVelocityVal(this._velocity.y, v.y);
+            this._velocity.y = v.y;
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 

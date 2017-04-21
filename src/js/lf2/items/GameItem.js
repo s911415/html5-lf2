@@ -729,12 +729,17 @@ var lf2 = (function (lf2) {
          *
          * @param {lf2.GameItem} item
          */
-        isFrontOf(item) {
-            if (item._direction === DIRECTION.RIGHT) {
-                return item.position.x < this.position.x;
+        isFront(item) {
+            let ret = true;
+            if (this._direction === DIRECTION.RIGHT) {
+                ret = this.position.x < item.position.x;
             } else {
-                return item.position.x > this.position.x;
+                ret = this.position.x > item.position.x;
             }
+
+            if (this._velocity.x < 0) ret = !ret;
+
+            return ret;
         }
 
         /**

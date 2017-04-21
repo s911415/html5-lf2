@@ -267,7 +267,7 @@ var lf2 = (function (lf2) {
                 this._allowUpdate = true;
             }else if (oriE.keyCode===Framework.KeyBoardManager.getKeyCodeByString('F1')){
                 this._stepByStep = false;
-                this._allowUpdate = true;
+                this._allowUpdate = !this._allowUpdate;
             }
         }
     };
