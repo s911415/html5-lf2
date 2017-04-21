@@ -212,6 +212,8 @@ var lf2 = (function (lf2) {
             }
 
             if (curCount !== 0) this._anyFuncPressed = true;
+
+            this.world.keydown(oriE);
         }
 
         /**
