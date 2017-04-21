@@ -61,21 +61,38 @@ var lf2 = (function (lf2) {
 
         /**
          *
-         *
+         *set p1 as center calculate rad based on point
          */
         GetRadBasedOnPoints:function (p1,p2) {
             var rad;
-            if((p2.x-p1.x)>0 &&(p2.y-p1.y)>0){
-                rad=Math.atan((this.p2.y-this.p1.y)/(this.p2.x-this.p1.x));
-            }else if((p2.x-p1.x)<0 &&(p2.y-p1.y)>0){
-                rad=Math.atan((p2.y-p1.y)/Math.abs(p2.x-p1.x));
-                rad=180*180/Math.PI-rad;
-            }else if((p2.x-p1.x)<0 &&(p2.y-p1.y)<0){
-                rad=Math.atan(Math.abs(p2.y-p1.y)/Math.abs(p2.x-p1.x));
-                rad+=180*180/Math.PI;
-            }else {
-                rad=Math.atan(Math.abs(p2.y-p1.y)/(p2.x-p1.x));
-                rad=-rad;
+            const dx=p2.x-p1.x,dy=p2.y-p1.y;
+            const arctan=Math.atan(dy/dx);
+
+            /**
+             * first quadrant
+             */
+            if(dx>0 && dy>0){
+                rad= arctan;
+            }
+            /**
+             * second quadrant
+             */
+            else if(dx<0 && dy>0){
+                rad=arctan;
+                rad+= Math.PI;
+            }
+            /**
+             * Third quadrant
+             */
+            else if(dx<0 && dy<0){
+                rad=arctan;
+                rad+= Math.PI;
+            }
+            /**
+             * fourth quadrant
+             */
+            else {
+                rad=arctan;
             }
             return rad;
         },
