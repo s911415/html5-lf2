@@ -1,6 +1,6 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const Point = Framework.Point3D;
+    const Point3D = Framework.Point3D;
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
     /**
      * CenterTrackerBehavior
@@ -29,6 +29,8 @@ var lf2 = (function (lf2) {
              */
             this._world = world;
 
+            this._maxVelocity = new Framework.Point3D(12, 0, 5);
+
             /**
              *
              * @type {lf2.GameItem}
@@ -51,8 +53,14 @@ var lf2 = (function (lf2) {
             vx = vy = vz = 0;
 
             if (item !== null) {
+                
 
+                if (vx > this._maxVelocity.x) vx = this._maxVelocity.x;
+                if (vy > this._maxVelocity.y) vx = this._maxVelocity.y;
+                if (vz > this._maxVelocity.z) vx = this._maxVelocity.z;
             }
+
+            return new Point3D(vx, vy, vz);
         }
 
         /**
@@ -64,6 +72,10 @@ var lf2 = (function (lf2) {
             if (this._target !== null) return this._target;
 
             this._target = this._world.getEnemy(this._ball.belongTo);
+
+            if (this._target !== null) {
+                this._maxVelocity = this._target._prevVelocity.clone();
+            }
 
             return this._target;
         }

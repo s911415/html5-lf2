@@ -105,7 +105,6 @@ var lf2 = (function (lf2) {
             /**
              *
              * @type {Framework.Point3D}
-             * @private
              */
             this._prevVelocity = null;
 
