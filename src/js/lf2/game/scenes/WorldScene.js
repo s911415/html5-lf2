@@ -71,11 +71,12 @@ var lf2 = (function (lf2) {
         update() {
             if (!this._allowUpdate) return;
 
-            let sumPlayerX = 0;
+            let sumPlayerX = 0, count = 0;
             this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
+                count++;
             });
-            this._setCameraPositionByX(sumPlayerX / this.config.players.length);
+            this._setCameraPositionByX(sumPlayerX / count);
 
             let bdyItems = this._getAllBdyItem();
 
@@ -226,11 +227,15 @@ var lf2 = (function (lf2) {
          */
         getEnemy(player) {
             let target = null;
-            for (let i = 0, j = this.players.length; target === null && i < j; i++) {
-                if (player !== this.players[i]) target = this.players[i].character;
-            }
+            this.players.forEach(p=>{
+                if(target !== null) return;
+                
+                if (player !== p){
+                    target = p.character;
 
-            if (!target._allowDraw || target._flashing) target = null;
+                    if (!target._allowDraw || target._flashing) target = null;
+                }
+            });
 
             return target;
         }
