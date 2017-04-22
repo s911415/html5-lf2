@@ -24,6 +24,8 @@ var lf2 = (function (lf2) {
     const RANDOM_ID = -1;
     const RAND_CHAR_ID_MIN = 1;
     const RAND_CHAR_ID_MAX = 24;
+    const FREE_CHAR_MIN = -1;
+    const FREE_CHAR_MAX = RAND_CHAR_ID_MAX;
 
     /**
      *
@@ -62,6 +64,8 @@ var lf2 = (function (lf2) {
             }).then((html) => {
                 this.html = html;
             });
+
+            this._cheatMusicPlayed = false;
         }
 
         load() {
@@ -77,6 +81,12 @@ var lf2 = (function (lf2) {
                 },
                 cancel: {
                     ogg: define.MUSIC_PATH + 'm_cancel.ogg',
+                },
+                pass: {
+                    ogg: define.MUSIC_PATH + 'm_pass.ogg',
+                },
+                end: {
+                    ogg: define.MUSIC_PATH + 'm_end.ogg',
                 },
             });
 
@@ -117,6 +127,8 @@ var lf2 = (function (lf2) {
             });
 
             this._isEnteringPanelShowed = false;
+
+            this.checkCheat();
         }
 
         /**
@@ -251,6 +263,8 @@ var lf2 = (function (lf2) {
                 player.keyup(e, list, oriE);
             });
 
+            this.checkCheat();
+
             //this.forceDraw();
         }
 
@@ -299,7 +313,8 @@ var lf2 = (function (lf2) {
                         charIdxOffset = -player._charIndex;
                     }
                     if (charIdxOffset !== 0) {
-                        player._charIndex = setOffsetIndex(player._charIndex, this._charIdArray.length, charIdxOffset);
+                        //player._charIndex = setOffsetIndex(player._charIndex, this._charIdArray.length, charIdxOffset);
+                        player._charIndex = this.getCharIdInRange(player._charIndex, charIdxOffset);
                     }
 
                     if (this._charIdArray[player._charIndex] === RANDOM_ID) {
@@ -593,6 +608,29 @@ var lf2 = (function (lf2) {
                 this._selectionContainer.remove();
                 this._selectionContainer = undefined;
             }
+        }
+
+        checkCheat() {
+            if (this._cheatMusicPlayed) return true;
+            if (lf2['!MainGame'].cheat) {
+                this.audio.play({name: 'pass'});
+
+                this._cheatMusicPlayed = true;
+
+                return true;
+            }
+
+            return false;
+        }
+
+        getCharIdInRange(currentIndex, offset) {
+            if (offset === 0) return currentIndex;
+
+            const newIndex = setOffsetIndex(currentIndex, this._charIdArray.length, offset);
+
+            if (lf2['!MainGame'].cheat || this._charIdArray[newIndex].inRange(FREE_CHAR_MIN, FREE_CHAR_MAX)) return newIndex;
+
+            return this.getCharIdInRange(newIndex, offset);
         }
     };
 
