@@ -35,8 +35,17 @@ var lf2 = (function (lf2) {
                 ok: {
                     ogg: define.MUSIC_PATH + 'm_ok.ogg',
                 },
+                join: {
+                    ogg: define.MUSIC_PATH + 'm_join.ogg',
+                },
                 cancel: {
                     ogg: define.MUSIC_PATH + 'm_cancel.ogg',
+                },
+                pass: {
+                    ogg: define.MUSIC_PATH + 'm_pass.ogg',
+                },
+                end: {
+                    ogg: define.MUSIC_PATH + 'm_end.ogg',
                 },
                 bgm: {
                     ogg: define.BGM_PATH + 'main.ogg',

@@ -193,8 +193,6 @@ var lf2 = (function (lf2) {
             //Reset translate
             ctx.setTransform(1, 0, 0, 1, 0, 0);
 
-            //TODO: just for demo
-
             ctx.save();
             let canvasTranslate = this._getCameraPositionAsPoint();
             ctx.translate(-canvasTranslate.x, -canvasTranslate.y);
@@ -218,6 +216,19 @@ var lf2 = (function (lf2) {
             }, this);
 
             ctx.restore();
+
+            if (!this._allowUpdate) {
+                const __x = ctx.canvas.width >> 1, __y = ((ctx.canvas.height - 120) >> 1 ) + 60;
+                ctx.fillStyle = '#FFF';
+                ctx.strokeStyle = '#09123b';
+                ctx.lineWidth = 5;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+
+                ctx.font = '32px bold Arial';
+                ctx.strokeText('PAUSE', __x, __y);
+                ctx.fillText('PAUSE', __x, __y);
+            }
         }
 
         /**
@@ -227,10 +238,10 @@ var lf2 = (function (lf2) {
          */
         getEnemy(player) {
             let target = null;
-            this.players.forEach(p=>{
-                if(target !== null) return;
-                
-                if (player !== p){
+            this.players.forEach(p => {
+                if (target !== null) return;
+
+                if (player !== p) {
                     target = p.character;
 
                     if (!target._allowDraw || target._flashing) target = null;
