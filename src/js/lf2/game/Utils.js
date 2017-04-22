@@ -45,10 +45,10 @@ var lf2 = (function (lf2) {
          * @param {Number} maxValue
          * @returns {Number}
          */
-        returnInRangeValue: function(value, minValue, maxValue){
-            if(value>maxValue){
+        returnInRangeValue: function (value, minValue, maxValue) {
+            if (value > maxValue) {
                 return maxValue;
-            }else if(value<minValue){
+            } else if (value < minValue) {
                 return minValue;
             }
 
@@ -66,7 +66,7 @@ var lf2 = (function (lf2) {
          * @param {Framework.Point} p2
          *
          */
-        GetRadBasedOnPoints:function (p1,p2) {
+        GetRadBasedOnPoints: function (p1, p2) {
             let rad = 0;
             const dx = p2.x - p1.x, dy = p2.y - p1.y;
             const arctan = Math.atan(dy / dx);
@@ -105,11 +105,14 @@ var lf2 = (function (lf2) {
          * @param {Number} p probability in percentage
          * @returns {boolean}
          */
-        triggerInProbability: function(p){
+        triggerInProbability: function (p) {
             const rand = (Math.random() * 100) | 0;
             return rand < p;
         }
     };
+
+    lf2.__defineGetter__('CurrentLevel', () => Framework.Game._currentLevel);
+
 
     return lf2;
 })(lf2 || {});

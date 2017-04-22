@@ -260,7 +260,6 @@ var lf2 = (function (lf2) {
                 }
 
                 if (this.position.z < 0) {
-                    console.log(this._velocity.y);
                     this._velocity.y += GRAVITY;
                 }
 

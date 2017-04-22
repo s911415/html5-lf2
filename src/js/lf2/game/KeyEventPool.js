@@ -1,6 +1,6 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const KEY_KEEP_COUNT = 4;
+    const KEY_KEEP_COUNT = 5;
 
     /**
      * KeyEvent Pool
@@ -8,12 +8,19 @@ var lf2 = (function (lf2) {
      * @class lf2.KeyEventPool
      */
     lf2.KeyEventPool = class KeyEventPool extends Array {
-        constructor() {
-            super(KEY_KEEP_COUNT);
+        /**
+         *
+         * @param {Number} [size]
+         */
+        constructor(size) {
+            if(!size) size = KEY_KEEP_COUNT;
+            super(size);
+
+            this._size = size;
         }
 
         _shiftOne() {
-            for (let i = KEY_KEEP_COUNT - 2; i >= 0; i--) {
+            for (let i = this._size - 2; i >= 0; i--) {
                 this[i + 1] = this[i];
             }
         }
@@ -22,7 +29,6 @@ var lf2 = (function (lf2) {
             this._shiftOne();
             this[0] = value;
         }
-
     };
 
     lf2.KeyEventPool.KEY_KEEP_COUNT = KEY_KEEP_COUNT;
