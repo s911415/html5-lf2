@@ -74,7 +74,7 @@ var lf2 = (function (lf2) {
             /**
              * first quadrant
              */
-            if (dx > 0 && dy > 0) {
+            if (dx >= 0 && dy > 0) {
                 rad = arctan;
             }
             /**
@@ -87,7 +87,7 @@ var lf2 = (function (lf2) {
             /**
              * Third quadrant
              */
-            else if (dx < 0 && dy < 0) {
+            else if (dx < 0 && dy <= 0) {
                 rad = arctan;
                 rad += Math.PI;
             }
