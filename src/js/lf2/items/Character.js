@@ -585,12 +585,20 @@ var lf2 = (function (lf2) {
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
 
+
+            if (ITR.kind === ItrKind.HEAL_BALL) {
+                if (item.belongTo !== this.belongTo) return false;
+
+                item.setNextFrame(40);
+                this.belongTo.addHp(ITR.injury);
+                return true;
+            }
+
             if (this.belongTo === item.belongTo /*&& item.currentFrame.state !== FrameStage.FIRE*/) return false;
 
             //Accept injury
             switch (ITR.kind) {
                 case ItrKind.NORMAL_HIT:
-                case ItrKind.HEAL_BALL:
                 case ItrKind.REFLECTIVE_SHIELD:
                 case ItrKind.SONATA_OF_DEATH_1:
                 case ItrKind.SONATA_OF_DEATH_2:

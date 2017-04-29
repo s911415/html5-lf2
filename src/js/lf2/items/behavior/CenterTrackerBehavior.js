@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const GRAVITY = GameItem.GRAVITY;
     const FRICTION = GameItem.FRICTION;
     const Utils = lf2.Utils;
+    const MIN_SPEED = 10;
 
     /**
      * CenterTrackerBehavior
@@ -25,7 +26,7 @@ var lf2 = (function (lf2) {
             super(ball, world);
 
 
-            this._maxVelocity = new Framework.Point3D(12, 0, 5);
+            this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
 
             this._targetCatched = false;
 
@@ -83,6 +84,8 @@ var lf2 = (function (lf2) {
 
                 if (Math.abs(vy) > this._maxVelocity.y && this._maxVelocity.y !== 0) vy = Math.sign(vy) * this._maxVelocity.y;
             }
+
+            if(Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
 
             return new Point3D(vx, vy, vz);
         }

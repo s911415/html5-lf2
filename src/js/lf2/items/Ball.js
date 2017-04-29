@@ -93,6 +93,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+            const hit = this.currentFrame.hit;
             super.update();
 
             if (this._behavior) {
@@ -100,7 +101,6 @@ var lf2 = (function (lf2) {
             }
 
             if (this.isFrameChanged) {
-                const hit = this.currentFrame.hit;
                 if (hit.a > 0) {
                     this._remainderTime -= hit.a;
                 }
@@ -129,9 +129,20 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
-            if (hit.Fa !== 0) {
-                if (this._behavior && this._behavior.FA === hit.Fa) {
-                    return this._behavior.getVelocity();
+            if (hit.Fa !== 0 && this._remainderTime > 0) {
+                if (this._behavior) {
+                    if (this._remainderTime <= 0) {
+                        this.velocity = this._behavior._maxVelocity;
+                        this._behavior = null;
+                        if (Math.abs(this.velocity.x) < 1) {
+                            this.velocity.x = 10;
+                        }
+                        return this.velocity;
+                    }
+
+                    if (this._behavior.FA === hit.Fa) {
+                        return this._behavior.getVelocity();
+                    }
                     // }else{
                     //     if(this._behavior){
                     //         this._velocity = this._behavior._maxVelocity.clone();
@@ -157,9 +168,8 @@ var lf2 = (function (lf2) {
                         break;
 
 
-
                     default:
-                        return new Framework.Point3D(0, 0, 0);
+                        return new Framework.Point3D(10, 0, 0);
                 }
 
                 return this._behavior.getVelocity();
