@@ -165,8 +165,14 @@ var lf2 = (function (lf2) {
                         this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
                         break;
 
-                    case 9:
+                    case 7:
                         this._behavior = new lf2.FirzenDisasterFallDownBehavior(this, this.spriteParent);
+
+                        //return new Framework.Point3D(20, 5, 0);
+                        break;
+
+                    case 9:
+                        this._behavior = new lf2.FirzenDisasterFallDownBeginBehavior(this, this.spriteParent);
                         break;
 
                     case 13:
@@ -179,7 +185,9 @@ var lf2 = (function (lf2) {
                 }
 
                 this._behavior.update();
-                return this._behavior.getVelocity();
+                if (this._behavior) {
+                    return this._behavior.getVelocity();
+                }
 
             } else {
                 this._behavior = null;
