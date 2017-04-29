@@ -13,7 +13,7 @@
         'game/KeyEventPool.js',
         'game/Rectangle.js',
         'game/Cube.js',
-        'game/CollisionSearchTree.js',
+        'game/Egg.js',
 
         'frame/ImageInformation.js',
         'frame/BmpInfo.js',
