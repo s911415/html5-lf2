@@ -23,6 +23,11 @@ var lf2 = (function (lf2) {
             this._ball = ball;
 
             /**
+             * @type {lf2.Player}
+             */
+            this.belongTo = ball.belongTo;
+
+            /**
              *
              * @type {lf2.WorldScene}
              * @protected
