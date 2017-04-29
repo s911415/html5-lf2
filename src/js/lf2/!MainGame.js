@@ -21,13 +21,17 @@ var lf2 = (function (lf2) {
             Framework.Game.start();
         }
 
+        keyInSequence(asciiArrayReversed) {
+            return !asciiArrayReversed.some((e, i) => e !== this._keyPool[i]);
+        }
+
         addCheatHandle() {
             const keyDetection = (e) => {
-                if(lf2.CurrentLevel instanceof lf2.FightLevel) return;
+                if (lf2.CurrentLevel instanceof lf2.FightLevel) return;
                 if (this._cheatStatus) return;
 
                 this._keyPool.push(e.key.toUpperCase());
-                let pass = !this._keyPool.some((e, i) => e !== CHEAT_KEYWORD[i]);
+                let pass = this.keyInSequence(CHEAT_KEYWORD);
 
                 if (pass) {
                     this._cheatStatus = true;
