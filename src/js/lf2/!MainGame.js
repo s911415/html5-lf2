@@ -58,8 +58,7 @@ var lf2 = (function (lf2) {
 
                     if (V.hasOwnProperty('key') && V.hasOwnProperty('sound')) {
                         if (this.keyInSequence(V.key)) {
-                            let s = typeof V.sound === 'function' ? V.sound() : lf2.Egg[V.sound];
-                            lf2.Egg.AddPlayQueue(s);
+                            lf2.Egg.AddPlayQueue(V.sound);
                             break;
                         }
                     }

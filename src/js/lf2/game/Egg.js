@@ -7,6 +7,7 @@ var lf2 = (function (lf2) {
     let _axysCount = 0;
     let _axysTimer = -1;
     let playQueue = [];
+    let isFirstAxysEgg = true;
 
     PLAYER.addEventListener('ended', function () {
         if (playQueue.length) Egg._play();
@@ -24,24 +25,59 @@ var lf2 = (function (lf2) {
                 key: 'axys',
                 sound: () => {
                     if (Egg.AXYS_EGG.length === 0) return Egg.ERIS_CHEST_PADDED;
-
                     clearTimeout(_axysTimer);
+
                     let sp = $("#statusPanels");
                     sp.addClass('axys');
+
                     _axysTimer = setTimeout(() => {
                         sp.removeClass('axys');
-                    }, 3000);
+                    }, 1000);
+
+                    if (!isFirstAxysEgg && _axysCount === 0) {
+
+                        window.open(atob(Egg._EGG_CONTENT._JOIN_APPLICATION_FORM_URL));
+                    }
 
                     let src = Egg.AXYS_EGG[_axysCount];
 
                     _axysCount = (_axysCount + 1) % Egg.AXYS_EGG.length;
-                    if (_axysCount === 0) {
-                        window.open(atob(Egg._EGG_CONTENT._JOIN_APPLICATION_FORM_URL));
-                    }
+
+                    isFirstAxysEgg = false;
                     return src;
                 }
             }
         ],
+        ERIS_CHEST_PADDED: ``,
+
+        AXYS_EGG: [],
+
+        AddPlayQueue: (sound) => {
+            if (!sound) return;
+
+            playQueue.push(sound);
+
+            Egg._play();
+        },
+
+        _play: () => {
+            if (!PLAYER.paused && PLAYER.duration) return;
+            if (playQueue.length < 1) return;
+
+            let sound = playQueue.shift();
+            let s = typeof sound === 'function' ? sound() : lf2.Egg[sound];
+
+            PLAYER.pause();
+            PLAYER.src = s;
+            PLAYER.currentTime = 0;
+            PLAYER.play();
+        },
+
+        stop: () => {
+            PLAYER.pause();
+            PLAYER.currentTime = 0;
+        },
+
         ////////////////////////////////////////////////////////////////////////////////////
         _EGG_CONTENT: {
             _JOIN_APPLICATION_FORM_URL: 'aHR0cHM6Ly93ZWItcHJvZ3JhbW1pbmctczE3dS5zOTExNDE1LnRrLyNzaWduLWJvYXJk',
@@ -11008,36 +11044,7 @@ EgkAY3F0d6/dcmRqbKRKaC5vZ2cKACAAAAAAAAEAGAAZgsrLvsDSAZ7R7WHHwNIBxg6fy77A0gF1\
 cCoAAaa4SRPjgqjjg6rjgrnjga7og7jjga/jg5Hjg4Pjg4nlhaXjgooub2dnUEsFBgAAAAAIAAgA\
 HAMAACiFCQAAAA=='.replace(/\s/g, ''),
         },
-
         ////////////////////////////////////////////////////////////////////////////////////
-        ERIS_CHEST_PADDED: ``,
-
-        AXYS_EGG: [],
-
-        AddPlayQueue: (src) => {
-            if (!src) return;
-
-            src = src.replace(/(\s)/g, '');
-
-            playQueue.push(src);
-
-            Egg._play();
-        },
-
-        _play: () => {
-            if (!PLAYER.paused && PLAYER.duration) return;
-            if (playQueue.length < 1) return;
-
-            PLAYER.pause();
-            PLAYER.src = playQueue.shift();
-            PLAYER.currentTime = 0;
-            PLAYER.play();
-        },
-
-        stop: () => {
-            PLAYER.pause();
-            PLAYER.currentTime = 0;
-        },
     };
 
     const ReadZipFromBlob = (blob) => {
