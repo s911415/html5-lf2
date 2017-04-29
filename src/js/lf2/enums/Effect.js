@@ -24,7 +24,7 @@ var lf2 = (function (lf2) {
     SOUND[Effect.NORMAL] = ['001.ogg', '006.ogg']; //006
     SOUND[Effect.BLADE] = ['032.ogg', '033.ogg'];
     SOUND[Effect.FIRE] = ['070.ogg', '071.ogg'];
-    SOUND[Effect.ICE] = ['065.ogg'/*, '066.ogg'*/];
+    SOUND[Effect.ICE] = ['065.ogg', '066.ogg'];
     SOUND[Effect.FIXED_FIRE_0] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_1] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_2] = SOUND[Effect.FIRE];
@@ -54,7 +54,7 @@ var lf2 = (function (lf2) {
         const ARR = SOUND[effectCode];
 
         if (ARR) {
-            const index = !fall ? 0 : 1;
+            const index = fall && ARR.length > 1 ? 1 : 0;
             SOUND.audioInstance.play({
                 name: define.MUSIC_PATH + ARR[index]
             });
