@@ -14,6 +14,8 @@ var lf2 = (function (lf2) {
     const INIT_TIME = 500;
     const DIRECTION = lf2.GameItem.DIRECTION;
     const NONE = lf2.GameItem.NONE;
+    const ALLOW_FALL_DOWN_ID = [220, 221, 222];
+
     /**
      * Ball
      *
@@ -56,17 +58,17 @@ var lf2 = (function (lf2) {
             }
 
             if (next === 0) {
-                switch (curF.state) {
-                    case 0:
-                        next = 0;
-                        break;
-                    case 1:
-                        break;
-
-                    default:
-                        next = 0;
-                }
+                next = this._currentFrameIndex;
             }
+
+            switch (hit.Fa) {
+                case 7:
+                    if (next !== this.DESTROY_ID && this.position.z >= -10 && ALLOW_FALL_DOWN_ID.indexOf(this.obj.id) !== -1) {
+                        next = 60;
+                    }
+                    break;
+            }
+
             if (next === 999) return 0;
 
             return next;
@@ -163,6 +165,10 @@ var lf2 = (function (lf2) {
                         this._behavior = new lf2.FasterTrackerBehavior(this, this.spriteParent);
                         break;
 
+                    case 9:
+                        this._behavior = new lf2.FirzenDisasterFallDownBehavior(this, this.spriteParent);
+                        break;
+
                     case 13:
                         this._behavior = new lf2.JulianBallBeginBehavior(this, this.spriteParent);
                         break;
@@ -172,6 +178,7 @@ var lf2 = (function (lf2) {
                         return new Framework.Point3D(10, 0, 0);
                 }
 
+                this._behavior.update();
                 return this._behavior.getVelocity();
 
             } else {

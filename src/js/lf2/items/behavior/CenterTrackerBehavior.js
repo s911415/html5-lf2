@@ -97,7 +97,7 @@ var lf2 = (function (lf2) {
         getTarget() {
             if(!this._world) return null;
 
-            let target = this._world.getEnemy(this._ball.belongTo);
+            let target = this._world.getEnemy(this.belongTo);
 
             if (!this._targetCatched) {
                 this._maxVelocity = this._ball._prevVelocity.clone();
