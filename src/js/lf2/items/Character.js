@@ -112,7 +112,7 @@ var lf2 = (function (lf2) {
         Object.freeze(DEFAULT_KEY[k]);
     }
     Object.freeze(DEFAULT_KEY);
-    acceptForceChangeStatus.sort();
+    acceptForceChangeStatus.sort((a, b) => a - b);
 
     const RECOVERY = {
         HP: {
@@ -424,10 +424,13 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         startRun() {
+            const curState = this.currentFrame.state;
+
             //Is running
             if (this._currentFrameIndex.inRange(RUN_FRAME_RANGE.min, RUN_FRAME_RANGE.max)) return;
-
-            this.setFrameById(RUN_FRAME_RANGE.min);
+            if (acceptForceChangeStatus.binarySearch(curState) !== -1) {
+                this.setFrameById(RUN_FRAME_RANGE.min);
+            }
         }
 
         /**
@@ -595,6 +598,7 @@ var lf2 = (function (lf2) {
             super.notifyDamageBy(item);
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
+            const curState = this.currentFrame.state;
 
 
             if (ITR.kind === ItrKind.HEAL_BALL) {
@@ -661,7 +665,7 @@ var lf2 = (function (lf2) {
                 this._velocity.x = -1 * this._velocity.x;
             }
             // console.log(this._velocity.x);
-            let isFallDown = false;
+            let isFallDown = this.belongTo.hp <= 0;
 
             const fallDown = () => {
                 if (face) {
@@ -672,16 +676,20 @@ var lf2 = (function (lf2) {
                 isFallDown = true;
             };
 
-            if (this._fall.inRange(1, 20)) {
-                this.setNextFrame(220);
-            } else if (this._fall.inRange(21, 30)) {
-                this.setNextFrame(222);
-            } else if (this._fall.inRange(31, 40)) {
-                this.setNextFrame(224);
-            } else if (this._fall.inRange(41, 60)) {
-                this.setNextFrame(226);
-            } else if (this._fall >= 60) {
+            if (curState === FrameStage.ICE) {
                 fallDown();
+            } else {
+                if (this._fall.inRange(1, 20)) {
+                    this.setNextFrame(220);
+                } else if (this._fall.inRange(21, 30)) {
+                    this.setNextFrame(222);
+                } else if (this._fall.inRange(31, 40)) {
+                    this.setNextFrame(224);
+                } else if (this._fall.inRange(41, 60)) {
+                    this.setNextFrame(226);
+                } else if (this._fall >= 60) {
+                    fallDown();
+                }
             }
 
             switch (ITR.kind) {
@@ -714,6 +722,21 @@ var lf2 = (function (lf2) {
                     break;
             }
 
+            //Play effect sound
+            if (curState === FrameStage.ICE) {
+                Effect.sound.play(Effect.ICE, isFallDown);
+            } else {
+                switch (ITR.kind) {
+                    case ItrKind.NORMAL_HIT:
+                        //Play effect sound
+                        Effect.sound.play(ITR.effect, isFallDown);
+                        break;
+                    case ItrKind.WHIRLWIND_ICE:
+                    case ItrKind.WHIRLWIND_WIND:
+                        Effect.sound.play(Effect.ICE, isFallDown);
+                        break;
+                }
+            }
 
             return true;
         }

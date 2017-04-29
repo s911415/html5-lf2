@@ -501,6 +501,7 @@ var lf2 = (function (lf2) {
             const ITR = this.currentFrame.itr;
             if (!ITR) return [];
             if (ITR.kind === 4) return [];
+            if (ITR.kind === 6) return [];
 
             let res = [];
 
