@@ -57,7 +57,7 @@ var lf2 = (function (lf2) {
             if (this._target && !this._target.alive) this._target = null;
             if (this._target !== null) return this._target;
 
-            this._target = this._world.getEnemy(this._ball.belongTo);
+            this._target = this._world.getEnemy(this.belongTo);
 
             this._maxVelocity = this._ball._prevVelocity.clone();
 

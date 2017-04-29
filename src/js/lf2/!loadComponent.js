@@ -13,7 +13,7 @@
         'game/KeyEventPool.js',
         'game/Rectangle.js',
         'game/Cube.js',
-        'game/CollisionSearchTree.js',
+        'game/Egg.js',
 
         'frame/ImageInformation.js',
         'frame/BmpInfo.js',
@@ -42,6 +42,7 @@
         'items/behavior/FasterTrackerBehavior.js',
         'items/behavior/HorizontalTrackerBehavior.js',
         'items/behavior/JulianBallBeginBehavior.js',
+        'items/behavior/FirzenDisasterFallDownBehavior.js',
 
         'player/PlayerStatusPanel.js',
         'player/Player.js',

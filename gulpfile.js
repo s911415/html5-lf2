@@ -13,6 +13,7 @@ gulp.task('build', () => {
     return gulp.src([
         'src/js/utils.js',
         'src/js/jquery-3.1.1.min.js',
+        'src/js/jszip.min.js',
 
         "src/js/Framework/AttachableInterface.js",
         "src/js/Framework/KeyboardEventInterface.js",
@@ -54,6 +55,7 @@ gulp.task('build', () => {
         'src/js/lf2/game/KeyEventPool.js',
         'src/js/lf2/game/Rectangle.js',
         'src/js/lf2/game/Cube.js',
+        'src/js/lf2/game/Egg.js',
 
         'src/js/lf2/frame/ImageInformation.js',
         'src/js/lf2/frame/BmpInfo.js',
@@ -82,6 +84,7 @@ gulp.task('build', () => {
         'src/js/lf2/items/behavior/FasterTrackerBehavior.js',
         'src/js/lf2/items/behavior/HorizontalTrackerBehavior.js',
         'src/js/lf2/items/behavior/JulianBallBeginBehavior.js',
+        'src/js/lf2/items/behavior/FirzenDisasterFallDownBehavior.js',
 
         'src/js/lf2/player/PlayerStatusPanel.js',
         'src/js/lf2/player/Player.js',

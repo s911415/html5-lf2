@@ -468,7 +468,7 @@ var lf2 = (function (lf2) {
                 this.spriteParent.attach(ball);
             });
 
-
+            return ballArr;
         }
 
         /**
