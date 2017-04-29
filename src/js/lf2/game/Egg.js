@@ -30,16 +30,15 @@ var lf2 = (function (lf2) {
                     let sp = $("#statusPanels");
                     sp.addClass('axys');
 
-                    _axysTimer = setTimeout(() => {
-                        sp.removeClass('axys');
-                    }, 1000);
-
                     if (!isFirstAxysEgg && _axysCount === 0) {
-
                         window.open(atob(Egg._EGG_CONTENT._JOIN_APPLICATION_FORM_URL));
                     }
 
                     let src = Egg.AXYS_EGG[_axysCount];
+
+                    _axysTimer = setTimeout(() => {
+                        sp.removeClass('axys');
+                    }, Egg.AXYS_EGG_TIME[_axysCount]);
 
                     _axysCount = (_axysCount + 1) % Egg.AXYS_EGG.length;
 
@@ -48,9 +47,10 @@ var lf2 = (function (lf2) {
                 }
             }
         ],
-        ERIS_CHEST_PADDED: ``,
+        ERIS_CHEST_PADDED: '',
 
         AXYS_EGG: [],
+        AXYS_EGG_TIME: [1970, 6463, 2180, 6130, 8470, 8150, 3164],
 
         AddPlayQueue: (sound) => {
             if (!sound) return;
