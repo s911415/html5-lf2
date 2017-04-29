@@ -4,6 +4,7 @@
 "use strict";
 var lf2 = (function (lf2) {
     const CHEAT_KEYWORD = "lf2.net".toUpperCase().split('').reverse();
+
     class Game {
         constructor() {
             Framework.Game.addNewLevel({menu: new lf2.LaunchMenu()});
@@ -14,7 +15,13 @@ var lf2 = (function (lf2) {
 
             this._cheatStatus = false;
             this._keyPool = new lf2.KeyEventPool(CHEAT_KEYWORD.length);
+
+            window.addEventListener('keydown', (e) => {
+                this._keyPool.push(e.key.toUpperCase());
+            });
+
             this.addCheatHandle();
+            this.addEggHandle();
         }
 
         start() {
@@ -26,11 +33,10 @@ var lf2 = (function (lf2) {
         }
 
         addCheatHandle() {
-            const keyDetection = (e) => {
+            const keyDetection = () => {
                 if (lf2.CurrentLevel instanceof lf2.FightLevel) return;
                 if (this._cheatStatus) return;
 
-                this._keyPool.push(e.key.toUpperCase());
                 let pass = this.keyInSequence(CHEAT_KEYWORD);
 
                 if (pass) {
@@ -45,6 +51,25 @@ var lf2 = (function (lf2) {
             window.addEventListener('keydown', keyDetection);
         }
 
+        addEggHandle() {
+            const keyDetection = () => {
+                for (let i = 0, e = lf2.Egg.EGG_KEYWORD, j = e.length; i < j; i++) {
+                    const V = e[i];
+
+                    if (V.hasOwnProperty('key') && V.hasOwnProperty('sound')) {
+                        if (this.keyInSequence(V.key)) {
+                            let s = typeof V.sound === 'function' ? V.sound() : lf2.Egg[V.sound];
+                            lf2.Egg.AddPlayQueue(s);
+                            break;
+                        }
+                    }
+
+                }
+            };
+
+            window.addEventListener('keydown', keyDetection);
+        }
+
         get cheat() {
             return this._cheatStatus;
         }
@@ -52,6 +77,7 @@ var lf2 = (function (lf2) {
 
     lf2['!MainGame'] = new Game();
     lf2['!MainGame'].start();
+
 
     return lf2;
 })(lf2 || {});
