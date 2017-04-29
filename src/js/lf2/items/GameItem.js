@@ -588,7 +588,6 @@ var lf2 = (function (lf2) {
          * @param {Number} id
          */
         setNextFrame(id) {
-            console.log(this, id);
             this._frameForceChangeId = id;
             this._frameForceChange = true;
         }
@@ -723,6 +722,24 @@ var lf2 = (function (lf2) {
         get isStopping() {
             return this._velocity.x === this._velocity.y && this._velocity.y === this._velocity.z
                 && this._velocity.x === 0;
+        }
+
+        /**
+         *
+         * @returns {Point3D}
+         */
+        get velocity() {
+            return this._velocity.clone();
+        }
+
+        /**
+         *
+         * @param {Framework.Point3D} p
+         */
+        set velocity(p) {
+            this._velocity.x = p.x;
+            this._velocity.y = p.y;
+            this._velocity.z = p.z;
         }
 
         /**

@@ -96,6 +96,7 @@ var lf2 = (function (lf2) {
                     attackedItems.forEach(bdyItem => {
                         const r = bdyItem.notifyDamageBy(item);
                         if (r) {
+                            console.log(bdyItem);
                             actualAttackedItems.push(bdyItem);
                         }
                     });
@@ -244,7 +245,7 @@ var lf2 = (function (lf2) {
                 if (player !== p) {
                     target = p.character;
 
-                    if (!target._allowDraw || target._flashing) target = null;
+                    if (!target._allowDraw || target._flashing || p.hp <= 0) target = null;
                 }
             });
 
