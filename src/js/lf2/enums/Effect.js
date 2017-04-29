@@ -45,11 +45,16 @@ var lf2 = (function (lf2) {
 
     lf2.Effect.sound = SOUND;
 
-    lf2.Effect.sound.play = (effectCode) => {
+    /**
+     *
+     * @param effectCode
+     * @param {Number} [fall]
+     */
+    lf2.Effect.sound.play = (effectCode, fall) => {
         const ARR = SOUND[effectCode];
-        
+
         if (ARR) {
-            const index = (Math.random() * ARR.length) | 0;
+            const index = !fall ? 0 : 1;
             SOUND.audioInstance.play({
                 name: define.MUSIC_PATH + ARR[index]
             });

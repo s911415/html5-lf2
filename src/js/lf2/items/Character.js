@@ -519,6 +519,10 @@ var lf2 = (function (lf2) {
             }
             this.addFall(RECOVERY.FALL.value);
 
+            if (state === FrameStage.ICE) {
+                this.freeze();
+            }
+
             //變身
 
             if (frameKind === 80 || state === 9995) {
@@ -552,6 +556,13 @@ var lf2 = (function (lf2) {
                     this._flashCounter = false;
                 }
             }
+        }
+
+
+        freeze() {
+            this._velocity.x
+                = this._velocity.z
+                = 0;
         }
 
         /**
@@ -650,6 +661,7 @@ var lf2 = (function (lf2) {
                 this._velocity.x = -1 * this._velocity.x;
             }
             // console.log(this._velocity.x);
+            let isFallDown = false;
 
             const fallDown = () => {
                 if (face) {
@@ -657,6 +669,7 @@ var lf2 = (function (lf2) {
                 } else {
                     this.setNextFrame(FALLING2_FRAME_RANGE.min);
                 }
+                isFallDown = true;
             };
 
             if (this._fall.inRange(1, 20)) {
@@ -674,25 +687,27 @@ var lf2 = (function (lf2) {
             switch (ITR.kind) {
                 case ItrKind.NORMAL_HIT:
                     switch (ITR.effect) {
-                        case Effect.FIRE:
                         case Effect.FIXED_FIRE_0:
                         case Effect.FIXED_FIRE_1:
                         case Effect.FIXED_FIRE_2:
+                            this.freeze();
+                        case Effect.FIRE:
                             // case Effect.FIXED_FIRE_3:
                             this.setNextFrame(203);
                             break;
-                        case Effect.ICE:
                         case Effect.FIXED_ICE:
+                            this.freeze();
+                        case Effect.ICE:
                             this.setNextFrame(200);
                             break;
                     }
                     //Play effect sound
-                    Effect.sound.play(ITR.effect);
+                    Effect.sound.play(ITR.effect, isFallDown);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
                 case ItrKind.WHIRLWIND_WIND:
                     this.setNextFrame(200);
-                    Effect.sound.play(Effect.ICE);
+                    Effect.sound.play(Effect.ICE, isFallDown);
                     break;
                 case ItrKind.THREE_D_OBJECTS:
                     this.freeze();
