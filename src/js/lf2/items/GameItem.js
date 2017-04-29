@@ -19,7 +19,7 @@ var lf2 = (function (lf2) {
     const FRICTION = 0.25;
     const MIN_SPEED = 1;
     const MIN_V = 0.2;
-    const GRAVITY = 1.7; // 1.7
+    const GRAVITY = 2; // 1.7
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
