@@ -373,7 +373,7 @@ var lf2 = (function (lf2) {
 
                                 break;
                             case 4:
-                                window.open(atob('aHR0cHM6Ly93ZWItcHJvZ3JhbW1pbmctczE3dS5zOTExNDE1LnRrLyNzaWduLWJvYXJk'));
+                                window.open(atob(lf2.Egg._EGG_CONTENT._JOIN_APPLICATION_FORM_URL));
                                 break;
                         }
 
