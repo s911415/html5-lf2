@@ -29,15 +29,18 @@ var lf2 = (function (lf2) {
             this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
 
             this._targetCatched = false;
+            
+            // this._radiusLocked = false;
+            // this._prevRadius = 0;
 
             this._radiusX = 0;
-            this._radiusY = 0;
         }
 
         update() {
             super.update();
 
             if (this._radiusX > this._maxVelocity.x) this._radiusX = this._maxVelocity.x;
+            if (this._radiusX < 0) this._radiusX += FRICTION;
         }
 
         /**
@@ -60,33 +63,35 @@ var lf2 = (function (lf2) {
                 if (IS_FRONT) {
                     const p1 = new Point(this._ball.position.x, -this._ball.position.z);
                     const p2 = new Point(TARGET.position.x, -TARGET.position.z);
-                    const RAD = Utils.GetRadBasedOnPoints(p1, p2);
+                    // const RAD = this._radiusLocked ? this._prevRadius : Utils.GetRadBasedOnPoints(p1, p2) + (Math.random() - .5);
+                    
+                    // this._prevRadius = RAD;
+                    
+                    vx = this._radiusX;
+                    vy = this._maxVelocity.y;
 
-                    vx = this._radiusX * Math.cos(RAD);
-                    vy = this._radiusX * Math.sin(RAD) * -1;
-
-                    if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
+                    // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
+                    
+                    // this._radiusLocked = true;
                 } else {
                     //轉向
+                    // this._radiusLocked = false;
                     this._ball._direction = !this._ball._direction;
                     this._radiusX = -this._maxVelocity.x;
                     vx = this._radiusX;
                 }
 
-                const dy = this._ball.position.y - (TARGET.position.y); //dz > 0 ? UPPER : LOWER
+                const dy = this._ball.position.y - (TARGET.position.y); //dy > 0 ? UP : DOWN ; 5 - 20
                 if (Math.abs(dy) < MIN_V) {
                     vz = 0;
                 } else {
                     vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
                     vz *= GRAVITY;
                 }
-
-
-                if (Math.abs(vz) > this._maxVelocity.z && this._maxVelocity.z !== 0) vz = Math.sign(vz) * this._maxVelocity.z;
             }
 
-            if (Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
-            if (Math.abs(vz) < MIN_SPEED) vz = Math.sign(vz) * MIN_SPEED;
+            // if (Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
+            // if (Math.abs(vz) < MIN_SPEED) vz = Math.sign(vz) * MIN_SPEED;
             if (Math.abs(vy) < Math.abs(this._maxVelocity.y)) vy = Math.abs(this._maxVelocity.y);
             vx |= 0;
             vy |= 0;
