@@ -26,19 +26,25 @@ var lf2 = (function (lf2) {
             this.small;
 
             this.addPreloadResource(
-                ResourceManager.loadImage({
-                    url: define.IMG_PATH + headerData.get('head'),
-                }).then((img) => {
-                    this.head = img.response;
+                ResourceManager.loadResource(define.IMG_PATH + headerData.get('head'), {
+                    method: 'GET'
                 })
+                    .then(r => r.blob())
+                    .then((img) => {
+                        this.head = new Image();
+                        this.head.src = URL.createObjectURL(img);
+                    })
             );
 
             this.addPreloadResource(
-                ResourceManager.loadImage({
-                    url: define.IMG_PATH + headerData.get('small'),
-                }).then((img) => {
-                    this.small = img.response;
+                ResourceManager.loadResource(define.IMG_PATH + headerData.get('small'), {
+                    method: 'GET'
                 })
+                    .then(r => r.blob())
+                    .then((img) => {
+                        this.small = new Image();
+                        this.small.src = URL.createObjectURL(img);
+                    })
             );
 
             this.name = headerData.get("name") || 0;
