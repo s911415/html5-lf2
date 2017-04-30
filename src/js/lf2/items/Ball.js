@@ -216,24 +216,49 @@ var lf2 = (function (lf2) {
             super.notifyDamageBy(item);
             const ITR = item.currentFrame.itr;
             const DV = ITR.dv;
+            const curState = this.currentFrame.state;
+            const itemState = item.currentFrame.state;
 
-            if (
-                ITR.kind === ItrKind.REFLECTIVE_SHIELD ||
-                (item instanceof lf2.Character && item.currentFrame.state === FrameStage.PUNCH)
-            ) {
+            const DO_REBOUND = ()=>{
                 this._velocity.x = 0;
                 this.setNextFrame(30); //Rebounding
                 this.obj.playHitSound();
+                this.update(); //Update immediately
                 this.belongTo = item.belongTo; //Change owner
+            };
+
+            if (curState === FrameStage.BALL_FLYING) {
+                if (
+                    ITR.kind === ItrKind.REFLECTIVE_SHIELD ||
+                    (
+                        item instanceof lf2.Character &&
+                        itemState === FrameStage.PUNCH
+                    )
+                ) {
+                    DO_REBOUND();
+                    return true;
+                }
             }
 
-            if (this.belongTo === item.belongTo && item.currentFrame.state !== FrameStage.FIRE) return false;
+            if (ITR.kind === ItrKind.REFLECTIVE_SHIELD) {
+                DO_REBOUND();
+                return true;
+            }
 
-            switch (item.currentFrame.state) {
+
+            if (this.belongTo === item.belongTo && itemState !== FrameStage.FIRE) {
+                return false;
+            }
+
+            if (ITR.kind !== ItrKind.NORMAL_HIT) {
+                return false;
+            }
+
+            switch (curState) {
                 case FrameStage.BALL_WIND_FLYING:
                     this.obj.playHitSound();
                     if (
-                        item.currentFrame.state === FrameStage.BALL_WIND_FLYING
+                        itemState === FrameStage.BALL_WIND_FLYING
                     ) {
                         this.setNextFrame(20);
                         this.freeze();
@@ -243,8 +268,8 @@ var lf2 = (function (lf2) {
                     this.obj.playHitSound();
 
                     if (
-                        item.currentFrame.state === FrameStage.BALL_WIND_FLYING ||
-                        item.currentFrame.state === FrameStage.BALL_HIT_HEART
+                        itemState === FrameStage.BALL_WIND_FLYING ||
+                        itemState === FrameStage.BALL_HIT_HEART
                     ) {
                         this.setNextFrame(20);
                         this.freeze();
@@ -252,8 +277,8 @@ var lf2 = (function (lf2) {
                     break;
                 default:
                     if (
-                        item.currentFrame.state !== FrameStage.BALL_WIND_FLYING &&
-                        item.currentFrame.state !== FrameStage.BALL_HIT_HEART
+                        itemState !== FrameStage.BALL_WIND_FLYING &&
+                        itemState !== FrameStage.BALL_HIT_HEART
                     ) {
                         this.setNextFrame(20);
                         this.freeze();

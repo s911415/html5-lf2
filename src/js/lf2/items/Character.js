@@ -526,6 +526,16 @@ var lf2 = (function (lf2) {
                 this.freeze();
             }
 
+            if(
+                this.currentFrame.mp &&
+                this.previousFrame && this.currentFrame &&
+                this.previousFrame.nextFrameId === this._currentFrameIndex
+            ){
+                if(!this.belongTo.requestMp(-this.currentFrame.mp)){
+                    this.setNextFrame(this.currentFrame.hit.d);
+                }
+            }
+
             //變身
 
             if (frameKind === 80 || state === 9995) {

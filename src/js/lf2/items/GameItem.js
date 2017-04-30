@@ -80,6 +80,7 @@ var lf2 = (function (lf2) {
 
             this._velocity = new Point3D(0, 0, 0);
 
+            this._previousFrameIndex = 0;
             this._currentFrameIndex = 0;
             this._lastFrameSetTime = Date.now();
             this._config = Framework.Config;
@@ -117,6 +118,14 @@ var lf2 = (function (lf2) {
          */
         get currentFrame() {
             return this.obj.frames[this._currentFrameIndex];
+        }
+
+        /**
+         * Get current frame
+         * @returns {lf2.Frame}
+         */
+        get previousFrame() {
+            return this.obj.frames[this._previousFrameIndex];
         }
 
         /**
@@ -287,6 +296,7 @@ var lf2 = (function (lf2) {
                 this.onDestroy();
                 return;
             }
+            this._previousFrameIndex = this._currentFrameIndex;
             this._currentFrameIndex = frameId;
             this._lastFrameSetTime = Date.now();
             this._updateCounter = 0;
@@ -544,7 +554,11 @@ var lf2 = (function (lf2) {
                     ) { //kind 18 allow attack itself.
                         res.push(item);
 
-                        if ((ITR.hasArest || !ITR.hasVrest) && ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
+                        if (
+                            (ITR.hasArest || !ITR.hasVrest) &&
+                            item instanceof lf2.Character &&
+                            ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1
+                        ) {
                             this._arestCounter = ITR.arest;
                         }
                     }
@@ -579,7 +593,9 @@ var lf2 = (function (lf2) {
         postDamageItems(gotDamageItems) {
             const ITR = this.currentFrame.itr;
             if (ITR && !ITR.hasArest && ITR.hasVrest && gotDamageItems.length > 0) {
-                this._vrestCounter = ITR.vrest;
+                if (gotDamageItems.some(x => x instanceof lf2.Character)) {
+                    this._vrestCounter = ITR.vrest;
+                }
             }
         }
 
