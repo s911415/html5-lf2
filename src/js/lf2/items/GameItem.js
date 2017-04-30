@@ -168,6 +168,10 @@ var lf2 = (function (lf2) {
             } else {
                 this.position.x -= offset.x;
             }
+            if(this.position.z > 0) {
+                this.position.z = 0;
+                this._velocity.y = 0;
+            }
             //End of move object
 
             this.applyFriction();

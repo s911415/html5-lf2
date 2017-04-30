@@ -1,11 +1,19 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
+    const Point = Framework.Point;
     const Point3D = Framework.Point3D;
+    const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
+    const GameItem = lf2.GameItem;
+    const MIN_V = GameItem.MIN_V;
+    const GRAVITY = GameItem.GRAVITY;
+    const FRICTION = GameItem.FRICTION;
+    const Utils = lf2.Utils;
+    const MIN_SPEED = 10;
+
     /**
      * FirzenDisasterFallDownBehavior
      *
-     * @class lf2.FirzenDisasterFallDownBehavior
+     * @class {lf2.FirzenDisasterFallDownBehavior}
      * @extends lf2.AbstractBehavior
      */
     lf2.FirzenDisasterFallDownBehavior = class FirzenDisasterFallDownBehavior extends lf2.AbstractBehavior {
@@ -16,7 +24,23 @@ var lf2 = (function (lf2) {
          */
         constructor(ball, world) {
             super(ball, world);
-            this._attached = false
+
+
+            this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
+
+            this._targetCatched = false;
+            
+            // this._radiusLocked = false;
+            // this._prevRadius = 0;
+
+            this._radiusX = 0;
+        }
+
+        update() {
+            super.update();
+
+            if (this._radiusX > this._maxVelocity.x) this._radiusX = this._maxVelocity.x;
+            if (this._radiusX < 0) this._radiusX += FRICTION;
         }
 
         /**
@@ -24,33 +48,57 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point3D}
          */
         getVelocity() {
-            return new Point3D(0, 0, 0);
-        }
+            /**
+             *
+             * @type {lf2.GameItem}
+             */
+            const TARGET = this.getTarget();
 
+            let vx, vy, vz;
+            vx = vy = vz = 0;
 
-        update() {
-            if (this._ball && !this._ball.alive && this._attached) {
-                //Remove reference of ball
-                this._ball._behavior = null;
-                this._ball = null;
+            if (TARGET !== null) {
+                const IS_FRONT = this._ball.isFront(TARGET);
+
+                if (IS_FRONT) {
+                    const p1 = new Point(this._ball.position.x, -this._ball.position.z);
+                    const p2 = new Point(TARGET.position.x, -TARGET.position.z);
+                    // const RAD = this._radiusLocked ? this._prevRadius : Utils.GetRadBasedOnPoints(p1, p2) + (Math.random() - .5);
+                    
+                    // this._prevRadius = RAD;
+                    
+                    vx = this._radiusX;
+                    vy = this._maxVelocity.y;
+
+                    // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
+                    
+                    // this._radiusLocked = true;
+                } else {
+                    //轉向
+                    // this._radiusLocked = false;
+                    this._ball._direction = !this._ball._direction;
+                    this._radiusX = -this._maxVelocity.x;
+                    vx = this._radiusX;
+                }
+
+                const dy = this._ball.position.y - (TARGET.position.y); //dy > 0 ? UP : DOWN ; 5 - 20
+                if (Math.abs(dy) < MIN_V) {
+                    vz = 0;
+                } else {
+                    vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
+                    vz *= GRAVITY;
+                }
             }
 
-            if (this._attached) return;
+            // if (Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
+            // if (Math.abs(vz) < MIN_SPEED) vz = Math.sign(vz) * MIN_SPEED;
+            if (Math.abs(vy) < Math.abs(this._maxVelocity.y)) vy = Math.abs(this._maxVelocity.y);
+            vx |= 0;
+            vy |= 0;
+            vz |= 0;
 
-
-            let ops = [
-                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 5  dvy: -15  oid: 221  facing: 20`),
-                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 5  dvy: -13  oid: 222  facing: 20`),
-            ];
-
-            ops.forEach(opoint=>{
-                let ball = this.belongTo.addBall(opoint, this._ball);
-                ball.forEach(b => {
-                    b._affectByFriction = true;
-                });
-            });
-
-            this._attached = true;
+            console.log(vy);
+            return new Point3D(vx, vy, vz);
         }
 
         /**
@@ -58,7 +106,29 @@ var lf2 = (function (lf2) {
          * @returns {lf2.GameItem}
          */
         getTarget() {
-            return null;
+            if (!this._world) return null;
+
+            let target = this._world.getEnemy(this.belongTo);
+
+            if (!this._targetCatched) {
+                this._maxVelocity = this._ball._prevVelocity.clone();
+                this._maxVelocity.x = Math.abs(this._maxVelocity.x);
+                this._maxVelocity.y = Math.abs(this._maxVelocity.y);
+                this._maxVelocity.z = Math.abs(this._maxVelocity.z);
+                this._radiusX = Math.abs(this._maxVelocity.x);
+                this._radiusY = Math.abs(this._maxVelocity.y);
+            }
+            this._targetCatched = true;
+
+            return target;
+        }
+
+        get FA() {
+            return 1;
+        }
+
+        toString() {
+            return 'lf2.FirzenDisasterFallDownBehavior';
         }
     };
 
