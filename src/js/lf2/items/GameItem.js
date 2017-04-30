@@ -80,6 +80,7 @@ var lf2 = (function (lf2) {
 
             this._velocity = new Point3D(0, 0, 0);
 
+            this._previousFrameIndex = 0;
             this._currentFrameIndex = 0;
             this._lastFrameSetTime = Date.now();
             this._config = Framework.Config;
@@ -117,6 +118,14 @@ var lf2 = (function (lf2) {
          */
         get currentFrame() {
             return this.obj.frames[this._currentFrameIndex];
+        }
+
+        /**
+         * Get current frame
+         * @returns {lf2.Frame}
+         */
+        get previousFrame() {
+            return this.obj.frames[this._previousFrameIndex];
         }
 
         /**
@@ -287,6 +296,7 @@ var lf2 = (function (lf2) {
                 this.onDestroy();
                 return;
             }
+            this._previousFrameIndex = this._currentFrameIndex;
             this._currentFrameIndex = frameId;
             this._lastFrameSetTime = Date.now();
             this._updateCounter = 0;
