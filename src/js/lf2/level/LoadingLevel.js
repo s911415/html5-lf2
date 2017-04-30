@@ -59,6 +59,8 @@ var lf2 = (function (lf2) {
             }).then((html) => {
                 this.html = html;
             });
+
+            this.zip = {};
         }
 
         /**
@@ -71,7 +73,7 @@ var lf2 = (function (lf2) {
         initializeProgressResource() {
             super.initializeProgressResource();
 
-            this._htmlLoader.then(()=>{
+            this._htmlLoader.then(() => {
                 this.showLoadingVideo();
             });
 
@@ -106,9 +108,14 @@ var lf2 = (function (lf2) {
             this.objInfo = [];
             this.bgInfo = [];
             new Promise((_resolve, _reject) => {
-                return ResourceManager.loadResource(define.DATA_PATH + "data_list.json").then((data) => {
-                    console.log('Load data list done.');
-                    return data.json();
+                return Promise.all([
+                    ResourceManager.loadResource(define.DATA_PATH + "data_list.json"),
+                    ResourceManager.loadResource(define.DATA_PATH + 'data.zip')
+                        .then(r => r.blob())
+                        .then(JSZip.loadAsync).then(zip => this.zip = zip)
+                    ,
+                ]).then(r => {
+                    return r[0].json();
                 }).then((data) => {
                     const objs = data.object, $ = this;
                     console.log('Loading GameObject');
@@ -134,9 +141,7 @@ var lf2 = (function (lf2) {
                             } else {
                                 $._showLoadFile(_o.file);
 
-                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
-                                    return data.text();
-                                }).then((datText) => {
+                                $.loadDataResource(_o.file).then((datText) => {
                                     const obj = $.parseObj(_o, datText);
                                     if (obj instanceof GameObject) {
                                         $.objInfo.push(obj);
@@ -154,7 +159,7 @@ var lf2 = (function (lf2) {
 
                         loadObj();
                     });
-                }).then((data)=>{
+                }).then((data) => {
                     console.log("GameObject all loaded");
 
                     return data;
@@ -180,9 +185,7 @@ var lf2 = (function (lf2) {
                             } else {
                                 $._showLoadFile(_o.file);
 
-                                ResourceManager.loadResource(define.DATA_PATH + _o.file).then((data) => {
-                                    return data.text();
-                                }).then((datText) => {
+                                $.loadDataResource(_o.file).then((datText) => {
                                     const map = $.parseMap(_o, datText);
                                     if (map instanceof GameMap) {
                                         $.bgInfo.push(map);
@@ -201,11 +204,11 @@ var lf2 = (function (lf2) {
                         loadMap();
                     });
                 }).then(_resolve);
-            }).then((data)=>{
+            }).then((data) => {
                 console.log("GameMap all loaded");
 
                 return data;
-            }).then((a, b)=>{
+            }).then((a, b) => {
                 console.log("Preloading extra image resources");
                 let arrUrl = [
                     define.IMG_PATH + "player_status_panel.png",
@@ -221,7 +224,7 @@ var lf2 = (function (lf2) {
                 ];
                 let arr = [];
 
-                arrUrl.forEach(u=>{
+                arrUrl.forEach(u => {
                     console.log("Loading " + u);
                     arr.push(
                         ResourceManager.loadImage({
@@ -231,7 +234,7 @@ var lf2 = (function (lf2) {
                 });
 
                 return Promise.all(arr);
-            }).then((a, b)=>{
+            }).then((a, b) => {
                 console.log("Extra image resources all loaded");
 
                 return a;
@@ -261,6 +264,17 @@ var lf2 = (function (lf2) {
             });
         }
 
+        loadDataResource(path) {
+            path = path.replace(/\\/g, '/').replace(/\/\//, '/');
+
+            const ZipFileEntry = this.zip.files[path];
+            if (ZipFileEntry) {
+                return ZipFileEntry.async('text');
+            } else {
+                return ResourceManager.loadResource(define.DATA_PATH + path).then(r => r.text());
+            }
+        }
+
         /**
          * update()
          *
@@ -274,17 +288,17 @@ var lf2 = (function (lf2) {
                 Game.goToLevel('selection');
 
                 /*Game.goToLevel('fight', {
-                    players: [
-                        {charId: intval(prompt("腳色1 ID:", "51") || 51)},
-                        {charId: intval(prompt("腳色2 ID:", "7") || 7)},
-                    ],
-                    mapId: intval(prompt("地圖 ID:", "3") || 3),
+                 players: [
+                 {charId: intval(prompt("腳色1 ID:", "51") || 51)},
+                 {charId: intval(prompt("腳色2 ID:", "7") || 7)},
+                 ],
+                 mapId: intval(prompt("地圖 ID:", "3") || 3),
 
-                });*/
+                 });*/
             }
         }
 
-        
+
         draw(ctx) {
             super.draw(ctx);
 
@@ -301,18 +315,18 @@ var lf2 = (function (lf2) {
 
 
             switch (info.type) {
-             case 0:
-                 obj = new GameObjectCharacter(info, content);
-             break;
-             case 1:
-                 obj = new GameObjectWeapon(info, content);
-             break;
-             case 3:
-                 obj = new GameObjectBall(info, content);
-             break;
+                case 0:
+                    obj = new GameObjectCharacter(info, content);
+                    break;
+                case 1:
+                    obj = new GameObjectWeapon(info, content);
+                    break;
+                case 3:
+                    obj = new GameObjectBall(info, content);
+                    break;
                 default:
                     obj = new GameObject(info, content);
-             }
+            }
 
             GameObjectPool.set(info.id, obj);
 
@@ -393,7 +407,7 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        _showLoadFile(url){
+        _showLoadFile(url) {
             const showUrl = url.replace(/\\/g, '/');
             console.log(`Loading "${showUrl}".`);
             this._loadPath.text("正在讀取: " + showUrl);
