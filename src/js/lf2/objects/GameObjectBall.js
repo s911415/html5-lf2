@@ -25,39 +25,27 @@ var lf2 = (function (lf2) {
             this._hitSoundUrl = headerData.get("weapon_hit_sound");
             this._dropSoundUrl = headerData.get("weapon_drop_sound");
             this._brokenSoundUrl = headerData.get("weapon_broken_sound");
-
-            this._audioArgs = {};
-
-            SOUND_KEY.forEach((k) => {
-                const URL = this[k];
-                if (URL) this._audioArgs[URL] = {ogg: define.MUSIC_PATH + URL};
-            });
-
-            Object.freeze(this._audioArgs);
-
-            this._audio = new Framework.Audio(this._audioArgs);
-
         }
 
         /**
          * Play hit sound
          */
         playHitSound() {
-            this._hitSoundUrl && this._audio.play({name: this._hitSoundUrl});
+            this._hitSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._hitSoundUrl});
         }
 
         /**
          * Play drop sound
          */
         playDropSound() {
-            this._dropSoundUrl && this._audio.play({name: this._dropSoundUrl});
+            this._dropSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._dropSoundUrl});
         }
 
         /**
          * Play borken sound
          */
         playBrokenSound() {
-            this._brokenSoundUrl && this._audio.play({name: this._brokenSoundUrl});
+            this._brokenSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._brokenSoundUrl});
         }
 
         /**
