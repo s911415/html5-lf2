@@ -360,6 +360,8 @@ var lf2 = (function (lf2) {
                                 }
 
                                 console.log('start fight', _passData);
+                                lf2.Egg.stop();
+                                Framework.Audio.stopAll();
                                 Game.goToLevel('fight', _passData);
                                 break;
                             case 1: //RESET SELECTION
