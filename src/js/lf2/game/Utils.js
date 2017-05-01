@@ -1,6 +1,6 @@
 ﻿"use strict";
 var lf2 = (function (lf2) {
-    const Point3D = Framework.Point3D;
+
     /**
      * @class lf2.Utils
      */
@@ -108,6 +108,7 @@ var lf2 = (function (lf2) {
          *
          */
         GetPointPFromLineAB : function (a,b,r) {
+            const Point3D = Framework.Point3D;
             const dx=Math.abs(a.x-b.x), dy=Math.abs(a.y-b.y), dz=Math.abs(a.z-b.z);
             const lengthab = Math.sqrt(dx*dx + dy*dy + dz*dz);
             var scale=(lengthab-r)/r;
