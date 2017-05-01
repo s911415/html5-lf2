@@ -15,6 +15,8 @@
         PLAYER_COUNT: 4,
         KEYBOARD_CONFIG_KEY: "keyConfig",
 
+        BGM_VOLUME: .3,
+
         LOADING_MIN_TIME: 0 * 1000,
 
         INF_MP: false, //Infinity MP

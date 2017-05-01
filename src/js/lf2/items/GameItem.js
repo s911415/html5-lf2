@@ -16,7 +16,7 @@ var lf2 = (function (lf2) {
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
 
-    const FRICTION = 0.25;
+    const FRICTION = 0.2;
     const MIN_SPEED = 1;
     const MIN_V = 0.2;
     const GRAVITY = 2; // 1.7

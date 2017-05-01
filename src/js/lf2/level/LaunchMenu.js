@@ -72,11 +72,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         initialize() {
-            this.audio.play({
-                name: 'bgm',
-                loop: true,
-                volume: 0,
-            });
+            this.audio.play(lf2['!MainGame'].bgmParam);
         }
 
         /**
