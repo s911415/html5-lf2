@@ -115,7 +115,6 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         click(e, list, orgE) {
-            debugger;
             this._fullScreenGame();
         }
 
