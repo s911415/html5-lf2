@@ -1,6 +1,6 @@
 ﻿"use strict";
 var lf2 = (function (lf2) {
-
+    const Point3D = Framework.Point3D;
     /**
      * @class lf2.Utils
      */
@@ -98,6 +98,26 @@ var lf2 = (function (lf2) {
                 rad = arctan;
             }
             return rad;
+        },
+
+        /**
+         * calculate the pointP on lineAB which distance is r
+         *
+         * @param {Framework.Point3D} a
+         * @param {Framework.Point3D} b
+         *
+         */
+        GetPointPFromLineAB : function (a,b,r) {
+            const dx=Math.abs(a.x-b.x), dy=Math.abs(a.y-b.y), dz=Math.abs(a.z-b.z);
+            const lengthab = Math.sqrt(dx*dx + dy*dy + dz*dz);
+            var scale=(lengthab-r)/r;
+            let p = new Point3D(
+                (a.x * scale + b.x)/(scale+1),
+                (a.y * scale + b.y)/(scale+1),
+                (a.z * scale + b.z)/(scale+1)
+            );
+
+            return p;
         },
 
         /**
