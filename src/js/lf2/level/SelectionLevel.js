@@ -127,7 +127,8 @@ var lf2 = (function (lf2) {
             });
 
             this._isEnteringPanelShowed = false;
-
+            
+            this._stopAllMusic();
             this.checkCheat();
         }
 
@@ -360,8 +361,7 @@ var lf2 = (function (lf2) {
                                 }
 
                                 console.log('start fight', _passData);
-                                lf2.Egg.stop();
-                                Framework.Audio.stopAll();
+                                this._stopAllMusic();
                                 Game.goToLevel('fight', _passData);
                                 break;
                             case 1: //RESET SELECTION
@@ -633,6 +633,11 @@ var lf2 = (function (lf2) {
             if (lf2['!MainGame'].cheat || this._charIdArray[newIndex].inRange(FREE_CHAR_MIN, FREE_CHAR_MAX)) return newIndex;
 
             return this.getCharIdInRange(newIndex, offset);
+        }
+        
+        _stopAllMusic() {            
+            lf2.Egg.stop();
+            // Framework.Audio.stopAll();
         }
     };
 

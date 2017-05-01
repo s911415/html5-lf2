@@ -379,6 +379,14 @@ var lf2 = (function (lf2) {
 
         /**
          *
+         * @param {Boolean} val
+         */
+        setGodMode(val) {
+            this._godMode = val;
+        }
+
+        /**
+         *
          * @param {Number} amount
          */
         addAttackCount(amount) {
