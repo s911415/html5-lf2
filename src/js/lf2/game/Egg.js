@@ -1,6 +1,5 @@
 "use strict";
 var lf2 = (function (lf2) {
-
     const PLAYER = new Audio();
 
     let Egg;
@@ -25,11 +24,18 @@ var lf2 = (function (lf2) {
             {
                 key: 'axys',
                 sound: () => {
+                    if (!(lf2.CurrentLevel instanceof lf2.FightLevel)) return '';
                     if (Egg.AXYS_EGG.length === 0) return Egg.ERIS_CHEST_PADDED;
                     clearTimeout(_axysTimer);
 
+                    const Players = lf2.CurrentLevel.world.config.players;
+
                     let sp = $("#statusPanels");
                     sp.addClass('axys');
+                    Players.forEach(player => {
+                        player.setGodMode(true);
+                    });
+
 
                     if (!isFirstAxysEgg && _axysCount === 0) {
                         window.open(atob(Egg._EGG_CONTENT._JOIN_APPLICATION_FORM_URL));
@@ -39,6 +45,10 @@ var lf2 = (function (lf2) {
 
                     _axysTimer = setTimeout(() => {
                         sp.removeClass('axys');
+
+                        Players.forEach(player => {
+                            player.setGodMode(false);
+                        });
                     }, Egg.AXYS_EGG_TIME[_axysCount]);
 
                     _axysCount = (_axysCount + 1) % Egg.AXYS_EGG.length;

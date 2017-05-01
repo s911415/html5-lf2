@@ -72,11 +72,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         initialize() {
-            this.audio.play({
-                name: 'bgm',
-                loop: true,
-                volume: 0,
-            });
+            this.audio.play(lf2['!MainGame'].bgmParam);
         }
 
         /**
@@ -119,6 +115,41 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         click(e, list, orgE) {
+            debugger;
+            this._fullScreenGame();
+        }
+
+        _fullScreenGame() {
+            if (define.DEBUG) return;
+            
+            if (
+                false
+            // document.fullscreenElement ||
+            // document.webkitFullscreenElement ||
+            // document.mozFullScreenElement ||
+            // document.msFullscreenElement
+            ) {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            } else {
+                const element = document.documentElement;
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
         }
 
         /**
@@ -137,6 +168,7 @@ var lf2 = (function (lf2) {
                 this._menuContainer = $(this.html);
                 this._menuContainer.attr("id", _MENU_CONTAINER_ID);
                 this._menuContainer.find("#start_game_btn").click((e) => {
+                    this._fullScreenGame();
                     this.audio.play({name: 'ok'});
                     Game.goToLevel('loading');
                 });

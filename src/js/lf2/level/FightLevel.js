@@ -63,9 +63,9 @@ var lf2 = (function (lf2) {
          */
         load() {
             super.load();
-            
+
             //Play bgm
-            Framework.Audio.play({name: 'bgm'});
+            Framework.Audio.play(lf2['!MainGame'].bgmParam);
 
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
