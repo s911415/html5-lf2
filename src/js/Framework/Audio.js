@@ -74,15 +74,27 @@ var Framework = (function (Framework) {
                         ogg: 'audio/ogg',
                         wav: 'audio/wav'
                     };
+                const addSourceUrl = (song, type) => {
+                    let tempSource = document.createElement(sourceTagStr);
+                    tempSource.type = audioSourceType[type];
+                    tempSource.src = song;
+                    audioInstance.appendChild(tempSource);
+
+                    return tempSource;
+                };
+
                 for (let tempName in song) {
                     const ResourceManager = Framework.ResourceManager;
-                    ResourceManager.loadResourceAsBlob(song[tempName])
-                        .then(bu => {
-                            let tempSource = document.createElement(sourceTagStr);
-                            tempSource.type = audioSourceType[tempName];
-                            tempSource.src = bu;
-                            audioInstance.appendChild(tempSource);
-                        });
+                    const url = song[tempName];
+
+                    if (url.startsWith('blob:')) {
+                        addSourceUrl(url, tempName);
+                    } else {
+                        ResourceManager.loadResourceAsBlob(url)
+                            .then(bu => {
+                                addSourceUrl(bu, tempName);
+                            });
+                    }
                 }
             }
             if (!newInstance) {

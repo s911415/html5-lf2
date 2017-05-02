@@ -240,8 +240,9 @@ var Framework = (function (Framework) {
                 url = url.replace(/\/\//g, '/');
 
                 if (_resourceBlobCache.has(url) || url.startsWith('blob:')) {
+                    console.warn(url);
                     return new Promise((a, b) => {
-                        return url;
+                        return a(url);
                     });
                 } else {
                     _requestCount++;

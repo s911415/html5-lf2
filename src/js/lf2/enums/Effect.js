@@ -43,12 +43,15 @@ var lf2 = (function (lf2) {
                 const soundPath = define.MUSIC_PATH + s;
                 const AB = ResourceManager.loadResourceAsBlob(soundPath)
                     .then(bu => {
-                        soundList[soundPath] = bu;
+                        soundList[soundPath] = {
+                            ogg: bu
+                        };
                     });
 
                 proArr.push(AB);
             });
         }
+        window.proAll = proArr;
 
         return Promise.all(proArr).then(x => {
             SOUND.audioInstance = new Framework.Audio(soundList);
