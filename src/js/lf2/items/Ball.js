@@ -228,7 +228,7 @@ var lf2 = (function (lf2) {
             const itemState = item.currentFrame.state;
 
             const DO_REBOUND = () => {
-                this._velocity.x = 0;
+                this._velocity.x = -ITR.dv.x;
                 this.setNextFrame(30); //Rebounding
                 this.obj.playHitSound();
                 this.update(); //Update immediately
