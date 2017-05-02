@@ -120,8 +120,6 @@ var lf2 = (function (lf2) {
                     const objs = data.object, $ = this;
                     console.log('Loading GameObject');
 
-                    lf2.Effect.sound.createAudio();
-
                     return new Promise((res, rej) => {
                         let loadObjectRes = function*() {
                             let i = 0;
@@ -208,6 +206,8 @@ var lf2 = (function (lf2) {
                 console.log("GameMap all loaded");
 
                 return data;
+            }).then((a, b)=>{
+                return lf2.Effect.sound.createAudio();
             }).then((a, b) => {
                 console.log("Preloading extra image resources");
                 let arrUrl = [

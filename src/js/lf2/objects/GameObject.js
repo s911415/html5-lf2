@@ -6,6 +6,8 @@ var lf2 = (function (lf2) {
      */
     const BmpInfo = lf2.BmpInfo;
 
+    const ResourceManager = Framework.ResourceManager;
+
     /**
      * @class {lf2.Frame}
      */
@@ -122,13 +124,14 @@ var lf2 = (function (lf2) {
                      this._audio.addSongs(obj);
                      });
                      */
-                    this.addPreloadResource(soundPath).then(rep => {
-                        return rep.blob();
-                    }).then((blob) => {
+
+                    this.addPreloadResource(
+                        ResourceManager.loadResourceAsBlob(soundPath)
+                    ).then((blobPath) => {
                         let obj = {};
                         soundPool[soundPath] = obj[soundPath] =
                             {
-                                ogg: URL.createObjectURL(blob)
+                                ogg: blobPath
                             };
 
                         this._audio.addSongs(obj);

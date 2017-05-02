@@ -30,6 +30,7 @@ var Framework = (function (Framework) {
         var addSongs = function (playlist) {
             for(let k in playlist){
                 _mainPlaylist.set(k, playlist[k]);
+
                 getAudioInstance(k, playlist[k]);
             }
         };
@@ -66,17 +67,34 @@ var Framework = (function (Framework) {
                 audioInstance.preload = 'auto';
                 audioInstance.autoplay = false;
 
+
                 const sourceTagStr = 'source',
                     audioSourceType = {
                         mp3: 'audio/mpeg',
                         ogg: 'audio/ogg',
                         wav: 'audio/wav'
                     };
-                for (let tempName in song) {
+                const addSourceUrl = (song, type) => {
                     let tempSource = document.createElement(sourceTagStr);
-                    tempSource.type = audioSourceType[tempName];
-                    tempSource.src = song[tempName];
+                    tempSource.type = audioSourceType[type];
+                    tempSource.src = song;
                     audioInstance.appendChild(tempSource);
+
+                    return tempSource;
+                };
+
+                for (let tempName in song) {
+                    const ResourceManager = Framework.ResourceManager;
+                    const url = song[tempName];
+
+                    if (url.startsWith('blob:')) {
+                        addSourceUrl(url, tempName);
+                    } else {
+                        ResourceManager.loadResourceAsBlob(url)
+                            .then(bu => {
+                                addSourceUrl(bu, tempName);
+                            });
+                    }
                 }
             }
             if (!newInstance) {
