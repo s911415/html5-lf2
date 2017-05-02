@@ -227,8 +227,8 @@ var lf2 = (function (lf2) {
             const curState = this.currentFrame.state;
             const itemState = item.currentFrame.state;
 
-            const DO_REBOUND = ()=>{
-                this._velocity.x = 0;
+            const DO_REBOUND = () => {
+                this._velocity.x = -ITR.dv.x;
                 this.setNextFrame(30); //Rebounding
                 this.obj.playHitSound();
                 this.update(); //Update immediately
@@ -303,8 +303,10 @@ var lf2 = (function (lf2) {
          */
         postDamageItems(gotDamageItems) {
             super.postDamageItems(gotDamageItems);
-            const state = this.currentFrame.state;
-            const ITR = this.currentFrame.itr;
+            const curFrame = this.currentFrame;
+            const state = curFrame.state;
+            const ITR = curFrame.itr;
+            const HIT = curFrame.hit;
 
             //打中敵軍
             const HIT_ENEMY = gotDamageItems.some((damagedItem) => damagedItem.belongTo !== this.belongTo);
@@ -312,65 +314,73 @@ var lf2 = (function (lf2) {
             //打自己人
             const HIT_SAME_GROUP = gotDamageItems.some((damagedItem) => damagedItem.belongTo === this.belongTo);
 
-            switch (state) {
-                case FrameStage.BALL_FLYING:
-                    if (HIT_ENEMY) {
-                        this.setNextFrame(20);
-                        this.obj.playHitSound();
-                        this.freeze();
-                    } else if (HIT_SAME_GROUP) {
-                        this.setNextFrame(10);
-                        this.obj.playHitSound();
-                        this.freeze();
-                    }
-                    break;
+            //打道人
+            const HIT_CHARACTER = gotDamageItems.some((damagedItem) => damagedItem instanceof lf2.Character);
 
-                case FrameStage.BALL_HITTING:
-                    if (HIT_ENEMY) {
-                        this.obj.playHitSound();
-                        this.setNextFrame(20);
-                        this.freeze();
-                    }
-                    break;
+            if (ITR && ITR.kind === ItrKind.REFLECTIVE_SHIELD) {
 
-                case FrameStage.BALL_CANCELED:
-                    if (HIT_ENEMY) {
-                        this.obj.playHitSound();
-                        if (ITR.kind === ItrKind.REFLECTIVE_SHIELD) {
-                            if (gotDamageItems[0] instanceof lf2.Character) this.setNextFrame(20);
-                        } else {
+                if (HIT_ENEMY && HIT_CHARACTER) {
+                    this.obj.playHitSound();
+                    this.setNextFrame(HIT.d);
+                }
+
+            } else {
+                switch (state) {
+                    case FrameStage.BALL_FLYING:
+                        if (HIT_ENEMY) {
+                            this.setNextFrame(20);
+                            this.obj.playHitSound();
+                            this.freeze();
+                        } else if (HIT_SAME_GROUP) {
+                            this.setNextFrame(10);
+                            this.obj.playHitSound();
+                            this.freeze();
+                        }
+                        break;
+
+                    case FrameStage.BALL_HITTING:
+                        if (HIT_ENEMY) {
+                            this.obj.playHitSound();
                             this.setNextFrame(20);
                             this.freeze();
                         }
-                    }
-                    break;
-                case FrameStage.BALL_WIND_FLYING:
-                    if (HIT_ENEMY) {
-                        this.obj.playHitSound();
+                        break;
 
-                        if (
-                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING
-                        ) {
+                    case FrameStage.BALL_CANCELED:
+                        if (HIT_ENEMY) {
+                            this.obj.playHitSound();
                             this.setNextFrame(20);
                             this.freeze();
                         }
-                    }
-                    break;
-                case FrameStage.BALL_HIT_HEART:
-                    if (HIT_ENEMY) {
-                        this.obj.playHitSound();
+                        break;
+                    case FrameStage.BALL_WIND_FLYING:
+                        if (HIT_ENEMY) {
+                            this.obj.playHitSound();
 
-                        if (
-                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING ||
-                            gotDamageItems[0].currentFrame.state === FrameStage.BALL_HIT_HEART
-                        ) {
-                            this.setNextFrame(20);
-                            this.freeze();
+                            if (
+                                gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING
+                            ) {
+                                this.setNextFrame(20);
+                                this.freeze();
+                            }
                         }
-                    }
-                    break;
+                        break;
+                    case FrameStage.BALL_HIT_HEART:
+                        if (HIT_ENEMY) {
+                            this.obj.playHitSound();
 
-                default:
+                            if (
+                                gotDamageItems[0].currentFrame.state === FrameStage.BALL_WIND_FLYING ||
+                                gotDamageItems[0].currentFrame.state === FrameStage.BALL_HIT_HEART
+                            ) {
+                                this.setNextFrame(20);
+                                this.freeze();
+                            }
+                        }
+                        break;
+
+                    default:
+                }
             }
 
 
