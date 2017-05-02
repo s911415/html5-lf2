@@ -1,5 +1,7 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const ResourceManager = Framework.ResourceManager;
+
     /**
      * Itr Effect
      *
@@ -20,7 +22,7 @@ var lf2 = (function (lf2) {
         FIXED_ICE: 30,
     };
 
-    let SOUND = {}, soundList = {};
+    let SOUND = {};
     SOUND[Effect.NORMAL] = ['001.ogg', '006.ogg']; //006
     SOUND[Effect.BLADE] = ['032.ogg', '033.ogg'];
     SOUND[Effect.FIRE] = ['070.ogg', '071.ogg'];
@@ -31,16 +33,26 @@ var lf2 = (function (lf2) {
     // SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_ICE] = ['065.ogg'];
 
-    for (let k in SOUND) {
-        SOUND[k].forEach(s => {
-            const soundPath = define.MUSIC_PATH + s;
-
-            soundList[soundPath] = {ogg: soundPath};
-        });
-    }
 
     SOUND.createAudio = () => {
-        SOUND.audioInstance = new Framework.Audio(soundList);
+        let soundList = {}, proArr = [];
+        for (let k in SOUND) {
+            if (!(SOUND[k] instanceof Array)) continue;
+
+            SOUND[k].forEach(s => {
+                const soundPath = define.MUSIC_PATH + s;
+                const AB = ResourceManager.loadResourceAsBlob(soundPath)
+                    .then(bu => {
+                        soundList[soundPath] = bu;
+                    });
+
+                proArr.push(AB);
+            });
+        }
+
+        return Promise.all(proArr).then(x => {
+            SOUND.audioInstance = new Framework.Audio(soundList);
+        });
     };
 
     lf2.Effect.sound = SOUND;

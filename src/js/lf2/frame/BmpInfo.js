@@ -60,7 +60,7 @@ var lf2 = (function (lf2) {
 
         /**
          * Add preload resource
-         * @param url
+         * @param {string|Promise} url
          * @returns {Promise}
          */
         addPreloadResource(url) {
