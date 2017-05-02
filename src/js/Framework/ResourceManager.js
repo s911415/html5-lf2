@@ -12,7 +12,8 @@ var Framework = (function (Framework) {
             _responsedResource = {},
             _subjectFunction = function () {
             },
-            ResourceManagerInstance;
+            ResourceManagerInstance,
+            _resourceBlobCache = new Map();
 
 
         var getFinishedRequestPercent = function () {
@@ -232,6 +233,32 @@ var Framework = (function (Framework) {
 
                     return data;
                 });
+            }
+
+            loadResourceAsBlob(url) {
+                url = url.replace(/\\/g, '/');
+                url = url.replace(/\/\//g, '/');
+
+                if (_resourceBlobCache.has(url) || url.startsWith('blob:')) {
+                    console.warn(url);
+                    return new Promise((a, b) => {
+                        return a(url);
+                    });
+                } else {
+                    _requestCount++;
+                    return fetch(url, {
+                        method: 'GET',
+                    })
+                        .then(r => r.blob())
+                        .then(b => {
+                            finishLoading();
+                            _responseCount++;
+
+                            _resourceBlobCache.set(url, URL.createObjectURL(b));
+
+                            return _resourceBlobCache.get(url);
+                        });
+                }
             }
 
             /**
