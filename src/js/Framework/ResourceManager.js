@@ -239,9 +239,9 @@ var Framework = (function (Framework) {
                 url = url.replace(/\\/g, '/');
                 url = url.replace(/\/\//g, '/');
 
-                if (_resourceBlobCache.has(url)) {
+                if (_resourceBlobCache.has(url) || url.startsWith('blob:')) {
                     return new Promise((a, b) => {
-                        return a(_resourceBlobCache.get(url));
+                        return url;
                     });
                 } else {
                     _requestCount++;

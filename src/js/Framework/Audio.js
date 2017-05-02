@@ -30,6 +30,7 @@ var Framework = (function (Framework) {
         var addSongs = function (playlist) {
             for(let k in playlist){
                 _mainPlaylist.set(k, playlist[k]);
+
                 getAudioInstance(k, playlist[k]);
             }
         };
@@ -66,6 +67,7 @@ var Framework = (function (Framework) {
                 audioInstance.preload = 'auto';
                 audioInstance.autoplay = false;
 
+
                 const sourceTagStr = 'source',
                     audioSourceType = {
                         mp3: 'audio/mpeg',
@@ -73,10 +75,14 @@ var Framework = (function (Framework) {
                         wav: 'audio/wav'
                     };
                 for (let tempName in song) {
-                    let tempSource = document.createElement(sourceTagStr);
-                    tempSource.type = audioSourceType[tempName];
-                    tempSource.src = song[tempName];
-                    audioInstance.appendChild(tempSource);
+                    const ResourceManager = Framework.ResourceManager;
+                    ResourceManager.loadResourceAsBlob(song[tempName])
+                        .then(bu => {
+                            let tempSource = document.createElement(sourceTagStr);
+                            tempSource.type = audioSourceType[tempName];
+                            tempSource.src = bu;
+                            audioInstance.appendChild(tempSource);
+                        });
                 }
             }
             if (!newInstance) {
