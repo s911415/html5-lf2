@@ -146,6 +146,14 @@ var lf2 = (function (lf2) {
             return bdyItems;
         }
 
+
+        attach(obj) {
+            super.attach(obj);
+            if (obj.world !== undefined) {
+                obj.world = this;
+            }
+        }
+
         /**
          * _setCameraPositionByX(x)
          *
