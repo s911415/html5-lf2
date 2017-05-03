@@ -14,6 +14,7 @@ var lf2 = (function (lf2) {
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
     const NONE = GameItem.NONE;
+    const DRAW_BLOOD_PERCENTAGE = 100 / 3;
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -414,6 +415,22 @@ var lf2 = (function (lf2) {
          */
         draw(ctx) {
             super.draw(ctx);
+            const curFrame = this.currentFrame;
+
+            if (this.belongTo && this.belongTo.status) {
+                const status = this.belongTo.status;
+                if (curFrame.bpoint) {
+                    if (status.HPRadio <= DRAW_BLOOD_PERCENTAGE) {
+                        const targetPoint = this.transferPoint(curFrame.bpoint.point);
+                        ctx.fillStyle = "#FF3333";
+                        ctx.fillRect(targetPoint.x, targetPoint.y, 2, 5);
+                    }
+                }
+
+            }
+
+
+
         }
 
         /**

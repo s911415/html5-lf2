@@ -62,6 +62,8 @@ gulp.task('build', () => {
         'src/js/lf2/frame/Interaction.js',
         'src/js/lf2/frame/ObjectPoint.js',
         'src/js/lf2/frame/Body.js',
+        'src/js/lf2/frame/BloodPoint.js',
+
         'src/js/lf2/frame/Frame.js',
 
         'src/js/lf2/objects/GameObject.js',

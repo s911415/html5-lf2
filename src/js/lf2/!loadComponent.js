@@ -20,6 +20,8 @@
         'frame/Interaction.js',
         'frame/ObjectPoint.js',
         'frame/Body.js',
+        'frame/BloodPoint.js',
+
         'frame/Frame.js',
 
         'objects/GameObject.js',

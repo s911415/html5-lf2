@@ -508,7 +508,29 @@ var lf2 = (function (lf2) {
                     leftTopPoint.y + rect.position.y
                 );
             }
+        }
 
+        /**
+         *
+         * @param {Framework.Point} p
+         * @returns {Framework.Point}
+         */
+        transferPoint(p) {
+            if (!p) return null;
+
+            const leftTopPoint = this.leftTopPoint;
+
+            if (this._direction === DIRECTION.RIGHT) {
+                return new Point(
+                    leftTopPoint.x + p.x,
+                    leftTopPoint.y + p.y
+                );
+            } else if (this._direction === DIRECTION.LEFT) {
+                return new Point(
+                    leftTopPoint.x + this.width - p.x,
+                    leftTopPoint.y + p.y
+                );
+            }
         }
 
         getAttackItems() {
