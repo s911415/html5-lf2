@@ -144,6 +144,14 @@ var lf2 = (function (lf2) {
 
             return new Point(x, y);
         }
+
+        get HPRadio(){
+            return this._hpRatio;
+        }
+
+        get MPRadio(){
+            return this._mpRatio;
+        }
     };
     lf2.PlayerStatusPanel.prototype.PANEL_SIZE
         = lf2.PlayerStatusPanel.PANEL_SIZE = PANEL_SIZE;

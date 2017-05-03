@@ -146,6 +146,14 @@ var lf2 = (function (lf2) {
             return bdyItems;
         }
 
+
+        attach(obj) {
+            super.attach(obj);
+            if (obj.world !== undefined) {
+                obj.world = this;
+            }
+        }
+
         /**
          * _setCameraPositionByX(x)
          *
@@ -245,7 +253,7 @@ var lf2 = (function (lf2) {
                 if (player !== p) {
                     target = p.character;
 
-                    if (!target._allowDraw || target._flashing || p.hp <= 0) target = null;
+                    if (!target._allowDraw || p.hp <= 0) target = null;
                 }
             });
 

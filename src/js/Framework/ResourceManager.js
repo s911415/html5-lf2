@@ -239,7 +239,11 @@ var Framework = (function (Framework) {
                 url = url.replace(/\\/g, '/');
                 url = url.replace(/\/\//g, '/');
 
-                if (_resourceBlobCache.has(url) || url.startsWith('blob:')) {
+                if (_resourceBlobCache.has(url)) {
+                    return new Promise((a, b) => {
+                        return a(_resourceBlobCache.get(url));
+                    });
+                } else if (url.startsWith('blob:')) {
                     console.warn(url);
                     return new Promise((a, b) => {
                         return a(url);
