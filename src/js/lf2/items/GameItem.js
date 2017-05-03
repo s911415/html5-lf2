@@ -102,6 +102,7 @@ var lf2 = (function (lf2) {
             this._flashCounter = false;
             this._isNew = true;
             this.alive = true;
+            this._world = null;
 
             /**
              *
@@ -110,6 +111,22 @@ var lf2 = (function (lf2) {
             this._prevVelocity = null;
 
             this.pushSelfToLevel();
+        }
+
+        /**
+         *
+         * @param {lf2.WorldScene} v
+         */
+        set world(v) {
+            this._world = v;
+        }
+
+        /**
+         *
+         * @returns {lf2.WorldScene}
+         */
+        get world() {
+            return this._world;
         }
 
         /**
@@ -175,6 +192,29 @@ var lf2 = (function (lf2) {
             //End of move object
 
             this.applyFriction();
+
+            switch (curFrame.state) {
+                case FrameStage.CLOSED_BAD_GUY: {
+                    if (this.world) {
+                        let item = this.world.getEnemy(this.belongTo);
+
+                        if (item) {
+                            this.setPosition(item.position);
+                        }
+                    }
+                }
+                    break;
+                case FrameStage.CLOSED_TEAMMATE: {
+                    if (this.world) {
+                        let item = this.world.getFriend(this.belongTo);
+
+                        if (item) {
+                            this.setPosition(item.position);
+                        }
+                    }
+                }
+                    break;
+            }
 
             let bound = 0;
 //console.log('xxx', this._updateCounter >= this.currentFrame.wait, this.currentFrame.wait);
@@ -800,6 +840,18 @@ var lf2 = (function (lf2) {
             // if (this._velocity.x < 0) ret = !ret;
 
             return ret;
+        }
+
+        /**
+         *
+         * @param {Framework.Point3D} p
+         */
+        setPosition(p) {
+            this.position.x = p.x;
+            this.position.y = p.y;
+            if (p.z !== undefined) {
+                this.position.z = p.z;
+            }
         }
 
         /**
