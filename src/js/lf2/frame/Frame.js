@@ -8,9 +8,12 @@ var lf2 = (function (lf2) {
     const SOUND_TAG = 'sound:';
     const OPOINT_START_TAG = 'opoint:';
     const OPOINT_END_TAG = 'opoint_end:';
+    const BPOINT_START_TAG = 'bpoint:';
+    const BPOINT_END_TAG = 'bpoint_end:';
 
     const Body = lf2.Body;
     const ObjectPoint = lf2.ObjectPoint;
+    const BloodPoint = lf2.BloodPoint;
     const Interaction = lf2.Interaction;
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
@@ -46,10 +49,12 @@ var lf2 = (function (lf2) {
             let itr = context.getStringBetween(ITR_START_TAG, ITR_END_TAG);
             let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
             let opoint = context.getStringBetween(OPOINT_START_TAG, OPOINT_END_TAG);
+            let bpoint = context.getStringBetween(BPOINT_START_TAG, BPOINT_END_TAG);
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
             this.opoint = opoint ? new ObjectPoint(opoint) : undefined;
+            this.bpoint = bpoint ? new BloodPoint(bpoint) : undefined;
 
             this.mp = intval(this.data.get('mp') || 0);
 
