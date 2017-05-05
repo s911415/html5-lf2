@@ -35,26 +35,32 @@ var lf2 = (function (lf2) {
 
 
     SOUND.createAudio = () => {
-        let soundList = {}, proArr = [];
+        let proArr = [];
         for (let k in SOUND) {
             if (!(SOUND[k] instanceof Array)) continue;
 
             SOUND[k].forEach(s => {
                 const soundPath = define.MUSIC_PATH + s;
-                const AB = ResourceManager.loadResourceAsBlob(soundPath)
+                const AB = ResourceManager.loadResourceAsArrayBuffer(soundPath)
                     .then(bu => {
-                        soundList[soundPath] = {
-                            ogg: bu
-                        };
+                        return {
+                            p: soundPath,
+                            b: bu
+                        }
                     });
 
                 proArr.push(AB);
             });
         }
         window.proAll = proArr;
+        SOUND.audioInstance = new Framework.Audio();
 
         return Promise.all(proArr).then(x => {
-            SOUND.audioInstance = new Framework.Audio(soundList);
+            let soundList = {};
+            x.forEach(a=>{
+                soundList[a.p]=a.b.slice(0);
+            });
+            SOUND.audioInstance.addSongs(soundList);
         });
     };
 

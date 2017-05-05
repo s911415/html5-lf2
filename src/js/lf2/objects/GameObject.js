@@ -126,13 +126,11 @@ var lf2 = (function (lf2) {
                      */
 
                     this.addPreloadResource(
-                        ResourceManager.loadResourceAsBlob(soundPath)
-                    ).then((blobPath) => {
+                        ResourceManager.loadResourceAsArrayBuffer(soundPath)
+                    ).then((buffer) => {
                         let obj = {};
                         soundPool[soundPath] = obj[soundPath] =
-                            {
-                                ogg: blobPath
-                            };
+                            buffer;
 
                         this._audio.addSongs(obj);
                     });

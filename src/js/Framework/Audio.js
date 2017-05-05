@@ -6,7 +6,8 @@ var Framework = (function (Framework) {
             _audioInstanceObj = {},
             _mainPlaylist = new Map(),
             _errorEvent = function () {
-            };
+            },
+            _decodedAudioBuffer = new Map();
 
         let audioCtx = new window.AudioContext();
 
@@ -54,8 +55,25 @@ var Framework = (function (Framework) {
         var getAudioInstance = function (songName, song, newInstance) {
             newInstance = newInstance === undefined ? (false) : !!newInstance;
             var audioInstance;
-            if(song instanceof ArrayBuffer){
+            if(song instanceof ArrayBuffer || song instanceof AudioBuffer){
+                if (_audioInstanceObj[songName] && _audioInstanceObj[songName] instanceof AudioBufferSourceNode) {
+                    if (_audioInstanceObj[songName].buffer) {
+                        try{_audioInstanceObj[songName].stop();}catch(e){}
+                    }
+                }
                 audioInstance = audioCtx.createBufferSource();
+
+                if(song instanceof ArrayBuffer){
+                    audioCtx.decodeAudioData(song).then(decodedData => {
+                        _decodedAudioBuffer.set(songName, decodedData);
+                    }).catch(err=>{
+                        debugger;
+                        console.error(err, song);
+                        console.warn(songName);
+                    });
+                }else{
+
+                }
             }else{
                 if (!newInstance && !$.Util.isUndefined(_audioInstanceObj[songName])) {
                     return _audioInstanceObj[songName];
@@ -133,11 +151,25 @@ var Framework = (function (Framework) {
 
             audio = getAudioInstance(songName, song, !!audioArgs['newInstance']);
             if(audio instanceof AudioBufferSourceNode){
-                audioCtx.decodeAudioData(song).then((decodedData)=>{
-                    audio.buffer = decodedData;
+                let audioBuffer = _decodedAudioBuffer.get(songName);
+                if (!audioBuffer) {
+                    audioCtx.decodeAudioData(song).then(decodedData => {
+                        _decodedAudioBuffer.set(songName, decodedData);
+
+                        audio.buffer = decodedData;
+                        audio.connect(audioCtx.destination);
+                        audio.start(0);
+                    }).catch(err=>{
+                        console.error(err);
+                        console.log(songName, song);
+                        console.log(_decodedAudioBuffer);
+                        debugger;
+                    });
+                } else {
+                    audio.buffer = audioBuffer;
                     audio.connect(audioCtx.destination);
                     audio.start(0);
-                });
+                }
             }else if(audio instanceof Audio){
                 audio.addEventListener('error', _errorEvent, false);
                 for (tempName in audioArgs) {
