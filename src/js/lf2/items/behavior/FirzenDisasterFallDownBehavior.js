@@ -82,11 +82,11 @@ var lf2 = (function (lf2) {
                 }
 
                 const dy = this._ball.position.y - (TARGET.position.y); //dy > 0 ? UP : DOWN ; 5 - 20
-                if (Math.abs(dy) < MIN_V) {
+                if (Math.abs(dy) < 1) {
                     vz = 0;
                 } else {
                     vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
-                    vz *= GRAVITY;
+                    vz *= 10;
                 }
             }
 
@@ -97,7 +97,7 @@ var lf2 = (function (lf2) {
             vy |= 0;
             vz |= 0;
 
-            console.log(vy);
+            console.log(vz);
             return new Point3D(vx, vy, vz);
         }
 
