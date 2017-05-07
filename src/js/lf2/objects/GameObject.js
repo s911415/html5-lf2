@@ -128,6 +128,10 @@ var lf2 = (function (lf2) {
                 this._audio.addSongs(soundPool)
             );
         }
+
+        getPlayList(){
+            return this._audio.playlist;
+        }
     };
 
 

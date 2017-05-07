@@ -82,11 +82,19 @@ var Framework = (function (Framework) {
 
         addSongs(list) {
             if (!list) return;
-            for (let soundName in list) {
-                if (list.hasOwnProperty(soundName)) {
-                    let p = this._loadSoundAndReturnBuffer(list[soundName]);
-                    this._playList.set(soundName, list[soundName]);
+            if (list instanceof Map) {
+                list.forEach((v, k) => {
+                    let p = this._loadSoundAndReturnBuffer(v);
+                    this._playList.set(k, v);
                     this._promisies.push(p);
+                });
+            } else {
+                for (let soundName in list) {
+                    if (list.hasOwnProperty(soundName)) {
+                        let p = this._loadSoundAndReturnBuffer(list[soundName]);
+                        this._playList.set(soundName, list[soundName]);
+                        this._promisies.push(p);
+                    }
                 }
             }
 
@@ -175,6 +183,14 @@ var Framework = (function (Framework) {
                 }
                 this._source = null;
             }
+        }
+
+        /**
+         *
+         * @returns {Map}
+         */
+        get playlist() {
+            return new Map(this._playList);
         }
 
         /**

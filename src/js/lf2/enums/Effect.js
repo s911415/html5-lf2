@@ -49,13 +49,15 @@ var lf2 = (function (lf2) {
      * @param effectCode
      * @param {Number} [fall]
      */
-    lf2.Effect.sound.play = (audioInstance, effectCode, fall) => {
+    lf2.Effect.sound.getSoundPath = (effectCode, fall) => {
         const ARR = SOUND[effectCode];
 
         if (ARR) {
             const index = fall && ARR.length > 1 ? 1 : 0;
-            audioInstance.play(define.MUSIC_PATH + ARR[index]);
+            return (define.MUSIC_PATH + ARR[index]);
         }
+
+        return undefined;
     };
 
     // Object.freeze(SOUND);

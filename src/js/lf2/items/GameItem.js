@@ -104,6 +104,7 @@ var lf2 = (function (lf2) {
             this._isNew = true;
             this.alive = true;
             this._world = null;
+            this._audio = new Framework.Audio(this.obj.getPlayList());
 
             /**
              *
@@ -418,9 +419,7 @@ var lf2 = (function (lf2) {
             if (this.isFrameChanged) {
                 //Play sound
                 if (curFrame.soundPath) {
-                    this.obj._audio.play({
-                        name: curFrame.soundPath,
-                    });
+                    this._audio.play(curFrame.soundPath);
                 }
 
                 //add ball
