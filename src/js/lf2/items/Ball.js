@@ -98,7 +98,7 @@ var lf2 = (function (lf2) {
             const hit = this.currentFrame.hit;
             super.update();
 
-            if (this._behavior) {
+            if (this._behavior && this._remainderTime > 0) {
                 this._behavior.update();
             }
 
@@ -131,18 +131,19 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
-            if (hit.Fa !== 0 && this._remainderTime > 0) {
+            if(!this._world) return v;
+
+            if (hit.Fa !== 0) {
                 if (this._behavior) {
                     if (this._remainderTime <= 0) {
                         this.velocity = this._behavior._maxVelocity;
-                        this._behavior = null;
-                        if (Math.abs(this.velocity.x) < 1) {
-                            this.velocity.x = 10;
-                        }
-                        return this.velocity;
-                    }
 
-                    if (this._behavior.FA === hit.Fa) {
+                        if (this._behavior.FA !== hit.Fa) {
+                            this._behavior = null;
+                            this._remainderTime = INIT_TIME
+                        }
+
+                    } else if (this._behavior.FA === hit.Fa) {
                         return this._behavior.getVelocity();
                     }
                     // }else{
