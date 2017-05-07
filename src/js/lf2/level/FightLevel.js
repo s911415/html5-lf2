@@ -79,11 +79,16 @@ var lf2 = (function (lf2) {
             this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);
 
             //attach player's character
+            const halfWorldWidth = this.world.map.width >> 1;
+            const worldHeightDiff = (this.world.map.zBoundary.second - this.world.map.zBoundary.first);
+            const halfScreenWidth = Framework.Config.canvasWidth >> 1;
             this.config.players.forEach((player, i) => {
-                //TODO: debug use
-                player.character.position = new Framework.Point3D(Framework.Config.canvasWidth / 2, Framework.Config.canvasHeight / 2, 0);
+                player.character.position = new Framework.Point3D(
+                    (halfWorldWidth - halfScreenWidth) + ((Math.random() * Framework.Config.canvasWidth) | 0),
+                    ((Math.random() * worldHeightDiff) | 0) + this.world.map.zBoundary.first,
+                    0
+                );
                 player.status.setElem(this._statusPanels[i]);
-                //Framework.Game._currentLevel.config.players[0].character.setFrameById(210);
             });
 
             this._funcStatus = {
@@ -98,9 +103,6 @@ var lf2 = (function (lf2) {
                 this.showPanel();
             });
 
-            //TODO: debug use
-            this.config.players[0].character.position = new Point(100, 360);
-            //this.config.players[1].character.position = new Point(800, 300);
 
             this._startTime = Date.now();
             this._gameOver = false;
@@ -136,7 +138,7 @@ var lf2 = (function (lf2) {
             if (this.checkGameOver()) {
                 this._gameOver = true;
                 this._gameOverTime = Date.now();
-                setTimeout(()=>this.showGameOverPanel(), 2000);
+                setTimeout(() => this.showGameOverPanel(), 2000);
             }
         }
 
