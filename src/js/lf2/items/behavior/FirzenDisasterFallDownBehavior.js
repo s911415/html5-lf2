@@ -25,11 +25,9 @@ var lf2 = (function (lf2) {
         constructor(ball, world) {
             super(ball, world);
 
-
             this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
-
             this._targetCatched = false;
-            
+
             // this._radiusLocked = false;
             // this._prevRadius = 0;
 
@@ -64,14 +62,16 @@ var lf2 = (function (lf2) {
                     const p1 = new Point(this._ball.position.x, -this._ball.position.z);
                     const p2 = new Point(TARGET.position.x, -TARGET.position.z);
                     // const RAD = this._radiusLocked ? this._prevRadius : Utils.GetRadBasedOnPoints(p1, p2) + (Math.random() - .5);
-                    
+
                     // this._prevRadius = RAD;
-                    
+
                     vx = this._radiusX;
                     vy = this._maxVelocity.y;
+                    vx += (this._radiusX >> 1) - (Math.random() * (this._radiusX >> 2));
+                    vy += (this._maxVelocity.y >> 1) - (Math.random() * (this._maxVelocity.y >> 2));
 
                     // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
-                    
+
                     // this._radiusLocked = true;
                 } else {
                     //轉向
@@ -97,7 +97,6 @@ var lf2 = (function (lf2) {
             vy |= 0;
             vz |= 0;
 
-            console.log(vz);
             return new Point3D(vx, vy, vz);
         }
 
@@ -124,7 +123,7 @@ var lf2 = (function (lf2) {
         }
 
         get FA() {
-            return 1;
+            return 7;
         }
 
         toString() {

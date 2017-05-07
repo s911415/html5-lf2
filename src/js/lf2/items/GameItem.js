@@ -110,7 +110,7 @@ var lf2 = (function (lf2) {
              *
              * @type {Framework.Point3D}
              */
-            this._prevVelocity = null;
+            this._prevVelocity = this._velocity.clone();
 
             this.pushSelfToLevel();
         }

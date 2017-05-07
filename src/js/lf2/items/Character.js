@@ -15,6 +15,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = GameItem.DIRECTION;
     const NONE = GameItem.NONE;
     const DRAW_BLOOD_PERCENTAGE = 100 / 3;
+    const HIDE_FLASH_TIME = 60;
 
     const STAND_FRAME_RANGE = {
         min: 0,
@@ -208,7 +209,7 @@ var lf2 = (function (lf2) {
             }
 
             if (next.inRange(HIDE_FRAME_RANGE.min, HIDE_FRAME_RANGE.max)) {
-                this._hideRemainderTime = next - 100;
+                this._hideRemainderTime = next - 1000;
                 this._allowDraw = false;
                 next = 0;
             }
@@ -417,7 +418,7 @@ var lf2 = (function (lf2) {
             super.draw(ctx);
             const curFrame = this.currentFrame;
 
-            if (this.belongTo && this.belongTo.status) {
+            if (this._allowDraw && this.belongTo && this.belongTo.status) {
                 const status = this.belongTo.status;
                 if (curFrame.bpoint) {
                     if (status.HPRadio <= DRAW_BLOOD_PERCENTAGE) {
@@ -570,9 +571,11 @@ var lf2 = (function (lf2) {
 
             if (!this._allowDraw) {
                 this._hideRemainderTime--;
-                if (this._hideRemainderTime <= 0) {
+                if (this._hideRemainderTime <= HIDE_FLASH_TIME) {
                     this._hideRemainderTime = 0;
                     this._allowDraw = true;
+
+                    this._godModeTime = HIDE_FLASH_TIME;
                 }
             }
 
