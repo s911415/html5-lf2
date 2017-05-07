@@ -59,7 +59,8 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         initialize() {
-            // this.audio.play(lf2['!MainGame'].bgmParam);
+            //Play bgm
+            lf2['!MainGame'].playBgm();
         }
 
         /**
