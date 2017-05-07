@@ -11,16 +11,39 @@ var Framework = (function (Framework) {
 
     let AudioDecodedBuffer = new Map();
 
+    // let AudioCtxArray = [];
+    // (function () {
+    //     let continueAdd = true;
+    //     while (continueAdd) {
+    //         try {
+    //
+    //             AudioCtxArray.push(new window.AudioContext());
+    //         } catch (e) {
+    //             continueAdd = false;
+    //         }
+    //     }
+    // })();
+
+    const GetRandomAudioCtx = () => {
+        return AudioCtx;
+        //return AudioCtxArray[(Math.random() * AudioCtxArray.length) | 0]
+    };
+
     let Audio;
     Framework.Audio = Audio = class Audio {
+        /**
+         * Create an audio class
+         * @param {Object|Map} playlist
+         */
         constructor(playlist) {
             this._playList = new Map();
-            this.audioCtx = AudioCtx;
+            this.audioCtx = GetRandomAudioCtx();
             this.gainNodeLeft = this.audioCtx.createGain();
             this.gainNodeRight = this.audioCtx.createGain();
             this._promisies = [];
             this._leftVolume = 1;
             this._rightVolume = 1;
+            this._sources = new Map();
 
             this._allDone = false;
 
@@ -32,7 +55,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * Set volume of left channel and right channel
          * @param {Number} v
          */
         set volume(v) {
@@ -40,7 +63,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * get volume of left volume
          * @returns {Number}
          */
         get leftVolume() {
@@ -48,7 +71,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * get volume of right volume
          * @returns {Number}
          */
         get rightVolume() {
@@ -56,7 +79,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * set volume of right volume
          * @param {Number} v
          */
         set leftVolume(v) {
@@ -68,7 +91,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * set volume of right volume
          * @param {Number} v
          */
         set rightVolume(v) {
@@ -80,6 +103,12 @@ var Framework = (function (Framework) {
             }
         }
 
+        /**
+         * Add Sound to play list
+         *
+         * @param {Object} list
+         * @returns {*}
+         */
         addSongs(list) {
             if (!list) return;
             if (list instanceof Map) {
@@ -101,18 +130,29 @@ var Framework = (function (Framework) {
             return this.done();
         }
 
-        getSource() {
-            //this.stop();
+        /**
+         * Get source from audio content
+         *
+         * @param {String} soundPath
+         * @returns {AudioBufferSourceNode}
+         */
+        getSource(soundPath) {
+            let existSource = this._sources.get(soundPath);
+            if (existSource) {
+                existSource.disconnect();
+            }
 
-            this._source = this.audioCtx.createBufferSource();
+            existSource = this.audioCtx.createBufferSource();
+            this._sources.set(soundPath, existSource);
 
-            return this._source;
+            return existSource;
         }
 
         /**
+         * Play specified sound
          *
-         * @param soundName
-         * @param opts
+         * @param {String|Object} soundName
+         * @param {Object} [opts] options
          * @returns {*}
          */
         play(soundName, opts) {
@@ -125,8 +165,10 @@ var Framework = (function (Framework) {
             opts = opts || {};
             let options = {
                 loop: false,
-                volume: 1,
-                stopPrevious: true
+                stopPrevious: false,
+                volume: undefined,
+                leftVolume: undefined,
+                rightVolume: undefined,
             };
 
             //Override exist config
@@ -140,8 +182,16 @@ var Framework = (function (Framework) {
                 this.volume = options.volume;
             }
 
+            if (isFinite(options.leftVolume)) {
+                this.leftVolume = options.leftVolume;
+            }
+
+            if (isFinite(options.rightVolume)) {
+                this.rightVolume = options.rightVolume;
+            }
+
             if (options.stopPrevious) {
-                this.stop();
+                this.stop(soundName);
             }
 
             const soundPath = this._playList.get(soundName);
@@ -149,11 +199,16 @@ var Framework = (function (Framework) {
             this.gainNodeLeft = this.gainNodeRight = null;
             return this._loadSoundAndReturnBuffer(soundPath)
                 .then(buf => {
-                    const source = this.getSource();
+                    const source = this.getSource(soundPath);
                     const splitter = this.audioCtx.createChannelSplitter(2);
                     const merger = this.audioCtx.createChannelMerger(2);
                     const gainNodeLeft = this.audioCtx.createGain();
                     const gainNodeRight = this.audioCtx.createGain();
+                    this.gainNodeLeft = gainNodeLeft;
+                    this.gainNodeRight = gainNodeRight;
+                    this.leftVolume = this.leftVolume;
+                    this.rightVolume = this.rightVolume;
+
                     // const gainNodeLeft = this.gainNodeLeft;
                     // const gainNodeRight = this.gainNodeRight;
                     source.buffer = buf;
@@ -165,28 +220,37 @@ var Framework = (function (Framework) {
 
                     merger.connect(this.audioCtx.destination);
 
-                    this.gainNodeLeft = gainNodeLeft;
-                    this.gainNodeRight = gainNodeRight;
-                    this.leftVolume = this.leftVolume;
-                    this.rightVolume = this.rightVolume;
-
                     source.loop = options.loop;
-                    source.start(0);
+                    source.start();
                 });
         }
 
-        stop() {
-            if (this._source) {
+        /**
+         * Stop sound
+         * @param [soundPath] sound path that you want to stop, stop all if this parameter is omit.
+         */
+        stop(soundPath) {
+            const StopSource = (s) => {
                 try {
-                    this._source.stop();
+                    s.disconnect(this.audioCtx.destination);
+                    s.stop();
                 } catch (e) {
                 }
-                this._source = null;
+            };
+            if (!soundPath) {
+                this._sources.forEach(s => {
+                    StopSource(s);
+                });
+            } else {
+                let source = this._sources.get(soundPath);
+                if (source) {
+                    StopSource(s);
+                }
             }
         }
 
         /**
-         *
+         * get a copy of playlist
          * @returns {Map}
          */
         get playlist() {

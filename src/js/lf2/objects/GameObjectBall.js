@@ -30,21 +30,21 @@ var lf2 = (function (lf2) {
          * Play hit sound
          */
         playHitSound() {
-            this._hitSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._hitSoundUrl});
+            this._hitSoundUrl && this._audio.play(define.MUSIC_PATH + this._hitSoundUrl);
         }
 
         /**
          * Play drop sound
          */
         playDropSound() {
-            this._dropSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._dropSoundUrl});
+            this._dropSoundUrl && this._audio.play(define.MUSIC_PATH + this._dropSoundUrl);
         }
 
         /**
          * Play borken sound
          */
         playBrokenSound() {
-            this._brokenSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._brokenSoundUrl});
+            this._brokenSoundUrl && this._audio.play(define.MUSIC_PATH + this._brokenSoundUrl);
         }
 
         /**
