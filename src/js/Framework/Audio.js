@@ -1,645 +1,206 @@
 'use strict';
 var Framework = (function (Framework) {
-    (function () {
-        var $ = Framework,
-            _audioClass = {},
-            _audioInstanceObj = {},
-            _mainPlaylist = new Map(),
-            _errorEvent = function () {
-            },
-            _decodedAudioBuffer = new Map();
+    /**
+     * @type {ResourceManager}
+     */
+    const ResourceManager = Framework.ResourceManager;
 
-        let audioCtx = new window.AudioContext();
+    const AudioCtx = new window.AudioContext();
 
+    let AudioInstanceArray = [];
 
-        var setPlaylist = function (playlist) {
-            addSongs(playlist);
-        };
+    let AudioDecodedBuffer = new Map();
 
-        /**
-         * 設定當音樂無法播放時, 要執行的callback
-         * @param {function} errorEvent 音樂無法播放時, 要執行的callback
-         * @example
-         *        setErrorEvent(function() {
-		 * 			console.log('error');
-		 * 		});
-         */
-        var setErrorEvent = function (eventFunction) {
-            _errorEvent = eventFunction;
-        };
+    let Audio;
+    Framework.Audio = Audio = class Audio {
+        constructor(playlist) {
+            this._playList = new Map();
+            this.audioCtx = AudioCtx;
+            this.gainNodeLeft;
+            this.gainNodeRight;
+            this._promisies = [];
+            this._leftVolume = 1;
+            this._rightVolume = 1;
 
-        var addSongs = function (playlist) {
-            for(let k in playlist){
-                _mainPlaylist.set(k, playlist[k]);
+            this._allDone = false;
 
-                getAudioInstance(k, playlist[k]);
-            }
-        };
-
-        var removeSong = function (song) {
-            _mainPlaylist.delete(song);
-        };
-
-        //只接受String或Array
-        var removeSongs = function (songs) {
-            var i = 0, len = 0;
-            if ($.Util.isString(songs)) {
-                removeSong(songs);
-            } else {
-                for (i = 0, len = songs.length; i < len; i++) {
-                    removeSong(songs[i]);
-                }
-            }
-        };
-
-        var getAudioInstance = function (songName, song, newInstance) {
-            newInstance = newInstance === undefined ? (false) : !!newInstance;
-            var audioInstance;
-            if(song instanceof ArrayBuffer || song instanceof AudioBuffer){
-                if (_audioInstanceObj[songName] && _audioInstanceObj[songName] instanceof AudioBufferSourceNode) {
-                    if (_audioInstanceObj[songName].buffer) {
-                        try{_audioInstanceObj[songName].stop();}catch(e){}
-                    }
-                }
-                audioInstance = audioCtx.createBufferSource();
-
-                if(song instanceof ArrayBuffer){
-                    audioCtx.decodeAudioData(song).then(decodedData => {
-                        _decodedAudioBuffer.set(songName, decodedData);
-                    }).catch(err=>{
-                        debugger;
-                        console.error(err, song);
-                        console.warn(songName);
-                    });
-                }else{
-
-                }
-            }else{
-                if (!newInstance && !$.Util.isUndefined(_audioInstanceObj[songName])) {
-                    return _audioInstanceObj[songName];
-                }
-
-                audioInstance = new Audio();
-                //document.body.appendChild(audioInstance);
-                //audioInstance.controls='controls';
-                audioInstance.preload = 'auto';
-                audioInstance.autoplay = false;
-
-
-                const sourceTagStr = 'source',
-                    audioSourceType = {
-                        mp3: 'audio/mpeg',
-                        ogg: 'audio/ogg',
-                        wav: 'audio/wav'
-                    };
-                const addSourceUrl = (song, type) => {
-                    let tempSource = document.createElement(sourceTagStr);
-                    tempSource.type = audioSourceType[type];
-                    tempSource.src = song;
-                    audioInstance.appendChild(tempSource);
-
-                    return tempSource;
-                };
-
-                for (let tempName in song) {
-                    const ResourceManager = Framework.ResourceManager;
-                    const url = song[tempName];
-
-                    if (url.startsWith('blob:')) {
-                        addSourceUrl(url, tempName);
-                    } else {
-                        ResourceManager.loadResourceAsBlob(url)
-                            .then(bu => {
-                                addSourceUrl(bu, tempName);
-                            });
-                    }
-                }
-            }
-            if (!newInstance) {
-                _audioInstanceObj[songName] = audioInstance;
+            if (playlist) {
+                this.addSongs(playlist);
             }
 
-            return audioInstance;
-        };
-
-        var playMusic = function () {
-            this.play();
-            this.removeEventListener('canplaythrough', playMusic, false);
-        };
+            AudioInstanceArray.push(this);
+        }
 
         /**
          *
-         * 播放音樂
-         * @param {Object} audioArgs audioArgs.name為必要項,
-         * 並且需要可以從Constuctor提供的清單上找到, 否則會throw exception
-         * audioArgs可以加入任何一個W3C定義的option參數, 詳細請參考W3C網站
-         * http://www.w3schools.com/tags/tag_audio.asp
-         * @example
-         *     play({name: 'horse'});
-         *     play({name: 'horse', loop: true});
+         * @param {Number} v
          */
-        var play = function (audioArgs) {
-            var
-                tempName,
-                songName = audioArgs['name'],
-                song = _mainPlaylist.get(songName),
-                audio = {};
+        set volume(v) {
+            this.leftVolume = this.rightVolume = v;
+        }
 
-            if (Framework.Util.isUndefined(song)) {
-                throw ('the playlist is not set or do not contain the song: ' + songName);
+        /**
+         *
+         * @returns {Number}
+         */
+        get leftVolume() {
+            return this._leftVolume;
+        }
+
+        /**
+         *
+         * @returns {Number}
+         */
+        get rightVolume() {
+            return this._rightVolume;
+        }
+
+        /**
+         *
+         * @param {Number} v
+         */
+        set leftVolume(v) {
+            if (v > 1 || v < 0) throw new RangeError('Volume out of range, 0~1 expected');
+            this._leftVolume = v;
+            if (this.gainNodeLeft) {
+                this.gainNodeLeft.gain.value = this._leftVolume;
             }
+        }
 
-            audio = getAudioInstance(songName, song, !!audioArgs['newInstance']);
-            if(audio instanceof AudioBufferSourceNode){
-                let audioBuffer = _decodedAudioBuffer.get(songName);
-                if (!audioBuffer) {
-                    audioCtx.decodeAudioData(song).then(decodedData => {
-                        _decodedAudioBuffer.set(songName, decodedData);
+        /**
+         *
+         * @param {Number} v
+         */
+        set rightVolume(v) {
+            if (v > 1 || v < 0) throw new RangeError('Volume out of range, 0~1 expected');
 
-                        audio.buffer = decodedData;
-                        audio.connect(audioCtx.destination);
-                        audio.start(0);
-                    }).catch(err=>{
-                        console.error(err);
-                        console.log(songName, song);
-                        console.log(_decodedAudioBuffer);
-                        debugger;
-                    });
-                } else {
-                    audio.buffer = audioBuffer;
-                    audio.connect(audioCtx.destination);
-                    audio.start(0);
+            this._rightVolume = v;
+            if (this.gainNodeRight) {
+                this.gainNodeRight.gain.value = this._rightVolume;
+            }
+        }
+
+        addSongs(list) {
+            if (!list) return;
+            for (let soundName in list) {
+                if (list.hasOwnProperty(soundName)) {
+                    let p = this._loadSoundAndReturnBuffer(list[soundName]);
+                    this._playList.set(soundName, list[soundName]);
+                    this._promisies.push(p);
                 }
-            }else if(audio instanceof Audio){
-                audio.addEventListener('error', _errorEvent, false);
-                for (tempName in audioArgs) {
-                    if (audioArgs.hasOwnProperty(tempName)) {
-                        audio[tempName] = audioArgs[tempName];
-                    }
-                }
-
-                audio.currentTime = 0;
-                //audio.addEventListener('canplaythrough', this.playMusic, true);
-                //audio.load();
-                audio.play();
             }
-        };
+
+            return this.done();
+        }
+
+        getSource() {
+            //this.stop();
+
+            this._source = this.audioCtx.createBufferSource();
+
+            return this._source;
+        }
 
         /**
-         * 暫停被播放音樂
-         * @param {string} audioName 歌曲的name
-         * @example
-         *     pause('horse');
+         *
+         * @param soundName
+         * @param opts
+         * @returns {*}
          */
-        var pause = function (audioName) {
-            var audio = _audioInstanceObj[audioName];
-            audio.pause();
-        };
+        play(soundName, opts) {
+            if (typeof soundName === 'object') {
+                console.warn('Play Audio by object is deprecated, please set sound name');
 
-        /**
-         * 暫停全部被播放音樂
-         * @example
-         *     pauseAll();
-         */
-        var pauseAll = function () {
-            for (var tempName in _audioInstanceObj) {
-                pause(tempName);
+                return this.play(soundName['name'], soundName);
             }
-        };
 
-        /**
-         * 恢復播放被暫停的音樂, 若沒有被暫停, 則不會發生任何事情
-         * @param {string} audioName 歌曲的name
-         *     resume('horse');
-         */
-        var resume = function (audioName) {
-            var audio = _audioInstanceObj[audioName];
-            if (audio.paused) {
-                audio.play();
-            }
-        };
-
-        /**
-         * 恢復播放被暫停的所有音樂
-         * @example
-         *     resumeAll();
-         */
-        var resumeAll = function () {
-            for (var tempName in _audioInstanceObj) {
-                resume(tempName);
-            }
-        };
-
-        /**
-         * 停止被播放音樂
-         * @param {string} audioName 歌曲的name
-         * @example
-         *     stop('horse');
-         */
-            //因為stop為native code, 故private命名部分改用stopMusic
-        var stopMusic = function (audioName) {
-                var audio = _audioInstanceObj[audioName];
-                audio.pause();
-                audio.currentTime = 0;
+            opts = opts || {};
+            let options = {
+                loop: false,
+                volume: 1
             };
 
-        /**
-         * 停止所有被播放音樂
-         * @example
-         *     stopAll();
-         */
-        var stopAll = function () {
-            for (var tempName in _audioInstanceObj) {
-                stopMusic(tempName);
-            }
-        };
-
-        /**
-         * 設定音樂的音量
-         * @param {string} audioName 歌曲的name
-         * @param {number} volumeValue 要設定的音量大小 0-1之間
-         * @example
-         *    setVolume('horse', 0);    //沒聲音
-         *    setVolume('horse', 0.5);
-         *    setVolume('horse', 1);    //最大聲
-         */
-        var setVolume = function (name, volumeValue) {
-            var audio = _audioInstanceObj[name];
-            audio.volume = volumeValue;
-        };
-
-
-        var manageMute = function (name, muted) {
-            var audio = _audioInstanceObj[name];
-            audio.muted = muted;
-        };
-
-        /**
-         * 開起音樂的音效
-         * @param {string} audioName 歌曲的name
-         * @example
-         *     openVolume('horse');
-         */
-        var openVolume = function (name) {
-            manageMute(name, false);
-        };
-
-        /**
-         * 開起所有音樂的音效
-         * @example
-         *     openVolumeAll();
-         */
-        var openVolumeAll = function () {
-            for (var tempName in _audioInstanceObj) {
-                openVolume(tempName);
-            }
-        };
-
-        /**
-         * 關閉音樂的音效(靜音)
-         * @param {string} audioName 歌曲的name
-         * @example
-         *     mute('horse');
-         */
-        var mute = function (name) {
-            manageMute(name, true);
-        };
-
-        /**
-         * 關閉所有音樂的音效(靜音所有歌曲)
-         * @example
-         *     muteAll();
-         */
-        var muteAll = function () {
-            for (var tempName in _audioInstanceObj) {
-                mute(tempName);
-            }
-        };
-
-        /*var on = function(audioName, eventName, callback, useCapture) {
-         var mainUseCapture = false, audio = _audioInstanceObj[audioName];
-
-         if(!Framework.Util.isUndefined(useCapture)) {
-         mainUseCapture = useCapture;
-         }
-
-         audio.addEventListener(eventName, callback, mainUseCapture);
-         };
-
-         var off = function(audioName, eventName, callback, useCapture) {
-         var mainUseCapture = false, audio = _audioInstanceObj[audioName];
-
-         if(!Framework.Util.isUndefined(useCapture)) {
-         mainUseCapture = useCapture;
-         }
-
-         audio.removeEventListener(eventName, callback, mainUseCapture);
-         };
-
-         var allOn = function(eventName, callback, useCapture) {
-         for(tempName in _audioInstanceObj) {
-         on(tempName, eventName, callback, useCapture);
-         }
-         };
-
-         var allOff = function(eventName, callback, useCapture) {
-         for(tempName in _audioInstanceObj) {
-         off(tempName, eventName, callback, useCapture);
-         }
-         };*/
-
-        /**
-         * 控管所有音樂資源的Class
-         * @param {Object} playlist 全部要被播放的音樂和音效清單
-         * @example
-         *    new Framework.Audio({
-	    *       horse: {
-	    *           mp3: 'horse.mp3',
-	    *           ogg: 'horse.ogg',
-	    *           wav: 'horse.wav'
-	    *       }, song1:{
-	    *           mp3: 'song1.mp3',
-	    *           ogg: 'song1.ogg',
-	    *           wav: 'song1.wav'
-	    *       }, song2:{
-	    *           mp3: 'song2.mp3',
-	    *           ogg: 'song2.ogg',
-	    *           wav: 'song2.wav'
-	    *       }
-	    *   });
-         */
-        Framework.Audio = class {
-            constructor(playlist) {
-                if (!Framework.Util.isUndefined(playlist)) {
-                    setPlaylist(playlist);
+            //Override exist config
+            for (let k in options) {
+                if (opts[k] !== undefined) {
+                    options[k] = opts[k];
                 }
             }
 
-            addSongs(){
-                return addSongs.apply(this, arguments);
+            if (isFinite(options.volume)) {
+                this.volume = options.volume;
             }
 
-            /**
-             *
-             * 播放音樂
-             * @param {Object} audioArgs audioArgs.name為必要項,
-             * 並且需要可以從Constuctor提供的清單上找到, 否則會throw exception
-             * audioArgs可以加入任何一個W3C定義的option參數, 詳細請參考W3C網站
-             * http://www.w3schools.com/tags/tag_audio.asp
-             * @example
-             *     play({name: 'horse'});
-             *     play({name: 'horse', loop: true});
-             */
-            play() {
-                return play.apply(this, arguments);
-            }
+            const soundPath = this._playList.get(soundName);
+            if (soundPath === undefined) throw Error(`Cannot found sound with name: ${soundName}`);
+            this.gainNodeLeft = this.gainNodeRight = null;
+            return this._loadSoundAndReturnBuffer(soundPath)
+                .then(buf => {
+                    const source = this.getSource();
+                    const splitter = this.audioCtx.createChannelSplitter(2);
+                    const merger = this.audioCtx.createChannelMerger(2);
+                    const gainNodeLeft = this.audioCtx.createGain();
+                    const gainNodeRight = this.audioCtx.createGain();
+                    source.buffer = buf;
+                    source.connect(splitter);
+                    splitter.connect(gainNodeLeft, 0);
+                    splitter.connect(gainNodeRight, 0);
+                    gainNodeLeft.connect(merger, 0, 0);
+                    gainNodeRight.connect(merger, 0, 1);
 
-            /**
-             * 停止被播放音樂
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     stop('horse');
-             */
-            stop() {
-                return stopMusic.apply(this, arguments);
-            }
+                    merger.connect(this.audioCtx.destination);
 
-            /**
-             * 暫停被播放音樂
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     pause('horse');
-             */
-            pause() {
-                return pause.apply(this, arguments);
-            }
+                    this.gainNodeLeft = gainNodeLeft;
+                    this.gainNodeRight = gainNodeRight;
+                    this.leftVolume = this.leftVolume;
+                    this.rightVolume = this.rightVolume;
 
-            /**
-             * 恢復播放被暫停的音樂, 若沒有被暫停, 則不會發生任何事情
-             * @param {string} audioName 歌曲的name
-             *     resume('horse');
-             */
-            resume() {
-                return resume.apply(this, arguments);
-            }
+                    source.start(0);
+                });
+        }
 
-            /**
-             * 設定音樂的音量
-             * @param {string} audioName 歌曲的name
-             * @param {number} volumeValue 要設定的音量大小 0-1之間
-             * @example
-             *    setVolume('horse', 0);    //沒聲音
-             *    setVolume('horse', 0.5);
-             *    setVolume('horse', 1);    //最大聲
-             */
-            setVolume() {
-                return setVolume.apply(this, arguments);
+        stop() {
+            if (this._source) {
+                try {
+                    this._source.stop();
+                } catch (e) {
+                }
+                this._source = null;
             }
+        }
 
-            /**
-             * 關閉音樂的音效(靜音)
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     mute('horse');
-             */
-            mute() {
-                return mute.apply(this, arguments);
-            }
+        /**
+         *
+         * @param soundPath
+         * @returns {Promise.<AudioBufferSourceNode>}
+         * @private
+         */
+        _loadSoundAndReturnBuffer(soundPath) {
+            let ob = AudioDecodedBuffer.get(soundPath);
+            if (ob) return new Promise((a, b) => a(ob));
 
-            /**
-             * 開起音樂的音效
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     openVolume('horse');
-             */
-            openVolume() {
-                return openVolume.apply(this, arguments);
-            }
+            return ResourceManager
+                .loadResourceAsArrayBuffer(soundPath)
+                .then(originalBuffer => {
+                    return this.audioCtx.decodeAudioData(originalBuffer);
+                })
+                .then(decodedBuffer => {
+                    AudioDecodedBuffer.set(soundPath, decodedBuffer);
 
-            /**
-             * 設定當音樂無法播放時, 要執行的callback
-             * @param {function} errorEvent 音樂無法播放時, 要執行的callback
-             * @example
-             *        setErrorEvent(function() {
-             * 			console.log('error');
-             * 		});
-             */
-            setErrorEvent() {
-                return setErrorEvent.apply(this, arguments);
-            }
+                    return decodedBuffer;
+                }).catch(err => {
+                    console.error(soundPath, err);
+                });
+        }
 
-            /**
-             * 停止所有被播放音樂
-             * @example
-             *     stopAll();
-             */
-            stopAll() {
-                return stopAll.apply(Framework.Audio, arguments);
-            }
+        done() {
+            return Promise.all(this._promisies);
+        }
+    };
 
-            /**
-             * 暫停全部被播放音樂
-             * @example
-             *     pauseAll();
-             */
-            pauseAll() {
-                return pauseAll.apply(Framework.Audio, arguments);
-            }
+    Audio.prototype.stopAll = function () {
+        AudioInstanceArray.forEach(ai => ai.stop());
+    };
 
-            /**
-             * 恢復播放被暫停的所有音樂
-             * @example
-             *     resumeAll();
-             */
-            resumeAll() {
-                return resumeAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 關閉所有音樂的音效(靜音所有歌曲)
-             * @example
-             *     muteAll();
-             */
-            muteAll() {
-                return muteAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 開起所有音樂的音效
-             * @example
-             *     openVolumeAll();
-             */
-            openVolumeAll() {
-                return openVolumeAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             *
-             * 播放音樂
-             * @param {Object} audioArgs audioArgs.name為必要項,
-             * 並且需要可以從Constuctor提供的清單上找到, 否則會throw exception
-             * audioArgs可以加入任何一個W3C定義的option參數, 詳細請參考W3C網站
-             * http://www.w3schools.com/tags/tag_audio.asp
-             * @example
-             *     play({name: 'horse'});
-             *     play({name: 'horse', loop: true});
-             */
-            static play() {
-                return play.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 停止被播放音樂
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     stop('horse');
-             */
-            static stop() {
-                return stopMusic.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 停止所有被播放音樂
-             * @example
-             *     stopAll();
-             */
-            static stopAll() {
-                return stopAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 暫停被播放音樂
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     pause('horse');
-             */
-            static pause() {
-                return pause.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 暫停全部被播放音樂
-             * @example
-             *     pauseAll();
-             */
-            static pauseAll() {
-                return pauseAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 恢復播放被暫停的音樂, 若沒有被暫停, 則不會發生任何事情
-             * @param {string} audioName 歌曲的name
-             *     resume('horse');
-             */
-            static resume() {
-                return resume.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 恢復播放被暫停的所有音樂
-             * @example
-             *     resumeAll();
-             */
-            static resumeAll() {
-                return resumeAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 設定音樂的音量
-             * @param {string} audioName 歌曲的name
-             * @param {number} volumeValue 要設定的音量大小 0-1之間
-             * @example
-             *    setVolume('horse', 0);    //沒聲音
-             *    setVolume('horse', 0.5);
-             *    setVolume('horse', 1);    //最大聲
-             */
-            static setVolume() {
-                return setVolume.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 關閉音樂的音效(靜音)
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     mute('horse');
-             */
-            static mute() {
-                return mute.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 關閉所有音樂的音效(靜音所有歌曲)
-             * @example
-             *     muteAll();
-             */
-            static muteAll() {
-                return muteAll.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 開起音樂的音效
-             * @param {string} audioName 歌曲的name
-             * @example
-             *     openVolume('horse');
-             */
-            static openVolume() {
-                return openVolume.apply(Framework.Audio, arguments);
-            }
-
-            /**
-             * 開起所有音樂的音效
-             * @example
-             *     openVolumeAll();
-             */
-            static openVolumeAll() {
-                return openVolumeAll.apply(Framework.Audio, arguments);
-            }
-
-            static setErrorEvent() {
-                return setErrorEvent.apply(Framework.Audio, arguments);
-            }
-        };
-        return Framework.Audio;
-    })();
     return Framework;
 })(Framework || {});

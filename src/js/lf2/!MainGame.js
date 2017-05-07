@@ -17,6 +17,9 @@ var lf2 = (function (lf2) {
             this._cheatStatus = false;
             this.bgmStatus = !define.DEBUG;
             this._keyPool = new lf2.KeyEventPool(CHEAT_KEYWORD.length);
+            this.bgmAudio = new Framework.Audio({
+                bgm: define.BGM_PATH + 'main.ogg',
+            });
             this.bgmParam = {
                 name: 'bgm',
                 loop: true,
@@ -35,7 +38,7 @@ var lf2 = (function (lf2) {
                 switch (e.key) {
                     case 'F10':
                         this.bgmStatus = !this.bgmStatus;
-                        Framework.Audio.play(this.bgmParam);
+                        this.playBgm();
                         break;
                 }
             });
@@ -87,6 +90,10 @@ var lf2 = (function (lf2) {
             };
 
             window.addEventListener('keydown', keyDetection);
+        }
+
+        playBgm(){
+            this.bgmAudio.play('bgm', this.bgmParam);
         }
 
         get cheat() {

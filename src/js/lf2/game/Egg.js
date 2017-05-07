@@ -79,6 +79,8 @@ var lf2 = (function (lf2) {
             let sound = playQueue.shift();
             let s = typeof sound === 'function' ? sound() : lf2.Egg[sound];
 
+            if (!s) return;
+
             PLAYER.pause();
             PLAYER.src = s;
             PLAYER.currentTime = 0;

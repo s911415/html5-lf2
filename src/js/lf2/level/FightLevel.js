@@ -65,7 +65,7 @@ var lf2 = (function (lf2) {
             super.load();
 
             //Play bgm
-            Framework.Audio.play(lf2['!MainGame'].bgmParam);
+            lf2['!MainGame'].playBgm();
 
             this.world = new WorldScene(this.config);
             this.rootScene.attach(this.world);
@@ -73,9 +73,7 @@ var lf2 = (function (lf2) {
             //載入要被播放的音樂清單
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             this.audio = new Framework.Audio({
-                end: {
-                    ogg: define.MUSIC_PATH + 'm_end.ogg',
-                },
+                end: define.MUSIC_PATH + 'm_end.ogg',
             });
 
             this._statusPanels = new Array(define.SHOW_PLAYER_COUNT);

@@ -1,7 +1,5 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const ResourceManager = Framework.ResourceManager;
-
     /**
      * Itr Effect
      *
@@ -33,52 +31,30 @@ var lf2 = (function (lf2) {
     // SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_ICE] = ['065.ogg'];
 
+    let allSound = new Set();
+    for (let k in SOUND) {
+        if (!(SOUND[k] instanceof Array)) continue;
 
-    SOUND.createAudio = () => {
-        let proArr = [];
-        for (let k in SOUND) {
-            if (!(SOUND[k] instanceof Array)) continue;
-
-            SOUND[k].forEach(s => {
-                const soundPath = define.MUSIC_PATH + s;
-                const AB = ResourceManager.loadResourceAsArrayBuffer(soundPath)
-                    .then(bu => {
-                        return {
-                            p: soundPath,
-                            b: bu
-                        }
-                    });
-
-                proArr.push(AB);
-            });
-        }
-        window.proAll = proArr;
-        SOUND.audioInstance = new Framework.Audio();
-
-        return Promise.all(proArr).then(x => {
-            let soundList = {};
-            x.forEach(a=>{
-                soundList[a.p]=a.b.slice(0);
-            });
-            SOUND.audioInstance.addSongs(soundList);
+        SOUND[k].forEach(k => {
+            allSound.add(define.MUSIC_PATH + k);
         });
-    };
+    }
 
     lf2.Effect.sound = SOUND;
+    Object.freeze(allSound);
+    lf2.Effect.allSound = allSound;
 
     /**
      *
      * @param effectCode
      * @param {Number} [fall]
      */
-    lf2.Effect.sound.play = (effectCode, fall) => {
+    lf2.Effect.sound.play = (audioInstance, effectCode, fall) => {
         const ARR = SOUND[effectCode];
 
         if (ARR) {
             const index = fall && ARR.length > 1 ? 1 : 0;
-            SOUND.audioInstance.play({
-                name: define.MUSIC_PATH + ARR[index]
-            });
+            audioInstance.play(define.MUSIC_PATH + ARR[index]);
         }
     };
 

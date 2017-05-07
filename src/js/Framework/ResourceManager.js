@@ -2,7 +2,7 @@
 var Framework = (function (Framework) {
     const DELAY_TIME = 0;
 
-    Framework.ResourceManager = (function () {
+    (function () {
         var _requestCount = 0,
             _responseCount = 0,
             _timeountIDPrevious = 0,
@@ -186,7 +186,7 @@ var Framework = (function (Framework) {
         /**
          * Resources
          *
-         * @class ResourceManager
+         * @class {Framework.ResourceManager}
          * @namespace Framework
          */
         class ResourceManager {
@@ -268,6 +268,9 @@ var Framework = (function (Framework) {
             }
 
             loadResourceAsArrayBuffer(url) {
+                if (typeof url !== 'string') {
+                    throw new SyntaxError('U should pass a url to this method');
+                }
                 url = url.replace(/\\/g, '/');
                 url = url.replace(/\/\//g, '/');
 
@@ -424,7 +427,7 @@ var Framework = (function (Framework) {
         }
         ;
 
-        ResourceManagerInstance = new ResourceManager();
+        Framework.ResourceManager = ResourceManagerInstance = new ResourceManager();
         return ResourceManagerInstance;
     })();
     return Framework;

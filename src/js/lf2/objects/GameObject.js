@@ -8,12 +8,12 @@ var lf2 = (function (lf2) {
 
     const ResourceManager = Framework.ResourceManager;
 
+    const Effect = lf2.Effect;
+
     /**
      * @class {lf2.Frame}
      */
     const Frame = lf2.Frame;
-
-    let soundPool = {};
 
     /**
      * GameObject
@@ -33,8 +33,7 @@ var lf2 = (function (lf2) {
             this.id = intval(fileInfo.id);
             this.bmpInfo = new BmpInfo(context);
             this.frames = lf2.GameObject._parseFrames(context);
-            this._audio = null;
-            this._preLoadSound();
+            this._audio = new Framework.Audio();
         }
 
         /**
@@ -94,15 +93,21 @@ var lf2 = (function (lf2) {
          *
          * Gets sound list.
          *
-         * @return  The sound list.
+         * @return {Set} The sound list.
          */
         getSoundList() {
             let soundSet = new Set();
+
+            Effect.allSound.forEach(effectSoundPath => {
+                soundSet.add(effectSoundPath);
+            });
+
             this.frames.forEach(frame => {
                 if (frame.soundPath !== undefined) {
                     soundSet.add(frame.soundPath);
                 }
             });
+
 
             return soundSet;
         }
@@ -112,32 +117,16 @@ var lf2 = (function (lf2) {
          * @private
          */
         _preLoadSound() {
-            this._audio = new Framework.Audio();
+            let soundPool = {};
             this.getSoundList().forEach(soundPath => {
-                if (!soundPool[soundPath]) {
-                    /*
-                     this.addPreloadResource(frame.soundPath).then(rep=>{
-                     return rep.arrayBuffer();
-                     }).then((buf)=>{
-                     let obj = {};
-                     obj[frame.soundPath] = buf;
-                     this._audio.addSongs(obj);
-                     });
-                     */
-
-                    this.addPreloadResource(
-                        ResourceManager.loadResourceAsArrayBuffer(soundPath)
-                    ).then((buffer) => {
-                        let obj = {};
-                        soundPool[soundPath] = obj[soundPath] =
-                            buffer;
-
-                        this._audio.addSongs(obj);
-                    });
-                    soundPool[soundPath] = true;
+                if (typeof soundPool[soundPath] === 'undefined') {
+                    soundPool[soundPath] = soundPath;
                 }
             });
 
+            return this.addPreloadResource(
+                this._audio.addSongs(soundPool)
+            );
         }
     };
 

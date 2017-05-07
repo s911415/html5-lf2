@@ -41,12 +41,8 @@ var lf2 = (function (lf2) {
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             //播放時, 需要給name, 其餘參數可參考W3C
             this.audio = new Framework.Audio({
-                ok: {
-                    ogg: define.MUSIC_PATH + 'm_ok.ogg',
-                },
-                cancel: {
-                    ogg: define.MUSIC_PATH + 'm_cancel.ogg',
-                },
+                ok: define.MUSIC_PATH + 'm_ok.ogg',
+                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
             });
 
             this.config = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY))

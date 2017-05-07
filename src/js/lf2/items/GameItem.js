@@ -2,6 +2,7 @@
 var lf2 = (function (lf2) {
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
+    const Audio = Framework.Audio;
     const Utils = lf2.Utils;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;

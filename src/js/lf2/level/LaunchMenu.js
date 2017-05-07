@@ -32,24 +32,11 @@ var lf2 = (function (lf2) {
             //載入要被播放的音樂清單
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             this.audio = new Framework.Audio({
-                ok: {
-                    ogg: define.MUSIC_PATH + 'm_ok.ogg',
-                },
-                join: {
-                    ogg: define.MUSIC_PATH + 'm_join.ogg',
-                },
-                cancel: {
-                    ogg: define.MUSIC_PATH + 'm_cancel.ogg',
-                },
-                pass: {
-                    ogg: define.MUSIC_PATH + 'm_pass.ogg',
-                },
-                end: {
-                    ogg: define.MUSIC_PATH + 'm_end.ogg',
-                },
-                bgm: {
-                    ogg: define.BGM_PATH + 'main.ogg',
-                },
+                ok: define.MUSIC_PATH + 'm_ok.ogg',
+                join: define.MUSIC_PATH + 'm_join.ogg',
+                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
+                pass: define.MUSIC_PATH + 'm_pass.ogg',
+                end: define.MUSIC_PATH + 'm_end.ogg',
             });
 
             this.html = '';
@@ -72,7 +59,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         initialize() {
-            this.audio.play(lf2['!MainGame'].bgmParam);
+            // this.audio.play(lf2['!MainGame'].bgmParam);
         }
 
         /**
@@ -120,7 +107,7 @@ var lf2 = (function (lf2) {
 
         _fullScreenGame() {
             if (define.DEBUG) return;
-            
+
             if (
                 false
             // document.fullscreenElement ||
