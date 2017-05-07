@@ -1,7 +1,5 @@
 "use strict";
 var lf2 = (function (lf2) {
-    const ResourceManager = Framework.ResourceManager;
-
     /**
      * Itr Effect
      *
@@ -33,47 +31,33 @@ var lf2 = (function (lf2) {
     // SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_ICE] = ['065.ogg'];
 
+    let allSound = new Set();
+    for (let k in SOUND) {
+        if (!(SOUND[k] instanceof Array)) continue;
 
-    SOUND.createAudio = () => {
-        let soundList = {}, proArr = [];
-        for (let k in SOUND) {
-            if (!(SOUND[k] instanceof Array)) continue;
-
-            SOUND[k].forEach(s => {
-                const soundPath = define.MUSIC_PATH + s;
-                const AB = ResourceManager.loadResourceAsBlob(soundPath)
-                    .then(bu => {
-                        soundList[soundPath] = {
-                            ogg: bu
-                        };
-                    });
-
-                proArr.push(AB);
-            });
-        }
-        window.proAll = proArr;
-
-        return Promise.all(proArr).then(x => {
-            SOUND.audioInstance = new Framework.Audio(soundList);
+        SOUND[k].forEach(k => {
+            allSound.add(define.MUSIC_PATH + k);
         });
-    };
+    }
 
     lf2.Effect.sound = SOUND;
+    Object.freeze(allSound);
+    lf2.Effect.allSound = allSound;
 
     /**
      *
      * @param effectCode
      * @param {Number} [fall]
      */
-    lf2.Effect.sound.play = (effectCode, fall) => {
+    lf2.Effect.sound.getSoundPath = (effectCode, fall) => {
         const ARR = SOUND[effectCode];
 
         if (ARR) {
             const index = fall && ARR.length > 1 ? 1 : 0;
-            SOUND.audioInstance.play({
-                name: define.MUSIC_PATH + ARR[index]
-            });
+            return (define.MUSIC_PATH + ARR[index]);
         }
+
+        return undefined;
     };
 
     // Object.freeze(SOUND);

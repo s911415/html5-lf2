@@ -41,12 +41,8 @@ var lf2 = (function (lf2) {
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             //播放時, 需要給name, 其餘參數可參考W3C
             this.audio = new Framework.Audio({
-                ok: {
-                    ogg: define.MUSIC_PATH + 'm_ok.ogg',
-                },
-                cancel: {
-                    ogg: define.MUSIC_PATH + 'm_cancel.ogg',
-                },
+                ok: define.MUSIC_PATH + 'm_ok.ogg',
+                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
             });
 
             this.config = JSON.parse(localStorage.getItem(define.KEYBOARD_CONFIG_KEY))
@@ -175,13 +171,13 @@ var lf2 = (function (lf2) {
                 });
 
                 this._settingContainer.find(".btn_ok").click((e) => {
-                    this.audio.play({name: 'ok'});
+                    this.audio.play('ok');
                     this.saveConfig();
                     Game.goToLevel('menu');
                 });
 
                 this._settingContainer.find(".btn_cancel").click((e) => {
-                    this.audio.play({name: 'cancel'});
+                    this.audio.play('cancel');
                     Game.goToLevel('menu');
                 });
                 this.forceDraw();

@@ -21,7 +21,6 @@ var lf2 = (function (lf2) {
         constructor(fileInfo, context) {
             super(fileInfo, context);
             const headerData = this.bmpInfo._data;
-
             this._hitSoundUrl = headerData.get("weapon_hit_sound");
             this._dropSoundUrl = headerData.get("weapon_drop_sound");
             this._brokenSoundUrl = headerData.get("weapon_broken_sound");
@@ -31,21 +30,21 @@ var lf2 = (function (lf2) {
          * Play hit sound
          */
         playHitSound() {
-            this._hitSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._hitSoundUrl});
+            this._hitSoundUrl && this._audio.play(define.MUSIC_PATH + this._hitSoundUrl);
         }
 
         /**
          * Play drop sound
          */
         playDropSound() {
-            this._dropSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._dropSoundUrl});
+            this._dropSoundUrl && this._audio.play(define.MUSIC_PATH + this._dropSoundUrl);
         }
 
         /**
          * Play borken sound
          */
         playBrokenSound() {
-            this._brokenSoundUrl && this._audio.play({name: define.MUSIC_PATH + this._brokenSoundUrl});
+            this._brokenSoundUrl && this._audio.play(define.MUSIC_PATH + this._brokenSoundUrl);
         }
 
         /**
@@ -58,7 +57,9 @@ var lf2 = (function (lf2) {
         getSoundList() {
             let soundSet = super.getSoundList();
             SOUND_KEY.forEach((k) => {
-                if (this[k]) soundSet.add(this._hitSoundUrl);
+                if (this[k]) {
+                    soundSet.add(define.MUSIC_PATH + this[k]);
+                }
             });
 
             return soundSet;

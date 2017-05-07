@@ -430,7 +430,6 @@ var lf2 = (function (lf2) {
             }
 
 
-
         }
 
         /**
@@ -543,12 +542,12 @@ var lf2 = (function (lf2) {
                 this.freeze();
             }
 
-            if(
+            if (
                 this.currentFrame.mp &&
                 this.previousFrame && this.currentFrame &&
                 this.previousFrame.nextFrameId === this._currentFrameIndex
-            ){
-                if(!this.belongTo.requestMp(-this.currentFrame.mp)){
+            ) {
+                if (!this.belongTo.requestMp(-this.currentFrame.mp)) {
                     this.setNextFrame(this.currentFrame.hit.d);
                 }
             }
@@ -737,12 +736,12 @@ var lf2 = (function (lf2) {
                             break;
                     }
                     //Play effect sound
-                    Effect.sound.play(ITR.effect, isFallDown);
+                    this.playEffectSound(ITR.effect, isFallDown);
                     break;
                 case ItrKind.WHIRLWIND_ICE:
                 case ItrKind.WHIRLWIND_WIND:
                     this.setNextFrame(200);
-                    Effect.sound.play(Effect.ICE, isFallDown);
+                    this.playEffectSound(Effect.ICE, isFallDown);
                     break;
                 case ItrKind.THREE_D_OBJECTS:
                     this.freeze();
@@ -751,16 +750,16 @@ var lf2 = (function (lf2) {
 
             //Play effect sound
             if (curState === FrameStage.ICE) {
-                Effect.sound.play(Effect.ICE, isFallDown);
+                this.playEffectSound(Effect.ICE, isFallDown);
             } else {
                 switch (ITR.kind) {
                     case ItrKind.NORMAL_HIT:
                         //Play effect sound
-                        Effect.sound.play(ITR.effect, isFallDown);
+                        this.playEffectSound(ITR.effect, isFallDown);
                         break;
                     case ItrKind.WHIRLWIND_ICE:
                     case ItrKind.WHIRLWIND_WIND:
-                        Effect.sound.play(Effect.ICE, isFallDown);
+                        this.playEffectSound(Effect.ICE, isFallDown);
                         break;
                 }
             }
@@ -775,6 +774,13 @@ var lf2 = (function (lf2) {
         postDamageItems(gotDamageItems) {
             super.postDamageItems(gotDamageItems);
 
+        }
+
+        playEffectSound(effectCode, fall) {
+            const soundPath = Effect.sound.getSoundPath(effectCode, fall);
+            if (soundPath) {
+                this._audio.play(soundPath);
+            }
         }
 
         /**
