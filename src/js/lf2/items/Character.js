@@ -418,7 +418,7 @@ var lf2 = (function (lf2) {
             super.draw(ctx);
             const curFrame = this.currentFrame;
 
-            if (this.belongTo && this.belongTo.status) {
+            if (this._allowDraw && this.belongTo && this.belongTo.status) {
                 const status = this.belongTo.status;
                 if (curFrame.bpoint) {
                     if (status.HPRadio <= DRAW_BLOOD_PERCENTAGE) {
