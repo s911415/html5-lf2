@@ -155,11 +155,11 @@ var lf2 = (function (lf2) {
                 this._menuContainer.attr("id", _MENU_CONTAINER_ID);
                 this._menuContainer.find("#start_game_btn").click((e) => {
                     this._fullScreenGame();
-                    this.audio.play({name: 'ok'});
+                    this.audio.play('ok');
                     Game.goToLevel('loading');
                 });
                 this._menuContainer.find("#control_set_btn").click((e) => {
-                    this.audio.play({name: 'ok'});
+                    this.audio.play('ok');
                     Game.goToLevel('control');
                 });
 

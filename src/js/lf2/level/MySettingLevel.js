@@ -171,13 +171,13 @@ var lf2 = (function (lf2) {
                 });
 
                 this._settingContainer.find(".btn_ok").click((e) => {
-                    this.audio.play({name: 'ok'});
+                    this.audio.play('ok');
                     this.saveConfig();
                     Game.goToLevel('menu');
                 });
 
                 this._settingContainer.find(".btn_cancel").click((e) => {
-                    this.audio.play({name: 'cancel'});
+                    this.audio.play('cancel');
                     Game.goToLevel('menu');
                 });
                 this.forceDraw();

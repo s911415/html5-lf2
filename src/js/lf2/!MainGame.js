@@ -23,6 +23,7 @@ var lf2 = (function (lf2) {
             this.bgmParam = {
                 name: 'bgm',
                 loop: true,
+                stopPrevious: true
             };
             Object.defineProperty(this.bgmParam, 'volume', {
                 configurable: false,

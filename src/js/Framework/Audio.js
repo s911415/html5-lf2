@@ -16,8 +16,8 @@ var Framework = (function (Framework) {
         constructor(playlist) {
             this._playList = new Map();
             this.audioCtx = AudioCtx;
-            this.gainNodeLeft;
-            this.gainNodeRight;
+            this.gainNodeLeft = this.audioCtx.createGain();
+            this.gainNodeRight = this.audioCtx.createGain();
             this._promisies = [];
             this._leftVolume = 1;
             this._rightVolume = 1;
@@ -117,7 +117,8 @@ var Framework = (function (Framework) {
             opts = opts || {};
             let options = {
                 loop: false,
-                volume: 1
+                volume: 1,
+                stopPrevious: true
             };
 
             //Override exist config
@@ -131,6 +132,10 @@ var Framework = (function (Framework) {
                 this.volume = options.volume;
             }
 
+            if (options.stopPrevious) {
+                this.stop();
+            }
+
             const soundPath = this._playList.get(soundName);
             if (soundPath === undefined) throw Error(`Cannot found sound with name: ${soundName}`);
             this.gainNodeLeft = this.gainNodeRight = null;
@@ -141,6 +146,8 @@ var Framework = (function (Framework) {
                     const merger = this.audioCtx.createChannelMerger(2);
                     const gainNodeLeft = this.audioCtx.createGain();
                     const gainNodeRight = this.audioCtx.createGain();
+                    // const gainNodeLeft = this.gainNodeLeft;
+                    // const gainNodeRight = this.gainNodeRight;
                     source.buffer = buf;
                     source.connect(splitter);
                     splitter.connect(gainNodeLeft, 0);
@@ -155,6 +162,7 @@ var Framework = (function (Framework) {
                     this.leftVolume = this.leftVolume;
                     this.rightVolume = this.rightVolume;
 
+                    source.loop = options.loop;
                     source.start(0);
                 });
         }
