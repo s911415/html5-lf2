@@ -30,7 +30,7 @@ var lf2 = (function (lf2) {
 
         update() {
             super.update();
-            if(this._attached) return;
+            if (this._attached) return;
 
             let opoint = new lf2.ObjectPoint(`kind: 1  x: 0  y: 5  action: 0  dvx: 20  dvy: 0  oid: 228  facing: 0`);
 
@@ -44,6 +44,10 @@ var lf2 = (function (lf2) {
          */
         getTarget() {
             return null;
+        }
+
+        get FA() {
+            return 13;
         }
     };
 

@@ -136,7 +136,7 @@ var lf2 = (function (lf2) {
             if (this.checkGameOver()) {
                 this._gameOver = true;
                 this._gameOverTime = Date.now();
-                this.showGameOverPanel();
+                setTimeout(()=>this.showGameOverPanel(), 2000);
             }
         }
 
@@ -340,7 +340,7 @@ var lf2 = (function (lf2) {
 
             this._gameOverTimeVal.text(`${mm.toString().padStart(2, '0')}:${ss.toString().padStart(2, '0')}`);
 
-            this.audio.play({name: 'end'});
+            this.audio.play('end');
             this._gameOverPanelShown = true;
         }
     };
