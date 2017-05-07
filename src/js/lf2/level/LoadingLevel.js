@@ -206,8 +206,6 @@ var lf2 = (function (lf2) {
                 console.log("GameMap all loaded");
 
                 return data;
-            }).then((a, b)=>{
-                return lf2.Effect.sound.createAudio();
             }).then((a, b) => {
                 console.log("Preloading extra image resources");
                 let arrUrl = [
@@ -329,6 +327,7 @@ var lf2 = (function (lf2) {
             }
 
             GameObjectPool.set(info.id, obj);
+            obj._preLoadSound();
 
             return obj;
         }

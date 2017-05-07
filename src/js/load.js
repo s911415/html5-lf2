@@ -37,7 +37,7 @@
         //"Framework/circleComponent.js",
         //"Framework/polygonComponent.js",
         //"Framework/squareComponent.js",
-        "Framework/triangleComponent.js",
+        //"Framework/triangleComponent.js",
 
         //Game Component
         "lf2/!loadComponent.js",

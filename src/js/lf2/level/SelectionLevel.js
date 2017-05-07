@@ -73,21 +73,12 @@ var lf2 = (function (lf2) {
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             //播放時, 需要給name, 其餘參數可參考W3C
             this.audio = new Framework.Audio({
-                ok: {
-                    ogg: define.MUSIC_PATH + 'm_ok.ogg',
-                },
-                join: {
-                    ogg: define.MUSIC_PATH + 'm_join.ogg',
-                },
-                cancel: {
-                    ogg: define.MUSIC_PATH + 'm_cancel.ogg',
-                },
-                pass: {
-                    ogg: define.MUSIC_PATH + 'm_pass.ogg',
-                },
-                end: {
-                    ogg: define.MUSIC_PATH + 'm_end.ogg',
-                },
+                ok: define.MUSIC_PATH + 'm_ok.ogg',
+                join: define.MUSIC_PATH + 'm_join.ogg',
+                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
+            });
+            this._chectAudio = new Framework.Audio({
+                pass: define.MUSIC_PATH + 'm_pass.ogg',
             });
 
             this.players = [];
@@ -127,7 +118,7 @@ var lf2 = (function (lf2) {
             });
 
             this._isEnteringPanelShowed = false;
-            
+
             this._stopAllMusic();
             this.checkCheat();
         }
@@ -379,7 +370,7 @@ var lf2 = (function (lf2) {
                                 break;
                         }
 
-                        this.audio.play({name: 'ok'});
+                        this.audio.play('ok');
                     }
 
                     if (itemOffset !== 0) {
@@ -394,9 +385,9 @@ var lf2 = (function (lf2) {
 
             if (prevStage !== stage && !this._isEnteringPanelShowed) {
                 if (player.isKeyPressed(KeyboardConfig.KEY_MAP.ATTACK)) {
-                    this.audio.play({name: 'join'});
+                    this.audio.play('join');
                 } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.JUMP)) {
-                    this.audio.play({name: 'cancel'});
+                    this.audio.play('cancel');
                 }
             }
 
@@ -615,7 +606,7 @@ var lf2 = (function (lf2) {
         checkCheat() {
             if (this._cheatMusicPlayed) return true;
             if (lf2['!MainGame'].cheat) {
-                this.audio.play({name: 'pass'});
+                this._chectAudio.play('pass');
 
                 this._cheatMusicPlayed = true;
 
@@ -634,8 +625,8 @@ var lf2 = (function (lf2) {
 
             return this.getCharIdInRange(newIndex, offset);
         }
-        
-        _stopAllMusic() {            
+
+        _stopAllMusic() {
             lf2.Egg.stop();
             // Framework.Audio.stopAll();
         }

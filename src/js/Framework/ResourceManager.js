@@ -2,7 +2,7 @@
 var Framework = (function (Framework) {
     const DELAY_TIME = 0;
 
-    Framework.ResourceManager = (function () {
+    (function () {
         var _requestCount = 0,
             _responseCount = 0,
             _timeountIDPrevious = 0,
@@ -13,7 +13,9 @@ var Framework = (function (Framework) {
             _subjectFunction = function () {
             },
             ResourceManagerInstance,
-            _resourceBlobCache = new Map();
+            _resourceBlobCache = new Map(),
+            _resourceArrayBufferCache = new Map()
+        ;
 
 
         var getFinishedRequestPercent = function () {
@@ -184,7 +186,7 @@ var Framework = (function (Framework) {
         /**
          * Resources
          *
-         * @class ResourceManager
+         * @class {Framework.ResourceManager}
          * @namespace Framework
          */
         class ResourceManager {
@@ -261,6 +263,37 @@ var Framework = (function (Framework) {
                             _resourceBlobCache.set(url, URL.createObjectURL(b));
 
                             return _resourceBlobCache.get(url);
+                        });
+                }
+            }
+
+            loadResourceAsArrayBuffer(url) {
+                if (typeof url !== 'string') {
+                    throw new SyntaxError('U should pass a url to this method');
+                }
+                url = url.replace(/\\/g, '/');
+                url = url.replace(/\/\//g, '/');
+
+                if (_resourceArrayBufferCache.has(url)) {
+                    return new Promise((a, b) => {
+                        const oBuf = _resourceArrayBufferCache.get(url);
+                        let bufClone = new ArrayBuffer(oBuf.byteLength);
+
+                        return a(oBuf.slice(0));
+                    });
+                } else {
+                    _requestCount++;
+                    return fetch(url, {
+                        method: 'GET',
+                    })
+                        .then(r => r.arrayBuffer())
+                        .then(b => {
+                            finishLoading();
+                            _responseCount++;
+
+                            _resourceArrayBufferCache.set(url, b.slice(0));
+
+                            return _resourceArrayBufferCache.get(url);
                         });
                 }
             }
@@ -394,7 +427,7 @@ var Framework = (function (Framework) {
         }
         ;
 
-        ResourceManagerInstance = new ResourceManager();
+        Framework.ResourceManager = ResourceManagerInstance = new ResourceManager();
         return ResourceManagerInstance;
     })();
     return Framework;

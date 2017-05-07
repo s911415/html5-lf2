@@ -13,8 +13,8 @@ var lf2 = (function (lf2) {
         KEY_LIST: ["UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "JUMP", "DEFEND"],
     };
     KEY_MAP.REVERT_MAP = {};
-    for(let k in KEY_MAP){
-        if(isFinite(KEY_MAP[k])) KEY_MAP.REVERT_MAP[KEY_MAP[k]] = k;
+    for (let k in KEY_MAP) {
+        if (isFinite(KEY_MAP[k])) KEY_MAP.REVERT_MAP[KEY_MAP[k]] = k;
     }
     Object.freeze(KEY_MAP.REVERT_MAP);
     Object.freeze(KEY_MAP);
@@ -53,32 +53,42 @@ var lf2 = (function (lf2) {
             "j", "d", "a",
 
             "_ul", "_ur", "_dl", "_dr",
-            "_up","_down","_left","_right",
+            "_up", "_down", "_left", "_right",
         ],
     };
     Object.freeze(HIT_KEY);
 
     const DEFAULT_CONFIG = [
         {
-            NAME: "Player1",
-            UP: 87, DOWN: 83, LEFT: 65, RIGHT: 68,
-            ATTACK: 78, JUMP: 66, DEFEND: 86
+            "NAME": "Player1",
+            "UP": 38,
+            "DOWN": 40,
+            "LEFT": 37,
+            "RIGHT": 39,
+            "ATTACK": 67,
+            "JUMP": 88,
+            "DEFEND": 90
         },
         {
-            NAME: "Player2",
-            UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
-            ATTACK: 221, JUMP: 219, DEFEND: 80
+            "NAME": "Player2",
+            "UP": 104,
+            "DOWN": 98,
+            "LEFT": 100,
+            "RIGHT": 102,
+            "ATTACK": 187,
+            "JUMP": 189,
+            "DEFEND": 48
         },
-        // {
-        //     NAME: "Player3",
-        //     UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
-        //     ATTACK: 221, JUMP: 219, DEFEND: 80
-        // },
-        // {
-        //     NAME: "Player4",
-        //     UP: 38, DOWN: 40, LEFT: 37, RIGHT: 39,
-        //     ATTACK: 221, JUMP: 219, DEFEND: 80
-        // }
+        /*{
+            "NAME": "Player3",
+            "UP": 87,
+            "DOWN": 83,
+            "LEFT": 65,
+            "RIGHT": 68,
+            "ATTACK": 72,
+            "JUMP": 71,
+            "DEFEND": 70
+        }*/
     ];
     Object.freeze(DEFAULT_CONFIG);
 
@@ -102,7 +112,7 @@ var lf2 = (function (lf2) {
             this.config = lf2.KeyboardConfig.getKeyConfig()[playerId] || {};
             this.keyMap = new Map();
             //{"NAME":"Player1","UP":38,"DOWN":40,"LEFT":37,"RIGHT":39,"ATTACK":68,"JUMP":83,"DEFEND":65}
-            KEY_MAP.KEY_LIST.forEach((keyName)=>{
+            KEY_MAP.KEY_LIST.forEach((keyName) => {
                 this.keyMap.set(this.config[keyName], KEY_MAP[keyName]);
             });
         }
