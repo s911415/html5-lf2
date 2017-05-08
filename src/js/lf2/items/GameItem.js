@@ -17,10 +17,10 @@ var lf2 = (function (lf2) {
     const NONE = -1;
     const STOP_ALL_MOVE_DV = 550;
 
-    const FRICTION = 0.2;
+    const FRICTION = 0.25;
     const MIN_SPEED = 1;
-    const MIN_V = 0.2;
-    const GRAVITY = 2; // 1.7
+    const MIN_V = 1;
+    const GRAVITY = 1.7; // 1.7
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
@@ -59,7 +59,8 @@ var lf2 = (function (lf2) {
      * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
      */
-    lf2.GameItem = class GameItem extends Framework.GameObject {
+    let GameItem;
+    lf2.GameItem = GameItem = class GameItem extends Framework.GameObject {
         /**
          *
          * @param gameObjId ID of character
@@ -308,10 +309,17 @@ var lf2 = (function (lf2) {
 
         applyFriction() {
             if (this._affectByFriction) {
+                const FX = GameItem.ApplyFriction(this._velocity.x);
+                const FZ = GameItem.ApplyFriction(this._velocity.z);
+
                 // Only apply friction on ground
                 if (this.position.z === 0) {
-                    this._velocity.x -= GameItem.ApplyFriction(this._velocity.x);
-                    this._velocity.z -= GameItem.ApplyFriction(this._velocity.z);
+                    if (FX && this._velocity.x) {
+                        this._velocity.x += this._velocity.x > 0 ? -FX : FX;
+                    }
+                    if (FZ && this._velocity.z) {
+                        this._velocity.z += this._velocity.z > 0 ? -FZ : FZ;
+                    }
                 }
 
                 if (this.position.z < 0) {
@@ -330,6 +338,7 @@ var lf2 = (function (lf2) {
                 // End of friction
             }
         }
+
 
         /**
          *
@@ -856,16 +865,46 @@ var lf2 = (function (lf2) {
 
         /**
          *
+         * @param {Number} speed
+         */
+        static GetFriction(speed) {
+            //a lookup table
+            const TABLE = {
+                //speed: friction
+                3: 1,
+                5: 2,
+                6: 4, //smaller or equal to 6, value is 4
+                9: 5,
+                13: 7,
+                25: 9 //guess entry
+            };
+
+            if (speed < 0) speed = -speed;
+
+            let targetSpeed;
+            for (targetSpeed in TABLE) {
+                if (speed <= targetSpeed) {
+                    return TABLE[targetSpeed];
+                }
+            }
+
+            return TABLE[targetSpeed];
+        }
+
+        /**
+         *
          * @param {Number} val
          * @param {Number} [f] friction
-         * @return {number}
+         * @return {Number}
          */
         static ApplyFriction(val, f) {
-            if (f === undefined) f = FRICTION;
+            if (f === undefined) {
+                f = GameItem.GetFriction(val);
+            }
             if (val === 0) return 0;
             if (val === STOP_ALL_MOVE_DV) return 0;
 
-            return val * f;
+            return FRICTION * f;
         };
 
     };
