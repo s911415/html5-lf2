@@ -143,7 +143,9 @@ var lf2 = (function (lf2) {
                             this._remainderTime = INIT_TIME
                         }
 
-                    } else if (this._behavior.FA === hit.Fa) {
+                    }
+
+                    if (this._behavior.FA === hit.Fa) {
                         return this._behavior.getVelocity();
                     }
                     // }else{
@@ -154,12 +156,17 @@ var lf2 = (function (lf2) {
 
                 switch (hit.Fa) {
                     case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
-                    case 14: //追敵人的center(因為敵人站在地面，所以會下飄)
                         this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
+                    break;
+                    case 14: //連環重炮
+                        this._behavior = new lf2.JulianBallTrackerBehavior(this, this.spriteParent);
                         break;
                     case 2: //水平追敵
-                    case 3: //加速法追敵(追縱力較差)
                         this._behavior = new lf2.HorizontalTrackerBehavior(this, this.spriteParent);
+                        break;
+
+                    case 3: //加速法追敵(追縱力較差)
+                        this._behavior = new lf2.SpeedUpTrackerBehavior(this, this.spriteParent);
                         break;
 
                     case 10:

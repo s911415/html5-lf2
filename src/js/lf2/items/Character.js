@@ -352,6 +352,32 @@ var lf2 = (function (lf2) {
             let x, y, z;
             x = y = z = 0;
             switch (this.currentFrame.state) {
+
+                default:
+                    x = this.currentFrame.velocity.x;
+                    y = this.currentFrame.velocity.y;
+                    z = this.currentFrame.velocity.z;
+            }
+
+            if (this._itrItem) {
+                const ITR = this._itrItemFrame.itr;
+                if (!ITR) throw "Some wrong";
+
+                switch (ITR.kind) {
+                    case ItrKind.THREE_D_OBJECTS:
+                        x = z = 0;
+                        break;
+                }
+            }
+
+            return new Framework.Point3D(x, y, z);
+        }
+
+        applyFriction() {
+            super.applyFriction();
+            let x, y, z;
+            x = y = z = undefined;
+            switch (this.currentFrame.state) {
                 case FrameStage.WALK:
 
                     if (this.containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
@@ -387,24 +413,11 @@ var lf2 = (function (lf2) {
 
                     }
                     break;
-                default:
-                    x = this.currentFrame.velocity.x;
-                    y = this.currentFrame.velocity.y;
-                    z = this.currentFrame.velocity.z;
             }
 
-            if (this._itrItem) {
-                const ITR = this._itrItemFrame.itr;
-                if (!ITR) throw "Some wrong";
-
-                switch (ITR.kind) {
-                    case ItrKind.THREE_D_OBJECTS:
-                        x = z = 0;
-                        break;
-                }
-            }
-
-            return new Framework.Point3D(x, y, z);
+            if (x !== undefined) this._velocity.x = x;
+            if (y !== undefined) this._velocity.y = y;
+            if (z !== undefined) this._velocity.z = z;
         }
 
         /**
