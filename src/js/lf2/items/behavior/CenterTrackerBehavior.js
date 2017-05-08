@@ -6,7 +6,6 @@ var lf2 = (function (lf2) {
     const GameItem = lf2.GameItem;
     const MIN_V = GameItem.MIN_V;
     const GRAVITY = GameItem.GRAVITY;
-    const FRICTION = GameItem.FRICTION;
     const Utils = lf2.Utils;
     const MIN_SPEED = 10;
 
@@ -36,8 +35,11 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
 
-            this._radius += GRAVITY;
-            if (this._radius > this._maxVelocity.x) this._radius = this._maxVelocity.x;
+            if (this._radius < this._maxVelocity.x) {
+                this._radius += GRAVITY;
+            } else if (this._radius > this._maxVelocity.x) {
+                this._radius = this._maxVelocity.x;
+            }
         }
 
         /**
@@ -55,7 +57,7 @@ var lf2 = (function (lf2) {
             vx = vy = vz = 0;
 
             if (TARGET !== null) {
-                const IS_FRONT = this._ball.isFront(TARGET);
+                let IS_FRONT = this._ball.isFront(TARGET);
 
                 if (IS_FRONT) {
                     const p1 = new Point(this._ball.position.x, this._ball.position.y);
@@ -63,7 +65,7 @@ var lf2 = (function (lf2) {
                     const RAD = Utils.GetRadBasedOnPoints(p1, p2);
 
                     vx = this._radius * Math.cos(RAD);
-                    vz = this._radius * Math.sin(RAD);
+                    vz = (this._radius * .5 ) * Math.sin(RAD);
 
                     if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
                 } else {
@@ -85,7 +87,7 @@ var lf2 = (function (lf2) {
                 if (Math.abs(vy) > this._maxVelocity.y && this._maxVelocity.y !== 0) vy = Math.sign(vy) * this._maxVelocity.y;
             }
 
-            if(Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
+            // if(Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
 
             return new Point3D(vx, vy, vz);
         }
@@ -104,6 +106,7 @@ var lf2 = (function (lf2) {
                 this._maxVelocity.x = Math.abs(this._maxVelocity.x);
                 this._maxVelocity.y = Math.abs(this._maxVelocity.y);
                 this._maxVelocity.z = Math.abs(this._maxVelocity.z);
+                Object.freeze(this._maxVelocity);
                 this._radius = this._maxVelocity.x;
             }
             this._targetCatched = true;

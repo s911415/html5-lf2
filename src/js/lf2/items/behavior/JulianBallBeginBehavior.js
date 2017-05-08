@@ -32,7 +32,7 @@ var lf2 = (function (lf2) {
             super.update();
             if (this._attached) return;
 
-            let opoint = new lf2.ObjectPoint(`kind: 1  x: 0  y: 5  action: 0  dvx: 20  dvy: 0  oid: 228  facing: 0`);
+            let opoint = new lf2.ObjectPoint(`kind: 1  x: 0  y: 5  action: 0  dvx: 25  dvy: 0  oid: 228  facing: 0`);
 
             this.belongTo.addBall(opoint, this._ball);
             this._attached = true;

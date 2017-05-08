@@ -43,7 +43,9 @@
         'items/behavior/CenterTrackerBehavior.js',
         'items/behavior/FasterTrackerBehavior.js',
         'items/behavior/HorizontalTrackerBehavior.js',
+        'items/behavior/SpeedUpTrackerBehavior.js',
         'items/behavior/JulianBallBeginBehavior.js',
+        'items/behavior/JulianBallTrackerBehavior.js',
         'items/behavior/FirzenDisasterFallDownBeginBehavior.js',
         'items/behavior/FirzenDisasterFallDownBehavior.js',
 

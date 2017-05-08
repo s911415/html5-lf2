@@ -85,7 +85,9 @@ gulp.task('build', () => {
         'src/js/lf2/items/behavior/CenterTrackerBehavior.js',
         'src/js/lf2/items/behavior/FasterTrackerBehavior.js',
         'src/js/lf2/items/behavior/HorizontalTrackerBehavior.js',
+        'src/js/lf2/items/behavior/SpeedUpTrackerBehavior.js',
         'src/js/lf2/items/behavior/JulianBallBeginBehavior.js',
+        'src/js/lf2/items/behavior/JulianBallTrackerBehavior.js',
         'src/js/lf2/items/behavior/FirzenDisasterFallDownBeginBehavior.js',
         'src/js/lf2/items/behavior/FirzenDisasterFallDownBehavior.js',
 
