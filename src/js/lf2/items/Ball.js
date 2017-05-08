@@ -141,6 +141,8 @@ var lf2 = (function (lf2) {
                         if (this._behavior.FA !== hit.Fa) {
                             this._behavior = null;
                             this._remainderTime = INIT_TIME
+                        } else {
+                            return this._behavior._maxVelocity;
                         }
 
                     }
