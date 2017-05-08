@@ -25,9 +25,11 @@ var lf2 = (function (lf2) {
         constructor(ball, world) {
             super(ball, world);
 
-            this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
-            this._targetCatched = false;
 
+            this._maxVelocity = new Framework.Point3D(MIN_SPEED, 0, 5);
+
+            this._targetCatched = false;
+            
             // this._radiusLocked = false;
             // this._prevRadius = 0;
 
@@ -62,22 +64,20 @@ var lf2 = (function (lf2) {
                     const p1 = new Point(this._ball.position.x, -this._ball.position.z);
                     const p2 = new Point(TARGET.position.x, -TARGET.position.z);
                     // const RAD = this._radiusLocked ? this._prevRadius : Utils.GetRadBasedOnPoints(p1, p2) + (Math.random() - .5);
-
+                    
                     // this._prevRadius = RAD;
-
+                    
                     vx = this._radiusX;
                     vy = this._maxVelocity.y;
-                    vx += (this._radiusX >> 1) - (Math.random() * (this._radiusX >> 2));
-                    vy += (this._maxVelocity.y >> 1) - (Math.random() * (this._maxVelocity.y >> 2));
 
                     // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
-
+                    
                     // this._radiusLocked = true;
                 } else {
                     //轉向
                     // this._radiusLocked = false;
                     this._ball._direction = !this._ball._direction;
-                    this._radiusX = -this._maxVelocity.x;
+                    // this._radiusX = -this._maxVelocity.x;
                     vx = this._radiusX;
                 }
 
@@ -86,7 +86,7 @@ var lf2 = (function (lf2) {
                     vz = 0;
                 } else {
                     vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
-                    vz *= 10;
+                    vz *= GRAVITY;
                 }
             }
 

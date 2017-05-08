@@ -62,7 +62,7 @@ var lf2 = (function (lf2) {
         FRIENDS: '',
 
         AXYS_EGG: [],
-        AXYS_EGG_TIME: [1970, 6463, 2180, 6130, 8470, 8150, 3164],
+        AXYS_EGG_TIME: [6463, 2180, 6130, 8470, 8150, 3164],
 
         AddPlayQueue: (sound) => {
             if (!sound) return;
