@@ -642,16 +642,17 @@ var lf2 = (function (lf2) {
             const DV = ITR.dv;
             const curState = this.currentFrame.state;
 
+            const CAN_ATTACK = this.canDamageBy(item, ITR);
 
             if (ITR.kind === ItrKind.HEAL_BALL) {
-                if (item.belongTo !== this.belongTo) return false;
+                if (CAN_ATTACK) return false;
 
                 item.setNextFrame(40);
                 this.belongTo.addHp(ITR.injury);
                 return true;
             }
 
-            if (this.belongTo === item.belongTo /*&& item.currentFrame.state !== FrameStage.FIRE*/) return false;
+            if (!CAN_ATTACK) return false;
 
             //Accept injury
             switch (ITR.kind) {

@@ -368,6 +368,25 @@ var lf2 = (function (lf2) {
             return frame.id;
         }
 
+        canDamageBy(item, ITR) {
+            const itemState = item.currentFrame.state;
+            if (itemState === FrameStage.FIRE) return true;
+            if (ITR.kind === ItrKind.THREE_D_OBJECTS) return true;
+
+            switch (ITR.kind) {
+                case ItrKind.CATCH:
+                case ItrKind.PICK_WEAPON:
+                case ItrKind.CATCH_BDY:
+                case ItrKind.FALLING:
+                case ItrKind.WEAPON_STRENGTH:
+                case ItrKind.SUPER_PUNCH:
+                case ItrKind.PICK_WEAPON_2:
+                    return false;
+            }
+
+            return !this.isSameTeam(this, item);
+        }
+
         /**
          * Frame Exist
          * @param frameId
@@ -763,6 +782,10 @@ var lf2 = (function (lf2) {
                 = this._velocity.y
                 = this._velocity.z
                 = 0;
+        }
+
+        isSameTeam(item1, item2) {
+            return item1.belongTo === item2.belongTo;
         }
 
         /**

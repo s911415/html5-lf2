@@ -262,15 +262,9 @@ var lf2 = (function (lf2) {
                 DO_REBOUND();
                 return true;
             }
+            const CAN_ATTACK = this.canDamageBy(item, ITR);
 
-
-            if (this.belongTo === item.belongTo && itemState !== FrameStage.FIRE) {
-                return false;
-            }
-
-            if (ITR.kind !== ItrKind.NORMAL_HIT) {
-                return false;
-            }
+            if (!CAN_ATTACK) return false;
 
             switch (curState) {
                 case FrameStage.BALL_WIND_FLYING:
@@ -293,13 +287,22 @@ var lf2 = (function (lf2) {
                         this.freeze();
                     }
                     break;
+
+                case FrameStage.DISAPPEAR_WHEN_HIT:
+                    break;
                 default:
                     if (
+                        itemState !== FrameStage.FROZEN &&
+                        itemState !== FrameStage.FIRE &&
                         itemState !== FrameStage.BALL_WIND_FLYING &&
                         itemState !== FrameStage.BALL_HIT_HEART
                     ) {
-                        this.setNextFrame(20);
-                        this.freeze();
+                        if (ITR.kind === ItrKind.THREE_D_OBJECTS) {
+
+                        } else {
+                            this.setNextFrame(20);
+                            this.freeze();
+                        }
                     }
 
             }
@@ -334,6 +337,9 @@ var lf2 = (function (lf2) {
                     this.setNextFrame(HIT.d);
                 }
 
+            } else if (ITR && ITR.kind === ItrKind.THREE_D_OBJECTS) {
+                // DO NOTHING
+
             } else {
                 switch (state) {
                     case FrameStage.BALL_FLYING:
@@ -342,6 +348,7 @@ var lf2 = (function (lf2) {
                             this.obj.playHitSound();
                             this.freeze();
                         } else if (HIT_SAME_GROUP) {
+                            debugger;
                             this.setNextFrame(10);
                             this.obj.playHitSound();
                             this.freeze();
