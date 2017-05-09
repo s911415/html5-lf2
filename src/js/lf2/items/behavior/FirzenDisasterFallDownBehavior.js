@@ -69,8 +69,9 @@ var lf2 = (function (lf2) {
                     
                     // this._prevRadius = RAD;
                     let _x = this._counter;
-                    vx = this._radiusX * Math.exp(-_x * _x / 1e3);
-                    vy = this._maxVelocity.y;
+                    let eee = Math.exp(-_x * _x / 1e3);
+                    vx = this._radiusX * eee
+                    vy = this._maxVelocity.y * (1 - Math.exp(-_x * _x / 50));
 
                     // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
                     
@@ -96,7 +97,7 @@ var lf2 = (function (lf2) {
 
             // if (Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
             // if (Math.abs(vz) < MIN_SPEED) vz = Math.sign(vz) * MIN_SPEED;
-            if (Math.abs(vy) < Math.abs(this._maxVelocity.y)) vy = Math.abs(this._maxVelocity.y);
+            // if (Math.abs(vy) < Math.abs(this._maxVelocity.y)) vy = Math.abs(this._maxVelocity.y);
             /*vx |= 0;
             vy |= 0;
             vz |= 0;*/
@@ -115,7 +116,7 @@ var lf2 = (function (lf2) {
 
             if (!this._targetCatched) {
                 this._maxVelocity = this._ball._prevVelocity.clone();
-                this._maxVelocity.x = Math.abs(this._maxVelocity.x);
+                this._maxVelocity.x = Math.abs(this._maxVelocity.x) + (((Math.random() * 4) | 0) - 2);
                 this._maxVelocity.y = Math.abs(this._maxVelocity.y);
                 this._maxVelocity.z = Math.abs(this._maxVelocity.z);
                 this._radiusX = Math.abs(this._maxVelocity.x);

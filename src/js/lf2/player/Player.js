@@ -469,7 +469,6 @@ var lf2 = (function (lf2) {
                     zPos
                 );
 
-
                 if (ball._getVelocity().isZero && !opoint.dv.isZero) {
                     ball._velocity.x = opoint.dv.x;
                     ball._velocity.y = opoint.dv.y;

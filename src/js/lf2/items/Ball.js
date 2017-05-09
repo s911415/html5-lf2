@@ -9,6 +9,7 @@ var lf2 = (function (lf2) {
     const ResourceManager = Framework.ResourceManager;
     const Point3D = Framework.Point3D;
     const FrameStage = lf2.FrameStage;
+    const Effect = lf2.Effect;
     const KeyboardConfig = lf2.KeyboardConfig;
     const Bound = lf2.Bound;
     const INIT_TIME = 500;
@@ -263,17 +264,21 @@ var lf2 = (function (lf2) {
                 return true;
             }
 
-
-            if (this.belongTo === item.belongTo && itemState !== FrameStage.FIRE) {
-                return false;
+            if (ITR.kind === ItrKind.THREE_D_OBJECTS) {
+                if (
+                    this.currentFrame.itr &&
+                    this.currentFrame.itr.kind === ItrKind.THREE_D_OBJECTS
+                ) {
+                    return false;
+                }
             }
+            
+            const CAN_ATTACK = this.canDamageBy(item, ITR);
 
-            if (ITR.kind !== ItrKind.NORMAL_HIT) {
-                return false;
-            }
-
+            if (!CAN_ATTACK) return false;
             switch (curState) {
-                case FrameStage.BALL_WIND_FLYING:
+                case FrameStage.BALL_WIND_FLYING: {
+
                     this.obj.playHitSound();
                     if (
                         itemState === FrameStage.BALL_WIND_FLYING
@@ -281,6 +286,7 @@ var lf2 = (function (lf2) {
                         this.setNextFrame(20);
                         this.freeze();
                     }
+                }
                     break;
                 case FrameStage.BALL_HIT_HEART:
                     this.obj.playHitSound();
@@ -293,14 +299,31 @@ var lf2 = (function (lf2) {
                         this.freeze();
                     }
                     break;
+
+                case FrameStage.DISAPPEAR_WHEN_HIT:
+                    // TODO: FUClc ice column
+                    if (
+                        ITR.kind === ItrKind.THREE_D_OBJECTS &&
+                        (
+                            this.currentFrame.itr &&
+                            this.currentFrame.itr.kind === ItrKind.NORMAL_HIT &&
+                            this.currentFrame.itr.effect === Effect.FIXED_ICE
+                        )
+                    ) {
+                        return false;
+                    }
+                    break;
                 default:
                     if (
+                        itemState !== FrameStage.FROZEN &&
+                        itemState !== FrameStage.FIRE &&
                         itemState !== FrameStage.BALL_WIND_FLYING &&
                         itemState !== FrameStage.BALL_HIT_HEART
                     ) {
+
                         this.setNextFrame(20);
-                        this.freeze();
-                    }
+                            this.freeze();
+                        }
 
             }
 
@@ -334,7 +357,10 @@ var lf2 = (function (lf2) {
                     this.setNextFrame(HIT.d);
                 }
 
-            } else {
+            } /*else if (ITR && ITR.kind === ItrKind.THREE_D_OBJECTS) {
+                // DO NOTHING
+
+             }*/ else {
                 switch (state) {
                     case FrameStage.BALL_FLYING:
                         if (HIT_ENEMY) {
