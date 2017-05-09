@@ -82,11 +82,11 @@ var lf2 = (function (lf2) {
                 }
 
                 const dy = this._ball.position.y - (TARGET.position.y); //dy > 0 ? UP : DOWN ; 5 - 20
-                if (Math.abs(dy) < 1) {
+                if (Math.abs(dy) < this._maxVelocity.y) {
                     vz = 0;
                 } else {
                     vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
-                    vz *= GRAVITY;
+                    vz *= this._maxVelocity.y;
                 }
             }
 
