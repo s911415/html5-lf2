@@ -681,7 +681,7 @@ var lf2 = (function (lf2) {
 
             if (ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1) {
                 this._velocity.x = DV.x;
-                this._velocity.y = DV.y;
+                this._velocity.y = DV.y - this.GRAVITY;
 
                 this.addFall(ITR.fall);
             }

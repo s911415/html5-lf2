@@ -370,7 +370,7 @@ var lf2 = (function (lf2) {
 
         canDamageBy(item, ITR) {
             const itemState = item.currentFrame.state;
-            if (itemState === FrameStage.FIRE) return true;
+            if (itemState === FrameStage.FIRE && item.obj.id !== 211) return true;
             if (ITR.kind === ItrKind.THREE_D_OBJECTS) return true;
 
             switch (ITR.kind) {
