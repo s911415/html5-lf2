@@ -437,7 +437,7 @@ var lf2 = (function (lf2) {
                     if (status.HPRadio <= DRAW_BLOOD_PERCENTAGE) {
                         const targetPoint = this.transferPoint(curFrame.bpoint.point);
                         ctx.fillStyle = "#FF3333";
-                        ctx.fillRect(targetPoint.x, targetPoint.y, 2, 5);
+                        ctx.fillRect(targetPoint.x - 1, targetPoint.y, 2, 5);
                     }
                 }
 
