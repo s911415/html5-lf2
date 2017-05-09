@@ -34,13 +34,15 @@ var lf2 = (function (lf2) {
             // this._prevRadius = 0;
 
             this._radiusX = 0;
+            this._counter = 0;
         }
 
         update() {
             super.update();
 
-            if (this._radiusX > this._maxVelocity.x) this._radiusX = this._maxVelocity.x;
-            if (this._radiusX < 0) this._radiusX += FRICTION;
+            // if (this._radiusX > this._maxVelocity.x) this._radiusX = this._maxVelocity.x;
+            // if (this._radiusX < 0) this._radiusX += FRICTION;
+            this._counter++;
         }
 
         /**
@@ -66,8 +68,8 @@ var lf2 = (function (lf2) {
                     // const RAD = this._radiusLocked ? this._prevRadius : Utils.GetRadBasedOnPoints(p1, p2) + (Math.random() - .5);
                     
                     // this._prevRadius = RAD;
-                    
-                    vx = this._radiusX;
+                    let _x = this._counter;
+                    vx = this._radiusX * Math.exp(-_x * _x / 1e3);
                     vy = this._maxVelocity.y;
 
                     // if (this._ball._direction === GameItem.DIRECTION.LEFT) vx *= -1;
@@ -82,20 +84,22 @@ var lf2 = (function (lf2) {
                 }
 
                 const dy = this._ball.position.y - (TARGET.position.y); //dy > 0 ? UP : DOWN ; 5 - 20
-                if (Math.abs(dy) < this._maxVelocity.y) {
-                    vz = 0;
+                const MIN_Y_DIFF = 8;
+                vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
+                if (Math.abs(dy) < MIN_Y_DIFF) {
+
                 } else {
-                    vz = dy === 0 ? 0 : (dy > 0 ? -1 : 1);
-                    vz *= this._maxVelocity.y;
+
+                    vz *= 2;
                 }
             }
 
             // if (Math.abs(vx) < MIN_SPEED) vx = Math.sign(vx) * MIN_SPEED;
             // if (Math.abs(vz) < MIN_SPEED) vz = Math.sign(vz) * MIN_SPEED;
             if (Math.abs(vy) < Math.abs(this._maxVelocity.y)) vy = Math.abs(this._maxVelocity.y);
-            vx |= 0;
+            /*vx |= 0;
             vy |= 0;
-            vz |= 0;
+            vz |= 0;*/
 
             return new Point3D(vx, vy, vz);
         }

@@ -37,10 +37,10 @@ var lf2 = (function (lf2) {
 
             if (this._attached) return;
 
-
+            let N = this._world.attachArray.filter(x=>x instanceof lf2.Character).length;
             let ops = [
-                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 10  dvy: -8  oid: 221  facing: 20`),
-                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 13  dvy: -8  oid: 222  facing: 20`),
+                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 15  dvy: -8  oid: 221  facing: ${N}0`),
+                new lf2.ObjectPoint(`kind: 1  x: 0  y: 0  action: 0  dvx: 13  dvy: -10  oid: 222  facing: ${N}0`),
             ];
 
             ops.forEach(opoint=>{
