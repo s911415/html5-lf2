@@ -1,8 +1,8 @@
 <bmp_begin> 
-file(0-7):  sprite/sys/Teleport_Flash.bmp w: 59  h: 59  row: 8  col: 1
-file(8-13): sprite/sys/Zap_ball_Flash.bmp w: 79  h: 79  row: 6  col: 1
-file(14-27): sprite/sys/Heal.bmp          w: 199 h: 199 row: 7  col: 2
-file(28-36): sprite/sys/Zap_ball_FlashPrp.bmp w: 79  h: 79  row: 9  col: 1
+file(0-7):  sprite/sys/Teleport_Flash.png w: 59  h: 59  row: 8  col: 1
+file(8-13): sprite/sys/Zap_ball_Flash.png w: 79  h: 79  row: 6  col: 1
+file(14-27): sprite/sys/Heal.png          w: 199 h: 199 row: 7  col: 2
+file(28-36): sprite/sys/Zap_ball_FlashPrp.png w: 79  h: 79  row: 9  col: 1
 
 weapon_hit_sound: M_None.ogg
 weapon_drop_sound: M_None.ogg

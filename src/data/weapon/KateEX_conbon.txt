@@ -1,5 +1,5 @@
 <bmp_begin> 
-file(0-11): sprite/sys/EX_conbon.bmp  w: 59  h: 19  row: 6  col: 2
+file(0-11): sprite/sys/EX_conbon.png  w: 59  h: 19  row: 6  col: 2
 
 weapon_hit_sound: 010.ogg
 weapon_drop_sound: 010.ogg

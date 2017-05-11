@@ -1,5 +1,5 @@
 <bmp_begin> 
-file(0-23):  sprite/sys/Zap_ball.bmp w: 179  h: 119  row: 8  col: 3
+file(0-23):  sprite/sys/Zap_ball.png w: 179  h: 119  row: 8  col: 3
 weapon_hit_sound: 020.ogg
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg

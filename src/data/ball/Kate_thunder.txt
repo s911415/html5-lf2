@@ -1,7 +1,7 @@
 <bmp_begin> 
-file(0-7):  sprite/sys/Thunder.bmp w: 299  h: 460  row: 8  col: 1
-file(8-14):  sprite/sys/Thunder_e.bmp w: 149  h: 460  row: 7  col: 1
-file(15-27):  sprite/sys/ThunderPrp.bmp w: 299  h: 460  row: 13  col: 1
+file(0-7):  sprite/sys/Thunder.png w: 299  h: 460  row: 8  col: 1
+file(8-14):  sprite/sys/Thunder_e.png w: 149  h: 460  row: 7  col: 1
+file(15-27):  sprite/sys/ThunderPrp.png w: 299  h: 460  row: 13  col: 1
 weapon_hit_sound: 020.ogg
 weapon_drop_sound: 020.ogg
 weapon_broken_sound: 020.ogg
