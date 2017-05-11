@@ -415,6 +415,11 @@ var lf2 = (function (lf2) {
             let ballArr = [];
             for (let i = 0; i < opoint.count; i++) {
                 const obj = GameObjectPool.get(opoint.objectId);
+				if(!obj){
+					console.error(`Object id :${opoint.objectId} Not found`);
+					continue;
+				}
+				
                 let addBall = null;
                 switch (obj.fileInfo.type) {
                     case 0:
