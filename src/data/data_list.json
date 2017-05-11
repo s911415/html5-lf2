@@ -126,6 +126,16 @@
             "file": "character\\mahoro.txt"
         },
         {
+            "id": 12,
+            "type": 0,
+            "file": "character\\Kate.txt"
+        },
+        {
+            "id": 58,
+            "type": 0,
+            "file": "character\\KateEX.txt"
+        },
+        {
             "id": 100,
             "type": 1,
             "file": "weapon\\weapon0.txt"
@@ -344,6 +354,46 @@
             "id": 255,
             "type": 3,
             "file": "ball\\2221007_hit.txt"
+        },
+        {
+            "id": 400,
+            "type": 3,
+            "file": "ball\\Kate_flash.txt"
+        },
+        {
+            "id": 401,
+            "type": 3,
+            "file": "ball\\Kate_ball.txt"
+        },
+        {
+            "id": 402,
+            "type": 1,
+            "file": "weapon\\Kate_ball2.txt"
+        },
+        {
+            "id": 404,
+            "type": 1,
+            "file": "weapon\\Kate_lightning.txt"
+        },
+        {
+            "id": 405,
+            "type": 1,
+            "file": "weapon\\Kate_lightning2.txt"
+        },
+        {
+            "id": 406,
+            "type": 3,
+            "file": "ball\\Kate_thunder.txt"
+        },
+        {
+            "id": 407,
+            "type": 3,
+            "file": "ball\\Kate_tdlnings.txt"
+        },
+        {
+            "id": 408,
+            "type": 1,
+            "file": "weapon\\KateEX_conbon.txt"
         },
         {
             "id": 500,

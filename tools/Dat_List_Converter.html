@@ -89,6 +89,8 @@
                     o.file = "sys" + fn;
                     break;
             }
+			
+			if(o.file) return true;
         });
 
         return objs;
