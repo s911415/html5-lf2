@@ -17,7 +17,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_KEY_TIME = 300;
+    const CLEAR_KEY_TIME = 500; //Less than 200 make be make stop run direction wrong
     const NAME_OFFSET = 0;
 
     /**
@@ -117,6 +117,11 @@ var lf2 = (function (lf2) {
 
                 const hitFid = hitList[funcKeyWoArrow], cFrame = this.character.obj.frames[hitFid];
                 if (hitFid && cFrame && this.requestMp(cFrame.mp)) {
+                    if ((this._currentKey & KeyboardConfig.KEY_MAP.LEFT) === KeyboardConfig.KEY_MAP.LEFT) {
+                        this.character.setNextDirection(DIRECTION.LEFT);
+                    } else if ((this._currentKey & KeyboardConfig.KEY_MAP.RIGHT) === KeyboardConfig.KEY_MAP.RIGHT) {
+                        this.character.setNextDirection(DIRECTION.RIGHT);
+                    }
                     this.character.setNextFrame(hitFid);
                 }
             }
@@ -415,11 +420,11 @@ var lf2 = (function (lf2) {
             let ballArr = [];
             for (let i = 0; i < opoint.count; i++) {
                 const obj = GameObjectPool.get(opoint.objectId);
-				if(!obj){
-					console.error(`Object id :${opoint.objectId} Not found`);
-					continue;
-				}
-				
+                if (!obj) {
+                    console.error(`Object id :${opoint.objectId} Not found`);
+                    continue;
+                }
+
                 let addBall = null;
                 switch (obj.fileInfo.type) {
                     case 0:

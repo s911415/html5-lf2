@@ -106,6 +106,7 @@ var lf2 = (function (lf2) {
             this.alive = true;
             this._world = null;
             this._audio = new Framework.Audio(this.obj.getPlayList());
+            this._nextDirection = null;
 
             /**
              *
@@ -188,7 +189,7 @@ var lf2 = (function (lf2) {
             } else {
                 this.position.x -= offset.x;
             }
-            if(this.position.z > 0) {
+            if (this.position.z > 0) {
                 this.position.z = 0;
                 this._velocity.y = 0;
             }
@@ -226,6 +227,10 @@ var lf2 = (function (lf2) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
                 this._frameForceChangeId = NONE;
+                if (this._nextDirection !== null) {
+                    this._direction = this._nextDirection;
+                }
+                this._nextDirection = null;
 
                 this.updateVelocity();
             }
@@ -884,6 +889,10 @@ var lf2 = (function (lf2) {
             if (p.z !== undefined) {
                 this.position.z = p.z;
             }
+        }
+
+        setNextDirection(v){
+            this._nextDirection = v;
         }
 
         /**
