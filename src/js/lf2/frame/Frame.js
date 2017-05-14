@@ -76,6 +76,16 @@ var lf2 = (function (lf2) {
 
                 return undefined;
             })();
+
+            this.hit = (() => {
+                let ret = {};
+                KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k) => {
+                    const val = intval(this.data.get('hit_' + k) || 0);
+                    ret[KeyboardConfig.HIT_KEY[k]] = ret[k] = val;
+                });
+
+                return ret;
+            })();
         }
 
         /**
@@ -156,23 +166,6 @@ var lf2 = (function (lf2) {
                 intval(this.data.get('dvy') || 0),
                 intval(this.data.get('dvz') || 0)
             );
-        }
-
-        /**
-         * get hit()
-         *
-         * Gets the hit.
-         *
-         * @return  {Object}   A get.
-         */
-        get hit() {
-            let ret = {};
-            KeyboardConfig.HIT_KEY.HIT_LIST.forEach((k) => {
-                const val = intval(this.data.get('hit_' + k) || 0);
-                ret[KeyboardConfig.HIT_KEY[k]] = ret[k] = val;
-            });
-
-            return ret;
         }
 
         /**
