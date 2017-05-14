@@ -113,7 +113,12 @@ var lf2 = (function (lf2) {
              * @private
              */
             this._world = null;
+
+            /**
+             * @type {Framework.Audio}
+             */
             this._audio = new Framework.Audio(this.obj.getPlayList());
+
             this._nextDirection = null;
 
             /**
@@ -460,8 +465,8 @@ var lf2 = (function (lf2) {
             if (this.isFrameChanged) {
                 //Play sound
                 if (curFrame.soundPath) {
-                    if (this._world instanceof lf2.WorldScene) {
-                        const DistanceFrom = this._world.getDistanceBetweenCameraAndItem(this);
+                    if (this.world instanceof lf2.WorldScene) {
+                        const DistanceFrom = this.world.getDistanceBetweenCameraAndItem(this);
                         let balance = DistanceFrom / HALF_SCREEN_WIDTH;
 
                         if (balance > 1) balance = 1;
