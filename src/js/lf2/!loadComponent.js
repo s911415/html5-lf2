@@ -8,6 +8,7 @@
         'enums/FrameStage.js',
         'enums/ItrKind.js',
 
+        'game/Bezier.js',
         'game/Utils.js',
         'game/KeyboardConfig.js',
         'game/KeyEventPool.js',

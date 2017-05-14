@@ -52,6 +52,7 @@ var lf2 = (function (lf2) {
             this._cameraCounter = 0;
             this._cameraDiff = 0;
             this._startMoveCameraPos = 0;
+            this._cameraPositionCache = null;
         }
 
 
@@ -88,6 +89,7 @@ var lf2 = (function (lf2) {
             } else {
                 this.cameraPosition = this._targetCameraX;
             }
+            this._cameraPositionCache = null;
 
 
             let bdyItems = this._getAllBdyItem();
@@ -188,7 +190,7 @@ var lf2 = (function (lf2) {
             }
             if (pos === this._targetCameraX) {
 
-            }else{
+            } else {
                 this._startMoveCameraPos = this.cameraPosition;
                 this._cameraCounter = 0;
             }
@@ -205,10 +207,24 @@ var lf2 = (function (lf2) {
          * @return  The camera position as point.
          */
         _getCameraPositionAsPoint() {
+            if (this._cameraPositionCache !== null) return this._cameraPositionCache;
             let x = this.map.width - Framework.Config.canvasWidth;
             x *= this.cameraPosition;
 
-            return new Point(x | 0, 0);
+            const ret = new Point(x | 0, 0);
+            this._cameraPositionCache = ret;
+
+            return ret;
+        }
+
+        /**
+         *
+         * @param {GameItem} item
+         * @returns {number}
+         */
+        getDistanceBetweenCameraAndItem(item) {
+            const pos = this._getCameraPositionAsPoint();
+            return item.position.x - pos.x;
         }
 
         /**
@@ -245,7 +261,7 @@ var lf2 = (function (lf2) {
             ctx.restore();
 
             if (!this._allowUpdate) {
-                const __x = ctx.canvas.width >> 1, __y = ((ctx.canvas.height - 120) >> 1 ) + 60;
+                const __x = (ctx.canvas.width >> 1), __y = ((ctx.canvas.height - 120) >> 1 ) + 60;
                 ctx.fillStyle = '#FFF';
                 ctx.strokeStyle = '#09123b';
                 ctx.lineWidth = 5;

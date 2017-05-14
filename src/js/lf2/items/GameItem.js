@@ -1,9 +1,10 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const HALF_SCREEN_WIDTH = Framework.Config.canvasWidth >> 1;
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
     const Audio = Framework.Audio;
-    const Utils = lf2.Utils;
+    const Bezier = lf2.Bezier;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const FrameStage = lf2.FrameStage;
@@ -21,6 +22,8 @@ var lf2 = (function (lf2) {
     const MIN_SPEED = 1;
     const MIN_V = 1;
     const GRAVITY = 1.7; // 1.7
+
+    const SOUND_BEZIER = [0.895, 0.030, 0.685, 0.220];
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
@@ -54,7 +57,6 @@ var lf2 = (function (lf2) {
     /**
      * GameItem
      *
-     * @type {GameItem}
      * @class lf2.GameItem
      * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
@@ -104,6 +106,11 @@ var lf2 = (function (lf2) {
             this._flashCounter = false;
             this._isNew = true;
             this.alive = true;
+            /**
+             *
+             * @type {lf2.WorldScene|null}
+             * @private
+             */
             this._world = null;
             this._audio = new Framework.Audio(this.obj.getPlayList());
             this._nextDirection = null;
@@ -452,6 +459,22 @@ var lf2 = (function (lf2) {
             if (this.isFrameChanged) {
                 //Play sound
                 if (curFrame.soundPath) {
+                    if (this._world instanceof lf2.WorldScene) {
+                        const DisDiff = this._world.getDistanceBetweenCameraAndItem(this);
+                        const diffSign = Math.sign(DisDiff);
+                        let vol = diffSign * DisDiff / HALF_SCREEN_WIDTH;
+                        if (vol > 1) {
+                            vol = 1;
+                        } else if (vol < 0) {
+                            vol = 0;
+                        }
+                        vol = Bezier(SOUND_BEZIER, vol);
+
+
+                        // vol = Math.round(vol* 100) / 100;
+                        this._audio.volume = vol;
+
+                    }
                     this._audio.play(curFrame.soundPath);
                 }
 
@@ -891,7 +914,7 @@ var lf2 = (function (lf2) {
             }
         }
 
-        setNextDirection(v){
+        setNextDirection(v) {
             this._nextDirection = v;
         }
 
