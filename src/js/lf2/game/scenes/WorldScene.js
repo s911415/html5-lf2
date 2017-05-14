@@ -8,6 +8,7 @@ var lf2 = (function (lf2) {
     const Bound = lf2.Bound;
     const CAMERA_MOVE_SPEED = 500;
     const PER_FRAME_TIME = CAMERA_MOVE_SPEED / 1000 * FPS;
+    const HALF_SCREEN_WIDTH = Framework.Config.canvasWidth >> 1;
 
     /**
      * Check if object is sortable
@@ -179,7 +180,7 @@ var lf2 = (function (lf2) {
          */
         _setCameraPositionByX(x) {
             const WIDTH = this.map.width - Framework.Config.canvasWidth;
-            const HW = Framework.Config.canvasWidth >> 1;
+            const HW = HALF_SCREEN_WIDTH;
             let pos = 0;
             if (x <= HW) {
                 pos = 0;
@@ -224,7 +225,7 @@ var lf2 = (function (lf2) {
          */
         getDistanceBetweenCameraAndItem(item) {
             const pos = this._getCameraPositionAsPoint();
-            return item.position.x - pos.x;
+            return item.position.x - (pos.x +  HALF_SCREEN_WIDTH);
         }
 
         /**

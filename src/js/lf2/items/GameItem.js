@@ -23,7 +23,8 @@ var lf2 = (function (lf2) {
     const MIN_V = 1;
     const GRAVITY = 1.7; // 1.7
 
-    const SOUND_BEZIER = [0.895, 0.030, 0.685, 0.220];
+    const SOUND_BEZIER = [0.895, 0.03, 0.685, 0.22];
+    const KEEP_SOUND_DISTANCE = 100;
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
@@ -460,19 +461,43 @@ var lf2 = (function (lf2) {
                 //Play sound
                 if (curFrame.soundPath) {
                     if (this._world instanceof lf2.WorldScene) {
-                        const DisDiff = this._world.getDistanceBetweenCameraAndItem(this);
-                        const diffSign = Math.sign(DisDiff);
-                        let vol = diffSign * DisDiff / HALF_SCREEN_WIDTH;
-                        if (vol > 1) {
-                            vol = 1;
-                        } else if (vol < 0) {
-                            vol = 0;
+                        const DistanceFrom = this._world.getDistanceBetweenCameraAndItem(this);
+                        let balance = DistanceFrom / HALF_SCREEN_WIDTH;
+
+                        if (balance > 1) balance = 1;
+                        if (balance < -1) balance = -1;
+
+                        this._audio.balance = balance;
+
+                        if (DistanceFrom > HALF_SCREEN_WIDTH) {
+                            let vol = (DistanceFrom - HALF_SCREEN_WIDTH) / KEEP_SOUND_DISTANCE;
+                            if (vol > 1) vol = 1;
+                            vol = 1 - Bezier(SOUND_BEZIER, vol);
+                            if (vol < 0) vol = 0;
+                            this._audio.rightVolume = vol;
                         }
-                        vol = Bezier(SOUND_BEZIER, vol);
+
+                        if (DistanceFrom < -HALF_SCREEN_WIDTH) {
+                            let vol = (-DistanceFrom - HALF_SCREEN_WIDTH) / KEEP_SOUND_DISTANCE;
+                            if (vol > 1) vol = 1;
+                            vol = 1 - Bezier(SOUND_BEZIER, vol);
+                            if (vol < 0) vol = 0;
+                            this._audio.leftVolume = vol;
+                        }
+                        //
+                        // const diffSign = Math.sign(DisDiff);
+                        // let vol = diffSign * DisDiff / HALF_SCREEN_WIDTH;
+                        // if (vol > 1) {
+                        //     vol = 1;
+                        // } else if (vol < 0) {
+                        //     vol = 0;
+                        // }
+                        // vol = Bezier(SOUND_BEZIER, 1 - vol);
+                        // if (vol <= 0) vol = 0;
 
 
                         // vol = Math.round(vol* 100) / 100;
-                        this._audio.volume = vol;
+                        // this._audio.volume = vol;
 
                     }
                     this._audio.play(curFrame.soundPath);
