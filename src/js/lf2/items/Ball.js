@@ -132,7 +132,7 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
-            if(!this._world) return v;
+            if(!this.world) return v;
 
             if (hit.Fa !== 0) {
                 if (this._behavior) {
