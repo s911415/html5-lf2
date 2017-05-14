@@ -83,7 +83,7 @@ var Framework = (function (Framework) {
          * @param {Number} v
          */
         set leftVolume(v) {
-            if (v > 1 || v < 0) throw new RangeError('Volume out of range, 0~1 expected');
+            if (v < 0) throw new RangeError(`Volume out of range, 0~1 expected, ${v} received.`);
             this._leftVolume = v;
             if (this.gainNodeLeft) {
                 this.gainNodeLeft.gain.value = this._leftVolume;
@@ -95,11 +95,27 @@ var Framework = (function (Framework) {
          * @param {Number} v
          */
         set rightVolume(v) {
-            if (v > 1 || v < 0) throw new RangeError('Volume out of range, 0~1 expected');
+            if (v < 0) throw new RangeError(`Volume out of range, 0~1 expected, ${v} received.`);
 
             this._rightVolume = v;
             if (this.gainNodeRight) {
                 this.gainNodeRight.gain.value = this._rightVolume;
+            }
+        }
+
+
+        /**
+         *
+         * @param {Number} weight
+         */
+        set balance(weight) {
+            if (weight > 1 || weight < -1) throw new RangeError(`balance out of range, -1~1 expected, ${weight} received.`);
+            if (weight <= 0) {
+                this.leftVolume = 1;
+                this.rightVolume = weight + 1;
+            } else {
+                this.rightVolume = 1;
+                this.leftVolume = 1 - weight;
             }
         }
 

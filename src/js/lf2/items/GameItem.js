@@ -1,9 +1,10 @@
 "use strict";
 var lf2 = (function (lf2) {
+    const HALF_SCREEN_WIDTH = Framework.Config.canvasWidth >> 1;
     const Point = Framework.Point;
     const Point3D = Framework.Point3D;
     const Audio = Framework.Audio;
-    const Utils = lf2.Utils;
+    const Bezier = lf2.Bezier;
     const Body = lf2.Body;
     const Interaction = lf2.Interaction;
     const FrameStage = lf2.FrameStage;
@@ -21,6 +22,9 @@ var lf2 = (function (lf2) {
     const MIN_SPEED = 1;
     const MIN_V = 1;
     const GRAVITY = 1.7; // 1.7
+
+    const SOUND_BEZIER = [0.895, 0.03, 0.685, 0.22];
+    const KEEP_SOUND_DISTANCE = 100;
 
     let dvxArray = [0];
     const getDvxPerWait = function (i) {
@@ -54,7 +58,6 @@ var lf2 = (function (lf2) {
     /**
      * GameItem
      *
-     * @type {GameItem}
      * @class lf2.GameItem
      * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
@@ -104,8 +107,14 @@ var lf2 = (function (lf2) {
             this._flashCounter = false;
             this._isNew = true;
             this.alive = true;
+            /**
+             *
+             * @type {lf2.WorldScene|null}
+             * @private
+             */
             this._world = null;
             this._audio = new Framework.Audio(this.obj.getPlayList());
+            this._nextDirection = null;
 
             /**
              *
@@ -188,7 +197,7 @@ var lf2 = (function (lf2) {
             } else {
                 this.position.x -= offset.x;
             }
-            if(this.position.z > 0) {
+            if (this.position.z > 0) {
                 this.position.z = 0;
                 this._velocity.y = 0;
             }
@@ -226,6 +235,10 @@ var lf2 = (function (lf2) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
                 this._frameForceChangeId = NONE;
+                if (this._nextDirection !== null) {
+                    this._direction = this._nextDirection;
+                }
+                this._nextDirection = null;
 
                 this.updateVelocity();
             }
@@ -447,6 +460,46 @@ var lf2 = (function (lf2) {
             if (this.isFrameChanged) {
                 //Play sound
                 if (curFrame.soundPath) {
+                    if (this._world instanceof lf2.WorldScene) {
+                        const DistanceFrom = this._world.getDistanceBetweenCameraAndItem(this);
+                        let balance = DistanceFrom / HALF_SCREEN_WIDTH;
+
+                        if (balance > 1) balance = 1;
+                        if (balance < -1) balance = -1;
+
+                        this._audio.balance = balance;
+
+                        if (DistanceFrom > HALF_SCREEN_WIDTH) {
+                            let vol = (DistanceFrom - HALF_SCREEN_WIDTH) / KEEP_SOUND_DISTANCE;
+                            if (vol > 1) vol = 1;
+                            vol = 1 - Bezier(SOUND_BEZIER, vol);
+                            if (vol < 0) vol = 0;
+                            this._audio.rightVolume = vol;
+                        }
+
+                        if (DistanceFrom < -HALF_SCREEN_WIDTH) {
+                            let vol = (-DistanceFrom - HALF_SCREEN_WIDTH) / KEEP_SOUND_DISTANCE;
+                            if (vol > 1) vol = 1;
+                            vol = 1 - Bezier(SOUND_BEZIER, vol);
+                            if (vol < 0) vol = 0;
+                            this._audio.leftVolume = vol;
+                        }
+                        //
+                        // const diffSign = Math.sign(DisDiff);
+                        // let vol = diffSign * DisDiff / HALF_SCREEN_WIDTH;
+                        // if (vol > 1) {
+                        //     vol = 1;
+                        // } else if (vol < 0) {
+                        //     vol = 0;
+                        // }
+                        // vol = Bezier(SOUND_BEZIER, 1 - vol);
+                        // if (vol <= 0) vol = 0;
+
+
+                        // vol = Math.round(vol* 100) / 100;
+                        // this._audio.volume = vol;
+
+                    }
                     this._audio.play(curFrame.soundPath);
                 }
 
@@ -884,6 +937,10 @@ var lf2 = (function (lf2) {
             if (p.z !== undefined) {
                 this.position.z = p.z;
             }
+        }
+
+        setNextDirection(v) {
+            this._nextDirection = v;
         }
 
         /**

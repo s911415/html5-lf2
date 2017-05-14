@@ -260,6 +260,7 @@ var lf2 = (function (lf2) {
                                 (this.containsKey(KeyboardConfig.KEY_MAP.RIGHT) && this._direction === DIRECTION.LEFT)
                             ) {
                                 next = STOP_RUNNING_FRAME_ID;
+                                this._nextDirection = null;
                             }
 
                             break;
@@ -624,10 +625,12 @@ var lf2 = (function (lf2) {
             if (fc) {
                 const keywoFront = this._curFuncKey & ~KeyboardConfig.KEY_MAP.FRONT;
 
-                if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) !== 0) {
-                    this._direction = DIRECTION.LEFT;
+                if (this._previousFrameIndex === STOP_RUNNING_FRAME_ID) {
+                    this.belongTo._currentKey &= ~KeyboardConfig.KEY_MAP.FRONT;
+                } else if ((keywoFront & KeyboardConfig.KEY_MAP.LEFT) !== 0) {
+                    this.setNextDirection(DIRECTION.LEFT);
                 } else if ((keywoFront & KeyboardConfig.KEY_MAP.RIGHT) !== 0) {
-                    this._direction = DIRECTION.RIGHT;
+                    this.setNextDirection(DIRECTION.RIGHT);
                 }
             }
         }
