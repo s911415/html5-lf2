@@ -148,7 +148,7 @@ var lf2 = (function (lf2) {
 
                     }
 
-                    if (this._behavior.FA === hit.Fa) {
+                    if (this._behavior && this._behavior.FA === hit.Fa) {
                         return this._behavior.getVelocity();
                     }
                     // }else{
