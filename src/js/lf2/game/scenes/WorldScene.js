@@ -4,7 +4,10 @@ var lf2 = (function (lf2) {
     const GameItem = lf2.GameItem;
     const Point = Framework.Point;
     const ResourceManager = Framework.ResourceManager;
+    const FPS = Framework.Config.fps;
     const Bound = lf2.Bound;
+    const CAMERA_MOVE_SPEED = 500;
+    const PER_FRAME_TIME = CAMERA_MOVE_SPEED / 1000 * FPS;
 
     /**
      * Check if object is sortable
@@ -45,8 +48,10 @@ var lf2 = (function (lf2) {
             this.attach(this.map);
             this.addPlayers(this.players);
 
-            this._lastCameraX = -1;
-
+            this._targetCameraX = 0;
+            this._cameraCounter = 0;
+            this._cameraDiff = 0;
+            this._startMoveCameraPos = 0;
         }
 
 
@@ -77,6 +82,13 @@ var lf2 = (function (lf2) {
                 count++;
             });
             this._setCameraPositionByX(sumPlayerX / count);
+            if (this._cameraCounter < PER_FRAME_TIME) {
+                this._cameraCounter++;
+                this.cameraPosition = this._startMoveCameraPos + this._cameraDiff * (this._cameraCounter / PER_FRAME_TIME);
+            } else {
+                this.cameraPosition = this._targetCameraX;
+            }
+
 
             let bdyItems = this._getAllBdyItem();
 
@@ -165,7 +177,7 @@ var lf2 = (function (lf2) {
          */
         _setCameraPositionByX(x) {
             const WIDTH = this.map.width - Framework.Config.canvasWidth;
-            const HW = Framework.Config.canvasWidth / 2;
+            const HW = Framework.Config.canvasWidth >> 1;
             let pos = 0;
             if (x <= HW) {
                 pos = 0;
@@ -174,9 +186,15 @@ var lf2 = (function (lf2) {
             } else {
                 pos = (x - HW) / WIDTH;
             }
+            if (pos === this._targetCameraX) {
 
-            this.cameraPosition = pos;
+            }else{
+                this._startMoveCameraPos = this.cameraPosition;
+                this._cameraCounter = 0;
+            }
 
+            this._targetCameraX = pos;
+            this._cameraDiff = pos - this._startMoveCameraPos;
         }
 
         /**
