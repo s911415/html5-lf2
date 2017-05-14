@@ -29,7 +29,15 @@ var Framework = (function (Framework) {
         //return AudioCtxArray[(Math.random() * AudioCtxArray.length) | 0]
     };
 
+    /**
+     * @class {Framework.Audio}
+     */
     let Audio;
+
+    /**
+     *
+     * @class {Framework.Audio}
+     */
     Framework.Audio = Audio = class Audio {
         /**
          * Create an audio class
@@ -107,6 +115,7 @@ var Framework = (function (Framework) {
         /**
          *
          * @param {Number} weight
+         * @property
          */
         set balance(weight) {
             if (weight > 1 || weight < -1) throw new RangeError(`balance out of range, -1~1 expected, ${weight} received.`);
