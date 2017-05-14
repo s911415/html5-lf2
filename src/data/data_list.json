@@ -366,21 +366,6 @@
             "file": "ball\\Kate_ball.txt"
         },
         {
-            "id": 402,
-            "type": 1,
-            "file": "weapon\\Kate_ball2.txt"
-        },
-        {
-            "id": 404,
-            "type": 1,
-            "file": "weapon\\Kate_lightning.txt"
-        },
-        {
-            "id": 405,
-            "type": 1,
-            "file": "weapon\\Kate_lightning2.txt"
-        },
-        {
             "id": 406,
             "type": 3,
             "file": "ball\\Kate_thunder.txt"
@@ -389,11 +374,6 @@
             "id": 407,
             "type": 3,
             "file": "ball\\Kate_tdlnings.txt"
-        },
-        {
-            "id": 408,
-            "type": 1,
-            "file": "weapon\\KateEX_conbon.txt"
         },
         {
             "id": 500,
