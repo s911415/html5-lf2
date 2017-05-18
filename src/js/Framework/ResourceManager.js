@@ -277,8 +277,7 @@ var Framework = (function (Framework) {
                 if (_resourceArrayBufferCache.has(url)) {
                     return new Promise((a, b) => {
                         const oBuf = _resourceArrayBufferCache.get(url);
-                        let bufClone = new ArrayBuffer(oBuf.byteLength);
-
+                        
                         return a(oBuf.slice(0));
                     });
                 } else {
@@ -291,9 +290,9 @@ var Framework = (function (Framework) {
                             finishLoading();
                             _responseCount++;
 
-                            _resourceArrayBufferCache.set(url, b.slice(0));
+                            _resourceArrayBufferCache.set(url, b);
 
-                            return _resourceArrayBufferCache.get(url);
+                            return _resourceArrayBufferCache.get(url).slice(0);
                         });
                 }
             }
