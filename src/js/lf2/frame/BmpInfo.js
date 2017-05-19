@@ -35,7 +35,7 @@ var lf2 = (function (lf2) {
 
             this.source.lines().forEach((str) => {
                 str = str.trim();
-                if (str.length == 0) return;
+                if (str.length === 0) return;
 
                 //圖片資訊
                 if (str.startsWith('file(')) {
