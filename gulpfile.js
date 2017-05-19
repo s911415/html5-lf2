@@ -6,7 +6,9 @@ const gulp = require('gulp'),
     babel = require('gulp-babel'),
     concat = require('gulp-concat'),
     babili = require("gulp-babili"),
-    merge = require('merge-stream');
+    merge = require('merge-stream'),
+	del = require('del'),
+	gulpSequence = require('gulp-sequence');
 
 gulp.task('build', () => {
 
@@ -125,6 +127,17 @@ gulp.task('build', () => {
         .pipe(gulp.dest(DIST_DIR));
 });
 
+gulp.task('clean', () => {
+    return del([
+		'dist/**', 
+		'!dist',
+		'!dist/favicon.ico',
+		'!dist/index.html',
+	]).then(paths => {
+		console.log('Deleted files and folders:\n', paths.join('\n'));
+	});
+});
+
 gulp.task('resources', () => {
     //Copy resources
     let taskArr = [];
@@ -155,4 +168,4 @@ gulp.task('resources', () => {
     return merge(taskArr);
 });
 
-gulp.task('default', ['resources', 'build']);
+gulp.task('default',  gulpSequence('clean', ['resources', 'build']));
