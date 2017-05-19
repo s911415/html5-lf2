@@ -752,7 +752,7 @@ var Framework = (function (Framework) {
                     drawFunc();
                     let finishTime = nowFunc();
 
-                    define.DEBUG && console.log('Update', startDrawTime - startUpdateTime, '', 'Draw', finishTime - startDrawTime);
+                    // define.DEBUG && console.log('Update', startDrawTime - startUpdateTime, '', 'Draw', finishTime - startDrawTime);
 
                     const doneTime = nowFunc(), diff = doneTime - now;
                     if (define.DEBUG && diff > that.skipTicks) {

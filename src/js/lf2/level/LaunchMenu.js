@@ -14,8 +14,6 @@ var lf2 = (function (lf2) {
     lf2.LaunchMenu = class extends Framework.GameMainMenu {
         constructor(){
             super();
-
-            lf2.LoadingLevel.PreloadLoadingVideo();
         }
 
 
@@ -174,6 +172,9 @@ var lf2 = (function (lf2) {
                 $("body").append(this._menuContainer);
                 this._menuAttached = true;
                 Game.resizeEvent();
+
+                //Start preload loading video
+                lf2.LoadingLevel.PreloadLoadingVideo();
             }
         }
 
