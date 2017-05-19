@@ -434,7 +434,7 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             const imgInfo = this.ImgInfo;
             const leftTopPoint = this.leftTopPoint;
-            const curFrame = this.currentFrame;
+            const curFrame = this.obj.frames[this._currentFrameIndex];
 
             /*
              console.log([
@@ -444,20 +444,27 @@ var lf2 = (function (lf2) {
              leftTopPoint]);
              */
 
-            const REAL_DRAW_POS = new Point(
-                leftTopPoint.x | 0,
-                (leftTopPoint.y + leftTopPoint.z) | 0
-            );
+            // const REAL_DRAW_POS = new Point(
+            //     leftTopPoint._x | 0,
+            //     (leftTopPoint._y + leftTopPoint._z) | 0
+            // );
+            const REAL_DRAW_POS_X = leftTopPoint._x | 0;
+            const REAL_DRAW_POS_Y =  (leftTopPoint._y + leftTopPoint._z) | 0;
 
             //if (leftTopPoint.z != 0) debugger;
             if (this._allowDraw) {
                 if (!this._flashing || (this._flashing && this._flashCounter)) {
+                    const infoRect = imgInfo._rect;
                     ctx.drawImage(
-                        imgInfo.img,
-                        imgInfo.rect.position.x | 0, imgInfo.rect.position.y | 0,
-                        imgInfo.rect.width, imgInfo.rect.height,
-                        REAL_DRAW_POS.x, REAL_DRAW_POS.y,
-                        imgInfo.rect.width, imgInfo.rect.height
+                        imgInfo._img,
+                        infoRect.position._x | 0,
+                        infoRect.position._y | 0,
+                        infoRect.width,
+                        infoRect.height,
+                        REAL_DRAW_POS_X,
+                        REAL_DRAW_POS_Y,
+                        infoRect.width,
+                        infoRect.height
                     );
                 }
             }
@@ -532,7 +539,7 @@ var lf2 = (function (lf2) {
                 ctx.strokeStyle = "#FF00FF";
                 //Draw image rect
                 ctx.strokeRect(
-                    REAL_DRAW_POS.x, REAL_DRAW_POS.y,
+                    REAL_DRAW_POS_X, REAL_DRAW_POS_Y,
                     imgInfo.rect.width, imgInfo.rect.height
                 );
 
@@ -575,9 +582,9 @@ var lf2 = (function (lf2) {
                 ctx.strokeStyle = "#000";
                 ctx.lineWidth = 2;
                 for (let i = 0; i < msg.length; i++) {
-                    const _y = REAL_DRAW_POS.y + 12 * i;
-                    ctx.strokeText(msg[i], REAL_DRAW_POS.x, _y);
-                    ctx.fillText(msg[i], REAL_DRAW_POS.x, _y);
+                    const _y = REAL_DRAW_POS_Y + 12 * i;
+                    ctx.strokeText(msg[i], REAL_DRAW_POS_X, _y);
+                    ctx.fillText(msg[i], REAL_DRAW_POS_X, _y);
                 }
             }
         }
@@ -865,6 +872,7 @@ var lf2 = (function (lf2) {
          * @return  {get}   A get.
          */
         get isObjectChanged() {
+            return true;
             //TODO: need implement
             return super.isObjectChanged ||
                 this.isFrameChanged;
