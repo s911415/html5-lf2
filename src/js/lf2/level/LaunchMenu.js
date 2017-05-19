@@ -14,6 +14,8 @@ var lf2 = (function (lf2) {
     lf2.LaunchMenu = class extends Framework.GameMainMenu {
         constructor(){
             super();
+
+            this.loadResLoadStart = false;
         }
 
 
@@ -77,6 +79,13 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
+
+            if(this._menuAttached && !this.loadResLoadStart){
+                this.loadResLoadStart = true;
+
+                //Start preload loading video
+                lf2.LoadingLevel.PreloadLoadingVideo();
+            }
         }
 
         /**
@@ -92,7 +101,6 @@ var lf2 = (function (lf2) {
             super.draw(parentCtx);
 
             if (!this._menuAttached) {
-
             }
         }
 
@@ -172,9 +180,6 @@ var lf2 = (function (lf2) {
                 $("body").append(this._menuContainer);
                 this._menuAttached = true;
                 Game.resizeEvent();
-
-                //Start preload loading video
-                lf2.LoadingLevel.PreloadLoadingVideo();
             }
         }
 
