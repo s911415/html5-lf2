@@ -35,7 +35,7 @@ var lf2 = (function (lf2) {
 
             this.source.lines().forEach((str) => {
                 str = str.trim();
-                if (str.length == 0) return;
+                if (str.length === 0) return;
 
                 //圖片資訊
                 if (str.startsWith('file(')) {
@@ -134,13 +134,8 @@ var lf2 = (function (lf2) {
                      *
                      * @type {HTMLCanvasElement}
                      */
-                    const imgObj = canvas;
-                    /*const imgObj = new Image();
-
-                     canvas.toBlob(function (b) {
-                     imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
-                     resolve();
-                     }, 'image/webp', 1);*/
+                    /*const imgObj = canvas;*/
+                    const imgObj = new Image();
 
                     //Start processing image
                     for (let r = 0; r < row; r++) {
@@ -170,7 +165,11 @@ var lf2 = (function (lf2) {
                         }
                     }
                     //End of image process
-                    resolve();
+
+                    canvas.toBlob(function (b) {
+                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                        resolve();
+                    });
 
                 });
             });
