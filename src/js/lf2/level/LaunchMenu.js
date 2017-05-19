@@ -12,6 +12,13 @@ var lf2 = (function (lf2) {
      * @type {{}}
      */
     lf2.LaunchMenu = class extends Framework.GameMainMenu {
+        constructor(){
+            super();
+
+            lf2.LoadingLevel.PreloadLoadingVideo();
+        }
+
+
         //初始化loadingProgress需要用到的圖片
 
         //在initialize時會觸發的事件

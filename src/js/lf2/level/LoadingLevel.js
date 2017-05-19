@@ -44,13 +44,16 @@ var lf2 = (function (lf2) {
 
     const GameMap = lf2.GameMap;
 
+    let LoadingVideoSrc = define.IMG_PATH + 'loading_video.webm';
+    let LoadingVideoLoadState = 0;
+
     /**
      * Loading Level
      *
      * @type {LoadingLevel}
      * @class lf2.LoadingLevel
      */
-    lf2.LoadingLevel = class extends Framework.Level {
+    lf2.LoadingLevel = class LoadingLevel extends Framework.Level {
         constructor() {
             super();
             this.html = "";
@@ -77,8 +80,7 @@ var lf2 = (function (lf2) {
                 this.showLoadingVideo();
             });
 
-
-            this.loadingImg = ResourceManager.loadResource(lf2.LoadingLevel.LOADING_RESOURCE_SRC);
+            lf2.LoadingLevel.PreloadLoadingVideo();
         }
 
         /**
@@ -112,7 +114,8 @@ var lf2 = (function (lf2) {
                     ResourceManager.loadResource(define.DATA_PATH + "data_list.json"),
                     ResourceManager.loadResource(define.DATA_PATH + 'data.zip')
                         .then(r => r.blob())
-                        .then(JSZip.loadAsync).then(zip => this.zip = zip)
+                        .then(JSZip.loadAsync)
+                        .then(zip => this.zip = zip)
                     ,
                 ]).then(r => {
                     return r[0].json();
@@ -417,7 +420,17 @@ var lf2 = (function (lf2) {
          * @type {string}
          */
         static get LOADING_RESOURCE_SRC() {
-            return define.IMG_PATH + 'loading_video.webm';
+            return LoadingVideoSrc;
+        }
+
+        static PreloadLoadingVideo() {
+            if (LoadingVideoLoadState > 0) return;
+            LoadingVideoLoadState = 1;
+            ResourceManager.loadResourceAsBlob(LoadingLevel.LOADING_RESOURCE_SRC)
+                .then(blobUrl => {
+                    LoadingVideoSrc = blobUrl;
+                    LoadingVideoLoadState = 4;
+                });
         }
     };
 
