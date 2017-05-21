@@ -634,6 +634,22 @@ var lf2 = (function (lf2) {
                 }
             }
         }
+        
+        canDamageBy(item, ITR) {
+            const parentRet = super.canDamageBy(item, ITR);
+            if(!parentRet) return parentRet;
+            
+            if (this.currentFrame.state === FrameStage.BURN_RUN && ITR.kind===ItrKind.NORMAL_HIT){
+                if(
+                    ITR.effect===Effect.FIRE ||
+                    ITR.effect===Effect.FIXED_FIRE_0 ||
+                    ITR.effect===Effect.FIXED_FIRE_1 ||
+                    ITR.effect===Effect.FIXED_FIRE_2
+                ) return false;
+            }
+            
+            return parentRet;
+        }
 
         /**
          *

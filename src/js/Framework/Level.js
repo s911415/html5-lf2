@@ -507,13 +507,7 @@ var Framework = (function (Framework) {
                 return true;
             }
 
-            var isCanvasChanged = false;
-            this._traversalAllElement(function (ele) {
-                if (ele.isObjectChanged) {
-                    isCanvasChanged = true;
-                }
-            });
-            return isCanvasChanged;
+            return this._allGameElement.some(e=>e.isObjectChanged);
         }
 
     });
