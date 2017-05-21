@@ -492,6 +492,7 @@ body {
 #statusPanels .status .bar .value {
     height: 100%;
     width: 100%;
+    will-change: transform;
 }
 
 #statusPanels .status .hp {
