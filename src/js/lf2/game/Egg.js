@@ -20,14 +20,27 @@ var lf2 = (function (lf2) {
     lf2.Egg = Egg = {
         EGG_KEYWORD: [
             {key: 'eris', sound: 'ERIS_CHEST_PADDED'},
-            {key: 'friends', sound: 'FRIENDS'},
+            {
+                key: 'friends',
+                sound: () => {
+                    if ((lf2.CurrentLevel instanceof lf2.FightLevel)) {
+                        const Players = lf2.CurrentLevel.world.config.players;
+
+                        Players.forEach(p => {
+                            p.team = 5;
+                        });
+                    }
+
+                    return Egg['FRIENDS'];
+                }
+            },
             {
                 key: 'axys',
                 sound: () => {
                     if (Egg.AXYS_EGG.length === 0) return Egg.ERIS_CHEST_PADDED;
                     clearTimeout(_axysTimer);
 
-                    if ((lf2.CurrentLevel instanceof lf2.FightLevel)){
+                    if ((lf2.CurrentLevel instanceof lf2.FightLevel)) {
                         const Players = lf2.CurrentLevel.world.config.players;
 
                         let sp = $("#statusPanels");
@@ -77,7 +90,7 @@ var lf2 = (function (lf2) {
             if (playQueue.length < 1) return;
 
             let sound = playQueue.shift();
-            let s = typeof sound === 'function' ? sound() : lf2.Egg[sound];
+            let s = typeof sound === 'function' ? sound() : Egg[sound];
 
             if (!s) return;
 
