@@ -93,7 +93,7 @@ var lf2 = (function (lf2) {
             if (oldInstance) return oldInstance;
 
             oldInstance = new Team(teamId);
-            TeamInstanceMap.set(teamId, oldInstance);
+            if (teamId > 0) TeamInstanceMap.set(teamId, oldInstance);
 
             return oldInstance;
         }

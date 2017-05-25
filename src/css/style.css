@@ -697,14 +697,38 @@ body {
     text-align: center;
 }
 
-#gameOverPanel .cell-status[data-status="alive"] .value:before {
-    content: "Win (Alive)";
+#gameOverPanel .cell-status[data-game-status="win"][data-char-status="alive"] {
     color: #85ff85;
 }
 
-#gameOverPanel .cell-status[data-status="dead"] .value:before {
-    content: "Lose (Dead)";
+#gameOverPanel .cell-status[data-game-status="win"][data-char-status="dead"],
+#gameOverPanel .cell-status[data-game-status="draw"] {
+    color: #ffd34c;
+}
+
+#gameOverPanel .cell-status[data-game-status="lose"] {
     color: #ff9898;
+}
+
+#gameOverPanel .cell-status[data-game-status="win"] .value:before {
+    content: "Win";
+}
+
+#gameOverPanel .cell-status[data-game-status="draw"] .value:before {
+    content: "Draw";
+}
+
+#gameOverPanel .cell-status[data-game-status="lose"] .value:before {
+    content: "Lose";
+}
+
+
+#gameOverPanel .cell-status[data-char-status="alive"] .value:after {
+    content: " (Alive)";
+}
+
+#gameOverPanel .cell-status[data-char-status="dead"] .value:after {
+    content: " (Dead)";
 }
 
 #statusPanels .status:before {

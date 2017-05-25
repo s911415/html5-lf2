@@ -111,7 +111,7 @@ var lf2 = (function (lf2) {
                     attackedItems.forEach(bdyItem => {
                         const r = bdyItem.notifyDamageBy(item);
                         if (r) {
-                            console.log(bdyItem);
+                            define.DEBUG && console.log(bdyItem);
                             actualAttackedItems.push(bdyItem);
                         }
                     });
@@ -225,7 +225,7 @@ var lf2 = (function (lf2) {
          */
         getDistanceBetweenCameraAndItem(item) {
             const pos = this._getCameraPositionAsPoint();
-            return item.position.x - (pos.x +  HALF_SCREEN_WIDTH);
+            return item.position.x - (pos.x + HALF_SCREEN_WIDTH);
         }
 
         /**
@@ -285,7 +285,7 @@ var lf2 = (function (lf2) {
             this.players.forEach(p => {
                 if (target !== null) return;
 
-                if (player !== p) {
+                if (!player.team.equalsTo(p.team)) {
                     target = p.character;
 
                     if (!target._allowDraw || p.hp <= 0) target = null;
@@ -301,7 +301,18 @@ var lf2 = (function (lf2) {
          * @returns {lf2.Character}
          */
         getFriend(player) {
-            return player.character;
+            let target = null;
+            this.players.forEach(p => {
+                if (target !== null) return;
+
+                if (player.team.equalsTo(p.team) && p !== player) {
+                    target = p.character;
+                }
+            });
+
+            if (target === null) target = player;
+
+            return target;
         }
 
 

@@ -137,6 +137,15 @@ String.prototype.padStart = String.prototype.padStart || function (targetLength,
         return str;
     };
 
+
+Array.prototype.first = function () {
+    return this[0];
+};
+
+Array.prototype.last = function () {
+    return this[this.length - 1];
+};
+
 Array.prototype.binarySearch = function (target, compareFunction) {
     if (compareFunction === undefined) compareFunction = (x, y) => x - y;
 
@@ -191,11 +200,11 @@ function loadImage(src) {
     });
 }
 
-Array.prototype.max = function() {
+Array.prototype.max = function () {
     return Math.max.apply(null, this);
 };
 
-Array.prototype.min = function() {
+Array.prototype.min = function () {
     return Math.min.apply(null, this);
 };
 
@@ -203,6 +212,6 @@ Array.prototype.min = function() {
  *
  * @param {Number} deg degree
  */
-Math.toRad = function(deg){
+Math.toRad = function (deg) {
     return deg / 180 * Math.PI;
 };

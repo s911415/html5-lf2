@@ -118,7 +118,7 @@ var lf2 = (function (lf2) {
                 ) {
                     if ((first & KeyboardConfig.KEY_MAP.FRONT) === KeyboardConfig.KEY_MAP.FRONT) {
                         this.character.startRun();
-                        console.log('start run');
+                        define.DEBUG && console.log('start run');
                     }
                 }
 
