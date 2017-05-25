@@ -850,7 +850,7 @@ var lf2 = (function (lf2) {
         }
 
         isSameTeam(item1, item2) {
-            return item1.belongTo === item2.belongTo;
+            return item1.belongTo.team.equalsTo(item2.belongTo.team);
         }
 
         /**

@@ -50,6 +50,12 @@ var lf2 = (function (lf2) {
 
         start() {
             Framework.Game.start();
+
+            if (define.DEBUG) {
+                document.documentElement.classList.add('mode-debug');
+            } else {
+                document.documentElement.classList.add('mode-product');
+            }
         }
 
         keyInSequence(asciiArrayReversed) {

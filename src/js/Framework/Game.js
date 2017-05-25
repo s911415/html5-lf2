@@ -1124,7 +1124,6 @@ var Framework = (function (Framework) {
     that._mainContainer.appendChild(that._canvasContainer);
     that._context = that._canvas.getContext('2d');
 
-
     return Framework;
 })(Framework || {});
 
