@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     const GameItem = lf2.GameItem;
+    const Team = lf2.Team;
     const GameObjectPool = lf2.GameObjectPool;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
@@ -31,8 +32,9 @@ var lf2 = (function (lf2) {
          *
          * @param {Number} playerId
          * @param {Number|undefined} [charId]
+         * @param {Number|undefined} [teamId]
          */
-        constructor(playerId, charId) {
+        constructor(playerId, charId, teamId) {
             console.log('Create player', playerId, charId);
 
             this.playerId = playerId;
@@ -49,6 +51,9 @@ var lf2 = (function (lf2) {
             this.attackSum = 0;
 
             if (this.charId !== undefined) {
+                teamId = teamId || -1;
+                teamId *= 1;
+
                 /**
                  *
                  * @type {lf2.Character}
@@ -67,6 +72,8 @@ var lf2 = (function (lf2) {
                 this.spriteParent = null;
 
                 this._upKeyTimer = false;
+
+                this.team = (teamId);
             }
         }
 
@@ -154,6 +161,22 @@ var lf2 = (function (lf2) {
                     this.character._upKey = -1;
                 }, CLEAR_KEY_TIME);
             }
+        }
+
+        /**
+         *
+         * @param {*} teamId
+         */
+        set team(teamId){
+            this._team = Team.GetTeamInstance(teamId);
+        }
+
+        /**
+         *
+         * @returns {lf2.Team}
+         */
+        get team(){
+            return this._team;
         }
 
         /**

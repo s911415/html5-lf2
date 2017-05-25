@@ -6,10 +6,12 @@ var lf2 = (function (lf2) {
     const KeyboardConfig = lf2.KeyboardConfig;
     const GameObjectPool = lf2.GameObjectPool;
     const GameMapPool = lf2.GameMapPool;
+    const Team = lf2.Team;
     const _SELECTION_CONTAINER_ID = "__selection_container";
     const PLAYER_TAG = 'data-player';
     const STAGE_TAG = 'data-select-stage';
     const CHAR_TAG = 'data-char';
+    const TEAM_TAG = 'data-team';
     const COUNTING_DOWN_CLASS = 'counting-down';
     const REMINING_TIME_TAG = 'data-rt';
     const Player = lf2.Player;
@@ -93,6 +95,7 @@ var lf2 = (function (lf2) {
                 };
                 p.setSelectStage(SELECTION_STAGE.WAIT_JOIN);
                 p._charIndex = 0;
+                p._teamId = 0;
                 this.players[playerId] = p;
             }
 
@@ -102,6 +105,7 @@ var lf2 = (function (lf2) {
                 this.showSelectionPanel();
             });
             this._charIdArray = [RANDOM_ID];
+            this._teamInsArray = new Array(define.TEAM_COUNT + 1);
             this._mapIdArray = [RANDOM_ID];
             this._mapIndex = 0;
 
@@ -116,6 +120,10 @@ var lf2 = (function (lf2) {
                     this._mapIdArray.push(obj.id);
                 }
             });
+
+            for (let i = 0; i <= define.TEAM_COUNT; i++) {
+                this._teamInsArray[i] = Team.GetTeamInstance(i);
+            }
 
             this._isEnteringPanelShowed = false;
 
@@ -178,12 +186,14 @@ var lf2 = (function (lf2) {
                     case SELECTION_STAGE.WAIT_JOIN:
                         playerName.addClass('flashing');
                         elem.removeAttr(CHAR_TAG);
+                        elem.removeAttr(TEAM_TAG);
                         break;
                     case SELECTION_STAGE.SELECT_CHARACTER:
                         fighterName.addClass('flashing');
                         break;
                     case SELECTION_STAGE.SELECT_TEAM:
                         teamName.addClass('flashing');
+                        teamName.text(this._teamInsArray[player._teamId].toString());
                         break;
                     case SELECTION_STAGE.SELECT_DONE:
                         if (this._countDownTimer !== undefined) {
@@ -295,7 +305,7 @@ var lf2 = (function (lf2) {
 
 
             switch (stage) {
-                case SELECTION_STAGE.SELECT_CHARACTER:
+                case SELECTION_STAGE.SELECT_CHARACTER: {
                     let charIdxOffset = 0;
                     if (player.isKeyPressed(KeyboardConfig.KEY_MAP.LEFT)) {
                         charIdxOffset = -1;
@@ -317,14 +327,31 @@ var lf2 = (function (lf2) {
 
 
                     elem.attr(CHAR_TAG, this._charIdArray[player._charIndex]);
+                }
                     break;
-                case SELECTION_STAGE.SELECT_DONE:
+                case SELECTION_STAGE.SELECT_TEAM: {
+                    let teamIdxOffset = 0;
+                    if (player.isKeyPressed(KeyboardConfig.KEY_MAP.LEFT)) {
+                        teamIdxOffset = -1;
+                    } else if (player.isKeyPressed(KeyboardConfig.KEY_MAP.RIGHT)) {
+                        teamIdxOffset = 1;
+                    }
+                    if (teamIdxOffset !== 0) {
+                        //player._charIndex = setOffsetIndex(player._charIndex, this._charIdArray.length, charIdxOffset);
+                        player._teamId = this.getTeamIdInRange(player._teamId, teamIdxOffset);
+                    }
+
+                    elem.attr(TEAM_TAG, player._teamId);
+                }
+                    break;
+                case SELECTION_STAGE.SELECT_DONE: {
                     if (this._remainingTime !== undefined) {
                         this._timerTick();
                         this._selectionPanel.attr(REMINING_TIME_TAG, this._remainingTime);
                     }
+                }
                     break;
-                case SELECTION_STAGE.ENTERING:
+                case SELECTION_STAGE.ENTERING: {
                     let itemOffset = 0;
                     if (player.isKeyPressed(KeyboardConfig.KEY_MAP.UP)) {
                         itemOffset = -1;
@@ -343,6 +370,7 @@ var lf2 = (function (lf2) {
 
                                     _passData.players[p.playerId] = {
                                         charId: this._charIdArray[p._charIndex],
+                                        teamId: p._teamId,
                                     };
                                 });
                                 _passData.mapId = this._mapIdArray[this._mapIndex];
@@ -377,7 +405,7 @@ var lf2 = (function (lf2) {
                         this._enteringIndex = setOffsetIndex(this._enteringIndex, this._enteringIndexMax, itemOffset);
                     }
 
-
+                }
                     break;
 
             }
@@ -624,6 +652,12 @@ var lf2 = (function (lf2) {
             if (lf2['!MainGame'].cheat || this._charIdArray[newIndex].inRange(FREE_CHAR_MIN, FREE_CHAR_MAX)) return newIndex;
 
             return this.getCharIdInRange(newIndex, offset);
+        }
+
+        getTeamIdInRange(currentIndex, offset) {
+            if (offset === 0) return currentIndex;
+
+            return setOffsetIndex(currentIndex, this._teamInsArray.length, offset);
         }
 
         _stopAllMusic() {

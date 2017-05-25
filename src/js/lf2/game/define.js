@@ -14,6 +14,7 @@
 
         PLAYER_COUNT: 4,
         KEYBOARD_CONFIG_KEY: "keyConfig",
+        TEAM_COUNT: 4,
 
         BGM_VOLUME: .3,
 

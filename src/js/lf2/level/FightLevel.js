@@ -49,8 +49,9 @@ var lf2 = (function (lf2) {
             for (let playerId in extraData.players) {
                 playerId = intval(playerId);
                 if (isNaN(playerId)) continue;
+                const Data = extraData.players[playerId];
 
-                this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
+                this.config.players[playerId] = new Player(playerId, Data.charId, Data.teamId);
             }
         }
 
