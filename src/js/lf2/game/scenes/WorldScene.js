@@ -111,7 +111,7 @@ var lf2 = (function (lf2) {
                     attackedItems.forEach(bdyItem => {
                         const r = bdyItem.notifyDamageBy(item);
                         if (r) {
-                            console.log(bdyItem);
+                            define.DEBUG && console.log(bdyItem);
                             actualAttackedItems.push(bdyItem);
                         }
                     });
