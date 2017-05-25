@@ -5,6 +5,7 @@ var lf2 = (function (lf2) {
     const Interaction = lf2.Interaction;
     const GameObject = lf2.GameObject;
     const GameItem = lf2.GameItem;
+    const Team = lf2.Team;
     const GameObjectPool = lf2.GameObjectPool;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
     const KeyboardConfig = lf2.KeyboardConfig;
@@ -31,8 +32,9 @@ var lf2 = (function (lf2) {
          *
          * @param {Number} playerId
          * @param {Number|undefined} [charId]
+         * @param {Number|undefined} [teamId]
          */
-        constructor(playerId, charId) {
+        constructor(playerId, charId, teamId) {
             console.log('Create player', playerId, charId);
 
             this.playerId = playerId;
@@ -49,6 +51,9 @@ var lf2 = (function (lf2) {
             this.attackSum = 0;
 
             if (this.charId !== undefined) {
+                teamId = teamId || 0;
+                teamId *= 1;
+
                 /**
                  *
                  * @type {lf2.Character}
@@ -67,6 +72,8 @@ var lf2 = (function (lf2) {
                 this.spriteParent = null;
 
                 this._upKeyTimer = false;
+
+                this.team = (teamId);
             }
         }
 
@@ -154,6 +161,22 @@ var lf2 = (function (lf2) {
                     this.character._upKey = -1;
                 }, CLEAR_KEY_TIME);
             }
+        }
+
+        /**
+         *
+         * @param {*} teamId
+         */
+        set team(teamId) {
+            this._team = Team.GetTeamInstance(teamId);
+        }
+
+        /**
+         *
+         * @returns {lf2.Team}
+         */
+        get team() {
+            return this._team;
         }
 
         /**
@@ -283,24 +306,23 @@ var lf2 = (function (lf2) {
             if (!this.character) return;
 
             if (this.character._allowDraw) {
-                //Backup shadow variables
-                const oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = "#000";
-                ctx.font = "8px Arial";
-                ctx.fillStyle = "#FFF";
+                ctx.font = "10px Arial";
+                ctx.fillStyle = this.team.getColor();
+                ctx.strokeStyle = this.team.getDarkColor();
+                ctx.lineWidth = 2;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "top";
+                ctx.strokeText(
+                    this.keyboardConfig.config.NAME,
+                    this.character.position.x,
+                    this.character.position.y + NAME_OFFSET
+                );
                 ctx.fillText(
                     this.keyboardConfig.config.NAME,
                     this.character.position.x,
                     this.character.position.y + NAME_OFFSET
                 );
-
-                //Restore shadow variable
-                ctx.shadowBlur = oldShadowBlur;
-                ctx.shadowColor = oldShadowColor;
             }
         }
 

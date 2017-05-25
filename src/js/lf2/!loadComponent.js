@@ -50,6 +50,7 @@
         'items/behavior/FirzenDisasterFallDownBeginBehavior.js',
         'items/behavior/FirzenDisasterFallDownBehavior.js',
 
+        'player/Team.js',
         'player/PlayerStatusPanel.js',
         'player/Player.js',
 

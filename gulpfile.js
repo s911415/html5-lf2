@@ -94,6 +94,7 @@ gulp.task('build', () => {
         'src/js/lf2/items/behavior/FirzenDisasterFallDownBeginBehavior.js',
         'src/js/lf2/items/behavior/FirzenDisasterFallDownBehavior.js',
 
+        'src/js/lf2/player/Team.js',
         'src/js/lf2/player/PlayerStatusPanel.js',
         'src/js/lf2/player/Player.js',
 

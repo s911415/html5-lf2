@@ -49,8 +49,9 @@ var lf2 = (function (lf2) {
             for (let playerId in extraData.players) {
                 playerId = intval(playerId);
                 if (isNaN(playerId)) continue;
+                const Data = extraData.players[playerId];
 
-                this.config.players[playerId] = new Player(playerId, extraData.players[playerId].charId);
+                this.config.players[playerId] = new Player(playerId, Data.charId, Data.teamId);
             }
         }
 
@@ -88,7 +89,7 @@ var lf2 = (function (lf2) {
                     ((Math.random() * worldHeightDiff) | 0) + this.world.map.zBoundary.first,
                     0
                 );
-                player.status.setElem(this._statusPanels[i]);
+                // player.status.setElem(this._statusPanels[i]);
             });
 
             this._funcStatus = {
@@ -278,6 +279,7 @@ var lf2 = (function (lf2) {
                     this._statusPanels[i].hp = this._statusPanels[i].querySelector('.hp');
                     this._statusPanels[i].mp = this._statusPanels[i].querySelector('.mp');
                     this._statusPanels[i].small = this._statusPanels[i].querySelector('.small');
+                    this._statusPanels[i].flag = this._statusPanels[i].querySelector('.flag');
 
                     _statusPanelsTarget.append(this._statusPanels[i]);
                     if (this.config.players[i]) {
