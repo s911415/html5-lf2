@@ -15,6 +15,11 @@ var lf2 = (function (lf2) {
     const WorldScene = lf2.WorldScene;
     const ResourceManager = Framework.ResourceManager;
     const PlayerStatusPanel = lf2.PlayerStatusPanel;
+
+    const GAME_STATUS_WIN = 'win';
+    const GAME_STATUS_LOSE = 'lose';
+    const GAME_STATUS_DRAW = 'draw';
+
     /**
      * @class lf2.FightLevel
      * @extends {Framework.Level}
@@ -108,6 +113,7 @@ var lf2 = (function (lf2) {
             this._startTime = Date.now();
             this._gameOver = false;
             this._gameOverPanelShown = false;
+            this._teamInfoCache = undefined;
         }
 
         /**
@@ -316,17 +322,78 @@ var lf2 = (function (lf2) {
 
         checkGameOver() {
             if (this._gameOver) return true;
+            const TeamInfo = this.getTeamInfo();
+            let isGameOver = false;
 
-            let aliveCount = 0;
-            this.config.players.forEach((player) => {
-                if (player.hp > 0) aliveCount++;
+            TeamInfo.forEach(v => {
+                if (v.status !== undefined) isGameOver = true;
             });
 
-            return aliveCount < 2;
+
+            return isGameOver;
+        }
+
+        getTeamInfo() {
+            // if (this._teamInfoCache !== undefined) return this._teamInfoCache;
+
+            let teamMap = new Map();
+            let playerCount = 0;
+            this.config.players.forEach((player, i) => {
+                const team = player.team;
+                let mapObj = teamMap.get(team);
+                playerCount++;
+
+                if (mapObj === undefined) {
+                    mapObj = {
+                        alive: 0,
+                        dead: 0,
+                        total: 0,
+                        status: undefined,
+                    };
+                    teamMap.set(team, mapObj);
+                }
+
+                mapObj.total++;
+
+                if (player.hp > 0) {
+                    mapObj.alive++;
+                } else {
+                    mapObj.dead++;
+                }
+            });
+
+            let tmpArr = [];
+            teamMap.forEach((obj) => {
+                tmpArr.push(obj);
+            });
+
+            // 依活著人數由大到小排序
+            tmpArr.sort((x, y) => y.alive - x.alive);
+
+            const first = tmpArr[0];
+            if (first.total === playerCount) {
+                // 沒有其他隊伍所以平手
+                first.status = GAME_STATUS_DRAW;
+            } else if (first.alive === 0) {
+                //沒有人活著
+                tmpArr.forEach(v => v.status = GAME_STATUS_DRAW);
+            } else if (first.alive > 0 && tmpArr[1].alive === 0) {
+                tmpArr.forEach(v => v.status = GAME_STATUS_LOSE);
+                first.status = GAME_STATUS_WIN;
+            }
+
+            // this._teamInfoCache = teamMap;
+
+            return teamMap;
+        }
+
+        clearTeamInfoCache() {
+            this._teamInfoCache = undefined;
         }
 
         showGameOverPanel() {
             if (this._gameOverPanelShown) return;
+            const TeamInfo = this.getTeamInfo();
 
             this._gameOverPanel.removeAttr('hidden');
 
@@ -335,7 +402,7 @@ var lf2 = (function (lf2) {
                 panel._attackVal.text(player.attackSum);
                 panel._hpVal.text(player.hpLost);
                 panel._mpVal.text(player.mpCost);
-                panel._status.attr('data-game-status', player.hp > 0 ? 'win' : 'lose');
+                panel._status.attr('data-game-status', TeamInfo.get(player.team).status);
                 panel._status.attr('data-char-status', player.hp > 0 ? 'alive' : 'dead');
             });
 
