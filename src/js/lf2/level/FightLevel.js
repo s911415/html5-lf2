@@ -335,7 +335,8 @@ var lf2 = (function (lf2) {
                 panel._attackVal.text(player.attackSum);
                 panel._hpVal.text(player.hpLost);
                 panel._mpVal.text(player.mpCost);
-                panel._status.attr('data-status', player.hp > 0 ? 'alive' : 'dead');
+                panel._status.attr('data-game-status', player.hp > 0 ? 'win' : 'lose');
+                panel._status.attr('data-char-status', player.hp > 0 ? 'alive' : 'dead');
             });
 
             const costTime = ((this._gameOverTime - this._startTime) / 1000) | 0;
