@@ -4,6 +4,25 @@ var lf2 = (function (lf2) {
 
     let TeamInstanceMap = new Map();
     let TeamSymbol = new Map();
+    const TeamColor = {
+        '0': "#fbfbfb",
+        '1': "#4f9bff",
+        '2': "#ff4f4f",
+        '3': "#3cad0f",
+        '5': "#ffd34c",
+        '4': "#ff4cec",
+    };
+    Object.freeze(TeamColor);
+
+    const TeamColorDark = {
+        '0': "#444444",
+        '1': "#001e46",
+        '2': "#460000",
+        '3': "#154103",
+        '4': "#8c009a",
+        '5': "#9a5700",
+    };
+    Object.freeze(TeamColorDark);
     /**
      * Team
      *
@@ -38,6 +57,23 @@ var lf2 = (function (lf2) {
             if (this._teamId > 0) return `Team ${this._teamId}`;
 
             return 'Independent';
+        }
+
+        getColor() {
+            if (this._teamId > 0) return TeamColor[`${this._teamId}`];
+
+            return TeamColor['0'];
+        }
+
+        getDarkColor() {
+            if (this._teamId > 0) return TeamColorDark[`${this._teamId}`];
+
+            return TeamColorDark['0'];
+        }
+
+        get id() {
+            if (this._teamId > 0) return this._teamId;
+            return 0;
         }
 
 

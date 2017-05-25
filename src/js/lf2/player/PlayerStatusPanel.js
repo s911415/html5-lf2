@@ -70,8 +70,12 @@ var lf2 = (function (lf2) {
             if (elem && elem.hp && elem.mp && elem.small) {
                 this._elem = elem;
                 elem.setAttribute('attached', '1');
+                elem.setAttribute('data-team', this._player.team.id);
+                elem.setAttribute('data-team-str', this._player.team);
+                elem.flag.style.color = this._player.team.getColor();
                 this._hpValueBar = elem.hp.querySelector('.value');
                 this._mpValueBar = elem.mp.querySelector('.value');
+
             }
         }
 
@@ -145,11 +149,11 @@ var lf2 = (function (lf2) {
             return new Point(x, y);
         }
 
-        get HPRadio(){
+        get HPRadio() {
             return this._hpRatio;
         }
 
-        get MPRadio(){
+        get MPRadio() {
             return this._mpRatio;
         }
     };

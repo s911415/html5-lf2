@@ -51,7 +51,7 @@ var lf2 = (function (lf2) {
             this.attackSum = 0;
 
             if (this.charId !== undefined) {
-                teamId = teamId || -1;
+                teamId = teamId || 0;
                 teamId *= 1;
 
                 /**
@@ -167,7 +167,7 @@ var lf2 = (function (lf2) {
          *
          * @param {*} teamId
          */
-        set team(teamId){
+        set team(teamId) {
             this._team = Team.GetTeamInstance(teamId);
         }
 
@@ -175,7 +175,7 @@ var lf2 = (function (lf2) {
          *
          * @returns {lf2.Team}
          */
-        get team(){
+        get team() {
             return this._team;
         }
 
@@ -306,24 +306,23 @@ var lf2 = (function (lf2) {
             if (!this.character) return;
 
             if (this.character._allowDraw) {
-                //Backup shadow variables
-                const oldShadowBlur = ctx.shadowBlur, oldShadowColor = ctx.shadowColor;
 
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = "#000";
-                ctx.font = "8px Arial";
-                ctx.fillStyle = "#FFF";
+                ctx.font = "10px Arial";
+                ctx.fillStyle = this.team.getColor();
+                ctx.strokeStyle = this.team.getDarkColor();
+                ctx.lineWidth = 2;
                 ctx.textAlign = "center";
                 ctx.textBaseline = "top";
+                ctx.strokeText(
+                    this.keyboardConfig.config.NAME,
+                    this.character.position.x,
+                    this.character.position.y + NAME_OFFSET
+                );
                 ctx.fillText(
                     this.keyboardConfig.config.NAME,
                     this.character.position.x,
                     this.character.position.y + NAME_OFFSET
                 );
-
-                //Restore shadow variable
-                ctx.shadowBlur = oldShadowBlur;
-                ctx.shadowColor = oldShadowColor;
             }
         }
 
