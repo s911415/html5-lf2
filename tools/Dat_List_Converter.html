@@ -56,7 +56,7 @@
 
         lines.forEach((line) => {
             line = line.trim();
-            if (line.length == 0) return;
+            if (line.length === 0) return;
 
             //remove comment
             line = line.split('#')[0];
@@ -67,7 +67,7 @@
         });
 
         objs = objs.filter((o) => {
-            const fn = o.file.substr(4);
+            const fn = o.file.substr(4).replace(/\.dat/ig, '.txt');
 
             o.id = parseInt(o.id, 10);
             o.type = parseInt(o.type, 10);
@@ -129,8 +129,11 @@
         processFile(this.files[0])
             .then((fr) => {
                 let txt = fr.result;
-                txt = txt.replace(/ {2,}/g, "\t");
-                txt = txt.replace(/id:\t/g, "id: ");
+                txt = txt
+                    .replace(/ {2,}/g, "\t")
+                    .replace(/id:\t/g, "id: ")
+                    .replace(/\\/g, '/')
+                ;
 
                 const objContent =
                     txt.substring(
