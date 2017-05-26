@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
     const DIRECTION = lf2.GameItem.DIRECTION;
     const DEFAULT_HP = 500;
     const DEFAULT_MP = 500;
-    const CLEAR_KEY_TIME = 500; //Less than 200 make be make stop run direction wrong
+    const CLEAR_KEY_TIME = 200; //Less than 200 make be make stop run direction wrong
     const NAME_OFFSET = 0;
 
     /**
