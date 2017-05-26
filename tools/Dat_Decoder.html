@@ -36,6 +36,17 @@
     const KEY_BYTES = KEY.split("").map(x => x.charCodeAt(0));
     const KEEP_BYTE = 123;
 
+    function replaceFileContent(datText) {
+        return datText
+            .replace(/\\/g, '/')
+            .replace(/\.bmp/ig, '.png')
+            .replace(/\.wav/ig, '.ogg')
+            .replace(/\.wav/ig, '.ogg')
+            .replace(/sound(\s+?):(\s+?)data\//ig, "sound: ")
+            .replace(/\r?\n\s+hit_/ig, " hit_")
+            ;
+    }
+
     function processFile(file, callback) {
         let fr = new FileReader();
         fr.onload = function () {
@@ -61,11 +72,12 @@
         let fr = new FileReader();
         fr.onload = function () {
             let text = this.result;
+            text = replaceFileContent(text);
+
+            let blob = new Blob([text], {type: 'text/plain'});
             callback(blob, text);
         };
         fr.readAsText(blob, 'BIG5');
-
-
     }
 
     $("#files").bind('change', function(e){
