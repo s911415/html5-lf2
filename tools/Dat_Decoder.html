@@ -41,7 +41,8 @@
             .replace(/\\/g, '/')
             .replace(/\.bmp/ig, '.png')
             .replace(/\.wav/ig, '.ogg')
-            .replace(/sound(\s+?):(\s+?)/ig, "sound: ")
+            .replace(/\.wav/ig, '.ogg')
+            .replace(/sound(\s+?):(\s+?)data\//ig, "sound: ")
             .replace(/\r?\n\s+hit_/ig, " hit_")
             ;
     }
