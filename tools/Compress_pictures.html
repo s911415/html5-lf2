@@ -45,6 +45,7 @@
 </form>
 <script type="text/javascript">
     let tColor = new Color(0, 0, 0);
+    const cc = $("#check_tr_color");
     function processFile(file, typeEle, callback) {
         let fr = new FileReader();
         fr.onload = function () {
@@ -62,26 +63,28 @@
             let g = c.getContext('2d');
             g.drawImage(this, 0, 0);
 
-            let imgData = g.getImageData(0, 0, img.width, img.height);
-            for (let pos = 0; pos < imgData.data.length; pos += 4) {
-                let r, g, b, a;
-                r = imgData.data[pos + 0];
-                g = imgData.data[pos + 1];
-                b = imgData.data[pos + 2];
-                a = imgData.data[pos + 3];
+            if (cc.prop('checked')) {
+                let imgData = g.getImageData(0, 0, img.width, img.height);
+                for (let pos = 0; pos < imgData.data.length; pos += 4) {
+                    let r, g, b, a;
+                    r = imgData.data[pos + 0];
+                    g = imgData.data[pos + 1];
+                    b = imgData.data[pos + 2];
+                    a = imgData.data[pos + 3];
 
-                if (r == tColor.r && g == tColor.g && b == tColor.b) {
-                    imgData.data[pos]
-                        = imgData.data[pos + 1]
-                        = imgData.data[pos + 2]
-                        = imgData.data[pos + 3]
-                        = 0;
+                    if (r == tColor.r && g == tColor.g && b == tColor.b) {
+                        imgData.data[pos]
+                            = imgData.data[pos + 1]
+                            = imgData.data[pos + 2]
+                            = imgData.data[pos + 3]
+                            = 0;
+                    }
                 }
+
+                g.putImageData(imgData, 0, 0);
             }
 
-            g.putImageData(imgData, 0, 0);
-
-            let blobData = c.toBlob(callback, typeEle.value, .7);
+            // let blobData = c.toBlob(callback, typeEle.value, .7);
         };
         img.src = this.result;
     }
@@ -92,7 +95,7 @@
 
         let fileCount = 0;
 
-        if ($("#check_tr_color").prop('checked')) {
+        if (cc.prop('checked')) {
             tColor = Color.parse($("#color").val());
         } else {
             tColor = Color.parse("#000000");
