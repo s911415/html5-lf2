@@ -1,5 +1,5 @@
 <bmp_begin>
-file(0-99): sprite\sys\weapon5.png  w: 48  h: 48  row: 10  col: 10
+file(0-99): sprite/sys/weapon5.png  w: 48  h: 48  row: 10  col: 10
 weapon_hp: 750
 weapon_drop_hurt: 48
 weapon_hit_sound: 038.ogg
@@ -10,13 +10,13 @@ weapon_broken_sound: 038.ogg
 
 <weapon_strength_list>
    entry: 1 normal 
-     dvx: 2  fall: 40  vrest: 10 bdefend: 16  injury: 40
+     dvx: 2  fall: 40  vrest: 10 bdefend: 16  injury: 24
    entry: 2 jump   
-     dvx: 7  fall: 70  vrest: 10  bdefend: 16   injury: 60
+     dvx: 7  fall: 70  vrest: 10  bdefend: 16   injury: 36
    entry: 3 run    
-     dvx: 10  fall: 70  vrest: 10  bdefend: 16   injury: 85
+     dvx: 10  fall: 70  vrest: 10  bdefend: 16   injury: 51
    entry: 4 dash   
-     dvx: 12  fall: 70  vrest: 20  bdefend: 60  injury: 100
+     dvx: 12  fall: 70  vrest: 20  bdefend: 60  injury: 60
 <weapon_strength_list_end>
 
 <frame> 0 in_the_sky
@@ -294,7 +294,7 @@ weapon_broken_sound: 038.ogg
 <frame> 40 throwing
    pic: 0  state: 1002  wait: 0  next: 41  dvx: 0  dvy: 0  centerx: 24  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35  
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21  
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -304,7 +304,7 @@ weapon_broken_sound: 038.ogg
 <frame> 41 throwing
    pic: 1  state: 1002  wait: 0  next: 42  dvx: 0  dvy: 0  centerx: 24  centery: 35  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -314,7 +314,7 @@ weapon_broken_sound: 038.ogg
 <frame> 42 throwing
    pic: 2  state: 1002  wait: 0  next: 43  dvx: 0  dvy: 0  centerx: 24  centery: 36  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -324,7 +324,7 @@ weapon_broken_sound: 038.ogg
 <frame> 43 throwing
    pic: 3  state: 1002  wait: 0  next: 44  dvx: 0  dvy: 0  centerx: 23  centery: 36  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -334,7 +334,7 @@ weapon_broken_sound: 038.ogg
 <frame> 44 throwing
    pic: 4  state: 1002  wait: 0  next: 45  dvx: 0  dvy: 0  centerx: 24  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -344,7 +344,7 @@ weapon_broken_sound: 038.ogg
 <frame> 45 throwing
    pic: 5  state: 1002  wait: 0  next: 46  dvx: 0  dvy: 0  centerx: 24  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -354,7 +354,7 @@ weapon_broken_sound: 038.ogg
 <frame> 46 throwing
    pic: 6  state: 1002  wait: 0  next: 47  dvx: 0  dvy: 0  centerx: 24  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -364,7 +364,7 @@ weapon_broken_sound: 038.ogg
 <frame> 47 throwing
    pic: 7  state: 1002  wait: 0  next: 48  dvx: 0  dvy: 0  centerx: 23  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -374,7 +374,7 @@ weapon_broken_sound: 038.ogg
 <frame> 48 throwing
    pic: 8  state: 1002  wait: 0  next: 49  dvx: 0  dvy: 0  centerx: 25  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -384,7 +384,7 @@ weapon_broken_sound: 038.ogg
 <frame> 49 throwing
    pic: 9  state: 1002  wait: 0  next: 50  dvx: 0  dvy: 0  centerx: 25  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -394,7 +394,7 @@ weapon_broken_sound: 038.ogg
 <frame> 50 throwing
    pic: 10  state: 1002  wait: 0  next: 51  dvx: 0  dvy: 0  centerx: 25  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -404,7 +404,7 @@ weapon_broken_sound: 038.ogg
 <frame> 51 throwing
    pic: 11  state: 1002  wait: 0  next: 52  dvx: 0  dvy: 0  centerx: 25  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -414,7 +414,7 @@ weapon_broken_sound: 038.ogg
 <frame> 52 throwing
    pic: 12  state: 1002  wait: 0  next: 53  dvx: 0  dvy: 0  centerx: 25  centery: 37  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -424,7 +424,7 @@ weapon_broken_sound: 038.ogg
 <frame> 53 throwing
    pic: 13  state: 1002  wait: 0  next: 54  dvx: 0  dvy: 0  centerx: 25  centery: 36  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -434,7 +434,7 @@ weapon_broken_sound: 038.ogg
 <frame> 54 throwing
    pic: 14  state: 1002  wait: 0  next: 55  dvx: 0  dvy: 0  centerx: 25  centery: 36  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 35    
+      kind: 0  x: 16  y: 16  w: 19  h: 19  fall: 60  bdefend: 16  injury: 21    
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -444,7 +444,7 @@ weapon_broken_sound: 038.ogg
 <frame> 55 throwing
    pic: 15  state: 1002  wait: 0  next: 40  dvx: 0  dvy: 0  centerx: 24  centery: 36  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 16  y: 16  w: 19  h: 19   fall: 60  bdefend: 16  injury: 35
+      kind: 0  x: 16  y: 16  w: 19  h: 19   fall: 60  bdefend: 16  injury: 21
    itr_end:
    bdy:
       kind: 0  x: 16  y: 16  w: 19  h: 19
@@ -496,4 +496,6 @@ weapon_broken_sound: 038.ogg
       kind: 0  x: 1  y: 19  w: 46  h: 15
    bdy_end:
 <frame_end>
+
+
 
