@@ -50,6 +50,8 @@ var lf2 = (function (lf2) {
             let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
             let opoint = context.getStringBetween(OPOINT_START_TAG, OPOINT_END_TAG);
             let bpoint = context.getStringBetween(BPOINT_START_TAG, BPOINT_END_TAG);
+            itr=itr?itr.trim():itr;
+            bdy=bdy?bdy.trim():bdy;
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
