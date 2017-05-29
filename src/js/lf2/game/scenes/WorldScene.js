@@ -46,7 +46,6 @@ var lf2 = (function (lf2) {
             this._stepByStep = false;
             this._allowUpdate = true;
 
-            this.attach(this.map);
             this.addPlayers(this.players);
 
             this._targetCameraX = 0;
@@ -55,6 +54,8 @@ var lf2 = (function (lf2) {
             this._startMoveCameraPos = 0;
             this._cameraPositionCache = new Point(0, 0);
             this._cameraChanged = false;
+
+            this.map.initialize(this);
         }
 
 
@@ -77,6 +78,8 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+            this.map.update();
+
             if (!this._allowUpdate) return;
 
             let sumPlayerX = 0, count = 0;
@@ -237,6 +240,7 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             //Reset translate
             ctx.setTransform(1, 0, 0, 1, 0, 0);
+            this.map.draw(ctx);
 
             ctx.save();
             let canvasTranslate = this._getCameraPositionAsPoint();
