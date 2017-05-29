@@ -401,34 +401,43 @@
             "file": "sys\\broken_weapon.txt"
         }
     ],
+
     "background": [
         {
+            "id": "4",
+            "file": "bg/hkc.txt"
+        },
+        {
             "id": "2",
-            "file": "bg\\lf.txt"
+            "file": "bg/lf.txt"
         },
         {
             "id": "3",
-            "file": "bg\\sp.txt"
+            "file": "bg/sp.txt"
         },
         {
             "id": "5",
-            "file": "bg\\gw.txt"
+            "file": "bg/gw.txt"
         },
         {
             "id": "6",
-            "file": "bg\\qi.txt"
+            "file": "bg/qi.txt"
         },
         {
             "id": "7",
-            "file": "bg\\ft.txt"
+            "file": "bg/ft.txt"
         },
         {
             "id": "8",
-            "file": "bg\\bc.txt"
+            "file": "bg/bc.txt"
         },
         {
             "id": "1",
-            "file": "bg\\cuhk.txt"
+            "file": "bg/cuhk.txt"
+        },
+        {
+            "id": "0",
+            "file": "bg/thv.txt"
         }
     ]
 }

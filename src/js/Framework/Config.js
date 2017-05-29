@@ -12,7 +12,7 @@ var Framework = (function (Framework) {
     Framework.Config = {
         fps: 30,
         canvasWidth: 794,
-        canvasHeight: 500,
+        canvasHeight: 520,
 //		canvasWidth : 640,
 //		canvasHeight :480,
         isBackwardCompatiable: false,

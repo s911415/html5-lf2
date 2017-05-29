@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-tw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style type="text/css">
+        input[type="file"] {
+            display: block;
+        }
+    </style>
+    <title>Map Convector</title>
+
+    <script src="js/helper.js" type="text/javascript"></script>
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="js/jszip.js" type="text/javascript"></script>
+    <script src="js/FileSaver.js" type="text/javascript"></script>
+</head>
+<body>
+<form id="form">
+    <fieldset>
+        <label for="files">Select file</label>
+        <input type="file" multiple id="files"/>
+    </fieldset>
+
+    <fieldset>
+        <button type="submit">Decode and download as zip</button>
+    </fieldset>
+    <fieldset>
+        <textarea style="width:100%;height:500px" id="dec_data"></textarea>
+    </fieldset>
+</form>
+<script type="text/javascript">
+    const KEY = 'SiuHungIsAGoodBearBecauseHeIsVeryGood';
+    const KEY_BYTES = KEY.split("").map(x => x.charCodeAt(0));
+    const KEEP_BYTE = 123;
+
+    function replaceFileContent(datText) {
+        return datText
+            .replace(/\\/g, '/')
+            .replace(/\.bmp/ig, '.png')
+            .replace(/\.wav/ig, '.ogg')
+            .replace(/\.wav/ig, '.ogg')
+            .replace(/sound(\s+?):(\s+?)data\//ig, "sound: ")
+            .replace(/\r?\n\s+hit_/ig, " hit_")
+            ;
+    }
+
+    function processFile(file, callback) {
+        let fr = new FileReader();
+        fr.onload = function () {
+            loadCallback.call(this, callback);
+        };
+        fr.readAsArrayBuffer(file);
+    }
+
+    function loadCallback(callback) {
+        let dataEnc = new Uint8Array(this.result, KEEP_BYTE);
+        for (let i = 0, j = dataEnc.length; i < j; i++) {
+            let ch = dataEnc[i];
+            let decodedData = ch - KEY_BYTES[(i + KEEP_BYTE) % KEY_BYTES.length];
+
+            if (i >= j - 5 && decodedData < 0) {
+                decodedData = 10;
+            }
+
+            dataEnc[i] = decodedData;
+        }
+
+        let blob = new Blob([dataEnc], {type: 'text/plain'});
+        let fr = new FileReader();
+        fr.onload = function () {
+            let text = this.result;
+            text = replaceFileContent(text);
+
+            let blob = new Blob([text], {type: 'text/plain'});
+            callback(blob, text);
+        };
+        fr.readAsText(blob, 'BIG5');
+    }
+
+    function processImage(file, tMap, callback) {
+        let fr = new FileReader();
+        let fn = file.name;
+        fn = fn.substr(0, fn.lastIndexOf('.'));
+        fr.onload = function () {
+            let img = new Image();
+            img.src = this.result;
+
+            img.onload = function () {
+                let canvas = document.createElement('canvas');
+                canvas.width = this.width;
+                canvas.height = this.height;
+                let ctx = canvas.getContext('2d');
+                ctx.fillStyle = "#000000";
+
+
+                let proT = tMap.get(fn);
+
+                if (proT !== undefined && !proT) {
+                    ctx.fillRect(0, 0, this.width, this.height);
+                }
+
+                ctx.drawImage(this, 0, 0);
+                if (proT || proT === undefined) {
+                    let imgData = ctx.getImageData(0, 0, this.width, this.height);
+                    for (let pos = 0; pos < imgData.data.length; pos += 4) {
+                        let r, g, b, a;
+                        r = imgData.data[pos];
+                        g = imgData.data[pos + 1];
+                        b = imgData.data[pos + 2];
+                        a = imgData.data[pos + 3];
+
+                        if (r === 0 && g === 0 && b === 0) {
+                            imgData.data[pos]
+                                = imgData.data[pos + 1]
+                                = imgData.data[pos + 2]
+                                = imgData.data[pos + 3]
+                                = 0;
+                        }
+                    }
+
+                    ctx.putImageData(imgData, 0, 0);
+                }
+
+                canvas.toBlob(function (b) {
+                    callback(fn + ".png", b);
+                });
+            };
+        };
+        fr.readAsDataURL(file);
+    }
+
+    $("#files").bind('change', function (e) {
+        for (let i = 0; i < this.files.length; i++) {
+            let f = this.files[i];
+            if (f.name.endsWith(".dat")) {
+                processFile(f, (blob, text) => {
+                    $("#dec_data").val(text);
+                });
+                break;
+            }
+        }
+    });
+
+    $("#form").submit((e) => {
+        let files = $("#files")[0].files;
+        let zip = new JSZip();
+
+        let fileCount = 0;
+        let fs = Array.prototype.toArray(files);
+        let datDat = '';
+        const processOthers = (arr) => {
+            const L1 = 'layer:', L2 = 'layer_end';
+            let imgTMap = new Map();
+            let start = 0;
+            while (start < datDat.length) {
+                let i = datDat.indexOf(L1, start), j = datDat.indexOf(L2, start);
+                start = j + L2.length;
+                if (i === -1) break;
+
+                let layerInfo = datDat.substring(i + L1.length, j).trim();
+                let ls = layerInfo
+                    .split(/\r?\n/g)
+                    .map(x => x.trim());
+                let fileName = ls
+                    .filter(x => x.endsWith('.bmp') || x.endsWith('.png'))[0];
+                fileName = fileName.substr(fileName.lastIndexOf('/') + 1);
+                fileName = fileName.substr(0, fileName.lastIndexOf('.'));
+                let tRet = ls
+                    .filter(x => x.indexOf('transparency') !== -1)[0];
+                if (tRet) {
+                    tRet = tRet.match(/transparency(\s+)?:(\s+)?(0|1)/)[3]
+                } else {
+                    tRet = 1;
+                }
+
+                tRet = tRet === '1' ? 1 : 0;
+                imgTMap.set(fileName, tRet);
+            }
+
+            arr.forEach(f => {
+                processImage(f, imgTMap, function (fileName, blob) {
+                    zip.file(fileName, blob);
+                    fileCount++;
+
+                    if (fileCount === files.length) compressDone(zip);
+                });
+            });
+        };
+        fs.filter(x => x.name.endsWith(".dat")).forEach((file, i, a) => {
+            let fileName = file.name;
+            fileName = fileName
+                .replace(/\.dat$/ig, ".txt")
+                .replace(/\.bmp$/ig, ".png");
+
+            if (i === a.length - 1) {
+                processFile(file, function (blob, text) {
+                    zip.file(fileName, blob);
+                    datDat = text;
+                    fileCount++;
+                    processOthers(fs.filter(x => !x.name.endsWith(".dat")));
+                });
+            }
+        });
+
+
+        e.preventDefault();
+    });
+
+    function compressDone(zip) {
+        zip.generateAsync({type: "blob"})
+            .then(function (content) {
+                // see FileSaver.js
+                saveAs(content, "data.zip");
+            });
+    }
+</script>
+</body>
+</html>

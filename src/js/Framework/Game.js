@@ -1033,7 +1033,7 @@ var Framework = (function (Framework) {
                 let wRate = scaledWidth / s.clientWidth;
                 let hRate = scaledHeight / s.clientHeight;
 
-                s.style.transform = 'scale(' + wRate + ', ' + hRate + ')';
+                s.style.transform = 'scale(' + wRate + ', ' + hRate + ') translateZ(0)';
             });
 
         };

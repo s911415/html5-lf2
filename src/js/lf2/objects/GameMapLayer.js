@@ -12,18 +12,18 @@ var lf2 = (function (lf2) {
     lf2.GameMapLayer = class GameMapLayer {
         /**
          *
-         * @param {Object} fileInfo
          * @param {String} context
+         * @param {lf2.GameMap} bg
          */
-        constructor(context){
+        constructor(context, bg) {
             this.sourceCode = context;
 
             this.imgUrl = context.trim().lines()[0].trim();
-            this.img = new Image();
-            this._imgLoader =ResourceManager.loadImage({
-                url:    define.IMG_PATH + this.imgUrl
-            }).then((img)=>{
-                this.img = img;
+            this.img = null;
+            this._imgLoader = ResourceManager.loadImage({
+                url: define.IMG_PATH + this.imgUrl
+            }).then((img) => {
+                this.img = img.response;
 
                 return img;
             });
@@ -31,16 +31,27 @@ var lf2 = (function (lf2) {
             let info = lf2.Utils.parseDataLine(context);
             this.transparency = info.get("transparency") != '0';
             this.width = intval(info.get('width'));
+            this.height = intval(info.get('height'));
             this.position = new Point(
                 intval(info.get('x') || 0),
                 intval(info.get('y') || 0)
             );
 
-            this.loop = intval(info.get('loop'));
+            this.loop = intval(info.get('loop') || 0);
             this.cc = intval(info.get('cc') || 0);
             this.c1 = intval(info.get('c1') || 0);
             this.c2 = intval(info.get('c2') || 0);
-            this.rect = info.get('rect') || 0;
+            this.rect = intval(info.get('rect') || -1);
+            if (this.rect === -1) {
+                this.rect = undefined;
+            } else {
+                this.rect = GameMapLayer.GetColorFromRect(this.rect);
+            }
+
+            this._map = bg;
+
+            this.radio = -1;
+            this.counter = 0;
         }
 
         /**
@@ -50,7 +61,7 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        done(){
+        done() {
             return this._imgLoader;
         }
 
@@ -61,8 +72,9 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        initialize(){
-
+        initialize() {
+            this.radio = -1;
+            this.counter = 0;
         }
 
         /**
@@ -72,7 +84,7 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        load(){
+        load() {
 
         }
 
@@ -83,8 +95,15 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        update(){
+        update() {
+            if (!isFinite(this.radio) || this.radio < 0) {
+                this.radio = (this.width - this._map.widthShow) / (this._map.width - this._map.widthShow);
+            }
 
+            if (this.cc) {
+                this.counter++;
+                if (this.counter >= this.cc) this.counter = 0;
+            }
         }
 
         /**
@@ -92,12 +111,43 @@ var lf2 = (function (lf2) {
          *
          * Draws the given context.
          *
-         * @param   ctx The context.
+         * @param {CanvasRenderingContext2D} ctx The context.
          *
-         * @return  .
          */
-        draw(ctx){
+        draw(ctx) {
+            if (!this.img) {
+                console.warn('Image not loaded');
+                return;
+            }
 
+            let canDraw = true;
+
+
+            if (this.cc) {
+                if (this.counter > this.c2 || this.counter < this.c1) {
+                    canDraw = false;
+                }
+            }
+
+            if (canDraw) {
+                if (this.rect) {
+                    ctx.fillStyle = this.rect;
+                    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+                } else {
+                    const X = this._map._world._getCameraPositionAsPoint().x;
+                    const startX = ((-X * this.radio) | 0) + this.position.x;
+                    let drawX = startX;
+                    const _w = this.img.width, _h = this.img.height;
+
+                    do {
+                        ctx.drawImage(
+                            this.img, 0, 0, _w, _h,
+                            drawX, this.position.y, _w, _h
+                        );
+                        drawX += this.loop;
+                    } while (this.loop && drawX < this._map.widthShow);
+                }
+            }
         }
 
         /**
@@ -105,7 +155,28 @@ var lf2 = (function (lf2) {
          * @param {String} context
          * @private
          */
-        static _parseLayers(context){
+        static _parseLayers(context) {
+
+        }
+
+        /**
+         * @param {Number} num
+         * @see http://gjp4860sev.myweb.hinet.net/lf2/page16.htm
+         */
+        static GetColorFromRect(num) {
+            /**
+             *
+             * @param {Number} n
+             */
+            const ConvertToByte = (n) => n.toString(16).padStart(2, '0');
+            num %= 65536;
+            if (num < 0) num += 65536;
+            let r, g, b;
+            b = ( num % 32 + 1 ) * 8 - 1;
+            g = ( Math.floor(num / 32) * 4 + 7 ) % 256;
+            r = ( ( Math.floor(num / 2048) + 1 ) * 7 + Math.floor(( num + 32 ) / 2048) ) % 256;
+
+            return '#' + ConvertToByte(r) + ConvertToByte(g) + ConvertToByte(b);
 
         }
     };
