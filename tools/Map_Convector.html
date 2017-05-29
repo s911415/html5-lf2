@@ -98,7 +98,7 @@
 
                 let proT = tMap.get(fn);
 
-                if (proT!==undefined && !proT) {
+                if (proT !== undefined && !proT) {
                     ctx.fillRect(0, 0, this.width, this.height);
                 }
 
@@ -169,8 +169,12 @@
                 fileName = fileName.substr(fileName.lastIndexOf('/') + 1);
                 fileName = fileName.substr(0, fileName.lastIndexOf('.'));
                 let tRet = ls
-                    .filter(x => x.indexOf('transparency') !== -1)[0]
-                    .match(/transparency(\s+)?:(\s+)?(0|1)/)[3];
+                    .filter(x => x.indexOf('transparency') !== -1)[0];
+                if (tRet) {
+                    tRet = tRet.match(/transparency(\s+)?:(\s+)?(0|1)/)[3]
+                } else {
+                    tRet = 1;
+                }
 
                 tRet = tRet === '1' ? 1 : 0;
                 imgTMap.set(fileName, tRet);

@@ -41,7 +41,6 @@ var lf2 = (function (lf2) {
              * @type {Number}
              */
             this.cameraPosition = 0;
-            this.map = GameMapPool.get(this.config.mapId);
             this.players = this.config.players;
             this._stepByStep = false;
             this._allowUpdate = true;
@@ -55,7 +54,7 @@ var lf2 = (function (lf2) {
             this._cameraPositionCache = new Point(0, 0);
             this._cameraChanged = false;
 
-            this.map.initialize(this);
+            this.setMapById(this.config.mapId);
         }
 
 
@@ -348,6 +347,15 @@ var lf2 = (function (lf2) {
                 this._stepByStep = false;
                 this._allowUpdate = !this._allowUpdate;
             }
+        }
+
+        /**
+         *
+         * @param {Number} id
+         */
+        setMapById(id){
+            this.map = GameMapPool.get(id);
+            this.map.initialize(this);
         }
     };
 

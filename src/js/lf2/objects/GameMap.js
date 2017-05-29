@@ -33,23 +33,16 @@ var lf2 = (function (lf2) {
             this.zBoundary = lf2.GameMap._parseSizeByKey('zboundary', infoText);
             this.shadowSize = lf2.GameMap._parseSizeByKey('shadowsize', infoText);
             this.shadowUrl = info.get("shadow");
-
-            this.simpleMap;
-
-            this._promiseList.push(
-                ResourceManager.loadImage({
-                    url: define.IMG_PATH + this.shadowUrl.substr(0, this.shadowUrl.replace(/\\/g, '/').lastIndexOf('/')) + '.png'
-                }).then((img) => {
-                    this.simpleMap = img.response;
-                })
-            );
-
+            this.shadow;
 
             this._promiseList.push(
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + this.shadowUrl
+                }).then(r => {
+                    this.shadow = r.response;
                 })
             );
+
             this.layers = this._parseLayers(context);
 
             this.layers.forEach((layer) => {
