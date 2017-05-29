@@ -285,16 +285,18 @@ var lf2 = (function (lf2) {
             //let x = totalMove.x / wait,
             //    y = totalMove.y / wait,
             //    z = totalMove.z / wait;
-            let ret = new Point3D(
-                this._velocity.x,
-                this._velocity.y,
-                this._velocity.z
-            );
+            this._frameOffset = this._frameOffset || new Point3D(0, 0, 0);
+            let ret = this._frameOffset;
+            this._frameOffset.x = this._velocity.x;
+            this._frameOffset.y = this._velocity.y;
+            this._frameOffset.z = this._velocity.z;
 
 
             if (ret.x === STOP_ALL_MOVE_DV) ret.x = 0;
             if (ret.y === STOP_ALL_MOVE_DV) ret.y = 0;
             if (ret.z === STOP_ALL_MOVE_DV) ret.z = 0;
+            
+            this._frameOffset = ret;
 
             //if(this._velocity.x!==0) debugger;
             //console.log(this, this._velocity);
@@ -308,7 +310,7 @@ var lf2 = (function (lf2) {
          */
         _getVelocity() {
             // v.x = getDvxPerWait(v.x);
-            return this.currentFrame.velocity.clone();
+            return this.currentFrame.velocity;
         }
 
         updateVelocity() {
@@ -317,7 +319,8 @@ var lf2 = (function (lf2) {
                 return next;
             };
 
-            this._prevVelocity = this._velocity.clone();
+            this._velocity.writeTo(this._prevVelocity);
+            // this._prevVelocity = this._velocity.clone();
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
@@ -813,16 +816,17 @@ var lf2 = (function (lf2) {
          */
         get leftTopPoint() {
             const center = this.currentFrame.center;
-            let leftTopPoint = new Point3D(
-                this.position.x - center.x,
-                this.position.y - center.y,
-                this.position.z
-            );
+            let leftTopPoint = this._leftTopPointRef || new Point3D(0, 0, 0);
+            leftTopPoint.x = this.position.x - center.x;
+            leftTopPoint.y = this.position.y - center.y;
+            leftTopPoint.z = this.position.z;
 
             if (this._direction === DIRECTION.LEFT) {
                 leftTopPoint.x = this.position.x - (this.width - center.x);
             }
-
+            
+            this._leftTopPointRef = leftTopPoint;
+            
             return leftTopPoint;
         }
 

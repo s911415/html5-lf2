@@ -127,6 +127,9 @@ var lf2 = (function (lf2) {
         _getVelocity() {
             let v = super._getVelocity();
             const hit = this.currentFrame.hit;
+            this._ballVel = this._ballVel || new Point3D(0, 0, 0);
+            v.writeTo(this._ballVel);
+            v = this._ballVel;
 
             if (hit.j) {
                 v.z = hit.j - 50;
@@ -213,7 +216,7 @@ var lf2 = (function (lf2) {
                 return next;
             };
 
-            this._prevVelocity = this._velocity.clone();
+            this._velocity.writeTo(this._prevVelocity);
             const v = this._getVelocity();
 
             this._velocity.x = getVelocityVal(this._velocity.x, v.x);
