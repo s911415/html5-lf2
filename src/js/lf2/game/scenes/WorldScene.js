@@ -53,7 +53,8 @@ var lf2 = (function (lf2) {
             this._cameraCounter = 0;
             this._cameraDiff = 0;
             this._startMoveCameraPos = 0;
-            this._cameraPositionCache = null;
+            this._cameraPositionCache = new Point(0, 0);
+            this._cameraChanged = false;
         }
 
 
@@ -90,7 +91,7 @@ var lf2 = (function (lf2) {
             } else {
                 this.cameraPosition = this._targetCameraX;
             }
-            this._cameraPositionCache = null;
+            this._cameraChanged = true;
 
 
             let bdyItems = this._getAllBdyItem();
@@ -208,14 +209,14 @@ var lf2 = (function (lf2) {
          * @return  The camera position as point.
          */
         _getCameraPositionAsPoint() {
-            if (this._cameraPositionCache !== null) return this._cameraPositionCache;
+            if (!this._cameraChanged) return this._cameraPositionCache;
             let x = this.map.width - Framework.Config.canvasWidth;
             x *= this.cameraPosition;
 
-            const ret = new Point(x | 0, 0);
-            this._cameraPositionCache = ret;
+            this._cameraPositionCache.x = x | 0;
+            this._cameraChanged = false;
 
-            return ret;
+            return this._cameraPositionCache;
         }
 
         /**

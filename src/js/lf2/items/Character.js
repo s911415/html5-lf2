@@ -370,8 +370,12 @@ var lf2 = (function (lf2) {
                         break;
                 }
             }
-
-            return new Framework.Point3D(x, y, z);
+            this._charVel = this._charVel || new Framework.Point3D(0, 0, 0);
+            this._charVel.x = x;
+            this._charVel.y = y;
+            this._charVel.z = z;
+            
+            return this._charVel;
         }
 
         applyFriction() {

@@ -88,6 +88,17 @@ var lf2 = (function (lf2) {
 
                 return ret;
             })();
+            
+            this._velocity = new Point3D(
+                intval(this.data.get('dvx') || 0),
+                intval(this.data.get('dvy') || 0),
+                intval(this.data.get('dvz') || 0)
+            );
+            
+            this._center = new Point(
+                intval(this.data.get('centerx')),
+                intval(this.data.get('centery'))
+            );
         }
 
         /**
@@ -163,11 +174,7 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point3D}
          */
         get velocity() {
-            return new Point3D(
-                intval(this.data.get('dvx') || 0),
-                intval(this.data.get('dvy') || 0),
-                intval(this.data.get('dvz') || 0)
-            );
+            return this._velocity;
         }
 
         /**
@@ -175,22 +182,23 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point}
          */
         get center() {
-            return new Point(
-                intval(this.data.get('centerx')),
-                intval(this.data.get('centery'))
-            );
+            return this._center;
         }
 
         get size() {
-            /**
-             * @type {lf2.ImageInformation}
-             */
-            const img = this._gameObj.bmpInfo.imageNormal[this.pic];
+            if(this._sizeCache === undefined){
+                /**
+                 * @type {lf2.ImageInformation}
+                 */
+                const img = this._gameObj.bmpInfo.imageNormal[this.pic];
 
 
-            return new Point(
-                img.rect.width, img.rect.height
-            );
+                this._sizeCache = new Point(
+                    img.rect.width, img.rect.height
+                );
+            }
+            
+            return this._sizeCache;
         }
     };
 

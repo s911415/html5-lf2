@@ -19,6 +19,16 @@ var Framework = (function (Framework) {
             super(x, y);
             this._z = floatval(z) || 0;
         }
+        
+        writeTo(target) {
+            super.writeTo(target);
+            
+            if(target instanceof Point3D){
+                target.z = this.z;
+            }else{
+                throw new ReferenceError('Target is not an instance of Point3D');
+            }
+        }
 
         /**
          * Gets the z coordinate.
