@@ -72,8 +72,6 @@ var lf2 = (function (lf2) {
             if (elem && elem.hp && elem.mp && elem.small) {
                 this._elem = elem;
                 elem.setAttribute('attached', '1');
-                elem.setAttribute('data-team', this._player.team.id);
-                elem.setAttribute('data-team-str', this._player.team);
 
                 this._flagIcon = elem.flag;
                 this._hpValueBar = elem.hp.querySelector('.value');
@@ -123,6 +121,8 @@ var lf2 = (function (lf2) {
                 }
 
                 if (this._lastTeam !== this._player.team) {
+                    this._elem.setAttribute('data-team', this._player.team.id);
+                    this._elem.setAttribute('data-team-str', this._player.team);
 
                     this._flagIcon.style.color = this._player.team.getColor();
                     this._lastTeam = this._player.team;
