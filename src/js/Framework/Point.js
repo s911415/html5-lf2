@@ -13,6 +13,15 @@ var Framework = (function (Framework) {
             this._x = floatval(x);
             this._y = floatval(y);
         }
+        
+        writeTo(target) {
+            if(target instanceof Point){
+                target.x = this.x;
+                target.y = this.y;
+            }else{
+                throw new ReferenceError('Target is not an instance of Point');
+            }
+        }
 
         /**
          *

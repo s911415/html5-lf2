@@ -33,28 +33,27 @@ var lf2 = (function (lf2) {
             this.zBoundary = lf2.GameMap._parseSizeByKey('zboundary', infoText);
             this.shadowSize = lf2.GameMap._parseSizeByKey('shadowsize', infoText);
             this.shadowUrl = info.get("shadow");
+            this.shadow;
 
-            this.simpleMap;
-
-            this._promiseList.push(
-                ResourceManager.loadImage({
-                    url: define.IMG_PATH + this.shadowUrl.substr(0, this.shadowUrl.replace(/\\/g, '/').lastIndexOf('/')) + '.png'
-                }).then((img) => {
-                    this.simpleMap = img.response;
-                })
-            );
-
-            /*
             this._promiseList.push(
                 ResourceManager.loadImage({
                     url: define.IMG_PATH + this.shadowUrl
+                }).then(r => {
+                    this.shadow = r.response;
                 })
             );
-            this.layers = lf2.GameMap._parseLayers(context);
+
+            this.layers = this._parseLayers(context);
 
             this.layers.forEach((layer) => {
                 this._promiseList.push(layer.done());
-            });*/
+            });
+
+            this.canvas = document.createElement('canvas');
+            this.canvas.width = Framework.Config.canvasWidth;
+            this.canvas.height = Framework.Config.canvasHeight;
+            this.mapCtx = this.canvas.getContext('2d');
+            this.widthShow = this.canvas.width;
         }
 
         /**
@@ -69,14 +68,17 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         * initialize()
+         * initialize
          *
          * Initializes this object.
          *
-         * @return  .
+         * @param world
          */
-        initialize() {
+        initialize(world) {
+            if (!world instanceof lf2.WorldScene) return;
+            this._world = world;
 
+            this.layers.forEach(l => l.initialize());
         }
 
         /**
@@ -98,7 +100,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
-
+            this.layers.forEach(l => l.update());
         }
 
         /**
@@ -106,14 +108,20 @@ var lf2 = (function (lf2) {
          *
          * Draws the given context.
          *
-         * @param   ctx The context.
+         *
+         * @param {CanvasRenderingContext2D} ctx The context.
          *
          * @return  .
          */
         draw(ctx) {
             //Align to bottom
-            const Y = Framework.Config.canvasHeight - this.simpleMap.height;
-            ctx.drawImage(this.simpleMap, 0, Y);
+            /*const Y = Framework.Config.canvasHeight - this.simpleMap.height;
+             ctx.drawImage(this.simpleMap, 0, Y);
+             */
+            this.mapCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+            this.layers.forEach(l => l.draw(this.mapCtx));
+
+            ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height);
         }
 
         /**
@@ -136,7 +144,7 @@ var lf2 = (function (lf2) {
          * @param {String} context
          * @private
          */
-        static _parseLayers(context) {
+        _parseLayers(context) {
             let layersIndex = [], layerContent = [];
 
             for (
@@ -148,7 +156,7 @@ var lf2 = (function (lf2) {
             }
             layersIndex.forEach((i) => {
                 let str = context.getStringBetween(LAYER_START_TAG, LAYER_END_TAG, i).trim();
-                let layer = new GameMapLayer(str);
+                let layer = new GameMapLayer(str, this);
 
                 layerContent.push(layer);
             });

@@ -41,19 +41,20 @@ var lf2 = (function (lf2) {
              * @type {Number}
              */
             this.cameraPosition = 0;
-            this.map = GameMapPool.get(this.config.mapId);
             this.players = this.config.players;
             this._stepByStep = false;
             this._allowUpdate = true;
 
-            this.attach(this.map);
             this.addPlayers(this.players);
 
             this._targetCameraX = 0;
             this._cameraCounter = 0;
             this._cameraDiff = 0;
             this._startMoveCameraPos = 0;
-            this._cameraPositionCache = null;
+            this._cameraPositionCache = new Point(0, 0);
+            this._cameraChanged = false;
+
+            this.setMapById(this.config.mapId);
         }
 
 
@@ -76,6 +77,8 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+            this.map.update();
+
             if (!this._allowUpdate) return;
 
             let sumPlayerX = 0, count = 0;
@@ -90,7 +93,7 @@ var lf2 = (function (lf2) {
             } else {
                 this.cameraPosition = this._targetCameraX;
             }
-            this._cameraPositionCache = null;
+            this._cameraChanged = true;
 
 
             let bdyItems = this._getAllBdyItem();
@@ -208,14 +211,14 @@ var lf2 = (function (lf2) {
          * @return  The camera position as point.
          */
         _getCameraPositionAsPoint() {
-            if (this._cameraPositionCache !== null) return this._cameraPositionCache;
+            if (!this._cameraChanged) return this._cameraPositionCache;
             let x = this.map.width - Framework.Config.canvasWidth;
             x *= this.cameraPosition;
 
-            const ret = new Point(x | 0, 0);
-            this._cameraPositionCache = ret;
+            this._cameraPositionCache.x = x | 0;
+            this._cameraChanged = false;
 
-            return ret;
+            return this._cameraPositionCache;
         }
 
         /**
@@ -236,6 +239,7 @@ var lf2 = (function (lf2) {
         draw(ctx) {
             //Reset translate
             ctx.setTransform(1, 0, 0, 1, 0, 0);
+            this.map.draw(ctx);
 
             ctx.save();
             let canvasTranslate = this._getCameraPositionAsPoint();
@@ -343,6 +347,15 @@ var lf2 = (function (lf2) {
                 this._stepByStep = false;
                 this._allowUpdate = !this._allowUpdate;
             }
+        }
+
+        /**
+         *
+         * @param {Number} id
+         */
+        setMapById(id){
+            this.map = GameMapPool.get(id);
+            this.map.initialize(this);
         }
     };
 

@@ -7,11 +7,11 @@ var lf2 = (function (lf2) {
     /**
      * @class lf2.LaunchMenu
      * @namespace lf2
-     * @extends {Framework.GameMainMenu}
+     * @extends {Framework.Level}
      * @implements {Framework.KeyboardEventInterface}
      * @type {{}}
      */
-    lf2.LaunchMenu = class extends Framework.GameMainMenu {
+    lf2.LaunchMenu = class extends Framework.Level {
         constructor(){
             super();
 

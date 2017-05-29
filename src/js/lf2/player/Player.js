@@ -450,7 +450,7 @@ var lf2 = (function (lf2) {
                 let addBall = null;
                 switch (obj.fileInfo.type) {
                     case 0:
-                        //addBall = new Ball(opoint.objectId, this);
+                        addBall = new Character(opoint.objectId, this);
                         console.warn('Summon of character not implement.');
                         break;
                     case 1:

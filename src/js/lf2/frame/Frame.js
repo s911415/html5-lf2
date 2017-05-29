@@ -50,6 +50,8 @@ var lf2 = (function (lf2) {
             let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
             let opoint = context.getStringBetween(OPOINT_START_TAG, OPOINT_END_TAG);
             let bpoint = context.getStringBetween(BPOINT_START_TAG, BPOINT_END_TAG);
+            itr=itr?itr.trim():itr;
+            bdy=bdy?bdy.trim():bdy;
 
             this.itr = itr ? new Interaction(itr) : undefined;
             this.bdy = bdy ? new Body(bdy) : undefined;
@@ -86,6 +88,17 @@ var lf2 = (function (lf2) {
 
                 return ret;
             })();
+            
+            this._velocity = new Point3D(
+                intval(this.data.get('dvx') || 0),
+                intval(this.data.get('dvy') || 0),
+                intval(this.data.get('dvz') || 0)
+            );
+            
+            this._center = new Point(
+                intval(this.data.get('centerx')),
+                intval(this.data.get('centery'))
+            );
         }
 
         /**
@@ -161,11 +174,7 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point3D}
          */
         get velocity() {
-            return new Point3D(
-                intval(this.data.get('dvx') || 0),
-                intval(this.data.get('dvy') || 0),
-                intval(this.data.get('dvz') || 0)
-            );
+            return this._velocity;
         }
 
         /**
@@ -173,22 +182,23 @@ var lf2 = (function (lf2) {
          * @returns {Framework.Point}
          */
         get center() {
-            return new Point(
-                intval(this.data.get('centerx')),
-                intval(this.data.get('centery'))
-            );
+            return this._center;
         }
 
         get size() {
-            /**
-             * @type {lf2.ImageInformation}
-             */
-            const img = this._gameObj.bmpInfo.imageNormal[this.pic];
+            if(this._sizeCache === undefined){
+                /**
+                 * @type {lf2.ImageInformation}
+                 */
+                const img = this._gameObj.bmpInfo.imageNormal[this.pic];
 
 
-            return new Point(
-                img.rect.width, img.rect.height
-            );
+                this._sizeCache = new Point(
+                    img.rect.width, img.rect.height
+                );
+            }
+            
+            return this._sizeCache;
         }
     };
 

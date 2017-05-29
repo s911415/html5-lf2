@@ -677,22 +677,28 @@ var Framework = (function (Framework) {
             //}
             //
 
-            Framework.TouchManager.setSubject(self._currentLevel);
-            Framework.TouchManager.setTouchstartEvent(self._currentLevel.touchstart);
-            Framework.TouchManager.setTouchendEvent(self._currentLevel.touchend);
-            Framework.TouchManager.setTouchmoveEvent(self._currentLevel.touchmove);
-
-            Framework.MouseManager.setSubject(self._currentLevel);
-            Framework.MouseManager.setClickEvent(self.click);
-            Framework.MouseManager.setMousedownEvent(self.mousedown);
-            Framework.MouseManager.setMouseUpEvent(self.mouseup);
-            Framework.MouseManager.setMouseMoveEvent(self._currentLevel.mousemove);
+            if(Framework.TouchManager){
+                Framework.TouchManager.setSubject(self._currentLevel);
+                Framework.TouchManager.setTouchstartEvent(self._currentLevel.touchstart);
+                Framework.TouchManager.setTouchendEvent(self._currentLevel.touchend);
+                Framework.TouchManager.setTouchmoveEvent(self._currentLevel.touchmove);
+            }
+            
+            if(Framework.MouseManager){
+                Framework.MouseManager.setSubject(self._currentLevel);
+                Framework.MouseManager.setClickEvent(self.click);
+                Framework.MouseManager.setMousedownEvent(self.mousedown);
+                Framework.MouseManager.setMouseUpEvent(self.mouseup);
+                Framework.MouseManager.setMouseMoveEvent(self._currentLevel.mousemove);
+            }
+            
             //Framework.MouseManager.setContextmenuEvent(self._currentLevel.contextmenu);
-
-            Framework.KeyBoardManager.setSubject(self._currentLevel);
-            Framework.KeyBoardManager.setKeyupEvent(self.keyup);
-            Framework.KeyBoardManager.setKeydownEvent(self.keydown);
-            Framework.KeyBoardManager.setKeypressEvent(self.keypress);
+            if(Framework.KeyBoardManager){                
+                Framework.KeyBoardManager.setSubject(self._currentLevel);
+                Framework.KeyBoardManager.setKeyupEvent(self.keyup);
+                Framework.KeyBoardManager.setKeydownEvent(self.keydown);
+                Framework.KeyBoardManager.setKeypressEvent(self.keypress);
+            }
 
         };
 
@@ -1027,7 +1033,7 @@ var Framework = (function (Framework) {
                 let wRate = scaledWidth / s.clientWidth;
                 let hRate = scaledHeight / s.clientHeight;
 
-                s.style.transform = 'scale(' + wRate + ', ' + hRate + ')';
+                s.style.transform = 'scale(' + wRate + ', ' + hRate + ') translateZ(0)';
             });
 
         };
@@ -1136,7 +1142,7 @@ const listMember = function (main, space, divId) {
         }
     }
     var div = document.getElementById(divId);
-//	var length = div.childNodes.length;
+//    var length = div.childNodes.length;
     var length = 0;
     if ((div != null) && (div.childNodes != null)) {
         length = div.childNodes.length;
