@@ -10,7 +10,6 @@ var Framework = (function (Framework) {
          * @param {Number} y
          */
         constructor(x, y) {
-            console.warn('create point');
             this._x = floatval(x);
             this._y = floatval(y);
         }
