@@ -295,7 +295,11 @@ var Framework = (function (Framework) {
             return ResourceManager
                 .loadResourceAsArrayBuffer(soundPath)
                 .then(originalBuffer => {
-                    return this.audioCtx.decodeAudioData(originalBuffer);
+                    return new Promise((a, b) => {
+                        this.audioCtx.decodeAudioData(originalBuffer, function(decodedData) {
+                            a(decodedData);
+                        });
+                    });
                 })
                 .then(decodedBuffer => {
                     AudioDecodedBuffer.set(soundPath, decodedBuffer);
