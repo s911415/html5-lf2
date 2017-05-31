@@ -52,6 +52,8 @@ var lf2 = (function (lf2) {
 
             this.radio = -1;
             this.counter = 0;
+
+            this.startX = 0;
         }
 
         /**
@@ -104,6 +106,11 @@ var lf2 = (function (lf2) {
                 this.counter++;
                 if (this.counter >= this.cc) this.counter = 0;
             }
+
+            const X = this._map.cameraX;
+            if (!this.rect) {
+                this.startX = ((-X * this.radio) | 0) + this.position.x;
+            }
         }
 
         /**
@@ -134,9 +141,7 @@ var lf2 = (function (lf2) {
                     ctx.fillStyle = this.rect;
                     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
                 } else {
-                    const X = this._map._world._getCameraPositionAsPoint().x;
-                    const startX = ((-X * this.radio) | 0) + this.position.x;
-                    let drawX = startX;
+                    let drawX = this.startX;
                     const _w = this.img.width, _h = this.img.height;
 
                     do {

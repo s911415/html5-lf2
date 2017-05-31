@@ -77,17 +77,13 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
-            this.map.update();
-
-            if (!this._allowUpdate) return;
-
             let sumPlayerX = 0, count = 0;
             this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
                 count++;
             });
             this._setCameraPositionByX(sumPlayerX / count);
-            if (this._cameraCounter < PER_FRAME_TIME) {
+            if (define.MAP_SMOOTHLY && this._cameraCounter < PER_FRAME_TIME) {
                 this._cameraCounter++;
                 this.cameraPosition = this._startMoveCameraPos + this._cameraDiff * (this._cameraCounter / PER_FRAME_TIME);
             } else {
@@ -95,7 +91,9 @@ var lf2 = (function (lf2) {
             }
             this._cameraChanged = true;
 
+            this.map.update();
 
+            if (!this._allowUpdate) return;
             let bdyItems = this._getAllBdyItem();
 
             this.attachArray.forEach((item) => {
