@@ -166,10 +166,17 @@ var lf2 = (function (lf2) {
                     }
                     //End of image process
 
-                    canvas.toBlob(function (b) {
-                        imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                    if(canvas.toBlob){
+                        canvas.toBlob(function (b) {
+                            imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);
+                            resolve();
+                        });
+                    } else {
+                        //Fallback to base64 dataurl
+                        imgObj.src = canvas.toDataURL();
                         resolve();
-                    });
+                    }
+                    
 
                 });
             });
