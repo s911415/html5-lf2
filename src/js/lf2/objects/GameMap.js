@@ -43,6 +43,7 @@ var lf2 = (function (lf2) {
                 })
             );
 
+            this.haveCC = false;
             this.layers = this._parseLayers(context);
 
             this.layers.forEach((layer) => {
@@ -54,6 +55,9 @@ var lf2 = (function (lf2) {
             this.canvas.height = Framework.Config.canvasHeight;
             this.mapCtx = this.canvas.getContext('2d');
             this.widthShow = this.canvas.width;
+
+            this.lastCameraX = -1;
+            this.cameraX = 0;
         }
 
         /**
@@ -92,6 +96,10 @@ var lf2 = (function (lf2) {
 
         }
 
+        get isCameraChanged() {
+            return this.haveCC || this.cameraX !== this.lastCameraX;
+        }
+
         /**
          * update()
          *
@@ -100,6 +108,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+            this.cameraX = this._world._getCameraPositionAsPoint().x;
             this.layers.forEach(l => l.update());
         }
 
@@ -118,8 +127,11 @@ var lf2 = (function (lf2) {
             /*const Y = Framework.Config.canvasHeight - this.simpleMap.height;
              ctx.drawImage(this.simpleMap, 0, Y);
              */
-            this.mapCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.layers.forEach(l => l.draw(this.mapCtx));
+            if (this.isCameraChanged) {
+                this.mapCtx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.layers.forEach(l => l.draw(this.mapCtx));
+                this.lastCameraX = this.cameraX;
+            }
 
             ctx.drawImage(this.canvas, 0, 0, this.canvas.width, this.canvas.height);
         }
@@ -159,6 +171,10 @@ var lf2 = (function (lf2) {
                 let layer = new GameMapLayer(str, this);
 
                 layerContent.push(layer);
+
+                if (layer.cc) {
+                    this.haveCC = true;
+                }
             });
 
             return layerContent;

@@ -22,6 +22,8 @@
 
         INF_MP: false, //Infinity MP
 
+        MAP_SMOOTHLY: false,
+
     };
 
     // Object.freeze(window.define);
