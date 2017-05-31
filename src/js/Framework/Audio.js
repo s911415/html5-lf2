@@ -10,6 +10,7 @@ var Framework = (function (Framework) {
     let AudioInstanceArray = [];
 
     let AudioDecodedBuffer = new Map();
+    let AudioInstance = new Map();
 
     // let AudioCtxArray = [];
     // (function () {
@@ -224,6 +225,12 @@ var Framework = (function (Framework) {
             this.gainNodeLeft = this.gainNodeRight = null;
             return this._loadSoundAndReturnBuffer(soundPath)
                 .then(buf => {
+                    if(typeof buf === 'string') {
+                        this._playAsAudio(buf, options);
+                        
+                        return;
+                    }
+                    
                     const source = this.getSource(soundPath);
                     const splitter = this.audioCtx.createChannelSplitter(2);
                     const merger = this.audioCtx.createChannelMerger(2);
@@ -248,6 +255,19 @@ var Framework = (function (Framework) {
                     source.loop = options.loop;
                     source.start();
                 });
+        }
+        
+        _playAsAudio(path, opts){
+            let audio = AudioInstance.get(path) || new window.Audio();
+            audio.src = path;
+            audio.pause();
+            audio.volume = (this.leftVolume + this.rightVolume) / 2;
+            audio.loop = opts.loop;
+            audio.currentTime = 0;
+            
+            audio.play();
+            
+            AudioInstance.set(path, audio);
         }
 
         /**
@@ -295,11 +315,7 @@ var Framework = (function (Framework) {
             return ResourceManager
                 .loadResourceAsArrayBuffer(soundPath)
                 .then(originalBuffer => {
-                    return new Promise((a, b) => {
-                        this.audioCtx.decodeAudioData(originalBuffer, function(decodedData) {
-                            a(decodedData);
-                        });
-                    });
+                    return this.audioCtx.decodeAudioData(originalBuffer);
                 })
                 .then(decodedBuffer => {
                     AudioDecodedBuffer.set(soundPath, decodedBuffer);
@@ -307,6 +323,9 @@ var Framework = (function (Framework) {
                     return decodedBuffer;
                 }).catch(err => {
                     console.error(soundPath, err);
+                    console.log('Fallback to audio');
+                    
+                    AudioDecodedBuffer.set(soundPath, soundPath);
                 });
         }
 
