@@ -52,6 +52,7 @@ gulp.task('build', () => {
         'src/js/lf2/enums/FrameStage.js',
         'src/js/lf2/enums/ItrKind.js',
 
+        'src/js/lf2/game/Prefetch.js',
         'src/js/lf2/game/Bezier.js',
         'src/js/lf2/game/Utils.js',
         'src/js/lf2/game/KeyboardConfig.js',

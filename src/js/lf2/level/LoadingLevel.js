@@ -43,6 +43,7 @@ var lf2 = (function (lf2) {
     const GameObjectWeapon = lf2.GameObjectWeapon;
 
     const GameMap = lf2.GameMap;
+    const Prefetch = lf2.Prefetch;
 
     let LoadingVideoSrc = define.IMG_PATH + 'loading_video.mp4';
     let LoadingVideoLoadState = 0;
@@ -112,9 +113,7 @@ var lf2 = (function (lf2) {
             new Promise((_resolve, _reject) => {
                 return Promise.all([
                     ResourceManager.loadResource(define.DATA_PATH + "data_list.json"),
-                    ResourceManager.loadResource(define.DATA_PATH + 'data.zip')
-                        .then(r => r.blob())
-                        .then(JSZip.loadAsync)
+                    Prefetch.get('DATA')
                         .then(zip => this.zip = zip)
                         .catch((e) => {
                             console.error("Fail to load zip file", "fallback to txt file", e);
@@ -429,7 +428,7 @@ var lf2 = (function (lf2) {
         static PreloadLoadingVideo() {
             if (LoadingVideoLoadState > 0) return;
             LoadingVideoLoadState = 1;
-            ResourceManager.loadResourceAsBlob(LoadingLevel.LOADING_RESOURCE_SRC)
+            Prefetch.get('LOADING_VIDEO')
                 .then(blobUrl => {
                     LoadingVideoSrc = blobUrl;
                     LoadingVideoLoadState = 4;

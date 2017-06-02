@@ -14,7 +14,8 @@ var Framework = (function (Framework) {
             },
             ResourceManagerInstance,
             _resourceBlobCache = new Map(),
-            _resourceArrayBufferCache = new Map()
+            _resourceArrayBufferCache = new Map(),
+            _zipEntry = undefined
         ;
 
 
@@ -274,10 +275,23 @@ var Framework = (function (Framework) {
                 url = url.replace(/\\/g, '/');
                 url = url.replace(/\/\//g, '/');
 
+                if (_zipEntry) {
+                    let path = url
+                        .replace(/^\.\//ig, '')
+                        .replace(/^\//ig)
+                        .replace(/\\/);
+
+                    let zipFile = _zipEntry.file(path);
+
+                    if (zipFile) {
+                        return zipFile.async("arraybuffer");
+                    }
+                }
+
                 if (_resourceArrayBufferCache.has(url)) {
                     return new Promise((a, b) => {
                         const oBuf = _resourceArrayBufferCache.get(url);
-                        
+
                         return a(oBuf.slice(0));
                     });
                 } else {
@@ -351,82 +365,23 @@ var Framework = (function (Framework) {
                 return getResponseCount.apply(this, arguments);
             }
 
-
-            // /**
-            //  * Loads the image.
-            //  *
-            //  * @return  The image.
-            //  */
-            // static loadImage() {
-            //     return loadImage.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Loads the JSON.
-            //  *
-            //  * @return  The JSON.
-            //  */
-            // static loadJSON() {
-            //     return minAjaxJSON.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Destroys the resource.
-            //  *
-            //  * @return  .
-            //  */
-            // static destroyResource() {
-            //     return destroyResource.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Gets the resource.
-            //  *
-            //  * @return  The resource.
-            //  */
-            // static getResource() {
-            //     return getResource.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Sets subject function.
-            //  *
-            //  * @return  .
-            //  */
-            // static setSubjectFunction() {
-            //     return setSubjectFunction.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Gets finished request percent.
-            //  *
-            //  * @return  The finished request percent.
-            //  */
-            // static getFinishedRequestPercent() {
-            //     return getFinishedRequestPercent.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Gets request count.
-            //  *
-            //  * @return  The request count.
-            //  */
-            // static getRequestCount() {
-            //     return getRequestCount.apply(ResourceManagerInstance, arguments);
-            // }
-            //
-            // /**
-            //  * Gets response count.
-            //  *
-            //  * @return  The response count.
-            //  */
-            // static getResponseCount() {
-            //     return getResponseCount.apply(ResourceManagerInstance, arguments);
-            // }
+            loadZip() {
+                lf2.Prefetch.get('RESOURCES')
+                    .then(zip => _zipEntry = zip)
+                    .catch(e => {
+                        console.error(e);
+                    })
+            }
         }
         ;
 
+        /**
+         *
+         * @type {ResourceManager}
+         */
         Framework.ResourceManager = ResourceManagerInstance = new ResourceManager();
+
+
         return ResourceManagerInstance;
     })();
     return Framework;
