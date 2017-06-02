@@ -1,12 +1,11 @@
-//當有要加關卡時, 可以使用addNewLevel
-//第一個被加進來的Level就是啟動點, 所以一開始遊戲就進入MyMenu
-'use strict';
 "use strict";
 var lf2 = (function (lf2) {
     const CHEAT_KEYWORD = "lf2.net".toUpperCase().split('').reverse();
     const FightLevel = lf2.FightLevel;
 
     class Game {
+
+        /** Default constructor. */
         constructor() {
             Framework.Game.addNewLevel({menu: new lf2.LaunchMenu()});
             Framework.Game.addNewLevel({control: new lf2.MySettingLevel()});
@@ -48,6 +47,11 @@ var lf2 = (function (lf2) {
             this.addEggHandle();
         }
 
+        /**
+         * Starts this object.
+         *
+         * @return  .
+         */
         start() {
             Framework.Game.start();
 
@@ -58,10 +62,22 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Key in sequence.
+         *
+         * @param   asciiArrayReversed  The ASCII array reversed.
+         *
+         * @return  .
+         */
         keyInSequence(asciiArrayReversed) {
             return !asciiArrayReversed.some((e, i) => e !== this._keyPool[i]);
         }
 
+        /**
+         * Adds cheat handle.
+         *
+         * @return  .
+         */
         addCheatHandle() {
             const keyDetection = () => {
                 if (lf2.CurrentLevel instanceof FightLevel) return;
@@ -81,6 +97,11 @@ var lf2 = (function (lf2) {
             window.addEventListener('keydown', keyDetection);
         }
 
+        /**
+         * Adds egg handle.
+         *
+         * @return  .
+         */
         addEggHandle() {
             const keyDetection = () => {
                 for (let i = 0, e = lf2.Egg.EGG_KEYWORD, j = e.length; i < j; i++) {
@@ -99,10 +120,20 @@ var lf2 = (function (lf2) {
             window.addEventListener('keydown', keyDetection);
         }
 
+        /**
+         * Play bgm.
+         *
+         * @return  .
+         */
         playBgm(){
             this.bgmAudio.play('bgm', this.bgmParam);
         }
 
+        /**
+         * Gets the cheat status.
+         *
+         * @return  {get}   A get.
+         */
         get cheat() {
             return this._cheatStatus;
         }
