@@ -25,11 +25,20 @@ var lf2 = (function (lf2) {
             super(ball, world);
         }
 
-
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 3;
         }
 
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
         toString() {
             return 'lf2.SpeedUpTrackerBehavior';
         }

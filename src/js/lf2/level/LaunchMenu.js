@@ -13,6 +13,8 @@ var lf2 = (function (lf2) {
      * @type {{}}
      */
     lf2.LaunchMenu = class extends Framework.Level {
+
+        /** Default constructor. */
         constructor() {
             super();
 
@@ -88,6 +90,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Preloads this object.
+         *
+         * @return  .
+         */
         preload() {
             Prefetch.start();
             //Start preload loading video
@@ -126,6 +133,11 @@ var lf2 = (function (lf2) {
             this._fullScreenGame();
         }
 
+        /**
+         * Full screen game.
+         *
+         * @return  .
+         */
         _fullScreenGame() {
             if (define.DEBUG) return;
 

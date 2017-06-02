@@ -1,12 +1,13 @@
 'use strict';
 var Framework = (function (Framework) {
+    const Point = Framework.Point;
 
     /**
      *
      * @class {Framework.Point3D}
-     * @extends {Framework.Point}
+     * @extends {Point}
      */
-    Framework.Point3D = class Point3D extends Framework.Point {
+    Framework.Point3D = class Point3D extends Point {
 
         /**
          * Set Point
@@ -19,7 +20,12 @@ var Framework = (function (Framework) {
             super(x, y);
             this._z = floatval(z) || 0;
         }
-        
+
+        /**
+         * Write point to target
+         *
+         * @param {Point3D} target
+         */
         writeTo(target) {
             super.writeTo(target);
             
@@ -63,6 +69,12 @@ var Framework = (function (Framework) {
             return new Point3D(this._x, this._y, this._z);
         }
 
+
+        /**
+         * Is origin
+         *
+         * @returns {boolean}
+         */
         get isZero() {
             return this._x === 0 && this._x === this._y && this._x === this._z;
         }
@@ -82,6 +94,10 @@ var Framework = (function (Framework) {
             return this;
         }
 
+        /**
+         *
+         * @returns {string}
+         */
         toString() {
             return `(${this._x}, ${this._y}, ${this._z})`;
         }

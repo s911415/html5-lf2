@@ -44,6 +44,11 @@ var lf2 = (function (lf2) {
             this._filterFall();
         }
 
+        /**
+         * Filter fall.
+         *
+         * @return  {Number} fall filtered
+         */
         _filterFall() {
             switch (this.fall) {
                 case 70:

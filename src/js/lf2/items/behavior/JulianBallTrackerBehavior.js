@@ -26,10 +26,20 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 14;
         }
 
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
         toString() {
             return 'lf2.JulianBallTrackerBehavior';
         }

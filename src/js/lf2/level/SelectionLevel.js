@@ -631,6 +631,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Check cheat.
+         *
+         * @return  .
+         */
         checkCheat() {
             if (this._cheatMusicPlayed) return true;
             if (lf2['!MainGame'].cheat) {
@@ -644,6 +649,14 @@ var lf2 = (function (lf2) {
             return false;
         }
 
+        /**
+         * Finds the charidinrange of the given arguments.
+         *
+         * @param   currentIndex    The current index.
+         * @param   offset          The offset.
+         *
+         * @return  The calculated character identifier in range.
+         */
         getCharIdInRange(currentIndex, offset) {
             if (offset === 0) return currentIndex;
 
@@ -654,12 +667,25 @@ var lf2 = (function (lf2) {
             return this.getCharIdInRange(newIndex, offset);
         }
 
+        /**
+         * Finds the teamidinrange of the given arguments.
+         *
+         * @param   currentIndex    The current index.
+         * @param   offset          The offset.
+         *
+         * @return  The calculated team identifier in range.
+         */
         getTeamIdInRange(currentIndex, offset) {
             if (offset === 0) return currentIndex;
 
             return setOffsetIndex(currentIndex, this._teamInsArray.length, offset);
         }
 
+        /**
+         * Stops all music.
+         *
+         * @return  .
+         */
         _stopAllMusic() {
             lf2.Egg.stop();
             // Framework.Audio.stopAll();

@@ -1,6 +1,10 @@
 'use strict';
 var Framework = (function (Framework) {
-
+    /**
+     * 2D coordinate, also use as a pair structure
+     *
+     * @type {Point}
+     */
     Framework.Point = class Point {
 
         /**
@@ -10,10 +14,26 @@ var Framework = (function (Framework) {
          * @param {Number} y
          */
         constructor(x, y) {
+            /**
+             *
+             * @type {Number}
+             * @protected
+             */
             this._x = floatval(x);
+
+            /**
+             *
+             * @type {Number}
+             * @private protected
+             */
             this._y = floatval(y);
         }
-        
+
+        /**
+         * Write point to target
+         *
+         * @param {Point} target
+         */
         writeTo(target) {
             if(target instanceof Point){
                 target.x = this.x;
@@ -24,7 +44,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * get first data
          * @returns {Number}
          */
         get first() {
@@ -32,7 +52,7 @@ var Framework = (function (Framework) {
         }
 
         /**
-         *
+         * get second data
          * @returns {Number}
          */
         get second() {
@@ -48,6 +68,11 @@ var Framework = (function (Framework) {
             return this._x;
         }
 
+        /**
+         * Is origin
+         *
+         * @returns {boolean}
+         */
         get isZero() {
             return this._x === 0 && this._x === this._y;
         }

@@ -27,7 +27,11 @@ var lf2 = (function (lf2) {
             return new Point3D(0, 0, 0);
         }
 
-
+        /**
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             if (this._ball && !this._ball.alive && this._attached) {
                 //Remove reference of ball
@@ -58,6 +62,11 @@ var lf2 = (function (lf2) {
             return null;
         }
 
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 9;
         }

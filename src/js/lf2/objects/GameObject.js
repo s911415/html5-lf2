@@ -129,6 +129,11 @@ var lf2 = (function (lf2) {
             );
         }
 
+        /**
+         * Gets play list.
+         *
+         * @return  The play list.
+         */
         getPlayList(){
             return this._audio.playlist;
         }

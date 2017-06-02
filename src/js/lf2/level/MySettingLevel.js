@@ -61,6 +61,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * Gets configuration by player identifier.
+         *
+         * @param   playerId    Identifier for the player.
+         *
+         * @return  The configuration by player identifier.
+         */
         getConfigByPlayerId(playerId) {
             let conf = this.config[playerId];
             if (!conf) {
