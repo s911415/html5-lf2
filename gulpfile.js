@@ -7,8 +7,10 @@ const gulp = require('gulp'),
     concat = require('gulp-concat'),
     babili = require("gulp-babili"),
     merge = require('merge-stream'),
-	del = require('del'),
-	gulpSequence = require('gulp-sequence');
+    del = require('del'),
+    gulpSequence = require('gulp-sequence'),
+    zip = require('gulp-zip')
+;
 
 gulp.task('build', () => {
 
@@ -119,9 +121,7 @@ gulp.task('build', () => {
                 keepClassNames: true,
                 keepFnName: true
             },
-            simplify: {
-
-            },
+            simplify: {},
             removeConsole: true,
         }))
         .pipe(concat('js/load.js'))
@@ -131,13 +131,35 @@ gulp.task('build', () => {
 
 gulp.task('clean', () => {
     return del([
-		'dist/**', 
-		'!dist',
-		'!dist/favicon.ico',
-		'!dist/index.html',
-	]).then(paths => {
-		console.log('Deleted files and folders:\n', paths.join('\n'));
-	});
+        'dist/**',
+        '!dist',
+        '!dist/favicon.ico',
+        '!dist/index.html',
+    ]).then(paths => {
+        console.log('Deleted files and folders:\n', paths.join('\n'));
+    });
+});
+
+gulp.task('zipData', () => {
+    return gulp.src('src/data/**/*.txt')
+        .pipe(zip('zip/data.zip'))
+        .pipe(gulp.dest(DIST_DIR))
+});
+
+gulp.task('zipResources', () => {
+    return gulp.src([
+        'src/**/music/*.m4a'
+    ])
+        .pipe(zip('zip/resources.zip'))
+        .pipe(gulp.dest(DIST_DIR))
+});
+
+gulp.task('zipEgg', () => {
+    return gulp.src([
+        'src/music/egg/*.m4a'
+    ])
+        .pipe(zip('zip/egg.zip'))
+        .pipe(gulp.dest(DIST_DIR))
 });
 
 gulp.task('resources', () => {
@@ -170,4 +192,18 @@ gulp.task('resources', () => {
     return merge(taskArr);
 });
 
-gulp.task('default',  gulpSequence('clean', ['resources', 'build']));
+gulp.task(
+    'default',
+    gulpSequence(
+        'clean',
+        [
+            'resources',
+            'build'
+        ],
+        [
+            'zipData',
+            'zipResources',
+            'zipEgg'
+        ]
+    )
+);
