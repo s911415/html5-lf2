@@ -44,7 +44,11 @@ var lf2 = (function (lf2) {
             throw METHOD_NOT_IMPLEMENT;
         }
 
-
+        /**
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             if(this._ball && !this._ball.alive){
                 //Remove reference of ball

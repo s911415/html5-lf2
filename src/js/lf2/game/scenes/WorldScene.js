@@ -143,7 +143,7 @@ var lf2 = (function (lf2) {
         }
 
         /**
-         *
+         * Get all items with body
          * @returns {lf2.GameItem[]}
          * @private
          */
@@ -162,7 +162,12 @@ var lf2 = (function (lf2) {
             return bdyItems;
         }
 
-
+        /**
+         * Attaches the given object.
+         *
+         * @param   obj The object.
+         *
+         */
         attach(obj) {
             super.attach(obj);
             if (obj.world !== undefined) {
@@ -220,9 +225,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Gets distance between camera and item.
          *
          * @param {GameItem} item
-         * @returns {number}
+         *
+         * @return  {number} The distance between camera and item.
          */
         getDistanceBetweenCameraAndItem(item) {
             const pos = this._getCameraPositionAsPoint();
@@ -278,9 +285,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Gets an enemy.
          *
-         * @param {lf2.Player} player
-         * @returns {lf2.Character}
+         * @param  {lf2.Player} player  The player.
+         *
+         * @return {lf2.Character|null} The enemy.
          */
         getEnemy(player) {
             let target = null;
@@ -298,9 +307,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Gets a friend.
          *
-         * @param {lf2.Player} player
-         * @returns {lf2.Character}
+         * @param {lf2.Player}  player  The player.
+         *
+         * @return {lf2.Character|null} The friend.
          */
         getFriend(player) {
             let target = null;
@@ -348,8 +359,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Sets map by identifier.
          *
-         * @param {Number} id
+         * @param  {Number} id  The identifier.
+         *
+         * @return  .
          */
         setMapById(id) {
             this.map = GameMapPool.get(id);

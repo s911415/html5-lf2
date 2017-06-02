@@ -7,10 +7,17 @@ var lf2 = (function (lf2) {
      * @class Prefetch
      */
     class Prefetch {
+
+        /** Default constructor. */
         constructor() {
             this._fetch = {};
         }
 
+        /**
+         * Starts preload resources
+         *
+         * @return  .
+         */
         start() {
             this._fetch = {
                 LOADING_VIDEO:
@@ -28,6 +35,13 @@ var lf2 = (function (lf2) {
             ResourceManager.loadZip();
         }
 
+        /**
+         * Gets an Promise using the given key.
+         *
+         * @param {String}  key The key to get.
+         *
+         * @return  {Promise}
+         */
         get(key) {
             return this._fetch[key];
         }

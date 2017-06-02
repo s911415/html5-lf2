@@ -257,6 +257,11 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * Autodeletes this object.
+         *
+         * @return  .
+         */
         autodelete() {
             super.autodelete();
 
@@ -266,6 +271,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Shows the panel.
+         *
+         * @return  .
+         */
         showPanel() {
             if (!this.isCurrentLevel) return;
             if (this.html !== "" && !this._container) {
@@ -320,6 +330,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Check game over.
+         *
+         * @return  .
+         */
         checkGameOver() {
             if (this._gameOver) return true;
             const TeamInfo = this.getTeamInfo();
@@ -333,6 +348,11 @@ var lf2 = (function (lf2) {
             return isGameOver;
         }
 
+        /**
+         * Gets team information.
+         *
+         * @return  The team information.
+         */
         getTeamInfo() {
             // if (this._teamInfoCache !== undefined) return this._teamInfoCache;
 
@@ -387,10 +407,20 @@ var lf2 = (function (lf2) {
             return teamMap;
         }
 
+        /**
+         * Clears the team information cache.
+         *
+         * @return  .
+         */
         clearTeamInfoCache() {
             this._teamInfoCache = undefined;
         }
 
+        /**
+         * Shows the game over panel.
+         *
+         * @return  .
+         */
         showGameOverPanel() {
             if (this._gameOverPanelShown) return;
             const TeamInfo = this.getTeamInfo();

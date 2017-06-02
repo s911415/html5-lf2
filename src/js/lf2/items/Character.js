@@ -378,6 +378,11 @@ var lf2 = (function (lf2) {
             return this._charVel;
         }
 
+        /**
+         * Applies the friction.
+         *
+         * @return  .
+         */
         applyFriction() {
             super.applyFriction();
             let x, y, z;
@@ -608,7 +613,11 @@ var lf2 = (function (lf2) {
             }
         }
 
-
+        /**
+         * Freezes this object.
+         *
+         * @return  .
+         */
         freeze() {
             this._velocity.x
                 = this._velocity.z
@@ -638,7 +647,15 @@ var lf2 = (function (lf2) {
                 }
             }
         }
-        
+
+        /**
+         * Can damage by.
+         *
+         * @param   item    The item.
+         * @param   ITR     The itr.
+         *
+         * @return  .
+         */
         canDamageBy(item, ITR) {
             const parentRet = super.canDamageBy(item, ITR);
             if(!parentRet) return parentRet;
@@ -816,6 +833,14 @@ var lf2 = (function (lf2) {
 
         }
 
+        /**
+         * Play effect sound.
+         *
+         * @param   effectCode  The effect code.
+         * @param   fall        The fall.
+         *
+         * @return  .
+         */
         playEffectSound(effectCode, fall) {
             const soundPath = Effect.sound.getSoundPath(effectCode, fall);
             if (soundPath) {
@@ -837,6 +862,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Current function key.
+         *
+         * @return  {get}   A get.
+         */
         get _curFuncKey() {
             return this.belongTo._currentKey;
         }

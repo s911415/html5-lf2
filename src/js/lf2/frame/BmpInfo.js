@@ -166,6 +166,7 @@ var lf2 = (function (lf2) {
                     }
                     //End of image process
 
+                    //Try save image as blob
                     if(canvas.toBlob){
                         canvas.toBlob(function (b) {
                             imgObj.src = URL.createObjectURL(b) + '#' + pairContent.get(key);

@@ -137,15 +137,32 @@ String.prototype.padStart = String.prototype.padStart || function (targetLength,
         return str;
     };
 
-
+/**
+ * Firsts this object.
+ *
+ * @return  .
+ */
 Array.prototype.first = function () {
     return this[0];
 };
 
+/**
+ * Lasts this object.
+ *
+ * @return  .
+ */
 Array.prototype.last = function () {
     return this[this.length - 1];
 };
 
+/**
+ * Binary search.
+ *
+ * @param   target          Target for the.
+ * @param   [compareFunction] The compare function.
+ *
+ * @return  .
+ */
 Array.prototype.binarySearch = function (target, compareFunction) {
     if (compareFunction === undefined) compareFunction = (x, y) => x - y;
 
@@ -187,6 +204,13 @@ function floatval(obj) {
     return parseFloat(obj);
 }
 
+/**
+ * Loads an image.
+ *
+ * @param   src Source for the.
+ *
+ * @return  The image.
+ */
 function loadImage(src) {
     return new Promise((resolve, reject) => {
         let img = new Image();
@@ -200,10 +224,20 @@ function loadImage(src) {
     });
 }
 
+/**
+ * Determines the maximum value.
+ *
+ * @return  The maximum value.
+ */
 Array.prototype.max = function () {
     return Math.max.apply(null, this);
 };
 
+/**
+ * Determines the minimum value.
+ *
+ * @return  The minimum value.
+ */
 Array.prototype.min = function () {
     return Math.min.apply(null, this);
 };

@@ -267,6 +267,13 @@ var lf2 = (function (lf2) {
             });
         }
 
+        /**
+         * Loads data resource.
+         *
+         * @param   path    Full pathname of the file.
+         *
+         * @return  The data resource.
+         */
         loadDataResource(path) {
             path = path.replace(/\\/g, '/').replace(/\/\//, '/');
 
@@ -301,7 +308,7 @@ var lf2 = (function (lf2) {
             }
         }
 
-
+        
         draw(ctx) {
             super.draw(ctx);
 

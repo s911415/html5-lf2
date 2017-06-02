@@ -166,6 +166,7 @@ var lf2 = (function (lf2) {
 
             return arr;
         },
+
         CubicBezier: function (t, x1, y1, x2, y2) {
             const _DIFF = Utils._CubicBezierDiff;
             let cacheObj = Utils._MakeCubicBezierCache(x1, y1, x2, y2);
@@ -185,6 +186,7 @@ var lf2 = (function (lf2) {
         },
     };
 
+    
     lf2.__defineGetter__('CurrentLevel', () => Framework.Game._currentLevel);
 
 

@@ -32,6 +32,11 @@ var lf2 = (function (lf2) {
             this._radius = 0;
         }
 
+        /**
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
 
@@ -114,10 +119,20 @@ var lf2 = (function (lf2) {
             return target;
         }
 
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 1;
         }
 
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
         toString() {
             return 'lf2.CenterTrackerBehavior';
         }

@@ -45,9 +45,10 @@ var lf2 = (function (lf2) {
     lf2.Effect.allSound = allSound;
 
     /**
-     *
-     * @param effectCode
-     * @param {Number} [fall]
+     * Get Sound Path by effect code
+     * @param {Number} effectCode effect code
+     * @param {Number} [fall] fall
+     * @returns {String|undefined} return path if effect found
      */
     lf2.Effect.sound.getSoundPath = (effectCode, fall) => {
         const ARR = SOUND[effectCode];

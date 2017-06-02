@@ -118,6 +118,10 @@ var lf2 = (function (lf2) {
             if (this.right) yield* this.right;
         }
 
+        /**
+         * 
+         * @param {any} baseNode
+         */
         _ReArrange(baseNode) {
             baseNode = baseNode.parent;
             const getRect = (node) => node ? node.value : null;
