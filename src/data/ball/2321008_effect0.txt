@@ -1,13 +1,13 @@
 <bmp_begin>
 file(0-21): sprite\sys\2321008_effect0.png  w: 482  h: 277  row: 22  col: 1
-weapon_hit_sound: 2321008_Hit.mp3
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 2321008_Hit.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 94 skill_2321008_effect0
    pic: 0  state: 15  wait: 0  next: 95  dvx: 0  dvy: 0  dvz: 0  centerx: 241  centery: 277  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 2321008_Use.mp3
+   sound: 2321008_Use.m4a
    opoint:
       kind: 1  x: 341  y: 277  action: 100  dvx: 0  dvy: 0  oid: 251  facing: 30
    opoint_end:

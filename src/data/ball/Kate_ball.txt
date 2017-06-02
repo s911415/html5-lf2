@@ -1,8 +1,8 @@
 <bmp_begin> 
 file(0-23):  sprite/sys/Zap_ball.png w: 179  h: 119  row: 8  col: 3
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end> 
 
 <frame> 0 Start flying
@@ -13,7 +13,7 @@ weapon_broken_sound: 020.ogg
    bdy:
       kind: 0  x: 0  y: 48  w: 84  h: 71  
    bdy_end:
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 1 Start flying
@@ -27,7 +27,7 @@ weapon_broken_sound: 020.ogg
    bdy:
       kind: 0  x: 0  y: 44  w: 77  h: 75  
    bdy_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 2 Start flying
@@ -101,7 +101,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 68  y: 119  action: 0 dvx: 0  dvy: 0  oid: 400  facing: 0
    opoint_end:
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 9 flying
@@ -112,7 +112,7 @@ weapon_broken_sound: 020.ogg
    bdy:
       kind: 0  x: 0  y: 44  w: 77  h: 75  
    bdy_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 11 flying
@@ -147,7 +147,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 0  y: 0  w: 119  h: 119  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
- sound: 999.ogg
+ sound: 999.m4a
 <frame_end>
 
 <frame> 14 hiting
@@ -155,7 +155,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 29  y: 15  w: 121  h: 110  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 15 hiting
@@ -178,7 +178,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 0  y: 0  w: 119  h: 119  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 999.ogg
+  sound: 999.m4a
 <frame_end>
 
 <frame> 22 hit
@@ -186,7 +186,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 29  y: 15  w: 121  h: 110  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 23 hit
@@ -208,7 +208,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 0  y: 0  w: 119  h: 119  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 999.ogg
+  sound: 999.m4a
 <frame_end>
 
 <frame> 32 rebounding
@@ -216,7 +216,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 29  y: 15  w: 121  h: 110  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 33 rebounding
@@ -238,7 +238,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 0  y: 0  w: 119  h: 119  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 999.ogg
+  sound: 999.m4a
 <frame_end>
 
 <frame> 42 disappearing
@@ -246,7 +246,7 @@ weapon_broken_sound: 020.ogg
    itr:
       kind: 0  x: 29  y: 15  w: 121  h: 110  dvx: 15 dvy: -17  fall: 100  vrest: 10  bdefend: 100  injury: 120  
    itr_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 43 disappearing
@@ -264,7 +264,7 @@ weapon_broken_sound: 020.ogg
   opoint: 
     kind: 1  x: 30  y: 42  action: 40  dvx: 0  dvy: 0  oid: 200  facing: 0 
   opoint_end: 
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 101 Start flying
@@ -275,7 +275,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 68  y: 119  action: 0 dvx: 0  dvy: 0  oid: 400  facing: 0
    opoint_end:
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 102 Start flying
@@ -346,7 +346,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 68  y: 109  action: 0 dvx: 0  dvy: 0  oid: 400  facing: 0
    opoint_end:
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 109 flying
@@ -357,7 +357,7 @@ weapon_broken_sound: 020.ogg
   opoint: 
     kind: 1  x: 30  y: 53  action: 44  dvx: 0  dvy: 0  oid: 200  facing: 0 
   opoint_end: 
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 111 flying
@@ -450,7 +450,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 152 hit
    pic: 22  state: 3005  wait: 1  next: 153  dvx: 0  dvy: 0  centerx: 75  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 995.ogg
+  sound: 995.m4a
 <frame_end>
 
 <frame> 153 hit

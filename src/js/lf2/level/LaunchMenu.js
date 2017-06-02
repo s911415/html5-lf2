@@ -39,11 +39,11 @@ var lf2 = (function (lf2) {
             //載入要被播放的音樂清單
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             this.audio = new Framework.Audio({
-                ok: define.MUSIC_PATH + 'm_ok.ogg',
-                join: define.MUSIC_PATH + 'm_join.ogg',
-                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
-                pass: define.MUSIC_PATH + 'm_pass.ogg',
-                end: define.MUSIC_PATH + 'm_end.ogg',
+                ok: define.MUSIC_PATH + 'm_ok.m4a',
+                join: define.MUSIC_PATH + 'm_join.m4a',
+                cancel: define.MUSIC_PATH + 'm_cancel.m4a',
+                pass: define.MUSIC_PATH + 'm_pass.m4a',
+                end: define.MUSIC_PATH + 'm_end.m4a',
             });
 
             this.html = '';

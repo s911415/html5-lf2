@@ -1,32 +1,36 @@
 <bmp_begin>
-name: Bat
-head: sprite\sys\bat_f.png
-small: sprite\sys\bat_s.png
-file(0-69): sprite\sys\bat_0.png  w: 79  h: 79  row: 10  col: 7
-file(70-139): sprite\sys\bat_1.png  w: 79  h: 79  row: 10  col: 7
-file(140-141): sprite\sys\bat_2.png  w: 159  h: 79  row: 2  col: 1
+name: 強化Bat
+head: sprite/sys/bat_f.png
+small: sprite/sys/bat_s.png
+file(0-69): sprite/sys/bat_0.png  w: 79  h: 79  row: 10  col: 7
+file(70-139): sprite/sys/bat_1.png  w: 79  h: 79  row: 10  col: 7
+file(140-209): sprite/sys/bat_0.png  w: 79  h: 79  row: 10  col: 7
+file(210-279): sprite/sys/bat_1.png  w: 79  h: 79  row: 10  col: 7
+file(280-349): sprite/sys/bat_2.png  w: 159  h: 79  row: 10  col: 7
+file(350-419): sprite/sys/bat_2.png  w: 159  h: 79  row: 10  col: 7
+file(420-489): sprite/sys/bat_2.png  w: 159  h: 79  row: 10  col: 7
 walking_frame_rate 3
-walking_speed 5.000000
-walking_speedz 2.500000
+walking_speed 7
+walking_speedz 3
 running_frame_rate 3
-running_speed 10.000000
-running_speedz 1.600000
-heavy_walking_speed 3.700000
-heavy_walking_speedz 1.850000
-heavy_running_speed 6.200000
-heavy_running_speedz 1.000000
-jump_height -16.299999
-jump_distance 10.000000
-jump_distancez 3.750000
-dash_height -10.000000
-dash_distance 18.000000
-dash_distancez 5.000000
-rowing_height -2.000000
-rowing_distance 5.000000
+running_speed 13
+running_speedz 2
+heavy_walking_speed 5.5
+heavy_walking_speedz 1.85
+heavy_running_speed 8
+heavy_running_speedz 1.5
+jump_height -17
+jump_distance 13
+jump_distancez 3.75
+dash_height -11
+dash_distance 21
+dash_distancez 6
+rowing_height -5
+rowing_distance 8
 <bmp_end>
 
 <frame> 0 standing
-   pic: 0  state: 0  wait: 5  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 0  state: 0  wait: 5  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 34
    bpoint_end:
@@ -39,7 +43,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 1 standing
-   pic: 1  state: 0  wait: 3  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 1  state: 0  wait: 3  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -52,7 +56,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 2 standing
-   pic: 2  state: 0  wait: 5  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 2  state: 0  wait: 5  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -65,7 +69,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 3 standing
-   pic: 3  state: 0  wait: 9  next: 4  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 3  state: 0  wait: 9  next: 4  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -78,7 +82,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 4 standing
-   pic: 2  state: 0  wait: 0  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 2  state: 0  wait: 0  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -91,7 +95,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 5 walking
-   pic: 4  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 4  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -108,7 +112,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 6 walking
-   pic: 5  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 5  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -125,7 +129,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 7 walking
-   pic: 6  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 6  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -142,7 +146,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 8 walking
-   pic: 7  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 7  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 38  y: 33
    bpoint_end:
@@ -159,8 +163,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 9 running
-   pic: 20  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
-  sound: 003.ogg 
+   pic: 20  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
+  sound: 003.m4a 
    bpoint:
       x: 48  y: 36
    bpoint_end:
@@ -173,7 +177,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 10 running
-   pic: 21  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 81  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 21  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 81  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    bpoint:
       x: 50  y: 36
    bpoint_end:
@@ -186,8 +190,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 11 running
-   pic: 22  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
-  sound: 004.ogg 
+   pic: 22  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
+  sound: 004.m4a 
    bpoint:
       x: 46  y: 36
    bpoint_end:
@@ -253,7 +257,7 @@ rowing_distance 5.000000
 
 <frame> 16 heavy_obj_run
    pic: 74  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 37  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 003.ogg 
+  sound: 003.m4a 
    bpoint:
       x: 38  y: 34
    bpoint_end:
@@ -280,7 +284,7 @@ rowing_distance 5.000000
 
 <frame> 18 heavy_obj_run
    pic: 76  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 004.ogg 
+  sound: 004.m4a 
    bpoint:
       x: 38  y: 34
    bpoint_end:
@@ -293,8 +297,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 19 heavy_stop_run
-   pic: 27  state: 15  wait: 7  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+   pic: 27  state: 15  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 009.m4a 
    bpoint:
       x: 36  y: 34
    bpoint_end:
@@ -318,7 +322,7 @@ rowing_distance 5.000000
 
 <frame> 21 normal_weapon_atck
    pic: 71  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 53  y: 55  weaponact: 24  attacking: 1  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -338,7 +342,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 30 jump_weapon_atck
-   pic: 72  state: 3  wait: 2  next: 31  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 72  state: 3  wait: 1  next: 31  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 15  y: 22  weaponact: 33  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -348,8 +352,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 31 jump_weapon_atck
-   pic: 73  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 81  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+   pic: 73  state: 3  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 81  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 53  y: 57  weaponact: 24  attacking: 2  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -359,7 +363,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 35 run_weapon_atck
-   pic: 70  state: 3  wait: 2  next: 36  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 70  state: 3  wait: 1  next: 36  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 17  y: 25  weaponact: 33  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -369,8 +373,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 36 run_weapon_atck
-   pic: 71  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+   pic: 71  state: 3  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 53  y: 55  weaponact: 24  attacking: 3  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -380,7 +384,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 40 dash_weapon_atck
-   pic: 72  state: 3  wait: 2  next: 41  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 72  state: 3  wait: 1  next: 41  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 14  y: 21  weaponact: 33  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -390,8 +394,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 41 dash_weapon_atck
-   pic: 73  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+   pic: 73  state: 3  wait: 9  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 52  y: 55  weaponact: 24  attacking: 4  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -414,10 +418,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 46 light_weapon_thw
-   pic: 71  state: 15  wait: 9  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 31  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+   pic: 71  state: 15  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 31  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 008.m4a 
    wpoint:
-      kind: 1  x: 107  y: 60  weaponact: 35  attacking: 0  cover: 0  dvx: 19  dvy: -4  dvz: 3 
+      kind: 1  x: 107  y: 60  weaponact: 35  attacking: 0  cover: 0  dvx: 25  dvy: -4  dvz: 3 
    wpoint_end:
    bdy:
       kind: 0  x: 17  y: 18  w: 48  h: 33
@@ -438,10 +442,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 51 heavy_weapon_thw
-   pic: 28  state: 15  wait: 7  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 27  centery: 77  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 28  state: 15  wait: 5  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 27  centery: 77  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    wpoint:
-      kind: 1  x: 104  y: 36  weaponact: 10  attacking: 0  cover: 0  dvx: 13  dvy: -5  dvz: 2 
+      kind: 1  x: 104  y: 36  weaponact: 10  attacking: 0  cover: 0  dvx: 19  dvy: -5  dvz: 2 
    wpoint_end:
    bdy:
       kind: 0  x: 8  y: 39  w: 61  h: 23
@@ -452,7 +456,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 52 sky_lgt_wp_thw
-   pic: 72  state: 15  wait: 3  next: 53  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 72  state: 15  wait: 1  next: 53  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 16  y: 21  weaponact: 33  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -462,10 +466,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 53 sky_lgt_wp_thw
-   pic: 73  state: 15  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+   pic: 73  state: 15  wait: 4  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 008.m4a 
    wpoint:
-      kind: 1  x: 67  y: 71  weaponact: 23  attacking: 0  cover: 0  dvx: 16  dvy: 8  dvz: 3 
+      kind: 1  x: 67  y: 71  weaponact: 23  attacking: 0  cover: 0  dvx: 21  dvy: 9  dvz: 3 
    wpoint_end:
    bdy:
       kind: 0  x: 22  y: 15  w: 38  h: 38
@@ -476,8 +480,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 55 weapon_drink
-   pic: 92  state: 17  wait: 3  next: 56  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
-  sound: 042.ogg 
+   pic: 92  state: 17  wait: 2  next: 56  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
+  sound: 042.m4a 
    wpoint:
       kind: 1  x: 57  y: 22  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -487,7 +491,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 56 weapon_drink
-   pic: 93  state: 17  wait: 3  next: 57  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
+   pic: 93  state: 17  wait: 2  next: 57  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
    wpoint:
       kind: 1  x: 57  y: 21  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -497,7 +501,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 57 weapon_drink
-   pic: 94  state: 17  wait: 3  next: 58  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
+   pic: 94  state: 17  wait: 2  next: 58  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
    wpoint:
       kind: 1  x: 57  y: 20  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -507,7 +511,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 58 weapon_drink
-   pic: 93  state: 17  wait: 3  next: 55  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
+   pic: 93  state: 17  wait: 2  next: 55  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
    wpoint:
       kind: 1  x: 57  y: 21  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -517,7 +521,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 60 punch
-   pic: 10  state: 3  wait: 2  next: 61  dvx: 2  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 10  state: 3  wait: 2  next: 61  dvx: 1  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 2  x: 27  y: 57  w: 36  h: 25  vrest: 1  
       
@@ -528,10 +532,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 61 punch
-   pic: 11  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 11  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    itr:
-      kind: 0  x: 31  y: 35  w: 40  h: 14  dvx: 2  bdefend: 16  injury: 20  
+      kind: 0  x: 31  y: 35  w: 40  h: 14  dvx: 2  bdefend: 16  injury: 15  
    itr_end:
    bdy:
       kind: 0  x: 21  y: 10  w: 39  h: 70
@@ -539,7 +543,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 65 punch
-   pic: 12  state: 3  wait: 2  next: 66  dvx: 2  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 12  state: 3  wait: 2  next: 66  dvx: 1  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 2  x: 15  y: 59  w: 29  h: 23  vrest: 1  
       
@@ -550,10 +554,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 66 punch
-   pic: 13  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 27  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 13  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 27  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    itr:
-      kind: 0  x: 29  y: 36  w: 45  h: 15  dvx: 2  bdefend: 16  injury: 20  
+      kind: 0  x: 29  y: 36  w: 45  h: 15  dvx: 2  bdefend: 16  injury: 15  
    itr_end:
    bdy:
       kind: 0  x: 17  y: 10  w: 38  h: 71
@@ -561,17 +565,17 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 70 super_punch
-   pic: 14  state: 3  wait: 3  next: 71  dvx: 8  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 14  state: 3  wait: 2  next: 71  dvx: 8  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    bdy:
       kind: 0  x: 25  y: 16  w: 30  h: 61
    bdy_end:
 <frame_end>
 
 <frame> 71 super_punch
-   pic: 15  state: 3  wait: 1  next: 72  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 15  state: 3  wait: 2  next: 72  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 15  y: 16  w: 54  h: 49  dvx: 14  dvy: 12  fall: 70  arest: 15  bdefend: 60  injury: 70  
+      kind: 0  x: 15  y: 16  w: 54  h: 49  dvx: 14  dvy: 12  fall: 70  arest: 15  bdefend: 60  injury: 48  
    itr_end:
    bdy:
       kind: 0  x: 20  y: 14  w: 34  h: 66
@@ -579,7 +583,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 72 super_punch
-   pic: 16  state: 3  wait: 3  next: 73  dvx: 0  dvy: 0  dvz: 0  centerx: 31  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 16  state: 3  wait: 2  next: 73  dvx: 0  dvy: 0  dvz: 0  centerx: 31  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    bdy:
       kind: 0  x: 26  y: 12  w: 35  h: 66
    bdy_end:
@@ -593,17 +597,17 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 80 jump_attack
-   pic: 95  state: 3  wait: 2  next: 81  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 95  state: 3  wait: 1  next: 81  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    bdy:
       kind: 0  x: 26  y: 13  w: 35  h: 55
    bdy_end:
 <frame_end>
 
 <frame> 81 jump_attack
-   pic: 96  state: 3  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 82  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 96  state: 3  wait: 8  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 82  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 28  y: 38  w: 45  h: 31  dvx: 8  dvy: -5  fall: 70  arest: 15  bdefend: 60  injury: 50  
+      kind: 0  x: 28  y: 38  w: 45  h: 31  dvx: 8  dvy: -5  fall: 70  arest: 15  bdefend: 60  injury: 33  
    itr_end:
    bdy:
       kind: 0  x: 8  y: 14  w: 41  h: 56
@@ -614,16 +618,16 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 85 run_attack
-   pic: 14  state: 3  wait: 3  next: 71  dvx: 8  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 14  state: 3  wait: 1  next: 71  dvx: 8  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    bdy:
       kind: 0  x: 25  y: 16  w: 30  h: 61
    bdy_end:
 <frame_end>
 
 <frame> 90 dash_attack
-   pic: 95  state: 3  wait: 2  next: 91  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 82  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 95  state: 3  wait: 1  next: 91  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 82  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    bdy:
       kind: 0  x: 21  y: 9  w: 44  h: 64
    bdy_end:
@@ -632,7 +636,7 @@ rowing_distance 5.000000
 <frame> 91 dash_attack
    pic: 96  state: 3  wait: 9  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 31  centery: 82  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
-      kind: 0  x: 19  y: 37  w: 51  h: 32  dvx: 14  dvy: -5  fall: 70  arest: 15  bdefend: 60  injury: 70  
+      kind: 0  x: 19  y: 37  w: 51  h: 32  dvx: 14  dvy: -5  fall: 70  arest: 15  bdefend: 60  injury: 48  
    itr_end:
    bdy:
       kind: 0  x: 11  y: 14  w: 37  h: 50
@@ -656,14 +660,14 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 96 dash_attack
-   pic: 137  state: 3  wait: 3  next: 96  dvx: 0  dvy: 0  dvz: 0  centerx: 33  centery: 72  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 137  state: 3  wait: 2  next: 96  dvx: 0  dvy: 0  dvz: 0  centerx: 33  centery: 72  hit_a: 0  hit_d: 0  hit_j: 0
    bdy:
       kind: 0  x: 21  y: 6  w: 29  h: 58
    bdy_end:
 <frame_end>
 
 <frame> 97 run_attack
-   pic: 105  state: 3  wait: 2  next: 98  dvx: 0  dvy: 0  dvz: 0  centerx: 30  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 105  state: 3  wait: 1  next: 98  dvx: 0  dvy: 0  dvz: 0  centerx: 30  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    bdy:
       kind: 0  x: 20  y: 11  w: 31  h: 68
    bdy_end:
@@ -678,10 +682,13 @@ rowing_distance 5.000000
 
 <frame> 100 rowing
    pic: 66  state: 6  wait: 2  next: 101  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 39  y: 41  weaponact: 32  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 101 rowing
@@ -689,6 +696,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 39  y: 45  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 102 rowing
@@ -699,6 +709,9 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 36  y: 54  w: 13  h: 25  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 103 rowing
@@ -709,6 +722,9 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 36  y: 54  w: 13  h: 25  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 104 rowing
@@ -719,6 +735,9 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 36  y: 54  w: 13  h: 25  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 105 rowing
@@ -729,6 +748,9 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 36  y: 54  w: 13  h: 25  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 106 rowing
@@ -739,6 +761,9 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 293  y: 198  w: 1  h: 1  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 107 rowing
@@ -749,11 +774,14 @@ rowing_distance 5.000000
    itr:
       kind: 7  x: 36  y: 54  w: 13  h: 25  vrest: 1  
    itr_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 108 rowing
    pic: 80  state: 6  wait: 3  next: 109  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 72  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 44  y: 52  weaponact: 32  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -764,10 +792,13 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 19  y: 43  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 110 defend
-   pic: 56  state: 7  wait: 12  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260
+   pic: 56  state: 7  wait: 12  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    wpoint:
       kind: 1  x: 42  y: 38  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -777,7 +808,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 111 defend
-   pic: 57  state: 7  wait: 0  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 57  state: 7  wait: 0  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 240 hit_Fj: 270 hit_Uj: 260 hit_Dj: 280 hit_Ua: 290 hit_ja: 300
    wpoint:
       kind: 1  x: 44  y: 39  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -800,7 +831,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 113 broken_defend
-   pic: 47  state: 8  wait: 2  next: 114  dvx: -2  dvy: 0  dvz: 0  centerx: 46  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 47  state: 8  wait: 1  next: 114  dvx: -2  dvy: 0  dvz: 0  centerx: 46  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 36  y: 51  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -813,7 +844,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 114 broken_defend
-   pic: 48  state: 8  wait: 3  next: 999  dvx: -2  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 48  state: 8  wait: 2  next: 999  dvx: -2  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 40  y: 50  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -826,8 +857,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 115 picking_light
-   pic: 36  state: 15  wait: 4  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 46  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+   pic: 36  state: 15  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 46  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 009.m4a 
    wpoint:
       kind: 1  x: 30  y: 65  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -841,7 +872,7 @@ rowing_distance 5.000000
 
 <frame> 116 picking_heavy
    pic: 36  state: 15  wait: 2  next: 117  dvx: 0  dvy: 0  dvz: 0  centerx: 46  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+  sound: 009.m4a 
    wpoint:
       kind: 1  x: 42  y: 79  weaponact: 10  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -868,10 +899,10 @@ rowing_distance 5.000000
 
 <frame> 120 catching
    pic: 51  state: 9  wait: 2  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 015.ogg 
+  sound: 015.m4a 
    cpoint:
       kind: 1  x: 61  y: 39
-      vaction: 131  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 7 
+      vaction: 131  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 5 
    cpoint_end:
    wpoint:
       kind: 1  x: 35  y: 41  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -885,7 +916,7 @@ rowing_distance 5.000000
    pic: 50  state: 9  wait: 0  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_Ua: 300 hit_Da: 274
    cpoint:
       kind: 1  x: 64  y: 35
-      vaction: 130  aaction: 122  taction: -232  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: -7 
+      vaction: 130  aaction: 122  taction: -232  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: -5 
    cpoint_end:
    wpoint:
       kind: 1  x: 47  y: 41  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -896,10 +927,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 122 catching
-   pic: 51  state: 9  wait: 5  next: 123  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 51  state: 9  wait: 3  next: 123  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    cpoint:
       kind: 1  x: 61  y: 35
-      vaction: 130  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 7 
+      vaction: 130  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 4 
    cpoint_end:
    wpoint:
       kind: 1  x: 34  y: 41  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -910,11 +941,11 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 123 catching
-   pic: 52  state: 9  wait: 4  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 34  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 014.ogg 
+   pic: 52  state: 9  wait: 2  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 34  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 014.m4a 
    cpoint:
       kind: 1  x: 52  y: 36
-      injury: 15  vaction: 132  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 3 
+      injury: 9  vaction: 132  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 4 
    cpoint_end:
    wpoint:
       kind: 1  x: 44  y: 46  weaponact: 34  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -975,6 +1006,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 37  y: 45  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 134 picked_caught
@@ -986,6 +1020,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 35  y: 28  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 135 picked_caught
@@ -997,6 +1034,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 39  y: 47  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 136 picked_caught
@@ -1008,6 +1048,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 48  y: 44  weaponact: 34  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 137 picked_caught
@@ -1019,6 +1062,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 38  y: 75  weaponact: 32  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 138 picked_caught
@@ -1030,6 +1076,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 35  y: 73  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 139 picked_caught
@@ -1041,6 +1090,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 32  y: 47  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 140 picked_caught
@@ -1052,6 +1104,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 42  y: 38  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 141 picked_caught
@@ -1063,6 +1118,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 47  y: 46  weaponact: 23  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 142 picked_caught
@@ -1074,6 +1132,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 44  y: 63  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 143 picked_caught
@@ -1085,6 +1146,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 56  y: 75  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 144 picked_caught
@@ -1096,6 +1160,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 44  y: 72  weaponact: 25  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 180 falling
@@ -1104,7 +1171,7 @@ rowing_distance 5.000000
       kind: 1  x: 39  y: 44  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 21  y: 14  w: 29  h: 44  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 21  y: 14  w: 29  h: 44  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 25  y: 25  w: 21  h: 20
@@ -1117,10 +1184,10 @@ rowing_distance 5.000000
       kind: 1  x: 36  y: 27  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 8  y: 15  w: 30  h: 32  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 8  y: 15  w: 30  h: 32  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    itr:
-      kind: 4  x: 27  y: 35  w: 28  h: 21  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 27  y: 35  w: 28  h: 21  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 22  y: 20  w: 24  h: 23
@@ -1133,7 +1200,7 @@ rowing_distance 5.000000
       kind: 1  x: 37  y: 47  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 13  y: 18  w: 46  h: 26  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 13  y: 18  w: 46  h: 26  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 27  y: 22  w: 20  h: 18
@@ -1146,10 +1213,10 @@ rowing_distance 5.000000
       kind: 1  x: 49  y: 44  weaponact: 33  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 32  y: 18  w: 33  h: 27  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 32  y: 18  w: 33  h: 27  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    itr:
-      kind: 4  x: 10  y: 38  w: 38  h: 21  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 10  y: 38  w: 38  h: 21  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 22  y: 30  w: 27  h: 21
@@ -1161,6 +1228,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 40  y: 72  weaponact: 32  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 185 falling
@@ -1168,6 +1238,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 35  y: 73  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 186 falling
@@ -1176,7 +1249,7 @@ rowing_distance 5.000000
       kind: 1  x: 29  y: 47  weaponact: 34  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 22  y: 12  w: 36  h: 50  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 22  y: 12  w: 36  h: 50  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 31  y: 24  w: 25  h: 23
@@ -1189,10 +1262,10 @@ rowing_distance 5.000000
       kind: 1  x: 42  y: 39  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 33  y: 6  w: 26  h: 46  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 33  y: 6  w: 26  h: 46  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    itr:
-      kind: 4  x: 26  y: 43  w: 21  h: 29  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 26  y: 43  w: 21  h: 29  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 28  y: 27  w: 24  h: 26
@@ -1205,7 +1278,7 @@ rowing_distance 5.000000
       kind: 1  x: 48  y: 45  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 14  y: 29  w: 58  h: 23  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 14  y: 29  w: 58  h: 23  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 30  y: 31  w: 24  h: 21
@@ -1218,10 +1291,10 @@ rowing_distance 5.000000
       kind: 1  x: 42  y: 63  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 4  x: 24  y: 27  w: 26  h: 28  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 24  y: 27  w: 26  h: 28  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    itr:
-      kind: 4  x: 37  y: 45  w: 31  h: 28  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 30  
+      kind: 4  x: 37  y: 45  w: 31  h: 28  dvx: 2  fall: 70  vrest: 20  bdefend: 10  injury: 18  
    itr_end:
    bdy:
       kind: 0  x: 30  y: 39  w: 23  h: 21
@@ -1233,6 +1306,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 53  y: 74  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 191 falling
@@ -1240,25 +1316,31 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 43  y: 73  weaponact: 25  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 200 ice
    pic: 37  state: 15  wait: 2  next: 201  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
-      kind: 1  x: 18  y: 45  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+      kind: 0  x: 18  y: 45  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   itr:
+      kind: 0  x: 10  y: 9  w: 55  h: 68  dvx: 0  fall: 70  arest: 15  bdefend: 100  injury: 18  effect: 3  
+   itr_end:
    bdy:
       kind: 0  x: 10  y: 9  w: 55  h: 68
    bdy_end:
 <frame_end>
 
 <frame> 201 ice
-   pic: 38  state: 13  wait: 90  next: 202  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 38  state: 13  wait: 180  next: 202  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
-      kind: 1  x: 20  y: 55  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+      kind: 0  x: 20  y: 55  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 14  x: 10  y: 9  w: 55  h: 68  vrest: 1  
+      kind: 0  x: 10  y: 9  w: 55  h: 68  dvx: 0  fall: 70  arest: 15  bdefend: 100  injury: 18  effect: 3  
    itr_end:
    bdy:
       kind: 0  x: 10  y: 9  w: 55  h: 68
@@ -1270,6 +1352,9 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 18  y: 44  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   itr:
+      kind: 0  x: 10  y: 9  w: 55  h: 68  dvx: 0  fall: 70  arest: 15  bdefend: 100  injury: 18  effect: 3  
+   itr_end:
    bdy:
       kind: 0  x: 10  y: 9  w: 55  h: 68
    bdy_end:
@@ -1280,12 +1365,15 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
    itr:
-      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 30  
+      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 36  
       effect: 20  
    itr_end:
    bdy:
-      kind: 0  x: 22  y: 35  w: 26  h: 19
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
@@ -1294,12 +1382,15 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
    itr:
-      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 30  
+      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 36  
       effect: 20  
    itr_end:
    bdy:
-      kind: 0  x: 22  y: 35  w: 26  h: 19
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
@@ -1308,12 +1399,15 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 30  y: 33  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
    itr:
-      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 30  
+      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 36  
       effect: 20  
    itr_end:
    bdy:
-      kind: 0  x: 22  y: 35  w: 26  h: 19
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
@@ -1322,12 +1416,15 @@ rowing_distance 5.000000
    wpoint:
       kind: 1  x: 30  y: 33  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
    itr:
-      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 30  
+      kind: 0  x: 22  y: 35  w: 26  h: 19  dvx: -6  dvy: -6  fall: 70  vrest: 10  bdefend: 16  injury: 36  
       effect: 20  
    itr_end:
    bdy:
-      kind: 0  x: 22  y: 35  w: 26  h: 19
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
@@ -1345,7 +1442,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 210 jump
-   pic: 60  state: 4  wait: 1  next: 211  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 60  state: 4  wait: 1  next: 211  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_ja: 305 hit_Uj: 310
    wpoint:
       kind: 1  x: 28  y: 63  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1355,8 +1452,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 211 jump
-   pic: 61  state: 4  wait: 1  next: 212  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+   pic: 61  state: 4  wait: 1  next: 212  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_ja: 305 hit_Uj: 310
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 28  y: 63  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1366,7 +1463,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 212 jump
-   pic: 62  state: 4  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 62  state: 4  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 hit_ja: 305 hit_Uj: 310
    bpoint:
       x: 43  y: 30
    bpoint_end:
@@ -1415,7 +1512,7 @@ rowing_distance 5.000000
 
 <frame> 215 crouch
    pic: 60  state: 15  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 012.ogg 
+  sound: 012.m4a 
    wpoint:
       kind: 1  x: 30  y: 63  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1425,8 +1522,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 218 stop_running
-   pic: 12  state: 15  wait: 5  next: 999  dvx: 1  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+   pic: 12  state: 15  wait: 6  next: 999  dvx: 1  dvy: 0  dvz: 0  centerx: 26  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 009.m4a 
    bpoint:
       x: 26  y: 35
    bpoint_end:
@@ -1440,7 +1537,7 @@ rowing_distance 5.000000
 
 <frame> 219 crouch2
    pic: 60  state: 15  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 012.ogg 
+  sound: 012.m4a 
    wpoint:
       kind: 1  x: 31  y: 63  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1460,7 +1557,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 221 injured
-   pic: 83  state: 11  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 34  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 83  state: 11  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 34  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 39  y: 44  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1486,7 +1583,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 223 injured
-   pic: 86  state: 11  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 86  state: 11  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 39  y: 49  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1509,7 +1606,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 225 injured
-   pic: 91  state: 11  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 91  state: 11  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 37  y: 51  weaponact: 23  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1519,7 +1616,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 226 injured
-   pic: 82  state: 16  wait: 6  next: 227  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 82  state: 16  wait: 4  next: 227  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 36  y: 51  weaponact: 23  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1532,7 +1629,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 227 injured
-   pic: 84  state: 16  wait: 6  next: 228  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 84  state: 16  wait: 4  next: 228  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 39  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1545,7 +1642,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 228 injured
-   pic: 85  state: 16  wait: 6  next: 229  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 85  state: 16  wait: 4  next: 229  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 40  y: 41  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1558,7 +1655,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 229 injured
-   pic: 84  state: 16  wait: 6  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 84  state: 16  wait: 4  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 41  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1571,17 +1668,23 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 230 lying
-   pic: 34  state: 14  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 73  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 34  state: 14  wait: 15  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 73  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 39  y: 74  weaponact: 32  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 231 lying
-   pic: 44  state: 14  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 75  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 44  state: 14  wait: 15  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 75  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 57  y: 74  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 232 throw_lying_man
@@ -1600,10 +1703,10 @@ rowing_distance 5.000000
 
 <frame> 233 throw_lying_man
    pic: 28  state: 9  wait: 1  next: 234  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+  sound: 007.m4a 
    cpoint:
       kind: 1  x: 72  y: 53
-      vaction: 181  throwvx: 13  throwvy: -7  throwvz: 3  throwinjury: 30 
+      vaction: 181  throwvx: 18  throwvy: -7  throwvz: 3  throwinjury: 18 
    cpoint_end:
    wpoint:
       kind: 1  x: 55  y: 67  weaponact: 25  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1630,7 +1733,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 240 ball1
-   pic: 100  state: 3  wait: 4  next: 241  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 125
+   pic: 100  state: 3  wait: 5  next: 241  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 60
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1640,7 +1743,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 241 ball1
-   pic: 101  state: 3  wait: 0  next: 242  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 101  state: 3  wait: 1  next: 242  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1651,7 +1754,7 @@ rowing_distance 5.000000
 
 <frame> 242 ball1
    pic: 102  state: 3  wait: 1  next: 243  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 086.ogg 
+  sound: 086.m4a 
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1661,9 +1764,9 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 243 ball1
-   pic: 140  state: 3  wait: 1  next: 244  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 280  state: 3  wait: 1  next: 244  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 150  y: 29  action: 0  dvx: 0  dvy: 0  oid: 224  facing: 0
+      kind: 1  x: 140  y: 29  action: 0  dvx: 0  dvy: 0  oid: 224  facing: 30
    opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1674,7 +1777,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 244 ball1
-   pic: 141  state: 3  wait: 0  next: 245  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 281  state: 3  wait: 1  next: 245  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
+   opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1684,9 +1790,9 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 245 ball1
-   pic: 140  state: 3  wait: 0  next: 246  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 280  state: 3  wait: 1  next: 246  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 150  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 0
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
    opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1697,7 +1803,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 246 ball1
-   pic: 141  state: 3  wait: 1  next: 247  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 281  state: 3  wait: 1  next: 247  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
+   opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1707,9 +1816,9 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 247 ball1
-   pic: 140  state: 3  wait: 1  next: 248  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 280  state: 3  wait: 1  next: 248  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 150  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 0
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
    opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1720,7 +1829,10 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 248 ball1
-   pic: 141  state: 3  wait: 0  next: 249  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 281  state: 3  wait: 1  next: 249  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
+   opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1730,9 +1842,9 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 249 ball1
-   pic: 140  state: 3  wait: 0  next: 250  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 280  state: 3  wait: 1  next: 250  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 150  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 0
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
    opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1743,19 +1855,9 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 250 ball1
-   pic: 141  state: 3  wait: 1  next: 251  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-   wpoint:
-      kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
-   wpoint_end:
-   bdy:
-      kind: 0  x: 21  y: 18  w: 43  h: 62
-   bdy_end:
-<frame_end>
-
-<frame> 251 ball1
-   pic: 140  state: 3  wait: 1  next: 252  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 281  state: 3  wait: 1  next: 251  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 150  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 0
+      kind: 1  x: 140  y: 29  action: 2  dvx: 0  dvy: 0  oid: 224  facing: 30
    opoint_end:
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -1765,18 +1867,8 @@ rowing_distance 5.000000
    bdy_end:
 <frame_end>
 
-<frame> 252 ball1
-   pic: 141  state: 3  wait: 0  next: 253  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-   wpoint:
-      kind: 1  x: 42  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
-   wpoint_end:
-   bdy:
-      kind: 0  x: 21  y: 18  w: 43  h: 62
-   bdy_end:
-<frame_end>
-
-<frame> 253 ball1
-   pic: 102  state: 3  wait: 2  next: 254  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+<frame> 251 ball1
+   pic: 102  state: 3  wait: 1  next: 252  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1785,8 +1877,8 @@ rowing_distance 5.000000
    bdy_end:
 <frame_end>
 
-<frame> 254 ball1
-   pic: 101  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+<frame> 252 ball1
+   pic: 101  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1796,7 +1888,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 260 bat
-   pic: 103  state: 3  wait: 4  next: 261  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 200
+   pic: 103  state: 3  wait: 4  next: 261  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 90
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1807,7 +1899,7 @@ rowing_distance 5.000000
 
 <frame> 261 bat
    pic: 100  state: 3  wait: 2  next: 262  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+  sound: 007.m4a 
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1817,40 +1909,43 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 262 bat
-   pic: 104  state: 3  wait: 2  next: 263  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 104  state: 18  wait: 6  next: 263  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 40  y: 29  action: 50  dvx: 0  dvy: 0  oid: 225  facing: 0
+      kind: 1  x: 40  y: 29  action: 50  dvx: 0  dvy: 0  oid: 225  facing: 20
    opoint_end:
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    bdy:
-      kind: 0  x: 21  y: 18  w: 43  h: 62
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
 <frame> 263 bat
-   pic: 105  state: 3  wait: 6  next: 264  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 105  state: 18  wait: 1  next: 264  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 260
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    bdy:
-      kind: 0  x: 21  y: 18  w: 43  h: 62
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
 <frame> 264 bat
-   pic: 106  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 106  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 260
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    bdy:
       kind: 0  x: 21  y: 18  w: 43  h: 62
    bdy_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 270 punch
-   pic: 77  state: 7  wait: 2  next: 271  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 50
+   pic: 77  state: 7  wait: 1  next: 271  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 28
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1860,7 +1955,7 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 271 punch
-   pic: 87  state: 7  wait: 4  next: 272  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 87  state: 7  wait: 2  next: 272  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 44  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1870,8 +1965,8 @@ rowing_distance 5.000000
 <frame_end>
 
 <frame> 272 punch
-   pic: 97  state: 3  wait: 1  next: 273  dvx: 20  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+   pic: 97  state: 3  wait: 1  next: 273  dvx: 25  dvy: 0  dvz: 0  centerx: 43  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
    wpoint:
       kind: 1  x: 44  y: 48  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1882,29 +1977,35 @@ rowing_distance 5.000000
 
 <frame> 273 punch
    pic: 98  state: 3  wait: 0  next: 274  dvx: 10  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 42  y: 51  weaponact: 32  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 274 punch
-   pic: 109  state: 3  wait: 2  next: 275  dvx: 10  dvy: 0  dvz: 0  centerx: 19  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 109  state: 3  wait: 4  next: 275  dvx: 0  dvy: 0  dvz: 0  centerx: 19  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 27  y: 50  weaponact: 32  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
 <frame_end>
 
 <frame> 275 punch
-   pic: 99  state: 3  wait: 2  next: 276  dvx: 0  dvy: 0  dvz: 0  centerx: 19  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 99  state: 3  wait: 6  next: 276  dvx: 0  dvy: 0  dvz: 0  centerx: 19  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 27  y: 50  weaponact: 32  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    itr:
-      kind: 0  x: -51  y: 28  w: 119  h: 29  dvx: 20  fall: 70  vrest: 7  bdefend: 60  injury: 60  
+      kind: 0  x: -161  y: 28  w: 229  h: 29  dvx: 20  fall: 70  vrest: 5  bdefend: 60  injury: 19  
    itr_end:
    bdy:
-      kind: 0  x: 8  y: 20  w: 43  h: 57
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
@@ -1914,12 +2015,12 @@ rowing_distance 5.000000
       kind: 1  x: 46  y: 46  weaponact: 31  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
    bdy:
-      kind: 0  x: 21  y: 18  w: 43  h: 62
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
    bdy_end:
 <frame_end>
 
 <frame> 277 punch
-   pic: 108  state: 3  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 108  state: 3  wait: 1  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    wpoint:
       kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1928,10 +2029,350 @@ rowing_distance 5.000000
    bdy_end:
 <frame_end>
 
+<frame> 280 bat2
+   pic: 103  state: 3  wait: 4  next: 281  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 36
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 281 bat2
+   pic: 100  state: 3  wait: 2  next: 282  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 282 bat2
+   pic: 104  state: 3  wait: 2  next: 283  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 29  action: 0  dvx: 1  dvy: 0  oid: 316  facing: 0
+   opoint_end:
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 283 bat2
+   pic: 104  state: 3  wait: 2  next: 284  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 29  action: 0  dvx: 1  dvy: 0  oid: 316  facing: 0
+   opoint_end:
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 284 bat2
+   pic: 104  state: 3  wait: 4  next: 285  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 29  action: 0  dvx: 1  dvy: 0  oid: 316  facing: 0
+   opoint_end:
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 285 bat2
+   pic: 105  state: 3  wait: 1  next: 286  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 286 bat2
+   pic: 106  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 290 bat3
+   pic: 103  state: 3  wait: 4  next: 291  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 50
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 291 bat3
+   pic: 100  state: 3  wait: 2  next: 292  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 292 bat3
+   pic: 104  state: 3  wait: 6  next: 293  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 29  action: 50  dvx: 0  dvy: 0  oid: 317  facing: 40
+   opoint_end:
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 293 bat3
+   pic: 105  state: 3  wait: 1  next: 294  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 294 bat3
+   pic: 106  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 300 transform
+   pic: 103  state: 3  wait: 4  next: 301  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 3250
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 301 transform
+   pic: 100  state: 3  wait: 2  next: 302  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 063.m4a 
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 302 transform
+   pic: 104  state: 3  wait: 2  next: 303  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 061.m4a 
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   opoint:
+      kind: 1  x: 41  y: 70  action: 70  dvx: 0  dvy: 0  oid: 204  facing: 0
+   opoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 303 transform
+   pic: 105  state: 3  wait: 1  next: 304  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 304 transform
+   pic: 0  state: 8054  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 305 transform_j
+   pic: 62  state: 3  wait: 0  next: 306  dvx: -1  dvy: -1  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 3250
+  sound: 063.m4a 
+   wpoint:
+      kind: 1  x: 28  y: 46  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 306 transform_j
+   pic: 62  state: 3  wait: 0  next: 307  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 061.m4a 
+   wpoint:
+      kind: 1  x: 28  y: 46  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   opoint:
+      kind: 1  x: 41  y: 70  action: 70  dvx: 0  dvy: 0  oid: 204  facing: 0
+   opoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 307 transform_j
+   pic: 62  state: 8054  wait: 0  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 28  y: 46  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 310 bat4
+   pic: 60  state: 4  wait: 0  next: 309  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 4400
+   wpoint:
+      kind: 1  x: 28  y: 63  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 22  y: 24  w: 35  h: 58
+   bdy_end:
+<frame_end>
+
+<frame> 309 bat4
+   pic: 60  state: 4  wait: 0  next: 311  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 107.m4a 
+   wpoint:
+      kind: 1  x: 28  y: 63  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 22  y: 24  w: 35  h: 58
+   bdy_end:
+   opoint:
+      kind: 1  x: 40  y: 40  action: 165  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 311 bat4
+   pic: 61  state: 4  wait: 0  next: 312  dvx: -10  dvy: -10  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 28  y: 63  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 22  y: 24  w: 35  h: 58
+   bdy_end:
+<frame_end>
+
+<frame> 312 bat4
+   pic: 66  state: 6  wait: 1  next: 313  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 017.m4a 
+   wpoint:
+      kind: 1  x: 39  y: 41  weaponact: 32  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 313 bat4
+   pic: 65  state: 6  wait: 1  next: 314  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 39  y: 45  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: -10000  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 314 bat4
+   pic: 103  state: 3  wait: 1  next: 315  dvx: 0  dvy: -2  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 315 bat4
+   pic: 100  state: 3  wait: 1  next: 316  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 007.m4a 
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+<frame> 316 bat4
+   pic: 104  state: 3  wait: 6  next: 317  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 40  y: 29  action: 50  dvx: 10  dvy: 0  oid: 321  facing: 0
+   opoint_end:
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+<frame_end>
+
+<frame> 317 bat4
+   pic: 105  state: 3  wait: 1  next: 318  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+<frame_end>
+
+<frame> 318 bat4
+   pic: 106  state: 3  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 36  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 37  y: 46  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+   bdy:
+      kind: 0  x: 21  y: 18  w: 43  h: 62
+   bdy_end:
+<frame_end>
+
+
+
+<frame> 398 x
+   pic: 53  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   wpoint:
+      kind: 1  x: 28  y: 54  weaponact: 31  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
+   wpoint_end:
+<frame_end>
+
 <frame> 399 dummy
    pic: 0  state: 0  wait: 0  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
    bdy:
       kind: 0  x: 21  y: 18  w: 43  h: 62
    bdy_end:
 <frame_end>
+
+
+
+
 

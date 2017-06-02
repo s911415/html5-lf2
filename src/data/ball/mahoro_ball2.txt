@@ -4,9 +4,9 @@ file(4-5): sprite\sys\mahoro_ball4.png  w:  399  h:  399  row:  2  col: 1
 file(6-11): sprite\sys\mahoro_ball6.png  w:  99  h:  49  row:  2  col: 3
 file(12-26): sprite\sys\firen_exp.png  w: 159  h: 159  row: 5  col: 3
 file(27-32): sprite\sys\mahoro_ball2.png  w:  250  h: 199  row:  3  col: 2
-weapon_hit_sound: 090.ogg
-weapon_drop_sound: 090.ogg
-weapon_broken_sound: 090.ogg
+weapon_hit_sound: 090.m4a
+weapon_drop_sound: 090.m4a
+weapon_broken_sound: 090.m4a
 <bmp_end>
 
 <frame> 0 bam
@@ -122,7 +122,7 @@ weapon_broken_sound: 090.ogg
 
 <frame> 109 explosion
    pic: 26  state: 3000  wait: 1  next: 110  dvx: 0  dvy: 0  centerx: 78  centery: 148  hit_a: 0  hit_d: 0  hit_j: 0
-    sound: 090.ogg
+    sound: 090.m4a
 <frame_end>
 
 <frame> 110 explosion
@@ -215,7 +215,7 @@ weapon_broken_sound: 090.ogg
 
 <frame> 153 col
    pic: 30  state: 15  wait: 1  next: 154  dvx: 13  dvy: 0  dvz: 0  centerx: 150  centery: 100  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 503.ogg
+  sound: 503.m4a
 <frame_end>
 
 <frame> 154 col

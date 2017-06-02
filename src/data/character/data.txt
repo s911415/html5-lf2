@@ -1,0 +1,95 @@
+<object>
+id:  0  type: 0  file: template.dat
+id:  52  type: 0  file: julian.dat
+id:  51  type: 0  file: firzen.dat
+id:  50  type: 0  file: louisEX.dat
+id:  38  type: 0  file: bat.dat
+id:  39  type: 0  file: justin.dat
+id:  37  type: 0  file: knight.dat
+id:  36  type: 0  file: jan.dat
+id:  35  type: 0  file: monk.dat
+id:  34  type: 0  file: sorcerer.dat
+id:  33  type: 0  file: jack.dat
+id:  32  type: 0  file: mark.dat
+id:  31  type: 0  file: hunter.dat
+id:  30  type: 0  file: bandit.dat
+id:  1  type: 0  file: deep.dat
+id:  2  type: 0  file: john.dat
+id:  4  type: 0  file: henry.dat
+id:  5  type: 0  file: rudolf.dat
+id:  6  type: 0  file: louis.dat
+id:  7  type: 0  file: firen.dat
+id:  8  type: 0  file: freeze.dat
+id:  9  type: 0  file: dennis.dat
+id: 10  type: 0  file: woody.dat
+id: 11  type: 0  file: davis.dat
+
+id: 100  type: 1  file: weapon0.dat   #stick
+id: 101  type: 1  file: weapon2.dat   #hoe
+id: 120  type: 1  file: weapon4.dat   #knife
+id: 121  type: 4  file: weapon5.dat   #baseball
+id: 122  type: 6  file: weapon6.dat   #milk
+id: 150  type: 2  file: weapon1.dat   #stone
+id: 151  type: 2  file: weapon3.dat   #wooden_box
+id: 123  type: 6  file: weapon8.dat   #beer
+id: 124  type: 1  file: weapon9.dat   #<
+id: 217  type: 2  file: weapon10.dat  #louis_armour
+id: 218  type: 2  file: weapon11.dat  #louis_armour
+id: 300  type: 5  file: criminal.dat  #criminal
+
+id: 200  type: 3  file: john_ball.dat
+id: 201  type: 1  file: henry_arrow1.dat
+id: 202  type: 1  file: rudolf_weapon.dat
+id: 203  type: 3  file: deep_ball.dat
+id: 204  type: 3  file: henry_wind.dat
+id: 205  type: 3  file: dennis_ball.dat
+id: 206  type: 3  file: woody_ball.dat
+id: 207  type: 3  file: davis_ball.dat
+id: 208  type: 3  file: henry_arrow2.dat
+id: 209  type: 3  file: freeze_ball.dat
+id: 210  type: 3  file: firen_ball.dat
+id: 211  type: 3  file: firen_flame.dat
+id: 212  type: 3  file: freeze_column.dat
+id: 213  type: 1  file: weapon7.dat   #ice_sword
+id: 214  type: 3  file: john_biscuit.dat
+id: 215  type: 3  file: dennis_chase.dat
+id: 216  type: 3  file: jack_ball.dat
+id: 219  type: 3  file: jan_chaseh.dat
+id: 220  type: 3  file: jan_chase.dat
+id: 221  type: 3  file: firzen_chasef.dat
+id: 222  type: 3  file: firzen_chasei.dat
+id: 223  type: 3  file: firzen_ball.dat
+id: 224  type: 3  file: bat_ball.dat
+id: 225  type: 3  file: bat_chase.dat
+id: 226  type: 3  file: justin_ball.dat
+id: 228  type: 3  file: julian_ball.dat
+id: 229  type: 3  file: julian_ball2.dat
+id: 310  type: 3  file: firen_en_ball.dat
+
+id: 998  type: 5  file: etc.dat
+id: 999  type: 5  file: broken_weapon.dat
+<object_end>
+
+<file_editing>
+nothing.txt
+<file_editing_end>
+
+<background>
+id: 4    file: bg/sys/hkc/bg.dat
+id: 2    file: bg/sys/lf/bg.dat
+id: 3    file: bg/sys/sp/bg.dat
+id: 5    file: bg/sys/gw/bg.dat
+id: 6    file: bg/sys/qi/bg.dat
+id: 7    file: bg/sys/ft/bg.dat
+id: 1    file: bg/sys/cuhk/bg.dat
+id: 0    file: bg/sys/thv/bg.dat
+id: 10    file: bg/template/1/bg.dat
+id: 11    file: bg/template/2/bg.dat
+id: 12    file: bg/template/3/bg.dat
+<background_end>
+
+id: 100~199 drop weapon
+
+
+
+

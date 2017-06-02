@@ -2,9 +2,9 @@
 file(0-0):  sprite/sys/tdn.png w: 1  h: 1  row: 1  col: 1
 file(1-11):  sprite/sys/deep_3.png w: 79  h: 79  row: 11  col: 1
 file(12-19):  sprite/sys/Louis_SpeedLight.png w: 69  h: 9  row: 1  col: 8
-weapon_hit_sound: M_None.ogg
-weapon_drop_sound: M_None.ogg
-weapon_broken_sound: M_None.ogg
+weapon_hit_sound: M_None.m4a
+weapon_drop_sound: M_None.m4a
+weapon_broken_sound: M_None.m4a
 <bmp_end> 
 
 <frame> 0 Lightning arounding Thunder

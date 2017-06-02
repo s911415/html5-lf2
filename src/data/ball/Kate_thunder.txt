@@ -2,9 +2,9 @@
 file(0-7):  sprite/sys/Thunder.png w: 299  h: 460  row: 8  col: 1
 file(8-14):  sprite/sys/Thunder_e.png w: 149  h: 460  row: 7  col: 1
 file(15-27):  sprite/sys/ThunderPrp.png w: 299  h: 460  row: 13  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end> 
 
 <frame> 0 Thunder
@@ -60,7 +60,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 200  y: 430  action: 2 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-     sound: chu_td_bolt1.ogg
+     sound: chu_td_bolt1.m4a
 <frame_end>
 
 <frame> 4 Thunder
@@ -402,7 +402,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 200  y: 430  action: 1 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-     sound: chu_td_bolt1.ogg
+     sound: chu_td_bolt1.m4a
 <frame_end>
 
 <frame> 44 Thunder
@@ -595,7 +595,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 200  y: 430  action: 7 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-     sound: chu_td_bolt1.ogg
+     sound: chu_td_bolt1.m4a
 <frame_end>
 
 <frame> 56 Thunder
@@ -803,7 +803,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 200  y: 430  action: 1 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-     sound: chu_td_bolt1.ogg
+     sound: chu_td_bolt1.m4a
 <frame_end>
 
 <frame> 73 Thunder
@@ -996,7 +996,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 200  y: 430  action: 7 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-     sound: chu_td_bolt1.ogg
+     sound: chu_td_bolt1.m4a
 <frame_end>
 
 <frame> 85 Thunder

@@ -21,15 +21,15 @@ var lf2 = (function (lf2) {
     };
 
     let SOUND = {};
-    SOUND[Effect.NORMAL] = ['001.ogg', '006.ogg']; //006
-    SOUND[Effect.BLADE] = ['032.ogg', '033.ogg'];
-    SOUND[Effect.FIRE] = ['070.ogg', '071.ogg'];
-    SOUND[Effect.ICE] = ['065.ogg', '066.ogg'];
+    SOUND[Effect.NORMAL] = ['001.m4a', '006.m4a']; //006
+    SOUND[Effect.BLADE] = ['032.m4a', '033.m4a'];
+    SOUND[Effect.FIRE] = ['070.m4a', '071.m4a'];
+    SOUND[Effect.ICE] = ['065.m4a', '066.m4a'];
     SOUND[Effect.FIXED_FIRE_0] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_1] = SOUND[Effect.FIRE];
     SOUND[Effect.FIXED_FIRE_2] = SOUND[Effect.FIRE];
     // SOUND[Effect.FIXED_FIRE_3] = SOUND[Effect.FIRE];
-    SOUND[Effect.FIXED_ICE] = ['065.ogg'];
+    SOUND[Effect.FIXED_ICE] = ['065.m4a'];
 
     let allSound = new Set();
     for (let k in SOUND) {

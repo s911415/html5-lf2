@@ -4,9 +4,9 @@ file(8-13): sprite/sys/Zap_ball_Flash.png w: 79  h: 79  row: 6  col: 1
 file(14-27): sprite/sys/Heal.png          w: 199 h: 199 row: 7  col: 2
 file(28-36): sprite/sys/Zap_ball_FlashPrp.png w: 79  h: 79  row: 9  col: 1
 
-weapon_hit_sound: M_None.ogg
-weapon_drop_sound: M_None.ogg
-weapon_broken_sound: M_None.ogg
+weapon_hit_sound: M_None.m4a
+weapon_drop_sound: M_None.m4a
+weapon_broken_sound: M_None.m4a
 <bmp_end> 
 
 <frame> 0 hit mark disappearing
@@ -22,7 +22,7 @@ weapon_broken_sound: M_None.ogg
    itr:
       kind: 0  x: 0  y: 26  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10 
    itr_end:
-  sound: 020.ogg
+  sound: 020.m4a
 <frame_end>
 
 <frame> 2 hit mark disappearing
@@ -64,7 +64,7 @@ weapon_broken_sound: M_None.ogg
 
 <frame> 48 flash disappearing
    pic: 0  state: 3005  wait: 0  next: 41  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_teleport1.ogg
+  sound: chu_teleport1.m4a
 <frame_end>
 
 <frame> 41 flash disappearing
@@ -135,7 +135,7 @@ weapon_broken_sound: M_None.ogg
    itr:
       kind: 0  x: 0  y: 26  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10 
    itr_end:
-  sound: 020.ogg
+  sound: 020.m4a
 <frame_end>
 
 <frame> 57 hit mark disappearingPrp
@@ -243,7 +243,7 @@ weapon_broken_sound: M_None.ogg
    itr:
       kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
    itr_end:
-   sound: 990.ogg
+   sound: 990.m4a
 <frame_end>
 
 <frame> 107 Light ' the Heal
@@ -284,7 +284,7 @@ weapon_broken_sound: M_None.ogg
    itr:
       kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
    itr_end:
-   sound: 989.ogg
+   sound: 989.m4a
 <frame_end>
 
 <frame> 111 Light ' the Heal

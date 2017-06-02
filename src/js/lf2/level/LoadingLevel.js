@@ -44,7 +44,7 @@ var lf2 = (function (lf2) {
 
     const GameMap = lf2.GameMap;
 
-    let LoadingVideoSrc = define.IMG_PATH + 'loading_video.webm';
+    let LoadingVideoSrc = define.IMG_PATH + 'loading_video.mp4';
     let LoadingVideoLoadState = 0;
 
     /**
@@ -116,6 +116,9 @@ var lf2 = (function (lf2) {
                         .then(r => r.blob())
                         .then(JSZip.loadAsync)
                         .then(zip => this.zip = zip)
+                        .catch((e) => {
+                            console.error("Fail to load zip file", "fallback to txt file", e);
+                        })
                     ,
                 ]).then(r => {
                     return r[0].json();
@@ -268,7 +271,7 @@ var lf2 = (function (lf2) {
         loadDataResource(path) {
             path = path.replace(/\\/g, '/').replace(/\/\//, '/');
 
-            const ZipFileEntry = this.zip.files[path];
+            const ZipFileEntry = this.zip.files ? this.zip.files[path] : undefined;
             if (ZipFileEntry) {
                 return ZipFileEntry.async('text');
             } else {
