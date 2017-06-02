@@ -20,6 +20,8 @@ var lf2 = (function (lf2) {
     const DEFAULT_MP = 500;
     const CLEAR_KEY_TIME = 200; //Less than 200 make be make stop run direction wrong
     const NAME_OFFSET = 0;
+    const NAME_CACHE_WIDTH = 200;
+    const NAME_CACHE_HEIGHT = 20;
 
     /**
      * Player
@@ -65,6 +67,7 @@ var lf2 = (function (lf2) {
 
                 this._godMode = false;
                 this._infMp = false;
+                this._playerNameCache = undefined;
 
                 /**
                  * @type {Framework.Scene}
@@ -169,6 +172,7 @@ var lf2 = (function (lf2) {
          */
         set team(teamId) {
             this._team = Team.GetTeamInstance(teamId);
+            this._playerNameCache = undefined;
         }
 
         /**
@@ -306,24 +310,46 @@ var lf2 = (function (lf2) {
             if (!this.character) return;
 
             if (this.character._allowDraw) {
-
-                ctx.font = "10px Arial";
-                ctx.fillStyle = this.team.getColor();
-                ctx.strokeStyle = this.team.getDarkColor();
-                ctx.lineWidth = 2;
-                ctx.textAlign = "center";
-                ctx.textBaseline = "top";
-                ctx.strokeText(
-                    this.keyboardConfig.config.NAME,
-                    this.character.position.x,
-                    this.character.position.y + NAME_OFFSET
-                );
-                ctx.fillText(
-                    this.keyboardConfig.config.NAME,
-                    this.character.position.x,
-                    this.character.position.y + NAME_OFFSET
+                const NameImage = this.getPlayerNameImage();
+                ctx.drawImage(
+                    NameImage,
+                    0, 0, NAME_CACHE_WIDTH, NAME_CACHE_HEIGHT,
+                    this.character.position.x - (NAME_CACHE_WIDTH >> 1),
+                    this.character.position.y,
+                    NAME_CACHE_WIDTH, NAME_CACHE_HEIGHT
                 );
             }
+        }
+
+        getPlayerNameImage() {
+            if (this._playerNameCache) return this._playerNameCache;
+            this._playerNameCache = document.createElement('canvas');
+            this._playerNameCache.width = NAME_CACHE_WIDTH;
+            this._playerNameCache.height = NAME_CACHE_HEIGHT;
+            let ctx = this._playerNameCache.getContext('2d');
+            const Pos = {
+                x: NAME_CACHE_WIDTH >> 1,
+                y: NAME_OFFSET,
+            };
+
+            ctx.font = "12px Arial";
+            ctx.fillStyle = this.team.getColor();
+            ctx.strokeStyle = this.team.getDarkColor();
+            ctx.lineWidth = 2;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+            ctx.strokeText(
+                this.keyboardConfig.config.NAME,
+                Pos.x,
+                Pos.y
+            );
+            ctx.fillText(
+                this.keyboardConfig.config.NAME,
+                Pos.x,
+                Pos.y
+            );
+
+            return this._playerNameCache;
         }
 
         /**
