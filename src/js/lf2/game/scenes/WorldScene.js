@@ -312,7 +312,7 @@ var lf2 = (function (lf2) {
                 }
             });
 
-            if (target === null) target = player;
+            if (target === null) target = player.character;
 
             return target;
         }
@@ -351,7 +351,7 @@ var lf2 = (function (lf2) {
          *
          * @param {Number} id
          */
-        setMapById(id){
+        setMapById(id) {
             this.map = GameMapPool.get(id);
             this.map.initialize(this);
         }
