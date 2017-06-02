@@ -3,6 +3,7 @@ var lf2 = (function (lf2) {
     const ResourceManager = Framework.ResourceManager;
     const Game = Framework.Game;
     const _MENU_CONTAINER_ID = "__main_menu";
+    const Prefetch = lf2.Prefetch;
 
     /**
      * @class lf2.LaunchMenu
@@ -12,7 +13,7 @@ var lf2 = (function (lf2) {
      * @type {{}}
      */
     lf2.LaunchMenu = class extends Framework.Level {
-        constructor(){
+        constructor() {
             super();
 
             this.loadResLoadStart = false;
@@ -80,12 +81,18 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
 
-            if(this._menuAttached && !this.loadResLoadStart){
+            if (this._menuAttached && !this.loadResLoadStart) {
                 this.loadResLoadStart = true;
+                this.preload();
 
-                //Start preload loading video
-                lf2.LoadingLevel.PreloadLoadingVideo();
             }
+        }
+
+        preload() {
+            Prefetch.start();
+            //Start preload loading video
+            lf2.LoadingLevel.PreloadLoadingVideo();
+
         }
 
         /**
