@@ -278,7 +278,11 @@ var lf2 = (function (lf2) {
             return cmd;
         }
 
-
+        /**
+         * Loads this object.
+         *
+         * @return  .
+         */
         load() {
 
         }
@@ -523,6 +527,11 @@ var lf2 = (function (lf2) {
             return KeyBoardManager.isKeyDown(keyCode);
         }
 
+        /**
+         * Is holding last key.
+         *
+         * @return  .
+         */
         _isHoldingLastKey() {
             if (this.keyEventPool[0] === undefined) return false;
             return KeyBoardManager.isKeyDown(this.keyEventPool[0].event.keyCode);

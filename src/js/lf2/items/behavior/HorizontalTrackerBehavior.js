@@ -26,8 +26,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Gets the velocity.
          *
-         * @returns {Framework.Point3D}
+         * @return {Framework.Point3D} The velocity.
          */
         getVelocity() {
             let v = super.getVelocity();
@@ -36,11 +37,20 @@ var lf2 = (function (lf2) {
             return v;
         }
 
-
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 2;
         }
 
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
         toString() {
             return 'lf2.HorizontalTrackerBehavior';
         }

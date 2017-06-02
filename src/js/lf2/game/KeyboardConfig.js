@@ -1,5 +1,8 @@
 "use strict";
 var lf2 = (function (lf2) {
+    /**
+     * define KEY MAP
+     */
     const KEY_MAP = {
         UP: 1,
         DOWN: 2,
@@ -12,6 +15,7 @@ var lf2 = (function (lf2) {
         DEFEND: 1024,
         KEY_LIST: ["UP", "DOWN", "LEFT", "RIGHT", "ATTACK", "JUMP", "DEFEND"],
     };
+
     KEY_MAP.REVERT_MAP = {};
     for (let k in KEY_MAP) {
         if (isFinite(KEY_MAP[k])) KEY_MAP.REVERT_MAP[KEY_MAP[k]] = k;

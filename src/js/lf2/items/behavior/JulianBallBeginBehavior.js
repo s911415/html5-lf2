@@ -27,7 +27,11 @@ var lf2 = (function (lf2) {
             return new Point3D(0, 0, 0);
         }
 
-
+        /**
+         * Updates this object.
+         *
+         * @return  .
+         */
         update() {
             super.update();
             if (this._attached) return;
@@ -46,8 +50,22 @@ var lf2 = (function (lf2) {
             return null;
         }
 
+        /**
+         * Gets the fa.
+         *
+         * @return  {get}   A get.
+         */
         get FA() {
             return 13;
+        }
+
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
+        toString() {
+            return 'lf2.JulianBallBeginBehavior';
         }
     };
 

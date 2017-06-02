@@ -68,6 +68,13 @@ var lf2 = (function (lf2) {
             this._lastTeam = undefined;
         }
 
+        /**
+         * Sets an element.
+         *
+         * @param   elem    The element.
+         *
+         * @return  .
+         */
         setElem(elem) {
             if (elem && elem.hp && elem.mp && elem.small) {
                 this._elem = elem;
@@ -148,8 +155,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Gets real position.
          *
-         * @param {Framework.Point} point
+         * @param  {Framework.Point} point   The point.
+         *
+         * @return {Framework.Point} The real position.
          */
         getRealPosition(point) {
             let x = point.x + this.panelPosition.x;
@@ -158,10 +168,20 @@ var lf2 = (function (lf2) {
             return new Point(x, y);
         }
 
+        /**
+         * Hp radio.
+         *
+         * @return  {get}   A get.
+         */
         get HPRadio() {
             return this._hpRatio;
         }
 
+        /**
+         * Mp radio.
+         *
+         * @return  {get}   A get.
+         */
         get MPRadio() {
             return this._mpRatio;
         }

@@ -53,24 +53,44 @@ var lf2 = (function (lf2) {
             return this._teamSymbol === otherTeam._teamSymbol;
         }
 
+        /**
+         * Convert this object into a string representation.
+         *
+         * @return  An unknown that represents this object.
+         */
         toString() {
             if (this._teamId > 0) return `Team ${this._teamId}`;
 
             return 'Independent';
         }
 
+        /**
+         * Gets the color.
+         *
+         * @return  The color.
+         */
         getColor() {
             if (this._teamId > 0) return TeamColor[`${this._teamId}`];
 
             return TeamColor['0'];
         }
 
+        /**
+         * Gets dark color.
+         *
+         * @return  The dark color.
+         */
         getDarkColor() {
             if (this._teamId > 0) return TeamColorDark[`${this._teamId}`];
 
             return TeamColorDark['0'];
         }
 
+        /**
+         * Gets the identifier.
+         *
+         * @return  {get}   A get.
+         */
         get id() {
             if (this._teamId > 0) return this._teamId;
             return 0;

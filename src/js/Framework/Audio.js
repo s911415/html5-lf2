@@ -25,6 +25,11 @@ var Framework = (function (Framework) {
     //     }
     // })();
 
+    /**
+     * Get Random audio context
+     * @returns {AudioContext}
+     * @constructor
+     */
     const GetRandomAudioCtx = () => {
         return AudioCtx;
         //return AudioCtxArray[(Math.random() * AudioCtxArray.length) | 0]
@@ -114,7 +119,7 @@ var Framework = (function (Framework) {
 
 
         /**
-         *
+         * Set balance of this audio
          * @param {Number} weight
          * @property
          */
@@ -256,7 +261,14 @@ var Framework = (function (Framework) {
                     source.start();
                 });
         }
-        
+
+        /**
+         * Fallback play audio when failed to decode audio source
+         *
+         * @param {String} path
+         * @param {Object} opts
+         * @private
+         */
         _playAsAudio(path, opts){
             let audio = AudioInstance.get(path) || new window.Audio();
             audio.src = path;
@@ -329,6 +341,10 @@ var Framework = (function (Framework) {
                 });
         }
 
+        /**
+         * Promise to check all sound loaded.
+         * @returns {Promise.<*>}
+         */
         done() {
             return Promise.all(this._promisies);
         }

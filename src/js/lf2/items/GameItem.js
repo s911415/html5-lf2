@@ -313,6 +313,11 @@ var lf2 = (function (lf2) {
             return this.currentFrame.velocity;
         }
 
+        /**
+         * Updates the velocity.
+         *
+         * @return  .
+         */
         updateVelocity() {
             const getVelocityVal = (cur, next) => {
                 if (next === 0) return cur;
@@ -328,6 +333,11 @@ var lf2 = (function (lf2) {
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 
+        /**
+         * Applies the friction.
+         *
+         * @return  .
+         */
         applyFriction() {
             if (this._affectByFriction) {
                 const FX = GameItem.ApplyFriction(this._velocity.x);
@@ -389,6 +399,14 @@ var lf2 = (function (lf2) {
             return frame.id;
         }
 
+        /**
+         * Can damage by.
+         *
+         * @param   item    The item.
+         * @param   ITR     The itr.
+         *
+         * @return  .
+         */
         canDamageBy(item, ITR) {
             const itemState = item.currentFrame.state;
             if (itemState === FrameStage.FIRE && item.obj.id !== 211) return true;
@@ -669,6 +687,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Gets attack items.
+         *
+         * @return  The attack items.
+         */
         getAttackItems() {
             const ITR = this.currentFrame.itr;
             if (!ITR) return [];
@@ -730,6 +753,11 @@ var lf2 = (function (lf2) {
             return res;
         }
 
+        /**
+         * Clean up itr.
+         *
+         * @return  .
+         */
         cleanUpItr() {
             this._itrItem = null;
             this._itrItemFrame = null;
@@ -846,6 +874,11 @@ var lf2 = (function (lf2) {
             return next;
         }
 
+        /**
+         * Freezes this object.
+         *
+         * @return  .
+         */
         freeze() {
             this._velocity.x
                 = this._velocity.y
@@ -858,8 +891,9 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Is frame changed.
          *
-         * @returns {boolean}
+         * @return  {boolean}   bool.
          */
         get isFrameChanged() {
             if (this._currentFrameIndex !== this._lastFrameId) {
@@ -904,6 +938,11 @@ var lf2 = (function (lf2) {
             return this.ImgInfo.rect.height;
         }
 
+        /**
+         * Is stopping.
+         *
+         * @return  {get}   A get.
+         */
         get isStopping() {
             return this._velocity.x === this._velocity.y && this._velocity.y === this._velocity.z
                 && this._velocity.x === 0;
@@ -956,6 +995,13 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Sets next direction.
+         *
+         * @param   v   The unknown to process.
+         *
+         * @return  .
+         */
         setNextDirection(v) {
             this._nextDirection = v;
         }

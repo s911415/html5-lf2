@@ -111,8 +111,10 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Executes the destroy action.
          *
          * @override
+         * @return  .
          */
         onDestroy() {
             const ERR_MSG = 'Cannot destroy ball';
@@ -124,6 +126,11 @@ var lf2 = (function (lf2) {
             }
         }
 
+        /**
+         * Gets the velocity.
+         *
+         * @return  The velocity.
+         */
         _getVelocity() {
             let v = super._getVelocity();
             const hit = this.currentFrame.hit;
@@ -210,6 +217,11 @@ var lf2 = (function (lf2) {
             return v;
         }
 
+        /**
+         * Updates the velocity.
+         *
+         * @return  .
+         */
         updateVelocity() {
             const getVelocityVal = (cur, next) => {
                 if (next === 0) return cur;
@@ -224,15 +236,22 @@ var lf2 = (function (lf2) {
             this._velocity.z = getVelocityVal(this._velocity.z, v.z);
         }
 
+        /**
+         * Applies the friction.
+         *
+         * @return  .
+         */
         applyFriction() {
             super.applyFriction();
             this._velocity.z -= lf2.GameItem.ApplyFriction(this._velocity.z);
         }
 
-
         /**
+         * Notifies a damage by.
          *
-         * @param {lf2.GameItem} item
+         * @param  {lf2.GameItem} item    The item.
+         *
+         * @return  .
          */
         notifyDamageBy(item) {
             super.notifyDamageBy(item);
@@ -334,8 +353,11 @@ var lf2 = (function (lf2) {
         }
 
         /**
+         * Posts a damage items.
          *
-         * @param {lf2.GameItem[]} gotDamageItems
+         * @param   {lf2.GameItem[]} gotDamageItems  The got damage items.
+         *
+         * @return  .
          */
         postDamageItems(gotDamageItems) {
             super.postDamageItems(gotDamageItems);
