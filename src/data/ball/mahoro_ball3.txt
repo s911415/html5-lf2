@@ -3,9 +3,9 @@ file(0-3): sprite\sys\mahoro_ball3.png  w:  269  h: 269  row:  2  col: 2
 file(4-5): sprite\sys\mahoro_ball4.png  w:  399  h:  399  row:  2  col: 1
 file(6-11): sprite\sys\mahoro_ball6.png  w:  99  h:  49  row:  2  col: 3
 file(12-26): sprite\sys\firen_exp.png  w: 159  h: 159  row: 5  col: 3
-weapon_hit_sound: 090.ogg
-weapon_drop_sound: 090.ogg
-weapon_broken_sound: 090.ogg
+weapon_hit_sound: 090.m4a
+weapon_drop_sound: 090.m4a
+weapon_broken_sound: 090.m4a
 <bmp_end>
 
 <frame> 0 bam

@@ -6,9 +6,9 @@ file(39-52): sprite/sys/richter_ball2.png  w: 192  h: 284  row: 7  col: 2
 file(53-55): sprite/sys/monk_golden.png  w: 79  h: 99  row: 3  col: 1
 file(56-59): sprite/sys/monk_col.png w: 399  h: 159  row: 1  col: 4
 file(60-61): sprite/sys/monk_col2.png w: 399  h: 479  row: 2  col: 1
-weapon_hit_sound: 068.ogg
-weapon_drop_sound: 068.ogg
-weapon_broken_sound: 068.ogg
+weapon_hit_sound: 068.m4a
+weapon_drop_sound: 068.m4a
+weapon_broken_sound: 068.m4a
 <bmp_end>
 
 <frame> 0 flying
@@ -372,7 +372,7 @@ weapon_broken_sound: 068.ogg
 
 <frame> 60 cross
    pic: 39  state: 15  wait: 0  next: 61  dvx: 0  dvy: 0  centerx: 96  centery: 284  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    itr:
       kind: 0  x: 0  y: 252  w: 91  h: 284  dvx: 5  dvy: -6  fall: 70  vrest: 6  bdefend: 100  injury: 16  effect: -1  zwidth: 125  
    itr_end:
@@ -457,7 +457,7 @@ weapon_broken_sound: 068.ogg
 
 <frame> 70 cross
    pic: 39  state: 15  wait: 0  next: 71  dvx: 0  dvy: 0  centerx: 96  centery: 284  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    itr:
       kind: 0  x: 0  y: -10000  w: 91  h: 10500  dvx: 5  dvy: 0  fall: 70  vrest: 3  bdefend: 100  injury: 11  effect: -1  zwidth: 125  
    itr_end:
@@ -558,7 +558,7 @@ weapon_broken_sound: 068.ogg
 
 <frame> 90 monk
    pic: 53  state: 15  wait: 1  next: 91  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-sound: 053.ogg
+sound: 053.m4a
 <frame_end>
 
 <frame> 91 monk
@@ -585,7 +585,7 @@ sound: 053.ogg
 
 <frame> 110 nx
    pic: 56  state: 15  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 200  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 114.ogg
+   sound: 114.m4a
 <frame_end>
 
 <frame> 111 nx
@@ -598,7 +598,7 @@ sound: 053.ogg
 
 <frame> 113 nx
    pic: 59  state: 15  wait: 1  next: 115  dvx: 0  dvy: 0  dvz: 0  centerx: 200  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 116.ogg
+   sound: 116.m4a
 <frame_end>
 
 
@@ -670,7 +670,7 @@ sound: 053.ogg
 
 <frame> 121 nx
    pic: 59  state: 15  wait: 1  next: 122  dvx: 0  dvy: 0  dvz: 0  centerx: 200  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 052.ogg
+   sound: 052.m4a
 <frame_end>
 
 <frame> 122 nx

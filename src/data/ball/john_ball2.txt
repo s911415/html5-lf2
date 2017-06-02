@@ -32,7 +32,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 3 ball
    pic: 999  state: 9  wait: 1  next: 4  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 049.ogg 
+  sound: 049.m4a 
    cpoint:
       kind: 1  x: 0  y: 0
       vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
@@ -99,7 +99,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 13 ball
    pic: 999  state: 9  wait: 1  next: 14  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 049.ogg 
+  sound: 049.m4a 
    cpoint:
       kind: 1  x: 0  y: 0
       vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
@@ -159,7 +159,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 26 a
    pic: 7  state: 9  wait: 5  next: 27  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
-   sound: 033.ogg
+   sound: 033.m4a
    cpoint:
       kind: 1  x: 33  y: 34
       injury: 8  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
@@ -171,7 +171,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 27 a
    pic: 7  state: 9  wait: 3  next: 28  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
-   sound: 033.ogg
+   sound: 033.m4a
    cpoint:
       kind: 1  x: 33  y: 34
       injury: 6  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
@@ -183,7 +183,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 28 a
    pic: 7  state: 9  wait: 5  next: 29  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
-   sound: 033.ogg
+   sound: 033.m4a
    cpoint:
       kind: 1  x: 33  y: 34
       injury: 8  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
@@ -195,7 +195,7 @@ file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 
 <frame> 29 a
    pic: 7  state: 9  wait: 3  next: 26  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
-   sound: 033.ogg
+   sound: 033.m4a
    cpoint:
       kind: 1  x: 33  y: 34
       injury: 6  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 

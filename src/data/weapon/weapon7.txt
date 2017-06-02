@@ -2,9 +2,9 @@
 file(0-99): sprite/sys/weapon7.png  w: 69  h: 69  row: 10  col: 4
 weapon_hp: 100000
 weapon_drop_hurt: 1
-weapon_hit_sound: 023.ogg
-weapon_drop_sound: 023.ogg
-weapon_broken_sound: 066.ogg
+weapon_hit_sound: 023.m4a
+weapon_drop_sound: 023.m4a
+weapon_broken_sound: 066.m4a
 <bmp_end>
 
 <weapon_strength_list>
@@ -458,7 +458,7 @@ weapon_broken_sound: 066.ogg
 
 <frame> 60 on_ground
    pic: 2  state: 1003  wait: 1  next: 61  dvx: 0  dvy: 0  centerx: 36  centery: 56  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 023.ogg 
+  sound: 023.m4a 
 <frame_end>
 
 <frame> 61 on_ground
@@ -467,7 +467,7 @@ weapon_broken_sound: 066.ogg
 
 <frame> 62 on_ground
    pic: 3  state: 1003  wait: 1  next: 63  dvx: 0  dvy: 0  centerx: 34  centery: 46  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 023.ogg 
+  sound: 023.m4a 
 <frame_end>
 
 <frame> 63 on_ground
@@ -483,7 +483,7 @@ weapon_broken_sound: 066.ogg
 
 <frame> 70 just_on_ground
    pic: 2  state: 1003  wait: 1  next: 71  dvx: 0  dvy: 0  centerx: 37  centery: 52  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 023.ogg 
+  sound: 023.m4a 
    itr:
       kind: 0  x: 16  y: 15  w: 39  h: 46  dvx: 2  fall: 40  arest: 16  bdefend: 16  effect: 3
    itr_end:
@@ -498,7 +498,7 @@ weapon_broken_sound: 066.ogg
 
 <frame> 72 just_on_on_ground
    pic: 3  state: 1003  wait: 2  next: 61  dvx: 0  dvy: 0  centerx: 35  centery: 46  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 023.ogg 
+  sound: 023.m4a 
    itr:
       kind: 0  x: 10  y: 29  w: 52  h: 23  dvx: 2  fall: 40  arest: 16  bdefend: 16  effect: 3
    itr_end:

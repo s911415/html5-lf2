@@ -1,15 +1,15 @@
 <bmp_begin>
 file(0-2): sprite/sys/cl_col5.png  w: 239  h: 559  row: 3  col: 1
 file(3-6): sprite/sys/cl_star2.png  w: 81  h: 81  row: 4  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
 <frame> 0 flying
    pic: 2  state: 15  wait: 0  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 119  centery: 459  hit_a: 8  hit_d: 2  hit_j: 0
-   sound: 076.ogg
+   sound: 076.m4a
    itr:
       kind: 0  x: 20  y: 0  w: 50  h: 500  dvx: 10  dvy: -20  fall: 70  vrest: 4  bdefend: 100  injury: 10  zwidth: 43  effect: 23
    itr_end:
@@ -152,7 +152,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 110 flying
    pic: 0  state: 9  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 119  centery: 459  hit_a: 0  hit_d: 110  hit_j: 0 hit_Fa: 12
-   sound: 076.ogg
+   sound: 076.m4a
    itr:
       kind: 3  x: 35  y: 489  w: 200  h: 20  vrest: 7    zwidth: 43
       catchingact: 114 114  caughtact: 132 132  
@@ -194,7 +194,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 115 flying
    pic: 1  state: 9  wait: 2  next: 116  dvx: 0  dvy: 0  dvz: 0  centerx: 119  centery: 459  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 114.ogg
+   sound: 114.m4a
    cpoint:
       kind: 1  x: 119  y: 439
       vaction: 130  throwvz: -842150451  hurtable: 0 throwinjury: -842150451 decrease: 0 
@@ -261,7 +261,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 118 flying
    pic: 2  state: 9  wait: 0  next: 119  dvx: 0  dvy: 0  dvz: 0  centerx: 119  centery: 459  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 076.ogg
+   sound: 076.m4a
    cpoint:
       kind: 1  x: 119  y: 437
       injury: 2  vaction: 130  throwvz: -842150451  hurtable: 0 throwinjury: -842150451 decrease: -2 
@@ -308,7 +308,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 120 flying
    pic: 2  state: 9  wait: 0  next: 117  dvx: 0  dvy: 0  dvz: 0  centerx: 119  centery: 459  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 076.ogg
+   sound: 076.m4a
    cpoint:
       kind: 1  x: 119  y: 437
       injury: 2  vaction: 132  throwvz: -842150451  hurtable: 0 throwinjury: -842150451 decrease: -3 

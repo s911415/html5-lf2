@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-9): sprite/sys/freeze_chase.png  w: 319  h: 159  row: 2  col: 5
 file(10-19): sprite/sys/firen_chase.png  w: 319  h: 159  row: 2  col: 5
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -43,7 +43,7 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 50 start
-   sound: 103.ogg
+   sound: 103.m4a
    pic: 0  state: 1005  wait: 1  next: 51  dvx: 5  dvy: 0  dvz: 0  centerx: 0  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 26  y: 37  w: 289  h: 94  dvx: 0 dvy: 0  fall: 1  vrest: 8  bdefend: 100  injury: 82 effect: 3 zwidth: 50
@@ -79,7 +79,7 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 55 start
-   sound: 104.ogg
+   sound: 104.m4a
    pic: 2  state: 1005  wait: 0  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 26  y: 37  w: 289  h: 94  dvx: 0 dvy: 0  fall: 1  vrest: 8  bdefend: 100  injury: 82 effect: 3 zwidth: 50
@@ -129,7 +129,7 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 150 start
-   sound: 103.ogg
+   sound: 103.m4a
    pic: 10  state: 1005  wait: 2  next: 151  dvx: 5  dvy: 0  dvz: 0  centerx: 0  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 26  y: 37  w: 289  h: 94  dvx: 1 dvy: -5  fall: 70  vrest: 8  bdefend: 100  injury: 40 effect: 2 zwidth: 50
@@ -165,7 +165,7 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 155 start
-   sound: 104.ogg
+   sound: 104.m4a
    pic: 12  state: 1005  wait: 0  next: 101  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 80  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 26  y: 37  w: 289  h: 94  dvx: 1 dvy: -5  fall: 70  vrest: 8  bdefend: 100  injury: 40 effect: 2 zwidth: 50

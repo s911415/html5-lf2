@@ -1,14 +1,14 @@
 <bmp_begin>
 file(0-6): sprite/sys/cl_col3.png  w: 109  h: 439  row: 7  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 
 <bmp_end>
 
 <frame> 100 col1
    pic: 0  state: 15  wait: 0  next: 101  dvx: 22  dvy: 0  dvz: 0  centerx: 55  centery: 430  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 105.ogg 
+   sound: 105.m4a 
 <frame_end>
 
 <frame> 101 col1

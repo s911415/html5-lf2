@@ -1,8 +1,8 @@
 <bmp_begin>
 file(0-23): sprite/sys/cl_ball.png  w: 122  h: 123  row: 4  col: 6
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 

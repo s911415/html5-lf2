@@ -5,9 +5,9 @@ file(20-31): sprite/sys/jan_chaseh.png  w: 81  h: 82  row: 4  col: 3
 file(32-34): sprite/sys/sorcerer_ball.png  w: 40  h: 132  row: 3  col: 1
 file(35-37): sprite/sys/sorcerer_ball2.png  w: 232  h: 40  row: 1  col: 3
 file(38-43): sprite/sys/sorcerer_w.png  w: 239  h: 239  row: 3  col: 2
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 0 flying
@@ -590,7 +590,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 85 flying
    pic: 19  state: 3006  wait: 1  next: 86  dvx: 0  dvy: 0  centerx: 40  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 109.ogg
+   sound: 109.m4a
    itr:
       kind: 0  x: 15  y: 13  w: 54  h: 54  dvx: 17  fall: 70  vrest: 8  bdefend: 60  injury: 21  
    itr_end:
@@ -948,7 +948,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 130 flying
    pic: 42  state: 1006  wait: 0  next: 131  dvx: 35  dvy: 0  dvz: 0  centerx: 120  centery: 120  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 076.ogg 
+  sound: 076.m4a 
    itr:
       kind: 9  x: 20  y: 20  w: 200  h: 200  dvx: 20  dvy: -10  fall: 70  vrest: 8  bdefend: 100  injury: 49  zwidth: 80  effect: 1
    itr_end:

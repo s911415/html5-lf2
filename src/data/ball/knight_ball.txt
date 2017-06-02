@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-1): sprite/sys/knight_ball.png  w: 109  h: 126  row: 2  col: 1
 file(2-6): sprite/sys/guardian_ball.png  w: 59  h: 49  row: 5  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -30,7 +30,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 110 start
    pic: 1  state: 1006  wait: 5  next: 1  dvx: 25  dvy: 0  dvz: 0  centerx: 55  centery: 86  hit_a: 0  hit_d: 0  hit_j: 0
-sound: 092.ogg
+sound: 092.m4a
    itr:
       kind: 9  x: 5  y: 2  w: 100  h: 122  dvy: -1  fall: 70  vrest: 8  bdefend: 100  injury: 38  effect: 1 zwidth: 23
    itr_end:
@@ -79,7 +79,7 @@ sound: 092.ogg
 
 <frame> 60 flying
    pic: 7  state: 1006  wait: 1  next: 61  dvx: 15  dvy: 0  dvz: 0  centerx: 30  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 116.ogg
+   sound: 116.m4a
    opoint:
       kind: 1  x: 30  y: 80  action: 70  dvx: 0  dvy: 0  oid: 330  facing: 0
    opoint_end:
@@ -180,7 +180,7 @@ sound: 092.ogg
 
 <frame> 75 flying
    pic: 7  state: 1006  wait: 1  next: 76  dvx: 15  dvy: 0  dvz: 0  centerx: 30  centery: 40  hit_a: 9  hit_d: 75  hit_j: 0  hit_Fa: 12
-   sound: 116.ogg
+   sound: 116.m4a
    opoint:
       kind: 1  x: 30  y: 80  action: 70  dvx: 0  dvy: 0  oid: 330  facing: 0
    opoint_end:

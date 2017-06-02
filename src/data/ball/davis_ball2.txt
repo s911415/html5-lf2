@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-2): sprite/sys/davis_ball2.png  w: 95  h: 95  row: 3  col: 1
 file(3-10): sprite/sys/davis_col.png  w: 79  h: 439  row: 8  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -16,7 +16,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 1 col
    pic: 4  state: 15  wait: 0  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 390  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    itr:
       kind: 0  x: 5  y: 275  w: 60  h: 151  dvx: 0  dvy: -36  fall: 70  vrest: 30  bdefend: 100  injury: 28  zwidth: 30
    itr_end:
@@ -86,7 +86,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 50 ball
    pic: 2  state: 9  wait: 1  next: 51  dvx: 4  dvy: 0  dvz: 0  centerx: 48  centery: 48  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 114.ogg 
+  sound: 114.m4a 
    itr:
       kind: 3   x: 12  y: 12  w: 72  h: 72  vrest: 7  
       catchingact: 55  caughtact: 132  
@@ -109,7 +109,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 52 ball
    pic: 0  state: 9  wait: 1  next: 53  dvx: 4  dvy: 0  dvz: 0  centerx: 48  centery: 48  hit_a: 7  hit_d: 54  hit_j: 0
-   sound: 051.ogg
+   sound: 051.m4a
    itr:
       kind: 3   x: 12  y: 12  w: 72  h: 72  vrest: 7  
       catchingact: 55  caughtact: 132  
@@ -143,7 +143,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 55 ball
    pic: 0  state: 9  wait: 1  next: 56  dvx: 0  dvy: 0  dvz: 0  centerx: 48  centery: 48  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 076.ogg
+   sound: 076.m4a
    cpoint:
       kind: 1  x: 45  y: 35
       vaction: 132  throwvz: -842150451  hurtable: 0 throwinjury: -842150451 decrease: -4 
@@ -171,7 +171,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 57 ball
    pic: 0  state: 9  wait: 2  next: 58  dvx: 0  dvy: 0  dvz: 0  centerx: 48  centery: 48  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 076.ogg
+   sound: 076.m4a
    cpoint:
       kind: 1  x: 45  y: 35
       injury: 2  vaction: 132  throwvz: -842150451  hurtable: 0 throwinjury: -842150451 decrease: -4 
@@ -590,7 +590,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 101 col2
    pic: 4  state: 15  wait: 0  next: 102  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 390  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    itr:
       kind: 0  x: 5  y: 275  w: 60  h: 151  dvx: 0  dvy: -36  fall: 70  vrest: 4  bdefend: 100  injury: 15  zwidth: 30
    itr_end:

@@ -2,9 +2,9 @@
 file(0-27): sprite/sys/freeze_col.png  w: 109  h: 109  row: 7  col: 4
 file(28-37): sprite/sys/freeze_ww.png  w: 159  h: 159  row: 5  col: 2
 file(38-43): sprite/sys/freeze_col2.png  w: 164  h: 164  row: 3  col: 2
-weapon_hit_sound: 072.ogg
-weapon_drop_sound: 072.ogg
-weapon_broken_sound: 072.ogg
+weapon_hit_sound: 072.m4a
+weapon_drop_sound: 072.m4a
+weapon_broken_sound: 072.m4a
 <bmp_end>
 
 <frame> 0 column
@@ -20,7 +20,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 1 column
    pic: 1  state: 15  wait: 2  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 48  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.ogg 
+  sound: 072.m4a 
    itr:
       kind: 0  x: 14  y: 7  w: 66  h: 101  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 24
       effect: 30  
@@ -105,7 +105,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 51 column
    pic: 8  state: 15  wait: 2  next: 52  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.ogg 
+  sound: 072.m4a 
    itr:
       kind: 0  x: 12  y: 20  w: 57  h: 87  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 24
       effect: 30  
@@ -174,7 +174,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 61 column
    pic: 15  state: 15  wait: 2  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.ogg 
+  sound: 072.m4a 
    itr:
       kind: 0  x: 23  y: 44  w: 41  h: 64  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 24
       effect: 30  
@@ -243,7 +243,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 71 column
    pic: 22  state: 15  wait: 2  next: 72  dvx: 0  dvy: 0  dvz: 0  centerx: 35  centery: 111  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.ogg 
+  sound: 072.m4a 
    itr:
       kind: 0  x: 21  y: 62  w: 28  h: 48  dvx: 7  dvy: -10  fall: 20  vrest: 50  bdefend: 16  injury: 16  
       effect: 30  
@@ -387,7 +387,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 128 column
    pic: 3  state: 15  wait: 5  next: 129  dvx: 0  dvy: 0  dvz: 0  centerx: 55  centery: 110  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 072.ogg 
+  sound: 072.m4a 
    itr:
       kind: 0  x: 0  y: 0  w: 95  h: 110  dvx: 0  dvy: 0  fall: 1  vrest: 2  bdefend: 16  injury: 1  zwidth: 25
       effect: 3  
@@ -495,7 +495,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 150 whirlwind
    pic: 28  state: 15  wait: 2  next: 151  dvx: -5  dvy: 0  dvz: 0  centerx: 82  centery: 144  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 073.ogg 
+  sound: 073.m4a 
 <frame_end>
 
 <frame> 151 whirlwind
@@ -566,7 +566,7 @@ weapon_broken_sound: 072.ogg
 
 <frame> 180 whirlwind
    pic: 28  state: 15  wait: 2  next: 181  dvx: -1  dvy: 0  dvz: 0  centerx: 82  centery: 144  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 073.ogg 
+  sound: 073.m4a 
 <frame_end>
 
 <frame> 181 whirlwind

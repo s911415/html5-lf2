@@ -6,9 +6,9 @@ file(24-31): sprite/sys/deep_ball4.png  w: 327  h: 331  row: 4  col: 2
 file(32-35): sprite/sys/deep_ball5.png  w: 81  h: 82  row: 4  col: 1
 file(36-37): sprite/sys/deep_ball6.png  w: 59  h: 59  row: 2  col: 1
 file(38-41): sprite/sys/deep_ball7.png  w: 82  h: 81  row: 1  col: 4
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -200,7 +200,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 61 flying_u_m
    pic: 42  state: 15  wait: 2  next: 62  dvx: 45  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 092.ogg 
+  sound: 092.m4a 
    opoint:
       kind: 1  x: 0  y: 0  action: 63  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -294,7 +294,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 74 flying_d_m
    pic: 42  state: 15  wait: 2  next: 75  dvx: 45  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 092.ogg 
+  sound: 092.m4a 
    opoint:
       kind: 1  x: 0  y: 0  action: 76  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -508,7 +508,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 104 ex_ball
    pic: 42  state: 15  wait: 1  next: 130  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 020.ogg
+   sound: 020.m4a
    opoint:
       kind: 1  x: 30  y: 59  action: 109  dvx: 0  dvy: -10  oid: 211  facing: 1
    opoint_end:
@@ -534,7 +534,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 107 ex_ball
    pic: 42  state: 15  wait: 1  next: 108  dvx: 20  dvy: 0  centerx: 30  centery: 59  hit_a: 20  hit_d: 131  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -549,7 +549,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 109 ex_ball
    pic: 42  state: 15  wait: 1  next: 110  dvx: 20  dvy: 0  centerx: 30  centery: 59  hit_a: 20  hit_d: 131  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -564,7 +564,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 111 ex_ball
    pic: 42  state: 15  wait: 1  next: 112  dvx: 20  dvy: 0  centerx: 30  centery: 59  hit_a: 20  hit_d: 131  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -579,7 +579,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 113 ex_ball
    pic: 42  state: 15  wait: 1  next: 114  dvx: -20  dvy: 0  centerx: 30  centery: 59  hit_a: 20  hit_d: 131  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -594,7 +594,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 115 ex_ball
    pic: 42  state: 15  wait: 1  next: 116  dvx: -20  dvy: 0  centerx: 30  centery: 59  hit_a: 20  hit_d: 131  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:
@@ -660,7 +660,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 131 ex_ball
    pic: 42  state: 15  wait: 1  next: 132  dvx: -30  dvy: 0  centerx: 30  centery: 59  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 043.ogg
+   sound: 043.m4a
    opoint:
       kind: 1  x: 30  y: 30  action: 120  dvx: 0  dvy: 0  oid: 203  facing: 0
    opoint_end:

@@ -2,8 +2,8 @@
 file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
 weapon_hp: 1000
 weapon_drop_hurt: 70
-weapon_hit_sound: 025.ogg
-weapon_drop_sound: 025.ogg
+weapon_hit_sound: 025.m4a
+weapon_drop_sound: 025.m4a
 <bmp_end>
 
 <weapon_strength_list>
@@ -414,7 +414,7 @@ weapon_drop_sound: 025.ogg
 
 <frame> 60 on_ground
    pic: 7  state: 1003  wait: 0  next: 61  dvx: 0  dvy: 0  centerx: 24  centery: 40
-   sound: 025.ogg
+   sound: 025.m4a
 <frame_end>
 
 <frame> 61 on_ground
@@ -423,7 +423,7 @@ weapon_drop_sound: 025.ogg
 
 <frame> 62 on_ground
    pic: 3  state: 1003  wait: 2  next: 63  dvx: 0  dvy: 0  centerx: 24  centery: 34
-   sound: 025.ogg
+   sound: 025.m4a
 <frame_end>
 
 <frame> 63 on_ground
@@ -432,7 +432,7 @@ weapon_drop_sound: 025.ogg
 
 <frame> 70 just_on_ground
    pic: 7  state: 1003  wait: 0  next: 71  dvx: 0  dvy: 0  centerx: 24  centery: 40
-   sound: 025.ogg
+   sound: 025.m4a
    itr:
       kind: 0  x: 3  y: 4  w: 40  h: 39  dvx: 9  fall: 16  bdefend: 16    injury: 6 effect: 1
    itr_end:

@@ -1,9 +1,9 @@
 <bmp_begin> 
 file(0-11): sprite/sys/EX_conbon.png  w: 59  h: 19  row: 6  col: 2
 
-weapon_hit_sound: 010.ogg
-weapon_drop_sound: 010.ogg
-weapon_broken_sound: 010.ogg
+weapon_hit_sound: 010.m4a
+weapon_drop_sound: 010.m4a
+weapon_broken_sound: 010.m4a
 <bmp_end>
 
 <weapon_strength_list>
@@ -255,7 +255,7 @@ weapon_broken_sound: 010.ogg
 
 <frame> 60 on_ground
    pic: 6  state: 3005  wait: 1  next: 61  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 19  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 010.ogg 
+  sound: 010.m4a 
 <frame_end>
 
 <frame> 61 on_ground
@@ -328,7 +328,7 @@ weapon_broken_sound: 010.ogg
 
 <frame> 70 just_on_ground
    pic: 0  state: 1003  wait: 1  next: 65  dvx: 0  dvy: 0  dvz: 0  centerx: 29  centery: 19  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 010.ogg 
+  sound: 010.m4a 
    opoint:
       kind: 1  x: 29  y: 15  action: 0 dvx: 0  dvy: 0  oid: 407  facing: 0
    opoint_end:

@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-23): sprite/sys/dennis_ball.png  w: 81  h: 46  row: 4  col: 6
 file(24-24): sprite/sys/dennis_ball2.png  w: 79  h: 34  row: 1  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -257,7 +257,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 100 kick_ball
    pic: 24  state: 3006  wait: 2  next: 101  dvx: 0  dvy: 0  centerx: 40  centery: 17  hit_a: 0  hit_d: 0
-  sound: 047.ogg 
+  sound: 047.m4a 
    itr:
       kind: 0  x: 0  y: 0  w: 80  h: 35  dvx: 3  dvy: -21  fall: 70  vrest: 4  bdefend: 16  injury: 14  effect: 1  zwidth: 21
    itr_end:

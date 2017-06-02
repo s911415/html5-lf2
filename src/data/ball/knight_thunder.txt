@@ -3,9 +3,9 @@ file(0-13): sprite/sys/knight_col.png  w: 109  h: 439  row: 7  col: 2
 file(14-16): sprite/sys/rudolf_flash.png  w: 319  h: 99  row: 1  col: 3
 file(17): sprite/sys/rudolf_flash2.png  w: 1999  h: 1199  row: 1  col: 1
 file(18-27): sprite/sys/spark.png  w: 99  h: 79  row: 5  col: 2
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -18,7 +18,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 1 flying
    pic: 100  state: 1006  wait: 2  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 0  hit_a: 5  hit_d: 1  hit_j: 0 hit_Fa: 12
-  sound: 105.ogg 
+  sound: 105.m4a 
    opoint:
       kind: 1  x: 0  y: 40  action: 120  dvx: 0  dvy: 0  oid: 329  facing: 0
    opoint_end:
@@ -72,7 +72,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 50 start
    pic: 100  state: 1006  wait: 2  next: 51  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 105.ogg 
+  sound: 105.m4a 
    opoint:
       kind: 1  x: 0  y: 40  action: 120  dvx: 0  dvy: 0  oid: 329  facing: 0
    opoint_end:
@@ -145,7 +145,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 60 start
    pic: 100  state: 1006  wait: 2  next: 61  dvx: 5  dvy: 0  dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 105.ogg 
+  sound: 105.m4a 
    opoint:
       kind: 1  x: 0  y: 40  action: 120  dvx: 0  dvy: 0  oid: 329  facing: 0
    opoint_end:
@@ -517,7 +517,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 141 flash2
    pic: 17  state: 15  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 1000  centery: 600  hit_a: 0  hit_d: 0  hit_j: 1000
-   sound: 033.ogg
+   sound: 033.m4a
    opoint:
       kind: 1  x: 1000  y: 600  action: 142  dvx: 0  dvy: 0  oid: 329  facing: 0
    opoint_end:

@@ -2,9 +2,9 @@
 file(0-3): sprite/sys/cl_col.png  w: 199  h: 404  row: 4  col: 1
 file(4-7): sprite/sys/cl_col2.png  w: 159  h: 404  row: 4  col: 1
 file(8-15): sprite/sys/richter_ball.png  w: 49  h: 49  row: 4  col: 2
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 0 flying
@@ -16,7 +16,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 1 flying
    pic: 8  state: 1006  wait: 0  next: 2  dvx: 13  dvy: 0  dvz: 0  centerx: 24  centery: 24  hit_a: 15  hit_d: 5  hit_j: 0
-   sound: 007.ogg
+   sound: 007.m4a
    itr:
       kind: 9  x: 5  y: 5  w: 40  h: 40  dvx: 2  fall: 1  vrest: 7  bdefend: 60  injury: 19  zwidth: 20  effect: 23
    itr_end:
@@ -52,7 +52,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 5 flying
    pic: 8  state: 1006  wait: 0  next: 6  dvx: -13  dvy: 0  dvz: 0  centerx: 24  centery: 24  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 007.ogg
+   sound: 007.m4a
    itr:
       kind: 9  x: 5  y: 5  w: 40  h: 40  dvx: -2  fall: 1  vrest: 7  bdefend: 60  injury: 13  zwidth: 20  effect: 23
    itr_end:
@@ -109,7 +109,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 40 col
    pic: 0  state: 15  wait: 3  next: 41  dvx: 0  dvy: 0  dvz: 0  centerx: 100  centery: 390  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 089.ogg 
+  sound: 089.m4a 
    itr:
       kind: 0  x: 10  y: 0  w: 180  h: 405  dvx: -10  dvy: -35  fall: 70  vrest: 30  bdefend: 100  injury: 27  zwidth: 37  
       effect: 23  
@@ -118,7 +118,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 41 col
    pic: 1  state: 15  wait: 1  next: 42  dvx: 0  dvy: 0  dvz: 0  centerx: 100  centery: 390  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 071.ogg 
+  sound: 071.m4a 
    itr:
       kind: 0  x: 10  y: 0  w: 180  h: 405  dvx: -10  dvy: -35  fall: 70  vrest: 30  bdefend: 100  injury: 27  zwidth: 37  
       effect: 23  

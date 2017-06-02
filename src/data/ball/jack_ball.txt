@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-7): sprite/sys/jack_b.png w: 81  h: 82  row: 4  col: 2
 file(8-9): sprite/sys/jack_b2.png w: 131  h: 89  row: 2  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 

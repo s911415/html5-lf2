@@ -84,7 +84,7 @@ rowing_distance 8.000000
 
 <frame> 9 running
    pic: 8  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 003.ogg 
+  sound: 003.m4a 
    bdy:
       kind: 0  x: 32  y: 32  w: 36  h: 67
    bdy_end:
@@ -99,7 +99,7 @@ rowing_distance 8.000000
 
 <frame> 11 running
    pic: 10  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 004.ogg 
+  sound: 004.m4a 
    bdy:
       kind: 0  x: 32  y: 32  w: 36  h: 67
    bdy_end:
@@ -109,7 +109,7 @@ rowing_distance 8.000000
 
 <frame> 28 punch
    pic: 49  state: 7  wait: 0  next: 29  dvx: 0  dvy: 0  centerx: 107  centery: 99  hit_a: 0  hit_d: 999  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 20  y: 56  w: 45  h: 33  dvx: -6  dvy: -7  injury: 34  vrest: 12  bdefend: 60  fall: 70  
    itr_end:
@@ -291,7 +291,7 @@ rowing_distance 8.000000
 
 <frame> 61 punch
    pic: 49  state: 7  wait: 0  next: 62  dvx: 0  dvy: 0  centerx: 107  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 20  y: 56  w: 45  h: 33  dvx: -2  injury: 23  vrest: 12  bdefend: 60  fall: 60  
    itr_end:
@@ -421,7 +421,7 @@ rowing_distance 8.000000
 
 <frame> 70 super_punch
    pic: 60  state: 7  wait: 0  next: 71  dvx: 0  dvy: 0  centerx: 20  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 27  y: 51  w: 121  h: 30  dvx: 5  dvy: -9  fall: 70  vrest: 8  bdefend: 60  injury: 28  
    itr_end:
@@ -494,7 +494,7 @@ rowing_distance 8.000000
 
 <frame> 76 super_punch
    pic: 60  state: 7  wait: 0  next: 45  dvx: 0  dvy: 0  centerx: 20  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 27  y: 51  w: 121  h: 30  dvx: 5  dvy: -9  fall: 70  vrest: 8  bdefend: 60  injury: 28  
    itr_end:
@@ -567,7 +567,7 @@ rowing_distance 8.000000
 
 <frame> 50 super_punch
    pic: 60  state: 7  wait: 0  next: 51  dvx: 0  dvy: 0  centerx: 20  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 27  y: 51  w: 121  h: 30  dvx: 5  dvy: -9  fall: 70  vrest: 8  bdefend: 60  injury: 28  
    itr_end:
@@ -640,7 +640,7 @@ rowing_distance 8.000000
 
 <frame> 56 super_punch
    pic: 60  state: 7  wait: 0  next: 999  dvx: 0  dvy: 0  centerx: 20  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 27  y: 51  w: 121  h: 30  dvx: 5  dvy: -9  fall: 70  vrest: 8  bdefend: 60  injury: 28  
    itr_end:
@@ -692,7 +692,7 @@ rowing_distance 8.000000
 
 <frame> 100 rowing
    pic: 20  state: 6  wait: 1  next: 101  dvx: -5  dvy: -8  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    bdy:
       kind: 0  x: 31  y: -10000  w: 37  h: 46
    bdy_end:
@@ -739,7 +739,7 @@ rowing_distance 8.000000
 
 <frame> 102 rowing
    pic: 12  state: 6  wait: 1  next: 103  dvx: 6  dvy: 0  centerx: 30  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 059.ogg
+   sound: 059.m4a
    bdy:
       kind: 0  x: 9  y: -10000  w: 68  h: 33
    bdy_end:
@@ -813,7 +813,7 @@ rowing_distance 8.000000
 
 <frame> 108 rowing
    pic: 20  state: 6  wait: 1  next: -101  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    bdy:
       kind: 0  x: 31  y: -10000  w: 37  h: 46
    bdy_end:
@@ -1077,7 +1077,7 @@ rowing_distance 8.000000
 
 <frame> 211 jump
    pic: 15  state: 4  wait: 1  next: 212  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    bdy:
       kind: 0  x: 34  y: 43  w: 32  h: 52
    bdy_end:
@@ -1142,7 +1142,7 @@ rowing_distance 8.000000
 
 <frame> 215 crouch
    pic: 14  state: 7  wait: 2  next: 999  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 60  hit_d: 0  hit_j: 0  hit_Fj: 235  hit_Dj: 115  hit_Ua: 250  hit_Fa: 265  hit_ja: 325  hit_Uj: 275
-  sound: 012.ogg 
+  sound: 012.m4a 
    bdy:
       kind: 0  x: 31  y: 53  w: 37  h: 46
    bdy_end:
@@ -1164,7 +1164,7 @@ rowing_distance 8.000000
 
 <frame> 218 stop_running
    pic: 11  state: 15  wait: 10  next: 999  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+  sound: 009.m4a 
    wpoint:
       kind: 1  x: 25  y: 52  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1178,7 +1178,7 @@ rowing_distance 8.000000
 
 <frame> 219 crouch2
    pic: 14  state: 7  wait: 8  next: 999  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 60  hit_d: 110  hit_j: 210  hit_Fj: 235  hit_Dj: 115  hit_Ua: 250  hit_Fa: 265  hit_ja: 325  hit_Uj: 275
-  sound: 012.ogg 
+  sound: 012.m4a 
    bdy:
       kind: 0  x: 31  y: 53  w: 37  h: 46
    bdy_end:
@@ -1265,7 +1265,7 @@ rowing_distance 8.000000
 
 <frame> 237 sp
    pic: 34  state: 7  wait: 1  next: 238  dvx: 16  dvy: 0  centerx: 49  centery: 97  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 030.ogg
+   sound: 030.m4a
    itr:
       kind: 0  x: 9  y: 27  w: 85  h: 72  dvx: 12  dvy: -6  injury: 22  vrest: 8  bdefend: 60  fall: 70  effect: 1  
    itr_end:
@@ -1356,7 +1356,7 @@ rowing_distance 8.000000
 
 <frame> 250 sp2
    pic: 68  state: 7  wait: 1  next: 251  dvx: 3  dvy: -12  centerx: 74  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0  mp: 45
-   sound: 059.ogg
+   sound: 059.m4a
    bdy:
       kind: 0  x: 54  y: -10000  w: 36  h: 67
    bdy_end:
@@ -1516,7 +1516,7 @@ rowing_distance 8.000000
 
 <frame> 275 ?
    pic: 40  state: 7  wait: 0  next: 276  dvx: 0  dvy: 0  centerx: 49  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0  mp: 75
-   sound: 107.ogg
+   sound: 107.m4a
    bdy:
       kind: 0  x: 32  y: -10000  w: 36  h: 67
    bdy_end:
@@ -1971,7 +1971,7 @@ rowing_distance 8.000000
 
 <frame> 326 punch
    pic: 71  state: 7  wait: 0  next: 327  dvx: 0  dvy: 0  centerx: 107  centery: 99  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 054.ogg 
+  sound: 054.m4a 
    itr:
       kind: 0  x: 20  y: 56  w: 45  h: 33  dvx: -2  injury: 35  vrest: 12  bdefend: 100  fall: 70  effect: 2  
    itr_end:
@@ -2028,7 +2028,7 @@ rowing_distance 8.000000
 
 <frame> 331 punch
    pic: 76  state: 7  wait: 1  next: 332  dvx: 0  dvy: 0  centerx: 22  centery: 99  hit_a: 0  hit_d: 999  hit_j: 0
-   sound: 020.ogg
+   sound: 020.m4a
    opoint:
       kind: 1  x: 63  y: 54  action: 130  dvx: 0  dvy: -1  oid: 211  facing: 0
    opoint_end:

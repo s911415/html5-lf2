@@ -77,7 +77,7 @@ rowing_distance 0
 
 <frame> 5 walking
    pic: 0  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0  hit_Fa: 270  hit_Fj: 290
-   sound: 084.ogg
+   sound: 084.m4a
    bdy:
       kind: 0  x: 101  y: 77  w: 64  h: 91
    bdy_end:
@@ -157,7 +157,7 @@ rowing_distance 0
 
 <frame> 8 walking
    pic: 3  state: 1  wait: 3  next: 999  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0  hit_Fa: 270  hit_Fj: 290
-   sound: 084.ogg
+   sound: 084.m4a
    bdy:
       kind: 0  x: 101  y: 77  w: 64  h: 91
    bdy_end:
@@ -183,7 +183,7 @@ rowing_distance 0
 
 <frame> 9 running
    pic: 0  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 084.ogg
+   sound: 084.m4a
    bdy:
       kind: 0  x: 101  y: 77  w: 64  h: 91
    bdy_end:
@@ -238,7 +238,7 @@ rowing_distance 0
 
 <frame> 11 running
    pic: 3  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 084.ogg
+   sound: 084.m4a
    bdy:
       kind: 0  x: 101  y: 77  w: 64  h: 91
    bdy_end:
@@ -1224,7 +1224,7 @@ rowing_distance 0
 
 <frame> 218 stop_running
    pic: 0  state: 15  wait: 8  next: 999  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 084.ogg 
+  sound: 084.m4a 
    bdy:
       kind: 0  x: 101  y: 77  w: 64  h: 91
    bdy_end:
@@ -1250,7 +1250,7 @@ rowing_distance 0
 
 <frame> 219 crouch2
    pic: 0  state: 3  wait: 6  next: 310  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 010.ogg
+   sound: 010.m4a
    bdy:
       kind: 0  x: 101  y: -10000  w: 64  h: 91
    bdy_end:
@@ -1659,7 +1659,7 @@ rowing_distance 0
 
 <frame> 238 punch
    pic: 14  state: 7  wait: 3  next: 239  dvx: 0  dvy: 0  centerx: 119  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 054.ogg
+   sound: 054.m4a
    bdy:
       kind: 0  x: 87  y: 77  w: 64  h: 91
    bdy_end:
@@ -1957,7 +1957,7 @@ rowing_distance 0
 
 <frame> 253 punch2
    pic: 31  state: 7  wait: 1  next: 254  dvx: 0  dvy: 0  centerx: 174  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 054.ogg
+   sound: 054.m4a
    bdy:
       kind: 0  x: 142  y: 77  w: 64  h: 91
    bdy_end:
@@ -2008,7 +2008,7 @@ rowing_distance 0
 
 <frame> 255 punch2
    pic: 33  state: 7  wait: 0  next: 256  dvx: 0  dvy: 0  centerx: 87  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 010.ogg
+   sound: 010.m4a
    bdy:
       kind: 0  x: 55  y: 77  w: 64  h: 91
    bdy_end:
@@ -2364,7 +2364,7 @@ rowing_distance 0
 
 <frame> 274 flame
    pic: 44  state: 15  wait: 2  next: 275  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    bdy:
       kind: 0  x: 101  y: -10000  w: 64  h: 91
    bdy_end:
@@ -2411,7 +2411,7 @@ rowing_distance 0
 
 <frame> 276 flame
    pic: 46  state: 15  wait: 2  next: 277  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    bdy:
       kind: 0  x: 101  y: -10000  w: 64  h: 91
    bdy_end:
@@ -2462,7 +2462,7 @@ rowing_distance 0
 
 <frame> 278 flame
    pic: 48  state: 15  wait: 2  next: 279  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    bdy:
       kind: 0  x: 101  y: -10000  w: 64  h: 91
    bdy_end:
@@ -2488,7 +2488,7 @@ rowing_distance 0
 
 <frame> 279 flame
    pic: 50  state: 15  wait: 2  next: 280  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 092.ogg
+   sound: 092.m4a
    bdy:
       kind: 0  x: 101  y: -10000  w: 64  h: 91
    bdy_end:
@@ -2696,7 +2696,7 @@ rowing_distance 0
 
 <frame> 291 standing
    pic: 5  state: 15  wait: 1  next: 292  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 061.ogg
+   sound: 061.m4a
 <frame_end>
 
 <frame> 292 standing
@@ -2745,7 +2745,7 @@ rowing_distance 0
 
 <frame> 303 standing
    pic: 9  state: 15  wait: 1  next: 304  dvx: 0  dvy: 0  centerx: 133  centery: 259  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 063.ogg
+   sound: 063.m4a
    itr:
       kind: 0  x: 160  y: 220  w: 70  h: 195  vrest: 30  bdefend: 100  dvx: 10  dvy: -25  injury: 23  fall: 70  zwidth: 55
    itr_end:

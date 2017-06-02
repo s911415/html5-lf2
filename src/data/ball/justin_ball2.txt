@@ -3,9 +3,9 @@ file(0-7): sprite/sys/julian_ball2.png  w: 109  h: 99  row: 4  col: 2
 file(8-11): sprite/sys/justin_col.png  w: 3200  h: 199  row: 1  col: 4
 file(12-15): sprite/sys/justin_col2.png  w: 3200  h: 159  row: 1  col: 4
 file(16-30): sprite/sys/julian_exp.png  w: 159  h: 159  row: 5  col: 3
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 
 <bmp_end>
 
@@ -52,7 +52,7 @@ weapon_broken_sound: 020.ogg
 
 
 <frame> 10 explosion
-sound: 089.ogg    
+sound: 089.m4a    
    pic: 16  state: 15  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 78  centery: 103  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 23  y: 36  w: 112  h: 110  dvx: -12  dvy: -18  fall: 70  vrest: 300  bdefend: 16  injury: 12  zwidth: 37  
@@ -74,7 +74,7 @@ sound: 089.ogg
 <frame_end>
 
 <frame> 20 explosion
-sound: 089.ogg  
+sound: 089.m4a  
    pic: 16  state: 15  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 78  centery: 103  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 23  y: 36  w: 112  h: 110  dvx: -12  dvy: -18  fall: 70  vrest: 300  bdefend: 16  injury: 12  zwidth: 37  
@@ -95,7 +95,7 @@ sound: 089.ogg
 <frame_end>
 
 <frame> 30 explosion
-sound: 089.ogg     
+sound: 089.m4a     
    pic: 16  state: 15  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 78  centery: 103  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 23  y: 36  w: 112  h: 110  dvx: -12  dvy: -18  fall: 70  vrest: 300  bdefend: 16  injury: 12  zwidth: 37  
@@ -118,7 +118,7 @@ sound: 089.ogg
 
 <frame> 40 col
    pic: 8  state: 15  wait: 3  next: 41  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 100  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 089.ogg 
+  sound: 089.m4a 
    itr:
       kind: 0  x: 10  y: 0  w: 1580  h: 250  dvx: -100  dvy: -15  fall: 70  vrest: 15  bdefend: 100  injury: 174  zwidth: 100  
       effect: 23  
@@ -127,7 +127,7 @@ sound: 089.ogg
 
 <frame> 41 col
    pic: 9  state: 15  wait: 1  next: 42  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 100  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 071.ogg 
+  sound: 071.m4a 
    itr:
       kind: 0  x: 10  y: -50  w: 3180  h: 250  dvx: -100  dvy: -15  fall: 70  vrest: 10  bdefend: 100  injury: 87  zwidth: 100  
       effect: 23  
@@ -284,7 +284,7 @@ sound: 089.ogg
 
 
 <frame> 110 explosion
-sound: 089.ogg  
+sound: 089.m4a  
    pic: 16  state: 15  wait: 1  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 78  centery: 103  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 23  y: 36  w: 112  h: 110  dvx: -12  dvy: -18  fall: 70  vrest: 300  bdefend: 16  injury: 12  zwidth: 37  
@@ -293,7 +293,7 @@ sound: 089.ogg
 <frame_end>
 
 <frame> 111 explosion
-sound: 071.ogg 
+sound: 071.m4a 
    pic: 17  state: 15  wait: 1  next: 112  dvx: 0  dvy: 0  dvz: 0  centerx: 78  centery: 103  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 20  y: 16  w: 122  h: 135  dvx: -12  dvy: -18  fall: 70  vrest: 300  bdefend: 16  injury: 12  zwidth: 37  

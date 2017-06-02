@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-3): sprite/sys/cl_ball2.png  w: 89  h: 89  row: 4  col: 1
 file(4-10): sprite/sys/cl_col4.png  w: 1919  h: 59  row: 1  col: 7
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -80,7 +80,7 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 50 flying
-   sound: 109.ogg
+   sound: 109.m4a
    pic: 0  state: 3000  wait: 1  next: 51  dvx: 1  dvy: 0  dvz: 0  centerx: 45  centery: 45  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 3  y: 3  w: 80  h: 80  dvx: 18  dvy: -11  fall: 70  vrest: 10  bdefend: 100  injury: 19  zwidth: 22
@@ -166,7 +166,7 @@ weapon_broken_sound: 020.ogg
 
 
 <frame> 80 explosion
-   sound: 110.ogg
+   sound: 110.m4a
    pic: 4  state: 15  wait: 1  next: 81  dvx: 0  dvy: -1  dvz: 0  centerx: 960  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
    itr:
       kind: 0  x: 960  y: 10  w: 28  h: 40  dvx: 36  dvy: -12  fall: 70  vrest: 15  bdefend: 100  injury: 111  zwidth: 22

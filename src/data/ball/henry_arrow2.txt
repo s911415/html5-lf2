@@ -5,9 +5,9 @@ file(24-26): sprite/sys/hunter_exp.png  w: 95  h: 95  row: 3  col: 1
 file(27-34): sprite/sys/hunter_col.png  w: 79  h: 439  row: 8  col: 1
 file(35-46): sprite/sys/hunter_arrow2.png  w: 48  h: 48  row: 6  col: 2
 file(47-58): sprite/sys/hunter_arrow3.png  w: 48  h: 47  row: 6  col: 2	
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 0 flying
@@ -181,7 +181,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 56 ex
    pic: 18  state: 1001  wait: 2  next: 57  dvx: -1  dvy: 0  centerx: 19  centery: 24  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 020.ogg
+   sound: 020.m4a
 <frame_end>
 
 <frame> 57 ex
@@ -356,7 +356,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 91 exp
    pic: 26  state: 15  wait: 0  next: 92  dvx: 0  dvy: 0  centerx: 48  centery: 48  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 114.ogg
+   sound: 114.m4a
    itr:
       kind: 0  x: 13  y: 13  w: 35  h: 70  dvx: -18  dvy: 0  fall: 70  vrest: 1  bdefend: 1  injury: 4  effect: 1  zwidth: 25
    itr_end:
@@ -405,7 +405,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 96 col
    pic: 999  state: 15  wait: 0  next: 97  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: 0  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -413,7 +413,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 97 col
    pic: 999  state: 15  wait: 0  next: 98  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: -50  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -421,7 +421,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 98 col
    pic: 999  state: 15  wait: 0  next: 99  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: 50  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -429,7 +429,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 99 col
    pic: 999  state: 15  wait: 0  next: 100  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: -100  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -437,7 +437,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 100 col
    pic: 999  state: 15  wait: 0  next: 101  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: 100  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -445,7 +445,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 101 col
    pic: 999  state: 15  wait: 0  next: 102  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: -150  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -453,7 +453,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 102 col
    pic: 999  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 115.ogg
+   sound: 115.m4a
    opoint:
       kind: 1  x: 150  y: 0  action: 105  dvx: 0  dvy: 0  oid: 208  facing: 0
    opoint_end:
@@ -556,7 +556,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 36 a
    pic: 36  state: 15  wait: 0  next: 37  dvx: 0  dvy: 0  centerx: 24  centery: 24  hit_a: 15  hit_d: 47  hit_j: 0
-   sound: 054.ogg
+   sound: 054.m4a
 <frame_end>
 
 <frame> 37 a
@@ -581,7 +581,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 42 a
    pic: 42  state: 15  wait: 0  next: 43  dvx: 0  dvy: 0  centerx: 24  centery: 24  hit_a: 15  hit_d: 47  hit_j: 0
-   sound: 054.ogg
+   sound: 054.m4a
 <frame_end>
 
 <frame> 43 a
@@ -615,7 +615,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 115 a
    pic: 999  state: 15  wait: 1  next: 116  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 20  hit_d: 118  hit_j: 0
-   sound: 060.ogg
+   sound: 060.m4a
    opoint:
       kind: 1  x: -20  y: 15  action: 41  dvx: 45  dvy: -2  oid: 201  facing: 0
    opoint_end:
@@ -623,7 +623,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 116 a
    pic: 999  state: 15  wait: 1  next: 117  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 20  hit_d: 118  hit_j: 0
-   sound: 060.ogg
+   sound: 060.m4a
    opoint:
       kind: 1  x: -20  y: 20  action: 40  dvx: 45  dvy: -4  oid: 201  facing: 0
    opoint_end:
@@ -631,7 +631,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 117 a
    pic: 999  state: 15  wait: 1  next: 115  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 20  hit_d: 118  hit_j: 0
-   sound: 060.ogg
+   sound: 060.m4a
    opoint:
       kind: 1  x: -20  y: 10  action: 42  dvx: 45  dvy: 0  oid: 201  facing: 0
    opoint_end:
@@ -639,7 +639,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 118 a
    pic: 999  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 20  hit_d: 118  hit_j: 0
-   sound: 060.ogg
+   sound: 060.m4a
    opoint:
       kind: 1  x: -20  y: 20  action: 40  dvx: 45  dvy: -4  oid: 201  facing: 0
    opoint_end:

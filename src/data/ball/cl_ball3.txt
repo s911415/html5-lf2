@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-11): sprite/sys/julian_ball.png  w: 81  h: 82  row: 4  col: 3
 file(12-15): sprite/sys/cl_star.png  w: 81  h: 81  row: 4  col: 1
-weapon_hit_sound: 090.ogg
-weapon_drop_sound: 090.ogg
-weapon_broken_sound: 090.ogg
+weapon_hit_sound: 090.m4a
+weapon_drop_sound: 090.m4a
+weapon_broken_sound: 090.m4a
 <bmp_end>
 
 

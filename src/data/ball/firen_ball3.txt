@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-7): sprite/sys/firen_ball2.png  w: 81  h: 82  row: 4  col: 2
 file(8-13): sprite/sys/firen_col2.png  w: 199  h: 404  row: 6  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 

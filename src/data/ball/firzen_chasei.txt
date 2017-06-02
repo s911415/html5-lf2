@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-7): sprite/sys/firzen_chasei.png  w: 81  h: 82  row: 4  col: 2
 file(8-19): sprite/sys/firzen_up2.png   w: 35  h: 49  row: 4  col: 3
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 
@@ -113,7 +113,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 61 hiting_ground
    pic: 5  state: 3001  wait: 0  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 50  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 020.ogg 
+  sound: 020.m4a 
    opoint:
       kind: 1  x: 50  y: 46  action: 0  dvx: 26  dvy: 0  oid: 209  facing: 20
    opoint_end:
