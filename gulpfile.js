@@ -106,6 +106,7 @@ gulp.task('build', () => {
         'src/js/lf2/level/LaunchMenu.js',
         'src/js/lf2/level/MySettingLevel.js',
         'src/js/lf2/level/LoadingLevel.js',
+        'src/js/lf2/level/HelpLevel.js',
         'src/js/lf2/level/SelectionLevel.js',
         'src/js/lf2/level/FightLevel.js',
 

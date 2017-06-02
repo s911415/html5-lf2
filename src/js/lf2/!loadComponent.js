@@ -60,6 +60,7 @@
         'level/LaunchMenu.js',
         'level/MySettingLevel.js',
         'level/LoadingLevel.js',
+        'level/HelpLevel.js',
         'level/SelectionLevel.js',
         'level/FightLevel.js',
 

@@ -57,6 +57,13 @@ var lf2 = (function (lf2) {
     lf2.LoadingLevel = class LoadingLevel extends Framework.Level {
         constructor() {
             super();
+
+            if (LoadingLevel.prototype.Instance === undefined) {
+                LoadingLevel.prototype.Instance = this;
+            } else {
+                throw 'Only One instance of Loading Level allowed';
+            }
+
             this.html = "";
             this._htmlLoader = ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
                 return data.text();
@@ -112,7 +119,7 @@ var lf2 = (function (lf2) {
             this.bgInfo = [];
             new Promise((_resolve, _reject) => {
                 return Promise.all([
-                    ResourceManager.loadResource(define.DATA_PATH + "data_list.json"),
+                    Prefetch.get('DATA_LIST'),
                     Prefetch.get('DATA')
                         .then(zip => this.zip = zip)
                         .catch((e) => {
@@ -120,7 +127,7 @@ var lf2 = (function (lf2) {
                         })
                     ,
                 ]).then(r => {
-                    return r[0].json();
+                    return r[0];
                 }).then((data) => {
                     const objs = data.object, $ = this;
                     console.log('Loading GameObject');
@@ -308,7 +315,7 @@ var lf2 = (function (lf2) {
             }
         }
 
-        
+
         draw(ctx) {
             super.draw(ctx);
 

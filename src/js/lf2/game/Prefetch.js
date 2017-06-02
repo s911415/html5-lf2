@@ -20,8 +20,10 @@ var lf2 = (function (lf2) {
          */
         start() {
             this._fetch = {
-                LOADING_VIDEO:
-                    ResourceManager.loadResourceAsBlob(lf2.LoadingLevel.LOADING_RESOURCE_SRC),
+                LOADING_VIDEO: ResourceManager.loadResourceAsBlob(lf2.LoadingLevel.LOADING_RESOURCE_SRC),
+
+                DATA_LIST: ResourceManager.loadResource(define.DATA_PATH + "data_list.json")
+                    .then(d=>d.json()),
 
                 DATA: ResourceManager.loadResource(define.ZIP_PATH + 'data.zip')
                     .then(r => r.blob())
@@ -45,7 +47,8 @@ var lf2 = (function (lf2) {
         get(key) {
             return this._fetch[key];
         }
-    };
+    }
+    ;
 
     /**
      *

@@ -151,11 +151,11 @@ body {
     color: #FFF;
 }
 
-#setting-screen #logo {
+#setting-screen #logo, #help-screen #logo {
     margin: 1em auto .5em;
 }
 
-#setting_panel {
+#setting_panel, #help_panel {
     width: 704px;
     height: 353px;
     margin: 0 auto;
@@ -224,28 +224,28 @@ body {
     color: #FFF;
 }
 
-#__setting_container .action_bar .btn {
+.action_bar .btn {
     width: 151px;
     height: 26px;
     position: absolute;
     cursor: pointer;
 }
 
-#__setting_container .action_bar .btn.btn_ok {
+.action_bar .btn.btn_ok {
     left: 362px;
     top: 320px;
 }
 
-#__setting_container .action_bar .btn.btn_cancel {
+.action_bar .btn.btn_cancel {
     left: 534px;
     top: 320px;
 }
 
-#__setting_container .action_bar .btn.btn_ok:hover {
+.action_bar .btn.btn_ok:hover {
     background-position: -489px -426px;
 }
 
-#__setting_container .action_bar .btn.btn_cancel:hover {
+.action_bar .btn.btn_cancel:hover {
     background-position: -643px -426px;
 }
 
@@ -259,7 +259,7 @@ body {
     text-align: center;
 }
 
-#selection_note {
+#selection_note, #help_note {
     position: absolute;
     left: 20px;
     bottom: 0;
@@ -721,7 +721,6 @@ body {
 #gameOverPanel .cell-status[data-game-status="lose"] .value:before {
     content: "Lose";
 }
-
 
 #gameOverPanel .cell-status[data-char-status="alive"] .value:after {
     content: " (Alive)";
