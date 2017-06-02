@@ -3,6 +3,7 @@ var lf2 = (function (lf2) {
     const ResourceManager = Framework.ResourceManager;
     const Game = Framework.Game;
     const _MENU_CONTAINER_ID = "__main_menu";
+    const Prefetch = lf2.Prefetch;
 
     /**
      * @class lf2.LaunchMenu
@@ -12,7 +13,7 @@ var lf2 = (function (lf2) {
      * @type {{}}
      */
     lf2.LaunchMenu = class extends Framework.Level {
-        constructor(){
+        constructor() {
             super();
 
             this.loadResLoadStart = false;
@@ -39,11 +40,11 @@ var lf2 = (function (lf2) {
             //載入要被播放的音樂清單
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             this.audio = new Framework.Audio({
-                ok: define.MUSIC_PATH + 'm_ok.ogg',
-                join: define.MUSIC_PATH + 'm_join.ogg',
-                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
-                pass: define.MUSIC_PATH + 'm_pass.ogg',
-                end: define.MUSIC_PATH + 'm_end.ogg',
+                ok: define.MUSIC_PATH + 'm_ok.m4a',
+                join: define.MUSIC_PATH + 'm_join.m4a',
+                cancel: define.MUSIC_PATH + 'm_cancel.m4a',
+                pass: define.MUSIC_PATH + 'm_pass.m4a',
+                end: define.MUSIC_PATH + 'm_end.m4a',
             });
 
             this.html = '';
@@ -80,12 +81,18 @@ var lf2 = (function (lf2) {
         update() {
             super.update();
 
-            if(this._menuAttached && !this.loadResLoadStart){
+            if (this._menuAttached && !this.loadResLoadStart) {
                 this.loadResLoadStart = true;
+                this.preload();
 
-                //Start preload loading video
-                lf2.LoadingLevel.PreloadLoadingVideo();
             }
+        }
+
+        preload() {
+            Prefetch.start();
+            //Start preload loading video
+            lf2.LoadingLevel.PreloadLoadingVideo();
+
         }
 
         /**

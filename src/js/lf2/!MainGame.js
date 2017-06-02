@@ -18,7 +18,7 @@ var lf2 = (function (lf2) {
             this.bgmStatus = !define.DEBUG;
             this._keyPool = new lf2.KeyEventPool(CHEAT_KEYWORD.length);
             this.bgmAudio = new Framework.Audio({
-                bgm: define.BGM_PATH + 'main.ogg',
+                bgm: define.BGM_PATH + 'main.m4a',
             });
             this.bgmParam = {
                 name: 'bgm',

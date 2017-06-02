@@ -137,7 +137,7 @@ bdy:
 
 <frame> 9 running
    pic: 10  state: 2  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 003.ogg 
+  sound: 003.m4a 
 
    wpoint:
       kind: 1  x: 35  y: 65  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -160,7 +160,7 @@ bdy:
 
 <frame> 11 running
    pic: 12  state: 2  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 004.ogg 
+  sound: 004.m4a 
 
    wpoint:
       kind: 1  x: 50  y: 70  weaponact: 27  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -216,7 +216,7 @@ bdy:
 
 <frame> 16 heavy_obj_run
    pic: 8  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 003.ogg 
+  sound: 003.m4a 
 
    wpoint:
       kind: 1  x: 42  y: 46 weaponact: 10  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -239,7 +239,7 @@ bdy:
 
 <frame> 18 heavy_obj_run
    pic: 19  state: 2  wait: 3  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 004.ogg 
+  sound: 004.m4a 
 
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 10  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -251,7 +251,7 @@ bdy:
 
 <frame> 19 heavy_stop_run
    pic: 20  state: 15  wait: 4  next: 999  dvx: 2  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_stp_rock.ogg 
+  sound: chu_stp_rock.m4a 
 
    wpoint:
       kind: 1  x: 42  y: 46  weaponact: 10  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
@@ -273,7 +273,7 @@ bdy:
 
 <frame> 21 normal_weapon_atck
    pic: 71  state: 3  wait: 1  next: 22  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 61  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -314,7 +314,7 @@ bdy:
 
 <frame> 26 normal_weapon_atck
    pic: 75  state: 3  wait: 1  next: 27  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 60  y: 70  weaponact: 26  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -355,7 +355,7 @@ bdy:
 
 <frame> 31 jump_weapon_atck
    pic: 81  state: 3  wait: 1  next: 32  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 61  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -396,7 +396,7 @@ bdy:
 
 <frame> 36 run_weapon_atck
    pic: 76  state: 3  wait: 1  next: 37  dvx: 4  dvy: 0  dvz: 0  centerx: 57  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 008.ogg 
+   sound: 008.m4a 
   wpoint:
       kind: 1  x: 74  y: 64  weaponact: 24  attacking: 1  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -427,7 +427,7 @@ bdy:
 
 <frame> 41 dash_weapon_atck
    pic: 81  state: 3  wait: 1  next: 42  dvx: 0  dvy: 0  dvz: 0   centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 61  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -479,7 +479,7 @@ bdy:
 
 <frame> 47 light_weapon_thw
    pic: 72  state: 15  wait: 1  next: 48  dvx: 0  dvy: 0  dvz: 0  centerx: 57  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 77  y: 57  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -520,7 +520,7 @@ bdy:
 
 <frame> 49 heavy_weapon_thw
    pic: 17  state: 15  wait: 7  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_thr_rock.ogg 
+  sound: chu_thr_rock.m4a 
    wpoint:
       kind: 1  x: 79  y: 50  weaponact: 10  attacking: 0  cover: 0  dvx: 21  dvy: -5  dvz: 5
    wpoint_end:
@@ -531,7 +531,7 @@ bdy:
 
 <frame> 52 sky_lgt_wp_thw
    pic: 81  state: 15  wait: 2  next: 53  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 008.ogg 
+  sound: 008.m4a 
    wpoint:
       kind: 1  x: 61  y: 50  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -562,7 +562,7 @@ bdy:
 
 <frame> 55 weapon_drink
    pic: 51  state: 17  wait: 2  next: 56  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
-  sound: chu_drink.ogg 
+  sound: chu_drink.m4a 
    wpoint:
       kind: 1  x: 51  y: 75  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -583,7 +583,7 @@ bdy:
 
 <frame> 57 weapon_drink
    pic: 51  state: 17  wait: 2  next: 56  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 79  hit_a: 0  hit_d: 999  hit_j: 0
-    sound: 042.ogg 
+    sound: 042.m4a 
    wpoint:
       kind: 1  x: 51  y: 75  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -606,7 +606,7 @@ bdy:
 
 <frame> 61 punch1
    pic: 91  state: 3  wait: 2  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+  sound: 007.m4a 
 
    itr:
       kind: 0  x: 52  y: 65  w: 25  h: 15  dvx: 2  vrest: 7  bdefend: 16  injury: 20  
@@ -640,7 +640,7 @@ bdy:
 
 <frame> 66 punch2
    pic: 94  state: 3  wait: 2  next: 67  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+  sound: 007.m4a 
 
    itr:
       kind: 0  x: 52  y: 65  w: 25  h: 15  dvx: 2  vrest: 7  bdefend: 16  injury: 18  
@@ -675,7 +675,7 @@ bdy:
 <frame> 69 punch3
    pic: 97  state: 3  wait: 2  next: 63  dvx: 0  dvy: 0  dvz: 0  centerx: 47  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
 
-  sound: 007.ogg 
+  sound: 007.m4a 
    itr:
       kind: 0  x: 55  y: 54  w: 17  h: 19  dvx: 2  vrest: 7 bdefend: 16  injury: 8  
       effect: 1  
@@ -707,7 +707,7 @@ bdy:
 
 <frame> 71 super_punch
    pic: 100  state: 3  wait: 2  next: 72  dvx: 2  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 
-  sound: 007.ogg 
+  sound: 007.m4a 
 
    itr:
       kind: 0  x: 55  y: 54  w: 37  h: 39  dvx: 1  dvy: -8 vrest: 7  fall: 1 bdefend: 60  injury: 16 
@@ -779,7 +779,7 @@ bdy:
 
 <frame> 81 jump_attack
    pic: 94  state: 3  wait: 2  next: 82  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 007.ogg 
+  sound: 007.m4a 
 
    itr:
       kind: 0  x: 52  y: 65  w: 25  h: 15  dvx: 2 vrest: 2  bdefend: 16  injury: 18  
@@ -802,7 +802,7 @@ bdy:
 
 <frame> 85 run_attack
    pic: 100  state: 3  wait: 1  next: 86  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 
-  sound: 007.ogg 
+  sound: 007.m4a 
 
    itr:
       kind: 0  x: 55  y: 54  w: 37  h: 39  dvx: 0  dvy: -8 vrest: 7  fall: 40 bdefend: 60  injury: 40
@@ -928,7 +928,7 @@ bdy:
 
 <frame> 101 FallingTurn(F)
    pic: 301  state: 6  wait: 6  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 52  centery: 101  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 45  y: 65  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1024,7 +1024,7 @@ bdy:
 
 <frame> 109 FallingTurn(B)
    pic: 303  state: 6  wait: 6  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 52  centery: 101  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 45  y: 65  weaponact: 21  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1091,7 +1091,7 @@ wpoint:
 
 <frame> 115 picking_light
    pic: 60  state: 15  wait: 4  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg
+  sound: 009.m4a
    wpoint:
       kind: 1  x: 43  y: 76  weaponact: 24  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1105,7 +1105,7 @@ wpoint:
 
 <frame> 116 picking_heavy
    pic: 61  state: 15  wait: 2  next: 117  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_pick_thk.ogg 
+  sound: chu_pick_thk.m4a 
    wpoint:
       kind: 1  x: 43  y: 52  weaponact: 10  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1126,7 +1126,7 @@ wpoint:
 
 <frame> 120 catching(Up)
    pic: 40  state: 9  wait: 2  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 54  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 015.ogg 
+  sound: 015.m4a 
    cpoint:
       kind: 1  x: 73  y: 44
       vaction: 131  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 7
@@ -1169,7 +1169,7 @@ wpoint:
 
 <frame> 123 catching(Hit)
    pic: 43  state: 9  wait: 5  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 014.ogg 
+  sound: 014.m4a 
    cpoint:
       kind: 1  x: 69  y: 43
       injury: 20  vaction: 132  throwvz: -842150451  hurtable: 1 throwinjury: -842150451 decrease: 4 
@@ -1524,7 +1524,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
    itr:
       kind: 0  x: 35  y: 37  w: 48  h: 52  dvx: 12  fall: 70  vrest: 30  bdefend: 90  injury: 30  zwidth: 5  effect: 3  
    itr_end:
- sound: chu_heal.ogg
+ sound: chu_heal.m4a
 <frame_end>
 
 <frame> 79 Heal in ice
@@ -1630,7 +1630,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 211 jump
    pic: 23  state: 4  wait: 1  next: 212  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 017.ogg 
+  sound: 017.m4a 
    wpoint:
       kind: 1  x: 30  y: 61  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1671,7 +1671,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 215 crouch
    pic: 25  state: 15  wait: 3  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 012.ogg 
+  sound: 012.m4a 
    wpoint:
       kind: 1  x: 43  y: 75  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1702,7 +1702,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 218 stop_running
    pic: 21  state: 15  wait: 4  next: 999  dvx: 2  dvy: 0  dvz: 0  centerx: 51  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 009.ogg 
+  sound: 009.m4a 
    wpoint:
       kind: 1  x: 39  y: 69  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1713,7 +1713,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 219 crouch2
    pic: 25  state: 15  wait: 2  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 012.ogg 
+  sound: 012.m4a 
    wpoint:
       kind: 1  x: 43  y: 75  weaponact: 22  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1836,7 +1836,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 197 injuredF
    pic: 288  state: 16  wait: 1  next: 198  dvx: 0  dvy: 0  dvz: 0  centerx: 64  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_faint_wake.ogg
+  sound: chu_faint_wake.m4a
    wpoint:
       kind: 1  x: 45  y: 102  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -1917,7 +1917,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 233 throw_lying_man
    pic: 16  state: 9  wait: 2  next: 234  dvx: 0  dvy: 0  dvz: 0  centerx: 58  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-    sound: chu_thr_rock.ogg 
+    sound: chu_thr_rock.m4a 
   cpoint:
       kind: 1  x: 72  y: 47
       vaction: 181  throwvx: 16  throwvy: -7  throwvz: 3  throwinjury: 25
@@ -1942,7 +1942,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 235 Body Slum!(Jump)
    pic: 290  state: 12  wait: 3  next: 236  dvx: 0  dvy: 0  dvz: 0  centerx: 85  centery: 84  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: chu_thr_rock.ogg 
+  sound: chu_thr_rock.m4a 
    wpoint:
       kind: 1  x: 88  y: 80  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -2009,7 +2009,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 243 catching(TdShot)
    pic: 310  state: 9  wait: 1  next: 124  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0  mp: 40
-  sound: chu_tds_2.ogg
+  sound: chu_tds_2.m4a
    cpoint:
       kind: 1  x: 74  y: 79
       vaction: 130  aaction: 122  taction: -232 hurtable: 1 decrease: 0
@@ -2021,7 +2021,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 
 <frame> 124 catching(TdShot)
    pic: 311  state: 9  wait: 2  next: 125  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0 
-  sound: 999.ogg 
+  sound: 999.m4a 
    cpoint:
       kind: 1  x: 74  y: 79
    vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
@@ -2051,7 +2051,7 @@ pic: 284  state: 12  wait: 30  next: 219  dvx: 0  dvy: 0  dvz: 0  centerx: 72  c
 <frame_end>
 
 <frame> 126 catching(TdShot)
-  sound: 998.ogg 
+  sound: 998.m4a 
    pic: 313  state: 9  wait: 2  next: 245  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 128  hit_d: 128  hit_j: 128  mp: -4
    cpoint:
       kind: 1  x: 74  y: 79
@@ -2120,7 +2120,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 
 <frame> 246 catching(100000V)
    pic: 317  state: 9  wait: 40  next: 247  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0  mp: 100
-  sound: chu_tds_1.ogg
+  sound: chu_tds_1.m4a
    cpoint:
       kind: 1  x: 74  y: 79
       vaction: 130  aaction: 122  taction: -232 hurtable: 0 decrease: 0
@@ -2132,7 +2132,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 
 <frame> 247 catching(100000V)
    pic: 311  state: 9  wait: 3  next: 127  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 127 hit_d: 0  hit_j: 0 
-  sound: chu_tds_3.ogg
+  sound: chu_tds_3.m4a
    cpoint:
       kind: 1  x: 74  y: 79
       injury: 70  vaction: 130  aaction: 122  taction: -232 hurtable: 0 decrease: 0
@@ -2143,7 +2143,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 <frame_end>
 
 <frame> 127 catching(100000V)
-  sound: 997.ogg 
+  sound: 997.m4a 
    pic: 313  state: 9  wait: 1  next: 208  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 208  hit_d: 0  hit_j: 0 
    cpoint:
       kind: 1  x: 74  y: 79
@@ -2174,7 +2174,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 <frame_end>
 
 <frame> 208 catching(100000V)
-  sound: 998.ogg 
+  sound: 998.m4a 
    pic: 314  state: 9  wait: 1  next: 4  dvx: 0  dvy: 0  dvz: 0  centerx: 53  centery: 119  hit_a: 4  hit_d: 0  hit_j: 0 
    wpoint:
       kind: 1 x: 35  y: 108  weaponact: 35  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
@@ -2277,7 +2277,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 
 <frame> 150 Quick Attack
    pic: 327  state: 3  wait: 0  next: 151  dvx: 80  dvy: 550  dvz: 550  centerx: 67  centery: 119  hit_a: 0  hit_d: 0  hit_j: 0 
-  sound: chu_teleport2.ogg
+  sound: chu_teleport2.m4a
    itr:
       kind: 0  x: 0  y: 40  w: 120  h: 80  dvx: 25 dvy: -8 fall: 100  vrest: 7 bdefend: 100  injury: 70  zwidth: 10
    itr_end:
@@ -2367,7 +2367,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
   opoint:
   kind: 1  x: 55  y: 96  action: 48 dvx: 0  dvy: 0  oid: 400  facing: 0
   opoint_end:
-  sound: 801.ogg
+  sound: 801.m4a
 <frame_end>
 
 
@@ -2377,7 +2377,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 
 <frame> 155 Zap Ball~~~!!!(First Status)
    pic: 342 state: 3 wait: 2 next: 156 dvx: 0 dvy: 0 dvz: 0 centerx: 60 centery: 119 hit_a: 0 hit_d: 0 hit_j: 0
-   sound: chu_zap_ball.ogg
+   sound: chu_zap_ball.m4a
    wpoint:
       kind: 1  x: 59  y: 86  weaponact: 21  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -2448,7 +2448,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
 
 <frame> 346 Zap Ball~~~!!!(Second Stutus)
    pic: 342 state: 3 wait: 2 next: 347 dvx: 0 dvy: 0 dvz: 0 centerx: 60 centery: 119 hit_a: 0 hit_d: 0 hit_j: 0
-   sound: chu_zap_ball.ogg
+   sound: chu_zap_ball.m4a
    wpoint:
       kind: 1  x: 59  y: 86  weaponact: 21  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -2506,7 +2506,7 @@ injury: 13  vaction: 130  aaction: 122  taction: -232  hurtable: 1 decrease: 0
    opoint:
       kind: 1  x: 125  y: 125   action: 45 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_1.ogg
+sound: Stk_1.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2523,7 +2523,7 @@ sound: Stk_1.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 44 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_2.ogg
+sound: Stk_2.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2540,7 +2540,7 @@ sound: Stk_2.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 43 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_3.ogg
+sound: Stk_3.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2557,7 +2557,7 @@ sound: Stk_3.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 42 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_4.ogg
+sound: Stk_4.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2574,7 +2574,7 @@ sound: Stk_4.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 41 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_5.ogg
+sound: Stk_5.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2591,7 +2591,7 @@ sound: Stk_5.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 40 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_6.ogg
+sound: Stk_6.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2608,7 +2608,7 @@ sound: Stk_6.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 39 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_7.ogg
+sound: Stk_7.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2625,7 +2625,7 @@ sound: Stk_7.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 38 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_8.ogg
+sound: Stk_8.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2642,7 +2642,7 @@ sound: Stk_8.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 37 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_9.ogg
+sound: Stk_9.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2659,7 +2659,7 @@ sound: Stk_9.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 36 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_10.ogg
+sound: Stk_10.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2676,7 +2676,7 @@ sound: Stk_10.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 35 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_11.ogg
+sound: Stk_11.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2693,7 +2693,7 @@ sound: Stk_11.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 34 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_12.ogg
+sound: Stk_12.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2720,7 +2720,7 @@ sound: Stk_12.ogg
    opoint:
       kind: 1  x: 125  y: 125   action: 33 dvx: 0  dvy: 0  oid: 350  facing: 0
    opoint_end:
-sound: Stk_max.ogg
+sound: Stk_max.m4a
    bdy:
       kind: 0  x: 51  y: 84  w: 20  h: 35
    bdy_end:
@@ -2728,7 +2728,7 @@ sound: Stk_max.ogg
 
 <frame> 99 Zap Ball~~~!!!
    pic: 344 state: 3 wait: 2 next: 118 dvx: 0 dvy: 0 dvz: 0 centerx: 60 centery: 119 hit_a: 0 hit_d: 0 hit_j: 0
-   sound: chu_zap_ball.ogg
+   sound: chu_zap_ball.m4a
    wpoint:
       kind: 1  x: 83  y: 105  weaponact: 24  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -2766,7 +2766,7 @@ sound: Stk_max.ogg
 
 <frame> 300 Zap Ball~~~!!!(Air)
    pic: 340 state: 3 wait: 1 next: 166 dvx: -4 dvy: -3 dvz: 0 centerx: 55 centery: 119 hit_a: 0 hit_d: 0 hit_j: 0 mp: 65
-   sound: chu_zap_ball.ogg
+   sound: chu_zap_ball.m4a
    wpoint:
       kind: 1  x: 43  y: 89  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -2796,7 +2796,7 @@ sound: Stk_max.ogg
   opoint:
   kind: 1  x: 55  y: 96  action: 48 dvx: 0  dvy: 0  oid: 400  facing: 0
   opoint_end:
-  sound: 801.ogg
+  sound: 801.m4a
    itr:
       kind: 0  x: 16  y: 59  w: 97  h: 60  dvx: 6 dvy: -7 fall: 100  vrest: 7 bdefend: 100  injury: 50 effect: 2 zwidth: 10 
    itr_end:
@@ -2862,7 +2862,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 43  y: 89  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-   sound: chu_lightning.ogg
+   sound: chu_lightning.m4a
 <frame_end>
 
 <frame> 167 Thunder Bolt
@@ -3008,7 +3008,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 26  y: 57  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-   sound: chu_td_bolt.ogg
+   sound: chu_td_bolt.m4a
 <frame_end>
 
 <frame> 175 !!!!!~~~Thunder~~~!!!!!
@@ -3026,7 +3026,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 26  y: 57  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 177 !!!!!~~~Thunder~~~!!!!!
@@ -3054,7 +3054,7 @@ sound: Stk_max.ogg
   opoint: 
     kind: 1  x: 120  y: 79  action: 0  dvx: 0  dvy: 0  oid: 404  facing: 30
   opoint_end: 
-  sound: 999.ogg
+  sound: 999.m4a
 <frame_end>
 
 <frame> 255 !!!!!~~~Thunder~~~!!!!!
@@ -3072,7 +3072,7 @@ sound: Stk_max.ogg
   opoint: 
     kind: 1  x: -80  y: 79 action: 0  dvx: 0  dvy: 0  oid: 405  facing: 50
   opoint_end: 
-  sound: 800.ogg
+  sound: 800.m4a
 <frame_end>
 
 <frame> 257 !!!!!~~~Thunder~~~!!!!!
@@ -3084,7 +3084,7 @@ sound: Stk_max.ogg
   kind: 1  x: 61  y: 63  action: 48 dvx: 0  dvy: 0  oid: 400  facing: 0
   opoint_end:
 
-   sound: 998.ogg
+   sound: 998.m4a
 <frame_end>
 
 <frame> 258 !!!!!~~~Thunder~~~!!!!!
@@ -3175,7 +3175,7 @@ sound: Stk_max.ogg
 
 <frame> 280 Zap Ball~~~!!!
    pic: 340 state: 3 wait: 1 next: 279 dvx: 0 dvy: 0 dvz: 0 centerx: 55 centery: 119 hit_a: 0 hit_d: 0 hit_j: 0 mp: 65
-   sound: chu_zap_ball.ogg
+   sound: chu_zap_ball.m4a
    wpoint:
       kind: 1  x: 43  y: 89  weaponact: 20  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
@@ -3198,7 +3198,7 @@ sound: Stk_max.ogg
   opoint:
   kind: 1  x: 55  y: 96  action: 48 dvx: 0  dvy: 0  oid: 400  facing: 0
   opoint_end:
-  sound: 801.ogg
+  sound: 801.m4a
 <frame_end>
 
 <frame> 281 Zap Ball~~~!!!
@@ -3299,7 +3299,7 @@ sound: Stk_max.ogg
   opoint: 
     kind: 1  x: 55  y: 56  action: 100  dvx: 0  dvy: 0 oid: 400  facing: 0
   opoint_end: 
- sound: chu_heal.ogg
+ sound: chu_heal.m4a
 <frame_end>
 
 <frame> 64 Lightning-Healed
@@ -3320,7 +3320,7 @@ sound: Stk_max.ogg
 
 <frame> 305 !!!!!~~~Thunder~~~!!!!!
    pic: 999 state: 3 wait: 1 next: 306 dvx: 0 dvy: 0 dvz: 0 centerx: 40 centery: 79 hit_a: 0 hit_d: 0 hit_j: 0
-   sound: chu_tf3.ogg
+   sound: chu_tf3.m4a
 <frame_end>
 
 <frame> 306 !!!!!~~~Thunder~~~!!!!!
@@ -3370,7 +3370,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 26  y: 57  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-  sound: 996.ogg
+  sound: 996.m4a
 <frame_end>
 
 <frame> 352 !!!!!~~~Thunder~~~!!!!!
@@ -3378,7 +3378,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 26  y: 57  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-   sound: chu_air_exp2.ogg
+   sound: chu_air_exp2.m4a
 <frame_end>
 
 <frame> 353 !!!!!~~~Thunder~~~!!!!!
@@ -3386,7 +3386,7 @@ sound: Stk_max.ogg
    wpoint:
       kind: 1  x: 26  y: 57  weaponact: 35  attacking: 0  cover: 0  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:
-  sound: 988.ogg
+  sound: 988.m4a
 <frame_end>
 
 <frame> 354 !!!!!~~~Thunder~~~!!!!!
@@ -3480,7 +3480,7 @@ sound: Stk_max.ogg
 
 <frame> 393 bfire
    pic: 305  state: 18  wait: 1  next: 394  dvx: 17  dvy: -26  dvz: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 068.ogg
+  sound: 068.m4a
    itr:
       kind: 3  x: 10  y: 10  w: 80  h: 100  dvx: -6  dvy: -6  vrest: 10
       catchingact: 393 393  caughtact: 393 393  

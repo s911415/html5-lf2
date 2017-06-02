@@ -1,8 +1,8 @@
 <bmp_begin>
 file(0-22): sprite\sys\2321008_hit.png  w: 226  h: 237  row: 23  col: 1
-weapon_hit_sound: 2321008_Hit.mp3
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 2321008_Hit.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 99 skill_total_time
@@ -66,7 +66,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 111 skill_2321008_hit
    pic: 11  state: 15  wait: 3  next: 112  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 2321008_Hit.mp3
+   sound: 2321008_Hit.m4a
 
 <frame_end>
 

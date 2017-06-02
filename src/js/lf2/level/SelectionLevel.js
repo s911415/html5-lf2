@@ -75,12 +75,12 @@ var lf2 = (function (lf2) {
             //資料夾內只提供mp3檔案, 其餘的音樂檔案, 請自行轉檔測試
             //播放時, 需要給name, 其餘參數可參考W3C
             this.audio = new Framework.Audio({
-                ok: define.MUSIC_PATH + 'm_ok.ogg',
-                join: define.MUSIC_PATH + 'm_join.ogg',
-                cancel: define.MUSIC_PATH + 'm_cancel.ogg',
+                ok: define.MUSIC_PATH + 'm_ok.m4a',
+                join: define.MUSIC_PATH + 'm_join.m4a',
+                cancel: define.MUSIC_PATH + 'm_cancel.m4a',
             });
             this._chectAudio = new Framework.Audio({
-                pass: define.MUSIC_PATH + 'm_pass.ogg',
+                pass: define.MUSIC_PATH + 'm_pass.m4a',
             });
 
             this.players = [];

@@ -1,0 +1,102 @@
+<bmp_begin>
+file(0-23): sprite/sys/bat_chase2.png  w: 81  h: 82  row: 4  col: 2
+weapon_hit_sound: 088.m4a
+weapon_drop_sound: 088.m4a
+weapon_broken_sound: 088.m4a
+<bmp_end>
+
+
+<frame> 0 flying
+   pic: 0  state: 3000  wait: 1  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 43  centery: 39  hit_a: 3  hit_d: 0  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 4  fall: 20  vrest: 15  bdefend: 16  injury: 8
+   itr_end:
+   bdy:
+      kind: 0  x: 21  y: 22  w: 40  h: 39
+   bdy_end:
+<frame_end>
+
+<frame> 1 flying
+   pic: 1  state: 3000  wait: 1  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 47  centery: 43  hit_a: 3  hit_d: 1  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 4  fall: 20  vrest: 15  bdefend: 16  injury: 8
+   itr_end:
+   bdy:
+      kind: 0  x: 21  y: 22  w: 40  h: 39
+   bdy_end:
+
+<frame_end>
+
+<frame> 2 flying
+   pic: 2  state: 3000  wait: 1  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 44  hit_a: 3  hit_d: 2  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 4  fall: 20  vrest: 15  bdefend: 16  injury: 8
+   itr_end:
+   bdy:
+      kind: 0  x: 21  y: 22  w: 40  h: 39
+   bdy_end:
+
+<frame_end>
+
+<frame> 3 flying
+   pic: 1  state: 3000  wait: 1  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 47  centery: 45  hit_a: 3  hit_d: 3  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 4  fall: 20  vrest: 15  bdefend: 16  injury: 8
+   itr_end:
+   bdy:
+      kind: 0  x: 21  y: 22  w: 40  h: 39
+   bdy_end:
+
+<frame_end>
+
+<frame> 10 hiting
+   pic: 4  state: 3001  wait: 1  next: 11  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 11 hiting
+   pic: 5  state: 3001  wait: 1  next: 12  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 12 hiting
+   pic: 6  state: 3001  wait: 1  next: 13  dvx: 0  dvy: 0  dvz: 0  centerx: 43  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 13 hiting
+   pic: 7  state: 3001  wait: 1  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 hit
+   pic: 4  state: 3001  wait: 1  next: 11  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 rebounding
+   pic: 4  state: 3001  wait: 1  next: 31  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 31 rebounding
+   pic: 5  state: 3001  wait: 1  next: 32  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 32 rebounding
+   pic: 6  state: 3001  wait: 1  next: 33  dvx: 0  dvy: 0  dvz: 0  centerx: 43  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 33 rebounding
+   pic: 7  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 45  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 50 start
+   pic: 3  state: 3005  wait: 1  next: 51  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 51 start
+   sound: 087.m4a
+   pic: 3  state: 3005  wait: 1  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 40  centery: 38  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+
+
+

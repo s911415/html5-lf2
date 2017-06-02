@@ -1,0 +1,347 @@
+<bmp_begin>
+file(0-11): sprite/sys/firen_ball.png  w: 81  h: 82  row: 4  col: 3
+file(12-20): sprite/sys/firen_col.png  w: 181  h: 187  row: 3  col: 3
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end>
+
+<frame> 0 flying
+   pic: 0  state: 3000  wait: 0  next: 1  dvx: 40  dvy: 0  centerx: 51  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 071.m4a 
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 1 flying
+   pic: 1  state: 3000  wait: 0  next: 2  dvx: 40  dvy: 0  centerx: 53  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 2 flying
+   pic: 2  state: 3000  wait: 0  next: 3  dvx: 40  dvy: 0  centerx: 51  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 3 flying
+   pic: 3  state: 3000  wait: 0  next: 4  dvx: 40  dvy: 0  centerx: 54  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 4 flying
+   pic: 4  state: 3000  wait: 0  next: 5  dvx: 40  dvy: 0  centerx: 55  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 5 flying
+   pic: 5  state: 3000  wait: 0  next: 999  dvx: 40  dvy: 0  centerx: 54  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 42  y: 41  action: 0  dvx: 0  dvy: 0  oid: 211  facing: 0
+   opoint_end:
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 2  dvy: -20  fall: 70  vrest: 10  bdefend: 16  injury: 13  
+      effect: 2  
+   itr_end:
+   bdy:
+      kind: 0  x: 22  y: 27  w: 55  h: 27
+   bdy_end:
+<frame_end>
+
+<frame> 10 hiting
+   pic: 8  state: 3001  wait: 3  next: 11  dvx: 0  dvy: 0  centerx: 40  centery: 43  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 11 hiting
+   pic: 8  state: 3001  wait: 6  next: 12  dvx: 0  dvy: 0  centerx: 40  centery: 42  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 48  y: 81  action: 109  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 12 hiting
+   pic: 9  state: 3001  wait: 0  next: 13  dvx: 0  dvy: 0  centerx: 44  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 148  y: 81  action: 109  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 13 hiting
+   pic: 9  state: 3001  wait: 0  next: 14  dvx: 0  dvy: 0  centerx: 44  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: -68  y: 81  action: 109  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 14 hiting
+   pic: 10  state: 3001  wait: 0  next: 15  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 48  y: 81  action: 121  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 15 hiting
+   pic: 10  state: 3001  wait: 6  next: 16  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 48  y: 81  action: 122  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 16 hiting
+   pic: 11  state: 3001  wait: 0  next: 17  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 228  y: 81  action: 109  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 17 hiting
+   pic: 11  state: 3001  wait: 0  next: 18  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: -148  y: 81  action: 109  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 18 hiting
+   pic: 11  state: 3001  wait: 0  next: 19  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 48  y: 81  action: 123  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 19 hiting
+   pic: 11  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 52  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 48  y: 81  action: 124  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 20 hit
+   pic: 8  state: 3002  wait: 1  next: 21  dvx: 0  dvy: 0  centerx: 44  centery: 43  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 21 hit
+   pic: 9  state: 3002  wait: 1  next: 22  dvx: 0  dvy: 0  centerx: 41  centery: 43  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 22 hit
+   pic: 10  state: 3002  wait: 1  next: 23  dvx: 0  dvy: 0  centerx: 44  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 23 hit
+   pic: 11  state: 3002  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 54  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 rebounding
+   pic: 8  state: 3003  wait: 1  next: 31  dvx: 0  dvy: 0  centerx: 43  centery: 43  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 31 rebounding
+   pic: 9  state: 3003  wait: 1  next: 32  dvx: 0  dvy: 0  centerx: 40  centery: 42  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 32 rebounding
+   pic: 10  state: 3003  wait: 1  next: 33  dvx: 0  dvy: 0  centerx: 46  centery: 39  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 33 rebounding
+   pic: 11  state: 3003  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 52  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<frame> 120 column
+   pic: 21  state: 15  wait: 0  next: 123  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 121 column
+   pic: 21  state: 15  wait: 0  next: 123  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 122 column
+   pic: 21  state: 15  wait: 0  next: 123  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+<frame> 123 column
+   pic: 12  state: 15  wait: 5  next: 124  dvx: 0  dvy: 0  dvz: 0  centerx: 158  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 124 column
+   pic: 13  state: 15  wait: 0  next: 125  dvx: 0  dvy: 0  dvz: 0  centerx: 140  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 125 column
+   pic: 14  state: 15  wait: 0  next: 126  dvx: 0  dvy: 0  dvz: 0  centerx: 130  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 126 column
+   pic: 15  state: 15  wait: 0  next: 127  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 127 column
+   pic: 16  state: 15  wait: 0  next: 128  dvx: 0  dvy: 0  dvz: 0  centerx: 103  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 128 column
+   pic: 17  state: 15  wait: 20  next: 129  dvx: 0  dvy: 0  dvz: 0  centerx: 86  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 067.m4a 
+   itr:
+      kind: 0  x: 31  y: 68  w: 103  h: 106  dvx: 0  dvy: 0  fall: 70  vrest: 5  bdefend: 16  injury: 5  zwidth: 25
+      effect: 2  
+   itr_end:
+<frame_end>
+
+<frame> 129 column
+   pic: 18  state: 15  wait: 2  next: 130  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+<frame_end>
+
+<frame> 130 column
+   pic: 19  state: 15  wait: 1  next: 131  dvx: 0  dvy: 0  dvz: 0  centerx: 49  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 070.m4a 
+<frame_end>
+
+<frame> 131 column
+   pic: 20  state: 15  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 60  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+<frame> 135 column
+   pic: 21  state: 15  wait: 0  next: 136  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 136 column
+   pic: 21  state: 15  wait: 5  next: 137  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 75  y: 188  action: 140  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 137 column
+   pic: 21  state: 15  wait: 5  next: 138  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 75  y: 188  action: 143  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 138 column
+   pic: 21  state: 15  wait: 5  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 75  y: 188  action: 146  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
+
+
+<frame> 140 column
+   pic: 21  state: 15  wait: 0  next: 141  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 141 column
+   pic: 21  state: 400  wait: 1  next: 142  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 142 column
+   pic: 21  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 170  y: 188  action: 120  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 143 column
+   pic: 21  state: 15  wait: 0  next: 144  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 144 column
+   pic: 21  state: 400  wait: 1  next: 145  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 145 column
+   pic: 21  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 200  y: 125  action: 121  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 146 column
+   pic: 21  state: 15  wait: 0  next: 147  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 147 column
+   pic: 21  state: 400  wait: 1  next: 148  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 148 column
+   pic: 21  state: 15  wait: 0  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 75  centery: 188  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 230  y: 155  action: 122  dvx: 0  dvy: 0  oid: 310  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
+
+

@@ -1,24 +1,24 @@
 <bmp_begin>
-file(0-7): sprite\sys\firzen_chasef.png  w: 81  h: 82  row: 4  col: 2
-file(8-19): sprite\sys\firzen_up.png   w: 35  h: 49  row: 4  col: 3
-file(20-23): sprite\sys\firzen_up3.png   w: 81  h: 82  row: 4  col: 1
+file(0-7): sprite/sys/firzen_chasef.png  w: 81  h: 82  row: 4  col: 2
+file(8-19): sprite/sys/firzen_up.png   w: 35  h: 49  row: 4  col: 3
+file(20-23): sprite/sys/firzen_up3.png   w: 81  h: 82  row: 4  col: 1
 
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 0 flying
-   pic: 0  state: 3000  wait: 5  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 46  centery: 26  hit_a: 7  hit_d: 1  hit_j: 0 hit_Fa: 7
+   pic: 0  state: 3000  wait: 5  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 46  centery: 26  hit_a: 1  hit_d: 1  hit_j: 0 hit_Fa: 7
    bdy:
       kind: 0  x: 33  y: 21  w: 23  h: 28
    bdy_end:
 <frame_end>
 
 <frame> 1 flying
-   pic: 1  state: 3000  wait: 5  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 36  hit_a: 7  hit_d: 1  hit_j: 0 hit_Fa: 7
+   pic: 1  state: 3000  wait: 5  next: 2  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 36  hit_a: 1  hit_d: 1  hit_j: 0 hit_Fa: 7
    itr:
-      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 40  
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 10  
       effect: 2  
    itr_end:
    bdy:
@@ -27,9 +27,9 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 2 flying
-   pic: 2  state: 3000  wait: 5  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 48  hit_a: 7  hit_d: 2  hit_j: 0 hit_Fa: 7
+   pic: 2  state: 3000  wait: 5  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 50  centery: 48  hit_a: 1  hit_d: 2  hit_j: 0 hit_Fa: 7
    itr:
-      kind: 0  x: 29  y: 27  w: 36  h: 39  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 40  
+      kind: 0  x: 29  y: 27  w: 36  h: 39  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 10  
       effect: 2  
    itr_end:
    bdy:
@@ -38,9 +38,9 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 3 flying
-   pic: 3  state: 3000  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 45  hit_a: 7  hit_d: 3  hit_j: 0 hit_Fa: 7
+   pic: 3  state: 3000  wait: 1  next: 0  dvx: 0  dvy: 0  dvz: 0  centerx: 44  centery: 45  hit_a: 1  hit_d: 3  hit_j: 0 hit_Fa: 7
    itr:
-      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 40  
+      kind: 0  x: 22  y: 22  w: 39  h: 38  dvx: 3  fall: 70  vrest: 15  bdefend: 20  injury: 10  
       effect: 2  
    itr_end:
    bdy:
@@ -148,7 +148,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 58 start
    pic: 11  state: 3005  wait: 0  next: 59  dvx: 0  dvy: 0  dvz: 0  centerx: 15  centery: 25  hit_a: 0  hit_d: 0  hit_j: 0
-   sound: 020.ogg
+   sound: 020.m4a
    opoint:
       kind: 1  x: 17  y: 10  action: 70  dvx: 0  dvy: 0  oid: 221  facing: 1
    opoint_end:
@@ -163,19 +163,25 @@ weapon_broken_sound: 020.ogg
 <frame_end>
 
 <frame> 61 hiting_ground
-   pic: 5  state: 3001  wait: 1  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
-  sound: 020.ogg 
+   pic: 5  state: 3001  wait: 0  next: 62  dvx: 0  dvy: 0  dvz: 0  centerx: 39  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 020.m4a 
+   opoint:
+      kind: 1  x: 46  y: 50  action: 0  dvx: 0  dvy: 0  oid: 210  facing: 21
+   opoint_end:
 <frame_end>
 
 <frame> 62 hiting_ground
-   pic: 6  state: 3001  wait: 1  next: 63  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
+   pic: 6  state: 3001  wait: 0  next: 63  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 40  hit_a: 0  hit_d: 0  hit_j: 0
    opoint:
-      kind: 1  x: 41  y: 61  action: 50  dvx: 0  dvy: 0  oid: 211  facing: 1
+      kind: 1  x: 46  y: 50  action: 0  dvx: 0  dvy: 0  oid: 210  facing: 20
    opoint_end:
 <frame_end>
 
 <frame> 63 hiting_ground
    pic: 7  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 41  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 41  y: 61  action: 50  dvx: 0  dvy: 0  oid: 211  facing: 1
+   opoint_end:
 <frame_end>
 
 <frame> 70 explosion
@@ -201,5 +207,15 @@ weapon_broken_sound: 020.ogg
 <frame> 81 disaster2
    pic: 50  state: 3005  wait: 10  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 42  centery: 27  hit_a: 0  hit_d: 0  hit_j: 0 hit_Fa: 9
 <frame_end>
+
+
+
+
+
+
+
+
+
+
 
 

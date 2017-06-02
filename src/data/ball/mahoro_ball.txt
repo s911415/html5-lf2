@@ -1,9 +1,9 @@
 <bmp_begin>
 file(0-7): sprite\sys\mahoro_ball.png  w:  50  h:  50  row:  4  col: 2
 file(8-11): sprite\sys\mahoro_ball5.png  w: 169  h: 89  row: 4  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end>
 
 <frame> 0 flying

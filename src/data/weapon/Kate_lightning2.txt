@@ -1,9 +1,9 @@
 <bmp_begin> 
 file(0-23):  sprite/sys/Zap_ball.png w: 179  h: 119  row: 8  col: 3
 file(24-41): sprite/sys/lightningPrp.png w: 79  h: 899  row: 18  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end> 
 
 <frame> 0 Ligntning!!!!!
@@ -45,7 +45,7 @@ weapon_broken_sound: 020.ogg
    opoint:
       kind: 1  x: 39  y: 899  action: 55 dvx: 0  dvy: 0  oid: 400  facing: 0
    opoint_end:
-   sound: chu_td_bolt2.ogg
+   sound: chu_td_bolt2.m4a
 <frame_end>
 
 <frame> 64 Ligntning!!!!!

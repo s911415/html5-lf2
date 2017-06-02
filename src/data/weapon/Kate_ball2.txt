@@ -1,9 +1,9 @@
 <bmp_begin> 
 file(0-23):  sprite/sys/Zap_ball.png w: 179  h: 119  row: 8  col: 3
 file(24-31):  sprite/sys/Power_flash.png w: 59  h: 59  row: 8  col: 1
-weapon_hit_sound: 020.ogg
-weapon_drop_sound: 020.ogg
-weapon_broken_sound: 020.ogg
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
 <bmp_end> 
 
 <frame> 0 flying
@@ -57,7 +57,7 @@ weapon_broken_sound: 020.ogg
 
 <frame> 48 flash disappearing
    pic: 31  state: 3005  wait: 3  next: 41  dvx: 0  dvy: 550   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 48
-  sound: 852.ogg
+  sound: 852.m4a
    itr:
       kind: 0  x: 0  y: 0  w: 50  h: 50   fall: 70  vrest: 15  bdefend: 100  injury: 10  
    itr_end:
