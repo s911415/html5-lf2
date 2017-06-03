@@ -86,6 +86,7 @@ var lf2 = (function (lf2) {
          * @returns {boolean} return true if key fired
          */
         keydown(oriE) {
+
             const funcCode = this._parseKeyDownCode(oriE);
             const NOW = Date.now();
             if (funcCode !== 0) {
@@ -108,6 +109,8 @@ var lf2 = (function (lf2) {
             this._updateCurrentKey(NOW);
 
             if (this.character) {
+                if (!this.character.world._allowUpdate) return false;
+
                 const funcKeyWoArrow = this._currentKey & ~((KeyboardConfig.KEY_MAP.LEFT | KeyboardConfig.KEY_MAP.RIGHT) & ~KeyboardConfig.KEY_MAP.FRONT);
                 const hitList = this.character.currentFrame.hit;
 
