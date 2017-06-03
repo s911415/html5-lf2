@@ -62,8 +62,7 @@ var lf2 = (function (lf2) {
      * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
      */
-    let GameItem;
-    lf2.GameItem = GameItem = class GameItem extends Framework.GameObject {
+    lf2.GameItem = class GameItem extends Framework.GameObject {
         /**
          *
          * @param gameObjId ID of character
@@ -100,6 +99,7 @@ var lf2 = (function (lf2) {
             this._affectByFriction = true;
             this._bdyItems = [];
             this._itrItem = null;
+            this._itrItr = null;
             this._itrItemFrame = null;
             this._arestCounter = 0;
             this._vrestCounter = 0;
@@ -295,7 +295,7 @@ var lf2 = (function (lf2) {
             if (ret.x === STOP_ALL_MOVE_DV) ret.x = 0;
             if (ret.y === STOP_ALL_MOVE_DV) ret.y = 0;
             if (ret.z === STOP_ALL_MOVE_DV) ret.z = 0;
-            
+
             this._frameOffset = ret;
 
             //if(this._velocity.x!==0) debugger;
@@ -470,7 +470,7 @@ var lf2 = (function (lf2) {
             //     (leftTopPoint._y + leftTopPoint._z) | 0
             // );
             const REAL_DRAW_POS_X = leftTopPoint._x | 0;
-            const REAL_DRAW_POS_Y =  (leftTopPoint._y + leftTopPoint._z) | 0;
+            const REAL_DRAW_POS_Y = (leftTopPoint._y + leftTopPoint._z) | 0;
 
             //if (leftTopPoint.z != 0) debugger;
             if (this._allowDraw) {
@@ -575,16 +575,16 @@ var lf2 = (function (lf2) {
                 const itr = this.getItrBox();
                 if (itr) {
                     ctx.strokeStyle = "#0000FF";
-
-                    itr.draw(ctx, leftTopPoint.z);
+                    itr.forEach(i => i.draw(ctx, leftTopPoint.z));
                 }
-
 
                 let msg = [];
                 msg.push(`ID: ${this.obj.id}`);
                 msg.push(`CurrentFrameId: ${this._currentFrameIndex} / wait: ${this.currentFrame.wait}`);
                 msg.push(`position: (${this.position.x | 0}, ${this.position.y | 0}, ${this.position.z | 0}) / ${this._direction ? 'RIGHT' : 'LEFT'}`);
                 msg.push(`velocity: (${this._velocity.x | 0}, ${this._velocity.y | 0}, ${this._velocity.z | 0})`);
+
+                msg.push(`VrestCounter: ${this._vrestCounter}`);
 
                 if (this instanceof lf2.Character) {
                     msg.push(`Fall: ${this._fall | 0}`);
@@ -612,18 +612,18 @@ var lf2 = (function (lf2) {
 
         /**
          *
-         * @returns {lf2.Cube}
+         * @returns {lf2.Cube[]}
          */
         getItrBox() {
             const _itr = this.currentFrame.itr;
             if (!_itr) return null;
-
-            const rect = this._transferRect(this.currentFrame.itr.rect);
-
-            return new Cube(
-                rect.width, rect.height, _itr.zwidth,
-                rect.position.x, rect.position.y
-            );
+            return _itr.map(itr => {
+                let rect = this._transferRect(itr.rect);
+                return new Cube(
+                    rect.width, rect.height, _itr.zwidth,
+                    rect.position.x, rect.position.y
+                );
+            });
         }
 
 
@@ -690,65 +690,70 @@ var lf2 = (function (lf2) {
         /**
          * Gets attack items.
          *
-         * @return  The attack items.
+         * @return {lf2.GameItem[]} The attack items.
          */
         getAttackItems() {
-            const ITR = this.currentFrame.itr;
-            if (!ITR) return [];
-            if (ITR.kind === 4) return [];
-            if (ITR.kind === 6) return [];
+            const ITRs = this.currentFrame.itr;
+            if (!ITRs) return [];
 
             let res = [];
-
-            const
-                a_minX = getMinX(this, ITR.rect),
-                a_maxX = a_minX + ITR.rect.width,
-                a_minY = this.position.y - (ITR.zwidth >> 1), a_maxY = a_minY + ITR.zwidth,
-                a_minZ = getMinZ(this, ITR.rect),
-                a_maxZ = a_minZ + ITR.rect.height;
-
-            const checkCollision = (bdyItem) => {
-                const bdy = bdyItem.currentFrame.bdy;
-                if (!bdy || bdyItem._flashing) return false;
+            ITRs.forEach(ITR => {
+                if (ITR.kind === 4) return [];
+                if (ITR.kind === 6) return [];
 
                 const
-                    b_minX = getMinX(bdyItem, bdy.rect),
-                    b_maxX = b_minX + bdy.rect.width,
+                    a_minX = getMinX(this, ITR.rect),
+                    a_maxX = a_minX + ITR.rect.width,
+                    a_minY = this.position.y - (ITR.zwidth >> 1), a_maxY = a_minY + ITR.zwidth,
+                    a_minZ = getMinZ(this, ITR.rect),
+                    a_maxZ = a_minZ + ITR.rect.height;
 
-                    b_minY = bdyItem.position.y - 6, b_maxY = b_minY + 12,
+                const checkCollision = (bdyItem) => {
+                    const bdy = bdyItem.currentFrame.bdy;
+                    if (!bdy || bdyItem._flashing) return false;
 
-                    b_minZ = getMinZ(bdyItem, bdy.rect),
-                    b_maxZ = b_minZ + bdy.rect.height;
+                    const
+                        b_minX = getMinX(bdyItem, bdy.rect),
+                        b_maxX = b_minX + bdy.rect.width,
 
-                return (a_minX <= b_maxX && a_maxX >= b_minX) &&
-                    (a_minY <= b_maxY && a_maxY >= b_minY) &&
-                    (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
-            };
+                        b_minY = bdyItem.position.y - 6, b_maxY = b_minY + 12,
 
-            for (let i = 0; i < this._bdyItems.length && this._vrestCounter === 0; i++) {
-                const item = this._bdyItems[i];
+                        b_minZ = getMinZ(bdyItem, bdy.rect),
+                        b_maxZ = b_minZ + bdy.rect.height;
 
-                if (this._arestCounter > 0) break;
+                    return (a_minX <= b_maxX && a_maxX >= b_minX) &&
+                        (a_minY <= b_maxY && a_maxY >= b_minY) &&
+                        (a_minZ <= b_maxZ && a_maxZ >= b_minZ);
+                };
 
-                if (this === item) continue; //cannot attack itself.
+                for (let i = 0; i < this._bdyItems.length && this._vrestCounter === 0; i++) {
+                    const item = this._bdyItems[i];
 
-                if (checkCollision(item) && item._itrItem === null) {
-                    if (
-                        // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
-                    item !== this
-                    ) { //kind 18 allow attack itself.
-                        res.push(item);
+                    if (this._arestCounter > 0) break;
 
+                    if (this === item) continue; //cannot attack itself.
+
+                    if (checkCollision(item) && item._itrItem === null) {
                         if (
-                            (ITR.hasArest || !ITR.hasVrest) &&
-                            item instanceof lf2.Character &&
-                            ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1
-                        ) {
-                            this._arestCounter = ITR.arest;
+                            // (ITR.kind === FrameStage.FIRE || this.belongTo !== item.belongTo)
+                        item !== this
+                        ) { //kind 18 allow attack itself.
+                            res.push({
+                                item: item,
+                                itr: ITR
+                            });
+
+                            if (
+                                (ITR.hasArest || !ITR.hasVrest) &&
+                                item instanceof lf2.Character &&
+                                ItrKind.ITR_ALLOW_FALL.binarySearch(ITR.kind) !== -1
+                            ) {
+                                this._arestCounter = ITR.arest;
+                            }
                         }
                     }
                 }
-            }
+            });
 
             return res;
         }
@@ -760,16 +765,19 @@ var lf2 = (function (lf2) {
          */
         cleanUpItr() {
             this._itrItem = null;
+            this._itrItr = null;
             this._itrItemFrame = null;
         }
 
         /**
          *
          * @param {lf2.GameItem} item
+         * @param {lf2.Interaction} itr
          * @returns {boolean} return true if accept, otherwise false
          */
-        notifyDamageBy(item) {
+        notifyDamageBy(item, itr) {
             this._itrItem = item;
+            this._itrItr = itr;
             this._itrItemFrame = item.currentFrame;
             // console.log(item, 'attack', this);
 
@@ -781,12 +789,14 @@ var lf2 = (function (lf2) {
          * @param {lf2.GameItem[]} gotDamageItems
          */
         postDamageItems(gotDamageItems) {
-            const ITR = this.currentFrame.itr;
-            if (ITR && !ITR.hasArest && ITR.hasVrest && gotDamageItems.length > 0) {
-                if (gotDamageItems.some(x => x instanceof lf2.Character)) {
-                    this._vrestCounter = ITR.vrest;
+            this.currentFrame.itr.forEach(ITR => {
+                if (ITR && !ITR.hasArest && ITR.hasVrest && gotDamageItems.length > 0) {
+                    if (gotDamageItems.some(x => x instanceof lf2.Character)) {
+                        debugger;
+                        this._vrestCounter = ITR.vrest;
+                    }
                 }
-            }
+            });
         }
 
         /**
@@ -852,9 +862,9 @@ var lf2 = (function (lf2) {
             if (this._direction === DIRECTION.LEFT) {
                 leftTopPoint.x = this.position.x - (this.width - center.x);
             }
-            
+
             this._leftTopPointRef = leftTopPoint;
-            
+
             return leftTopPoint;
         }
 

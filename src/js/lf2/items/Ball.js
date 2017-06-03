@@ -142,7 +142,7 @@ var lf2 = (function (lf2) {
                 v.z = hit.j - 50;
             }
 
-            if(!this.world) return v;
+            if (!this.world) return v;
 
             if (hit.Fa !== 0) {
                 if (this._behavior) {
@@ -170,7 +170,7 @@ var lf2 = (function (lf2) {
                 switch (hit.Fa) {
                     case 1: //追敵人的center(因為敵人站在地面，所以會下飄)
                         this._behavior = new lf2.CenterTrackerBehavior(this, this.spriteParent);
-                    break;
+                        break;
                     case 14: //連環重炮
                         this._behavior = new lf2.JulianBallTrackerBehavior(this, this.spriteParent);
                         break;
@@ -250,12 +250,13 @@ var lf2 = (function (lf2) {
          * Notifies a damage by.
          *
          * @param  {lf2.GameItem} item    The item.
+         * @param {lf2.Interaction} itr
          *
          * @return  .
          */
-        notifyDamageBy(item) {
-            super.notifyDamageBy(item);
-            const ITR = item.currentFrame.itr;
+        notifyDamageBy(item, itr) {
+            super.notifyDamageBy(item, itr);
+            const ITR = itr;
             const DV = ITR.dv;
             const curState = this.currentFrame.state;
             const itemState = item.currentFrame.state;
@@ -289,12 +290,12 @@ var lf2 = (function (lf2) {
             if (ITR.kind === ItrKind.THREE_D_OBJECTS) {
                 if (
                     this.currentFrame.itr &&
-                    this.currentFrame.itr.kind === ItrKind.THREE_D_OBJECTS
+                    this.currentFrame.itr.some(i => i.kind === ItrKind.THREE_D_OBJECTS)
                 ) {
                     return false;
                 }
             }
-            
+
             const CAN_ATTACK = this.canDamageBy(item, ITR);
 
             if (!CAN_ATTACK) return false;
@@ -328,8 +329,10 @@ var lf2 = (function (lf2) {
                         ITR.kind === ItrKind.THREE_D_OBJECTS &&
                         (
                             this.currentFrame.itr &&
-                            this.currentFrame.itr.kind === ItrKind.NORMAL_HIT &&
-                            this.currentFrame.itr.effect === Effect.FIXED_ICE
+                            this.currentFrame.itr.some(
+                                i => i.kind === ItrKind.NORMAL_HIT &&
+                                i.effect === Effect.FIXED_ICE
+                            )
                         )
                     ) {
                         return false;
@@ -344,8 +347,8 @@ var lf2 = (function (lf2) {
                     ) {
 
                         this.setNextFrame(20);
-                            this.freeze();
-                        }
+                        this.freeze();
+                    }
 
             }
 
@@ -363,7 +366,7 @@ var lf2 = (function (lf2) {
             super.postDamageItems(gotDamageItems);
             const curFrame = this.currentFrame;
             const state = curFrame.state;
-            const ITR = curFrame.itr;
+            const ITR = curFrame.itr[0];
             const HIT = curFrame.hit;
 
             //打中敵軍
@@ -383,7 +386,7 @@ var lf2 = (function (lf2) {
                 }
 
             } /*else if (ITR && ITR.kind === ItrKind.THREE_D_OBJECTS) {
-                // DO NOTHING
+             // DO NOTHING
 
              }*/ else {
                 switch (state) {

@@ -23,7 +23,8 @@ var lf2 = (function (lf2) {
             };
             str = str.replace(/\r?\n/g, ' ');
             let data = new Map();
-            let pairs = str.match(/([^ ]+):\s+?[^ ]+/g);
+            let pairs = str.match(/(([^ ]+)(\s+)?:(\s+)?[^ ]+)/g);
+
             if (!pairs) {
                 throw new TypeError('Cannot parse line: ' + str);
             }

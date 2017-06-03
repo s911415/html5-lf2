@@ -110,15 +110,14 @@ var lf2 = (function (lf2) {
                      */
                     let actualAttackedItems = [];
                     attackedItems.forEach(bdyItem => {
-                        const r = bdyItem.notifyDamageBy(item);
+                        const r = bdyItem.item.notifyDamageBy(item, bdyItem.itr);
                         if (r) {
                             define.DEBUG && console.log(bdyItem);
                             actualAttackedItems.push(bdyItem);
                         }
                     });
 
-
-                    item.postDamageItems(actualAttackedItems);
+                    item.postDamageItems(actualAttackedItems.map(x => x.item));
 
                     let bound = this.map.getBound(item.position);
                     if (bound !== Bound.NONE) {

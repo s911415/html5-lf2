@@ -92,6 +92,38 @@ String.prototype.getStringBetween = function (startString, endString, fromIndex)
 };
 
 /**
+ * Get context between a string
+ * @param {String} startString
+ * @param {String} endString
+ * @param {Number} [fromIndex] default = 0
+ *
+ * @returns {String[]} context
+ */
+String.prototype.getStringBetweenMulti = function (startString, endString, fromIndex) {
+    if (fromIndex === undefined) fromIndex = 0;
+
+    let startIndex = this.indexOf(startString, fromIndex);
+    let endIndex = this.lastIndexOf(endString);
+
+    if (startIndex === -1) return [""];
+
+    if (endIndex === -1) return [this.substr(startIndex)];
+
+    let ret = [];
+
+    while (startIndex !== -1 && startIndex < endIndex) {
+        let eIndex = this.indexOf(endString, startIndex);
+        let stringBetween = this.substring(startIndex + startString.length, eIndex);
+        ret.push(stringBetween);
+
+        startIndex = this.indexOf(startString, eIndex + endString.length);
+    }
+
+
+    return ret;
+};
+
+/**
  * Check whatever number in range
  *
  * @param {Number} minValue
