@@ -361,9 +361,9 @@ var lf2 = (function (lf2) {
             }
 
             if (this._itrItem) {
-                const ITR = this._itrItemFrame.itr;
+                let ITR = this._itrItemFrame.itr;
                 if (!ITR) throw "Some wrong";
-
+                ITR = ITR[0];
                 switch (ITR.kind) {
                     case ItrKind.THREE_D_OBJECTS:
                         x = z = 0;
@@ -374,7 +374,7 @@ var lf2 = (function (lf2) {
             this._charVel.x = x;
             this._charVel.y = y;
             this._charVel.z = z;
-            
+
             return this._charVel;
         }
 
@@ -658,27 +658,28 @@ var lf2 = (function (lf2) {
          */
         canDamageBy(item, ITR) {
             const parentRet = super.canDamageBy(item, ITR);
-            if(!parentRet) return parentRet;
-            
-            if (this.currentFrame.state === FrameStage.BURN_RUN && ITR.kind===ItrKind.NORMAL_HIT){
-                if(
-                    ITR.effect===Effect.FIRE ||
-                    ITR.effect===Effect.FIXED_FIRE_0 ||
-                    ITR.effect===Effect.FIXED_FIRE_1 ||
-                    ITR.effect===Effect.FIXED_FIRE_2
+            if (!parentRet) return parentRet;
+
+            if (this.currentFrame.state === FrameStage.BURN_RUN && ITR.kind === ItrKind.NORMAL_HIT) {
+                if (
+                    ITR.effect === Effect.FIRE ||
+                    ITR.effect === Effect.FIXED_FIRE_0 ||
+                    ITR.effect === Effect.FIXED_FIRE_1 ||
+                    ITR.effect === Effect.FIXED_FIRE_2
                 ) return false;
             }
-            
+
             return parentRet;
         }
 
         /**
          *
          * @param {lf2.GameItem} item
+         * @param {lf2.Interaction} itr
          */
-        notifyDamageBy(item) {
-            super.notifyDamageBy(item);
-            const ITR = item.currentFrame.itr;
+        notifyDamageBy(item, itr) {
+            super.notifyDamageBy(item, itr);
+            const ITR = itr;
             const DV = ITR.dv;
             const curState = this.currentFrame.state;
 

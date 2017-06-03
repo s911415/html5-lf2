@@ -46,19 +46,47 @@ var lf2 = (function (lf2) {
 
             this.data = Utils.parseDataLine(lines[picIndex]);
 
-            let itr = context.getStringBetween(ITR_START_TAG, ITR_END_TAG);
-            let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
             let opoint = context.getStringBetween(OPOINT_START_TAG, OPOINT_END_TAG);
             let bpoint = context.getStringBetween(BPOINT_START_TAG, BPOINT_END_TAG);
-            itr=itr?itr.trim():itr;
-            bdy=bdy?bdy.trim():bdy;
 
-            this.itr = itr ? new Interaction(itr) : undefined;
-            this.bdy = bdy ? new Body(bdy) : undefined;
             this.opoint = opoint ? new ObjectPoint(opoint) : undefined;
             this.bpoint = bpoint ? new BloodPoint(bpoint) : undefined;
 
             this.mp = intval(this.data.get('mp') || 0);
+
+
+            let itr = context.getStringBetweenMulti(ITR_START_TAG, ITR_END_TAG);
+            if (itr.length > 0) {
+                /**
+                 *
+                 * @type {lf2.Interaction[]}
+                 */
+                this.itr = [];
+                itr.forEach(
+                    itrString => {
+                        let iStr = itrString.trim();
+                        if (iStr) {
+                            this.itr.push(new Interaction(iStr));
+                        }
+                    }
+                )
+            } else {
+                this.itr = undefined;
+            }
+
+            // let bdy = context.getStringBetweenMulti(BDY_START_TAG, BDY_END_TAG);
+            // if (bdy.length > 0) {
+            //     this.bdy = bdy.map(
+            //         bdyString =>
+            //             new Body(bdyString.trim())
+            //     );
+            // } else {
+            //     this.bdy = undefined;
+            // }
+            let bdy = context.getStringBetween(BDY_START_TAG, BDY_END_TAG);
+            bdy = bdy ? bdy.trim() : bdy;
+            this.bdy = bdy ? new Body(bdy) : undefined;
+
 
             this.soundPath = (function () {
                 let soundStr = undefined;
@@ -88,13 +116,13 @@ var lf2 = (function (lf2) {
 
                 return ret;
             })();
-            
+
             this._velocity = new Point3D(
                 intval(this.data.get('dvx') || 0),
                 intval(this.data.get('dvy') || 0),
                 intval(this.data.get('dvz') || 0)
             );
-            
+
             this._center = new Point(
                 intval(this.data.get('centerx')),
                 intval(this.data.get('centery'))
@@ -186,7 +214,7 @@ var lf2 = (function (lf2) {
         }
 
         get size() {
-            if(this._sizeCache === undefined){
+            if (this._sizeCache === undefined) {
                 /**
                  * @type {lf2.ImageInformation}
                  */
@@ -197,7 +225,7 @@ var lf2 = (function (lf2) {
                     img.rect.width, img.rect.height
                 );
             }
-            
+
             return this._sizeCache;
         }
     };
