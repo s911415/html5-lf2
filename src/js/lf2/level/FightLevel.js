@@ -168,9 +168,10 @@ var lf2 = (function (lf2) {
             });
 
             if (this._anyFuncPressed) {
-                let funcStr = 'Function Keys Used: ';
+                let funcStr = 'Function Keys Used:\x20';
                 for (let k in this._funcStatus) {
-                    funcStr += `　${k}: ${this._funcStatus[k]} time(s)`;
+                    if (!this._funcStatus.hasOwnProperty(k)) continue;
+                    funcStr += `　${k}: ${this._funcStatus[k]}\x20time(s)`;
                 }
 
                 this._funcBar.textContent = funcStr;

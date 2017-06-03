@@ -62,8 +62,7 @@ var lf2 = (function (lf2) {
      * @extends {Framework.GameObject}
      * @implements Framework.AttachableInterface
      */
-    let GameItem;
-    lf2.GameItem = GameItem = class GameItem extends Framework.GameObject {
+    lf2.GameItem = class GameItem extends Framework.GameObject {
         /**
          *
          * @param gameObjId ID of character
