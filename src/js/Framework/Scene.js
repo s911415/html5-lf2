@@ -24,6 +24,10 @@ var Framework = (function (Framework) {
             this.id = undefined;
             this.type = undefined;
             this.texture = undefined;
+            /**
+             *
+             * @type {Array}
+             */
             this.attachArray = [];
             this.pushSelfToLevel();
         }
