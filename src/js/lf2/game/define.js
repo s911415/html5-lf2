@@ -21,6 +21,8 @@
 
         LOADING_MIN_TIME: 0 * 1000,
 
+        MAX_ITEM_COUNT: 200,
+
         INF_MP: false, //Infinity MP
 
         MAP_SMOOTHLY: false,

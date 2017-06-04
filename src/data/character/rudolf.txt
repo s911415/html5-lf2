@@ -2245,7 +2245,7 @@ rowing_distance 8
 <frame_end>
 
 <frame> 260 +man
-   pic: 85  state: 15  wait: 1  next: 261  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 250
+   pic: 85  state: 15  wait: 1  next: 999  dvx: 0  dvy: 0  dvz: 0  centerx: 41  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0 mp: 0
    wpoint:
       kind: 1  x: 46  y: 49  weaponact: 30  attacking: 0  cover: 1  dvx: 0  dvy: 0  dvz: 0 
    wpoint_end:

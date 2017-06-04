@@ -83,9 +83,6 @@ weapon_broken_sound: 020.m4a
    bdy:
       kind: 0  x: 26  y: 12  w: 45  h: 24
    bdy_end:
-   opoint:
-      kind: 1  x: 19  y: 23  action: 7  dvx: 0  dvy: 0  oid: 207  facing: 30
-   opoint_end:
 <frame_end>
 
 <frame> 8 flying
