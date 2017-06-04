@@ -105,7 +105,6 @@ var lf2 = (function (lf2) {
             this._vrestCounter = 0;
             this._flashing = false;
             this._flashCounter = false;
-            this._isNew = true;
             this.alive = true;
             /**
              *
@@ -186,10 +185,6 @@ var lf2 = (function (lf2) {
          * @override
          */
         update() {
-            if (this._isNew) {
-                this._isNew = false;
-                return;
-            }
             const curFrame = this.currentFrame;
             this._updateCounter++;
             let offset = this._getFrameOffset();
@@ -792,7 +787,6 @@ var lf2 = (function (lf2) {
             this.currentFrame.itr.forEach(ITR => {
                 if (ITR && !ITR.hasArest && ITR.hasVrest && gotDamageItems.length > 0) {
                     if (gotDamageItems.some(x => x instanceof lf2.Character)) {
-                        debugger;
                         this._vrestCounter = ITR.vrest;
                     }
                 }

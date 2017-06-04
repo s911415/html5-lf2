@@ -53,6 +53,7 @@ var lf2 = (function (lf2) {
             this._startMoveCameraPos = 0;
             this._cameraPositionCache = new Point(0, 0);
             this._cameraChanged = false;
+            this._waitForAdd = [];
 
             this.setMapById(this.config.mapId);
         }
@@ -77,6 +78,7 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         update() {
+
             let sumPlayerX = 0, count = 0;
             this.config.players.forEach((p) => {
                 sumPlayerX += p.character.position.x;
@@ -94,6 +96,12 @@ var lf2 = (function (lf2) {
             this.map.update();
 
             if (!this._allowUpdate) return;
+
+            if (this._waitForAdd.length > 0) {
+                this._waitForAdd.forEach(item => this.attach(item));
+                this._waitForAdd.length = 0;
+            }
+
             let bdyItems = this._getAllBdyItem();
 
             this.attachArray.forEach((item) => {
@@ -136,9 +144,19 @@ var lf2 = (function (lf2) {
                 }
             });
 
+
             if (this._stepByStep) {
                 this._allowUpdate = false;
             }
+        }
+
+        /**
+         * Add new item into world
+         * @param {lf2.GameItem} item
+         */
+        addNewItem(item) {
+            if (this.attachArray.length - define.PLAYER_COUNT > define.MAX_ITEM_COUNT) return;
+            this._waitForAdd.push(item);
         }
 
         /**

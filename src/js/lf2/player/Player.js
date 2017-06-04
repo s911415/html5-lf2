@@ -538,7 +538,7 @@ var lf2 = (function (lf2) {
                     ball._velocity.x = opoint.dv.x;
                     ball._velocity.y = opoint.dv.y;
                 }
-                this.spriteParent.attach(ball);
+                this.spriteParent.addNewItem(ball);
             });
 
             return ballArr;
