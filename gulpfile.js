@@ -114,7 +114,7 @@ gulp.task('build', () => {
         .pipe(sourcemaps.init())
         /*
          .pipe(babel({ //Something problem with extends Map
-         presets: ['es2016', 'es2015']
+            presets: ['latest']
          }))*/
         .pipe(babili({
             mangle: {
