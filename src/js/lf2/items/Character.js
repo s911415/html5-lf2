@@ -9,7 +9,7 @@ var lf2 = (function (lf2) {
     const Effect = lf2.Effect;
     const GameItem = lf2.GameItem;
     const GameObjectPool = lf2.GameObjectPool;
-    const ResourceManager = Framework.ResourceManager;
+    const Point3D = Framework.Point3D;
     const KeyboardConfig = lf2.KeyboardConfig;
     const FrameStage = lf2.FrameStage;
     const DIRECTION = GameItem.DIRECTION;
@@ -383,10 +383,12 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        applyFriction() {
-            super.applyFriction();
+        _getFrameOffset() {
+            const o = super._getFrameOffset();
             let x, y, z;
-            x = y = z = undefined;
+            x = o.x;
+            y = o.y;
+            z = 0;
             switch (this.currentFrame.state) {
                 case FrameStage.WALK:
 
@@ -423,11 +425,23 @@ var lf2 = (function (lf2) {
 
                     }
                     break;
+                default: {
+                    const v = this._getVelocity();
+                    if (v.z !== 0 && v.z !== this.STOP_ALL_MOVE_DV) {
+                        if (this.containsKey(KeyboardConfig.KEY_MAP.DOWN)) {
+                            z = v.z;
+                        } else if (this.containsKey(KeyboardConfig.KEY_MAP.UP)) {
+                            z = -v.z;
+                        }
+                    }
+                }
+                    break;
             }
-
             if (x !== undefined) this._velocity.x = x;
             if (y !== undefined) this._velocity.y = y;
             if (z !== undefined) this._velocity.z = z;
+
+            return new Point3D(x, y, z);
         }
 
         /**
@@ -576,10 +590,14 @@ var lf2 = (function (lf2) {
                 }
             }
 
-            //變身
+            //治癒自己
+            if (state === FrameStage.CURE_SELF) {
+                this.belongTo.addHp(100);
+            }
 
+            //變身
             if (frameKind === 80 || state === 9995) {
-                let newCharId = this.currentFrame.state % 1000;
+                let newCharId = state % 1000;
                 if (state === 9995) {
                     newCharId = 50;
                 }
@@ -591,6 +609,7 @@ var lf2 = (function (lf2) {
                 this.small = this.obj.small;
                 this._currentFrameIndex = 0;
             }
+
 
             if (!this._allowDraw) {
                 this._hideRemainderTime--;

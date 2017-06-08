@@ -5,7 +5,8 @@ var Framework = (function (Framework) {
     /**
      *
      * @class {Framework.Point3D}
-     * @extends {Point}
+     * @extends {Framework.Point}
+     * @property {Number} z
      */
     Framework.Point3D = class Point3D extends Point {
 

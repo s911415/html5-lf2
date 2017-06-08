@@ -278,7 +278,7 @@ var lf2 = (function (lf2) {
             path = path.replace(/\\/g, '/').replace(/\/\//, '/');
 
             const ZipFileEntry = this.zip.files ? this.zip.files[path] : undefined;
-            if (ZipFileEntry) {
+            if (!define.DEBUG && ZipFileEntry) {
                 return ZipFileEntry.async('text');
             } else {
                 return ResourceManager.loadResource(define.DATA_PATH + path).then(r => r.text());
