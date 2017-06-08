@@ -241,9 +241,15 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        applyFriction() {
-            super.applyFriction();
-            this._velocity.z -= lf2.GameItem.ApplyFriction(this._velocity.z);
+        _getFrameOffset() {
+            /**
+             * @type {Framework.Point3D}
+             */
+            let o = super._getFrameOffset().clone();
+            o.z -= lf2.GameItem.ApplyFriction(this._velocity.z);
+            this._velocity.z = o.z;
+
+            return o
         }
 
         /**

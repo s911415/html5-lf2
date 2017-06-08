@@ -192,8 +192,9 @@ var lf2 = (function (lf2) {
             }
             const curFrame = this.currentFrame;
             this._updateCounter++;
-            let offset = this._getFrameOffset();
+            this.applyFriction();
 
+            let offset = this._getFrameOffset();
             //Start move object
             this.position.z += offset.y;
             this.position.y += offset.z;
@@ -208,7 +209,6 @@ var lf2 = (function (lf2) {
             }
             //End of move object
 
-            this.applyFriction();
 
             switch (curFrame.state) {
                 case FrameStage.CLOSED_BAD_GUY: {
@@ -234,8 +234,6 @@ var lf2 = (function (lf2) {
             }
 
             let bound = 0;
-//console.log('xxx', this._updateCounter >= this.currentFrame.wait, this.currentFrame.wait);
-//if(this.currentFrame.wait>1000) debugger;
             if (this._frameForceChange || this._updateCounter >= this.currentFrame.wait) {
                 this.setFrameById(this._getNextFrameId());
                 this._frameForceChange = false;
@@ -376,6 +374,10 @@ var lf2 = (function (lf2) {
          * @param {Number} frameId
          */
         setFrameById(frameId) {
+            if (frameId < 0 && this.frameExist(-frameId)) {
+                this._direction = !this._direction;
+                return this.setFrameById(-frameId);
+            }
             if (!this.frameExist(frameId)) throw new RangeError(`Object (${this.obj.id}) Frame (${frameId}) not found`);
             //console.log("Set Frame ", frameId);
             if (frameId === DESTROY_ID) {
@@ -1067,6 +1069,7 @@ var lf2 = (function (lf2) {
     lf2.GameItem.prototype.MIN_V = lf2.GameItem.MIN_V = MIN_V;
     lf2.GameItem.prototype.FRICTION = lf2.GameItem.FRICTION = FRICTION;
     lf2.GameItem.prototype.GRAVITY = lf2.GameItem.GRAVITY = GRAVITY;
+    lf2.GameItem.prototype.STOP_ALL_MOVE_DV = lf2.GameItem.STOP_ALL_MOVE_DV = STOP_ALL_MOVE_DV;
 
     return lf2;
 })(lf2 || {});
