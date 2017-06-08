@@ -3,7 +3,10 @@ var Framework = (function (Framework) {
     /**
      * 2D coordinate, also use as a pair structure
      *
-     * @type {Point}
+     * @class {Framework.Point}
+     * @property {Number} x
+     * @property {Number} y
+     * @property {Number} z
      */
     Framework.Point = class Point {
 
