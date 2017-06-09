@@ -150,6 +150,20 @@ var lf2 = (function (lf2) {
                     //heightStyle: 'fill'
                 });
 
+                let videos = this._helpContainer.find('#tabs-1 video');
+                videos.each(function () {
+                    this.loop = true;
+                    this.parentNode.parentNode.video = this;
+                });
+                videos.parent().parent().on('mouseover', function () {
+                    const video = this.video;
+                    video.play();
+                }).on('mouseleave', function () {
+                    const video = this.video;
+                    video.pause();
+                    video.currentTime = 0;
+                });
+
                 $("body").append(this._helpContainer);
                 this._attached = true;
                 Game.resizeEvent();
