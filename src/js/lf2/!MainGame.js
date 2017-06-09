@@ -11,6 +11,7 @@ var lf2 = (function (lf2) {
             Framework.Game.addNewLevel({control: new lf2.MySettingLevel()});
             Framework.Game.addNewLevel({loading: new lf2.LoadingLevel()});
             Framework.Game.addNewLevel({selection: new lf2.SelectionLevel()});
+            Framework.Game.addNewLevel({help: new lf2.HelpLevel()});
             Framework.Game.addNewLevel({fight: new FightLevel()});
 
             this._cheatStatus = false;

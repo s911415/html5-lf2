@@ -12,11 +12,11 @@ const gulp = require('gulp'),
     zip = require('gulp-zip')
 ;
 
-gulp.task('build', () => {
-
+gulp.task('buildJs', () => {
     return gulp.src([
         'src/js/utils.js',
-        'src/js/jquery-3.1.1.min.js',
+        'src/js/jquery-3.2.1.js',
+        'src/js/jquery-ui-1.12.1.js',
         'src/js/jszip.min.js',
 
         "src/js/Framework/AttachableInterface.js",
@@ -106,6 +106,7 @@ gulp.task('build', () => {
         'src/js/lf2/level/LaunchMenu.js',
         'src/js/lf2/level/MySettingLevel.js',
         'src/js/lf2/level/LoadingLevel.js',
+        'src/js/lf2/level/HelpLevel.js',
         'src/js/lf2/level/SelectionLevel.js',
         'src/js/lf2/level/FightLevel.js',
 
@@ -114,7 +115,7 @@ gulp.task('build', () => {
         .pipe(sourcemaps.init())
         /*
          .pipe(babel({ //Something problem with extends Map
-            presets: ['latest']
+         presets: ['latest']
          }))*/
         .pipe(babili({
             mangle: {
@@ -127,6 +128,24 @@ gulp.task('build', () => {
         .pipe(concat('js/load.js'))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(DIST_DIR));
+});
+
+gulp.task('buildCss', () => {
+    return del([
+        'dist/css/style.css',
+    ]).then(paths => {
+        console.log('Deleted files and folders:\n', paths.join('\n'));
+    }).then(() => {
+        gulp.src([
+            'src/css/jquery-ui-1.12.1.css',
+            'src/css/style.css',
+        ])
+            .pipe(sourcemaps.init())
+            .pipe(concat('css/style.css'))
+            .pipe(sourcemaps.write('.'))
+            .pipe(gulp.dest(DIST_DIR));
+    });
+
 });
 
 gulp.task('clean', () => {
@@ -196,9 +215,10 @@ gulp.task(
     'default',
     gulpSequence(
         'clean',
+        'resources',
         [
-            'resources',
-            'build'
+            'buildJs',
+            'buildCss'
         ],
         [
             'zipData',
