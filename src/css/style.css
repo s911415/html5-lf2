@@ -14,6 +14,28 @@
     src: local('Material Icons'), local('MaterialIcons-Regular'), url('MaterialIcons-Regular.woff2') format('woff2');
 }
 
+
+::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #122565;
+}
+
+::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #122565;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #5a77d8;
+}
+
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -748,11 +770,62 @@ body {
     top: 0;
     color: #0a1342;
     transform: translate(-50%, -50%);
-    background: linear-gradient( to bottom, rgb(17, 17, 17) 0%, rgb(17, 17, 17) 49%, #0a1342 51%, #0a1342 100%);
+    background: linear-gradient(to bottom, rgb(17, 17, 17) 0%, rgb(17, 17, 17) 49%, #0a1342 51%, #0a1342 100%);
     color: #aec7ff;
     padding: 0 .5em;
 }
 
-#help_panel .action_bar .btn_ok{
+#help_panel .action_bar .btn_ok {
     left: 172px;
+}
+
+#help-tab {
+    margin-top: 1.5em;
+    border: 0;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    height: 320px;
+    border-bottom: 2px solid #5b75d9;
+    border-radius: 0;
+}
+
+#help-tab .ui-widget-header {
+    background: transparent;
+    border: 2px solid #5b75d9;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: -2px;
+    margin-right: -2px;
+    border-top: 0;
+    border-radius: 0;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border-width: 2px;
+    border-color: #283d84;
+    background: #122565;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus, .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    border-width: 2px;
+    border-color: #5a77d8;
+    background: #122565;
+}
+
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
+    color: #5a77d8;
+}
+
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+    color: #ffffff;
+}
+
+.ui-tabs .ui-tabs-panel {
+    height: calc(100% - 42px);
+    box-sizing: border-box;
+    background: #122565;
+    color: #aec7ff;
+    text-align: left;
+    overflow-y: auto;
 }

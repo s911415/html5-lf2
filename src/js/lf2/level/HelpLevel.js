@@ -146,7 +146,9 @@ var lf2 = (function (lf2) {
                     this._backToMenu();
                 });
 
-                this._helpContainer.find('#help-tab').tabs();
+                this._helpContainer.find('#help-tab').tabs({
+                    //heightStyle: 'fill'
+                });
 
                 $("body").append(this._helpContainer);
                 this._attached = true;
