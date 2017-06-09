@@ -69,8 +69,6 @@ var lf2 = (function (lf2) {
          * @return  .
          */
         initialize() {
-            //Play bgm
-            lf2['!MainGame'].playBgm();
         }
 
         /**
@@ -84,9 +82,11 @@ var lf2 = (function (lf2) {
             super.update();
 
             if (this._menuAttached && !this.loadResLoadStart) {
+                //Play bgm
+                lf2['!MainGame'].playBgm();
+
                 this.loadResLoadStart = true;
                 this.preload();
-
             }
         }
 
