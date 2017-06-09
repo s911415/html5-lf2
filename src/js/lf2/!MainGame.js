@@ -16,9 +16,6 @@ var lf2 = (function (lf2) {
             this._cheatStatus = false;
             this.bgmStatus = !define.DEBUG;
             this._keyPool = new lf2.KeyEventPool(CHEAT_KEYWORD.length);
-            this.bgmAudio = new Framework.Audio({
-                bgm: define.BGM_PATH + 'main.m4a',
-            });
             this.bgmParam = {
                 name: 'bgm',
                 loop: true,
@@ -125,8 +122,16 @@ var lf2 = (function (lf2) {
          *
          * @return  .
          */
-        playBgm(){
-            this.bgmAudio.play('bgm', this.bgmParam);
+        playBgm() {
+            this.bgmAudio = this.bgmAudio || new Framework.Audio({
+                    bgm: define.BGM_PATH + 'main.m4a',
+                });
+            
+            this.bgmAudio
+                .done()
+                .then(() => {
+                    this.bgmAudio.play('bgm', this.bgmParam);
+                });
         }
 
         /**
