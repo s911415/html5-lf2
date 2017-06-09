@@ -138,10 +138,8 @@ var lf2 = (function (lf2) {
 
                 this._helpContainer = $(this.html);
                 this._helpContainer.attr("id", _HELP_CONTAINER_ID);
-                console.log(JSON.stringify(this.simInfo));
-                const BackToMenu = (e) => {
+                //console.log(JSON.stringify(this.simInfo));
 
-                };
                 this._helpContainer.find(".btn_ok").click((e) => {
                     this._backToMenu();
                 });
@@ -176,6 +174,7 @@ var lf2 = (function (lf2) {
          * @private
          */
         _backToMenu() {
+            this.audio.play('cancel');
             Game.goToLevel('menu');
         }
 

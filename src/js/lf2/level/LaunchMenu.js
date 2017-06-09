@@ -196,6 +196,7 @@ var lf2 = (function (lf2) {
                     Game.goToLevel('control');
                 });
                 this._menuContainer.find("#help_btn").click(e=>{
+                    this.audio.play('ok');
                     Game.goToLevel('help');
                 });
 
