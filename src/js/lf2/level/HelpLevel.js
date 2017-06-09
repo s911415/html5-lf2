@@ -146,6 +146,8 @@ var lf2 = (function (lf2) {
                     this._backToMenu();
                 });
 
+                this._helpContainer.find('#help-tab').tabs();
+
                 $("body").append(this._helpContainer);
                 this._attached = true;
                 Game.resizeEvent();
@@ -197,6 +199,7 @@ var lf2 = (function (lf2) {
          */
         autodelete() {
             if (this._helpContainer) {
+                this._helpContainer.find('#help-tab').tabs('destroy');
                 this._helpContainer.remove();
                 this._helpContainer = undefined;
             }
