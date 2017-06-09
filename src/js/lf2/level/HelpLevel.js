@@ -171,15 +171,42 @@ var lf2 = (function (lf2) {
                     video.currentTime = 0;
                 });
 
-                let cHtml = '';
+
+                let charListEle = this._helpContainer.find("#char-list");
                 this.simInfo
                     .filter(x => x.skill !== undefined)
                     .forEach((c) => {
-
-                        cHtml += `<div class="cover-s" data-id="${c.id}" title="${c.name}"><img src="${define.IMG_PATH + c.headPath}"/></div>`;
+                        let ele = $("<div class='cover-s'></div>"), img = new Image();
+                        ele.attr('data-id', c.id).attr('title', c.name).data('c', c);
+                        ele.append(img);
+                        img.src = define.IMG_PATH + c.headPath;
+                        charListEle.append(ele);
                     });
-                $("#char-list").empty().append(cHtml);
-                
+
+                charListEle.find('.cover-s').click((e) => {
+                    const c = $(e.currentTarget).data('c');
+                    let info = this._helpContainer.find("#char-info").empty();
+                    let h = $(`
+                    <div class="char-info">
+                        <img src="${define.IMG_PATH + c.headPath}"/>
+                        <div class="char-name"></div>
+                    </div>
+                    
+                    <ul class="char-skill"></ul>
+`);
+                    info.append(h);
+                    h.find('.char-name').text(c.name);
+                    let skillEle = info.find('ul.char-skill');
+                    c.skill.forEach(s => {
+                        let sh = $('<li></li>');
+                        sh.attr('skillName', s.skillName);
+                        sh.attr('keyHint', s.keyHint);
+                        skillEle.append(sh);
+                    });
+
+                });
+
+
                 $("body").append(this._helpContainer);
                 this._attached = true;
                 Game.resizeEvent();

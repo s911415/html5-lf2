@@ -789,6 +789,7 @@ body {
     height: 320px;
     border-bottom: 2px solid #5b75d9;
     border-radius: 0;
+    pointer-events: auto;
 }
 
 #help-tab .ui-widget-header {
@@ -839,63 +840,121 @@ a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
     cursor: default;
 }
 
-.table{
+.table {
     width: 100%;
     border-collapse: collapse;
     border-color: #5b75d9;
 }
-.table td, .table th{
+
+.table td, .table th {
     padding: .25em;
     border-color: #5b75d9;
 }
 
-#help_panel video{
+#help_panel video {
     width: 256px;
     height: 192px;
 }
 
-#help-tab p{
+#help-tab p {
     margin-top: 0;
 }
 
-#tabs-1 table{
+#tabs-1 table {
     table-layout: fixed;
 }
 
-#tabs-1 ul, #tabs-1 ol{
+#tabs-1 ul, #tabs-1 ol {
     padding-left: 1.5em;
 }
 
-#tabs-1 .name{
+#tabs-1 .name {
 
 }
 
-#tabs-1 .act-video{
+#tabs-1 .act-video {
     width: 256px;
 }
 
-#tabs-1 .key{
+#tabs-1 .key {
 
 }
 
-#tabs-1 .desc{
+#tabs-1 .desc {
 
 }
 
-#tabs-2 h3{
+#tabs-2 h3 {
     margin-bottom: .25rem;
     text-decoration: underline;
 }
 
-#tabs-2 h3:before{
+#tabs-2 h3:before {
     content: "※";
 }
 
-b.cheat{
+b.cheat {
     font-style: italic;
     font-weight: bold;
 }
 
-p>b.cheat:first-of-type:after{
+p > b.cheat:first-of-type:after {
     content: "：";
+}
+
+.cover-s {
+    float: left;
+    width: 45px;
+    height: 45px;
+    background: #000;
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
+.cover-s img {
+    width: 100%;
+    height: 100%;
+}
+
+#char-list {
+    margin-left: calc(-1.5em);
+    margin-right: calc(-1.5em + 2px);
+    margin-top: -1em;
+    text-align: center;
+}
+
+#char-list:after, #char-info {
+    display: block;
+    content: "";
+    clear: both;
+}
+.char-skill li{
+    text-align: left;
+}
+.char-skill li:before {
+    content: attr(skillName);
+}
+
+.char-skill li:after {
+    content: attr(keyHint);
+}
+
+#char-info {
+    text-align: center;
+    margin-top: 10px;
+    display: flex;
+}
+
+.char-skill {
+    flex: 1;
+    margin-top: 0;
+}
+
+#char-info img .obj{
+    background: ;
+}
+
+#char-info .char-info img{
+    margin-top: 0;
+    background: #000;
 }
