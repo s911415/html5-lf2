@@ -302,5 +302,628 @@
             "skillName": "☆地獄箭雨★",
             "keyHint": "D^J + D>J + D>J"
         }
+    ],
+    "強化John": [
+        {
+            "skillName": "七連氣功波",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "氣旋防護壁",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "三連氣旋斬",
+            "keyHint": "D^(A...)"
+        },
+        {
+            "skillName": "治療他人",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "治療自己",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "激光魔仗",
+            "keyHint": "DvA 7. 定身術,定身術二段 DJA,DJAA"
+        },
+        {
+            "skillName": "降服",
+            "keyHint": "Catching + DJA"
+        },
+        {
+            "skillName": "☆地獄魔咒★",
+            "keyHint": "Dv(A...)"
+        }
+    ],
+    "強化Deep": [
+        {
+            "skillName": "真空斬",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "超霸王斬",
+            "keyHint": "Dv(A...)"
+        },
+        {
+            "skillName": "超屠龍斬",
+            "keyHint": "D^JA"
+        },
+        {
+            "skillName": "終極鬼哭斬",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "刀光劍影",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "迴旋斬",
+            "keyHint": "JJ,D^JJ"
+        },
+        {
+            "skillName": "狂龍斬",
+            "keyHint": ">>AJ"
+        },
+        {
+            "skillName": "爆破波",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "☆地獄翔空斬★",
+            "keyHint": "DVA + D^A + J + DVJ"
+        }
+    ],
+    "強化Bandit": [
+        {
+            "skillName": "烈地爆破拳",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "野牛亂舞",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "無影號角",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "飛翔腳",
+            "keyHint": "Jump + DvJ"
+        },
+        {
+            "skillName": "☆二度強化★",
+            "keyHint": "DJA + A （變成強化BanditEX）"
+        }
+    ],
+    "強化BanditEX": [
+        {
+            "skillName": "轟天爆破拳",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "瘋牛亂舞",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "衝天號角",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "突襲腳",
+            "keyHint": "Jump + DvJ"
+        },
+        {
+            "skillName": "EX火炎",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "授身",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "☆地獄狂牛★",
+            "keyHint": "DJA + D>A + D>A + D>A"
+        }
+    ],
+    "強化Mark": [
+        {
+            "skillName": "超破壞拳",
+            "keyHint": "D>AAA , Run + AAA"
+        },
+        {
+            "skillName": "人肉戰車",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "重力拳上段",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "重力拳下段",
+            "keyHint": "DVA"
+        },
+        {
+            "skillName": "投石",
+            "keyHint": "DVJ"
+        },
+        {
+            "skillName": "飛刀",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "觸身段",
+            "keyHint": "DJ"
+        },
+        {
+            "skillName": "一段忿怒",
+            "keyHint": ">>DJA , >>JDJA"
+        },
+        {
+            "skillName": "二段忿怒",
+            "keyHint": ">>DJA + DJA"
+        },
+        {
+            "skillName": "☆地獄三段忿怒★",
+            "keyHint": ">>DJA + DJA + DJA"
+        }
+    ],
+    "強化Jan": [
+        {
+            "skillName": "惡魔之審判",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "天使之祝福",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "神之逞罰",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "天國之光",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "☆地獄天使★",
+            "keyHint": "D^J + DJ(A...)"
+        }
+    ],
+    "強化Knight": [
+        {
+            "skillName": "強力防禦盾",
+            "keyHint": "D, Stand, Walk, Run"
+        },
+        {
+            "skillName": "閃身",
+            "keyHint": "Run + D (DD)"
+        },
+        {
+            "skillName": "無影斬",
+            "keyHint": "Run + A"
+        },
+        {
+            "skillName": "雷電擊",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "騎士擒拿",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "劍之亂舞",
+            "keyHint": "D^JD^J"
+        },
+        {
+            "skillName": "極級破空斬",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "守護牆",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "☆地獄天譴★",
+            "keyHint": "DJ(A...)"
+        }
+    ],
+    "強化Justin": [
+        {
+            "skillName": "穿心摧毀炮",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "餓狼幻影拳",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "摧毀波",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "紫色烈炎",
+            "keyHint": "(Catching) D^J"
+        },
+        {
+            "skillName": "舜獄殺",
+            "keyHint": "(Catching) DJA"
+        },
+        {
+            "skillName": "☆地獄衝擊波★",
+            "keyHint": "D>(J...)"
+        }
+    ],
+    "強化Bat": [
+        {
+            "skillName": "燃えの蝙蝠",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "三叉激光",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "無影衝拳",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "血影",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "德古拉化身",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "月圓の夜",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "☆地獄吞噬★",
+            "keyHint": "Jump + D^J"
+        }
+    ],
+    "強化蝙蝠": [
+        {
+            "skillName": "裏‧燃えの蝙蝠",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "死光",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "無影殺",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "血淺",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "裏‧德古拉化身",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "破滅の蝙蝠",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "轉世",
+            "keyHint": "DJA （變成強化Bat）"
+        },
+        {
+            "skillName": "衝天",
+            "keyHint": "Jump + D^J"
+        },
+        {
+            "skillName": "☆地獄蝙蝠殺★",
+            "keyHint": "Jump + D^J + DvJ + DvJ"
+        }
+    ],
+    "強化Guardian": [
+        {
+            "skillName": "刺殺",
+            "keyHint": "A , >>A"
+        },
+        {
+            "skillName": "死刑斬",
+            "keyHint": "J"
+        },
+        {
+            "skillName": "地雷震",
+            "keyHint": ">>J"
+        },
+        {
+            "skillName": "大地火炎",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "遁地術",
+            "keyHint": "D>J"
+        }
+    ],
+    "強化LouisEX": [
+        {
+            "skillName": "究極衝光拳",
+            "keyHint": "Run + A"
+        },
+        {
+            "skillName": "極地落雷霸",
+            "keyHint": "Run + JA, JAJ, JDvJ"
+        },
+        {
+            "skillName": "鳳凰烈地掌",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "鳳凰亂舞",
+            "keyHint": "(Catching) DvA"
+        },
+        {
+            "skillName": "魔動衝光拳",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "鳳凰斬",
+            "keyHint": "(Catching) D>J"
+        },
+        {
+            "skillName": "鳳凰追擊",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "鳳凰怒吼",
+            "keyHint": "D^J DJA"
+        },
+        {
+            "skillName": "鳳凰羽毛",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "☆地獄旋風斬★",
+            "keyHint": "D^J + D>J + D^J + D>J + D^J +D>J"
+        }
+    ],
+    "強化Firzen": [
+        {
+            "skillName": "惡魔光速炮",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "殃殞天降",
+            "keyHint": "D^(A...)"
+        },
+        {
+            "skillName": "極地火山",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "冰火旋踢",
+            "keyHint": "DvJ, Run + A"
+        },
+        {
+            "skillName": "地獄冰火*",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "☆地獄終結★",
+            "keyHint": "D>A + DJA + (DJA...)"
+        }
+    ],
+    "強化邪鬼": [
+        {
+            "skillName": "邪の流星拳",
+            "keyHint": "Run + A"
+        },
+        {
+            "skillName": "邪の上勾拳",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "邪の殘影",
+            "keyHint": "Run + D(J...), DJA(J...)"
+        },
+        {
+            "skillName": "邪の重炮",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "邪の炸彈",
+            "keyHint": "D>(J...)"
+        },
+        {
+            "skillName": "邪の滅絕",
+            "keyHint": "D^(J...), Catching + J..."
+        },
+        {
+            "skillName": "邪の幻化",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "☆地獄金鐘罩★",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "☆地獄火炎★",
+            "keyHint": "DvA + D^J + D>J + DvJ + D^A"
+        }
+    ],
+    "強化CL": [
+        {
+            "skillName": "暗黑烈地疾風拳",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "暗黑破空疾風拳",
+            "keyHint": "Jump + D>A"
+        },
+        {
+            "skillName": "暗黑突襲腳",
+            "keyHint": "Jump + DvJ"
+        },
+        {
+            "skillName": "暗黑亂舞",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "暗黑化為烏有",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "暗黑雷電擊",
+            "keyHint": "D^(A...)"
+        },
+        {
+            "skillName": "暗黑冰火球",
+            "keyHint": "DV(A...)"
+        },
+        {
+            "skillName": "暗黑滅殺球",
+            "keyHint": "DVJ"
+        },
+        {
+            "skillName": "暗黑龍",
+            "keyHint": "DJA + DJA + D^J"
+        },
+        {
+            "skillName": "暗黑劍",
+            "keyHint": "DJA + DJA + DVJ"
+        },
+        {
+            "skillName": "隱身術",
+            "keyHint": "DJA + DJA + D^A"
+        },
+        {
+            "skillName": "回復術",
+            "keyHint": "DJA + DJA + DVA"
+        },
+        {
+            "skillName": "破滅術",
+            "keyHint": "DJA + DJA + DJA"
+        },
+        {
+            "skillName": "回魂術",
+            "keyHint": "DJA + DJA + D>A"
+        },
+        {
+            "skillName": "勾魂術",
+            "keyHint": "DJA + DJA + D>J"
+        },
+        {
+            "skillName": "☆地獄永死魔王拳★",
+            "keyHint": "DJA + DJA + AJJA"
+        }
+    ],
+    "Kate": [
+        {
+            "skillName": "電磁炮",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "瞬間移動(+跳.........)",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "十萬伏特",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "電光一閃",
+            "keyHint": "DVJ"
+        },
+        {
+            "skillName": "麻痺電粉",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "電光雷擊",
+            "keyHint": "DVJ+A"
+        },
+        {
+            "skillName": "落擊電磁炮",
+            "keyHint": "J+D>A"
+        }
+    ],
+    "KateEX": [
+        {
+            "skillName": "電磁炮",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "電光回復",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "打雷",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "落雷術",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "電光一閃",
+            "keyHint": "DVJ"
+        },
+        {
+            "skillName": "N.S電磁炮",
+            "keyHint": "DVJ"
+        },
+        {
+            "skillName": "麻痺電粉",
+            "keyHint": "D+A"
+        },
+        {
+            "skillName": "電光雷擊EX",
+            "keyHint": "DVJ+A"
+        },
+        {
+            "skillName": "落擊電磁炮",
+            "keyHint": "J+D>A"
+        }
+    ],
+    "Mahoro": [
+        {
+            "skillName": "Shot",
+            "keyHint": "Gun D + > + A (+ A + A)"
+        },
+        {
+            "skillName": "Power",
+            "keyHint": "Blast (+ D: Abort) D + > + J + A"
+        },
+        {
+            "skillName": "Cinetic",
+            "keyHint": "Explosion D + ^ + A"
+        },
+        {
+            "skillName": "Psycho",
+            "keyHint": "Run (+ J: Switch direction, + A: Attack, + D: Abort) D + ^ + J + A"
+        },
+        {
+            "skillName": "Start",
+            "keyHint": "/ Stop(Fly Mode)D + J + A + D"
+        },
+        {
+            "skillName": "Shot",
+            "keyHint": "Gun(Fly Mode)D + J + A + A"
+        },
+        {
+            "skillName": "Rocket(Fly",
+            "keyHint": "Mode) D + J + A + J"
+        },
+        {
+            "skillName": "Stop",
+            "keyHint": "Fly Mode D + J + A + D + v + J"
+        }
+    ],
+    "Template": [
+
+        {
+            "skillName": "天怒",
+            "keyHint": "DJA"
+        }
     ]
 }

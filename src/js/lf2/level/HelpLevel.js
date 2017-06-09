@@ -8,7 +8,7 @@ var lf2 = (function (lf2) {
 
 
     class SimpleCharInfo {
-        constructor(fInfo) {
+        constructor(fInfo, skillList) {
             this.id = fInfo.id;
             lf2.LoadingLevel.prototype.Instance
                 .loadDataResource(fInfo.file)
@@ -36,6 +36,14 @@ var lf2 = (function (lf2) {
                     console.error(e);
                     this.name = "???";
                     this.headPath = "sprite/template1/face.png";
+                })
+                .then(() => {
+                    let st = skillList[this.name];
+                    if (!st) {
+                        console.warn(`Skill Table Not Found: ${this.name}`);
+                    } else {
+                        this.skill = st;
+                    }
                 });
         }
     }
@@ -73,14 +81,14 @@ var lf2 = (function (lf2) {
 
             //Load data list
             Promise.all([
-                Prefetch.get('DATA_LIST'),
-                Prefetch.get('SKILL_LIST'),
                 ResourceManager.loadResource(define.DATA_PATH + 'HelpScreen.html', {method: "GET"})
-                    .then(d => d.text())
+                    .then(d => d.text()),
+                Prefetch.get('DATA_LIST'),
+                Prefetch.get('SKILL_LIST')
             ]).then((dList) => {
-                this.simInfo = dList[0].object.filter(c => c.type === 0).map(x => new SimpleCharInfo(x));
+                this.simInfo = dList[1].object.filter(c => c.type === 0).map(x => new SimpleCharInfo(x, dList[2]));
 
-                this.html = dList[1];
+                this.html = dList[0];
             });
         }
 
@@ -163,6 +171,15 @@ var lf2 = (function (lf2) {
                     video.currentTime = 0;
                 });
 
+                let cHtml = '';
+                this.simInfo
+                    .filter(x => x.skill !== undefined)
+                    .forEach((c) => {
+
+                        cHtml += `<div class="cover-s" data-id="${c.id}" title="${c.name}"><img src="${define.IMG_PATH + c.headPath}"/></div>`;
+                    });
+                $("#char-list").empty().append(cHtml);
+                
                 $("body").append(this._helpContainer);
                 this._attached = true;
                 Game.resizeEvent();
@@ -219,6 +236,35 @@ var lf2 = (function (lf2) {
                 this._helpContainer.remove();
                 this._helpContainer = undefined;
             }
+        }
+
+        /**
+         * Get skill from word
+         * @param str
+         * @private
+         */
+        static _getFromWord(str) {
+            let obj = {}, tmpArr = [], tmpName = '';
+            str.trim().split('\n').map(x => x.trim())
+                .forEach((str) => {
+                    if (!str) return;
+                    if (str.match(/^\D+/)) {
+                        if (tmpName) {
+                            obj[tmpName] = tmpArr;
+                        }
+                        tmpName = str;
+                        tmpArr = [];
+                    } else {
+                        str = str.replace(/\d+\.	/g, '');
+                        let fs = str.indexOf(' ');
+                        tmpArr.push({
+                            skillName: str.substr(0, fs),
+                            keyHint: str.substr(fs + 1)
+                        })
+                    }
+                });
+
+            return (JSON.stringify(obj));
         }
 
     };
