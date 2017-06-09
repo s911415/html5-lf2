@@ -139,11 +139,26 @@ var lf2 = (function (lf2) {
                 this._helpContainer = $(this.html);
                 this._helpContainer.attr("id", _HELP_CONTAINER_ID);
                 console.log(JSON.stringify(this.simInfo));
+                const BackToMenu = (e) => {
+
+                };
+                this._helpContainer.find(".btn_ok").click((e) => {
+                    this._backToMenu();
+                });
 
                 $("body").append(this._helpContainer);
                 this._attached = true;
                 Game.resizeEvent();
             }
+        }
+
+        /**
+         * Back to menu
+         *
+         * @private
+         */
+        _backToMenu() {
+            Game.goToLevel('menu');
         }
 
         /**
@@ -157,6 +172,20 @@ var lf2 = (function (lf2) {
          */
         click(e) {
 
+        }
+
+        /**
+         * event when key down
+         *
+         * @param e
+         * @param list
+         * @param oriE
+         */
+        keydown(e, list, oriE) {
+            super.keydown(e, list, oriE);
+            if (e.key === 'Esc') {
+                this._backToMenu();
+            }
         }
 
         /**

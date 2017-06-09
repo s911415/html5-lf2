@@ -110,7 +110,7 @@ body {
 }
 
 #launch_control {
-    width: 50%;
+    width: 60%;
     padding: 1em;
     border-radius: 10px;
     border: #5a77d8 3px solid;
@@ -751,4 +751,8 @@ body {
     background: linear-gradient( to bottom, rgb(17, 17, 17) 0%, rgb(17, 17, 17) 49%, #0a1342 51%, #0a1342 100%);
     color: #aec7ff;
     padding: 0 .5em;
+}
+
+#help_panel .action_bar .btn_ok{
+    left: 172px;
 }
