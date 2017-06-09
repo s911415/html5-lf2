@@ -25,6 +25,9 @@ var lf2 = (function (lf2) {
                 DATA_LIST: ResourceManager.loadResource(define.DATA_PATH + "data_list.json")
                     .then(d=>d.json()),
 
+                SKILL_LIST: ResourceManager.loadResource(define.DATA_PATH + "skill.json")
+                    .then(d=>d.json()),
+
                 DATA: ResourceManager.loadResource(define.ZIP_PATH + 'data.zip')
                     .then(r => r.blob())
                     .then(JSZip.loadAsync),

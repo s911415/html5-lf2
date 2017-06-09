@@ -1,0 +1,306 @@
+{
+    "強化Davis": [
+        {
+            "skillName": "風車擊",
+            "keyHint": "D^JA"
+        },
+        {
+            "skillName": "雙重氣功波",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "千烈拳",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "神龍拳",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "纏身鎖",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "王者爆破波",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "王者連環拳",
+            "keyHint": "D>J + D>J"
+        },
+        {
+            "skillName": "☆地獄真昇龍★D>J",
+            "keyHint": "+ D>J + D^A"
+        }
+    ],
+    "強化Woody": [
+        {
+            "skillName": "炎之腳刀",
+            "keyHint": "D^(A...)"
+        },
+        {
+            "skillName": "炎之轉移",
+            "keyHint": "D^J, DvJ"
+        },
+        {
+            "skillName": "炎之鬼車腳",
+            "keyHint": "Dv(A...)"
+        },
+        {
+            "skillName": "炎之氣功波",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "炎之虎翔霸",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "炎之虎翔殺",
+            "keyHint": "D>J + DJA"
+        },
+        {
+            "skillName": "☆地獄龍飛翔★",
+            "keyHint": "D>J + DJA + D>J"
+        }
+    ],
+    "強化Dennis": [
+        {
+            "skillName": "連環追縱波",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "千烈腿",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "龍捲旋風腿",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "三叉氣功波",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "飛燕疾風腿",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "翔空腿",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "霸者氣功波",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "纏身鎖",
+            "keyHint": ">>DA"
+        },
+        {
+            "skillName": "霸者連環腿",
+            "keyHint": ">>DA + D>J"
+        },
+        {
+            "skillName": "☆地獄燕舞殺★",
+            "keyHint": ">>DA + D>J + DJA"
+        }
+    ],
+    "強化Freeze": [
+        {
+            "skillName": "冷凍波",
+            "keyHint": "A, D>(A...)"
+        },
+        {
+            "skillName": "冰鋒之劍",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "冰封拳",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "白色暴風",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "冰之刃",
+            "keyHint": "揮動冰鋒之劍"
+        },
+        {
+            "skillName": "冰劍殺",
+            "keyHint": "冰鋒之劍 + Run + A"
+        },
+        {
+            "skillName": "冰流星",
+            "keyHint": "投擲冰鋒之劍"
+        },
+        {
+            "skillName": "冰之召喚",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "地獄冰龍*",
+            "keyHint": "DJA + J + A"
+        },
+        {
+            "skillName": "☆地獄闇龍捲★",
+            "keyHint": "Catching + A"
+        }
+    ],
+    "強化Firen": [
+        {
+            "skillName": "原子彈",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "疾走．焚身",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "烈炎火球",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "滅絕の大轟炸",
+            "keyHint": "D^(J...), Catching + (J...)"
+        },
+        {
+            "skillName": "火炎之劍",
+            "keyHint": "DvA"
+        },
+        {
+            "skillName": "火之刃",
+            "keyHint": "揮動火炎之劍"
+        },
+        {
+            "skillName": "火劍殺",
+            "keyHint": "火炎之劍 + Run + A"
+        },
+        {
+            "skillName": "火流星",
+            "keyHint": "投擲火炎之劍"
+        },
+        {
+            "skillName": "炎之召喚",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "地獄火龍*",
+            "keyHint": "DJA + J + A"
+        },
+        {
+            "skillName": "☆地獄闇破滅★",
+            "keyHint": "Catching + A"
+        }
+    ],
+    "強化Louis": [
+        {
+            "skillName": "寒冰衝光拳",
+            "keyHint": "Run + A"
+        },
+        {
+            "skillName": "寒冰落雷霸",
+            "keyHint": "Run + JA"
+        },
+        {
+            "skillName": "寒冰無影腳",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "寒冰旋風摔",
+            "keyHint": "D^J(J...)"
+        },
+        {
+            "skillName": "寒冰鳳凰展翅",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "衝光飛翔拳",
+            "keyHint": "D^(A...)"
+        },
+        {
+            "skillName": "寒冰鳳凰殺",
+            "keyHint": "D>A+DJA"
+        },
+        {
+            "skillName": "☆地獄龍影拳★",
+            "keyHint": "D>A + DJA + D>A"
+        }
+    ],
+    "強化Rudolf": [
+        {
+            "skillName": "三連標",
+            "keyHint": "A..."
+        },
+        {
+            "skillName": "十連標",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "刺虎",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "隱身術",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "分身術",
+            "keyHint": "DvJ"
+        },
+        {
+            "skillName": "變化術",
+            "keyHint": "Catching + DJA"
+        },
+        {
+            "skillName": "隱身斬",
+            "keyHint": ">> + DJ"
+        },
+        {
+            "skillName": "瞬間轉移",
+            "keyHint": "D^A"
+        },
+        {
+            "skillName": "擒拿",
+            "keyHint": ">> + DD"
+        },
+        {
+            "skillName": "幻影飛鏢",
+            "keyHint": "DVA"
+        },
+        {
+            "skillName": "☆地獄千烈斬★",
+            "keyHint": "Catching + D^JDvJ"
+        }
+    ],
+    "強化Henry": [
+        {
+            "skillName": "三連矢",
+            "keyHint": "A..."
+        },
+        {
+            "skillName": "五連矢",
+            "keyHint": "Jump + A..."
+        },
+        {
+            "skillName": "十連矢",
+            "keyHint": "DJ(A...)"
+        },
+        {
+            "skillName": "魔王穿空箭",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "烈地降龍掌",
+            "keyHint": "D>(A...)"
+        },
+        {
+            "skillName": "地獄樂章*",
+            "keyHint": "D^(J...)"
+        },
+        {
+            "skillName": "☆地獄箭雨★",
+            "keyHint": "D^J + D>J + D>J"
+        }
+    ]
+}

@@ -74,6 +74,7 @@ var lf2 = (function (lf2) {
             //Load data list
             Promise.all([
                 Prefetch.get('DATA_LIST'),
+                Prefetch.get('SKILL_LIST'),
                 ResourceManager.loadResource(define.DATA_PATH + 'HelpScreen.html', {method: "GET"})
                     .then(d => d.text())
             ]).then((dList) => {
