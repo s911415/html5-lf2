@@ -392,6 +392,8 @@ var lf2 = (function (lf2) {
                 $("body").append(this._loadingContainer);
                 this._attached = true;
                 this._startLoadingTime = Date.now();
+
+                Game.resizeEvent();
             }
         }
 
