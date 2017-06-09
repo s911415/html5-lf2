@@ -5,7 +5,7 @@ var lf2 = (function (lf2) {
     const KeyBoardManager = Framework.KeyBoardManager;
     const Prefetch = lf2.Prefetch;
     const _HELP_CONTAINER_ID = "__help_container";
-       
+
 
     class SimpleCharInfo {
         constructor(fInfo) {
@@ -80,7 +80,6 @@ var lf2 = (function (lf2) {
                 this.simInfo = dList[0].object.filter(c => c.type === 0).map(x => new SimpleCharInfo(x));
 
                 this.html = dList[1];
-                this._showHelp();
             });
         }
 
@@ -103,6 +102,10 @@ var lf2 = (function (lf2) {
          */
         update() {
             super.update();
+
+            if (!this._attached) {
+                this._forceDraw = true;
+            }
         }
 
         /**
@@ -111,11 +114,13 @@ var lf2 = (function (lf2) {
          * Draws the given parent context.
          *
          * @param   parentCtx   Context for the parent.
-         *
-         * @return  .
          */
         draw(parentCtx) {
             super.draw(parentCtx);
+
+            if (!this._attached) {
+                this._showHelp();
+            }
         }
 
 
