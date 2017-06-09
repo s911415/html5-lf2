@@ -908,7 +908,7 @@ p > b.cheat:first-of-type:after {
     height: 45px;
     background: #000;
     margin-top: 2px;
-    margin-right: 2px;
+    margin-right: 4px;
 }
 
 .cover-s img {
@@ -928,11 +928,16 @@ p > b.cheat:first-of-type:after {
     content: "";
     clear: both;
 }
-.char-skill li{
+
+.char-skill li {
     text-align: left;
 }
+
 .char-skill li:before {
-    content: attr(skillName);
+    content: attr(skillName) ":";
+    font-weight: bold;
+    text-decoration: underline;
+    margin-right: .5em;
 }
 
 .char-skill li:after {
@@ -950,11 +955,11 @@ p > b.cheat:first-of-type:after {
     margin-top: 0;
 }
 
-#char-info img .obj{
-    background: ;
+#char-info img .obj {
+    background:;
 }
 
-#char-info .char-info img{
+#char-info .char-info img {
     margin-top: 0;
     background: #000;
 }
