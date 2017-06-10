@@ -894,11 +894,11 @@ p > b.cheat:first-of-type:after {
 
 .cover-s {
     float: left;
-    width: 45px;
-    height: 45px;
+    width: 39px;
+    height: 39px;
     background: #000;
     margin-top: 2px;
-    margin-right: 4px;
+    margin-right: 2px;
 }
 
 .cover-s img {

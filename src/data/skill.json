@@ -141,10 +141,6 @@
         {
             "skillName": "地獄冰龍*",
             "keyHint": "DJA + J + A"
-        },
-        {
-            "skillName": "☆地獄闇龍捲★",
-            "keyHint": "Catching + A"
         }
     ],
     "強化Firen": [
@@ -159,10 +155,6 @@
         {
             "skillName": "烈炎火球",
             "keyHint": "DvJ"
-        },
-        {
-            "skillName": "滅絕の大轟炸",
-            "keyHint": "D^(J...), Catching + (J...)"
         },
         {
             "skillName": "火炎之劍",
@@ -245,14 +237,6 @@
             "keyHint": "D^J"
         },
         {
-            "skillName": "分身術",
-            "keyHint": "DvJ"
-        },
-        {
-            "skillName": "變化術",
-            "keyHint": "Catching + DJA"
-        },
-        {
             "skillName": "隱身斬",
             "keyHint": ">> + DJ"
         },
@@ -267,10 +251,6 @@
         {
             "skillName": "幻影飛鏢",
             "keyHint": "DVA"
-        },
-        {
-            "skillName": "☆地獄千烈斬★",
-            "keyHint": "Catching + D^JDvJ"
         }
     ],
     "強化Henry": [
@@ -543,14 +523,6 @@
             "keyHint": "DvJ"
         },
         {
-            "skillName": "紫色烈炎",
-            "keyHint": "(Catching) D^J"
-        },
-        {
-            "skillName": "舜獄殺",
-            "keyHint": "(Catching) DJA"
-        },
-        {
             "skillName": "☆地獄衝擊波★",
             "keyHint": "D>(J...)"
         }
@@ -659,16 +631,8 @@
             "keyHint": "D>(A...)"
         },
         {
-            "skillName": "鳳凰亂舞",
-            "keyHint": "(Catching) DvA"
-        },
-        {
             "skillName": "魔動衝光拳",
             "keyHint": "DJA"
-        },
-        {
-            "skillName": "鳳凰斬",
-            "keyHint": "(Catching) D>J"
         },
         {
             "skillName": "鳳凰追擊",
@@ -697,10 +661,6 @@
             "keyHint": "D^(A...)"
         },
         {
-            "skillName": "極地火山",
-            "keyHint": "D^J"
-        },
-        {
             "skillName": "冰火旋踢",
             "keyHint": "DvJ, Run + A"
         },
@@ -711,6 +671,106 @@
         {
             "skillName": "☆地獄終結★",
             "keyHint": "D>A + DJA + (DJA...)"
+        }
+    ],
+    "強化Richter": [
+        {
+            "skillName": "???",
+            "keyHint": ">>D"
+        },
+        {
+            "skillName": "???",
+            "keyHint": ">>DJ"
+        },
+        {
+            "skillName": "???",
+            "keyHint": "D>J／DJ>J／>>DJ>J／>>DD>J"
+        },
+        {
+            "skillName": "???",
+            "keyHint": "D V J"
+        },
+        {
+            "skillName": "???",
+            "keyHint": "D>A／DJ>A／>>DJ>A／>>DD>A"
+        },
+        {
+            "skillName": "???",
+            "keyHint": "DJA／DJJA／>>DJJA"
+        },
+        {
+            "skillName": "★???",
+            "keyHint": "D ^ J"
+        }
+    ],
+    "強化Monk": [
+        {
+            "skillName": "密宗大手印",
+            "keyHint": "D>(A......)"
+        },
+        {
+            "skillName": "金身",
+            "keyHint": "DJ/>>DJ"
+        },
+        {
+            "skillName": "斷水流掌",
+            "keyHint": "DJA ＋ DJ/>>DJ ＋ A"
+        },
+        {
+            "skillName": "少林連擊",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "氣功拳",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "★地獄吸星卍印",
+            "keyHint": "DJA ＋ D^A ＋ D>J"
+        }
+    ],
+    "強化Hunter": [
+        {
+            "skillName": "三連箭",
+            "keyHint": "J+A"
+        },
+        {
+            "skillName": "氣",
+            "keyHint": "勁 D>A…"
+        },
+        {
+            "skillName": "穿雲箭",
+            "keyHint": "D>AJ"
+        },
+        {
+            "skillName": "怒吼之箭",
+            "keyHint": "(J)＋D→J"
+        },
+        {
+            "skillName": "連環箭",
+            "keyHint": "DJA"
+        },
+        {
+            "skillName": "暗殺箭",
+            "keyHint": "D^J"
+        },
+        {
+            "skillName": "★地獄血之箭",
+            "keyHint": "D>A+DD+JJ+AA"
+        }
+    ],
+    "強化Jack": [
+        {
+            "skillName": "氣功波",
+            "keyHint": "D>A"
+        },
+        {
+            "skillName": "氣功彈",
+            "keyHint": "D>J"
+        },
+        {
+            "skillName": "筋斗腳刀",
+            "keyHint": "D^A"
         }
     ],
     "強化邪鬼": [
@@ -733,10 +793,6 @@
         {
             "skillName": "邪の炸彈",
             "keyHint": "D>(J...)"
-        },
-        {
-            "skillName": "邪の滅絕",
-            "keyHint": "D^(J...), Catching + J..."
         },
         {
             "skillName": "邪の幻化",
@@ -887,43 +943,38 @@
     ],
     "Mahoro": [
         {
-            "skillName": "Shot",
-            "keyHint": "Gun D + > + A (+ A + A)"
+            "skillName": "射擊",
+            "keyHint": "D + > + A (+ A + A)"
         },
         {
-            "skillName": "Power",
-            "keyHint": "Blast (+ D: Abort) D + > + J + A"
+            "skillName": "充電射擊(+D終止)",
+            "keyHint": "D + > + J + A"
         },
         {
-            "skillName": "Cinetic",
-            "keyHint": "Explosion D + ^ + A"
+            "skillName": "爆炸",
+            "keyHint": "D + ^ + A"
         },
         {
-            "skillName": "Psycho",
-            "keyHint": "Run (+ J: Switch direction, + A: Attack, + D: Abort) D + ^ + J + A"
+            "skillName": "Start/Stop(Fly_Mode)",
+            "keyHint": "D + J + A + D"
         },
         {
-            "skillName": "Start",
-            "keyHint": "/ Stop(Fly Mode)D + J + A + D"
+            "skillName": "射擊(Fly_Mode)D",
+            "keyHint": "+ J + A + A"
         },
         {
-            "skillName": "Shot",
-            "keyHint": "Gun(Fly Mode)D + J + A + A"
+            "skillName": "火箭(Fly_Mode)",
+            "keyHint": "D + J + A + J"
         },
         {
-            "skillName": "Rocket(Fly",
-            "keyHint": "Mode) D + J + A + J"
-        },
-        {
-            "skillName": "Stop",
-            "keyHint": "Fly Mode D + J + A + D + v + J"
+            "skillName": "停止飛行模式",
+            "keyHint": "D + J + A + D + v + J"
         }
     ],
     "Template": [
-
         {
             "skillName": "天怒",
-            "keyHint": "DJA"
+            "keyHint": "D + J + A"
         }
     ]
 }
