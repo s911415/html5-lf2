@@ -21,6 +21,43 @@ var lf2 = (function (lf2) {
 
     /**
      * Frame
+     * 提供人物、氣功波各種畫格資訊儲存功能
+     * <frame>=動作開始
+         72 super_punch=號碼和名
+
+         pic: 8 =圖檔位置(從0開始算)
+
+         <特別說明>18的攻擊會傷及我方。
+
+
+         wait: 2 =停頓時間
+
+         next: 73 =下一個動作是
+
+         dvx: =向前後行多少
+         dvy: =向天,地行多少
+         dvz: =向上下行多少
+
+         centerx: 是以哪一點作為人物的中央
+         centery: 是以哪一點作為人物的底部(腳的位置)
+
+         hit_a: 按攻擊時,跳到哪一個frame?
+         hit_d: 按防衛時,跳到哪一個frame?
+         hit_j: 按跳時,跳到哪一個frame?
+         hit_Ua: 按"防上攻"時,跳到哪一個frame?
+         hit_Uj: 按"防上跳"時,跳到哪一個frame?
+         hit_Da: 按"防下攻"時,跳到哪一個frame?
+         hit_Dj: 按"防下跳"時,跳到哪一個frame?
+         hit_Fa: 按"防前攻"時,跳到哪一個frame?
+         hit_Fj: 按"防前跳"時,跳到哪一個frame?
+         hit_ja: 按"防跳攻"時,跳到哪一個frame?
+
+         <特別說明>
+         1.next:0是不斷重複此動作，hit_???:的0是指沒有設定。
+         2.next、hit_? :999是指回到隨機動作
+         3.next、hit_? :1000是消失
+         4.next: -??? 會反向進行第???個frame
+         5.next:1200~1299是隱形
      *
      * @type {Frame}
      * @class lf2.Frame

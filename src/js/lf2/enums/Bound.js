@@ -2,6 +2,7 @@
 var lf2 = (function (lf2) {
     /**
      * Bound
+     * 定義邊框的列舉型別，有上、下、左、右邊界
      *
      * @class lf2.Bound
      */

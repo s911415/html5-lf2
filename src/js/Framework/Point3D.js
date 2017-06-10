@@ -3,7 +3,7 @@ var Framework = (function (Framework) {
     const Point = Framework.Point;
 
     /**
-     *
+     * 提供三維座標的儲存功能
      * @class {Framework.Point3D}
      * @extends {Framework.Point}
      * @property {Number} z

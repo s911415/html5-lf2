@@ -18,6 +18,7 @@ var lf2 = (function (lf2) {
 
     /**
      * BmpInfo
+     * 提供圖片資訊的儲存及預處理功能
      *
      * @class lf2.BmpInfo
      */

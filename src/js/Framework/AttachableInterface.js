@@ -3,6 +3,7 @@ var Framework = (function (Framework) {
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
     /**
      * Attachable Interface
+     * 提供可以附加到Framework.Level或是Framework.Scence的介面
      *
      * @interface Framework.AttachableInterface
      * @type {AttachableInterface}

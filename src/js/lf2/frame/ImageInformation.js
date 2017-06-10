@@ -1,7 +1,7 @@
 "use strict";
 var lf2 = (function (lf2) {
     /**
-     * Custom class
+     * 提供圖片資料的儲存功能
      *
      * @class lf2.ImageInformation
      */

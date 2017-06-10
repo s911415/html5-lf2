@@ -1,7 +1,29 @@
 'use strict';
 (function (window) {
     const BASE_PATH = "./";
-
+    /**
+     * 定義遊戲內部用到的常數即設定，例如是否為DEBUG模式、或是預設的血量等
+     * @type {
+            {
+                DEBUG: boolean,
+                SHOW_PLAYER_COUNT: number,
+                BASE_PATH: string,
+                DATA_PATH: string,
+                IMG_PATH: string,
+                MUSIC_PATH: string,
+                BGM_PATH: string,
+                ZIP_PATH: string,
+                PLAYER_COUNT: number,
+                KEYBOARD_CONFIG_KEY: string,
+                TEAM_COUNT: number,
+                BGM_VOLUME: number,
+                LOADING_MIN_TIME: number,
+                MAX_ITEM_COUNT: number,
+                INF_MP: boolean,
+                MAP_SMOOTHLY: boolean
+            }
+        }
+     */
     window.define = {
         DEBUG: true,
         SHOW_PLAYER_COUNT: 8,

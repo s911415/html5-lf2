@@ -1,11 +1,27 @@
 "use strict";
 var lf2 = (function (lf2) {
+    let Effect;
     /**
      * Itr Effect
+     * 定義遊戲內部特效的列舉型別
      *
      * @class lf2.Effect
+     * @type {
+     *       {
+     *          NORMAL: number,
+     *          BLADE: number,
+     *          FIRE: number,
+     *          ICE: number,
+     *          PASS_E: number,
+     *          NONE: number,
+     *          FIXED_FIRE_0: number,
+     *          FIXED_FIRE_1: number,
+     *          FIXED_FIRE_2: number,
+     *          FIXED_FIRE_3: number,
+     *          FIXED_ICE: number
+     *      }
+     *  }
      */
-    let Effect;
     lf2.Effect = Effect = {
         NORMAL: 0,
         BLADE: 1,

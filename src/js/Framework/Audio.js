@@ -1,6 +1,7 @@
 'use strict';
 var Framework = (function (Framework) {
     /**
+     * 提供音訊處理的功能，包含左右聲道的控制
      * @type {ResourceManager}
      */
     const ResourceManager = Framework.ResourceManager;
