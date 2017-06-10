@@ -3,6 +3,7 @@ var Framework = (function (Framework) {
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
     /**
      * Keyboard Event Interface
+     * 提供鍵盤事件的介面
      *
      * @interface Framework.KeyboardEventInterface
      * @type {KeyboardEventInterface}
