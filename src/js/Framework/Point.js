@@ -2,6 +2,7 @@
 var Framework = (function (Framework) {
     /**
      * 2D coordinate, also use as a pair structure
+     * 提供二維座標的儲存功能
      *
      * @class {Framework.Point}
      * @property {Number} x

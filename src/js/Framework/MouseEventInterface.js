@@ -3,6 +3,7 @@ var Framework = (function (Framework) {
     const METHOD_NOT_IMPLEMENT = "Method Not Implemented";
     /**
      * Mouse Event Interface
+     * 提供滑鼠事件的介面
      *
      * @interface Framework.MouseEventInterface
      * @type {MouseEventInterface}

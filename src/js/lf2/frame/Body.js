@@ -5,6 +5,15 @@ var lf2 = (function (lf2) {
     const Rectangle = lf2.Rectangle;
     /**
      * Body
+     * 提供Frame可傷害範圍資訊儲存功能
+     * ◎bdy解說◎
+         bdy: =身體(受攻擊的部分)開始
+
+         kind: 0 特殊特技
+
+         x: 26 w: 35 =受攻擊前~後的距離   y: 12 h: 66=受攻擊上~下的距離
+
+         bdy_end:=身體結束
      *
      * @class lf2.Body
      */
