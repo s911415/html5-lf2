@@ -1,13 +1,5 @@
 @charset "UTF-8";
 @font-face {
-    font-family: 'Delius Swash Caps';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Delius Swash Caps'), local('DeliusSwashCaps-Regular'), url("uXyrEUnoWApxIOICunRq78THvgDn7cBCkr9GfjQQw0c.woff2") format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
-}
-
-@font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
@@ -60,12 +52,15 @@
     clear: both;
 }
 
-body {
-    margin: 0;
-    overflow: hidden;
+body:not(.mode-debug) {
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
     user-select: none !important;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
     font-family: "Microsoft JhengHei UI", Arial, sans-serif;
 }
 
@@ -137,7 +132,7 @@ body {
 #launch_control .control1 {
     color: #5a77d8;
     cursor: pointer;
-    font-family: 'Delius Swash Caps', 'Microsoft YaHei', serif;
+    font-family: 'Microsoft YaHei', serif;
     font-size: 1.5em;
     padding: .25em;
     margin: .5em 0;
@@ -781,12 +776,12 @@ body {
 }
 
 #help-tab {
-    margin-top: 1.5em;
+    margin-top: 1em;
     border: 0;
     background: transparent;
     padding-left: 0;
     padding-right: 0;
-    height: 320px;
+    height: 335px;
     border-bottom: 2px solid #5b75d9;
     border-radius: 0;
     pointer-events: auto;
@@ -815,8 +810,7 @@ body {
     background: #122565;
 }
 
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited,
-a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited, a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
     color: #5a77d8;
     outline: none;
 }
@@ -832,11 +826,10 @@ a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
     color: #aec7ff;
     text-align: left;
     overflow-y: auto;
+    cursor: default;
 }
 
-.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor,
-.ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
+.ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-state-disabled .ui-tabs-anchor, .ui-tabs .ui-tabs-nav li.ui-tabs-loading .ui-tabs-anchor {
     cursor: default;
 }
 
@@ -869,7 +862,6 @@ a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
 }
 
 #tabs-1 .name {
-
 }
 
 #tabs-1 .act-video {
@@ -877,11 +869,9 @@ a.ui-button, a:link.ui-button, a:visited.ui-button, .ui-button {
 }
 
 #tabs-1 .key {
-
 }
 
 #tabs-1 .desc {
-
 }
 
 #tabs-2 h3 {
@@ -956,10 +946,14 @@ p > b.cheat:first-of-type:after {
 }
 
 #char-info img .obj {
-    background:;
+    background: #000;
 }
 
 #char-info .char-info img {
     margin-top: 0;
     background: #000;
+}
+
+.cover-s.active {
+    outline: 2px solid #aec7ff;
 }
