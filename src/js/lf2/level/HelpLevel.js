@@ -183,8 +183,12 @@ var lf2 = (function (lf2) {
                         charListEle.append(ele);
                     });
 
-                charListEle.find('.cover-s').click((e) => {
-                    const c = $(e.currentTarget).data('c');
+                let coverS = charListEle.find('.cover-s');
+                coverS.click((e) => {
+                    coverS.removeClass('active');
+                    const th = $(e.currentTarget);
+                    const c = th.data('c');
+                    th.addClass('active');
                     let info = this._helpContainer.find("#char-info").empty();
                     let h = $(`
                     <div class="char-info">
