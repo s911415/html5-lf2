@@ -122,7 +122,7 @@ var Framework = (function (Framework) {
         /**
          * Set balance of this audio
          * @param {Number} weight
-         * @property
+         * @property balance
          */
         set balance(weight) {
             if (weight > 1 || weight < -1) throw new RangeError(`balance out of range, -1~1 expected, ${weight} received.`);

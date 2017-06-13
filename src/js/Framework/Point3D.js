@@ -13,9 +13,9 @@ var Framework = (function (Framework) {
         /**
          * Set Point
          *
-         * @param {Number} x
-         * @param {Number} y
-         * @param {Number} z
+         * @param {Number} x X coordinates
+         * @param {Number} y Y coordinates
+         * @param {Number} z Z coordinates
          */
         constructor(x, y, z) {
             super(x, y);
