@@ -263,11 +263,14 @@ body {
     text-align: center;
 }
 
-#selection_note, #help_note {
+.note {
     position: absolute;
+    color: #aec7ff;
     left: 20px;
     bottom: 0;
-    color: #aec7ff;
+}
+
+#selection_note {
     font-size: 10px;
     font-style: italic;
 }
@@ -956,4 +959,15 @@ p > b.cheat:first-of-type:after {
 
 .cover-s.active {
     outline: 2px solid #aec7ff;
+}
+
+#selection_ctr_note {
+    left: 60px;
+    bottom: 10px;
+    pointer-events: all;
+    cursor: pointer;
+}
+
+#selection_ctr_note:hover {
+    text-decoration: underline;
 }

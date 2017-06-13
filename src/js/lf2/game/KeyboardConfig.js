@@ -84,15 +84,15 @@ var lf2 = (function (lf2) {
             "DEFEND": 48
         },
         /*{
-            "NAME": "Player3",
-            "UP": 87,
-            "DOWN": 83,
-            "LEFT": 65,
-            "RIGHT": 68,
-            "ATTACK": 72,
-            "JUMP": 71,
-            "DEFEND": 70
-        }*/
+         "NAME": "Player3",
+         "UP": 87,
+         "DOWN": 83,
+         "LEFT": 65,
+         "RIGHT": 68,
+         "ATTACK": 72,
+         "JUMP": 71,
+         "DEFEND": 70
+         }*/
     ];
     Object.freeze(DEFAULT_CONFIG);
 
@@ -135,6 +135,10 @@ var lf2 = (function (lf2) {
             if (!keyConfig) keyConfig = DEFAULT_CONFIG;
 
             return keyConfig;
+        }
+
+        static clearConfigCache() {
+            keyConfig = undefined;
         }
     };
 
