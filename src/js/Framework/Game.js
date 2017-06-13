@@ -7,6 +7,8 @@ var Framework = (function (Framework) {
         return Date.now();
     };
 
+    let LevelLog = [];
+
     /**
      * 整個遊戲(多個{{#crossLink "Level"}}{{/crossLink}})的主體
      * 主要功能為新增移除關卡與關卡的切換
@@ -534,10 +536,23 @@ var Framework = (function (Framework) {
                 that._record.inputCommand("// Change Level :" + levelname + ";");
             }
             console.log(`Level start: ${levelName}`);
+            LevelLog.push({
+                'name': levelName,
+                'data': extraData
+            });
             that.start(extraData);
 
             return that._currentLevel;
         };
+
+        static popLevelHistory() {
+            LevelLog.pop();
+            let data = LevelLog.last();
+            if (data) {
+                Game.goToLevel(data.name, data.data);
+                LevelLog.pop();
+            }
+        }
 
         /**
          * 前往下一個關卡, 若沒有下一個關卡, 會throw exception
@@ -546,28 +561,28 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.goToNextLevel();
          */
-        static goToNextLevel() {
-            that.pause();
-            that._teardown();
-            var flag = false;
-            Framework.Replay.resetCycleCount();
-            for (var i in that._levels) {
-                if (flag) {
-                    that._currentLevel = that._levels[i].level;
-                    if (that._isRecordMode) {
-                        var levelname = that._findLevelNameByLevel(that._currentLevel);
-                        that._record.inputCommand("// Change Level :" + levelname + ";");
-                    }
-                    that.start();
-                    return;
-                }
-                if (that._levels[i].level === that._currentLevel) {
-                    flag = true;
-                }
-            }
-            Framework.DebugInfo.Log.error('Game : 無下一關');
-            throw new Error('Game : can\'t goto next level.');
-        };
+        // static goToNextLevel() {
+        //     that.pause();
+        //     that._teardown();
+        //     var flag = false;
+        //     Framework.Replay.resetCycleCount();
+        //     for (var i in that._levels) {
+        //         if (flag) {
+        //             that._currentLevel = that._levels[i].level;
+        //             if (that._isRecordMode) {
+        //                 var levelname = that._findLevelNameByLevel(that._currentLevel);
+        //                 that._record.inputCommand("// Change Level :" + levelname + ";");
+        //             }
+        //             that.start();
+        //             return;
+        //         }
+        //         if (that._levels[i].level === that._currentLevel) {
+        //             flag = true;
+        //         }
+        //     }
+        //     Framework.DebugInfo.Log.error('Game : 無下一關');
+        //     throw new Error('Game : can\'t goto next level.');
+        // };
 
         /* *
          * 前往前一個關卡, 若沒有前一個關卡, 會throw exception
@@ -576,31 +591,31 @@ var Framework = (function (Framework) {
          * @example
          *    Framework.Game.goToPreviousLevel();
          */
-        /*
-         static goToPreviousLevel() {
-         that.pause();
-         that._teardown();
-         var flag = false;
-         var prev = undefined;
-         Framework.Replay.resetCycleCount();
-         for (var i in that._levels) {
-         if (that._levels[i].level === that._currentLevel) {
-         if (!Framework.Util.isUndefined(prev)) {
-         that._currentLevel = prev;
-         if (that._isRecordMode) {
-         var levelname = that._findLevelNameByLevel(that._currentLevel);
-         that._record.inputCommand("// Change Level To : " + levelname + ";");
-         }
-         that.start();
-         return;
-         }
-         break;
-         }
-         prev = that._levels[i].level;
-         }
-         Framework.DebugInfo.Log.error('Game : 無前一關');
-         throw new Error('Game : can\'t goto previous level.');
-         };*/
+
+        // static goToPreviousLevel() {
+        //     that.pause();
+        //     that._teardown();
+        //     var flag = false;
+        //     var prev = undefined;
+        //     Framework.Replay.resetCycleCount();
+        //     for (var i in that._levels) {
+        //         if (that._levels[i].level === that._currentLevel) {
+        //             if (!Framework.Util.isUndefined(prev)) {
+        //                 that._currentLevel = prev;
+        //                 if (that._isRecordMode) {
+        //                     var levelname = that._findLevelNameByLevel(that._currentLevel);
+        //                     that._record.inputCommand("// Change Level To : " + levelname + ";");
+        //                 }
+        //                 that.start();
+        //                 return;
+        //             }
+        //             break;
+        //         }
+        //         prev = that._levels[i].level;
+        //     }
+        //     Framework.DebugInfo.Log.error('Game : 無前一關');
+        //     throw new Error('Game : can\'t goto previous level.');
+        // };
 
 
         /**
@@ -618,7 +633,13 @@ var Framework = (function (Framework) {
             }
             if (Framework.Util.isUndefined(that._currentLevel) || Framework.Util.isNull(that._currentLevel)) {
                 that._currentLevel = that._levels[0].level;
+
+                LevelLog.push({
+                    'name': that._levels[0].name,
+                    'data': extraData
+                });
             }
+
             that._currentLevel.receiveExtraDataWhenLevelStart(extraData);
 
             var self = that;
@@ -677,23 +698,23 @@ var Framework = (function (Framework) {
             //}
             //
 
-            if(Framework.TouchManager){
+            if (Framework.TouchManager) {
                 Framework.TouchManager.setSubject(self._currentLevel);
                 Framework.TouchManager.setTouchstartEvent(self._currentLevel.touchstart);
                 Framework.TouchManager.setTouchendEvent(self._currentLevel.touchend);
                 Framework.TouchManager.setTouchmoveEvent(self._currentLevel.touchmove);
             }
-            
-            if(Framework.MouseManager){
+
+            if (Framework.MouseManager) {
                 Framework.MouseManager.setSubject(self._currentLevel);
                 Framework.MouseManager.setClickEvent(self.click);
                 Framework.MouseManager.setMousedownEvent(self.mousedown);
                 Framework.MouseManager.setMouseUpEvent(self.mouseup);
                 Framework.MouseManager.setMouseMoveEvent(self._currentLevel.mousemove);
             }
-            
+
             //Framework.MouseManager.setContextmenuEvent(self._currentLevel.contextmenu);
-            if(Framework.KeyBoardManager){                
+            if (Framework.KeyBoardManager) {
                 Framework.KeyBoardManager.setSubject(self._currentLevel);
                 Framework.KeyBoardManager.setKeyupEvent(self.keyup);
                 Framework.KeyBoardManager.setKeydownEvent(self.keydown);
@@ -804,7 +825,7 @@ var Framework = (function (Framework) {
             if (that._runInstance !== undefined) {
                 that.stopAnimationFrame();
             }
-            
+
             let _run = function () {
                 if (that._isRun) {
                     that._runInstance = requestAnimationFrame(_run);

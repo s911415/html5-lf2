@@ -339,7 +339,7 @@ var lf2 = (function (lf2) {
                 y: NAME_OFFSET,
             };
 
-            ctx.font = "12px Arial";
+            ctx.font = "12px 'Microsoft YaHei'";
             ctx.fillStyle = this.team.getColor();
             ctx.strokeStyle = this.team.getDarkColor();
             ctx.lineWidth = 2;

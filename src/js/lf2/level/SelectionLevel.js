@@ -475,6 +475,9 @@ var lf2 = (function (lf2) {
                 this._selectionContainer = $(this.html);
                 this._selectionContainer.attr("id", _SELECTION_CONTAINER_ID);
                 this.forceDraw();
+                this._selectionContainer.find("#selection_ctr_note").click(() => {
+                    Game.goToLevel('control');
+                });
 
                 let playerElement = this._selectionContainer.find(".player:first");
                 let playerContainer = this._selectionContainer.find(".players");

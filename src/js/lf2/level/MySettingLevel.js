@@ -180,12 +180,14 @@ var lf2 = (function (lf2) {
                 this._settingContainer.find(".btn_ok").click((e) => {
                     this.audio.play('ok');
                     this.saveConfig();
-                    Game.goToLevel('menu');
+                    Game.popLevelHistory();
+                    // Game.goToLevel('menu');
                 });
 
                 this._settingContainer.find(".btn_cancel").click((e) => {
                     this.audio.play('cancel');
-                    Game.goToLevel('menu');
+                    Game.popLevelHistory();
+                    // Game.goToLevel('menu');
                 });
                 this.forceDraw();
 
@@ -265,6 +267,7 @@ var lf2 = (function (lf2) {
          */
         saveConfig() {
             localStorage.setItem(define.KEYBOARD_CONFIG_KEY, JSON.stringify(this.config));
+            lf2.KeyboardConfig.clearConfigCache();
         }
     };
 
