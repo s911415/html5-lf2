@@ -6,26 +6,7 @@ var lf2 = (function (lf2) {
      * 定義遊戲內攻擊型態的列舉型別，詳情請參閱原始碼
      *
      * @class lf2.ItrKind
-     * @type {
-            {
-                NORMAL_HIT: number,
-                CATCH: number,
-                PICK_WEAPON: number,
-                CATCH_BDY: number,
-                FALLING: number,
-                WEAPON_STRENGTH: number,
-                SUPER_PUNCH: number,
-                PICK_WEAPON_2: number,
-                HEAL_BALL: number,
-                REFLECTIVE_SHIELD: number,
-                SONATA_OF_DEATH_1: number,
-                SONATA_OF_DEATH_2: number,
-                THREE_D_OBJECTS: number,
-                WHIRLWIND_WIND: number,
-                WHIRLWIND_ICE: number,
-                ITR_ALLOW_FALL: [*]
-            }
-        }
+     * @type {{NORMAL_HIT: number, CATCH: number, PICK_WEAPON: number, CATCH_BDY: number, FALLING: number, WEAPON_STRENGTH: number, SUPER_PUNCH: number, PICK_WEAPON_2: number, HEAL_BALL: number, REFLECTIVE_SHIELD: number, SONATA_OF_DEATH_1: number, SONATA_OF_DEATH_2: number, THREE_D_OBJECTS: number, WHIRLWIND_WIND: number, WHIRLWIND_ICE: number}}
      */
     lf2.ItrKind = ItrKind = {
         NORMAL_HIT: 0,

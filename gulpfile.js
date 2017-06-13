@@ -8,7 +8,8 @@ const gulp = require('gulp'),
     del = require('del'),
     gulpSequence = require('gulp-sequence'),
     zip = require('gulp-zip'),
-    fs = require('fs')
+    fs = require('fs'),
+    jsdoc = require('gulp-jsdoc3')
 ;
 const DIST_DIR = 'dist/';
 const JS_SRCS = [
@@ -154,7 +155,7 @@ gulp.task('line', function () {
 
     JS_SRCS.forEach(k => {
         let obj = {name: k, count: 0};
-        let p = new Promise((a, b)=>{
+        let p = new Promise((a, b) => {
             fs.readFile(k, 'utf8', function (err, dat) {
                 if (err) {
                     console.log("Error");
@@ -168,8 +169,8 @@ gulp.task('line', function () {
         lineArr.push(p);
     });
 
-    return Promise.all(lineArr).then(x=>{
-        x.forEach((v)=>{
+    return Promise.all(lineArr).then(x => {
+        x.forEach((v) => {
             console.log(v.name, v.count);
         });
     });
@@ -206,6 +207,19 @@ gulp.task('zipEgg', () => {
     ])
         .pipe(zip('zip/egg.zip'))
         .pipe(gulp.dest(DIST_DIR))
+});
+
+gulp.task('docs', (cb) => {
+    const config = require('./doc_conf.json');
+    return new Promise((a, b) => {
+        gulp.src(['README.md', './src/**/*.js'], {read: false})
+            .pipe(
+                jsdoc(config, function (cb) {
+                    "use strict";
+                    a();
+                })
+            );
+    });
 });
 
 gulp.task('resources', () => {
@@ -251,6 +265,7 @@ gulp.task(
             'zipData',
             'zipResources',
             'zipEgg'
-        ]
+        ],
+        'docs'
     )
 );

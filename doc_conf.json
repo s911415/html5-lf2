@@ -1,0 +1,34 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": [
+            "jsdoc",
+            "closure"
+        ]
+    },
+    "opts": {
+        "encoding": "utf8",
+        "destination": "./dist/docs/",
+        "recurse": true,
+        "template": "./node_modules/ink-docstrap/template"
+    },
+    "source": {
+        "include": [
+            "src/js"
+        ],
+        "exclude": [
+        ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "templates": {
+        "copyright": "NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>",
+        "navType": "vertical",
+        "theme": "journal",
+        "linenums": true,
+        "collapseSymbols": true,
+        "outputSourcePath": true,
+        "search": true
+    }
+}

@@ -14,21 +14,19 @@ var Framework = (function (Framework) {
         /**
          * Set Point
          *
-         * @param {Number} x
-         * @param {Number} y
+         * @param {Number} x X axis coordinates
+         * @param {Number} y y axis coordinates
          */
         constructor(x, y) {
             /**
              *
              * @type {Number}
-             * @protected
              */
             this._x = floatval(x);
 
             /**
              *
              * @type {Number}
-             * @private protected
              */
             this._y = floatval(y);
         }

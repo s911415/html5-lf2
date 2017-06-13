@@ -23,8 +23,8 @@ var lf2 = (function (lf2) {
     lf2.GameObject = class GameObject {
         /**
          *
-         * @param {Object} fileInfo
-         * @param {String} context
+         * @param {Object} fileInfo information of file
+         * @param {String} context source code of dat fiel
          */
         constructor(fileInfo, context) {
             this.fileInfo = fileInfo;
