@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: Framework/Audio.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.journal.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.html">Framework</a></li><li><a href="lf2.html">lf2</a></li><li>{<a href="Framework.html">Framework</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="-_anonymous_-Audio.Audio.html"><anonymous>~Audio.Audio</a></li><li><a href="Framework.AnimationSprite.html">Framework.AnimationSprite</a></li><li><a href="Framework.GameObject.html">Framework.GameObject</a></li><li><a href="Framework.Level.html">Framework.Level</a></li><li><a href="Framework.Point.html">Framework.Point</a></li><li><a href="Framework.Point3D.html">Framework.Point3D</a></li><li><a href="Framework.Scene.html">Framework.Scene</a></li><li><a href="Framework.Sprite.html">Framework.Sprite</a></li><li><a href="Game.html">Game</a></li><li><a href="GameMapPool.html">GameMapPool</a></li><li><a href="GameObjectPool.html">GameObjectPool</a></li><li><a href="KeyBoardManager.html">KeyBoardManager</a></li><li><a href="lf2.AbstractBehavior.html">lf2.AbstractBehavior</a></li><li><a href="lf2.Ball.html">lf2.Ball</a></li><li><a href="lf2.BmpInfo.html">lf2.BmpInfo</a></li><li><a href="lf2.Body.html">lf2.Body</a></li><li><a href="lf2.Bound.html">lf2.Bound</a></li><li><a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a></li><li><a href="lf2.Character.html">lf2.Character</a></li><li><a href="lf2.CollisionSearchTree.html">lf2.CollisionSearchTree</a></li><li><a href="lf2.ColorBar.html">lf2.ColorBar</a></li><li><a href="lf2.Cube.html">lf2.Cube</a></li><li><a href="lf2.Effect.html">lf2.Effect</a></li><li><a href="lf2.Egg.html">lf2.Egg</a></li><li><a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a></li><li><a href="lf2.FightLevel.html">lf2.FightLevel</a></li><li><a href="lf2.FirzenDisasterFallDownBeginBehavior.html">lf2.FirzenDisasterFallDownBeginBehavior</a></li><li><a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a></li><li><a href="lf2.Frame.html">lf2.Frame</a></li><li><a href="lf2.GameItem.html">lf2.GameItem</a></li><li><a href="lf2.GameMap.html">lf2.GameMap</a></li><li><a href="lf2.GameMapLayer.html">lf2.GameMapLayer</a></li><li><a href="lf2.GameObject.html">lf2.GameObject</a></li><li><a href="lf2.GameObjectBall.html">lf2.GameObjectBall</a></li><li><a href="lf2.GameObjectCharacter.html">lf2.GameObjectCharacter</a></li><li><a href="lf2.GameObjectWeapon.html">lf2.GameObjectWeapon</a></li><li><a href="lf2.HelpLevel.html">lf2.HelpLevel</a></li><li><a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a></li><li><a href="lf2.ImageInformation.html">lf2.ImageInformation</a></li><li><a href="lf2.Interaction.html">lf2.Interaction</a></li><li><a href="lf2.ItrKind.html">lf2.ItrKind</a></li><li><a href="lf2.JulianBallBeginBehavior.html">lf2.JulianBallBeginBehavior</a></li><li><a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a></li><li><a href="lf2.KeyboardConfig.html">lf2.KeyboardConfig</a></li><li><a href="lf2.KeyEventPool.html">lf2.KeyEventPool</a></li><li><a href="lf2.LaunchMenu.html">lf2.LaunchMenu</a></li><li><a href="lf2.LoadingLevel.html">lf2.LoadingLevel</a></li><li><a href="lf2.MySettingLevel.html">lf2.MySettingLevel</a></li><li><a href="lf2.ObjectPoint.html">lf2.ObjectPoint</a></li><li><a href="lf2.Player.html">lf2.Player</a></li><li><a href="lf2.PlayerStatusPanel.html">lf2.PlayerStatusPanel</a></li><li><a href="lf2.Rectangle.html">lf2.Rectangle</a></li><li><a href="lf2.SelectionLevel.html">lf2.SelectionLevel</a></li><li><a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a></li><li><a href="lf2.Team.html">lf2.Team</a></li><li><a href="lf2.Weapon.html">lf2.Weapon</a></li><li><a href="MouseManager.html">MouseManager</a></li><li><a href="Node.html">Node</a></li><li><a href="Prefetch.html">Prefetch</a></li><li><a href="TouchManager.html">TouchManager</a></li><li>{Framework.Audio}</li><li>{Framework.Config}</li><li>{<a href="Framework.Point3D.html">Framework.Point3D</a>}</li><li>{<a href="Framework.Point.html">Framework.Point</a>}</li><li>{<a href="Framework.Scene.html">Framework.Scene</a>}</li><li>{<a href="lf2.BmpInfo.html">lf2.BmpInfo</a>}</li><li>{<a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a>}</li><li>{<a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a>}</li><li>{<a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a>}</li><li>{<a href="lf2.Frame.html">lf2.Frame</a>}</li><li>{<a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a>}</li><li>{<a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a>}</li><li>{<a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a>}</li><li>{<a href="lf2.WorldScene.html">lf2.WorldScene</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:click">event:click</a></li><li><a href="global.html#event:keydown">event:keydown</a></li><li><a href="global.html#event:keyup">event:keyup</a></li><li><a href="global.html#event:mousedown">event:mousedown</a></li><li><a href="global.html#event:mousemove">event:mousemove</a></li><li><a href="global.html#event:mouseup">event:mouseup</a></li><li><a href="global.html#event:touchmove">event:touchmove</a></li><li><a href="global.html#event:touchstart">event:touchstart</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.AttachableInterface.html">Framework.AttachableInterface</a></li><li><a href="Framework.KeyboardEventInterface.html">Framework.KeyboardEventInterface</a></li><li><a href="Framework.MouseEventInterface.html">Framework.MouseEventInterface</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#bezier">bezier</a></li><li><a href="global.html#floatval">floatval</a></li><li><a href="global.html#intval">intval</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#LoadScriptInSequence">LoadScriptInSequence</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: Framework/Audio.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">'use strict';
+var Framework = (function (Framework) {
+    /**
+     * 提供音訊處理的功能，包含左右聲道的控制
+     * @type {ResourceManager}
+     */
+    const ResourceManager = Framework.ResourceManager;
+
+    const AudioCtx = new window.AudioContext();
+
+    let AudioInstanceArray = [];
+
+    let AudioDecodedBuffer = new Map();
+    let AudioInstance = new Map();
+
+    // let AudioCtxArray = [];
+    // (function () {
+    //     let continueAdd = true;
+    //     while (continueAdd) {
+    //         try {
+    //
+    //             AudioCtxArray.push(new window.AudioContext());
+    //         } catch (e) {
+    //             continueAdd = false;
+    //         }
+    //     }
+    // })();
+
+    /**
+     * Get Random audio context
+     * @returns {AudioContext}
+     * @constructor
+     */
+    const GetRandomAudioCtx = () => {
+        return AudioCtx;
+        //return AudioCtxArray[(Math.random() * AudioCtxArray.length) | 0]
+    };
+
+    /**
+     * @class {Framework.Audio}
+     */
+    let Audio;
+
+    /**
+     *
+     * @class {Framework.Audio}
+     */
+    Framework.Audio = Audio = class Audio {
+        /**
+         * Create an audio class
+         * @param {Object|Map} playlist
+         */
+        constructor(playlist) {
+            this._playList = new Map();
+            this.audioCtx = GetRandomAudioCtx();
+            this.gainNodeLeft = this.audioCtx.createGain();
+            this.gainNodeRight = this.audioCtx.createGain();
+            this._promisies = [];
+            this._leftVolume = 1;
+            this._rightVolume = 1;
+            this._sources = new Map();
+
+            this._allDone = false;
+
+            if (playlist) {
+                this.addSongs(playlist);
+            }
+
+            AudioInstanceArray.push(this);
+        }
+
+        /**
+         * Set volume of left channel and right channel
+         * @param {Number} v
+         */
+        set volume(v) {
+            this.leftVolume = this.rightVolume = v;
+        }
+
+        /**
+         * get volume of left volume
+         * @returns {Number}
+         */
+        get leftVolume() {
+            return this._leftVolume;
+        }
+
+        /**
+         * get volume of right volume
+         * @returns {Number}
+         */
+        get rightVolume() {
+            return this._rightVolume;
+        }
+
+        /**
+         * set volume of right volume
+         * @param {Number} v
+         */
+        set leftVolume(v) {
+            if (v &lt; 0) throw new RangeError(`Volume out of range, 0~1 expected, ${v} received.`);
+            this._leftVolume = v;
+            if (this.gainNodeLeft) {
+                this.gainNodeLeft.gain.value = this._leftVolume;
+            }
+        }
+
+        /**
+         * set volume of right volume
+         * @param {Number} v
+         */
+        set rightVolume(v) {
+            if (v &lt; 0) throw new RangeError(`Volume out of range, 0~1 expected, ${v} received.`);
+
+            this._rightVolume = v;
+            if (this.gainNodeRight) {
+                this.gainNodeRight.gain.value = this._rightVolume;
+            }
+        }
+
+
+        /**
+         * Set balance of this audio
+         * @param {Number} weight
+         * @property balance
+         */
+        set balance(weight) {
+            if (weight > 1 || weight &lt; -1) throw new RangeError(`balance out of range, -1~1 expected, ${weight} received.`);
+            if (weight &lt;= 0) {
+                this.leftVolume = 1;
+                this.rightVolume = weight + 1;
+            } else {
+                this.rightVolume = 1;
+                this.leftVolume = 1 - weight;
+            }
+        }
+
+        /**
+         * Add Sound to play list
+         *
+         * @param {Object} list
+         * @returns {*}
+         */
+        addSongs(list) {
+            if (!list) return;
+            if (list instanceof Map) {
+                list.forEach((v, k) => {
+                    let p = this._loadSoundAndReturnBuffer(v);
+                    this._playList.set(k, v);
+                    this._promisies.push(p);
+                });
+            } else {
+                for (let soundName in list) {
+                    if (list.hasOwnProperty(soundName)) {
+                        let p = this._loadSoundAndReturnBuffer(list[soundName]);
+                        this._playList.set(soundName, list[soundName]);
+                        this._promisies.push(p);
+                    }
+                }
+            }
+
+            return this.done();
+        }
+
+        /**
+         * Get source from audio content
+         *
+         * @param {String} soundPath
+         * @returns {AudioBufferSourceNode}
+         */
+        getSource(soundPath) {
+            let existSource = this._sources.get(soundPath);
+            if (existSource) {
+                existSource.disconnect();
+            }
+
+            existSource = this.audioCtx.createBufferSource();
+            this._sources.set(soundPath, existSource);
+
+            return existSource;
+        }
+
+        /**
+         * Play specified sound
+         *
+         * @param {String|Object} soundName
+         * @param {Object} [opts] options
+         * @returns {*}
+         */
+        play(soundName, opts) {
+            if (typeof soundName === 'object') {
+                console.warn('Play Audio by object is deprecated, please set sound name');
+
+                return this.play(soundName['name'], soundName);
+            }
+
+            opts = opts || {};
+            let options = {
+                loop: false,
+                stopPrevious: false,
+                volume: undefined,
+                leftVolume: undefined,
+                rightVolume: undefined,
+            };
+
+            //Override exist config
+            for (let k in options) {
+                if (opts[k] !== undefined) {
+                    options[k] = opts[k];
+                }
+            }
+
+            if (isFinite(options.volume)) {
+                this.volume = options.volume;
+            }
+
+            if (isFinite(options.leftVolume)) {
+                this.leftVolume = options.leftVolume;
+            }
+
+            if (isFinite(options.rightVolume)) {
+                this.rightVolume = options.rightVolume;
+            }
+
+            if (options.stopPrevious) {
+                this.stop(soundName);
+            }
+
+            const soundPath = this._playList.get(soundName);
+            if (soundPath === undefined) throw Error(`Cannot found sound with name: ${soundName}`);
+            this.gainNodeLeft = this.gainNodeRight = null;
+            return this._loadSoundAndReturnBuffer(soundPath)
+                .then(buf => {
+                    if(typeof buf === 'string') {
+                        this._playAsAudio(buf, options);
+                        
+                        return;
+                    }
+                    
+                    const source = this.getSource(soundPath);
+                    const splitter = this.audioCtx.createChannelSplitter(2);
+                    const merger = this.audioCtx.createChannelMerger(2);
+                    const gainNodeLeft = this.audioCtx.createGain();
+                    const gainNodeRight = this.audioCtx.createGain();
+                    this.gainNodeLeft = gainNodeLeft;
+                    this.gainNodeRight = gainNodeRight;
+                    this.leftVolume = this.leftVolume;
+                    this.rightVolume = this.rightVolume;
+
+                    // const gainNodeLeft = this.gainNodeLeft;
+                    // const gainNodeRight = this.gainNodeRight;
+                    source.buffer = buf;
+                    source.connect(splitter);
+                    splitter.connect(gainNodeLeft, 0);
+                    splitter.connect(gainNodeRight, 0);
+                    gainNodeLeft.connect(merger, 0, 0);
+                    gainNodeRight.connect(merger, 0, 1);
+
+                    merger.connect(this.audioCtx.destination);
+
+                    source.loop = options.loop;
+                    source.start();
+                });
+        }
+
+        /**
+         * Fallback play audio when failed to decode audio source
+         *
+         * @param {String} path
+         * @param {Object} opts
+         * @private
+         */
+        _playAsAudio(path, opts){
+            let audio = AudioInstance.get(path) || new window.Audio();
+            audio.src = path;
+            audio.pause();
+            audio.volume = (this.leftVolume + this.rightVolume) / 2;
+            audio.loop = opts.loop;
+            audio.currentTime = 0;
+            
+            audio.play();
+            
+            AudioInstance.set(path, audio);
+        }
+
+        /**
+         * Stop sound
+         * @param [soundPath] sound path that you want to stop, stop all if this parameter is omit.
+         */
+        stop(soundPath) {
+            const StopSource = (s) => {
+                try {
+                    s.disconnect(this.audioCtx.destination);
+                    s.stop();
+                } catch (e) {
+                }
+            };
+            if (!soundPath) {
+                this._sources.forEach(s => {
+                    StopSource(s);
+                });
+            } else {
+                let source = this._sources.get(soundPath);
+                if (source) {
+                    StopSource(s);
+                }
+            }
+        }
+
+        /**
+         * get a copy of playlist
+         * @returns {Map}
+         */
+        get playlist() {
+            return new Map(this._playList);
+        }
+
+        /**
+         *
+         * @param soundPath
+         * @returns {Promise.&lt;AudioBufferSourceNode>}
+         * @private
+         */
+        _loadSoundAndReturnBuffer(soundPath) {
+            let ob = AudioDecodedBuffer.get(soundPath);
+            if (ob) return new Promise((a, b) => a(ob));
+
+            return ResourceManager
+                .loadResourceAsArrayBuffer(soundPath)
+                .then(originalBuffer => {
+                    return this.audioCtx.decodeAudioData(originalBuffer);
+                })
+                .then(decodedBuffer => {
+                    AudioDecodedBuffer.set(soundPath, decodedBuffer);
+
+                    return decodedBuffer;
+                }).catch(err => {
+                    console.error(soundPath, err);
+                    console.log('Fallback to audio');
+                    
+                    AudioDecodedBuffer.set(soundPath, soundPath);
+                });
+        }
+
+        /**
+         * Promise to check all sound loaded.
+         * @returns {Promise.&lt;*>}
+         */
+        done() {
+            return Promise.all(this._promisies);
+        }
+    };
+
+    Audio.prototype.stopAll = function () {
+        AudioInstanceArray.forEach(ai => ai.stop());
+    };
+
+    return Framework;
+})(Framework || {});</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on 2017-06-14T17:45:40+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

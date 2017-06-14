@@ -1,0 +1,96 @@
+<bmp_begin>
+file(0-7): sprite\sys\mahoro_ball.png  w:  50  h:  50  row:  4  col: 2
+file(8-11): sprite\sys\mahoro_ball5.png  w: 169  h: 89  row: 4  col: 1
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end>
+
+<frame> 0 flying
+   pic: 0  state: 3000 wait: 1  next: 1  dvx: 50  dvy: 0  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50  dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1 
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 1 flying
+   pic: 1  state: 3000  wait: 1  next: 2  dvx: 50  dvy: 0  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50  dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1   
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 2 flying
+   pic: 5  state: 3000  wait: 1  next: 1  dvx: 50  dvy: 0  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50   dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1 
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 5 flying2
+   pic: 3  state: 3000  wait: 1  next: 6  dvx: 30  dvy: 40  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50  dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1  
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 6 flying2
+   pic: 3  state: 3000  wait: 1  next: 7  dvx: 30  dvy: 40  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50  dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1 
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 7 flying2
+   pic: 2  state: 3000  wait: 1  next: 1000  dvx: 30  dvy: 40  dvz: 0  centerx: 25  centery: 25   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 8  w: 50 h: 50  dvx: 5  dvy: -5  fall: 60  vrest: 10  bdefend: 30  injury: 40 effect: 1 
+   itr_end:
+   bdy:
+      kind: 0  x: 10  y: 8  w: 50 h: 50
+   bdy_end:
+<frame_end>
+
+<frame> 10 hiting
+   pic: 4  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 25  centery: 35  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 hit
+   pic: 4  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 25  centery: 35  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 rebounding
+   pic: 4  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 25  centery: 35  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+<frame> 50 ball
+   pic: 9  state: 15  wait: 0  next: 51  dvx: 10  dvy: 0  dvz: 0  centerx: 40  centery: 45  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 15  dvy: -8  fall: 60  vrest: 10  bdefend: 100  injury: 20  zwidth: 25
+   itr_end:
+<frame_end>
+
+<frame> 51 ball
+   pic: 10  state: 15  wait: 0  next: 50  dvx: 10  dvy: 0  dvz: 0  centerx: 40  centery: 45  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 27  w: 55  h: 27  dvx: 15  dvy: -8  fall: 60  vrest: 10  bdefend: 100  injury: 20 zwidth: 25
+   itr_end:
+<frame_end>
+
+

@@ -1,0 +1,126 @@
+<bmp_begin>
+file(0-22): sprite\sys\2321008_hit.png  w: 226  h: 237  row: 23  col: 1
+weapon_hit_sound: 2321008_Hit.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end>
+
+<frame> 99 skill_total_time
+   pic: 0  state: 15  wait: 95  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 100 skill_2321008_hit
+   pic: 0  state: 15  wait: 3  next: 101  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+
+<frame_end>
+
+<frame> 101 skill_2321008_hit
+   pic: 1  state: 15  wait: 3  next: 102  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 102 skill_2321008_hit
+   pic: 2  state: 15  wait: 3  next: 103  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 103 skill_2321008_hit
+   pic: 3  state: 15  wait: 3  next: 104  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 104 skill_2321008_hit
+   pic: 4  state: 15  wait: 3  next: 105  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 105 skill_2321008_hit
+   pic: 5  state: 15  wait: 3  next: 106  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 106 skill_2321008_hit
+   pic: 6  state: 15  wait: 3  next: 107  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 107 skill_2321008_hit
+   pic: 7  state: 15  wait: 3  next: 108  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 108 skill_2321008_hit
+   pic: 8  state: 15  wait: 3  next: 109  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 109 skill_2321008_hit
+   pic: 9  state: 15  wait: 3  next: 110  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+
+<frame_end>
+
+<frame> 110 skill_2321008_hit
+   pic: 10  state: 15  wait: 3  next: 111  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+
+<frame_end>
+
+<frame> 111 skill_2321008_hit
+   pic: 11  state: 15  wait: 3  next: 112  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   sound: 2321008_Hit.m4a
+
+<frame_end>
+
+<frame> 112 skill_2321008_hit
+   pic: 12  state: 15  wait: 3  next: 113  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+
+<frame_end>
+
+<frame> 113 skill_2321008_hit
+   pic: 13  state: 15  wait: 3  next: 114  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 114 skill_2321008_hit
+   pic: 14  state: 15  wait: 3  next: 115  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 115 skill_2321008_hit
+   pic: 15  state: 15  wait: 3  next: 116  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 116 skill_2321008_hit
+   pic: 16  state: 15  wait: 3  next: 117  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 117 skill_2321008_hit
+   pic: 17  state: 15  wait: 3  next: 118  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 118 skill_2321008_hit
+   pic: 18  state: 15  wait: 3  next: 119  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 119 skill_2321008_hit
+   pic: 19  state: 15  wait: 3  next: 120  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 120 skill_2321008_hit
+   pic: 20  state: 15  wait: 3  next: 121  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 121 skill_2321008_hit
+   pic: 21  state: 15  wait: 3  next: 122  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>
+
+<frame> 122 skill_2321008_hit
+   pic: 22  state: 15  wait: 7  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 113  centery: 237  hit_a: 0  hit_d: 0  hit_j: 0
+   
+<frame_end>

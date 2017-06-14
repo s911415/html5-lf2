@@ -1,0 +1,1228 @@
+<bmp_begin> 
+file(0-7):  sprite/sys/Thunder.png w: 299  h: 460  row: 8  col: 1
+file(8-14):  sprite/sys/Thunder_e.png w: 149  h: 460  row: 7  col: 1
+file(15-27):  sprite/sys/ThunderPrp.png w: 299  h: 460  row: 13  col: 1
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end> 
+
+<frame> 0 Thunder
+   pic: 0 state: 15  wait: 3  next: 1  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 50
+   itr:
+      kind: 0  x: 0  y: 200  w: 300  h: 260  dvx: 0 dvy: -20 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 1 Thunder
+   pic: 1 state: 15  wait: 1  next: 2  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 0 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 2 Thunder
+   pic: 2 state: 15  wait: 1  next: 3  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 1 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 3 Thunder
+   pic: 3 state: 15  wait: 1  next: 4  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 2 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+     sound: chu_td_bolt1.m4a
+<frame_end>
+
+<frame> 4 Thunder
+   pic: 4 state: 15  wait: 1  next: 5  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 3 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 5 Thunder
+   pic: 1 state: 15  wait: 1  next: 6  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 4 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 6 Thunder
+   pic: 2 state: 15  wait: 1  next: 7  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 5 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 7 Thunder
+   pic: 3 state: 15  wait: 1  next: 8  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 6 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 8 Thunder
+   pic: 4 state: 15  wait: 1  next: 9  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 7 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 9 Thunder
+   pic: 1 state: 15  wait: 1  next: 11  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 8 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 11 Thunder
+   pic: 2 state: 15  wait: 1  next: 12  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 9 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 12 Thunder
+   pic: 3 state: 15  wait: 1  next: 13  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 10 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 13 Thunder
+   pic: 4 state: 15  wait: 1  next: 1000  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 11 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 14 Thunder
+   pic: 5 state: 15  wait: 1  next: 15  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 50
+   itr:
+      kind: 0  x: 16  y: 0  w: 268  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 15 Thunder
+   pic: 6 state: 15  wait: 1  next: 16  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 32  y: 0  w: 236  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 16 Thunder
+   pic: 7 state: 15  wait: 1  next: 17  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 47  y: 0  w: 206  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 17 Thunder
+   pic: 8 state: 15  wait: 1  next: 18  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 148  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 18 Thunder
+   pic: 9 state: 15  wait: 1  next: 19  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 17  y: 0  w: 116  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 19 Thunder
+   pic: 10 state: 15  wait: 1  next: 21  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 35  y: 0  w: 80  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 21 Thunder
+   pic: 11 state: 15  wait: 1  next: 22  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 42  y: 0  w: 66  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 22 Thunder
+   pic: 12 state: 15  wait: 1  next: 23  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 54  y: 0  w: 42  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 23 Thunder
+   pic: 13 state: 15  wait: 1  next: 24  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 62  y: 0  w: 26  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 13 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 24 Thunder
+   pic: 14 state: 15  wait: 1  next: 1000  dvx: 0 dvy: 0 dvz: 0 centerx: 74  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 69  y: 0  w: 12  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 50 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 10 Thunder (hitting)
+   pic: 4 state: 15  wait: 1  next: 53  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 20 Thunder (hit)
+   pic: 4 state: 15  wait: 1  next: 53  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 30 Thunder (back)
+   pic: 4 state: 15  wait: 1  next: 53  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 40 Thunder (bye)
+   pic: 4 state: 15  wait: 1  next: 53  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 41 Thunder
+   pic: 1 state: 15  wait: 3  next: 42  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 0 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 42 Thunder
+   pic: 2 state: 15  wait: 1  next: 43  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 21 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 43 Thunder
+   pic: 3 state: 3006  wait: 1  next: 44  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 1 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+     sound: chu_td_bolt1.m4a
+<frame_end>
+
+<frame> 44 Thunder
+   pic: 4 state: 15  wait: 1  next: 45  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 22 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 45 Thunder
+   pic: 1 state: 3006  wait: 1  next: 46  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 2 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 46 Thunder
+   pic: 2 state: 15  wait: 1  next: 47  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 23 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 47 Thunder
+   pic: 3 state: 3006  wait: 1  next: 48  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 3 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 48 Thunder
+   pic: 4 state: 15  wait: 1  next: 49  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 24 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 49 Thunder
+   pic: 1 state: 3006  wait: 1  next: 50  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 4 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 50 Thunder
+   pic: 2 state: 15  wait: 1  next: 51  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 25 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 51 Thunder
+   pic: 3 state: 3006  wait: 1  next: 52  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 5 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 52 Thunder
+   pic: 4 state: 15  wait: 1  next: 53  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 26 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 53 Thunder
+   pic: 1 state: 3006  wait: 1  next: 54  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 6 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 54 Thunder
+   pic: 2 state: 15  wait: 1  next: 55  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 27 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 55 Thunder
+   pic: 3 state: 3006  wait: 1  next: 56  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 7 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+     sound: chu_td_bolt1.m4a
+<frame_end>
+
+<frame> 56 Thunder
+   pic: 4 state: 15  wait: 1  next: 57  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 28 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 57 Thunder
+   pic: 1 state: 3006  wait: 1  next: 58  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 8 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 58 Thunder
+   pic: 2 state: 15  wait: 1  next: 59  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 29 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 59 Thunder
+   pic: 3 state: 3006  wait: 1  next: 60  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 9 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 60 Thunder
+   pic: 4 state: 15  wait: 1  next: 61  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 30 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 61 Thunder
+   pic: 1 state: 3006  wait: 1  next: 62  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 10 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 62 Thunder
+   pic: 2 state: 15  wait: 1  next: 63  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 31 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 63 Thunder
+   pic: 3 state: 3006  wait: 1  next: 64  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 11 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 64 Thunder
+   pic: 4 state: 15  wait: 1  next: 1000  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 80 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 32 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
+
+
+
+
+
+
+<frame> 69 Thunder
+   pic: 15 state: 15  wait: 3  next: 70  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 50
+   itr:
+      kind: 0  x: 0  y: 200  w: 300  h: 260  dvx: 0 dvy: -20 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+<frame_end>
+
+<frame> 70 Thunder
+   pic: 16 state: 15  wait: 1  next: 71  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 0 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 71 Thunder
+   pic: 17 state: 15  wait: 1  next: 72  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 21 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 72 Thunder
+   pic: 18 state: 15  wait: 1  next: 73  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 1 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+     sound: chu_td_bolt1.m4a
+<frame_end>
+
+<frame> 73 Thunder
+   pic: 19 state: 15  wait: 1  next: 74  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 22 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 74 Thunder
+   pic: 16 state: 15  wait: 1  next: 75  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 2 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 75 Thunder
+   pic: 17 state: 15  wait: 1  next: 76  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 23 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 76 Thunder
+   pic: 18 state: 15  wait: 1  next: 77  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 3 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 77 Thunder
+   pic: 19 state: 15  wait: 1  next: 78  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 24 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 78 Thunder
+   pic: 16 state: 15  wait: 1  next: 79  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 4 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 79 Thunder
+   pic: 17 state: 15  wait: 1  next: 80  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 25 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 80 Thunder
+   pic: 18 state: 15  wait: 1  next: 81  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 5 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 81 Thunder
+   pic: 19 state: 15  wait: 1  next: 82  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 26 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 82 Thunder
+   pic: 16 state: 15  wait: 1  next: 83  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 6 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 83 Thunder
+   pic: 17 state: 15  wait: 1  next: 84  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 27 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 84 Thunder
+   pic: 18 state: 15  wait: 1  next: 85  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 7 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+     sound: chu_td_bolt1.m4a
+<frame_end>
+
+<frame> 85 Thunder
+   pic: 19 state: 15  wait: 1  next: 86  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 28 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 86 Thunder
+   pic: 16 state: 15  wait: 1  next: 87  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 8 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 87 Thunder
+   pic: 17 state: 15  wait: 1  next: 88  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 29 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 88 Thunder
+   pic: 18 state: 15  wait: 1  next: 89  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 9 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 89 Thunder
+   pic: 19 state: 15  wait: 1  next: 90  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 30 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 90 Thunder
+   pic: 16 state: 15  wait: 1  next: 91  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 10 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 91 Thunder
+   pic: 17 state: 15  wait: 1  next: 92  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 31 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 92 Thunder
+   pic: 18 state: 15  wait: 1  next: 93  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 11 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 93 Thunder
+   pic: 19 state: 15  wait: 1  next: 1000  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: -30  y: 360  w: 180  h: 100  dvx: 20 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   itr:
+      kind: 0  x: 150  y: 360  w: 180  h: 100  dvx: -40 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 32 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+
+<frame> 100 Thunder
+   pic: 20 state: 15  wait: 1  next: 101  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 50
+   itr:
+      kind: 0  x: 16  y: 0  w: 268  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 101 Thunder
+   pic: 21 state: 15  wait: 1  next: 102  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 32  y: 0  w: 236  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 102 Thunder
+   pic: 22 state: 15  wait: 1  next: 103  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 47  y: 0  w: 206  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 200  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 103 Thunder
+   pic: 23 state: 15  wait: 1  next: 104  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 300  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 104 Thunder
+   pic: 24 state: 15  wait: 1  next: 105  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 17  y: 0  w: 116  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 105 Thunder
+   pic: 25 state: 15  wait: 1  next: 106  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 35  y: 0  w: 80  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 106 Thunder
+   pic: 26 state: 15  wait: 1  next: 107  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 42  y: 0  w: 66  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 12 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 107 Thunder
+   pic: 27 state: 15  wait: 1  next: 1000  dvx: 0 dvy: 0 dvz: 0 centerx: 149  centery: 449  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 54  y: 0  w: 42  h: 460  dvx: 0 dvy: -10 fall: 100  vrest: 5  bdefend: 90  injury: 100 effect: 2 zwidth: 30
+   itr_end:
+   opoint:
+      kind: 1  x: 125  y: 430  action: 13 dvx: 0  dvy: 0  oid: 350  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
