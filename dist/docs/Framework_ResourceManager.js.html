@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: Framework/ResourceManager.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.journal.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.html">Framework</a></li><li><a href="lf2.html">lf2</a></li><li>{<a href="Framework.html">Framework</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="-_anonymous_-Audio.Audio.html"><anonymous>~Audio.Audio</a></li><li><a href="Framework.AnimationSprite.html">Framework.AnimationSprite</a></li><li><a href="Framework.GameObject.html">Framework.GameObject</a></li><li><a href="Framework.Level.html">Framework.Level</a></li><li><a href="Framework.Point.html">Framework.Point</a></li><li><a href="Framework.Point3D.html">Framework.Point3D</a></li><li><a href="Framework.Scene.html">Framework.Scene</a></li><li><a href="Framework.Sprite.html">Framework.Sprite</a></li><li><a href="Game.html">Game</a></li><li><a href="GameMapPool.html">GameMapPool</a></li><li><a href="GameObjectPool.html">GameObjectPool</a></li><li><a href="KeyBoardManager.html">KeyBoardManager</a></li><li><a href="lf2.AbstractBehavior.html">lf2.AbstractBehavior</a></li><li><a href="lf2.Ball.html">lf2.Ball</a></li><li><a href="lf2.BmpInfo.html">lf2.BmpInfo</a></li><li><a href="lf2.Body.html">lf2.Body</a></li><li><a href="lf2.Bound.html">lf2.Bound</a></li><li><a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a></li><li><a href="lf2.Character.html">lf2.Character</a></li><li><a href="lf2.CollisionSearchTree.html">lf2.CollisionSearchTree</a></li><li><a href="lf2.ColorBar.html">lf2.ColorBar</a></li><li><a href="lf2.Cube.html">lf2.Cube</a></li><li><a href="lf2.Effect.html">lf2.Effect</a></li><li><a href="lf2.Egg.html">lf2.Egg</a></li><li><a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a></li><li><a href="lf2.FightLevel.html">lf2.FightLevel</a></li><li><a href="lf2.FirzenDisasterFallDownBeginBehavior.html">lf2.FirzenDisasterFallDownBeginBehavior</a></li><li><a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a></li><li><a href="lf2.Frame.html">lf2.Frame</a></li><li><a href="lf2.GameItem.html">lf2.GameItem</a></li><li><a href="lf2.GameMap.html">lf2.GameMap</a></li><li><a href="lf2.GameMapLayer.html">lf2.GameMapLayer</a></li><li><a href="lf2.GameObject.html">lf2.GameObject</a></li><li><a href="lf2.GameObjectBall.html">lf2.GameObjectBall</a></li><li><a href="lf2.GameObjectCharacter.html">lf2.GameObjectCharacter</a></li><li><a href="lf2.GameObjectWeapon.html">lf2.GameObjectWeapon</a></li><li><a href="lf2.HelpLevel.html">lf2.HelpLevel</a></li><li><a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a></li><li><a href="lf2.ImageInformation.html">lf2.ImageInformation</a></li><li><a href="lf2.Interaction.html">lf2.Interaction</a></li><li><a href="lf2.ItrKind.html">lf2.ItrKind</a></li><li><a href="lf2.JulianBallBeginBehavior.html">lf2.JulianBallBeginBehavior</a></li><li><a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a></li><li><a href="lf2.KeyboardConfig.html">lf2.KeyboardConfig</a></li><li><a href="lf2.KeyEventPool.html">lf2.KeyEventPool</a></li><li><a href="lf2.LaunchMenu.html">lf2.LaunchMenu</a></li><li><a href="lf2.LoadingLevel.html">lf2.LoadingLevel</a></li><li><a href="lf2.MySettingLevel.html">lf2.MySettingLevel</a></li><li><a href="lf2.ObjectPoint.html">lf2.ObjectPoint</a></li><li><a href="lf2.Player.html">lf2.Player</a></li><li><a href="lf2.PlayerStatusPanel.html">lf2.PlayerStatusPanel</a></li><li><a href="lf2.Rectangle.html">lf2.Rectangle</a></li><li><a href="lf2.SelectionLevel.html">lf2.SelectionLevel</a></li><li><a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a></li><li><a href="lf2.Team.html">lf2.Team</a></li><li><a href="lf2.Weapon.html">lf2.Weapon</a></li><li><a href="MouseManager.html">MouseManager</a></li><li><a href="Node.html">Node</a></li><li><a href="Prefetch.html">Prefetch</a></li><li><a href="TouchManager.html">TouchManager</a></li><li>{Framework.Audio}</li><li>{Framework.Config}</li><li>{<a href="Framework.Point3D.html">Framework.Point3D</a>}</li><li>{<a href="Framework.Point.html">Framework.Point</a>}</li><li>{<a href="Framework.Scene.html">Framework.Scene</a>}</li><li>{<a href="lf2.BmpInfo.html">lf2.BmpInfo</a>}</li><li>{<a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a>}</li><li>{<a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a>}</li><li>{<a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a>}</li><li>{<a href="lf2.Frame.html">lf2.Frame</a>}</li><li>{<a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a>}</li><li>{<a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a>}</li><li>{<a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a>}</li><li>{<a href="lf2.WorldScene.html">lf2.WorldScene</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:click">event:click</a></li><li><a href="global.html#event:keydown">event:keydown</a></li><li><a href="global.html#event:keyup">event:keyup</a></li><li><a href="global.html#event:mousedown">event:mousedown</a></li><li><a href="global.html#event:mousemove">event:mousemove</a></li><li><a href="global.html#event:mouseup">event:mouseup</a></li><li><a href="global.html#event:touchmove">event:touchmove</a></li><li><a href="global.html#event:touchstart">event:touchstart</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.AttachableInterface.html">Framework.AttachableInterface</a></li><li><a href="Framework.KeyboardEventInterface.html">Framework.KeyboardEventInterface</a></li><li><a href="Framework.MouseEventInterface.html">Framework.MouseEventInterface</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#bezier">bezier</a></li><li><a href="global.html#floatval">floatval</a></li><li><a href="global.html#intval">intval</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#LoadScriptInSequence">LoadScriptInSequence</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: Framework/ResourceManager.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">'use strict';
+var Framework = (function (Framework) {
+    const DELAY_TIME = 0;
+
+    (function () {
+        var _requestCount = 0,
+            _responseCount = 0,
+            _timeountIDPrevious = 0,
+            _timeountID = 0,
+            _intervalID = 0,
+            ajaxProcessing = false,
+            _responsedResource = {},
+            _subjectFunction = function () {
+            },
+            ResourceManagerInstance,
+            _resourceBlobCache = new Map(),
+            _resourceArrayBufferCache = new Map(),
+            _zipEntry = undefined
+        ;
+
+
+        var getFinishedRequestPercent = function () {
+            return _responseCount / _requestCount * 100;
+        };
+
+        var getRequestCount = function () {
+            return _requestCount;
+        };
+
+        var getResponseCount = function () {
+            return _responseCount;
+        };
+
+        var loadImage = function (requestOption) {
+            if (typeof requestOption.id === "undefined") requestOption.id = requestOption.url;
+            return new Promise((resolve, reject) => {
+                if (_responsedResource[requestOption.id]) {
+                    resolve(_responsedResource[requestOption.id]);
+                }
+
+                let imageObj = new Image();
+                imageObj.src = requestOption['url'];
+                _requestCount++;
+                if (_intervalID === null) {
+                    _intervalID = setInterval(detectAjax, DELAY_TIME);
+                    finishLoading();
+                }
+                imageObj.onload = function () {
+                    _responseCount++;
+                    _responsedResource[requestOption.id] = {url: requestOption.url, response: imageObj};
+
+                    resolve(_responsedResource[requestOption.id]);
+                };
+                imageObj.onerror = function (e) {
+                    reject(e);
+                    throw e;
+                };
+            });
+        };
+
+        var minAjaxJSON = function (requestOption) {
+            requestOption.systemSuccess = function (responseText, textStatus, xmlHttpRequest) {
+                var responseJSON = JSON.stringify(responseText);
+                _responsedResource[requestOption.id] = {url: requestOption.url, response: responseJSON};
+                _responseCount++;
+            };
+
+            minAjax(requestOption.type, requestOption);
+        };
+
+        var minAjax = function (type, requestOption) {
+            var userSettings = userSettings || {};
+            userSettings.type = type || 'POST';
+
+            if (!Framework.Util.isUndefined(requestOption.data)) {
+                userSettings['data'] = requestOption.data;
+            }
+
+            if (!Framework.Util.isUndefined(requestOption.systemSuccess)) {
+                userSettings['success'] = requestOption.systemSuccess;
+            }
+
+            ajax(requestOption, userSettings);
+        };
+
+        var ajax = function (requestOption, userSettings) {
+            _requestCount++;
+            var defaultSettings = {
+                type: 'POST',
+                cache: false,
+                async: true,
+                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                error: function (xmlHttpRequest, textStatus) {
+                },
+                //data: 'user=admin%20admin&amp;password=12345' //需要自行encode, 且只接受string格式
+                statusCode: {
+                    /*404: function() {},
+                     500: function() {},*/	//這部分USER可以自行設定
+                },
+                success: function (data, textStatus, xmlHttpRequest) {
+                },
+            };
+
+            var userSettings = userSettings || defaultSettings;
+            userSettings = Framework.Util.overrideProperty(defaultSettings, userSettings);
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.onload = (function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        _responsedResource[requestOption.id] = {url: requestOption.url, response: xhr.responseText};
+                        userSettings.success(xhr.responseText, xhr.statusText, xhr);
+                    } else {
+                        userSettings.error(xhr, xhr.statusText);
+                    }
+                }
+            });
+
+            if (!userSettings.cache &amp;&amp; Framework.Util.isUndefined(userSettings.data) &amp;&amp; userSettings.type === 'GET') {
+                requestOption.url = requestOption.url + '?' + Math.random();
+            } else if (!Framework.Util.isUndefined(userSettings.data) &amp;&amp; userSettings.data.trim() !== '') {
+                requestOption.url = requestOption.url + '?' + userSettings.data.trim();
+            }
+
+            xhr.open(userSettings.type, requestOption.url, userSettings.async);
+            xhr.overrideMimeType('text/plain; charset=x-user-defined');
+
+            if (userSettings.type === 'GET') {
+                xhr.send();
+            } else {
+                xhr.setRequestHeader('Content-Type', userSettings.contentType);
+                xhr.send(userSettings.data);
+            }
+        };
+
+
+        var getResource = function (id) {
+            if (Framework.Util.isUndefined(_responsedResource[id])) {
+                throw ('\'' + id + '\' is undefined Resource.');
+            }
+            return _responsedResource[id].response;
+        };
+
+        var destroyResource = function (id) {
+            if (Framework.Util.isUndefined(_responsedResource[id])) {
+                return;
+            }
+            _responsedResource[id].response = null;
+            _responsedResource[id].url = null;
+            _responsedResource[id] = null;
+            delete _responsedResource[id];
+        };
+
+        var setSubjectFunction = function (subjectFunction) {
+            _subjectFunction = subjectFunction;
+        };
+
+        var detectAjax = function () {
+            //Constuctor即開始偵測
+            //要有(_requestCount == 0)是為了避免一開始就去執行gameController.start
+            ajaxProcessing = (_requestCount !== _responseCount) || (_requestCount === 0);
+        };
+
+        var stopDetectingAjax = function () {
+            clearInterval(_intervalID);
+            _intervalID = null;
+        };
+
+        var finishLoading = function () {
+            //由game來控制遊戲開始的時機, 需要是在發出所有request後, 再call這個funciton
+            detectAjax();
+            if (!ajaxProcessing) {
+                stopDetectingAjax();
+                _subjectFunction();
+                ajaxProcessing = false;
+            } else {
+                _timeountIDPrevious = _timeountID;
+                _timeountID = setTimeout(function () {
+                    finishLoading();
+                    clearTimeout(_timeountIDPrevious);
+                }, DELAY_TIME);
+            }
+        };
+
+
+        /**
+         * Resources
+         *
+         * @class {Framework.ResourceManager}
+         * @namespace Framework
+         */
+        class ResourceManager {
+            constructor(subjectFunction) {
+                _requestCount = 0;
+                _responseCount = 0;
+                _responsedResource = {};
+
+                if (!Framework.Util.isUndefined(subjectFunction)) {
+                    _subjectFunction = subjectFunction;
+                }
+
+                //_intervalID = setInterval(detectAjax, 50);
+                finishLoading();
+            }
+
+            /**
+             * Loads the image.
+             *
+             * @return {Promise} The image.
+             */
+            loadImage() {
+                return loadImage.apply(this, arguments);
+            }
+
+            /**
+             * Loads the JSON.
+             *
+             * @return  The JSON.
+             */
+            loadJSON() {
+                return minAjaxJSON.apply(this, arguments);
+            }
+
+            /**
+             *
+             * @param {String} url
+             * @param option
+             * @returns {Promise.&lt;TResult>|*}
+             */
+            loadResource(url, option) {
+                _requestCount++;
+                return fetch(url, option).then((data) => {
+                    finishLoading();
+                    _responseCount++;
+
+                    return data;
+                });
+            }
+
+            loadResourceAsBlob(url) {
+                url = url.replace(/\\/g, '/');
+                url = url.replace(/\/\//g, '/');
+
+                if (_resourceBlobCache.has(url)) {
+                    return new Promise((a, b) => {
+                        return a(_resourceBlobCache.get(url));
+                    });
+                } else if (url.startsWith('blob:')) {
+                    console.warn(url);
+                    return new Promise((a, b) => {
+                        return a(url);
+                    });
+                } else {
+                    _requestCount++;
+                    return fetch(url, {
+                        method: 'GET',
+                    })
+                        .then(r => r.blob())
+                        .then(b => {
+                            finishLoading();
+                            _responseCount++;
+
+                            _resourceBlobCache.set(url, URL.createObjectURL(b));
+
+                            return _resourceBlobCache.get(url);
+                        });
+                }
+            }
+
+            loadResourceAsArrayBuffer(url) {
+                if (typeof url !== 'string') {
+                    throw new SyntaxError('U should pass a url to this method');
+                }
+                url = url.replace(/\\/g, '/');
+                url = url.replace(/\/\//g, '/');
+
+                if (_zipEntry) {
+                    let path = url
+                        .replace(/^\.\//ig, '')
+                        .replace(/^\//ig)
+                        .replace(/\\/);
+
+                    let zipFile = _zipEntry.file(path);
+
+                    if (zipFile) {
+                        return zipFile.async("arraybuffer");
+                    }
+                }
+
+                if (_resourceArrayBufferCache.has(url)) {
+                    return new Promise((a, b) => {
+                        const oBuf = _resourceArrayBufferCache.get(url);
+
+                        return a(oBuf.slice(0));
+                    });
+                } else {
+                    _requestCount++;
+                    return fetch(url, {
+                        method: 'GET',
+                    })
+                        .then(r => r.arrayBuffer())
+                        .then(b => {
+                            finishLoading();
+                            _responseCount++;
+
+                            _resourceArrayBufferCache.set(url, b);
+
+                            return _resourceArrayBufferCache.get(url).slice(0);
+                        });
+                }
+            }
+
+            /**
+             * Destroys the resource.
+             *
+             * @return  .
+             */
+            destroyResource() {
+                return destroyResource.apply(this, arguments);
+            }
+
+            /**
+             * Gets the resource.
+             *
+             * @return  The resource.
+             */
+            getResource() {
+                return getResource.apply(this, arguments);
+            }
+
+            /**
+             * Sets subject function.
+             *
+             * @return  .
+             */
+            setSubjectFunction() {
+                return setSubjectFunction.apply(this, arguments);
+            }
+
+            /**
+             * Gets finished request percent.
+             *
+             * @return  The finished request percent.
+             */
+            getFinishedRequestPercent() {
+                return getFinishedRequestPercent.apply(this, arguments);
+            }
+
+            /**
+             * Gets request count.
+             *
+             * @return  The request count.
+             */
+            getRequestCount() {
+                return getRequestCount.apply(this, arguments);
+            }
+
+            /**
+             * Gets response count.
+             *
+             * @return  The response count.
+             */
+            getResponseCount() {
+                return getResponseCount.apply(this, arguments);
+            }
+
+            loadZip() {
+                lf2.Prefetch.get('RESOURCES')
+                    .then(zip => _zipEntry = zip)
+                    .catch(e => {
+                        console.error(e);
+                    })
+            }
+        }
+        ;
+
+        /**
+         *
+         * @type {ResourceManager}
+         */
+        Framework.ResourceManager = ResourceManagerInstance = new ResourceManager();
+
+
+        return ResourceManagerInstance;
+    })();
+    return Framework;
+})(Framework || {});</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on 2017-06-14T17:45:40+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

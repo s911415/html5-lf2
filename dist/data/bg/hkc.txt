@@ -1,0 +1,62 @@
+name: HK_Coliseum
+width: 794   zboundary: 316 442
+shadow: bg/sys/hkc/s.png  shadowsize: 37 9
+
+layer: 
+  bg/sys/hkc/back1.png
+  transparency: 0  width: 794  x: 0  y: 128
+layer_end
+layer: 
+  bg/sys/hkc/back2.png
+  transparency: 0 width: 794   x: 0  y: 237  cc: 16  c1: 0  c2: 7
+layer_end
+layer: 
+  bg/sys/hkc/back22.png
+  transparency: 0 width: 794   x: 0  y: 237  cc: 16  c1: 8  c2: 15
+layer_end
+
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 40179 x: 0  y: 327  width: 794  height: 119
+layer_end
+layer: 
+  bg/sys/hkc/s.png
+  rect: 40179 x: 0  y: 448  width: 794  height: 10
+layer_end
+layer: 
+  bg/sys/hkc/s.png
+  rect: 40179b x: 0  y: 460  width: 794  height: 9
+layer_end
+
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 29582 x: 0  y: 469  width: 794  height: 3
+layer_end
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 25356 x: 0  y: 472  width: 794  height: 42
+layer_end
+
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 37773 x: 0  y: 446  width: 794  height: 1
+layer_end
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 33580 x: 0  y: 447  width: 794  height: 1
+layer_end
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 37773 x: 0  y: 458  width: 794  height: 1
+layer_end
+
+layer: 
+  bg/sys/hkc/s.png
+  rect: 33580 x: 0  y: 459  width: 794  height: 1
+layer_end

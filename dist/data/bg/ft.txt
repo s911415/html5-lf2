@@ -1,0 +1,122 @@
+name: Forbidden_Tower
+width: 2400   zboundary: 289 510
+shadow: bg/sys/ft/s.png  shadowsize: 37 9
+layer: 
+  bg/sys/ft/sky.png
+  transparency: 0  width: 797  x: 0  y: 143
+layer_end
+
+layer: 
+  bg/sys/ft/w1.png
+  transparency: 1  width: 1500  x: 0  y: 129 loop: 144
+layer_end
+
+layer: 
+  bg/sys/ft/w2.png
+  transparency: 0  width: 1500  x: 0  y: 160 loop: 144
+layer_end
+
+layer: 
+  bg/sys/ft/w3.png
+  transparency: 0  width: 1500  x: 0  y: 217 loop: 144
+layer_end
+
+layer: 
+  bg/sys/ft/g1.png
+  transparency: 0  width: 2300  x: 0  y: 247 loop: 162
+layer_end
+
+layer: 
+  bg/sys/ft/g2.png
+  transparency: 0  width: 2300  x: 0  y: 306 loop: 140
+layer_end
+
+layer: 
+  bg/sys/sp/s.png
+  rect: 34816 x: 0  y: 317  width: 794  height: 177
+layer_end
+
+layer: 
+  bg/sys/ft/g3.png
+  transparency: 0  width: 2400  x: 0  y: 494 loop: 140
+layer_end
+
+layer: 
+  bg/sys/ft/g4.png
+  transparency: 0  width: 2400  x: 0  y: 506 loop: 128
+layer_end
+
+layer: 
+  bg/sys/ft/c1.png
+  transparency: 0  width: 2300  x: 95  y: 129  loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/c2.png
+  transparency: 0  width: 2300  x: 92  y: 263  loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f1.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 0  c2: 0 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f2.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 1  c2: 1 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f3.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 2  c2: 2 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f4.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 3  c2: 3 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f5.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 4  c2: 4 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f6.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 5 c2: 5 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f7.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 6  c2: 6 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f8.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 7  c2: 7 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/f9.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 8  c2: 8 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/fa.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 9  c2: 9 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/fb.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 10  c2: 10 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/fc.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 11  c2: 11 loop: 324
+layer_end
+
+layer: 
+  bg/sys/ft/fd.png
+  transparency: 0  width: 2300  x: 95  y: 129  cc: 13  c1: 12  c2: 12 loop: 324
+layer_end

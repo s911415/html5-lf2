@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: lf2/frame/Interaction.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.journal.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.html">Framework</a></li><li><a href="lf2.html">lf2</a></li><li>{<a href="Framework.html">Framework</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="-_anonymous_-Audio.Audio.html"><anonymous>~Audio.Audio</a></li><li><a href="Framework.AnimationSprite.html">Framework.AnimationSprite</a></li><li><a href="Framework.GameObject.html">Framework.GameObject</a></li><li><a href="Framework.Level.html">Framework.Level</a></li><li><a href="Framework.Point.html">Framework.Point</a></li><li><a href="Framework.Point3D.html">Framework.Point3D</a></li><li><a href="Framework.Scene.html">Framework.Scene</a></li><li><a href="Framework.Sprite.html">Framework.Sprite</a></li><li><a href="Game.html">Game</a></li><li><a href="GameMapPool.html">GameMapPool</a></li><li><a href="GameObjectPool.html">GameObjectPool</a></li><li><a href="KeyBoardManager.html">KeyBoardManager</a></li><li><a href="lf2.AbstractBehavior.html">lf2.AbstractBehavior</a></li><li><a href="lf2.Ball.html">lf2.Ball</a></li><li><a href="lf2.BmpInfo.html">lf2.BmpInfo</a></li><li><a href="lf2.Body.html">lf2.Body</a></li><li><a href="lf2.Bound.html">lf2.Bound</a></li><li><a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a></li><li><a href="lf2.Character.html">lf2.Character</a></li><li><a href="lf2.CollisionSearchTree.html">lf2.CollisionSearchTree</a></li><li><a href="lf2.ColorBar.html">lf2.ColorBar</a></li><li><a href="lf2.Cube.html">lf2.Cube</a></li><li><a href="lf2.Effect.html">lf2.Effect</a></li><li><a href="lf2.Egg.html">lf2.Egg</a></li><li><a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a></li><li><a href="lf2.FightLevel.html">lf2.FightLevel</a></li><li><a href="lf2.FirzenDisasterFallDownBeginBehavior.html">lf2.FirzenDisasterFallDownBeginBehavior</a></li><li><a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a></li><li><a href="lf2.Frame.html">lf2.Frame</a></li><li><a href="lf2.GameItem.html">lf2.GameItem</a></li><li><a href="lf2.GameMap.html">lf2.GameMap</a></li><li><a href="lf2.GameMapLayer.html">lf2.GameMapLayer</a></li><li><a href="lf2.GameObject.html">lf2.GameObject</a></li><li><a href="lf2.GameObjectBall.html">lf2.GameObjectBall</a></li><li><a href="lf2.GameObjectCharacter.html">lf2.GameObjectCharacter</a></li><li><a href="lf2.GameObjectWeapon.html">lf2.GameObjectWeapon</a></li><li><a href="lf2.HelpLevel.html">lf2.HelpLevel</a></li><li><a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a></li><li><a href="lf2.ImageInformation.html">lf2.ImageInformation</a></li><li><a href="lf2.Interaction.html">lf2.Interaction</a></li><li><a href="lf2.ItrKind.html">lf2.ItrKind</a></li><li><a href="lf2.JulianBallBeginBehavior.html">lf2.JulianBallBeginBehavior</a></li><li><a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a></li><li><a href="lf2.KeyboardConfig.html">lf2.KeyboardConfig</a></li><li><a href="lf2.KeyEventPool.html">lf2.KeyEventPool</a></li><li><a href="lf2.LaunchMenu.html">lf2.LaunchMenu</a></li><li><a href="lf2.LoadingLevel.html">lf2.LoadingLevel</a></li><li><a href="lf2.MySettingLevel.html">lf2.MySettingLevel</a></li><li><a href="lf2.ObjectPoint.html">lf2.ObjectPoint</a></li><li><a href="lf2.Player.html">lf2.Player</a></li><li><a href="lf2.PlayerStatusPanel.html">lf2.PlayerStatusPanel</a></li><li><a href="lf2.Rectangle.html">lf2.Rectangle</a></li><li><a href="lf2.SelectionLevel.html">lf2.SelectionLevel</a></li><li><a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a></li><li><a href="lf2.Team.html">lf2.Team</a></li><li><a href="lf2.Weapon.html">lf2.Weapon</a></li><li><a href="MouseManager.html">MouseManager</a></li><li><a href="Node.html">Node</a></li><li><a href="Prefetch.html">Prefetch</a></li><li><a href="TouchManager.html">TouchManager</a></li><li>{Framework.Audio}</li><li>{Framework.Config}</li><li>{<a href="Framework.Point3D.html">Framework.Point3D</a>}</li><li>{<a href="Framework.Point.html">Framework.Point</a>}</li><li>{<a href="Framework.Scene.html">Framework.Scene</a>}</li><li>{<a href="lf2.BmpInfo.html">lf2.BmpInfo</a>}</li><li>{<a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a>}</li><li>{<a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a>}</li><li>{<a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a>}</li><li>{<a href="lf2.Frame.html">lf2.Frame</a>}</li><li>{<a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a>}</li><li>{<a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a>}</li><li>{<a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a>}</li><li>{<a href="lf2.WorldScene.html">lf2.WorldScene</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:click">event:click</a></li><li><a href="global.html#event:keydown">event:keydown</a></li><li><a href="global.html#event:keyup">event:keyup</a></li><li><a href="global.html#event:mousedown">event:mousedown</a></li><li><a href="global.html#event:mousemove">event:mousemove</a></li><li><a href="global.html#event:mouseup">event:mouseup</a></li><li><a href="global.html#event:touchmove">event:touchmove</a></li><li><a href="global.html#event:touchstart">event:touchstart</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.AttachableInterface.html">Framework.AttachableInterface</a></li><li><a href="Framework.KeyboardEventInterface.html">Framework.KeyboardEventInterface</a></li><li><a href="Framework.MouseEventInterface.html">Framework.MouseEventInterface</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#bezier">bezier</a></li><li><a href="global.html#floatval">floatval</a></li><li><a href="global.html#intval">intval</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#LoadScriptInSequence">LoadScriptInSequence</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: lf2/frame/Interaction.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">"use strict";
+var lf2 = (function (lf2) {
+    const Point = Framework.Point;
+    const Utils = lf2.Utils;
+    const Rectangle = lf2.Rectangle;
+    /**
+     * Interaction
+     * 提供Frame攻擊範圍及資訊儲存功能
+     * ◎itr解說◎
+         itr: =身體攻擊動作開始
+
+         kind:
+         0=特殊特技
+         1=捉住暈眩(state:16)的人
+         2=撿武器
+         3=強迫抓人
+         6=敵人靠近按A時是重擊
+         7=撿武器不影響動作
+         8=injury數值變成治療多少hp，動作跳至dvx:?
+         9=打中敵人自己hp歸0(如John的防護罩)
+         10=henry魔王之樂章效果
+         11=henry魔王之樂章效果
+         14=阻擋
+         15=飛起
+         16=結冰
+         10??=被你打到會跳到第???個frame(如人質的kind)
+
+         x: 40 ,w: 35=攻擊前~後的距離   y: 5 ,h: 45 攻擊上~下的距離
+
+         dvx:3   =打中會往後彈後多遠
+         dvy:-10 =打中會彈多高(負值是向天空，正值是向地面)
+
+         fall: 70 =倒下的機會
+         fall: 0 是敵人只動一下
+         fall: 30 是打兩下敵人就暈
+         fall: 40 是打一下往後退打第二下就倒地
+         fall: 60 是打一下暈眩打第二下就倒地
+         fall: 70 是必定倒地
+
+         vrest:15 =同一個frame打到人的中間間隔時間(vrest越小，同一個frame就會打
+         到越多下)。如Davis的昇龍霸，原本vrest只有10，若改的更低，則
+         會造成如強化網頁的地獄真升龍的連擊效果。
+         ※注意：vrest值最低只能是4，更低的話打到人會卡住。
+         (強化網頁的地獄吸星萬印
+
+         arest: (vrest無效)一攻擊到一個人，多久後才能再打一個人
+
+
+         bdefend: 60 =破擋的機會(即打破敵人防禦的機會)
+         bdefend: 60打一次就破擋；同fall，如值是16則16+16+16+16大於60所以值是16
+         時打敵人4下就破擋。
+         bdefend: 100則完全擋不住，就算按擋也會讓你直接被打到，連破擋的動作都跳
+         過。且有防禦效果的人物(如Julian.Knight.Louis)也防不住；道具也
+         會直接被毀掉(不論道具的HP有多少)。
+
+         injury: 40 =殺傷力(即損害敵人hp多少；玩家的hp是預設值的500)
+
+         在injury後面加上以下effect會有特效(僅限於kind:0時有作用)
+         effect: 0 拳擊
+         effect: 1 利器攻擊
+         effect: 2 著火
+         effect: 3 結冰
+         effect: 4 穿過敵人(僅能打中type:1.2.3.4.5.6的物件)
+         effect: 5 (或以上)沒效果，也打不中任何東西
+         effect: 20 定身火
+         effect: 21 定身火
+         effect: 22 定身火
+         effect: 30 定身冰
+
+         effect可以加上負號(有效果但無聲音)。
+         若要加大攻擊的z軸範圍,只要在effect或injury的後面加上zwidth: ??即可
+         (沒有effect就是加在injury的後面,若有effect則加在effect的後面)
+
+         itr_end: =身體攻擊動作結束
+
+
+         &lt;特別說明>大範圍攻擊→
+         itr:
+         kind: 0 x: -x y: -x w: x h: x dvx: ? dvy: ? fall: ? vrest: ?
+         bdefend: ? injury: ? zwidth: x effect: ?
+         itr_end:
+
+         x數值越高則範圍越大，?數值是看自己高興填寫的。
+     *
+     * @class lf2.Interaction
+     */
+    lf2.Interaction = class Interaction {
+        /**
+         *
+         * @param {String} content
+         */
+        constructor(content) {
+            this.info = Utils.parseDataLine(content.replace(/\r?\n/g, ""));
+            this.kind = intval(this.info.get('kind') || 0);
+            this.rect = new Rectangle(
+                intval(this.info.get('w')), intval(this.info.get('h')),
+                intval(this.info.get('x')), intval(this.info.get('y'))
+            );
+
+            this.zwidth = intval(this.info.get('zwidth') || 12);
+
+            this.dv = new Point(
+                intval(this.info.get('dvx') || 0),
+                intval(this.info.get('dvy') || 0)
+            );
+
+            this.fall = intval(this.info.get('fall') || 20);
+
+            this.vrest = intval(this.info.get('vrest') || 0);
+            this.arest = intval(this.info.get('arest') || 7);
+
+            this.hasArest = this.info.get('arest') !== undefined;
+            this.hasVrest = this.info.get('vrest') !== undefined;
+
+            this.injury = intval(this.info.get('injury') || 0);
+            this.bdefend = intval(this.info.get('bdefend') || 0);
+
+            this.effect = intval(this.info.get('effect') || 0);
+
+            this._filterFall();
+        }
+
+        /**
+         * Filter fall.
+         *
+         * @return  {Number} fall filtered
+         */
+        _filterFall() {
+            switch (this.fall) {
+                case 70:
+                    this.fall = 100;
+                    break;
+                case 60:
+                    this.fall = 70;
+                    break;
+                case 40:
+                    this.fall = 50;
+                    break;
+                case 30:
+                    this.fall = 30;
+                    break;
+            }
+        }
+    };
+
+
+    return lf2;
+})(lf2 || {});</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on 2017-06-14T17:45:40+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<bmp_begin>
+file(0-19): sprite/sys/hunter_arrow1.png  w: 48  h: 48  row: 10  col: 2
+<bmp_end>
+
+
+<frame> 0 ball
+   pic: 999  state: 3  wait: 0  next: 1000  dvx: 3  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 1 ball
+   pic: 999  state: 9  wait: 4  next: 2  dvx: 3  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 3   x: -40  y: -40  w: 80  h: 80  vrest: 1  
+      catchingact: 3  caughtact: 132  
+   itr_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: -2  dvy: 1  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 2 ball
+   pic: 999  state: 9  wait: 4  next: 1  dvx: 3  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 3   x: -40  y: -40  w: 80  h: 80  vrest: 1  
+      catchingact: 3  caughtact: 132  
+   itr_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: -2  dvy: 1  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+
+<frame> 3 ball
+   pic: 999  state: 9  wait: 1  next: 4  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 049.m4a 
+   cpoint:
+      kind: 1  x: 0  y: 0
+      vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+<frame_end>
+
+<frame> 4 ball
+   pic: 999  state: 9  wait: 1  next: 5  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      injury: 6  vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 80  y: 0  action: 1  dvx: 0  dvy: 0  oid: 312  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 5 ball
+   pic: 999  state: 9  wait: 5  next: 6  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: -1 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: 0  dvy: 2  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 6 ball
+   pic: 999  state: 9  wait: 5  next: 5  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: -1 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: 0  dvy: 2  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
+<frame> 11 ball
+   pic: 999  state: 9  wait: 4  next: 12  dvx: 6  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 3   x: -40  y: -40  w: 80  h: 80  vrest: 1  
+      catchingact: 13  caughtact: 132  
+   itr_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: -2  dvy: 1  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 12 ball
+   pic: 999  state: 9  wait: 4  next: 11  dvx: 6  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 3   x: -40  y: -40  w: 80  h: 80  vrest: 1  
+      catchingact: 13  caughtact: 132  
+   itr_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: -2  dvy: 1  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+
+<frame> 13 ball
+   pic: 999  state: 9  wait: 1  next: 14  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: 049.m4a 
+   cpoint:
+      kind: 1  x: 0  y: 0
+      vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+<frame_end>
+
+<frame> 14 ball
+   pic: 999  state: 9  wait: 1  next: 15  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      injury: 6  vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 80  y: 0  action: 11  dvx: 0  dvy: 0  oid: 312  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 15 ball
+   pic: 999  state: 9  wait: 4  next: 16  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      injury: 5  vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: -4 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: 0  dvy: 2  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 16 ball
+   pic: 999  state: 9  wait: 4  next: 15  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 0  y: 0
+      injury: 3  vaction: 132  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: -4 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 0  y: 0  action: 44  dvx: 0  dvy: 2  oid: 200  facing: 0
+   opoint_end:
+<frame_end>
+
+
+
+
+
+
+
+
+
+
+<frame> 25 a
+   pic: 999  state: 9  wait: 3  next: 1000  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 3   x: -3  y: -3  w: 6  h: 6  vrest: 1  
+      catchingact: 26  caughtact: 132  
+   itr_end:
+<frame_end>
+
+
+<frame> 26 a
+   pic: 7  state: 9  wait: 5  next: 27  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
+   sound: 033.m4a
+   cpoint:
+      kind: 1  x: 33  y: 34
+      injury: 8  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 30  y: 35  action: 155  dvx: -8  dvy: -6  oid: 329  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 27 a
+   pic: 7  state: 9  wait: 3  next: 28  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
+   sound: 033.m4a
+   cpoint:
+      kind: 1  x: 33  y: 34
+      injury: 6  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 30  y: 35  action: 155  dvx: -7  dvy: -3  oid: 329  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 28 a
+   pic: 7  state: 9  wait: 5  next: 29  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
+   sound: 033.m4a
+   cpoint:
+      kind: 1  x: 33  y: 34
+      injury: 8  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 30  y: 35  action: 155  dvx: -9  dvy: 5  oid: 329  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 29 a
+   pic: 7  state: 9  wait: 3  next: 26  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 8  hit_d: 30  hit_j: 0
+   sound: 033.m4a
+   cpoint:
+      kind: 1  x: 33  y: 34
+      injury: 6  vaction: 131  throwvz: -842150451  hurtable: 1  throwinjury: -842150451 decrease: 0 
+   cpoint_end:
+   opoint:
+      kind: 1  x: 30  y: 35  action: 155  dvx: -6  dvy: 3  oid: 329  facing: 0
+   opoint_end:
+<frame_end>
+
+
+<frame> 30 a
+   pic: 7  state: 9  wait: 0  next: 31  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 33  y: 34
+      vaction: 132  throwvz: -842150451  throwinjury: -842150451 dircontrol: 1 
+   cpoint_end:
+<frame_end>
+
+<frame> 31 a
+   pic: 7  state: 9  wait: 0  next: 32  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
+   cpoint:
+      kind: 1  x: 33  y: 74
+      vaction: 181  throwvx: 4  throwvy: 1  throwvz: 0  throwinjury: 0 
+   cpoint_end:
+<frame_end>
+
+<frame> 32 a
+   pic: 8  state: 9  wait: 2  next: 33  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 33 a
+   pic: 9  state: 9  wait: 2  next: 1000  dvx: 0  dvy: 0  centerx: 33  centery: 34  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+
+
+
+

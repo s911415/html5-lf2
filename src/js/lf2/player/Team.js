@@ -89,7 +89,7 @@ var lf2 = (function (lf2) {
         /**
          * Gets the identifier.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get id() {
             if (this._teamId > 0) return this._teamId;

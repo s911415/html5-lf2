@@ -1,0 +1,97 @@
+<div class="container-wrap">
+    <div class="container">
+        <div id="fight-screen" class="screen">
+            <div id="statusPanels">
+                <div class="status" data-player="{id}" data-select-stage="0">
+                    <span class="material-icons flag">flag</span>
+                    <img class="small">
+
+                    <div class="bar hp">
+                        <div class="value"></div>
+                    </div>
+
+                    <div class="bar mp">
+                        <div class="value"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="funcKeyStatus"></div>
+
+            <div id="gameOverPanel" hidden>
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <caption>
+                        Summary (總結)
+                    </caption>
+                    <thead>
+                    <tr>
+                        <th class="cell cell-player">
+                            <span class="eng">Player</span>
+                            <span class="cht">玩家</span>
+                        </th>
+                        <th class="cell cell-attack">
+                            <span class="eng">Attack</span>
+                            <span class="cht">攻擊</span>
+                        </th>
+                        <th class="cell cell-hp">
+                            <span class="eng">HP Lost</span>
+                            <span class="cht">生命耗損</span>
+                        </th>
+                        <th class="cell cell-mp">
+                            <span class="eng">MP Usage</span>
+                            <span class="cht">用氣量</span>
+                        </th>
+                        <th class="cell cell-status">
+                            <span class="eng">Status</span>
+                            <span class="cht">狀態</span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="player-row" data-player="{id}">
+                            <td class="cell cell-player">
+                                <img src="" class="small"/>
+                                <span class="player-text"></span>
+                            </td>
+
+                            <td class="cell cell-attack">
+                                <div class="value"></div>
+                            </td>
+
+                            <td class="cell cell-hp">
+                                <div class="value"></div>
+                            </td>
+
+                            <td class="cell cell-mp">
+                                <div class="value"></div>
+                            </td>
+
+                            <td class="cell cell-status">
+                                <div class="value"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5">
+                                <div class="time">
+                                    <span class="eng">Time</span>
+                                    <span class="cht">完結時間</span>
+
+                                    <span class="time-value">00:00</span>
+                                </div>
+
+                                <div class="hint-continue">
+                                    <span class="eng">Press 'F4' to continue</span>
+                                    <span class="cht">按'F4'繼續</span>
+                                </div>
+
+                                <div class="clear"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

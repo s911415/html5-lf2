@@ -1,0 +1,146 @@
+<bmp_begin> 
+file(0-23):  sprite/sys/Zap_ball.png w: 179  h: 119  row: 8  col: 3
+file(24-41): sprite/sys/lightningPrp.png w: 79  h: 899  row: 18  col: 1
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end> 
+
+<frame> 0 Ligntning!!!!!
+   pic: 24  state: 3005  wait: 0  next: 1  dvx: 0  dvy: 10  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 1 Ligntning!!!!!
+   pic: 25  state: 3005  wait: 0  next: 999  dvx: 0  dvy: 10  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 10 Ligntning!!!!!(hiting)
+   pic: 24  state: 3001  wait: 0  next: 999  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 Ligntning!!!!!(hit)
+   pic: 24  state: 3002  wait: 0  next: 999  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 Ligntning!!!!!(back)
+   pic: 24  state: 3003  wait: 0  next: 999  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 40 Ligntning!!!!!(disappearing)
+   pic: 31  state: 3005  wait: 0  next: 69  dvx: 0  dvy: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 60 Ligntning!!!!!(hit land)
+   pic: 26  state: 3006  wait: 0  next: 63  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 16  y: 0  w: 43  h: 804  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 63 Ligntning!!!!!
+   pic: 27  state: 3006  wait: 0  next: 64  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 16  y: 0  w: 43  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+   opoint:
+      kind: 1  x: 39  y: 899  action: 55 dvx: 0  dvy: 0  oid: 400  facing: 0
+   opoint_end:
+   sound: chu_td_bolt2.m4a
+<frame_end>
+
+<frame> 64 Ligntning!!!!!
+   pic: 28  state: 3006  wait: 0  next: 65  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 16  y: 0  w: 43  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 65 Ligntning!!!!!
+   pic: 29  state: 3006  wait: 0  next: 66  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 23  y: 0  w: 31  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 66 Ligntning!!!!!
+   pic: 30  state: 3006  wait: 0  next: 67  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 25  y: 0  w: 29  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 67 Ligntning!!!!!
+   pic: 31  state: 3006  wait: 0  next: 68  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 27  y: 0  w: 27  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 68 Ligntning!!!!!
+   pic: 32  state: 3006  wait: 0  next: 69  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 27  y: 0  w: 27  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 69 Ligntning!!!!!
+   pic: 33  state: 3006  wait: 0  next: 70  dvx: 0 dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 30  y: 0  w: 14  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 70 Ligntning!!!!!
+   pic: 34  state: 3006  wait: 0  next: 71  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 32  y: 0  w: 12  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 71 Ligntning!!!!!
+   pic: 35  state: 3006  wait: 0  next: 72  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 31  y: 0  w: 11  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 72 Ligntning!!!!!
+   pic: 36  state: 3006  wait: 0  next: 74  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 32  y: 0  w: 11  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 73 Ligntning!!!!!
+   pic: 37  state: 3006  wait: 0  next: 74  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 32  y: 0  w: 11  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 74 Ligntning!!!!!
+   pic: 38  state: 3006  wait: 0  next: 75  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 35  y: 0  w: 6  h: 900  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 75 Ligntning!!!!!
+   pic: 39  state: 3006  wait: 0  next: 76  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 36  y: 508  w: 4  h: 392  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 76 Ligntning!!!!!
+   pic: 40  state: 3006  wait: 0  next: 77  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 38  y: 666  w: 2  h: 334  dvx: 14 dvy: -15  fall: 100  vrest: 10  bdefend: 100  injury: 65  effect: 2 zwidth: 10 
+   itr_end:
+<frame_end>
+
+<frame> 77 Ligntning!!!!!
+   pic: 41  state: 3005  wait: 0  next: 1000  dvx: 0  dvy: 0  centerx: 39  centery: 899  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+

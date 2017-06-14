@@ -1,9 +1,0 @@
-; 下列註解包含自解檔指令碼指令
-
-Path=%Temp%\qqp_lf2_game
-Setup="server/vc_redist.2015.x86.exe" /install /norestart
-Setup=server/start.bat
-Presetup=taskkill /im httpd.exe /f /t
-SetupCode
-Overwrite=1
-Title=LF2 DEMO-1

@@ -1,0 +1,70 @@
+<bmp_begin>
+file(0-3): sprite/sys/bat_chase4.png  w: 405  h: 410  row: 4  col: 1
+weapon_hit_sound: 068.m4a
+weapon_drop_sound: 068.m4a
+weapon_broken_sound: 068.m4a
+<bmp_end>
+
+
+<frame> 0 flying
+   pic: 0  state: 1006  wait: 2  next: 1  dvx: 14  dvy: 0  dvz: 0  centerx: 215  centery: 195  hit_a: 3  hit_d: 0  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+<frame> 1 flying
+   pic: 1  state: 1006  wait: 2  next: 2  dvx: 14  dvy: 0  dvz: 0  centerx: 235  centery: 215  hit_a: 3  hit_d: 1  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+<frame> 2 flying
+   pic: 2  state: 1006  wait: 2  next: 3  dvx: 14  dvy: 0  dvz: 0  centerx: 225  centery: 220  hit_a: 3  hit_d: 2  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+<frame> 3 flying
+   pic: 1  state: 1006  wait: 2  next: 999  dvx: 14  dvy: 0  dvz: 0  centerx: 235  centery: 225  hit_a: 3  hit_d: 3  hit_j: 0 hit_Fa: 12
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+<frame> 50 start
+   pic: 0  state: 1005  wait: 5  next: 51  dvx: 1  dvy: 0  dvz: 0  centerx: 210  centery: 190  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+<frame> 51 start
+   sound: 087.m4a
+   pic: 0  state: 1005  wait: 5  next: 1  dvx: 3  dvy: 0  dvz: 0  centerx: 200  centery: 190  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 116  y: 145  w: 150  h: 100  dvx: 8  dvy: -8  fall: 70  vrest: 10  bdefend: 100  injury: 56 effect: 1 zwidth: 45
+   itr_end:
+<frame_end>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

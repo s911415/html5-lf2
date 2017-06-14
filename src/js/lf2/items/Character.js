@@ -885,7 +885,7 @@ var lf2 = (function (lf2) {
         /**
          * Current function key.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get _curFuncKey() {
             return this.belongTo._currentKey;

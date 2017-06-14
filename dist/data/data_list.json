@@ -1,0 +1,624 @@
+{
+    "object": [
+        {
+            "id": 57,
+            "type": 0,
+            "file": "character/richter.txt"
+        },
+        {
+            "id": 55,
+            "type": 0,
+            "file": "character/cl.txt"
+        },
+        {
+            "id": 52,
+            "type": 0,
+            "file": "character/julian.txt"
+        },
+        {
+            "id": 51,
+            "type": 0,
+            "file": "character/firzen.txt"
+        },
+        {
+            "id": 50,
+            "type": 0,
+            "file": "character/louisEX.txt"
+        },
+        {
+            "id": 56,
+            "type": 0,
+            "file": "character/guardian.txt"
+        },
+        {
+            "id": 54,
+            "type": 0,
+            "file": "character/bat2.txt"
+        },
+        {
+            "id": 38,
+            "type": 0,
+            "file": "character/bat.txt"
+        },
+        {
+            "id": 39,
+            "type": 0,
+            "file": "character/justin.txt"
+        },
+        {
+            "id": 37,
+            "type": 0,
+            "file": "character/knight.txt"
+        },
+        {
+            "id": 36,
+            "type": 0,
+            "file": "character/jan.txt"
+        },
+        {
+            "id": 35,
+            "type": 0,
+            "file": "character/monk.txt"
+        },
+        {
+            "id": 34,
+            "type": 0,
+            "file": "character/sorcerer.txt"
+        },
+        {
+            "id": 33,
+            "type": 0,
+            "file": "character/jack.txt"
+        },
+        {
+            "id": 32,
+            "type": 0,
+            "file": "character/mark.txt"
+        },
+        {
+            "id": 31,
+            "type": 0,
+            "file": "character/hunter.txt"
+        },
+        {
+            "id": 53,
+            "type": 0,
+            "file": "character/bandit2.txt"
+        },
+        {
+            "id": 30,
+            "type": 0,
+            "file": "character/bandit.txt"
+        },
+        {
+            "id": 1,
+            "type": 0,
+            "file": "character/deep.txt"
+        },
+        {
+            "id": 2,
+            "type": 0,
+            "file": "character/john.txt"
+        },
+        {
+            "id": 4,
+            "type": 0,
+            "file": "character/henry.txt"
+        },
+        {
+            "id": 5,
+            "type": 0,
+            "file": "character/rudolf.txt"
+        },
+        {
+            "id": 6,
+            "type": 0,
+            "file": "character/louis.txt"
+        },
+        {
+            "id": 7,
+            "type": 0,
+            "file": "character/firen.txt"
+        },
+        {
+            "id": 8,
+            "type": 0,
+            "file": "character/freeze.txt"
+        },
+        {
+            "id": 9,
+            "type": 0,
+            "file": "character/dennis.txt"
+        },
+        {
+            "id": 10,
+            "type": 0,
+            "file": "character/woody.txt"
+        },
+        {
+            "id": 11,
+            "type": 0,
+            "file": "character/davis.txt"
+        },
+        {
+            "id": 59,
+            "type": 0,
+            "file": "character/mahoro.txt"
+        },
+        {
+            "id": 12,
+            "type": 0,
+            "file": "character/Kate.txt"
+        },
+        {
+            "id": 58,
+            "type": 0,
+            "file": "character/KateEX.txt"
+        },
+        {
+            "id": 0,
+            "type": 0,
+            "file": "character/template.txt"
+        },
+
+        {
+            "id": 100,
+            "type": 1,
+            "file": "weapon/weapon0.txt"
+        },
+        {
+            "id": 101,
+            "type": 1,
+            "file": "weapon/weapon2.txt"
+        },
+        {
+            "id": 120,
+            "type": 1,
+            "file": "weapon/weapon4.txt"
+        },
+        {
+            "id": 121,
+            "type": 4,
+            "file": "weapon/weapon5.txt"
+        },
+        {
+            "id": 122,
+            "type": 6,
+            "file": "weapon/weapon6.txt"
+        },
+        {
+            "id": 150,
+            "type": 2,
+            "file": "weapon/weapon1.txt"
+        },
+        {
+            "id": 151,
+            "type": 2,
+            "file": "weapon/weapon3.txt"
+        },
+        {
+            "id": 123,
+            "type": 6,
+            "file": "weapon/weapon8.txt"
+        },
+        {
+            "id": 124,
+            "type": 1,
+            "file": "weapon/weapon9.txt"
+        },
+        {
+            "id": 217,
+            "type": 2,
+            "file": "weapon/weapon10.txt"
+        },
+        {
+            "id": 218,
+            "type": 2,
+            "file": "weapon/weapon11.txt"
+        },
+        {
+            "id": 200,
+            "type": 3,
+            "file": "ball/john_ball.txt"
+        },
+        {
+            "id": 201,
+            "type": 1,
+            "file": "weapon/henry_arrow1.txt"
+        },
+        {
+            "id": 202,
+            "type": 1,
+            "file": "weapon/rudolf_weapon.txt"
+        },
+        {
+            "id": 203,
+            "type": 3,
+            "file": "ball/deep_ball.txt"
+        },
+        {
+            "id": 204,
+            "type": 3,
+            "file": "ball/henry_wind.txt"
+        },
+        {
+            "id": 205,
+            "type": 3,
+            "file": "ball/dennis_ball.txt"
+        },
+        {
+            "id": 206,
+            "type": 3,
+            "file": "ball/woody_ball.txt"
+        },
+        {
+            "id": 207,
+            "type": 3,
+            "file": "ball/davis_ball.txt"
+        },
+        {
+            "id": 208,
+            "type": 3,
+            "file": "ball/henry_arrow2.txt"
+        },
+        {
+            "id": 209,
+            "type": 3,
+            "file": "ball/freeze_ball.txt"
+        },
+        {
+            "id": 210,
+            "type": 3,
+            "file": "ball/firen_ball.txt"
+        },
+        {
+            "id": 211,
+            "type": 3,
+            "file": "ball/firen_flame.txt"
+        },
+        {
+            "id": 212,
+            "type": 3,
+            "file": "ball/freeze_column.txt"
+        },
+        {
+            "id": 213,
+            "type": 1,
+            "file": "weapon/weapon7.txt"
+        },
+        {
+            "id": 214,
+            "type": 3,
+            "file": "ball/john_biscuit.txt"
+        },
+        {
+            "id": 215,
+            "type": 3,
+            "file": "ball/dennis_chase.txt"
+        },
+        {
+            "id": 216,
+            "type": 3,
+            "file": "ball/jack_ball.txt"
+        },
+        {
+            "id": 219,
+            "type": 3,
+            "file": "ball/jan_chaseh.txt"
+        },
+        {
+            "id": 220,
+            "type": 3,
+            "file": "ball/jan_chase.txt"
+        },
+        {
+            "id": 221,
+            "type": 3,
+            "file": "ball/firzen_chasef.txt"
+        },
+        {
+            "id": 222,
+            "type": 3,
+            "file": "ball/firzen_chasei.txt"
+        },
+        {
+            "id": 223,
+            "type": 3,
+            "file": "ball/firzen_ball.txt"
+        },
+        {
+            "id": 224,
+            "type": 3,
+            "file": "ball/bat_ball.txt"
+        },
+        {
+            "id": 225,
+            "type": 3,
+            "file": "ball/bat_chase.txt"
+        },
+        {
+            "id": 226,
+            "type": 3,
+            "file": "ball/justin_ball.txt"
+        },
+        {
+            "id": 228,
+            "type": 3,
+            "file": "ball/julian_ball.txt"
+        },
+        {
+            "id": 229,
+            "type": 3,
+            "file": "ball/julian_ball2.txt"
+        },
+        {
+            "id": 310,
+            "type": 3,
+            "file": "ball/firen_ball2.txt"
+        },
+        {
+            "id": 311,
+            "type": 3,
+            "file": "ball/bandit_flame.txt"
+        },
+        {
+            "id": 312,
+            "type": 3,
+            "file": "ball/john_ball2.txt"
+        },
+        {
+            "id": 313,
+            "type": 1,
+            "file": "weapon/weapon14.txt"
+        },
+        {
+            "id": 315,
+            "type": 3,
+            "file": "ball/bat_flame.txt"
+        },
+        {
+            "id": 316,
+            "type": 3,
+            "file": "ball/bat_ball2.txt"
+        },
+        {
+            "id": 317,
+            "type": 3,
+            "file": "ball/bat_chase2.txt"
+        },
+        {
+            "id": 318,
+            "type": 3,
+            "file": "ball/bat_chase3.txt"
+        },
+        {
+            "id": 319,
+            "type": 3,
+            "file": "ball/bat_chase4.txt"
+        },
+        {
+            "id": 321,
+            "type": 3,
+            "file": "ball/bat_chase5.txt"
+        },
+        {
+            "id": 322,
+            "type": 3,
+            "file": "ball/justin_ball2.txt"
+        },
+        {
+            "id": 323,
+            "type": 3,
+            "file": "ball/dragon.txt"
+        },
+        {
+            "id": 325,
+            "type": 1,
+            "file": "weapon/weapon12.txt"
+        },
+        {
+            "id": 326,
+            "type": 3,
+            "file": "ball/freeze_ball2.txt"
+        },
+        {
+            "id": 327,
+            "type": 3,
+            "file": "ball/firen_ball3.txt"
+        },
+        {
+            "id": 328,
+            "type": 3,
+            "file": "ball/horizontal_ww.txt"
+        },
+        {
+            "id": 329,
+            "type": 3,
+            "file": "ball/knight_thunder.txt"
+        },
+        {
+            "id": 330,
+            "type": 3,
+            "file": "ball/knight_ball.txt"
+        },
+        {
+            "id": 333,
+            "type": 3,
+            "file": "ball/cl_flame.txt"
+        },
+        {
+            "id": 334,
+            "type": 3,
+            "file": "ball/cl_col.txt"
+        },
+        {
+            "id": 335,
+            "type": 3,
+            "file": "ball/cl_col2.txt"
+        },
+        {
+            "id": 336,
+            "type": 3,
+            "file": "ball/cl_ball.txt"
+        },
+        {
+            "id": 337,
+            "type": 3,
+            "file": "ball/cl_ball2.txt"
+        },
+        {
+            "id": 338,
+            "type": 3,
+            "file": "ball/cl_chase.txt"
+        },
+        {
+            "id": 339,
+            "type": 1,
+            "file": "weapon/weapon13.txt"
+        },
+        {
+            "id": 340,
+            "type": 3,
+            "file": "ball/cl_ball3.txt"
+        },
+        {
+            "id": 341,
+            "type": 3,
+            "file": "ball/louisex_ball.txt"
+        },
+        {
+            "id": 342,
+            "type": 3,
+            "file": "ball/cl_col3.txt"
+        },
+        {
+            "id": 343,
+            "type": 3,
+            "file": "ball/louis_ball.txt"
+        },
+        {
+            "id": 344,
+            "type": 3,
+            "file": "ball/davis_ball2.txt"
+        },
+        {
+            "id": 345,
+            "type": 3,
+            "file": "ball/cl_chase2.txt"
+        },
+        {
+            "id": 250,
+            "type": 3,
+            "file": "ball/2321008_effect0.txt"
+        },
+        {
+            "id": 251,
+            "type": 3,
+            "file": "ball/2321008_hit.txt"
+        },
+        {
+            "id": 252,
+            "type": 3,
+            "file": "ball/2121007_effect0.txt"
+        },
+        {
+            "id": 253,
+            "type": 3,
+            "file": "ball/2121007_hit.txt"
+        },
+        {
+            "id": 254,
+            "type": 3,
+            "file": "ball/2221007_effect.txt"
+        },
+        {
+            "id": 255,
+            "type": 3,
+            "file": "ball/2221007_hit.txt"
+        },
+        {
+            "id": 400,
+            "type": 3,
+            "file": "ball/Kate_flash.txt"
+        },
+        {
+            "id": 401,
+            "type": 3,
+            "file": "ball/Kate_ball.txt"
+        },
+        {
+            "id": 406,
+            "type": 3,
+            "file": "ball/Kate_thunder.txt"
+        },
+        {
+            "id": 407,
+            "type": 3,
+            "file": "ball/Kate_tdlnings.txt"
+        },
+        {
+            "id": 500,
+            "type": 3,
+            "file": "ball/mahoro_ball.txt"
+        },
+        {
+            "id": 501,
+            "type": 3,
+            "file": "ball/mahoro_ball2.txt"
+        },
+        {
+            "id": 502,
+            "type": 3,
+            "file": "ball/mahoro_ball3.txt"
+        },
+        {
+            "id": 998,
+            "type": 5,
+            "file": "sys/etc.txt"
+        },
+        {
+            "id": 999,
+            "type": 5,
+            "file": "sys/broken_weapon.txt"
+        }
+    ],
+
+    "background": [
+        {
+            "id": "4",
+            "file": "bg/hkc.txt"
+        },
+        {
+            "id": "2",
+            "file": "bg/lf.txt"
+        },
+        {
+            "id": "3",
+            "file": "bg/sp.txt"
+        },
+        {
+            "id": "5",
+            "file": "bg/gw.txt"
+        },
+        {
+            "id": "6",
+            "file": "bg/qi.txt"
+        },
+        {
+            "id": "7",
+            "file": "bg/ft.txt"
+        },
+        {
+            "id": "8",
+            "file": "bg/bc.txt"
+        },
+        {
+            "id": "1",
+            "file": "bg/cuhk.txt"
+        },
+        {
+            "id": "0",
+            "file": "bg/thv.txt"
+        }
+    ]
+}

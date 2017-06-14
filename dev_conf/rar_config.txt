@@ -1,0 +1,10 @@
+; 下列註解包含自解檔指令碼指令
+
+Path=%ProgramFiles%\OOP\LF2\
+Setup="installer/install.bat"
+Setup=server/start.bat
+Presetup=taskkill /im httpd.exe /f /t
+SetupCode
+Overwrite=1
+Title=LF2 Final DEMO
+Shortcut=D, "server/start.bat", , "Little Fighter 2", "Little Fighter 2", dist\favicon.ico
