@@ -1,0 +1,76 @@
+name: Tai_Hom_Village
+width: 1600   zboundary: 370 490
+shadow: bg/sys/thv/s.png  shadowsize: 37 9
+layer: 
+  bg/sys/thv/5.png
+  transparency: 0  width: 800  x: 0  y: 128
+layer_end
+layer: 
+  bg/sys/thv/4.png
+  transparency: 1 width: 840  x: 245  y: 128 //364
+layer_end
+layer: 
+  bg/sys/thv/3.png
+  transparency: 1 width: 852  x: 176  y: 162 //510
+layer_end
+layer: 
+  bg/sys/thv/2al.png
+  transparency: 1 width: 1255  x: 0  y: 197
+layer_end
+layer: 
+  bg/sys/thv/2bl.png
+  transparency: 0 width: 1255  x: 0  y: 246
+layer_end
+
+layer: 
+  bg/sys/thv/2ar.png
+  transparency: 1 width: 1255  x: 800  y: 197
+layer_end
+layer: 
+  bg/sys/thv/2br.png
+  transparency: 0 width: 1255  x: 800  y: 246
+layer_end
+
+layer: 
+  bg/sys/thv/1al.png
+  transparency: 1 width: 1350  x: -175  y: 191
+layer_end
+layer: 
+  bg/sys/thv/1bl.png
+  transparency: 0 width: 1350  x: -175  y: 283
+layer_end
+layer: 
+  bg/sys/thv/1cl.png
+  transparency: 0 width: 1400  x: 0  y: 363
+layer_end
+layer: 
+  bg/sys/thv/1dl.png
+  transparency: 0 width: 1520  x: 0  y: 378
+layer_end
+layer: 
+  bg/sys/thv/1el.png
+  transparency: 0 width: 1600  x: 0  y: 403
+layer_end
+
+
+layer: 
+  bg/sys/thv/1ar.png
+  transparency: 1 width: 1350  x: 625  y: 191
+layer_end
+layer: 
+  bg/sys/thv/1br.png
+  transparency: 0 width: 1350  x: 625  y: 283
+layer_end
+
+layer: 
+  bg/sys/thv/1cr.png
+  transparency: 0 width: 1400  x: 800  y: 363
+layer_end
+layer: 
+  bg/sys/thv/1dr.png
+  transparency: 0 width: 1520  x: 800  y: 378
+layer_end
+layer: 
+  bg/sys/thv/1er.png
+  transparency: 0 width: 1600  x: 800  y: 403
+layer_end

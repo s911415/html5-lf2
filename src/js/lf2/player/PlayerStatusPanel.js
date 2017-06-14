@@ -171,7 +171,7 @@ var lf2 = (function (lf2) {
         /**
          * Hp radio.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get HPRadio() {
             return this._hpRatio;
@@ -180,7 +180,7 @@ var lf2 = (function (lf2) {
         /**
          * Mp radio.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get MPRadio() {
             return this._mpRatio;

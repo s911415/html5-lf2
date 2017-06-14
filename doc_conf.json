@@ -29,6 +29,8 @@
         "linenums": true,
         "collapseSymbols": true,
         "outputSourcePath": true,
-        "search": true
+        "search": true,
+		"outputSourcePath": true,
+		"outputSourceFiles": true
     }
 }

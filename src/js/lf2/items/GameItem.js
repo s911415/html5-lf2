@@ -851,7 +851,7 @@ var lf2 = (function (lf2) {
          *
          * Left top point.
          *
-         * @return  {get}   A get.
+         * @return  {Framework.Point}   A get.
          */
         get leftTopPoint() {
             const center = this.currentFrame.center;
@@ -918,7 +918,7 @@ var lf2 = (function (lf2) {
          *
          * Is object changed.
          *
-         * @return  {get}   A get.
+         * @return  {boolean}   A get.
          */
         get isObjectChanged() {
             return true;
@@ -943,7 +943,7 @@ var lf2 = (function (lf2) {
          *
          * Gets the height.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get height() {
             return this.ImgInfo.rect.height;
@@ -952,7 +952,7 @@ var lf2 = (function (lf2) {
         /**
          * Is stopping.
          *
-         * @return  {get}   A get.
+         * @return  {boolean}   A get.
          */
         get isStopping() {
             return this._velocity.x === this._velocity.y && this._velocity.y === this._velocity.z

@@ -461,7 +461,7 @@ var lf2 = (function (lf2) {
          *
          * Left top point.
          *
-         * @return  {get}   A get.
+         * @return  {Framework.Point3D}   A get.
          */
         get __leftTopPoint__lol() {
             const center = this.currentFrame.center;

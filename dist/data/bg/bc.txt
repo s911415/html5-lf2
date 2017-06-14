@@ -1,0 +1,27 @@
+name: Brokeback_Clif
+width: 1500   zboundary: 300 510
+shadow: bg/sys/bc/s.png  shadowsize: 37 9
+layer: 
+  bg/sys/bc/bc1.png
+  transparency: 0  width: 1379  x: 0  y: 129
+layer_end
+
+layer: 
+  bg/sys/bc/bc2.png
+  transparency: 0  width: 1379  x: 460  y: 129
+layer_end
+
+layer: 
+  bg/sys/bc/bc3.png
+  transparency: 0  width: 1379  x: 920  y: 129
+layer_end
+
+layer: 
+  bg/sys/bc/bc4.png
+  transparency: 1  width: 1500  x: 0  y: 261 loop: 800
+layer_end
+
+layer: 
+  bg/sys/bc/bc5.png
+  transparency: 0  width: 1500  x: 0  y: 296 loop: 600
+layer_end

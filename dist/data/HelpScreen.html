@@ -1,0 +1,200 @@
+<div class="container-wrap">
+    <div class="container">
+        <div id="help-screen" class="screen">
+            <div id="logo" class="menu menu_1"></div>
+
+            <div id="help_panel" class="menu">
+                <div id="help-title">
+                    Game Operation Manual (遊戲操作說明)
+                </div>
+
+                <div id="help-tab">
+                    <ul>
+                        <li><a href="#tabs-1">基本按鍵操作</a></li>
+                        <li><a href="#tabs-2">遊戲流程說明</a></li>
+                        <li><a href="#tabs-3">密技說明</a></li>
+                        <li><a href="#tabs-4">角色技能說明</a></li>
+                    </ul>
+                    <div id="tabs-1">
+                        <p>
+                            <b class="cheat">F1</b>
+                            按下此按鍵時，可以暫停遊戲。
+                        </p>
+                        <p>
+                            <b class="cheat">F2</b>
+                            按下此按鍵時，可以逐步執行遊戲。
+                        </p>
+                        <p>
+                            <b class="cheat">F4</b>
+                            按下此按鍵時，可以重新開始遊戲 (到選擇角色畫面)。
+                        </p>
+                        <p>
+                            <b class="cheat">F10</b>
+                            按下此按鍵時，可以開啟/關閉背景音效 (不含效果音)。
+                        </p>
+
+                        <table class="table" border="1">
+                            <thead>
+                            <tr>
+                                <th class="name">名稱</th>
+                                <th class="act-video">動作</th>
+                                <th class="key">按鍵</th>
+                                <th class="desc">說明</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>步行</td>
+                                <td>
+                                    <video src="image/manual/01_walk.mp4"></video>
+                                </td>
+                                <td>
+                                    ^,v,&lt;,&gt; (方向鍵（上，下，左，右）)
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>按緊方向鍵可一直步行</li>
+                                        <li>配合上下可以打斜行</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>跑步</td>
+                                <td>
+                                    <video src="image/manual/02_run.mp4"></video>
+                                </td>
+                                <td>
+                                    &lt;&lt;, &gt;&gt; (連按左或右兩下)
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li>如要停下，按跑步方向相反的方向鍵</li>
+                                        <li>配合上下可以打斜行</li>
+                                    </ul>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>跳</td>
+                                <td>
+                                    <video src="image/manual/03_jump.mp4"></video>
+                                </td>
+                                <td>
+                                    J
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>跳攻</td>
+                                <td>
+                                    <video src="image/manual/04_jump_attack.mp4"></video>
+                                </td>
+                                <td>
+                                    J + A
+                                </td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tabs-2">
+                        <h3>載入遊戲前</h3>
+                        <p>玩家可以在此改名和控制設定。
+                            點選個別按鍵時，點選的按鍵會高亮，此時點選你想要的按鍵即可，
+                            當按鍵設定完畢時，點選下方的【確定】會儲存設定控制。</p>
+
+                        <h3>開始遊戲前</h3>
+                        <p>
+                            玩家只要按【A (攻)】便可以加入，
+                            按左、右選擇角色，按上到隨機角色，
+                            再按【A (攻)】確定。
+                        </p>
+                        <p>
+                            按下了【A (攻)】之後就可以選擇隊伍，方法同上，
+                            如要回復到選擇角色，就按【J (跳)】。
+                        </p>
+                        <p>
+                            玩家可設定最多四組（即每組二人），或者independent（獨立）。
+                            不同組的玩家，名稱的顏色都會不同。
+                            獨立的則會用白色。
+                            玩家不能攻擊同組隊友（當然，一些敵我不分的攻擊，如火，捉打會例外）。
+                            確定角色和隊伍後，便會倒數五秒。如果想略過可以按【J (跳)】。
+                        </p>
+                        <p>
+                            當確認好角色與隊伍後，即可開始遊戲，在開始遊戲前，可以使用方向鍵控制選單方向，
+                            按【A (攻)】可以執行選項功能，當在背景選項時，按【A (攻)】可以更換背景。
+                        </p>
+
+                        <h3>
+                            遊戲進行中
+                        </h3>
+                        <p>
+                            使用各角色的招式將對方隊伍擊敗。
+                            另外，在上方有角色的狀態列。
+                            首先，角色左上方的顏色旗幟，代表所屬隊伍。
+                            一共有四色，代表四隊，同色的就代表相同隊伍。
+                            紅色的HP棒代表現有的HP值。藍色的MP棒代表現有的MP值。
+
+                        </p>
+
+                        <h3>遊戲結束</h3>
+                        <p>
+                            遊戲結束條件為場上活著的玩家隊伍皆相同，會顯示總結視窗，
+                            按下【F4】可以重新開始遊戲。
+                        </p>
+                    </div>
+                    <div id="tabs-3">
+                        <p>
+                            <b>※在輸入密技時，請確保輸入法在英數模式※</b>
+                        </p>
+                        <p>
+                            <b class="cheat">LF2.NET</b>
+                            在遊戲讀取畫面及選擇角色畫面，輸入<b class="cheat">LF2.NET</b>，即可選擇隱藏角色，
+                            當此密技開啟時，會有一個音效，表示此密技啟用。
+                        </p>
+                        <p>
+                            <b class="cheat">F6</b>
+                            開啟或關閉所有玩家無限MP功能。
+                        </p>
+                        <p>
+                            <b class="cheat">F7</b>
+                            回復所有玩家HP及MP。
+                        </p>
+                        <p>
+                            <b class="cheat">FRIENDS</b>
+                            想要變得塔諾西嗎？只要在戰鬥畫面輸入<b class="cheat">FRIENDS</b>，
+                            所有玩家都會變成福簾子。
+                        </p>
+                        <p>
+                            <b class="cheat">AXYS</b>
+                            阿庫西斯教徒努力就能做到，你們都是能幹的人。
+                            如果輸入<b class="cheat">AXYS</b>，在教義朗讀的期間，
+                            可以獲得無敵狀態。當輸入次數夠多時，有機會獲得神秘禮物。
+                        </p>
+                        <p>
+                            <b class="cheat">ERIS</b>
+                            汝，虔誠的教徒啊。為了不再受到惡魔所誘惑，記住這句咒語吧。<br/>
+                            <u>「厄里斯的胸部是墊出來的」</u>。<br/>
+                            今後若是你的心又受到誘惑，就記得詠唱這句咒語。若是遇見其他受到誘惑的人，
+                            告訴他們這句咒語也是好事一樁。
+                        </p>
+
+                    </div>
+                    <div id="tabs-4">
+                        <div id="char-list"></div>
+                        <div id="char-info"></div>
+                    </div>
+                </div>
+
+                <div class="action_bar">
+                    <div class="allow-mouse menu_1 btn btn_ok"></div>
+                </div>
+
+                <div id="help_note" class="note">
+                    <div>滑鼠移動到該行會顯示動畫</div>
+                    <div>[^,v,&gt;:方向鍵]/[D防,J跳,A攻]</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

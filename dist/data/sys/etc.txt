@@ -1,0 +1,50 @@
+<bmp_begin>
+file(0-69): sprite/sys/etc.png  w: 79  h: 79  row: 10  col: 7
+<bmp_end>
+
+<frame> 0 come_here
+   pic: 0  state: 9997  wait: 1  next: 1  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 1 come_here
+   sound: 080.m4a 
+   pic: 0  state: 9997  wait: 60  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 2 stay
+   pic: 1  state: 9997  wait: 1  next: 3  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 3 stay
+   sound: 081.m4a 
+   pic: 1  state: 9997  wait: 60  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 4 move
+   pic: 2  state: 9997  wait: 1  next: 5  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 5 move
+   sound: 082.m4a 
+   pic: 2  state: 9997  wait: 60  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 6 join
+   pic: 3  state: 9997  wait: 1  next: 7  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 7 join
+   sound: 093.m4a 
+   pic: 3  state: 9997  wait: 60  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+<frame> 399 come_here
+   pic: 0  state: 9997  wait: 60  next: 1000  dvx: 0  dvy: 0  dvz: 0  centerx: 38  centery: 105  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+

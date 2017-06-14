@@ -1,0 +1,1019 @@
+<bmp_begin> 
+file(0-0):  sprite/sys/tdn.png w: 1  h: 1  row: 1  col: 1
+file(1-11):  sprite/sys/deep_3.png w: 79  h: 79  row: 11  col: 1
+file(12-19):  sprite/sys/Louis_SpeedLight.png w: 69  h: 9  row: 1  col: 8
+weapon_hit_sound: M_None.m4a
+weapon_drop_sound: M_None.m4a
+weapon_broken_sound: M_None.m4a
+<bmp_end> 
+
+<frame> 0 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 1  dvx: 0  dvy: 0 dvz: 0 centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 1 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 2  dvx: 50  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 2 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 3  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 3 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 4  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 4 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 5  dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 5 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 6  dvx: 100  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 6 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 7  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 7 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 8  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 8 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 9  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 9 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 11  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 11 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 12  dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 12 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 13 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 13 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 14 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 14 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 15 dvx: 100  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 15 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 16 dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 16 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 17  dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 17 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 18 dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 18 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 19 dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 19 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 21 dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 21 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 22 dvx: -50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 22 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 23 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 23 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 24 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 24 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 25 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 25 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 26 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 26 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 27 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 27 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 50  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 30 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 31 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 31 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 32 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 32 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 33 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 75
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 33 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 34 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 75
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 34 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 75
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 40 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 41 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 41 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 42 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 42 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 43 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 25
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 43 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 44 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 25
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 44 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 25
+   opoint:
+      kind: 1  x: 0  y: 0  action: 99 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 50 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 51 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 51 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 52 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 52 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 53 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 53 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 54 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 54 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 55 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 35
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 55 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 56 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 56 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 60 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 61 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 61 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 62 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 62 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 63 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 63 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 64 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 64 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 65 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 65
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 65 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 66 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 66 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 100  action: 80 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 80 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 2  next: 80 dvx: 60  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 40 dvx: 0  dvy: 0  oid: 312  facing: 0
+   opoint_end:
+<frame_end>
+
+
+<frame> 90 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 91 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 60 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 91 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 92 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 60 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 92 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 93 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 50 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 93 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 94 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 50 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 94 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 95 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 30 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 95 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 96 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 30 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 96 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 97 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 40 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 97 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 40 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 99 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)---Prp
+   pic: 0  state: 3005  wait: 1  next: 99 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 100 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)
+   pic: 0  state: 3005  wait: 0  next: 100 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 101 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)
+   pic: 0  state: 3005  wait: 0  next: 101 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 46
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 102 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)
+   pic: 0  state: 3005  wait: 0  next: 102 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 103 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)---Prp
+   pic: 0  state: 3006  wait: 0  next: 113 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 140  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+<frame> 113 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)---Prp
+   pic: 0  state: 3005  wait: 0  next: 113 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 140  y: 0  action: 0 dvx: 0  dvy: 0  oid: 405  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 104 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)---Prp
+   pic: 0  state: 3005  wait: 1  next: 104 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 105 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 106 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 200 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 106 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 107 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 210 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 107 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 108 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 220 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 108 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 109 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 230 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 109 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 110 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 240 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 110 Exp(Justin's)
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 30  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 54
+   opoint:
+      kind: 1  x: 0  y: 0  action: 250 dvx: 0  dvy: 0  oid: 322  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 111 Chase Thunder
+   pic: 0  state: 3005  wait: 6  next: 112  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 7  hit_d: 1  hit_j: 0 hit_Fa: 1
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 112 Chase Thunder
+   pic: 0  state: 3005  wait: 6  next: 111  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 7  hit_d: 1  hit_j: 0 hit_Fa: 1
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 120 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 121 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 60 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 121 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 122 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 60 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 122 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 123 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 50 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 123 Katian's final thunder arounding
+   pic: 0  state: 3005  wait: 0  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 50 dvx: 0  dvy: 0  oid: 407  facing: 1
+   opoint_end:
+<frame_end>
+
+<frame> 150 Deep's Fire Shadow
+   pic: 1  state: 3005  wait: 3  next: 151 dvx: 0  dvy: 0   centerx: 35  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -9  fall: 70 bdefend: 100 vrest: 6 injury: 35
+itr_end:
+<frame_end>
+
+<frame> 151 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 152 dvx: 0  dvy: 0   centerx: 35  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 152 Deep's Fire Shadow
+   pic: 1  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 35  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 153 Deep's Fire Shadow
+   pic: 2  state: 3005  wait: 3  next: 154 dvx: 0  dvy: 0   centerx: 37  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 5  dvy: -9  fall: 70 bdefend: 100 vrest: 6 injury: 35
+itr_end:
+<frame_end>
+
+<frame> 154 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 155 dvx: 0  dvy: 0   centerx: 37  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 155 Deep's Fire Shadow
+   pic: 2  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 37  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 156 Deep's Fire Shadow
+   pic: 3  state: 3005  wait: 3  next: 157 dvx: 0  dvy: 0   centerx: 30  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 5  dvy: -9  fall: 70 bdefend: 100 vrest: 6 injury: 35
+itr_end:
+<frame_end>
+
+<frame> 157 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 158 dvx: 0  dvy: 0   centerx: 30  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 158 Deep's Fire Shadow
+   pic: 3  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 30  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 159 Deep's Fire Shadow
+   pic: 4  state: 3005  wait: 3  next: 160 dvx: 0  dvy: 0   centerx: 19  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -9  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 160 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 161 dvx: 0  dvy: 0   centerx: 19  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 161 Deep's Fire Shadow
+   pic: 4  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 19  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 162 Deep's Fire Shadow
+   pic: 5  state: 3005  wait: 3  next: 163 dvx: 0  dvy: 0   centerx: 31  centery: 71  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 163 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 164 dvx: 0  dvy: 0   centerx: 31  centery: 71  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 164 Deep's Fire Shadow
+   pic: 5  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 31  centery: 71  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 165 Deep's Fire Shadow
+   pic: 6  state: 3005  wait: 3  next: 166 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 166 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 167 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 167 Deep's Fire Shadow
+   pic: 6  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 168 Deep's Fire Shadow
+   pic: 7  state: 3005  wait: 3  next: 169 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 169 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 170 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 170 Deep's Fire Shadow
+   pic: 7  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 172 Deep's Fire Shadow
+   pic: 8  state: 3005  wait: 3  next: 173 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 0  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 173 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 174 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 174 Deep's Fire Shadow
+   pic: 8  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 175 Deep's Fire Shadow
+   pic: 9  state: 3005  wait: 3  next: 176 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 3  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 176 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 177 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 177 Deep's Fire Shadow
+   pic: 9  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 29  centery: 74  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 178 Deep's Fire Shadow
+   pic: 10  state: 3005  wait: 3  next: 179 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+itr:
+kind: 0  x: -6  y: 3  w: 92  h: 82  dvx: 3  dvy: -12  fall: 70 bdefend: 100 vrest: 6 injury: 35 effect: 2
+itr_end:
+<frame_end>
+
+<frame> 179 Deep's Fire Shadow
+   pic: 0  state: 3005  wait: 3  next: 180 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 180 Deep's Fire Shadow
+   pic: 10  state: 3005  wait: 3  next: 181 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 181 Deep's Fire Shadow
+   pic: 11  state: 3005  wait: 3  next: 1000 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 182 John's Lightning
+   pic: 0  state: 3005  wait: 0  next: 183 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 183 John's Lightning
+   pic: 0  state: 400  wait: 0  next: 184 dvx: 0  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 184 John's Lightning
+   pic: 0  state: 3005  wait: 5  next: 999 dvx: 8  dvy: 0   centerx: 61  centery: 78  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 185 John's Chasing Thunder
+   pic: 0  state: 3005  wait: 3  next: 186  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 7  hit_d: 188  hit_j: 0 hit_Fa: 1
+<frame_end>
+
+<frame> 186 John's Chasing Thunder
+   pic: 0  state: 400  wait: 3  next: 187  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 7  hit_d: 188  hit_j: 0 hit_Fa: 1
+<frame_end>
+
+<frame> 187 John's Chasing Thunder
+   pic: 0  state: 3005  wait: 5  next: 187  dvx: 0  dvy: 0  centerx: 0  centery: 0  hit_a: 7  hit_d: 188  hit_j: 0 hit_Fa: 1
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 188 John's Chasing Thunder
+   pic: 0  state: 3005  wait: 1  next: 1000  dvx: 5  dvy: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 189 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 1  next: 190  dvx: 5  dvy: 0 dvz: 0 centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 190 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 191  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 30
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 191 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 192  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 30
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 192 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 1000  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 30
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 193 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 194  dvx: 5  dvy: 0 dvz: 0 centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 70
+<frame_end>
+
+<frame> 194 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 195  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 70
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 195 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 196  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 70
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 196 Lightning arounding Thunder
+   pic: 0  state: 3005  wait: 0  next: 1000  dvx: 5  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 70
+   opoint:
+      kind: 1  x: 0  y: 0  action: 197 dvx: 0  dvy: 0  oid: 407  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 197 Lightning arounding Thunder(-----------------~-~-~~--~--~~~^_^)
+   pic: 0  state: 3005  wait: 1  next: 104 dvx: 40  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 0  y: 0  action: 0 dvx: 0  dvy: 0  oid: 404  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 198 Henry IceArw!!!???---ITR
+   pic: 0  state: 3005  wait: 1  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -1  y: 12  w: 51  h: 24  dvx: 1 dvy: -13 fall: 70  vrest: 4  bdefend: 60  injury: 20  effect: 3
+   itr_end:
+<frame_end>
+<frame> 199 Henry TdParArw!!!???---ITR
+   pic: 0  state: 3005  wait: 3  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 10  y: 12  w: 62  h: 24  dvx: 6 dvy: 0 fall: 1  vrest: 7  bdefend: 60  injury: 35
+   itr_end:
+<frame_end>
+<frame> 200 FirenSpKICK!!!???---ITR
+   pic: 0  state: 3005  wait: 1  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 88  h: 66  dvx: 28  fall: 70 dvy: -3 bdefend: 60  injury: 30  effect: 2
+   itr_end:
+<frame_end>
+<frame> 201 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 202 dvx: 20  dvy: 0  dvz: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 50
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 202 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 203 dvx: 20  dvy: 0 dvz: 0    centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 203 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 204 dvx: 20  dvy: 0  dvz: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 204 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 205 dvx: 20  dvy: 0   dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 205 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 206 dvx: 20  dvy: 0  dvz: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 206 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 207 dvx: 20  dvy: 0   dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 207 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 208 dvx: 20  dvy: 0  dvz: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 208 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 209 dvx: 20  dvy: 0  dvz: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 209 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 210 dvx: 20  dvy: 0 dvz: 0    centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+
+<frame> 210 Louis's Hasamese!!!???---10sp
+   pic: 0  state: 3005  wait: 2  next: 1000 dvx: 20  dvy: 0 dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   opoint:
+      kind: 1  x: 10  y: 5  action: 160  dvx: 0  dvy: 0  oid: 311  facing: 0
+   opoint_end:
+<frame_end>
+<frame> 211 Louis's Wall!!!???
+   pic: 0  state: 3005  wait: 2 next: 212 dvx: 0  dvy: 0 dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 212 Louis's Wall!!!???
+   pic: 0  state: 3005  wait: 30 next: 1000 dvx: 30  dvy: 0 dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: -300  w: 50  h: 600  dvx: 12  fall: 70 arest: 10 vrest: 30 bdefend: 50  zwidth: 100 effect: 4  
+   itr_end:
+<frame_end>
+
+<frame> 213 Louis's Wall!!!???
+   pic: 0  state: 3005  wait: 5  next: 1000 dvx: 0  dvy: 0 dvz: 0  centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 14  x: 233  y: -200  w: 10  h: 300  vrest: 2 zwidth: 100
+   itr_end:
+   itr:
+      kind: 14  x: 211  y: -200  w: 10  h: 300  vrest: 1 zwidth: 100
+   itr_end:
+   itr:
+      kind: 14  x: 190  y: -200  w: 10  h: 300  vrest: 1 zwidth: 100
+   itr_end:
+<frame_end>
+
+<frame> 215 Davis' PowerGeyser--ITR
+   pic: 0  state: 3005  wait: 8  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 233  h: 360 dvx: 20 dvy: -20 fall: 70  arest: 40 vrest: 20 bdefend: 90  injury: 170 zwidth: 28
+   itr_end:
+<frame_end>
+
+<frame> 216 Woody's hs--ITR1
+   pic: 0  state: 3005  wait: 4  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -30  y: -30  w: 220  h: 220  dvx: 2 dvy: 0  fall: 1 vrest: 7  bdefend: 90  injury: 30 zwidth: 17 effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 217 Woody's hs--ITR2
+   pic: 0  state: 3005  wait: 5  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -40  y: 60  w: 200  h: 100  dvx: 2 dvy: 0  fall: 1 vrest: 7  bdefend: 90  injury: 50 zwidth: 33 effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 218 Woody's hs--ITR3
+   pic: 0  state: 3005  wait: 4  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -50  y: -50  w: 260  h: 260  dvx: 2  dvy: -10  fall: 70 vrest: 7  bdefend: 90  injury: 60 zwidth: 17 effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 219 Woody's hs--ITR4
+   pic: 0  state: 3005  wait: 7  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -50  y: -50  w: 300  h: 300  dvx: 9  dvy: -6  fall: 70 vrest: 3  bdefend: 90  injury: 40 zwidth: 17 effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 220 Woody's hs--ITR5
+   pic: 0  state: 3005  wait: 5  next: 1000 dvx: 0  dvy: 0   centerx: 0  centery: 0  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: -50  y: -50  w: 280  h: 300  dvx: 9  dvy: -9  fall: 1 vrest: 5  bdefend: 90  injury: 40 zwidth: 35 effect: 1
+   itr_end:
+<frame_end>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<frame> 299 LouisLight
+   pic: 999  state: 3005  wait: 1  next: 1000 dvx: 0  dvy: 0   centerx: 35  centery: 9  hit_a: 0  hit_d: 0  hit_j: 0
+
+<frame_end>
+
+
+
+<frame> 300 LouisLight
+   pic: 12  state: 3005  wait: 1  next: 301 dvx: 12  dvy: 0   centerx: 35  centery: 9  hit_a: 18  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 301 LouisLight
+   pic: 13  state: 3005  wait: 1  next: 302 dvx: 12  dvy: 0   centerx: 35  centery: 9  hit_a: 18  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 302 LouisLight
+   pic: 14  state: 3005  wait: 1  next: 303 dvx: 12  dvy: 0   centerx: 35  centery: 9  hit_a: 18  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 303 LouisLight
+   pic: 15  state: 3005  wait: 1  next: 300 dvx: 12  dvy: 0   centerx: 35  centery: 9  hit_a: 18  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+
+<frame> 305 LouisLight
+   pic: 16  state: 3005  wait: 1  next: 306 dvx: 8 dvy: 0   centerx: 35  centery: 9  hit_a: 12  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 306 LouisLight
+   pic: 17  state: 3005  wait: 1  next: 307 dvx: 8  dvy: 0   centerx: 35  centery: 9  hit_a: 12  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 307 LouisLight
+   pic: 18  state: 3005  wait: 1  next: 308 dvx: 8  dvy: 0   centerx: 35  centery: 9  hit_a: 12  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+
+<frame> 308 LouisLight
+   pic: 19  state: 3005  wait: 1  next: 305 dvx: 8  dvy: 0   centerx: 35  centery: 9  hit_a: 12  hit_d: 299  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 70  h: 9  dvx: 9   fall: -1 vrest: 10  bdefend: 90 injury: 5
+   itr_end:
+<frame_end>
+
+

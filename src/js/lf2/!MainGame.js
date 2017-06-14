@@ -138,7 +138,7 @@ var lf2 = (function (lf2) {
         /**
          * Gets the cheat status.
          *
-         * @return  {get}   A get.
+         * @return  {boolean}   A get.
          */
         get cheat() {
             return this._cheatStatus;

@@ -1,0 +1,520 @@
+<bmp_begin> 
+file(0-7):  sprite/sys/Teleport_Flash.png w: 59  h: 59  row: 8  col: 1
+file(8-13): sprite/sys/Zap_ball_Flash.png w: 79  h: 79  row: 6  col: 1
+file(14-27): sprite/sys/Heal.png          w: 199 h: 199 row: 7  col: 2
+file(28-36): sprite/sys/Zap_ball_FlashPrp.png w: 79  h: 79  row: 9  col: 1
+
+weapon_hit_sound: M_None.m4a
+weapon_drop_sound: M_None.m4a
+weapon_broken_sound: M_None.m4a
+<bmp_end> 
+
+<frame> 0 hit mark disappearing
+   pic: 8  state: 3005  wait: 1  next: 1  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 43  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+
+<frame_end>
+
+<frame> 1 hit mark disappearing
+   pic: 9  state: 3005  wait: 1  next: 2  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 26  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10 
+   itr_end:
+  sound: 020.m4a
+<frame_end>
+
+<frame> 2 hit mark disappearing
+   pic: 10 state: 3005  wait: 1  next: 3  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 20  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 3 hit mark disappearing
+   pic: 11 state: 3005  wait: 1  next: 4  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 24  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 4 hit mark disappearing
+   pic: 12 state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 10  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 10 hiting
+   pic: 13  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 39  centery: 79 hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 hit
+   pic: 13  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 39  centery: 79 hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 hiting
+   pic: 13  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 40 disappearing
+   pic: 13  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 48 flash disappearing
+   pic: 0  state: 3005  wait: 0  next: 41  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+  sound: chu_teleport1.m4a
+<frame_end>
+
+<frame> 41 flash disappearing
+   pic: 1  state: 3005  wait: 0  next: 42  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 42 flash disappearing
+   pic: 2  state: 3005  wait: 0  next: 43  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 43 flash disappearing
+   pic: 3  state: 3005  wait: 0  next: 44  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 44 flash disappearing
+   pic: 4  state: 3005  wait: 0  next: 45  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 45 flash disappearing
+   pic: 5  state: 3005  wait: 0  next: 46  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 46 flash disappearing
+   pic: 6  state: 3005  wait: 0  next: 47  dvx: 0  dvy: 0   centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 47 flash disappearing
+   pic: 7  state: 3005  wait: 0  next: 1000  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 10 hiting
+   pic: 0  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 hit
+   pic: 0  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 hiting
+   pic: 0  state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 30  centery: 30  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 80 Kate QM
+   pic: 34  state: 3005  wait: 5  next: 1000  dvx: 2  dvy: -1  centerx: 5  centery: 20  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 81 Kate FM1
+   pic: 35  state: 3005  wait: 4  next: 1000  dvx: 0  dvy: 0  centerx: 15  centery: 24  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 82 Kate FM2
+   pic: 36  state: 3005  wait: 4  next: 1000  dvx: 0  dvy: 0  centerx: 15  centery: 24  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 83 Kate FM1
+   pic: 35  state: 3005  wait: 22  next: 1000  dvx: 0  dvy: 0  centerx: 15  centery: 24  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 55 hit mark disappearingPrp
+   pic: 28  state: 3005  wait: 1  next: 56  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 43  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 56 hit mark disappearingPrp
+   pic: 29  state: 3005  wait: 1  next: 57  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 26  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10 
+   itr_end:
+  sound: 020.m4a
+<frame_end>
+
+<frame> 57 hit mark disappearingPrp
+   pic: 30 state: 3005  wait: 1  next: 58  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 20  w: 79  h: 36  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 58 hit mark disappearingPrp
+   pic: 31 state: 3005  wait: 1  next: 59  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 24  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 59 hit mark disappearingPrp
+   pic: 32 state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 10  dvx: 5  fall: 55  vrest: 10  bdefend: 80  injury: 10
+   itr_end:
+<frame_end>
+
+<frame> 50 hit mark disappearing
+   pic: 8  state: 3005  wait: 1  next: 51  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 43  w: 79  h: 36  dvx: 0 dvy: 2  fall: 100  vrest: 10  bdefend: 80  injury: 12 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 51 hit mark disappearing
+   pic: 9  state: 3005  wait: 1  next: 52  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 26  w: 79  h: 36  dvx: 0 dvy: 2  fall: 100  vrest: 10  bdefend: 80  injury: 12 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 52 hit mark disappearing
+   pic: 10 state: 3005  wait: 1  next: 53  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 20  w: 79  h: 36  dvx: 0 dvy: 2  fall: 100  vrest: 10  bdefend: 80  injury: 12 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 53 hit mark disappearing
+   pic: 11 state: 3005  wait: 1  next: 54  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 24  dvx: 0 dvy: 2  fall: 100  vrest: 10  bdefend: 80  injury: 12 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 54 hit mark disappearing
+   pic: 12 state: 3005  wait: 1  next: 1000  dvx: 0  dvy: 0   centerx: 39  centery: 79  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 16  w: 79  h: 10  dvx: 0 dvy: 2  fall: 100  vrest: 10 bdefend: 80  injury: 12 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 100 Light ' the Heal
+   pic: 14 state: 3005  wait: 2  next: 101  dvx: 0  dvy: 0   centerx: 16 centery: 18 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 101 Light ' the Heal
+   pic: 15 state: 3005  wait: 0  next: 102  dvx: 0  dvy: 0   centerx: 40  centery:  31 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 102 Light ' the Heal
+   pic: 16 state: 3005  wait: 0  next: 103  dvx: 0  dvy: 0   centerx:  38 centery:  35 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 103 Light ' the Heal
+   pic: 17 state: 3005  wait: 0  next: 105  dvx: 0  dvy: 0   centerx:  53 centery: 44  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 105 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 106  dvx: 0  dvy: 0   centerx: 72  centery: 61  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 106 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 107  dvx: 0  dvy: 0   centerx: 61 centery: 47  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   sound: 990.m4a
+<frame_end>
+
+<frame> 107 Light ' the Heal
+   pic: 20 state: 3005  wait: 0 next: 108  dvx: 0  dvy: 0   centerx: 68  centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 108 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 109  dvx: 0  dvy: 0   centerx:  69 centery:  72 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 109 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 110  dvx: 0  dvy: 0   centerx: 72  centery: 61 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 110 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 111  dvx: 0  dvy: 0    centerx: 61 centery: 47  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   sound: 989.m4a
+<frame_end>
+
+<frame> 111 Light ' the Heal
+   pic: 20 state: 3005  wait: 0  next: 112  dvx: 0  dvy: 0   centerx: 68  centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 112 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 113  dvx: 0  dvy: 0  centerx:  69 centery:  72 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 113 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 114  dvx: 0  dvy: 0  centerx: 72  centery: 61 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 114 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 115  dvx: 0  dvy: 0    centerx: 61 centery: 47  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 115 Light ' the Heal
+   pic: 20 state: 3005  wait: 0  next: 116  dvx: 0  dvy: 0   centerx: 68  centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 116 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 117  dvx: 0  dvy: 0   centerx:  69 centery:  72 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 117 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 118  dvx: 0  dvy: 0  centerx: 72  centery: 61 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 118 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 119  dvx: 0  dvy: 0    centerx: 61 centery: 47  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 119 Light ' the Heal
+   pic: 20 state: 3005  wait: 0  next: 120  dvx: 0  dvy: 0   centerx: 68  centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 120 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 121  dvx: 0  dvy: 0   centerx:  69 centery:  72  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 121 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 122  dvx: 0  dvy: 0  centerx: 72  centery: 61 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 122 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 123  dvx: 0  dvy: 0   centerx: 61 centery: 47   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 123 Light ' the Heal
+   pic: 20 state: 3005  wait: 0  next: 124  dvx: 0  dvy: 0  centerx: 68  centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 124 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 125  dvx: 0  dvy: 0   centerx:  69 centery:  72 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 125 Light ' the Heal
+   pic: 18 state: 3005  wait: 0  next: 126  dvx: 0  dvy: 0   centerx: 72  centery: 61  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 126 Light ' the Heal
+   pic: 19 state: 3005  wait: 0  next: 127  dvx: 0  dvy: 0  centerx: 61 centery: 47   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 127 Light ' the Heal
+   pic: 20 state: 3005  wait: 0  next: 128  dvx: 0  dvy: 0  centerx: 68  centery: 65   hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 128 Light ' the Heal
+   pic: 21 state: 3005  wait: 0  next: 129  dvx: 0  dvy: 0  centerx:  69 centery:  72 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 129 Light ' the Heal
+   pic: 22 state: 3005  wait: 0  next: 130  dvx: 0  dvy: 0   centerx: 75  centery: 67  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 130 Light ' the Heal
+   pic: 23 state: 3005  wait: 0  next: 131  dvx: 0  dvy: 0   centerx: 72  centery: 62  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 131 Light ' the Heal
+   pic: 24 state: 3005  wait: 0  next: 132  dvx: 0  dvy: 0   centerx:  84 centery:  71 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 132 Light ' the Heal
+   pic: 25 state: 3005  wait: 0  next: 133  dvx: 0  dvy: 0   centerx:  69 centery: 65  hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+<frame> 133 Light ' the Heal
+   pic: 26 state: 3005  wait: 0  next: 1000  dvx: 0  dvy: 0   centerx: 74  centery: 64 hit_a: 0  hit_d: 0  hit_j: 0
+   itr:
+      kind: 0  x: 0  y: 0  w: 75  h: 140  dvx: 2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+   itr:
+      kind: 0  x: 75  y: 0  w: 75  h: 140  dvx: -2 dvy: -7  fall: 100  vrest: 10 bdefend: 50  injury: 15 effect: 2
+   itr_end:
+<frame_end>
+
+

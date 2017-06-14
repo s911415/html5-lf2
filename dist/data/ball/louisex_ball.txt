@@ -1,0 +1,266 @@
+<bmp_begin>
+file(0-7): sprite/sys/louisEX_ball.png  w: 81  h: 41  row: 4  col: 2
+weapon_hp: 10000
+weapon_hit_sound: 020.m4a
+weapon_drop_sound: 020.m4a
+weapon_broken_sound: 020.m4a
+<bmp_end>
+
+
+<frame> 10 hiting
+   pic: 4  state: 3001  wait: 1  next: 11  dvx: 0  dvy: 0  centerx: 39  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 11 hiting
+   pic: 5  state: 3001  wait: 1  next: 12  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 12 hiting
+   pic: 6  state: 3001  wait: 1  next: 13  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 13 hiting
+   pic: 7  state: 3001  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 28  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 20 hit
+   pic: 4  state: 3002  wait: 1  next: 21  dvx: 0  dvy: 0  centerx: 38  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 21 hit
+   pic: 5  state: 3002  wait: 1  next: 22  dvx: 0  dvy: 0  centerx: 33  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 22 hit
+   pic: 6  state: 3002  wait: 1  next: 23  dvx: 0  dvy: 0  centerx: 39  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 23 hit
+   pic: 7 state: 3002  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 41  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 30 rebounding
+   pic: 4  state: 3003  wait: 1  next: 31  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 31 rebounding
+   pic: 5  state: 3003  wait: 1  next: 32  dvx: 0  dvy: 0  centerx: 31  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 32 rebounding
+   pic: 6  state: 3003  wait: 1  next: 33  dvx: 0  dvy: 0  centerx: 38  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 33 rebounding
+   pic: 7  state: 3003  wait: 1  next: 1000  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 40 disappearing
+   pic: 4  state: 3004  wait: 0  next: 41  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 41 disappearing
+   pic: 5  state: 3004  wait: 0  next: 42  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 42 disappearing
+   pic: 6  state: 3004  wait: 0  next: 43  dvx: 0  dvy: 0  centerx: 37  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+<frame> 43 disappearing
+   pic: 7  state: 3004  wait: 0  next: 1000  dvx: 0  dvy: 0  centerx: 28  centery: 21  hit_a: 0  hit_d: 0  hit_j: 0
+<frame_end>
+
+
+
+
+
+
+<frame> 50 flying_n
+   pic: 0  state: 3006  wait: 1  next: 51  dvx: 35  dvy: 0  centerx: 40  centery: 21  hit_a: 100  hit_d: 40  hit_j: 0
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 60  vrest: 6  bdefend: 16  injury: 10   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 51 flying_n
+   pic: 1  state: 3006  wait: 1  next: 52  dvx: 35  dvy: 0  centerx: 35  centery: 21  hit_a: 100  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 60  vrest: 6  bdefend: 16  injury: 10     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 52 flying_n
+   pic: 2  state: 3006  wait: 1  next: 53  dvx: 35  dvy: 0  centerx: 36  centery: 21  hit_a: 100  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 60  vrest: 6  bdefend: 16  injury: 10     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 53 flying_n
+   pic: 3  state: 3006  wait: 1  next: 50  dvx: 35  dvy: 0  centerx: 37  centery: 21  hit_a: 100  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 60  vrest: 6  bdefend: 16  injury: 10     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+<frame> 55 flying
+   pic: 0  state: 3006  wait: 1  next: 56  dvx: 45  dvy: 0  centerx: 40  centery: 21  hit_a: 40  hit_d: 40  hit_j: 30
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 56 flying
+   pic: 1  state: 3006  wait: 1  next: 57  dvx: 45  dvy: 0  centerx: 35  centery: 21  hit_a: 40  hit_d: 40  hit_j: 30
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 57 flying
+   pic: 2  state: 3006  wait: 1  next: 58  dvx: 45  dvy: 0  centerx: 36  centery: 21  hit_a: 40  hit_d: 40  hit_j: 30
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 58 flying
+   pic: 3  state: 3006  wait: 1  next: 55  dvx: 45  dvy: 0  centerx: 37  centery: 21  hit_a: 40  hit_d: 40  hit_j: 30
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+<frame> 60 flying
+   pic: 0  state: 3006  wait: 1  next: 61  dvx: 45  dvy: 0  centerx: 40  centery: 21  hit_a: 40  hit_d: 40  hit_j: 40
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 61 flying
+   pic: 1  state: 3006  wait: 1  next: 62  dvx: 45  dvy: 0  centerx: 35  centery: 21  hit_a: 40  hit_d: 40  hit_j: 40
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 62 flying
+   pic: 2  state: 3006  wait: 1  next: 63  dvx: 45  dvy: 0  centerx: 36  centery: 21  hit_a: 40  hit_d: 40  hit_j: 40
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 63 flying
+   pic: 3  state: 3006  wait: 1  next: 60  dvx: 45  dvy: 0  centerx: 37  centery: 21  hit_a: 40  hit_d: 40  hit_j: 40
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+<frame> 100 flying
+   pic: 0  state: 3006  wait: 1  next: 101  dvx: 45  dvy: 0  centerx: 40  centery: 21  hit_a: 40  hit_d: 40  hit_j: 0
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 101 flying
+   pic: 1  state: 3006  wait: 1  next: 102  dvx: 45  dvy: 0  centerx: 35  centery: 21  hit_a: 40  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 102 flying
+   pic: 2  state: 3006  wait: 1  next: 103  dvx: 45  dvy: 0  centerx: 36  centery: 21  hit_a: 40  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 103 flying
+   pic: 3  state: 3006  wait: 1  next: 100  dvx: 45  dvy: 0  centerx: 37  centery: 21  hit_a: 40  hit_d: 40  hit_j: 0
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+<frame> 105 flying
+   pic: 0  state: 3006  wait: 1  next: 106  dvx: 45  dvy: 0  centerx: 40  centery: 21  hit_a: 40  hit_d: 40  hit_j: 60
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 106 flying
+   pic: 1  state: 3006  wait: 1  next: 107  dvx: 45  dvy: 0  centerx: 35  centery: 21  hit_a: 40  hit_d: 40  hit_j: 60
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 107 flying
+   pic: 2  state: 3006  wait: 1  next: 108  dvx: 45  dvy: 0  centerx: 36  centery: 21  hit_a: 40  hit_d: 40  hit_j: 60
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 108 flying
+   pic: 3  state: 3006  wait: 1  next: 105  dvx: 45  dvy: 0  centerx: 37  centery: 21  hit_a: 40  hit_d: 40  hit_j: 60
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+<frame> 110 flying
+   pic: 0  state: 3006  wait: 1  next: 111  dvx: 45  dvy: 0  centerx: 40  centery: 21  hit_a: 40  hit_d: 40  hit_j: 70
+   sound: 069.m4a
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19   effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 111 flying
+   pic: 1  state: 3006  wait: 1  next: 112  dvx: 45  dvy: 0  centerx: 35  centery: 21  hit_a: 40  hit_d: 40  hit_j: 70
+   itr:
+      kind: 0  x: 22  y: 6  w: 55  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 112 flying
+   pic: 2  state: 3006  wait: 1  next: 113  dvx: 45  dvy: 0  centerx: 36  centery: 21  hit_a: 40  hit_d: 40  hit_j: 70
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+<frame> 113 flying
+   pic: 3  state: 3006  wait: 1  next: 110  dvx: 45  dvy: 0  centerx: 37  centery: 21  hit_a: 40  hit_d: 40  hit_j: 70
+   itr:
+      kind: 0  x: 22  y: 6  w: 57  h: 29  dvx: 10  dvy: -7  fall: 70  vrest: 5  bdefend: 16  injury: 19     effect: 1
+   itr_end:
+<frame_end>
+
+
+
+
+

@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: lf2/level/LoadingLevel.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.journal.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.html">Framework</a></li><li><a href="lf2.html">lf2</a></li><li>{<a href="Framework.html">Framework</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="-_anonymous_-Audio.Audio.html"><anonymous>~Audio.Audio</a></li><li><a href="Framework.AnimationSprite.html">Framework.AnimationSprite</a></li><li><a href="Framework.GameObject.html">Framework.GameObject</a></li><li><a href="Framework.Level.html">Framework.Level</a></li><li><a href="Framework.Point.html">Framework.Point</a></li><li><a href="Framework.Point3D.html">Framework.Point3D</a></li><li><a href="Framework.Scene.html">Framework.Scene</a></li><li><a href="Framework.Sprite.html">Framework.Sprite</a></li><li><a href="Game.html">Game</a></li><li><a href="GameMapPool.html">GameMapPool</a></li><li><a href="GameObjectPool.html">GameObjectPool</a></li><li><a href="KeyBoardManager.html">KeyBoardManager</a></li><li><a href="lf2.AbstractBehavior.html">lf2.AbstractBehavior</a></li><li><a href="lf2.Ball.html">lf2.Ball</a></li><li><a href="lf2.BmpInfo.html">lf2.BmpInfo</a></li><li><a href="lf2.Body.html">lf2.Body</a></li><li><a href="lf2.Bound.html">lf2.Bound</a></li><li><a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a></li><li><a href="lf2.Character.html">lf2.Character</a></li><li><a href="lf2.CollisionSearchTree.html">lf2.CollisionSearchTree</a></li><li><a href="lf2.ColorBar.html">lf2.ColorBar</a></li><li><a href="lf2.Cube.html">lf2.Cube</a></li><li><a href="lf2.Effect.html">lf2.Effect</a></li><li><a href="lf2.Egg.html">lf2.Egg</a></li><li><a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a></li><li><a href="lf2.FightLevel.html">lf2.FightLevel</a></li><li><a href="lf2.FirzenDisasterFallDownBeginBehavior.html">lf2.FirzenDisasterFallDownBeginBehavior</a></li><li><a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a></li><li><a href="lf2.Frame.html">lf2.Frame</a></li><li><a href="lf2.GameItem.html">lf2.GameItem</a></li><li><a href="lf2.GameMap.html">lf2.GameMap</a></li><li><a href="lf2.GameMapLayer.html">lf2.GameMapLayer</a></li><li><a href="lf2.GameObject.html">lf2.GameObject</a></li><li><a href="lf2.GameObjectBall.html">lf2.GameObjectBall</a></li><li><a href="lf2.GameObjectCharacter.html">lf2.GameObjectCharacter</a></li><li><a href="lf2.GameObjectWeapon.html">lf2.GameObjectWeapon</a></li><li><a href="lf2.HelpLevel.html">lf2.HelpLevel</a></li><li><a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a></li><li><a href="lf2.ImageInformation.html">lf2.ImageInformation</a></li><li><a href="lf2.Interaction.html">lf2.Interaction</a></li><li><a href="lf2.ItrKind.html">lf2.ItrKind</a></li><li><a href="lf2.JulianBallBeginBehavior.html">lf2.JulianBallBeginBehavior</a></li><li><a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a></li><li><a href="lf2.KeyboardConfig.html">lf2.KeyboardConfig</a></li><li><a href="lf2.KeyEventPool.html">lf2.KeyEventPool</a></li><li><a href="lf2.LaunchMenu.html">lf2.LaunchMenu</a></li><li><a href="lf2.LoadingLevel.html">lf2.LoadingLevel</a></li><li><a href="lf2.MySettingLevel.html">lf2.MySettingLevel</a></li><li><a href="lf2.ObjectPoint.html">lf2.ObjectPoint</a></li><li><a href="lf2.Player.html">lf2.Player</a></li><li><a href="lf2.PlayerStatusPanel.html">lf2.PlayerStatusPanel</a></li><li><a href="lf2.Rectangle.html">lf2.Rectangle</a></li><li><a href="lf2.SelectionLevel.html">lf2.SelectionLevel</a></li><li><a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a></li><li><a href="lf2.Team.html">lf2.Team</a></li><li><a href="lf2.Weapon.html">lf2.Weapon</a></li><li><a href="MouseManager.html">MouseManager</a></li><li><a href="Node.html">Node</a></li><li><a href="Prefetch.html">Prefetch</a></li><li><a href="TouchManager.html">TouchManager</a></li><li>{Framework.Audio}</li><li>{Framework.Config}</li><li>{<a href="Framework.Point3D.html">Framework.Point3D</a>}</li><li>{<a href="Framework.Point.html">Framework.Point</a>}</li><li>{<a href="Framework.Scene.html">Framework.Scene</a>}</li><li>{<a href="lf2.BmpInfo.html">lf2.BmpInfo</a>}</li><li>{<a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a>}</li><li>{<a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a>}</li><li>{<a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a>}</li><li>{<a href="lf2.Frame.html">lf2.Frame</a>}</li><li>{<a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a>}</li><li>{<a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a>}</li><li>{<a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a>}</li><li>{<a href="lf2.WorldScene.html">lf2.WorldScene</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:click">event:click</a></li><li><a href="global.html#event:keydown">event:keydown</a></li><li><a href="global.html#event:keyup">event:keyup</a></li><li><a href="global.html#event:mousedown">event:mousedown</a></li><li><a href="global.html#event:mousemove">event:mousemove</a></li><li><a href="global.html#event:mouseup">event:mouseup</a></li><li><a href="global.html#event:touchmove">event:touchmove</a></li><li><a href="global.html#event:touchstart">event:touchstart</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.AttachableInterface.html">Framework.AttachableInterface</a></li><li><a href="Framework.KeyboardEventInterface.html">Framework.KeyboardEventInterface</a></li><li><a href="Framework.MouseEventInterface.html">Framework.MouseEventInterface</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#bezier">bezier</a></li><li><a href="global.html#floatval">floatval</a></li><li><a href="global.html#intval">intval</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#LoadScriptInSequence">LoadScriptInSequence</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: lf2/level/LoadingLevel.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">"use strict";
+var lf2 = (function (lf2) {
+    const _CONTAINER_ID = "__loading_container";
+
+    /**
+     * @type {Framework.Game}
+     */
+    const Game = Framework.Game;
+    const Effect = lf2.Effect;
+
+    const ResourceManager = Framework.ResourceManager;
+    /**
+     * @type {Framework.Level}
+     */
+    const Level = Framework.Level;
+
+    /**
+     * @type {Framework.AnimationSprite}
+     */
+    const AnimationSprite = Framework.AnimationSprite;
+
+    /**
+     * @type {Framework.Point}
+     */
+    const Point = Framework.Point;
+
+    /**
+     * @type {GameObjectPool}
+     */
+    const GameObjectPool = lf2.GameObjectPool;
+
+    /**
+     * @type {GameMapPool}
+     */
+    const GameMapPool = lf2.GameMapPool;
+
+    /**
+     * @type {GameObject}
+     */
+    const GameObject = lf2.GameObject;
+    const GameObjectCharacter = lf2.GameObjectCharacter;
+    const GameObjectBall = lf2.GameObjectBall;
+    const GameObjectWeapon = lf2.GameObjectWeapon;
+
+    const GameMap = lf2.GameMap;
+    const Prefetch = lf2.Prefetch;
+
+    let LoadingVideoSrc = define.IMG_PATH + 'loading_video.mp4';
+    let LoadingVideoLoadState = 0;
+
+    /**
+     * Loading Level
+     *
+     * @type {LoadingLevel}
+     * @class lf2.LoadingLevel
+     */
+    lf2.LoadingLevel = class LoadingLevel extends Framework.Level {
+        constructor() {
+            super();
+
+            if (LoadingLevel.prototype.Instance === undefined) {
+                LoadingLevel.prototype.Instance = this;
+            } else {
+                throw 'Only One instance of Loading Level allowed';
+            }
+
+            this.html = "";
+            this._htmlLoader = ResourceManager.loadResource(define.DATA_PATH + 'LoadingScreen.html', {method: "GET"}).then((data) => {
+                return data.text();
+            }).then((html) => {
+                this.html = html;
+            });
+
+            this.zip = {};
+        }
+
+        /**
+         * initializeProgressResource()
+         *
+         * Initializes the progress resource.
+         *
+         * @return  .
+         */
+        initializeProgressResource() {
+            super.initializeProgressResource();
+
+            this._htmlLoader.then(() => {
+                this.showLoadingVideo();
+            });
+
+            lf2.LoadingLevel.PreloadLoadingVideo();
+        }
+
+        /**
+         * loadingProgress(context, requestInfo)
+         *
+         * Loading progress.
+         *
+         * @param   context     The context.
+         * @param   requestInfo Information describing the request.
+         *
+         * @return  .
+         */
+        loadingProgress(context, requestInfo) {
+        }
+
+        /**
+         * load()
+         *
+         * Loads this object.
+         *
+         * @return  .
+         */
+        load() {
+            this.allDone = false;
+            this._startLoadingTime = Date.now();
+            this.promiseList = [];
+            this.objInfo = [];
+            this.bgInfo = [];
+            new Promise((_resolve, _reject) => {
+                return Promise.all([
+                    Prefetch.get('DATA_LIST'),
+                    Prefetch.get('DATA')
+                        .then(zip => this.zip = zip)
+                        .catch((e) => {
+                            console.error("Fail to load zip file", "fallback to txt file", e);
+                        })
+                    ,
+                ]).then(r => {
+                    return r[0];
+                }).then((data) => {
+                    const objs = data.object, $ = this;
+                    console.log('Loading GameObject');
+
+                    return new Promise((res, rej) => {
+                        let loadObjectRes = function*() {
+                            let i = 0;
+                            while (i &lt; objs.length) {
+                                yield objs[i++];
+                            }
+
+                            return null;
+                        };
+                        let loadObjGen = loadObjectRes();
+
+                        let loadObj = function () {
+                            let v = loadObjGen.next();
+                            const _o = v.value;
+                            if (_o === null) {
+                                res(data);
+                            } else {
+                                $._showLoadFile(_o.file);
+
+                                $.loadDataResource(_o.file).then((datText) => {
+                                    const obj = $.parseObj(_o, datText);
+                                    if (obj instanceof GameObject) {
+                                        $.objInfo.push(obj);
+
+                                        obj.done().then(() => {
+                                            console.log(`"${_o.file}" including images Loaded.`);
+                                            loadObj();
+                                        });
+                                    } else {
+                                        loadObj();
+                                    }
+                                });
+                            }
+                        };
+
+                        loadObj();
+                    });
+                }).then((data) => {
+                    console.log("GameObject all loaded");
+
+                    return data;
+                }).then((data) => {
+                    const bgs = data.background, $ = this;
+                    console.log('Loading GameMap');
+                    return new Promise((res, rej) => {
+                        let loadMapRes = function*() {
+                            let i = 0;
+                            while (i &lt; bgs.length) {
+                                yield bgs[i++];
+                            }
+
+                            return null;
+                        };
+                        let loadMapGen = loadMapRes();
+
+                        let loadMap = function () {
+                            let v = loadMapGen.next();
+                            const _o = v.value;
+                            if (_o === null) {
+                                res(data);
+                            } else {
+                                $._showLoadFile(_o.file);
+
+                                $.loadDataResource(_o.file).then((datText) => {
+                                    const map = $.parseMap(_o, datText);
+                                    if (map instanceof GameMap) {
+                                        $.bgInfo.push(map);
+
+                                        map.done().then(() => {
+                                            console.log(`"${_o.file}" including images Loaded.`);
+                                            loadMap();
+                                        });
+                                    } else {
+                                        loadMap();
+                                    }
+                                });
+                            }
+                        };
+
+                        loadMap();
+                    });
+                }).then(_resolve);
+            }).then((data) => {
+                console.log("GameMap all loaded");
+
+                return data;
+            }).then((a, b) => {
+                console.log("Preloading extra image resources");
+                let arrUrl = [
+                    define.IMG_PATH + "player_status_panel.png",
+                    define.IMG_PATH + "countdown_1.png",
+                    define.IMG_PATH + "countdown_2.png",
+                    define.IMG_PATH + "countdown_3.png",
+                    define.IMG_PATH + "countdown_4.png",
+                    define.IMG_PATH + "countdown_5.png",
+                    define.IMG_PATH + "join_char_1.png",
+                    define.IMG_PATH + "join_char_2.png",
+                    define.IMG_PATH + "selection_panel.png",
+                    define.IMG_PATH + "random_char.png",
+                ];
+                let arr = [];
+
+                arrUrl.forEach(u => {
+                    console.log("Loading " + u);
+                    arr.push(
+                        ResourceManager.loadImage({
+                            url: u
+                        })
+                    );
+                });
+
+                return Promise.all(arr);
+            }).then((a, b) => {
+                console.log("Extra image resources all loaded");
+
+                return a;
+            }).then((a, b) => {
+                console.log("Preloading extra resources");
+                let arrUrl = [
+                    define.DATA_PATH + 'SelectionScreen.html',
+                    define.DATA_PATH + 'FightScreen.html',
+                ];
+                let arr = [];
+
+                arrUrl.forEach(u => {
+                    console.log("Loading " + u);
+                    arr.push(ResourceManager.loadResource(u));
+                });
+
+                return Promise.all(arr);
+            }).then((a, b) => {
+                console.log("Extra resources all loaded");
+
+                return a;
+            }).then((a, b) => {
+                console.log("---------------------------");
+                console.log("All object loaded.");
+                console.log("---------------------------");
+                this.allDone = true;
+            });
+        }
+
+        /**
+         * Loads data resource.
+         *
+         * @param   path    Full pathname of the file.
+         *
+         * @return  The data resource.
+         */
+        loadDataResource(path) {
+            path = path.replace(/\\/g, '/').replace(/\/\//, '/');
+
+            const ZipFileEntry = this.zip.files ? this.zip.files[path] : undefined;
+            if (!define.DEBUG &amp;&amp; ZipFileEntry) {
+                return ZipFileEntry.async('text');
+            } else {
+                return ResourceManager.loadResource(define.DATA_PATH + path).then(r => r.text());
+            }
+        }
+
+        /**
+         * update()
+         *
+         * Updates this object.
+         *
+         * @return  .
+         */
+        update() {
+            if (this.allDone &amp;&amp; (Date.now() - this._startLoadingTime) >= define.LOADING_MIN_TIME) {
+                //TODO: NEED CHANGE
+                Game.goToLevel('selection');
+
+                /*Game.goToLevel('fight', {
+                 players: [
+                 {charId: intval(prompt("腳色1 ID:", "51") || 51)},
+                 {charId: intval(prompt("腳色2 ID:", "7") || 7)},
+                 ],
+                 mapId: intval(prompt("地圖 ID:", "3") || 3),
+
+                 });*/
+            }
+        }
+
+
+        draw(ctx) {
+            super.draw(ctx);
+
+        }
+
+        /**
+         * Parse LF2 Object
+         * @param {Object} info
+         * @param {String} content
+         * @returns {GameObject|undefined}
+         */
+        parseObj(info, content) {
+            let obj = undefined;
+
+
+            switch (info.type) {
+                case 0:
+                    obj = new GameObjectCharacter(info, content);
+                    break;
+                case 1:
+                    obj = new GameObjectWeapon(info, content);
+                    break;
+                case 3:
+                    obj = new GameObjectBall(info, content);
+                    break;
+                default:
+                    obj = new GameObject(info, content);
+            }
+
+            GameObjectPool.set(info.id, obj);
+            obj._preLoadSound();
+
+            return obj;
+        }
+
+        /**
+         * Parse LF2 Object
+         * @param {Object} info
+         * @param {String} content
+         * @returns {GameMap|undefined}
+         */
+        parseMap(info, content) {
+            let map = undefined;
+            map = new GameMap(info, content);
+            GameMapPool.set(info.id, map);
+
+            /*
+             switch (info.type) {
+             case 0:
+             obj = new Character(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+             case 3:
+             obj = new Ball(info, content);
+             GameObjectPool.set(info.id, obj);
+             break;
+
+             }
+             */
+            return map;
+        }
+
+        /**
+         * showLoadingVideo()
+         *
+         * Shows the loading video.
+         *
+         * @return  .
+         */
+        showLoadingVideo() {
+            if (!this.isCurrentLevel) return;
+            if (this.html !== "" &amp;&amp; !this._loadingContainer) {
+                $("#" + _CONTAINER_ID).remove();
+
+                this._loadingContainer = $(this.html);
+                this._loadingContainer.attr("id", _CONTAINER_ID);
+                this._loadingContainer.find("#loadProcess").attr('src', lf2.LoadingLevel.LOADING_RESOURCE_SRC);
+                this._loadPath = this._loadingContainer.find("#loadDatPath");
+            }
+            if (!this._attached &amp;&amp; this._loadingContainer) {
+                $("body").append(this._loadingContainer);
+                this._attached = true;
+                this._startLoadingTime = Date.now();
+
+                Game.resizeEvent();
+            }
+        }
+
+        /**
+         * autodelete()
+         *
+         * Autodeletes this object.
+         *
+         * @return  .
+         */
+        autodelete() {
+            if (this._loadingContainer) {
+                this._loadingContainer.remove();
+                this._loadingContainer = undefined;
+            }
+        }
+
+        /**
+         * _showLoadFile(url)
+         *
+         * Shows the load file.
+         *
+         * @param   url URL of the document.
+         *
+         * @return  .
+         */
+        _showLoadFile(url) {
+            const showUrl = url.replace(/\\/g, '/');
+            console.log(`Loading "${showUrl}".`);
+            this._loadPath.text("正在讀取: " + showUrl);
+        }
+
+        /**
+         *
+         * @type {string}
+         */
+        static get LOADING_RESOURCE_SRC() {
+            return LoadingVideoSrc;
+        }
+
+        static PreloadLoadingVideo() {
+            if (LoadingVideoLoadState > 0) return;
+            LoadingVideoLoadState = 1;
+            Prefetch.get('LOADING_VIDEO')
+                .then(blobUrl => {
+                    LoadingVideoSrc = blobUrl;
+                    LoadingVideoLoadState = 4;
+                });
+        }
+    };
+
+    return lf2;
+})(lf2 || {});</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on 2017-06-14T17:45:40+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

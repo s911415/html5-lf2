@@ -40,7 +40,7 @@ var lf2 = (function (lf2) {
         /**
          * Gets the fa.
          *
-         * @return  {get}   A get.
+         * @return  {Number}   A get.
          */
         get FA() {
             return 2;

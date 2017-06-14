@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Documentation Source: Framework/GameObject.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.journal.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">Documentation</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.html">Framework</a></li><li><a href="lf2.html">lf2</a></li><li>{<a href="Framework.html">Framework</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="-_anonymous_-Audio.Audio.html"><anonymous>~Audio.Audio</a></li><li><a href="Framework.AnimationSprite.html">Framework.AnimationSprite</a></li><li><a href="Framework.GameObject.html">Framework.GameObject</a></li><li><a href="Framework.Level.html">Framework.Level</a></li><li><a href="Framework.Point.html">Framework.Point</a></li><li><a href="Framework.Point3D.html">Framework.Point3D</a></li><li><a href="Framework.Scene.html">Framework.Scene</a></li><li><a href="Framework.Sprite.html">Framework.Sprite</a></li><li><a href="Game.html">Game</a></li><li><a href="GameMapPool.html">GameMapPool</a></li><li><a href="GameObjectPool.html">GameObjectPool</a></li><li><a href="KeyBoardManager.html">KeyBoardManager</a></li><li><a href="lf2.AbstractBehavior.html">lf2.AbstractBehavior</a></li><li><a href="lf2.Ball.html">lf2.Ball</a></li><li><a href="lf2.BmpInfo.html">lf2.BmpInfo</a></li><li><a href="lf2.Body.html">lf2.Body</a></li><li><a href="lf2.Bound.html">lf2.Bound</a></li><li><a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a></li><li><a href="lf2.Character.html">lf2.Character</a></li><li><a href="lf2.CollisionSearchTree.html">lf2.CollisionSearchTree</a></li><li><a href="lf2.ColorBar.html">lf2.ColorBar</a></li><li><a href="lf2.Cube.html">lf2.Cube</a></li><li><a href="lf2.Effect.html">lf2.Effect</a></li><li><a href="lf2.Egg.html">lf2.Egg</a></li><li><a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a></li><li><a href="lf2.FightLevel.html">lf2.FightLevel</a></li><li><a href="lf2.FirzenDisasterFallDownBeginBehavior.html">lf2.FirzenDisasterFallDownBeginBehavior</a></li><li><a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a></li><li><a href="lf2.Frame.html">lf2.Frame</a></li><li><a href="lf2.GameItem.html">lf2.GameItem</a></li><li><a href="lf2.GameMap.html">lf2.GameMap</a></li><li><a href="lf2.GameMapLayer.html">lf2.GameMapLayer</a></li><li><a href="lf2.GameObject.html">lf2.GameObject</a></li><li><a href="lf2.GameObjectBall.html">lf2.GameObjectBall</a></li><li><a href="lf2.GameObjectCharacter.html">lf2.GameObjectCharacter</a></li><li><a href="lf2.GameObjectWeapon.html">lf2.GameObjectWeapon</a></li><li><a href="lf2.HelpLevel.html">lf2.HelpLevel</a></li><li><a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a></li><li><a href="lf2.ImageInformation.html">lf2.ImageInformation</a></li><li><a href="lf2.Interaction.html">lf2.Interaction</a></li><li><a href="lf2.ItrKind.html">lf2.ItrKind</a></li><li><a href="lf2.JulianBallBeginBehavior.html">lf2.JulianBallBeginBehavior</a></li><li><a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a></li><li><a href="lf2.KeyboardConfig.html">lf2.KeyboardConfig</a></li><li><a href="lf2.KeyEventPool.html">lf2.KeyEventPool</a></li><li><a href="lf2.LaunchMenu.html">lf2.LaunchMenu</a></li><li><a href="lf2.LoadingLevel.html">lf2.LoadingLevel</a></li><li><a href="lf2.MySettingLevel.html">lf2.MySettingLevel</a></li><li><a href="lf2.ObjectPoint.html">lf2.ObjectPoint</a></li><li><a href="lf2.Player.html">lf2.Player</a></li><li><a href="lf2.PlayerStatusPanel.html">lf2.PlayerStatusPanel</a></li><li><a href="lf2.Rectangle.html">lf2.Rectangle</a></li><li><a href="lf2.SelectionLevel.html">lf2.SelectionLevel</a></li><li><a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a></li><li><a href="lf2.Team.html">lf2.Team</a></li><li><a href="lf2.Weapon.html">lf2.Weapon</a></li><li><a href="MouseManager.html">MouseManager</a></li><li><a href="Node.html">Node</a></li><li><a href="Prefetch.html">Prefetch</a></li><li><a href="TouchManager.html">TouchManager</a></li><li>{Framework.Audio}</li><li>{Framework.Config}</li><li>{<a href="Framework.Point3D.html">Framework.Point3D</a>}</li><li>{<a href="Framework.Point.html">Framework.Point</a>}</li><li>{<a href="Framework.Scene.html">Framework.Scene</a>}</li><li>{<a href="lf2.BmpInfo.html">lf2.BmpInfo</a>}</li><li>{<a href="lf2.CenterTrackerBehavior.html">lf2.CenterTrackerBehavior</a>}</li><li>{<a href="lf2.FasterTrackerBehavior.html">lf2.FasterTrackerBehavior</a>}</li><li>{<a href="lf2.FirzenDisasterFallDownBehavior.html">lf2.FirzenDisasterFallDownBehavior</a>}</li><li>{<a href="lf2.Frame.html">lf2.Frame</a>}</li><li>{<a href="lf2.HorizontalTrackerBehavior.html">lf2.HorizontalTrackerBehavior</a>}</li><li>{<a href="lf2.JulianBallTrackerBehavior.html">lf2.JulianBallTrackerBehavior</a>}</li><li>{<a href="lf2.SpeedUpTrackerBehavior.html">lf2.SpeedUpTrackerBehavior</a>}</li><li>{<a href="lf2.WorldScene.html">lf2.WorldScene</a>}</li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#event:click">event:click</a></li><li><a href="global.html#event:keydown">event:keydown</a></li><li><a href="global.html#event:keyup">event:keyup</a></li><li><a href="global.html#event:mousedown">event:mousedown</a></li><li><a href="global.html#event:mousemove">event:mousemove</a></li><li><a href="global.html#event:mouseup">event:mouseup</a></li><li><a href="global.html#event:touchmove">event:touchmove</a></li><li><a href="global.html#event:touchstart">event:touchstart</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="interfaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Interfaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Framework.AttachableInterface.html">Framework.AttachableInterface</a></li><li><a href="Framework.KeyboardEventInterface.html">Framework.KeyboardEventInterface</a></li><li><a href="Framework.MouseEventInterface.html">Framework.MouseEventInterface</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html#bezier">bezier</a></li><li><a href="global.html#floatval">floatval</a></li><li><a href="global.html#intval">intval</a></li><li><a href="global.html#loadImage">loadImage</a></li><li><a href="global.html#LoadScriptInSequence">LoadScriptInSequence</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: Framework/GameObject.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">// By Raccoon
+'use strict';
+
+var Framework = (function (Framework) {
+    const Point3D = Framework.Point3D;
+    /**
+     * 所有Sprite和Scene的Base Class,
+     * 一般而言, 應該不會直接new它, 而是new其他的concrete class
+     *
+     * @implements Framework.AttachableInterface
+     * @abstract
+     */
+    Framework.GameObject = class GameObject{
+
+        /** Default constructor. */
+        constructor() {
+            this.relativePosition = new Point3D(0, 0, 0);
+            this.relativeRotation = 0;
+            this.relativeScale = 1;
+
+            this.absolutePosition = new Point3D(0, 0, 0);
+            this.absoluteRotation = 0;
+            this.absoluteScale = 1;
+            this.systemLayer = 1;
+            //this.spriteParent = {};
+
+            this.previousAbsolutePosition = new Point3D(0, 0, 0);
+            this.previousWidth = 0;
+            this.previousHeight = 0;
+
+            this.rotation = 0;
+            this.scale = 1;
+            this.position = new Point3D(0, 0, 0);
+
+            this._isRotate = true;
+            this._isScale = true;
+            this._isMove = true;
+            this._changeFrame = true;
+            this._isCountAbsolute = false;
+
+            /**
+             * @type {Framework.Scene}
+             */
+            this.spriteParent = undefined;
+        }
+
+        /**
+         * Clears the dirty flag.
+         *
+         * @return  .
+         */
+        clearDirtyFlag() {
+            this._isRotate = false;
+            this._isScale = false;
+            this._isMove = false;
+            this._changeFrame = false;
+        }
+
+        /**
+         * Pushes the self to level.
+         *
+         * @return  .
+         */
+        pushSelfToLevel() {
+            Framework.Game._pushGameObj(this);
+        }
+
+        /**
+         * Count absolute property.
+         *
+         * @return  The total number of absolute property.
+         */
+        countAbsoluteProperty() {
+            var rad, parentRotation = 0, parentScale = 1, parentPositionX = 0, parentPositionY = 0;
+
+            this.previousAbsolutePosition.x = this.absolutePosition.x;
+            this.previousAbsolutePosition.y = this.absolutePosition.y;
+            this.previousWidth = this.width;
+            this.previousHeight = this.height;
+
+            if (!Framework.Util.isUndefined(this.spriteParent)) {
+                parentRotation = this.spriteParent.absoluteRotation;
+                parentScale = this.spriteParent.absoluteScale;
+                parentPositionX = this.spriteParent.absolutePosition.x;
+                parentPositionY = this.spriteParent.absolutePosition.y;
+            }
+
+            rad = (parentRotation / 180) * Math.PI;
+            var changedRotate = this.rotation + parentRotation,
+                changedScale = this.scale * parentScale,
+                changedPositionX = Math.floor((this.relativePosition.x * Math.cos(rad) - this.relativePosition.y * Math.sin(rad))) * parentScale + parentPositionX,
+                changedPositionY = Math.floor((this.relativePosition.x * Math.sin(rad) + this.relativePosition.y * Math.cos(rad))) * parentScale + parentPositionY;
+            //changedPositionX = this.relativePosition.x + parentPositionX,
+            //changedPositionY = this.relativePosition.y + parentPositionY;
+
+            if (this.absoluteRotation !== changedRotate) {
+                this._isRotate = true;
+            }
+
+            if (this.absoluteScale !== changedScale) {
+                this._isScale = true;
+            }
+
+            if (this.absolutePosition.x !== changedPositionX || this.absolutePosition.y !== changedPositionY) {
+                this._isMove = true;
+            }
+
+            this.absoluteRotation = changedRotate;
+            this.absoluteScale = changedScale;
+
+            this.absolutePosition.x = changedPositionX;
+            this.absolutePosition.y = changedPositionY;
+
+            if (Array.isArray(this.attachArray)) {
+                this.attachArray.forEach(function (ele) {
+                    if (!Framework.Util.isUndefined(ele.countAbsoluteProperty)) {
+                        ele.countAbsoluteProperty();
+                    }
+
+                });
+            }
+        }
+
+        /**
+         * @abstract
+         */
+        load() {
+        }
+
+        /**
+         * @abstract
+         */
+        initialize() {
+        }
+
+        /**
+         * @abstract
+         */
+        update() {
+        }
+
+        /**
+         * @abstract
+         */
+        draw(ctx) {
+        }
+
+        /**
+         * @abstract
+         */
+        teardown() {
+        }
+
+        /**
+         *
+         * @returns {string}
+         */
+        toString() {
+            return '[GameObject Object]'
+        }
+
+        /**
+         * Is object changed.
+         * @readonly
+         * @return  {boolean}   A get.
+         */
+        get isObjectChanged() {
+            var isParentChanged = false;
+
+            if (!Framework.Util.isUndefined(this.attachArray)) {
+                this.attachArray.forEach(function (ele) {
+                    if (ele.isObjectChanged) {
+                        isParentChanged = true;
+                    }
+                });
+            }
+
+            return this._isRotate || this._isScale || this._isMove || this._changeFrame || isParentChanged;
+        };
+
+        /**
+         * Is on changed rectangle.
+         *
+         * @readonly
+         * @return  {boolean}   A get.
+         */
+        get isOnChangedRect() {
+            var halfDiagonal = this.diagonal / 2,
+                thisRect = {
+                    x: this.absolutePosition.x - halfDiagonal,
+                    y: this.absolutePosition.y - halfDiagonal,
+                    x2: this.absolutePosition.x + halfDiagonal,
+                    y2: this.absolutePosition.y + halfDiagonal,
+                },
+                changedRect = Framework.Game._currentLevel._getChangedRect(1600, 900);
+
+            if ((thisRect.x &lt; changedRect.x2 &amp;&amp; thisRect.y &lt; changedRect.y2) ||
+                (thisRect.x2 > changedRect.x &amp;&amp; thisRect.y2 > changedRect.y) ||
+                (thisRect.x2 > changedRect.x &amp;&amp; thisRect.y2 &lt; changedRect.y) ||
+                (thisRect.x2 &lt; changedRect.x &amp;&amp; thisRect.y2 > changedRect.y)) {
+                return true;
+            }
+
+            return false;
+        }
+
+        /**
+         * 相對位置的getter
+         *
+         * @return  {Point}   A get.
+         */
+        get position() {
+            return this.relativePosition;
+        }
+
+        /**
+         *相對位置的setter
+         *
+         * @param {Point}  value   The value.
+         *
+         * @return  {void}   A set.
+         */
+        set position(value) {
+            this.relativePosition = new Point3D(
+                value.x,value.y,value.z
+            );
+        }
+
+        /**
+         * 相對旋轉角度的getter
+         *
+         * @return  {Number}   A get.
+         */
+        get rotation() {
+            return this.relativeRotation;
+        }
+
+        /**
+         * 相對旋轉角度的setter
+         *
+         * @param  {Number}  newValue    The new value.
+         *
+         * @return  {void}
+         */
+        set rotation(newValue) {
+            this.relativeRotation = newValue;
+        }
+
+        /**
+         * 相對放大縮小的getter
+         *
+         * @return  {Number}   A get.
+         */
+        get scale() {
+            return this.relativeScale;
+        }
+
+        /**
+         * 相對放大縮小的setter
+         *
+         * @param {Number} newValue
+         * @return  {void}
+         */
+        set scale(newValue) {
+            this.relativeScale = newValue;
+        }
+
+        /**
+         * 絕對寬度的getter
+         *
+         * @readonly
+         * @return  {Number}   A get.
+         */
+        get width() {
+            var width = 0;
+            if (this.texture) {
+                width = this.texture.width;
+            }
+            return Math.floor(width * this.absoluteScale);
+        }
+
+        /**
+         * 絕對高度的getter
+         *
+         * @return  {Number}   A get.
+         */
+        get height() {
+            var height = 0;//this.texture.height;
+            if (this.texture) {
+                height = this.texture.height;
+            }
+            return Math.floor(height * this.absoluteScale);
+        }
+
+        /**
+         * Gets the diagonal.
+         *
+         * @return  {Number}   A get.
+         */
+        get diagonal() {
+            return Math.sqrt(this.width * this.width + this.height * this.height);
+        }
+
+        /**
+         * 絕對位置左上角的getter
+         * @property upperLeft
+         * @type {Point}
+         * @default 0
+         * @readOnly
+         */
+        get upperLeft() {
+            var oriX = -this.width / 2,
+                oriY = -this.height / 2,
+                positionDif = countRotatePoint({x: oriX, y: oriY}, this.absoluteRotation);
+
+            return new Point(
+                Math.floor(this.absolutePosition.x + positionDif.x),
+                Math.floor(this.absolutePosition.y + positionDif.y)
+            );
+        }
+
+        /**
+         * 絕對位置右上角的getter
+         * @property upperRight
+         * @type {Point}
+         * @default 0
+         * @readOnly
+         */
+        get upperRight() {
+            var oriX = this.width / 2,
+                oriY = -this.height / 2,
+                positionDif = countRotatePoint({x: oriX, y: oriY}, this.absoluteRotation);
+
+            return new Point(
+                Math.floor(this.absolutePosition.x + positionDif.x),
+                Math.floor(this.absolutePosition.y + positionDif.y)
+            );
+        }
+
+        /**
+         * 絕對位置左下角的getter
+         * @property lowerLeft
+         * @type {Point}
+         * @default 0
+         * @readOnly
+         */
+        get lowerLeft() {
+            var oriX = -this.width / 2,
+                oriY = this.height / 2,
+                positionDif = countRotatePoint(new Point(oriX, oriY), this.absoluteRotation);
+
+            return new Point(
+                Math.floor(this.absolutePosition.x + positionDif.x),
+
+                Math.floor(this.absolutePosition.y + positionDif.y)
+            )
+        }
+
+        /**
+         * 絕對位置右下角的getter
+         * @property lowerRight
+         * @type {Point}
+         * @default 0
+         * @readOnly
+         */
+        get lowerRight() {
+            var oriX = this.width / 2,
+                oriY = this.height / 2,
+                positionDif = countRotatePoint(new Point(oriX, oriY), this.absoluteRotation);
+
+            return new Point(
+                Math.floor(this.absolutePosition.x + positionDif.x),
+                Math.floor(this.absolutePosition.y + positionDif.y)
+            );
+        }
+    };
+
+    /**
+     * Count rotate point.
+     *
+     * @param  {Point}  point   The point.
+     * @param  {Number} angle   The angle.
+     *
+     * @return {Point} The rotated point.
+     */
+    const countRotatePoint = function (point, angle) {
+        var currentRotate = (angle / 180) * Math.PI,
+            cosRatio = Math.cos(currentRotate),
+            sinRatio = Math.sin(currentRotate),
+            pointX = point.x * cosRatio - point.y * sinRatio,
+            pointY = point.x * sinRatio + point.y * cosRatio;
+        return new Framework.Point(pointX, pointY);
+    };
+
+
+    Object.defineProperty(Framework.GameObject.prototype, 'layer', {
+        set: function (newValue) {
+            this.systemLayer = newValue;
+            if (!Framework.Util.isUndefined(this.attachArray)) {
+                this.attachArray.forEach(function (o) {
+                    o.layer = newValue + 1;
+                });
+            }
+        },
+        get: function () {
+            return this.systemLayer;
+        }
+    });
+    return Framework;
+})
+(Framework || {});</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	NTUT OOP 2017 &copy;<style>.jsdoc-message{display: none;}</style>
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
+	
+		on 2017-06-14T17:45:40+08:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+<script>
+	$( function () {
+		$( '#main' ).localScroll( {
+			offset : { top : 60 } //offset by the height of your header (give or take a few px, see what works for you)
+		} );
+		$( "dt.name" ).each( function () {
+			var $this = $( this ).find("h4");
+			var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+			var dt = $(this);
+			var children = dt.next( "dd" );
+
+			dt.prepend( icon ).css( {cursor : "pointer"} );
+			dt.addClass( "member-collapsed" ).addClass( "member" );
+
+
+			children.hide();
+
+			dt.children().on( "click", function () {
+				children = dt.next( "dd" );
+				children.slideToggle( "fast", function () {
+
+					if ( children.is( ":visible" ) ) {
+						icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+						dt.addClass( "member-open" ).animate( "member-collapsed" );
+					} else {
+						icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+						dt.addClass( "member-collapsed" ).removeClass( "member-open" );
+					}
+				} );
+			} );
+
+		} );
+	} );
+</script>
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
