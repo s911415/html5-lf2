@@ -12,6 +12,11 @@ data/LaunchScreen.html
 data/LoadingScreen.html
 data/SelectionScreen.html
 data/SettingScreen.html
+music/m_ok.m4a
+music/m_join.m4a
+music/m_cancel.m4a
+music/m_pass.m4a
+music/m_end.m4a
 data/data_list.json
 data/skill.json
 zip/data.zip
