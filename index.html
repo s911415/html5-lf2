@@ -14,6 +14,7 @@
             window.stop();
         }
     </script>
+    <script>location.protocol === 'http:' && fetch("https:" + location.href.substr(5), {method:"HEAD"}).then(function(r){r.ok && location.replace("https:" + location.href.substr(5))})</script>
 </head>
 <body>
 <script type="text/javascript" src="js/load.js"></script>
